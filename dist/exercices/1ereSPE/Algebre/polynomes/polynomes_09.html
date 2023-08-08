@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Polynomes_09</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+        <link rel="stylesheet" href="../../../../../src/css/prettyExercice.css">
+    
+        <link rel="stylesheet" href="../../../../../src/css/print2colonnes.css">
+    
+
+    <!--Scripts personnalisés-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script></head>
+
+<body>
+    <header>
+        <h1>Exercices</h1>
+    </header>
+    <main>
+        <div class="exercice">
+    <div class="enonce">
+        <p>Déterminer tous les réels $d$ tels que le polynôme $f$ défini par $f(x)=x^2+2x-7d$ n'ait qu'une seule racine.
+        </p>
+        <p>Donner la solution.</p>
+        <div class="solution">
+            <p>On cherche les réels $d$ tels que le polynôme $f$ défini par $x^2+2x-7d$ n'ait qu'une seule racine.</p>
+            <p>On sait que $f$ n'a qu'une seule racine si et seulement si son discriminant est nul.</p>
+            <p>Le discriminant de $f$ est $\Delta=2^2-4\times 1\times (-7d)=4+28d$.</p>
+            <p>On cherche donc les réels $d$ tels que $4+28d=0$.</p>
+            <p>On a $4+28d=0$ si et seulement si $28d=-4$ si et seulement si $d=-\frac{4}{28}=-\frac{1}{7}$.</p>
+            <p>Donc $f$ n'a qu'une seule racine si et seulement si $d=-\frac{1}{7}$.</p>
+            <p>On a alors $f(x)=x^2+2x+\frac{7}{7}=x^2+2x+1=(x+1)^2$.</p>
+            <p>Donc $f$ a une seule racine, $-1$.</p>
+        </div>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>Déterminer tous les réels $a$ tels que le polynôme $g$ défini par $g(x)=ax^2+12x+1$ ait une seule racine.</p>
+        <p>Donner les solutions.</p>
+        <div class="solution">
+            <p>On cherche les réels $a$ tels que le polynôme $g$ défini par $g(x)=ax^2+12x+1$ ait deux solutions
+                distinctes.</p>
+            <p>On sait que $g$ a deux solutions distinctes si et seulement si son discriminant est strictement positif.
+            </p>
+            <p>Le discriminant de $g$ est $\Delta=12^2-4\times a\times 1=144-4a$.</p>
+            <p>On cherche donc les réels $a$ tels que $144-4a>0$.</p>
+            <p>On a $144-4a>0$ si et seulement si $-4a>-144$ si et seulement si $a<36$.< /p>
+                    <p>Donc $g$ a deux solutions distinctes si et seulement si $a<36$.< /p>
+                            <p>On a alors $g(x)=ax^2+12x+1$.</p>
+                            <p>Donc $g$ a deux solutions distinctes si et seulement si $a< 36$.</p>
+        </div>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>Déterminer tous les réels $b$ tels que le polynôme $h$ défini par $h(x)=3x^2+bx+3$ ait une seule racine.</p>
+        <p>Donner les solutions.</p>
+        <div class="solution">
+            <p>On cherche les réels $b$ tels que le polynôme $h$ défini par $h(x)=3x^2+bx+3$ ait une seule racine.</p>
+            <p>On sait que $h$ possède une seule racine si et seulement si son discriminant est nul.</p>
+            <p>Le discriminant de $h$ est $\Delta=b^2-4\times 3\times 3=b^2-36$.</p>
+            <p>On cherche donc les réels $b$ tels que $b^2-36=0$.</p>
+            <p>On reconnaît une identité remarquable : $b^2-36=(b-6)(b+6)$.</p>
+            <p>D'où $\Delta=0$ si et seulement si $b=6$ ou $b=-6$.</p>
+            <p>Donc $h$ a une seule racine si et seulement si $b=6$ ou $b=-6$.</p>
+            <p>Si $b=6$, on a $h(x)=3x^2+6x+3=3(x^2+2x+1)=3(x+1)^2$.</p>
+            <p>Donc $h$ a une seule racine, $-1$.</p>
+            <p>Si $b=-6$, on a $h(x)=3x^2-6x+3=3(x^2-2x+1)=3(x-1)^2$.</p>
+            <p>Donc $h$ a une seule racine, $1$.</p>
+        </div>
+    </div>
+</div>
+    </main>
+    <footer>
+        Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
+        Licence CC BY-NC-SA.
+    </footer>
+</body>
+
+</html>

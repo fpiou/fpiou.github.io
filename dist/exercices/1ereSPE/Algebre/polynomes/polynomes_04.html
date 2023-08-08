@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Polynomes_04</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+        <link rel="stylesheet" href="../../../../../src/css/prettyExercice.css">
+    
+        <link rel="stylesheet" href="../../../../../src/css/print2colonnes.css">
+    
+
+    <!--Scripts personnalisés-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script></head>
+
+<body>
+    <header>
+        <h1>Exercices</h1>
+    </header>
+    <main>
+        <div class="exercice">
+    <div class="enonce">
+        <p>$f$ est une fonction polynôme du second degré $f$ s'annulant en $-\frac{1}{3}$ et $6$ et telle que $f(0)=-5.$
+        </p>
+        <p>Déterminer le signe de $f(x)$ en fonction de $x.$</p>
+    </div>
+</div>
+<div class="solution">
+    <p>$-\frac{1}{3}$ et $6$ sont les racines d'un polynômes du second degré donc&nbsp;:</p>
+    $$f(x)=a\left(x+\frac{1}{3}\right)(x-6)$$
+    <p>Or $f(0)=-5$ donc</p>
+    $$f(0)=a\left(0+\frac{1}{3}\right)(0-6)=-5$$
+    <p>Soit</p>
+    $$a\times \frac{1}{3}\times (-6)=-5$$
+    <p>D'où</p>
+    $$a=\frac{5}{2}.$$
+    <p>Donc</p>
+    $$f(x)=\frac{5}{2}\left(x+\frac{1}{3}\right)(x-6)$$
+    <p>On a donc le tableau de signe suivant&nbsp;:</p>
+    <table class="tableausigne">
+        <tr>
+            <td>$x$</td>
+            <td>$-\infty$</td>
+            <td></td>
+            <td>$-\frac{1}{3}$</td>
+            <td></td>
+            <td>$6$</td>
+            <td></td>
+            <td>$+\infty$</td>
+        </tr>
+        <tr>
+            <td>$f(x)$</td>
+            <td></td>
+            <td>$+$</td>
+            <td>$0$</td>
+            <td>$-$</td>
+            <td>$0$</td>
+            <td>$+$</td>
+        </tr>
+    </table>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>$f$ est une fonction polynôme du second degré $f$ s'annulant en $4$ et $9$ et telle que $f(6)=10.$</p>
+        <p>Déterminer le signe de $f(x)$ en fonction de $x.$</p>
+    </div>
+    <div class="solution">
+        <p>$4$ et $9$ sont les racines d'un polynômes du second degré donc&nbsp;:</p>
+        $$f(x)=a(x-4)(x-9)$$
+        <p>Or $f(6)=10$ donc</p>
+        $$f(6)=a(6-4)(6-9)=10$$
+        <p>Soit</p>
+        $$a\times 2\times (-3)=10$$
+        <p>D'où</p>
+        $$a=-\frac{5}{3}.$$
+        <p>Donc</p>
+        $$f(x)=-\frac{5}{3}(x-4)(x-9)$$
+        <p>On a donc le tableau de signe suivant&nbsp;:</p>
+        <table class="tableausigne">
+            <tr>
+                <td>$x$</td>
+                <td>$-\infty$</td>
+                <td></td>
+                <td>$4$</td>
+                <td></td>
+                <td>$9$</td>
+                <td></td>
+                <td>$+\infty$</td>
+            </tr>
+            <tr>
+                <td>$f(x)$</td>
+                <td></td>
+                <td>$-$</td>
+                <td>$0$</td>
+                <td>$+$</td>
+                <td>$0$</td>
+                <td>$-$</td>
+            </tr>
+        </table>
+    </div>
+</div>
+    </main>
+    <footer>
+        Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
+        Licence CC BY-NC-SA.
+    </footer>
+</body>
+
+</html>

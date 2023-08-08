@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Reels</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+        <link rel="stylesheet" href="../../../../../src/css/prettyLesson.css">
+    
+        <link rel="stylesheet" href="../../../../../src/css/print1colonne.css">
+    
+
+    <!--Scripts personnalisés-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script></head>
+
+<body>
+    <main>
+        <!-- Scripts pour les figures JSXGraph -->
+<link rel="stylesheet" type="text/css" href="https://jsxgraph.org/distrib/jsxgraph.css" />
+<script type="text/javascript" src="https://jsxgraph.org/distrib/jsxgraphcore.js"></script>
+<h1>Manipuler les nombres réels</h1>
+<details>
+    <summary>Sommaire</summary>
+    <nav id="tableOfContents">
+    </nav>
+</details>
+<h2>Les entiers</h2>
+<div class="definition">
+    <p>
+        Un <b>entier</b> est un nombre qui peut s'écrire sans virgule ni décimale.
+        Il peut être positif ou négatif (on parle aussi d'entiers relatifs).<br>
+        On note $\mathbb{Z}$ l'ensemble des entiers.
+        $$\colorbox{lightcoral}{$\mathbb{Z}=\{\ldots~{;}~-3~{;}~-2~{;}~-1~{;}~0~{;}~1~{;}~2~{;}~3~{;}\ldots\}$}$$
+        $0$ est un entier positif et négatif.
+    </p>
+</div>
+<div class="definition">
+    <p>
+        Un <b>entier naturel</b> est un entier positif.<br>
+        On note $\mathbb{N}$ l'ensemble des entiers naturels.
+        $$\colorbox{lightcoral}{$\mathbb{N}=\{0~{;}~1~{;}~2~{;}~3~{;}\ldots\}$}$$
+        L'ensemble $\mathbb{N}^*$ est l'ensemble des entiers naturels non nuls.
+        $$\colorbox{lightcoral}{$\mathbb{N}^*=\mathbb{N}\backslash \{0\}$}$$
+        $$\colorbox{lightcoral}{$\mathbb{N}^*=\{1~{;}~2~{;}~3~{;}\ldots\}$}$$
+    </p>
+</div>
+
+<h2>Les décimaux et les rationnels</h2>
+<div class="definition">
+    <p>
+        Un <b>décimal</b> est un nombre qui possède une partie décimale finie.
+        Il peut être positif ou négatif.<br>
+        On note $\mathbb{D}$ l'ensemble des décimaux.
+        $$\colorbox{lightcoral}{$\mathbb{D}=\{\frac{a}{10^n}\text{ avec }a\in\mathbb{Z}\text{ et }n\in\mathbb{N}\}$}$$
+    </p>
+</div>
+
+<div class="definition">
+    <p>
+        Un <b>rationnel</b> est un nombre qui peut s'écrire sous la forme d'une fraction.
+        Il peut être positif ou négatif.<br>
+        On note $\mathbb{Q}$ l'ensemble des rationnels.
+        $$\colorbox{lightcoral}{$\mathbb{Q}=\{\frac{a}{b}\text{ avec }a\in\mathbb{Z}\text{ et }b\in\mathbb{N}^*\}$}$$
+    </p>
+</div>
+<div class="definition">
+    <p>
+        Déterminer la <b>nature d'un nombre</b> revient à déterminer le plus petit ensemble auquel il appartient.
+    </p>
+</div>
+<div class="exemple">
+    <p>
+        Nature de quelques nombres :
+    <ul>
+        <li>$-100$ est un entier.</li>
+        <li>$2{,}8$ est un décimal.</li>
+        <li>$-0{,}14$ est un décimal.</li>
+        <li>$\frac{3}{4}$ est un décimal car $\frac{3}{4}=0{,}75$.</li>
+        <li>$-\frac{3}{2}$ est un décimal car $-\frac{3}{2}=-1{,}5$.</li>
+    </ul>
+    Tous ces nombres sont aussi des rationnels mais ce n'est pas le plus petit ensemble auquel ils appartiennent.
+    </p>
+</div>
+<div class="propriete">
+    <p>
+    <ul>
+        <li>Un nombre entier naturel est aussi un nombre entier.</li>
+        <li>Un nombre entier est aussi un nombre décimal.</li>
+        <li>Un nombre décimal est aussi un nombre rationnel.</li>
+    </ul>
+    Autrement dit $$\colorbox{lightcoral}{$\mathbb{N}\subset \mathbb{Z}\subset \mathbb{D}\subset \mathbb{Q}$}$$
+    </p>
+</div>
+<div class="propriete">
+    <p>
+        $\frac{1}{3}$ est un nombre rationnel mais il n'est pas décimal.
+    </p>
+</div>
+<div class="demonstration">
+    Supposons par l'absurde que $\frac{1}{3}$ soit décimal.<br>
+    Alors il existe $a\in\mathbb{Z}$ et $n\in\mathbb{N}$ tels que $\frac{1}{3}=\frac{a}{10^n}$.<br>
+    On a donc $3a=10^n$ et $3$ divise $10^n$.<br>
+    Or $3$ est premier avec $10$ donc $3$ divise $10$ et $3$ divise $10^n$.<br>
+    C'est absurde car $3$ ne divise pas $10.$
+</div>
+<div class="propriete">
+    <p>
+        Un nombre est décimal si et seulement s'il peut s'écrire sous la forme d'une fraction dont le dénominateur est
+        un produit uniquement de $2$ et de $5$.
+    </p>
+</div>
+<div class="exemple">
+    <p>
+    <ul>
+        <li>$\frac{3}{4}=\frac{3}{2\times 2}$ donc $\frac{3}{4}$ est décimal.</li>
+        <li>$\frac{7}{125}=\frac{7}{5\times 5\times 5}$ donc $\frac{3}{4}$ est décimal.</li>
+        <li>$\frac{8}{30}=\frac{8}{2\times 3\times 5}$ donc $\frac{8}{30}$ n'est pas décimal.</li>
+    </ul>
+    </p>
+</div>
+<h2>Les nombres irrationnels</h2>
+<div class="propriete">
+    <p>
+        $\sqrt{2}$ n'est pas rationnel.
+    </p>
+</div>
+<div class="demonstration">
+    Supposons par l'absurde que $\sqrt{2}$ soit rationnel.<br>
+    Alors il existe $a\in\mathbb{Z}$ et $b\in\mathbb{N}^*$ tels que $\sqrt{2}=\frac{a}{b}$.<br>
+    On peut également supposer que $a$ et $b$ ont pour seul diviseur commun $1$.<br>
+    On a donc $2b^2=a^2$ et $2$ divise $a^2$.<br>
+    Or $2$ est premier donc $2$ divise $a$ et $2$ divise $a^2$.<br>
+    On a donc $a=2k$ avec $k\in\mathbb{Z}$ et $2b^2=4k^2$ donc $b^2=2k^2$ et $2$ divise $b^2$.<br>
+    Or $2$ est premier donc $2$ divise $b$ et $2$ divise $b^2$.<br>
+    C'est absurde car $a$ et $b$ ont pour seul diviseur commun $1$.
+</div>
+<div class="definition">
+    <p>
+        Les nombres qui ne sont pas rationnels sont appelés <b>irrationnels</b>.
+    </p>
+</div>
+<div class="exemple">
+    <p>
+    <ul>
+        <li>$\sqrt{3}$ et $\pi$ sont des irrationnels</li>
+        <li>Mais $\sqrt{4}$ est un entier car $\sqrt{4}=2$ donc c'est un rationnel.</li>
+        <li>$\sqrt{5}$, $\sqrt{7}$ et $\sqrt{8}$ sont des irrationnels.</li>
+        <li>Mais $\sqrt{9}$, $\sqrt{16}$ et $\sqrt{25}$ sont des entiers donc des rationnels.</li>
+    </ul>
+    </p>
+</div>
+<div class="propriete">
+    <p>
+        $n$ désigne un entier naturel non nul.<br>
+        $\sqrt{n}$ est un rationnel si et seulement si la forme réduite de la décomposition en produit de facteurs
+        premiers de $n$ ne donne que des facteurs premiers de puissances paires.
+    </p>
+</div>
+<div class="exemple">
+    <p>
+    <ul>
+        <li>$\sqrt{4}=2$ est un nombre rationnel car $4=2\times 2=2^2$.</li>
+        <li>$\sqrt{6}$ est irrationnel car $6=2\times 3$ (c'est-à-dire $2^1\times 3^1$).</li>
+        <li>$\sqrt{8}$ est irrationnel car $8=2\times 2\times 2=2^3$.</li>
+        <li>$\sqrt{9}=3$ est rationnel car $9=3\times 3=3^2$.</li>
+        <li>$\sqrt{10}$ est irrationnel car $10=2\times 5$.</li>
+        <li>$\sqrt{12}$ est irrationnel car $12=2^2\times 3$.</li>
+        <li>$\sqrt{128}$ est irrationnel car $128=2^7$.</li>
+        <li>$\sqrt{1024}$ est rationnel car $1024=2^{10}$.</li>
+    </ul>
+    </p>
+</div>
+<h2>Les nombres réels</h2>
+<div class="definition">
+    <p>
+        L'ensemble des abscisses des points d'une droite graduée est appelé <b>droite des réels</b> et noté
+        $\mathbb{R}$.
+    </p>
+</div>
+<div class="exemple">
+    $3$, $2{,}5$, $-\frac{2}{3}$, $\sqrt{5}$, $\pi$ sont tous des nombres réels que l'on peut placer sur la droite des
+    réels.<br>
+    <div id="figure_01" class="jxgbox"
+        style="width:600px; height:150px;display: block; margin-left: auto; margin-right: auto;border:none;"></div>
+    <script type="text/javascript">
+        var board = JXG.JSXGraph.initBoard('figure_01', {
+            boundingbox: [-2.5, 2, 4, -2],
+            showNavigation: false,
+            showCopyright: false
+        });
+
+        var xaxis = board.create('line', [[0, 0], [1, 0]], {
+            strokeWidth: 2,
+            strokeColor: 'black',
+            ticks: {
+                visible: true,
+                majorHeight: -1,
+                drawZero: true,
+                label: {
+                    offset: [-3, -10]
+                }
+            }
+        });
+
+        var pt0 = board.create('point', [0, 0], { name: '0', label: { visible: false }, size: 4, fixed: true, face: 'cross' });
+        board.create('text', [
+            function () { return pt0.coords.usrCoords[1] + 0.15; },
+            function () { return pt0.coords.usrCoords[2] + 0.1; },
+            function () { return '$0$' }
+        ], { fontSize: 18, anchorY: 'bottom', anchorX: 'middle' })
+        /*CRéer les ticks sur l'axe*/
+        for (x = -2; x <= 3; x++) {
+            board.create('segment', [[x, 0.2], [x, -0.2]], {
+                strokeWidth: 1,
+                strokeColor: 'black',
+                fixed: true
+            });
+            board.create('text', [
+                x - 0.05,
+                -0.5,
+                '' + x + ''
+            ], { fontSize: 12 })
+        }
+        var pt1 = board.create('point', [-2, 0], { name: '3', label: { visible: false }, size: 4, fixed: true, face: 'cross' });
+        board.create('text', [
+            function () { return pt1.coords.usrCoords[1]; },
+            function () { return pt1.coords.usrCoords[2] + 0.1; },
+            function () { return '$-2$' }
+        ], { fontSize: 18, anchorY: 'bottom', anchorX: 'middle' })
+
+        var pt2 = board.create('point', [2.5, 0], { name: '2.5', label: { visible: false }, size: 4, fixed: true, face: 'cross' });
+        board.create('text', [
+            function () { return pt2.coords.usrCoords[1] + 0.3; },
+            function () { return pt2.coords.usrCoords[2] + 0.1; },
+            function () { return '$2{,}5$'; }
+        ], { fontSize: 18, anchorY: 'bottom', anchorX: 'middle' });
+
+        var pt3 = board.create('point', [-2 / 3, 0], { name: '-2/3', label: { visible: false }, size: 4, fixed: true, face: 'cross' });
+        board.create('text', [
+            function () { return pt3.coords.usrCoords[1] + 0.6; },
+            function () { return pt3.coords.usrCoords[2] + 0.4; },
+            function () { return '$-\\frac{2}{3}$' }
+        ], { fontSize: 18, anchorY: 'bottom', anchorX: 'middle' })
+
+        var pt4 = board.create('point', [Math.sqrt(2), 0], { name: '√2', label: { visible: false }, size: 4, fixed: true, face: 'cross' });
+        board.create('text', [
+            function () { return pt4.coords.usrCoords[1] + 0.4; },
+            function () { return pt4.coords.usrCoords[2] + 0.1; },
+            function () { return '$\\sqrt{2}$' }
+        ], { fontSize: 18, anchorY: 'bottom', anchorX: 'middle' })
+
+        var pt5 = board.create('point', [Math.PI, 0], { name: 'π', label: { visible: false }, size: 4, fixed: true, face: 'cross' });
+        board.create('text', [
+            function () { return pt5.coords.usrCoords[1] + 0.3; },
+            function () { return pt5.coords.usrCoords[2] + 0.1; },
+            function () { return '$\\pi$' }
+        ], { fontSize: 18, anchorY: 'bottom', anchorX: 'middle' })
+    </script>
+
+    Cependant :
+    <ul>
+        <li>$-2$ est un entier naturel donc un rationnel.</li>
+        <li>$2{,}5$ est un décimal donc un rationnel.</li>
+        <li>$-\frac{2}{3}$ est un rationnel.</li>
+        <li>$\sqrt{5}$ est un irrationnel.</li>
+        <li>$\pi$ est un irrationnel.</li>
+    </ul>
+</div>
+<div class="propriete">
+    <p>
+        $$\colorbox{lightgreen}{$\mathbb{N}\subset \mathbb{Z}\subset \mathbb{D}\subset \mathbb{Q}\subset \mathbb{R}$}$$
+    </p>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" style="display:block;margin:auto;width:50%;"
+        alt="Diagramme d'Euler des ensembles de nombres">
+        <ellipse cx="200" cy="150" rx="200" ry="150" stroke="black" stroke-width="0.5" fill="red" fill-opacity="0.1" />
+        <ellipse cx="240" cy="150" rx="160" ry="130" stroke="black" stroke-width="0.5" fill="red" fill-opacity="0.1" />
+        <ellipse cx="280" cy="150" rx="120" ry="100" stroke="black" stroke-width="0.5" fill="red" fill-opacity="0.1" />
+        <ellipse cx="310" cy="150" rx="90" ry="70" stroke="black" stroke-width="0.5" fill="red" fill-opacity="0.1" />
+        <ellipse cx="340" cy="150" rx="50" ry="40" stroke="black" stroke-width="0.5" fill="red" fill-opacity="0.1" />
+        <g style="font-size: 1.2em;">
+            <foreignObject x="90" y="0" width="30" height="40">
+                math.renderMath("\\mathbb{R}")
+            </foreignObject>
+            <foreignObject x="150" y="15" width="30" height="40">
+                $\mathbb{Q}$
+            </foreignObject>
+            <foreignObject x="210" y="45" width="30" height="40">
+                $\mathbb{D}$
+            </foreignObject>
+            <foreignObject x="260" y="70" width="30" height="40">
+                $\mathbb{Z}$
+            </foreignObject>
+            <foreignObject x="310" y="95" width="30" height="40">
+                $\mathbb{N}$
+            </foreignObject>
+        </g>
+    </svg>
+</div>
+<div class="propriete">
+    <p>
+        Tous les nombres réels sont soit rationnels soit irrationnels.<br>
+        $\mathbb{R}\backslash\mathbb{Q}$ est l'ensemble des nombres irrationnels.
+    </p>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" style="display:block;margin:auto;width:50%;">
+        <ellipse cx="200" cy="150" rx="200" ry="150" stroke="black" stroke-width="0.5" fill="lightcoral"
+            fill-opacity="1" />
+        <ellipse cx="240" cy="150" rx="160" ry="130" stroke="black" stroke-width="0.5" fill="lightgreen"
+            fill-opacity="1" />
+        <g style="font-size: 1.2em;">
+            <foreignObject x="60" y="0" width="30" height="40">
+                $\mathbb{R}$
+            </foreignObject>
+            <foreignObject x="240" y="150" width="30" height="40">
+                $\mathbb{Q}$
+            </foreignObject>
+            <foreignObject x="20" y="150" width="60" height="40">
+                $\mathbb{R}\backslash\mathbb{Q}$
+            </foreignObject>
+        </g>
+    </svg>
+</div>
+<div class="exemple">
+    <p>
+    <div class="svgContainer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" style="display:block;margin:auto;width:50%;">
+            <!-- Shématisation de l'imbriquation des ensembles de nombres -->
+            <ellipse cx="200" cy="150" rx="200" ry="150" stroke="black" stroke-width="0.5" fill="red"
+                fill-opacity="0.1" />
+            <ellipse cx="240" cy="150" rx="160" ry="130" stroke="black" stroke-width="0.5" fill="red"
+                fill-opacity="0.1" />
+            <ellipse cx="280" cy="150" rx="120" ry="100" stroke="black" stroke-width="0.5" fill="red"
+                fill-opacity="0.1" />
+            <ellipse cx="310" cy="150" rx="90" ry="70" stroke="black" stroke-width="0.5" fill="red"
+                fill-opacity="0.1" />
+            <ellipse cx="340" cy="150" rx="50" ry="40" stroke="black" stroke-width="0.5" fill="red"
+                fill-opacity="0.1" />
+            <g style="font-size: 1em;">
+                <foreignObject x="90" y="0" width="30" height="40">
+                    $\mathbb{R}$
+                </foreignObject>
+                <foreignObject x="150" y="15" width="30" height="40">
+                    $\mathbb{Q}$
+                </foreignObject>
+                <foreignObject x="210" y="45" width="30" height="40">
+                    $\mathbb{D}$
+                </foreignObject>
+                <foreignObject x="260" y="70" width="30" height="40">
+                    $\mathbb{Z}$
+                </foreignObject>
+                <foreignObject x="310" y="95" width="30" height="40">
+                    $\mathbb{N}$
+                </foreignObject>
+                <foreignObject x="50" y="80" width="30" height="40">
+                    $\pi$
+                </foreignObject>
+                <foreignObject x="50" y="200" width="30" height="40">
+                    $\sqrt{2}$
+                </foreignObject>
+                <foreignObject x="80" y="250" width="50" height="40">
+                    $-\sqrt{5}$
+                </foreignObject>
+                <foreignObject x="110" y="80" width="50" height="40">
+                    $-\dfrac{15}{7}$
+                </foreignObject>
+                <foreignObject x="130" y="200" width="30" height="40">
+                    $\dfrac{1}{3}$
+                </foreignObject>
+                <foreignObject x="190" y="80" width="50" height="40">
+                    $-2{,}3$
+                </foreignObject>
+                <foreignObject x="180" y="180" width="50" height="40">
+                    $0{,}126$
+                </foreignObject>
+                <foreignObject x="250" y="100" width="50" height="40">
+                    $-6$
+                </foreignObject>
+                <foreignObject x="250" y="180" width="50" height="40">
+                    $-1$
+                </foreignObject>
+                <foreignObject x="320" y="150" width="50" height="40">
+                    $0$
+                </foreignObject>
+                <foreignObject x="340" y="130" width="50" height="40">
+                    $1$
+                </foreignObject>
+                <foreignObject x="360" y="140" width="50" height="40">
+                    $3$
+                </foreignObject>
+            </g>
+        </svg>
+    </div>
+    </p>
+</div>
+<h2>Encadrement décimal</h2>
+<div class="definition">
+    <p>
+        Pour tout nombre réel $x$, il existe un nombre décimal $d$ et un entier naturel $n$ tel que $d\leqslant x <
+            d+10^{-n}$ : on dit que c'est un <b>encadrement décimal</b> de $x$ à $10^{-n}$ près.
+            <svg id="encadrement" xmlns="http://www.w3.org/2000/svg" viewBox="-60 -40 620 140"
+                style="display:block;margin:auto;width:90%;">
+                <!-- L'axe des abscisses -->
+                <line x1="-40" y1="0" x2="540" y2="0" stroke="black" />
+
+                <!-- Commençons par créer une première graduation sur notre axe -->
+                <line id="graduation" x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+                <!-- Faisons 11 copies de cette graduation tous les 50px -->
+                <use xlink:href="#graduation" x="50" />
+                <use xlink:href="#graduation" x="100" />
+                <use xlink:href="#graduation" x="150" />
+                <use xlink:href="#graduation" x="200" />
+                <use xlink:href="#graduation" x="250" />
+                <use xlink:href="#graduation" x="300" />
+                <use xlink:href="#graduation" x="350" />
+                <use xlink:href="#graduation" x="400" />
+                <use xlink:href="#graduation" x="450" />
+                <use xlink:href="#graduation" x="500" />
+                <!-- Ajoutons une graduation plus grande pour les extrémités -->
+                <line id="graduation2" x1="0" y1="-10" x2="0" y2="10" stroke="orange" stroke-width="3" />
+                <use xlink:href="#graduation2" x="0" />
+                <use xlink:href="#graduation2" x="500" />
+                <!-- Plaçons quelques valeurs sur l'axe -->
+                <g id="g1" stroke="black" style="font-size: 1em;">
+                    <foreignObject x="-5" y="5" width="70" height="30">
+                        $d$
+                    </foreignObject>
+                    <foreignObject x="480" y="5" width="100" height="30">
+                        $d+10^{-n}$
+                    </foreignObject>
+                    <foreignObject id="etiquette_x" x="125" y="-30" width="70" height="50">
+                        $\large x$
+                    </foreignObject>
+                </g>
+                <!-- 
+                    Plaçons la croix pour x.
+                -->
+                <g id="croix_x" style="stroke:rgb(214, 139, 0);stroke-width:2;" transform="translate(130,0)">
+                    <line x1="-5" y1="-5" x2="5" y2="5" />
+                    <line x1="-5" y1="5" x2="5" y2="-5" />
+                </g>
+                <g id="amplitude">
+                    <!-- Traçons une flèche plus bas pour montrer la distance entre les deux nombres -->
+                    <line x1="0" y1="60" x2="500" y2="60" stroke="black" />
+                    <!-- 
+                        Traçons un petit triangle pour le bout de la flèche avec la commande path en utilisant des déplacements relatifs 
+                    -->
+                    <path id="boutFleche" d="M 500,60 m -10,5 l 10,-5 -10,-5" stroke="black" fill="black" />
+                    <!-- Faisons une copie pour l'autre extrémité en appliquant une symétrie d'axe vertical -->
+                    <use xlink:href="#boutFleche" transform="scale(-1,1) translate(-500,0)" />
+                    <!-- Plaçons sous notre ligne au milieu l'amplitude-->
+                    <foreignObject x="170" y="30" width="160" height="30" style="font-size: 1em;">
+                        $\text{amplitude}=10^{-n}$
+                    </foreignObject>
+                </g>
+            </svg>
+            $10^{-n}$ est appelé l'<b>amplitude</b> de l'encadrement.<br>
+    </p>
+</div>
+<div class="exemple">
+    <p>
+        Considérons le nombre rationnel $\frac{1}{243}.$<br>
+        $$\frac{1}{243}\approx 0{,}004115226337$$
+        On peut en déduire les informations suivantes :<br>
+    <div class="svgContainer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 580 140" style="display:block;margin:auto;width:90%;">
+            <!-- L'axe des abscisses -->
+            <line x1="-40" y1="0" x2="540" y2="0" stroke="black" />
+
+            <!-- Commençons par créer une première graduation sur notre axe -->
+            <line id="graduation" x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+            <!-- Faisons 11 copies de cette graduation tous les 50px -->
+            <use xlink:href="#graduation" x="50" />
+            <use xlink:href="#graduation" x="100" />
+            <use xlink:href="#graduation" x="150" />
+            <use xlink:href="#graduation" x="200" />
+            <use xlink:href="#graduation" x="250" />
+            <use xlink:href="#graduation" x="300" />
+            <use xlink:href="#graduation" x="350" />
+            <use xlink:href="#graduation" x="400" />
+            <use xlink:href="#graduation" x="450" />
+            <use xlink:href="#graduation" x="500" />
+
+            <!-- Plaçons quelques valeurs sur l'axe -->
+            <g id="g1" stroke="black">
+                <foreignObject x="-30" y="5" width="70" height="30">
+                    $0{,}00411$
+                </foreignObject>
+                <foreignObject x="470" y="5" width="70" height="30">
+                    $0{,}00412$
+                </foreignObject>
+                <foreignObject x="250" y="-40" width="70" height="50">
+                    $\frac{1}{243}$
+                </foreignObject>
+            </g>
+            <!-- 
+                    Plaçons le plus précisément possible le nombre 1/243 sur l'axe.
+                -->
+            <g id="g2" style="stroke:rgb(214, 139, 0);stroke-width:2;">
+                <script>
+                    <!--Calcule la position de 1/243 sachant que l'on commence à 0,00411-->
+                    var x = (1 / 243 - 0.00411) * 100000 * 500;
+                    var y = 0;
+                    var g2 = document.getElementById("g2");
+                    g2.setAttribute("transform", "translate(" + x + " " + y + ")");
+                </script>
+                <line x1="-5" y1="-5" x2="5" y2="5" />
+                <line x1="-5" y1="5" x2="5" y2="-5" />
+            </g>
+            <!-- Traçons une flèche plus bas pour montrer la distance entre les deux nombres -->
+            <line x1="0" y1="60" x2="500" y2="60" stroke="black" />
+            <!-- 
+                    Traçons un petit triangle pour le bout de la flèche avec la commande path en utilisant des déplacements relatifs 
+                -->
+            <path id="boutFleche" d="M 500,60 m -10,5 l 10,-5 -10,-5" stroke="black" fill="black" />
+            <!-- Faisons une copie pour l'autre extrémité en appliquant une symétrie d'axe vertical -->
+            <use xlink:href="#boutFleche" transform="scale(-1,1) translate(-500,0)" />
+            <!-- Plaçons sous notre ligne au milieu le nombre 0,00001-->
+            <foreignObject x="185" y="65" width="130" height="30">
+                $0{,}00001=10^{-5}$
+            </foreignObject>
+        </svg>
+    </div>
+    Donc l'encadrement de $\frac{1}{243}$ à $10^{-5}$ près est<br>
+    $$0{,}00411\leqslant \frac{1}{243}< 0{,}00412$$ </p>
+</div>
+<div class="definition">
+    <p>
+        L'<b>arrondi</b> de $x$ à $10^{-n}$ près est le nombre décimal le plus proche de $x$ dans l'encadrement.
+
+        <!-- Je veux placer une copie de la balise svg avec l'identifiant "encadrement"-->
+    <div id="copieEncadrement"></div>
+    <script>
+        var encadrement = document.getElementById('encadrement');
+        var copieEncadrement = document.getElementById('copieEncadrement');
+        var clone = encadrement.cloneNode(true);
+        /* Ajouter $x\approx d\text{ à $10^{-n}$ près}$ à la place de la balise amplitude en utilisant foreignObjecf */
+        var amplitude = clone.getElementById('amplitude');
+        amplitude.innerHTML = '<foreignObject x="110" y="10" width="100" height="30" style="font-size: 0.8em;">$x\\approx d$</foreignObject>';
+        /* Modifier la viewBox de clone*/
+        clone.setAttribute("viewBox", "-60 -30 620 80");
+        copieEncadrement.appendChild(clone);
+    </script>
+
+    <!-- Copie de la balise svg avec l'identifiant "encadrement"-->
+    <div id="copieEncadrement2"></div>
+    <script>
+        var encadrement = document.getElementById('encadrement');
+        var copieEncadrement2 = document.getElementById('copieEncadrement2');
+        var clone = encadrement.cloneNode(true);
+        /* Modifier la position x*/
+        var croix_x = clone.getElementById('croix_x');
+        croix_x.setAttribute("transform", "translate(380,0)");
+        /* Modifier la position des étiquettes*/
+        var etiquette_x = clone.getElementById('etiquette_x');
+        etiquette_x.setAttribute("x", "375");
+        /* Ajouter $x\approx d\text{ à $10^{-n}$ près}$ à la place de la balise amplitude en utilisant foreignObjecf */
+        var amplitude = clone.getElementById('amplitude');
+        amplitude.innerHTML = '<foreignObject x="330" y="10" width="150" height="30" style="font-size: 0.8em;">$x\\approx d + 10^{-n}$</foreignObject>';
+        /* Modifier la viewBox de clone*/
+        clone.setAttribute("viewBox", "-60 -30 620 80");
+        copieEncadrement.appendChild(clone);
+        copieEncadrement2.appendChild(clone);
+    </script>
+    Lorsque $x$ est au milieu de l'encadrement, son arrondi est $d+10^{-n}$ par convention (valeur par excès).
+    <!-- Figure avec $x$ placé au milieu -->
+    <div id="copieEncadrement3"></div>
+    <script>
+        var encadrement = document.getElementById('encadrement');
+        var copieEncadrement2 = document.getElementById('copieEncadrement3');
+        var clone = encadrement.cloneNode(true);
+        /* Modifier la position x*/
+        var croix_x = clone.getElementById('croix_x');
+        croix_x.setAttribute("transform", "translate(250,0)");
+        /* Modifier la position des étiquettes*/
+        var etiquette_x = clone.getElementById('etiquette_x');
+        etiquette_x.setAttribute("x", "250");
+        /* Ajouter $x\approx d\text{ à $10^{-n}$ près}$ à la place de la balise amplitude en utilisant foreignObjecf */
+        var amplitude = clone.getElementById('amplitude');
+        amplitude.innerHTML = '<foreignObject x="205" y="10" width="150" height="30" style="font-size: 0.8em;">$x\\approx d + 10^{-n}$</foreignObject>';
+        /* Modifier la viewBox de clone*/
+        clone.setAttribute("viewBox", "-60 -30 620 80");
+        copieEncadrement.appendChild(clone);
+        copieEncadrement2.appendChild(clone);
+    </script>
+    </p>
+</div>
+<div class="exemple">
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 580 80"
+            style="display:block;margin:auto;width:90%;margin:1em">
+            <!-- L'axe des abscisses -->
+            <line x1="-40" y1="0" x2="540" y2="0" stroke="black" />
+            <!-- Une ligne en pointillé rouge verticale au milieu pour départager des deux moitié de segment -->
+            <line x1="250" y1="-40" x2="250" y2="40" stroke="red" stroke-dasharray="5,5" />
+            <!-- Commençons par créer une première graduation sur notre axe -->
+            <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+            <!-- Faisons 11 copies de cette graduation tous les 50px -->
+            <use xlink:href="#graduation" x="50" />
+            <use xlink:href="#graduation" x="100" />
+            <use xlink:href="#graduation" x="150" />
+            <use xlink:href="#graduation" x="200" />
+            <use xlink:href="#graduation" x="250" />
+            <use xlink:href="#graduation" x="300" />
+            <use xlink:href="#graduation" x="350" />
+            <use xlink:href="#graduation" x="400" />
+            <use xlink:href="#graduation" x="450" />
+            <use xlink:href="#graduation" x="500" />
+            <!-- Ajoutons une graduation plus grande pour les extrémités -->
+            <line id="graduation-2" x1="0" y1="-10" x2="0" y2="10" stroke="black" stroke-width="2" />
+            <use xlink:href="#graduation-2" x="0" />
+            <use xlink:href="#graduation-2" x="500" />
+
+            <!-- Plaçons quelques valeurs sur l'axe -->
+            <g stroke="black" style="font-size: 0.6em;">
+                <foreignObject x="-30" y="5" width="70" height="30">
+                    $0{,}00411$
+                </foreignObject>
+                <foreignObject x="470" y="5" width="70" height="30">
+                    $0{,}00412$
+                </foreignObject>
+                <foreignObject x="252" y="-35" width="70" height="50">
+                    $\frac{1}{243}$
+                </foreignObject>
+            </g>
+            <!-- 
+                    Plaçons le plus précisément possible le nombre 1/243 sur l'axe.
+                -->
+            <g id="g3" style="stroke:rgb(214, 139, 0);stroke-width:2;">
+                <script>
+                    <!--Calcule la position de 1/243 sachant que l'on commence à 0,00411-->
+                    var x = (1 / 243 - 0.00411) * 100000 * 500;
+                    var y = 0;
+                    var g3 = document.getElementById("g3");
+                    g3.setAttribute("transform", "translate(" + x + " " + y + ")");
+                </script>
+                <line x1="-5" y1="-5" x2="5" y2="5" />
+                <line x1="-5" y1="5" x2="5" y2="-5" />
+            </g>
+        </svg>
+        $\frac{1}{243}$ est plus proche de $0{,}00412$ que de $0{,}00411$ donc l'arrondi de $\frac{1}{243}$ à $10^{-5}$
+        près est $0{,}00412$.
+        $$\frac{1}{243}\approx 0{,}00412$$
+    </p>
+</div>
+<div class="exemple">
+    $$\pi\approx 3{,}14159265$$
+    <ul>
+        <li>L'arrondi de $\pi$ à $10^{-2}$ près est $3{,}14$.</li>
+        <li>L'arrondi de $\pi$ à $10^{-3}$ près est $3{,}142$.</li>
+        <li>L'arrondi de $\pi$ à $10^{-4}$ près est $3{,}1416$.</li>
+        <li>L'arrondi de $\pi$ à $10^{-5}$ près est $3{,}14159$.</li>
+        <li>L'arrondi de $\pi$ à $10^{-6}$ près est $3{,}141593$.</li>
+    </ul>
+</div>
+<div class="definition">
+    <p>
+        On dit que les chiffres d'un nombre décimal $x$ lus de la gauche vers la droite sont significatifs si :
+    <ul>
+        <li>ils sont non nuls ;</li>
+        <li>ils sont nuls mais il y a un chiffre non nul à droite.</li>
+    </ul>
+    </p>
+</div>
+<div class="exemple">
+    <p>
+    <ul>
+        <li>Les $3$ premiers chiffres significatifs de $\pi$ sont $3$, $1$ et $4.$</li>
+        <li>Les $3$ chiffres significatifs de $0{,}000123$ sont $1$, $2$ et $3.$</li>
+        <li>Les $3$ premiers chiffres significatifs de $\frac{1}{243}$ sont $4$, $1$ et $1.$</li>
+        <li>Les chiffres significatifs de l'arrondi de $\frac{1}{243}$ à $10^{-5}$ près sont $4$, $1$ et $2.$</li>
+        <li>Les $3$ premiers chiffres significatifs de $0,05067$ sont $5$, $0$ et $6.$</li>
+    </ul>
+    </p>
+</div>
+
+<!-- Nouvel exemple de l'utilisation des chiffres significatifs -->
+<div class="exemple">
+    <p>
+        Théo pèse une masse de $5{,}72~\text{g}$ de sel qu'il verse ensuite dans $75~\text{cL}$ d'eau.<br>
+        On se propose de calculer la masse de sel par litre de solution (aussi appelée concentration massique).<br>
+        On note $c$ la concentration massique en $\text{g/L}$.
+    <ul>
+        <li>La masse de sel versée est $5{,}72~\text{g}$.</li>
+        <li>Le volume de la solution est $75~\text{cL}=0{,}75~\text{L}$.</li>
+        <li>La concentration massique est donc
+            $$c=\frac{5{,}72}{0{,}75}$$
+        </li>
+    </ul>
+    On peut calculer $c$ à la calculatrice et on obtient
+    $${c\approx 7{,}626666667}.$$
+    <ul>
+        <li>La masse de sel versée est donnée avec $3$ chiffres significatifs.</li>
+        <li>Le volume de la solution est donné avec $2$ chiffres significatifs.</li>
+    </ul>
+    On ne peut donc pas donner la concentration massique avec plus de $2$ chiffres significatifs.<br>
+    Par conséquent, on donnera la concentration massique avec $2$ chiffres significatifs.<br>
+    $$c\approx 7{,}6~\text{g/L}$$
+    </p>
+</div>
+<div class="remarque">
+    <p>
+        Lorsque l'on donne un résultat à la calculatrice, il faut toujours arrondir le résultat à un nombre de chiffres
+        significatifs cohérent avec les données de l'énoncé.
+    </p>
+</div>
+<!-- Passons à la définition de la notation scientifique-->
+<div class="definition">
+    <p>
+        Un nombre décimal $x$ est écrit en <b>notation scientifique</b> s'il s'écrit sous la forme $a\times 10^n$ où $a$
+        est un nombre décimal tel que $1\leqslant a< 10$ et $n$ est un entier relatif.<br>
+    </p>
+</div>
+<!-- Donnons des exemples avec 3 chiffres significatifs -->
+<div class="exemple">
+    <p>
+        <!-- Liste sur deux colonnes -->
+    <ul>
+        <li>$\pi\approx 3{,}14\times 10^0$</li>
+        <li>$\frac{1}{243}\approx 4{,}12\times 10^{-3}$</li>
+        <li>$0{,}000123=1{,}23\times 10^{-4}$</li>
+        <li>$0{,}05067=5{,}067\times 10^{-2}$</li>
+    </ul>
+    </p>
+</div>
+<div class="remarque">
+    <p>
+        Pour les nombres non décimaux, $3$ chiffres significatifs de l'arrondi suffisent (en général) à l'écrire en
+        notation scientifique mais ce n'est pas une règle !
+    </p>
+</div>
+<h2>Intervalles de la droite des réels</h2>
+<div class="definition">
+    <p>
+        Soient $a$ et $b$ deux nombres réels tels que $a< b$.<br>
+            <ul>
+                <li>$[a;b]$ est l'ensemble des nombres réels $x$ tels que $a\leqslant x\leqslant b.$</li>
+                <!-- Construire une figure svg qui illustre [a;b]-->
+                <svg id="intervalle" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -25 280 50"
+                    style="display:block;margin:auto;width:60%;background-color: lightcoral;">
+                    <!-- L'axe des abscisses -->
+                    <line x1="-40" y1="0" x2="240" y2="0" stroke="black" />
+                    <!-- Dessiner un crochet [ à l'emplacement de la graduation de $a$-->
+                    <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none" />
+                    <!-- Copier le crochet en b mais en appliquant une symétrie d'axe vertical -->
+                    <use xlink:href="#crochet" transform="translate(200,0) scale(-1,1)" />
+                    <!-- Mettre en rouge plus épais l'intervalle -->
+                    <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
+                    <g>
+                        <!-- PLacer $a$ et $b$ à 0 et 500 sous l'axe-->
+                        <foreignObject x="-5" y="2" width="10" height="20">
+                            $a$
+                        </foreignObject>
+                        <foreignObject x="195" y="5" width="10" height="20">
+                            $b$
+                        </foreignObject>
+                        <foreignObject x="20" y="-25" width="300" height="50">
+                            $\scriptsize \{x\in\mathbb{R}\text{ tel que }a\leqslant x\leqslant b\}$
+                        </foreignObject>
+                    </g>
+                </svg>
+                <li>$]a;b[$ est l'ensemble des nombres réels $x$ tels que $a< x< b.$</li>
+                        <!-- Construire une figure svg qui illustre ]a;b[-->
+                        <svg id="intervalle" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -25 280 50"
+                            style="display:block;margin:auto;width:60%;background-color: lightcoral;">
+                            <!-- L'axe des abscisses -->
+                            <line x1="-40" y1="0" x2="240" y2="0" stroke="black" />
+                            <!-- Mettre en rouge plus épais l'intervalle -->
+                            <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
+                            <!-- Dessiner un crochet [ à l'emplacement de la graduation de $a$-->
+                            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="black"
+                                fill="none" transform="scale(-1,1)" />
+                            <!-- Crochet [ en b -->
+                            <path id="crochet" d="M 200,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="black"
+                                fill="none" />
+                            <g>
+                                <!-- PLacer $a$ et $b$ à 0 et 500 sous l'axe-->
+                                <foreignObject x="-5" y="2" width="10" height="20">
+                                    $a$
+                                </foreignObject>
+                                <foreignObject x="195" y="5" width="10" height="20">
+                                    $b$
+                                </foreignObject>
+                                <foreignObject x="20" y="-25" width="200" height="50">
+                                    $\scriptsize \{x\in\mathbb{R}\text{ tel que }a< x< b\}$ </foreignObject>
+                            </g>
+                        </svg>
+                <li>$[a;b[$ est l'ensemble des nombres réels $x$ tels que $a\leqslant x< b.$</li>
+                        <!-- Construire une figure svg qui illustre [a;b[-->
+                        <svg id="intervalle" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -25 280 50"
+                            style="display:block;margin:auto;width:60%;background-color: lightcoral;">
+                            <!-- L'axe des abscisses -->
+                            <line x1="-40" y1="0" x2="240" y2="0" stroke="black" />
+                            <!-- Dessiner un crochet [ à l'emplacement de la graduation de $a$-->
+                            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red"
+                                fill="none" />
+                            <!-- Mettre en rouge plus épais l'intervalle -->
+                            <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
+                            <!-- Crochet ] en b -->
+                            <path id="crochet" d="M 200,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="black"
+                                fill="none" />
+                            <g>
+                                <!-- PLacer $a$ et $b$ à 0 et 500 sous l'axe-->
+                                <foreignObject x="-5" y="2" width="10" height="20">
+                                    $a$
+                                </foreignObject>
+                                <foreignObject x="195" y="5" width="10" height="20">
+                                    $b$
+                                </foreignObject>
+                                <foreignObject x="20" y="-25" width="200" height="50">
+                                    $\scriptsize \{x\in\mathbb{R}\text{ tel que }a\leqslant x< b\}$ </foreignObject>
+                            </g>
+                        </svg>
+                <li>$]a;b]$ est l'ensemble des nombres réels $x$ tels que $a< x\leqslant b.$</li>
+                        <!-- Construire une figure svg qui illustre ]a;b]-->
+                        <svg id="intervalle" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -25 280 50"
+                            style="display:block;margin:auto;width:60%;background-color: lightcoral;">
+                            <!-- L'axe des abscisses -->
+                            <line x1="-40" y1="0" x2="240" y2="0" stroke="black" />
+                            <!-- Mettre en rouge plus épais l'intervalle -->
+                            <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
+                            <!-- Dessiner un crochet [ à l'emplacement de la graduation de $a$-->
+                            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="black"
+                                fill="none" transform="scale(-1,1)" />
+                            <!-- Crochet ] en b -->
+                            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red"
+                                fill="none" transform="translate(200,0) scale(-1,1)" />
+                            <g>
+                                <!-- PLacer $a$ et $b$ à 0 et 500 sous l'axe-->
+                                <foreignObject x="-5" y="2" width="10" height="20">
+                                    $a$
+                                </foreignObject>
+                                <foreignObject x="195" y="5" width="10" height="20">
+                                    $b$
+                                </foreignObject>
+                                <foreignObject x="20" y="-25" width="200" height="50">
+                                    $\scriptsize \{x\in\mathbb{R}\text{ tel que }a< x\leqslant b\}$ </foreignObject>
+                            </g>
+                        </svg>
+            </ul>
+            L'amplitude des intervalles $[a;b]$, $]a;b[$, $[a;b[$ ou $]a;b]$ est $b-a.$
+    </p>
+</div>
+<div class="exemple">
+    $-0{,}7$ et $3$ appartiennent à l'intervalle $]-1;3]$ mais la borne $-1$ de cet intervalle n'en fait pas partie.
+    </li>
+    <!-- Illustration de cet intervalle et placement des nombres -->
+    <svg id="intervalle8" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 480 60"
+        style="display:block;margin:auto;width:70%;">
+        <!-- L'axe des abscisses -->
+        <line x1="-40" y1="0" x2="440" y2="0" stroke="black" />
+        <!-- Une graduation à -0{,}7-->
+        <line x1="30" y1="-5" x2="30" y2="5" stroke="black" />
+        <!-- Une graduation à 0-->
+        <line x1="100" y1="-5" x2="100" y2="5" stroke="black" />
+        <!-- Une graduation à 1-->
+        <line x1="200" y1="-5" x2="200" y2="5" stroke="black" />
+        <!-- Une graduation à 2-->
+        <line x1="300" y1="-5" x2="300" y2="5" stroke="black" />
+        <!-- Mettre en rouge plus épais l'intervalle -->
+        <line x1="0" y1="0" x2="400" y2="0" stroke="red" stroke-width="2" />
+        <!-- Dessiner un crochet ] à l'emplacement de la graduation de $3$-->
+        <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+            transform="translate(400,0) scale(-1,1)" />
+        <!-- Dessiner un crochet ] à l'emplacement de la graduation de $-1$-->
+        <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="black" fill="none"
+            transform="scale(-1,1)" />
+        <g style="font-size: 0.6em;">
+            <!-- Placer $b$ à 200 sous l'axe-->
+            <foreignObject x="395" y="5" width="10" height="20">
+                $3$
+            </foreignObject>
+            <!-- Placer $-0{,}8$ à 0 sous l'axe-->
+            <foreignObject x="10" y="-30" width="40" height="20">
+                $-0{,}7$
+            </foreignObject>
+            <!-- Placer $2$ à 100 sous l'axe-->
+            <foreignObject x="95" y="5" width="10" height="20">
+                $0$
+            </foreignObject>
+            <foreignObject x="195" y="5" width="10" height="20">
+                $1$
+            </foreignObject>
+            <!-- Placer $-1$ à 100 sous l'axe-->
+            <foreignObject x="-15" y="5" width="30" height="20">
+                $-1$
+            </foreignObject>
+        </g>
+    </svg>
+</div>
+<!-- Exemples de comment traduire un intervalle borné par une inégalité et réciproquement-->
+<div class="exemple">
+    <p>
+    <ul>
+        <li>$[-7;8]$ est l'ensemble des nombres réels $x$ tels que $-7\leqslant x\leqslant 8.$</li>
+        <li>$]-7;8[$ est l'ensemble des nombres réels $x$ tels que $-7< x< 8.$</li>
+        <li>$[-7;8[$ est l'ensemble des nombres réels $x$ tels que $-7\leqslant x< 8.$</li>
+        <li>$]-7;8]$ est l'ensemble des nombres réels $x$ tels que $-7< x\leqslant 8.$</li>
+    </ul>
+    </p>
+</div>
+<div class="definition">
+    <p>
+    <ul>
+        <li>$[a;+\infty[=\{x\in\mathbb{R}\text{ tel que }x\geqslant a\}$</li>
+        <!-- Construire une figure svg qui illustre [a;+\infty]-->
+        <svg id="intervalle5" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 280 60"
+            style="display:block;margin:auto;width:60%;background-color: lightcoral;">
+            <!-- L'axe des abscisses -->
+            <line x1="-40" y1="0" x2="240" y2="0" stroke="black" />
+            <!-- Mettre en rouge plus épais l'intervalle -->
+            <line x1="0" y1="0" x2="240" y2="0" stroke="red" stroke-width="2" />
+            <!-- Dessiner un crochet [ à l'emplacement de la graduation de $a$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none" />
+            <!-- PLacer $a$ à 0 sous l'axe-->
+            <foreignObject x="-5" y="2" width="10" height="20">
+                $a$
+            </foreignObject>
+            <foreignObject x="20" y="-25" width="300" height="50">
+                $\scriptsize \{x\in\mathbb{R}\text{ tel que }x\geqslant a\}$
+            </foreignObject>
+        </svg>
+        <li>$]a;+\infty[=\{x\in\mathbb{R}\text{ tel que }x> a\}$</li>
+        <!-- Construire une figure svg qui illustre ]a;+\infty]-->
+        <svg id="intervalle6" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 280 60"
+            style="display:block;margin:auto;width:60%;background-color: lightcoral;">
+            <!-- L'axe des abscisses -->
+            <line x1="-40" y1="0" x2="240" y2="0" stroke="black" />
+            <!-- Mettre en rouge plus épais l'intervalle -->
+            <line x1="0" y1="0" x2="240" y2="0" stroke="red" stroke-width="2" />
+            <!-- Dessiner un crochet ] à l'emplacement de la graduation de $a$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="black" fill="none"
+                transform="scale(-1,1)" />
+            <!-- PLacer $a$ à 0 sous l'axe-->
+            <foreignObject x="-5" y="2" width="10" height="20">
+                $a$
+            </foreignObject>
+            <foreignObject x="20" y="-25" width="300" height="50">
+                $\scriptsize \{x\in\mathbb{R}\text{ tel que }x> a\}$
+            </foreignObject>
+        </svg>
+        <li>$]-\infty;b]=\{x\in\mathbb{R}\text{ tel que }x\leqslant b\}$</li>
+        <svg id="intervalle7" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 280 60"
+            style="display:block;margin:auto;width:60%;background-color: lightcoral;">
+            <!-- L'axe des abscisses -->
+            <line x1="-40" y1="0" x2="240" y2="0" stroke="black" />
+            <!-- Mettre en rouge plus épais l'intervalle -->
+            <line x1="-40" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
+            <!-- Dessiner un crochet ] à l'emplacement de la graduation de $b$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                transform="translate(200,0) scale(-1,1)" />
+            <!-- Placer $b$ à 200 sous l'axe-->
+            <foreignObject x="195" y="5" width="10" height="20">
+                $a$
+            </foreignObject>
+            <foreignObject x="20" y="-25" width="300" height="50">
+                $\scriptsize \{x\in\mathbb{R}\text{ tel que }x\leqslant a\}$
+            </foreignObject>
+        </svg>
+        <li>$]-\infty;b[=\{x\in\mathbb{R}\text{ tel que }x< b\}$</li>
+                <!-- Construire une figure svg qui illustre ]-\infty;b[-->
+                <svg id="intervalle7" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 280 60"
+                    style="display:block;margin:auto;width:60%;background-color: lightcoral;">
+                    <!-- L'axe des abscisses -->
+                    <line x1="-40" y1="0" x2="240" y2="0" stroke="black" />
+                    <!-- Mettre en rouge plus épais l'intervalle -->
+                    <line x1="-40" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
+                    <!-- Dessiner un crochet ] à l'emplacement de la graduation de $b$-->
+                    <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="black" fill="none"
+                        transform="translate(200,0)" />
+                    <!-- Placer $b$ à 200 sous l'axe-->
+                    <foreignObject x="195" y="5" width="10" height="20">
+                        $a$
+                    </foreignObject>
+                    <foreignObject x="20" y="-25" width="300" height="50">
+                        $\scriptsize \{x\in\mathbb{R}\text{ tel que }x< a\}$ </foreignObject>
+                </svg>
+    </ul>
+    </p>
+</div>
+<!-- Exemples de comment traduire une inégalité par un intervalle-->
+<div class="exemple">
+    <p>
+    <ul>
+        <li>$x\leqslant 3$ est équivalent à $x\in]-\infty;3]$</li>
+        <li>$x< 3$ est équivalent à $x\in]-\infty;3[$</li>
+        <li>$x\geqslant 3$ est équivalent à $x\in[3;+\infty[$</li>
+        <li>$x> 3$ est équivalent à $x\in]3;+\infty[$</li>
+    </ul>
+    </p>
+</div>
+<div class="definition">
+    <p>
+        On considère $I$ et $J$ deux intervalles.<br>
+    <ul>
+        <li>$I\cap J$ est l'intersection des intervalles $I$ et $J$, autrement dit c'est l'ensemble des nombres réels
+            qui appartiennent à la fois à $I$ et à $J$.</li>
+        <li>$I\cup J$ est la réunion des intervalles $I$ et $J$, autrement dit c'est l'ensemble des nombres réels qui
+            appartiennent à $I$ ou à $J$ ou aux deux.</li>
+    </ul>
+    </p>
+</div>
+<div class="exemple">
+    <p>
+        On se propose de déterminer l'intersection et la réunion des deux intervalles $I=[-1;4]$ et $J=]2;+\infty[$ en
+        utilisant des schémas.<br>
+        <!-- Construire une figure svg qui illustre I et J-->
+        <svg id="intervalle4" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 280 120"
+            style="display:block;margin:auto;width:50%;padding:1em 0em 0em 0em;">
+            <!-- L'axe des abscisses en double -->
+            <line x1="-40" y1="0" x2="240" y2="0" stroke="black" />
+            <line x1="-40" y1="50" x2="240" y2="50" stroke="black" />
+            <!-- Surligner en rouge les intervalles -->
+            <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
+            <line x1="120" y1="50" x2="240" y2="50" stroke="red" stroke-width="2" />
+            <!-- Dessiner une graduation en $-1$, $4$ et $2$ -->
+            <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+            <line x1="120" y1="-5" x2="120" y2="5" stroke="black" />
+            <line x1="200" y1="-5" x2="200" y2="5" stroke="black" />
+            <!-- Dessiner un crochet [ à l'emplacement de la graduation de $-1$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none" />
+            <!-- Dessiner un crochet ] à l'emplacement de la graduation de $4$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                transform="translate(200,0) scale(-1,1)" />
+            <!-- Dessiner un crochet ] à l'emplacement de la graduation de $2$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="black" fill="none"
+                transform="translate(120,50) scale(-1,1)" />
+            <!-- Dessiner un rectangle qui surligne l'intersection-->
+            <rect x="0" y="0" width="80" height="110" style="fill:red;opacity:0.1;stroke-width:0;"
+                transform="translate(120,-30)" />
+            <g>
+                <!-- Placer $-1$ à 0 sous l'axe-->
+                <foreignObject x="-10" y="-30" width="30" height="20">
+                    $-1$
+                </foreignObject>
+                <!-- Placer $4$ à 200 sous l'axe-->
+                <foreignObject x="195" y="-30" width="10" height="20">
+                    $4$
+                </foreignObject>
+                <!-- Placer $2$ à 120 sous l'axe-->
+                <foreignObject x="115" y="55" width="10" height="30">
+                    $2$
+                </foreignObject>
+                <foreignObject x="0" y="0" width="120" height="90" transform="translate(117,10)">
+                    $\scriptsize I\cap J=[2;4]$
+                </foreignObject>
+            </g>
+        </svg>
+        <!-- Construire une figure svg qui illustre I et J-->
+        <svg id="intervalle4" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 280 120"
+            style="display:block;margin:auto;width:50%;padding:1em 0em 0em 0em;">
+            <!-- L'axe des abscisses en double -->
+            <line x1="-40" y1="0" x2="240" y2="0" stroke="black" />
+            <line x1="-40" y1="50" x2="240" y2="50" stroke="black" />
+            <!-- Surligner en rouge les intervalles -->
+            <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
+            <line x1="120" y1="50" x2="240" y2="50" stroke="red" stroke-width="2" />
+            <!-- Dessiner une graduation en $-1$, $4$ et $2$ -->
+            <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+            <line x1="120" y1="-5" x2="120" y2="5" stroke="black" />
+            <line x1="200" y1="-5" x2="200" y2="5" stroke="black" />
+            <!-- Dessiner un crochet [ à l'emplacement de la graduation de $-1$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none" />
+            <!-- Dessiner un crochet ] à l'emplacement de la graduation de $4$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                transform="translate(200,0) scale(-1,1)" />
+            <!-- Dessiner un crochet ] à l'emplacement de la graduation de $2$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="black" fill="none"
+                transform="translate(120,50) scale(-1,1)" />
+            <!-- Dessiner un rectangle qui surligne la réunion-->
+            <rect x="0" y="0" width="240" height="110" style="fill:red;opacity:0.1;stroke-width:0;"
+                transform="translate(0,-30)" />
+            <g>
+                <!-- Placer $-1$ à 0 sous l'axe-->
+                <foreignObject x="-10" y="-30" width="30" height="20">
+                    $-1$
+                </foreignObject>
+                <!-- Placer $4$ à 200 sous l'axe-->
+                <foreignObject x="195" y="-30" width="10" height="20">
+                    $4$
+                </foreignObject>
+                <!-- Placer $2$ à 120 sous l'axe-->
+                <foreignObject x="115" y="55" width="10" height="30">
+                    $2$
+                </foreignObject>
+                <foreignObject x="0" y="0" width="120" height="90" transform="translate(68,10)">
+                    $\scriptsize I\cup J=[-1;+\infty[$
+                </foreignObject>
+            </g>
+        </svg>
+</div>
+<div class="propriete">
+    <p>
+    <ul>
+        <li>L'intersection de deux intervalles est soit un intervalle, soit un ensemble ne comportant qu'un seul nombre,
+            ou soit vide.</li>
+        <li>La réunion de deux intervalles est un intervalle ou la réunion de deux intervalles disjoints (c'est-à-dire
+            qui n'ont aucun nombre en commun).</li>
+    </ul>
+    </p>
+</div>
+<div class="exemple">
+    <p>
+    <ul style="list-style-type: none; display: flex; flex-wrap: wrap; align-items: center;padding:0em">
+        <li style="width: 50%;">
+            $$[-1;3]\cap [2;5]=[2;3]$$
+            <!-- Construire une figure svg qui illustre [-1;3] et [2;5]-->
+            <svg id="intervalle4" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 380 120"
+                style="display:block;margin:auto;width:90%;">
+                <!-- L'axe des abscisses en double -->
+                <line x1="-40" y1="0" x2="340" y2="0" stroke="black" />
+                <line x1="-40" y1="50" x2="340" y2="50" stroke="black" />
+                <!-- Surligner en rouge les intervalles -->
+                <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
+                <line x1="150" y1="50" x2="300" y2="50" stroke="red" stroke-width="2" />
+                <!-- Dessiner une graduation en $-1$, $3$, $2$, et $5$ -->
+                <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+                <line x1="150" y1="-5" x2="150" y2="5" stroke="black" />
+                <line x1="200" y1="-5" x2="200" y2="5" stroke="black" />
+                <line x1="300" y1="-5" x2="300" y2="5" stroke="black" />
+                <!-- Dessiner une graduation en $-1$, $3$, $2$, et $5$ sur l'autre axe-->
+                <line x1="0" y1="-5" x2="0" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="150" y1="-5" x2="150" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="200" y1="-5" x2="200" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="300" y1="-5" x2="300" y2="5" stroke="black" transform="translate(0,50)" />
+                <!-- Dessiner un crochet [ à l'emplacement de la graduation de $-1$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none" />
+                <!-- Dessiner un crochet ] à l'emplacement de la graduation de $3$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(200,0) scale(-1,1)" />
+                <!-- Dessiner un crochet [ à l'emplacement de la graduation de $2$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(150,50)" />
+                <!-- Dessiner un crochet ] à l'emplacement de la graduation de $3$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(300,50) scale(-1,1)" />
+                <!-- Dessiner un rectangle qui surligne l'intersection-->
+                <rect x="0" y="0" width="50" height="110" style="fill:red;opacity:0.1;stroke-width:0;"
+                    transform="translate(150,-30)" />
+                <g>
+                    <!-- Placer $-1$ à 0 sous l'axe-->
+                    <foreignObject x="-10" y="-30" width="30" height="20">
+                        $-1$
+                    </foreignObject>
+                    <!-- Placer $4$ à 200 sous l'axe-->
+                    <foreignObject x="195" y="-30" width="10" height="20">
+                        $3$
+                    </foreignObject>
+                    <!-- Placer $2$ à 120 sous l'axe-->
+                    <foreignObject x="145" y="55" width="10" height="30">
+                        $2$
+                    </foreignObject>
+                    <foreignObject x="295" y="55" width="10" height="30">
+                        $5$
+                    </foreignObject>
+                    <foreignObject x="0" y="0" width="120" height="90" transform="translate(158,15)">
+                        $[2;3]$
+                    </foreignObject>
+                </g>
+            </svg>
+        </li>
+        <li style="width: 50%;">
+            $$[-1;3]\cup [2;5]=[-1;5]$$
+            <svg id="intervalle4" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 380 120"
+                style="display:block;margin:auto;width:90%;">
+                <!-- L'axe des abscisses en double -->
+                <line x1="-40" y1="0" x2="340" y2="0" stroke="black" />
+                <line x1="-40" y1="50" x2="340" y2="50" stroke="black" />
+                <!-- Surligner en rouge les intervalles -->
+                <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
+                <line x1="150" y1="50" x2="300" y2="50" stroke="red" stroke-width="2" />
+                <!-- Dessiner une graduation en $-1$, $3$, $2$, et $5$ -->
+                <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+                <line x1="150" y1="-5" x2="150" y2="5" stroke="black" />
+                <line x1="200" y1="-5" x2="200" y2="5" stroke="black" />
+                <line x1="300" y1="-5" x2="300" y2="5" stroke="black" />
+                <!-- Dessiner une graduation en $-1$, $3$, $2$, et $5$ sur l'autre axe-->
+                <line x1="0" y1="-5" x2="0" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="150" y1="-5" x2="150" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="200" y1="-5" x2="200" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="300" y1="-5" x2="300" y2="5" stroke="black" transform="translate(0,50)" />
+                <!-- Dessiner un crochet [ à l'emplacement de la graduation de $-1$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none" />
+                <!-- Dessiner un crochet ] à l'emplacement de la graduation de $3$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(200,0) scale(-1,1)" />
+                <!-- Dessiner un crochet [ à l'emplacement de la graduation de $2$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(150,50)" />
+                <!-- Dessiner un crochet ] à l'emplacement de la graduation de $3$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(300,50) scale(-1,1)" />
+                <!-- Dessiner un rectangle qui surligne la réunion-->
+                <rect x="0" y="0" width="300" height="110" style="fill:red;opacity:0.1;stroke-width:0;"
+                    transform="translate(0,-30)" />
+                <g>
+                    <!-- Placer $-1$ à 0 sous l'axe-->
+                    <foreignObject x="-10" y="-30" width="30" height="20">
+                        $-1$
+                    </foreignObject>
+                    <!-- Placer $4$ à 200 sous l'axe-->
+                    <foreignObject x="195" y="-30" width="10" height="20">
+                        $3$
+                    </foreignObject>
+                    <!-- Placer $2$ à 120 sous l'axe-->
+                    <foreignObject x="145" y="55" width="10" height="30">
+                        $2$
+                    </foreignObject>
+                    <foreignObject x="295" y="55" width="10" height="30">
+                        $5$
+                    </foreignObject>
+                    <foreignObject x="0" y="0" width="120" height="90" transform="translate(123,15)">
+                        $[-1;5]$
+                    </foreignObject>
+                </g>
+            </svg>
+        </li>
+        <li style="width: 50%;">
+            $$[-1;3]\cap [4;5]=\emptyset$$
+            <svg id="intervalle4" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 380 120"
+                style="display:block;margin:auto;width:90%;">
+                <!-- L'axe des abscisses en double -->
+                <line x1="-40" y1="0" x2="340" y2="0" stroke="black" />
+                <line x1="-40" y1="50" x2="340" y2="50" stroke="black" />
+                <!-- Surligner en rouge les intervalles -->
+                <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
+                <line x1="250" y1="50" x2="300" y2="50" stroke="red" stroke-width="2" />
+                <!-- Dessiner une graduation en $-1$, $3$, $4$, et $5$ -->
+                <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+                <line x1="250" y1="-5" x2="250" y2="5" stroke="black" />
+                <line x1="200" y1="-5" x2="200" y2="5" stroke="black" />
+                <line x1="300" y1="-5" x2="300" y2="5" stroke="black" />
+                <!-- Dessiner une graduation en $-1$, $3$, $2$, et $5$ sur l'autre axe-->
+                <line x1="0" y1="-5" x2="0" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="250" y1="-5" x2="250" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="200" y1="-5" x2="200" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="300" y1="-5" x2="300" y2="5" stroke="black" transform="translate(0,50)" />
+                <!-- Dessiner un crochet [ à l'emplacement de la graduation de $-1$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none" />
+                <!-- Dessiner un crochet ] à l'emplacement de la graduation de $3$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(200,0) scale(-1,1)" />
+                <!-- Dessiner un crochet [ à l'emplacement de la graduation de $2$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(250,50)" />
+                <!-- Dessiner un crochet ] à l'emplacement de la graduation de $3$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(300,50) scale(-1,1)" />
+                <g>
+                    <!-- Placer $-1$ à 0 sous l'axe-->
+                    <foreignObject x="-10" y="-30" width="30" height="20">
+                        $-1$
+                    </foreignObject>
+                    <!-- Placer $4$ à 200 sous l'axe-->
+                    <foreignObject x="195" y="-30" width="10" height="20">
+                        $3$
+                    </foreignObject>
+                    <!-- Placer $2$ à 120 sous l'axe-->
+                    <foreignObject x="245" y="55" width="10" height="30">
+                        $4$
+                    </foreignObject>
+                    <foreignObject x="295" y="55" width="10" height="30">
+                        $5$
+                    </foreignObject>
+                    <foreignObject x="0" y="0" width="120" height="90" transform="translate(218,10)">
+                        $\emptyset$
+                    </foreignObject>
+                </g>
+            </svg>
+        </li>
+        <li style="width: 50%;">
+            $$[-1;3]\cap [3;5]=\{3\}$$
+            <svg id="intervalle4" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 380 120"
+                style="display:block;margin:auto;width:90%;">
+                <!-- L'axe des abscisses en double -->
+                <line x1="-40" y1="0" x2="340" y2="0" stroke="black" />
+                <line x1="-40" y1="50" x2="340" y2="50" stroke="black" />
+                <!-- Surligner en rouge les intervalles -->
+                <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
+                <line x1="200" y1="50" x2="300" y2="50" stroke="red" stroke-width="2" />
+                <!-- Dessiner une graduation en $-1$, $3$, $2$, et $5$ -->
+                <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+                <line x1="200" y1="-5" x2="200" y2="5" stroke="black" />
+                <line x1="300" y1="-5" x2="300" y2="5" stroke="black" />
+                <!-- Dessiner une graduation en $-1$, $3$, $2$, et $5$ sur l'autre axe-->
+                <line x1="0" y1="-5" x2="0" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="200" y1="-5" x2="200" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="300" y1="-5" x2="300" y2="5" stroke="black" transform="translate(0,50)" />
+                <!-- Dessiner un crochet [ à l'emplacement de la graduation de $-1$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none" />
+                <!-- Dessiner un crochet ] à l'emplacement de la graduation de $3$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(200,0) scale(-1,1)" />
+                <!-- Dessiner un crochet [ à l'emplacement de la graduation de $3$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(200,50)" />
+                <!-- Dessiner un crochet ] à l'emplacement de la graduation de $5$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(300,50) scale(-1,1)" />
+                <!-- Dessiner un rectangle qui surligne l'intersection-->
+                <rect x="0" y="0" width="4" height="110" style="fill:red;opacity:0.1;stroke-width:0;"
+                    transform="translate(198,-30)" />
+                <g>
+                    <!-- Placer $-1$ à 0 sous l'axe-->
+                    <foreignObject x="-10" y="-30" width="30" height="20">
+                        $-1$
+                    </foreignObject>
+                    <!-- Placer $4$ à 200 sous l'axe-->
+                    <foreignObject x="195" y="-30" width="10" height="20">
+                        $3$
+                    </foreignObject>
+                    <foreignObject x="295" y="55" width="10" height="30">
+                        $5$
+                    </foreignObject>
+                    <foreignObject x="0" y="0" width="30" height="90" transform="translate(186,10)">
+                        $\{3\}$
+                    </foreignObject>
+                </g>
+            </svg>
+        </li>
+    </ul>
+    Remarquons également que $[-1;3]\cup [4;5]$ est la réunion de deux intervalles disjoints (sans nombre en commun).
+    </p>
+</div>
+<div class="exemple">
+    <ul>
+        <li>
+            $[-1;5]\cup[0;2]$ est la réunion de deux intervalles.
+            <svg id="intervalle4" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 380 120"
+                style="display:block;margin:auto;width:50%;padding:1em 0em 0em 0em;">
+                <!-- L'axe des abscisses en double -->
+                <line x1="-40" y1="0" x2="340" y2="0" stroke="black" />
+                <line x1="-40" y1="50" x2="340" y2="50" stroke="black" />
+                <!-- Surligner en rouge les intervalles -->
+                <line x1="0" y1="0" x2="300" y2="0" stroke="red" stroke-width="2" />
+                <line x1="50" y1="50" x2="150" y2="50" stroke="red" stroke-width="2" />
+                <!-- Dessiner une graduation en $-1$, $5$, $0$, et $2$ -->
+                <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+                <line x1="50" y1="-5" x2="50" y2="5" stroke="black" />
+                <line x1="150" y1="-5" x2="150" y2="5" stroke="black" />
+                <line x1="300" y1="-5" x2="300" y2="5" stroke="black" />
+                <!-- Dessiner une graduation en $-1$, $5$, $0$, et $2$ sur l'autre axe-->
+                <line x1="0" y1="-5" x2="0" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="50" y1="-5" x2="50" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="150" y1="-5" x2="150" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="300" y1="-5" x2="300" y2="5" stroke="black" transform="translate(0,50)" />
+                <!-- Dessiner un crochet [ à l'emplacement de la graduation de $-1$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none" />
+                <!-- Dessiner un crochet ] à l'emplacement de la graduation de $5$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(300,0) scale(-1,1)" />
+                <!-- Dessiner un crochet [ à l'emplacement de la graduation de $0$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(50,50)" />
+                <!-- Dessiner un crochet ] à l'emplacement de la graduation de $2$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(150,50) scale(-1,1)" />
+                <g>
+                    <!-- Placer $-1$ à 0 sous l'axe-->
+                    <foreignObject x="-10" y="-30" width="30" height="20">
+                        $-1$
+                    </foreignObject>
+                    <!-- Placer $5$ à 300 sous l'axe-->
+                    <foreignObject x="295" y="-30" width="10" height="20">
+                        $5$
+                    </foreignObject>
+                    <!-- Placer $0$ à 50 sous l'axe-->
+                    <foreignObject x="45" y="55" width="10" height="30">
+                        $0$
+                    </foreignObject>
+                    <foreignObject x="145" y="55" width="10" height="30">
+                        $2$
+                    </foreignObject>
+                    <!-- Dessiner un rectangle qui surligne la réunion-->
+                    <rect x="0" y="0" width="300" height="110" style="fill:red;opacity:0.1;stroke-width:0;"
+                        transform="translate(0,-30)" />
+                    <foreignObject x="0" y="0" width="120" height="90" transform="translate(125,15)">
+                        $[-1;5]$
+                    </foreignObject>
+                </g>
+            </svg>
+        </li>
+        Il s'agit d'un cas particulier puisque l'intervalle $[0;2]$ est inclus dans l'intervalle $[-1;5]$.
+        $$[0;2]\subset[-1;5]$$
+        Par conséquent,
+        $$[-1;5]\cup[0;2]=[-1;5].$$
+        <li>
+            $[-1;5]\cap[0;2]$ est l'intersection de deux intervalles.
+            <svg id="intervalle4" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 380 110"
+                style="display:block;margin:auto;width:50%;padding:1em 0em 0em 0em;">
+                <!-- L'axe des abscisses en double -->
+                <line x1="-40" y1="0" x2="340" y2="0" stroke="black" />
+                <line x1="-40" y1="50" x2="340" y2="50" stroke="black" />
+                <!-- Surligner en rouge les intervalles -->
+                <line x1="0" y1="0" x2="300" y2="0" stroke="red" stroke-width="2" />
+                <line x1="50" y1="50" x2="150" y2="50" stroke="red" stroke-width="2" />
+                <!-- Dessiner une graduation en $-1$, $5$, $0$, et $2$ -->
+                <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+                <line x1="50" y1="-5" x2="50" y2="5" stroke="black" />
+                <line x1="150" y1="-5" x2="150" y2="5" stroke="black" />
+                <line x1="300" y1="-5" x2="300" y2="5" stroke="black" />
+                <!-- Dessiner une graduation en $-1$, $5$, $0$, et $2$ sur l'autre axe-->
+                <line x1="0" y1="-5" x2="0" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="50" y1="-5" x2="50" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="150" y1="-5" x2="150" y2="5" stroke="black" transform="translate(0,50)" />
+                <line x1="300" y1="-5" x2="300" y2="5" stroke="black" transform="translate(0,50)" />
+                <!-- Dessiner un crochet [ à l'emplacement de la graduation de $-1$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none" />
+                <!-- Dessiner un crochet ] à l'emplacement de la graduation de $5$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(300,0) scale(-1,1)" />
+                <!-- Dessiner un crochet [ à l'emplacement de la graduation de $0$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(50,50)" />
+                <!-- Dessiner un crochet ] à l'emplacement de la graduation de $2$-->
+                <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                    transform="translate(150,50) scale(-1,1)" />
+                <!-- Dessiner un rectangle qui surligne l'intersection-->
+                <rect x="0" y="0" width="100" height="110" style="fill:red;opacity:0.1;stroke-width:0;"
+                    transform="translate(50,-30)" />
+                <g>
+                    <!-- Placer $-1$ à 0 sous l'axe-->
+                    <foreignObject x="-10" y="-30" width="30" height="20">
+                        $-1$
+                    </foreignObject>
+                    <!-- Placer $5$ à 300 sous l'axe-->
+                    <foreignObject x="295" y="-30" width="10" height="20">
+                        $5$
+                    </foreignObject>
+                    <!-- Placer $0$ à 50 sous l'axe-->
+                    <foreignObject x="45" y="55" width="10" height="30">
+                        $0$
+                    </foreignObject>
+                    <foreignObject x="145" y="55" width="10" height="30">
+                        $2$
+                    </foreignObject>
+                    <foreignObject x="0" y="0" width="40" height="90" transform="translate(85,15)">
+                        $[0;2]$
+                    </foreignObject>
+                </g>
+            </svg>
+        </li>
+        L'intervalle $[0;2]$ étant inclus dans l'intervalle $[-1;5]$, on a
+        $$[-1;5]\cap[0;2]=[0;2].$$
+    </ul>
+</div>
+<div class="propriete">
+    <p>L'abscisse du milieu de l'intervalle $[a;b]$ est $\frac{a+b}{2}$.</p>
+    <!-- Construire une figure svg qui illustre que (a+b)/2 est le milieu de [a;b]-->
+    <svg id="intervalle4" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -10 280 50"
+        style="display:block;margin:auto;width:50%;">
+        <!-- L'axe des abscisses -->
+        <line x1="-40" y1="0" x2="240" y2="0" stroke="black" />
+        <!-- Dessiner une graduation en $a$ et $b$ -->
+        <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+        <line x1="200" y1="-5" x2="200" y2="5" stroke="black" />
+        <!-- Dessiner une graduation au milieu de l'intervalle [a;b]-->
+        <line x1="100" y1="-5" x2="100" y2="5" stroke="black" />
+        <!-- Dessiner deux petites lignes obliques au milieu de chaque moitié du segment -->
+        <line x1="48" y1="-5" x2="48" y2="5" stroke="orange" transform="rotate(45,48,0)" />
+        <line x1="52" y1="-5" x2="52" y2="5" stroke="orange" transform="rotate(45,52,0)" />
+        <line x1="148" y1="-5" x2="148" y2="5" stroke="orange" transform="rotate(45,148,0)" />
+        <line x1="152" y1="-5" x2="152" y2="5" stroke="orange" transform="rotate(45,152,0)" />
+        <g>
+            <foreignObject x="-5" y="2" width="10" height="20">
+                $a$
+            </foreignObject>
+            <foreignObject x="195" y="5" width="10" height="20">
+                $b$
+            </foreignObject>
+            <foreignObject x="85" y="10" width="50" height="40">
+                $\frac{a+b}{2}$
+            </foreignObject>
+        </g>
+    </svg>
+    C'est aussi valable pour les intervalles $]a;b[$, $]a;b]$ et $[a;b[$.
+</div>
+<div class="demonstration">
+    <p>
+        La distance entre $a$ et $b$ est $b-a$ donc la distance entre $a$ et le milieu de $[a;b]$ est
+        $\frac{b-a}{2}$.<br>
+        Par conséquent l'abscisse du milieu de $[a;b]$ est $a+\frac{b-a}{2}$.
+        $$
+        \begin{align*}
+        a+\frac{b-a}{2}&=a+\frac{b}{2}-\frac{a}{2}\\
+        &=\frac{2a}{2}+\frac{b}{2}-\frac{a}{2}\\
+        &=\frac{2a+b-a}{2}\\
+        a+\frac{b-a}{2}&=\frac{a+b}{2}
+        \end{align*}
+        $$
+    </p>
+</div>
+<h2>Distance et valeur absolue</h2>
+<div class="definition">
+    <p>
+        La <b>distance</b> entre deux nombres réels $a$ et $b$ est notée $\vert a-b\vert$.
+    <ul>
+        <li>Si $a\leqslant b$, alors $\vert a-b\vert=b-a.$</li>
+        <li>Si $a\geqslant b$, alors $\vert a-b\vert=a-b.$</li>
+    </ul>
+    </p>
+</div>
+<div class="exemple">
+    <p>
+    <ul>
+        <li>La distance de $3$ à $5$ est $2$, ce qu'on peut écrire $\vert 3-5\vert=2.$</li>
+        <li>La distance de $-3$ à $5$ est $8$, ce qu'on peut écrire $\vert -3-5\vert=8.$<br>
+            En effet, $-3\leqslant 5$ donc $\vert -3-5\vert=5-(-3)=8$.</li>
+        </li>
+    </ul>
+    </p>
+</div>
+<div class="propriete">
+    <p>
+        La distance entre $a$ et $b$ est la même que la distance entre $b$ et $a$.
+        $$\vert a-b\vert=\vert b-a\vert$$
+    </p>
+</div>
+<div class="exemple">
+    <p>
+    <ul>
+        <li>$\vert 3-5\vert=\vert 5-3\vert=2$</li>
+        <li>$\vert -3-5\vert=\vert 5-(-3)\vert=8$</li>
+    </ul>
+    </p>
+</div>
+<div class="definition">
+    <p>
+        La <b>valeur absolue</b> d'un nombre réel $x$ est notée $\vert x\vert$.
+    <ul>
+        <li>Si $x\geqslant 0$, alors $\vert x\vert=x.$</li>
+        <li>Si $x< 0$, alors $\vert x\vert=-x.$</li>
+    </ul>
+    $\vert x\vert$ est donc la distance de $x$ à $0$
+    $$\vert x\vert=\vert x-0\vert$$
+    </p>
+</div>
+<div class="exemple">
+    <p>
+    <ul>
+        <li>$\vert 3\vert=3$</li>
+        <li>$\vert -7\vert=-(-7)=7$</li>
+    </ul>
+    </p>
+</div>
+<div class="propriete">
+    <p>
+        La valeur absolue d'un nombre réel $x$ est la même que la valeur absolue de son opposé.
+        $$\vert x\vert=\vert -x\vert$$
+    </p>
+</div>
+<div class="exemple">
+    <p>
+    <ul>
+        <li>$\vert 3\vert=\vert -3\vert=3$</li>
+        <li>$\vert -7\vert=\vert -(-7)\vert=7$</li>
+    </ul>
+    </p>
+</div>
+<div class="propriete">
+    <p>
+        L'intervalle $[a-r;a+r]$ est l'ensemble des nombres réels dont la distance à $a$ est inférieure ou égale à
+        $r.$<br>
+        <!-- Illustration à l'aide d'une figure SVG centrée sur la largeur-->
+        <svg id="intervalle4" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -50 280 110"
+            style="display:block;margin:auto;width:50%;">
+            <!-- L'axe des abscisses -->
+            <line x1="-40" y1="0" x2="240" y2="0" stroke="black" />
+            <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
+            <!-- Dessiner une graduation en $a-r$, $a$ et $a+r$ -->
+            <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+            <line x1="100" y1="-5" x2="100" y2="5" stroke="black" />
+            <line x1="200" y1="-5" x2="200" y2="5" stroke="black" />
+            <!-- Dessiner un crochet [ à l'emplacement de la graduation de $a-r$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none" />
+            <!-- Dessiner un crochet ] à l'emplacement de la graduation de $a+r$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                transform="translate(200,0) scale(-1,1)" />
+            <!-- Dessiner une croix à l'emplacement de x-->
+            <g style="stroke:rgb(214, 139, 0);stroke-width:2;" transform="translate(60,0)">
+                <line x1="-5" y1="-5" x2="5" y2="5" />
+                <line x1="-5" y1="5" x2="5" y2="-5" />
+            </g>
+            <!-- Une flèche qui indique que la distance entre $a$ et $a+r$ est $r$ en pointillé-->
+            <g style="stroke:green;stroke-width:1;" transform="translate(100,40)">
+                <line x1="0" y1="0" x2="100" y2="0" stroke-dasharray="2" />
+                <line x1="100" y1="0" x2="93" y2="-3" />
+                <line x1="100" y1="0" x2="93" y2="3" />
+            </g>
+            <!-- Une graduation séparatrice -->
+            <line x1="100" y1="-5" x2="100" y2="5" stroke="green" stroke-width="1" transform="translate(0,40)" />
+            <!-- Une flèche qui indique que la distance entre $a$ et $a-r$ est $r$-->
+            <g style="stroke:green;stroke-width:1;" transform="translate(0,40)">
+                <line x1="0" y1="0" x2="100" y2="0" stroke-dasharray="2" />
+                <line x1="0" y1="0" x2="7" y2="-3" />
+                <line x1="0" y1="0" x2="7" y2="3" />
+            </g>
+            <!-- Une flèche qui indique la distance entre $a$ et $x$-->
+            <g style="stroke:rgb(214, 139, 0);stroke-width:1;" transform="translate(60,-20)">
+                <line x1="0" y1="0" x2="40" y2="0" stroke-dasharray="2" />
+                <line x1="0" y1="0" x2="7" y2="-3" />
+                <line x1="0" y1="0" x2="7" y2="3" />
+            </g>
+            <g>
+                <foreignObject x="-20" y="2" width="50" height="40">
+                    $a-r$
+                </foreignObject>
+                <foreignObject x="180" y="2" width="50" height="40">
+                    $a+r$
+                </foreignObject>
+                <foreignObject x="95" y="2" width="10" height="40">
+                    $a$
+                </foreignObject>
+                <foreignObject x="55" y="-2" width="10" height="40">
+                    $\color{orange}x$
+                </foreignObject>
+                <foreignObject x="145" y="30" width="10" height="40">
+                    $\scriptsize r$
+                </foreignObject>
+                <foreignObject x="45" y="30" width="10" height="40">
+                    $\scriptsize r$
+                </foreignObject>
+                <foreignObject x="60" y="-50" width="50" height="40">
+                    $\scriptsize\vert x-a\vert$
+                </foreignObject>
+            </g>
+        </svg>
+        $[a-r;a+r]$ est l'ensemble des réels $x$ tel que $\vert x-a\vert\leqslant r$.
+    </p>
+</div>
+<div class="exemple">
+    <p>
+    <ul>
+        <li>L'ensemble des nombres réels dont la distance à $3$ est inférieure ou égale à $2$ peut s'écrire
+            $$\{x\in \mathbb{R}\text{ tel que }\vert x-3\vert\leqslant 2\}=[3-2;3+2]$$
+            Comme $3-2=1$ et $3+2=5$, on peut aussi écrire
+            $$\{x\in \mathbb{R}\text{ tel que }\vert x-3\vert\leqslant 2\}=[1;5]$$
+            Comme $[1;5]=\{x\in \mathbb{R}\text{ tel que }1\leqslant x\leqslant 5\}$, on peut aussi écrire
+            $$\{x\in \mathbb{R}\text{ tel que }\vert x-3\vert\leqslant 2\}=[1;5]=\{x\in \mathbb{R}\text{ tel que
+            }1\leqslant x\leqslant 5\}$$
+        </li>
+        <li>L'ensemble des nombres réels dont la distance à $-3$ est inférieure ou égale à $2$ peut s'écrire
+            $$\{x\in \mathbb{R}\text{ tel que }\vert x-(-3)\vert\leqslant 2\}=[-3-2;-3+2]$$
+            Comme $-3-2=-5$ et $-3+2=-1$, on peut aussi écrire
+            $$\{x\in \mathbb{R}\text{ tel que }\vert x-(-3)\vert\leqslant 2\}=[-5;-1]$$
+            Comme $[-5;-1]=\{x\in \mathbb{R}\text{ tel que }-5\leqslant x\leqslant -1\}$, on peut aussi écrire
+            $$\{x\in \mathbb{R}\text{ tel que }\vert x-(-3)\vert\leqslant 2\}=[-5;-1]=\{x\in \mathbb{R}\text{ tel que
+            }-5\leqslant x\leqslant -1\}$$
+        </li>
+    </ul>
+    </p>
+</div>
+    </main>
+    <footer>
+        Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
+        Licence CC BY-NC-SA.
+    </footer>
+</body>
+
+</html>

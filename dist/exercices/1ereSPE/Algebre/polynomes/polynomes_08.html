@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Polynomes_08</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+        <link rel="stylesheet" href="../../../../../src/css/prettyExercice.css">
+    
+        <link rel="stylesheet" href="../../../../../src/css/print2colonnes.css">
+    
+
+    <!--Scripts personnalisés-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script></head>
+
+<body>
+    <header>
+        <h1>Exercices</h1>
+    </header>
+    <main>
+        <div class="exercice">
+    <div class="enonce">
+        <p>Résoudre les équations suivantes.</p>
+        <ol>
+            <li>$2x^2-8x=0$</li>
+            <div class="indice">
+                <p>On factorise par $2x$.</p>
+            </div>
+            <div class="solution">
+                <p>$2x^2-8x=0$</p>
+                <p>$2x(x-4)=0$</p>
+                <p>Or un produit est nul si et seulement si l'un de ses facteurs est nul.</p>
+                <p>Donc $x=0$ ou $x-4=0$</p>
+                <p>Les solutions de cette équation sont donc $0$ et $-4$</p>
+            </div>
+            <li>$-x^2-9=0$</li>
+            <div class="indice">
+                <p>On utilise le fait qu'un carré est toujours positif ou nul.</p>
+            </div>
+            <div class="solution">
+                <p>$-x^2-9=0$</p>
+                <p>$x^2+9=0$</p>
+                <p>Or un carré est toujours positif ou nul.</p>
+                <p>Donc $x^2+9\geqslant 9$</p>
+                <p>Donc $x^2+9=0$ n'a pas de solution.</p>
+            </div>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>Résoudre les équations suivantes.</p>
+        <ol>
+            <li>$2x(x-5)=75+x^2$</li>
+            <div class="indice">
+                <p>On développe et on réduit.</p>
+            </div>
+            <div class="solution">
+                <p>$2x(x-5)=75+x^2$</p>
+                <p>$2x^2-10x=75+x^2$</p>
+                <p>$x^2-10x-75=0$</p>
+                <p>$\Delta=(-10)^2-4\times 1\times (-75)=100+300=400$</p>
+                <p>$\Delta=400$</p>
+                <p>$\sqrt{\Delta}=20$</p>
+                <p>$x_1=\dfrac{10-20}{2\times 1}=-5$</p>
+                <p>$x_2=\dfrac{10+20}{2\times 1}=15$</p>
+                <p>Les solutions de cette équation sont donc $-5$ et $15$</p>
+            </div>
+            <li>$(3x-4)^2=(x-5)^2$</li>
+            <div class="indice">
+                <p>On reconnaît une identité remarquable.</p>
+            </div>
+            <div class="solution">
+                <p>$(3x-4)^2=(x-5)^2$</p>
+                <p>$(3x-4)^2-(x-5)^2=0$</p>
+                <p>On reconnaît une identité remarquable.</p>
+                <p>$(3x-4-x+5)(3x-4+x-5)=0$</p>
+                <p>$(2x+1)(4x-9)=0$</p>
+                <p>Or un produit est nul si et seulement si l'un de ses facteurs est nul.</p>
+                <p>Donc $2x+1=0$ ou $4x-9=0$</p>
+                <p>$2x=-1$ ou $4x=9$</p>
+                <p>$x=-\dfrac{1}{2}$ ou $x=\dfrac{9}{4}$</p>
+                <p>Les solutions de cette équation sont donc $-\dfrac{1}{2}$ et $\dfrac{9}{4}$</p>
+            </div>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>Résoudre les équations suivantes.</p>
+        <ol>
+            <li>$(x+5)^2=4(x+8)$</li>
+            <div class="indice">
+                <p>On développe et on réduit.</p>
+                <p>On trouve une solution évidente.</p>
+            </div>
+            <div class="solution">
+                <p>$(x+5)^2=4(x+8)$</p>
+                <p>$x^2+10x+25=4x+32$</p>
+                <p>$x^2+10x+25-4x-32=0$</p>
+                <p>$x^2+6x-7=0$</p>
+                <p>Or 1^2+6\times 1-7=0$</p>
+                <p>Donc $x_1=1$ est une solution de l'équation.</p>
+                <p>$x_1\times x_2=\frac{c}{a}$</p>
+                <p>$1\times x_2=\frac{-7}{1}$</p>
+                <p>$x_2=-7$</p>
+                <p>Les solutions de cette équation sont donc $1$ et $-7$</p>
+            </div>
+            <li>$(x+3)^2=(6x+18)(x-1)$</li>
+            <div class="indice">
+                <p>On factorise par $6$ dans le membre de droite.</p>
+                <p>On factorise par $x+3.$</p>
+            </div>
+            <div class="solution">
+                <p>$(x+3)^2=(6x+18)(x-1)$</p>
+                <p>$(x+3)^2=6(x+3)(x-1)$</p>
+                <p>$(x+3)^2-6(x+3)(x-1)=0$</p>
+                <p>$(x+3)\left(x+3-6(x-1)\right)=0$</p>
+                <p>$(x+3)(x+3-6x+6)=0$</p>
+                <p>$(x+3)(-5x+9)=0$</p>
+                <p>Or un produit est nul si et seulement si l'un de ses facteurs est nul.</p>
+                <p>Donc $x+3=0$ ou $-5x+9=0$</p>
+                <p>$x=-3$ ou $-5x=-9$</p>
+                <p>$x=-3$ ou $x=\dfrac{9}{5}$</p>
+                <p>Les solutions de cette équation sont donc $-3$ et $\dfrac{9}{5}$</p>
+            </div>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>Résoudre les équations suivantes.</p>
+        <ol>
+            <li>$10x^2+39x-14=17x-18$</li>
+            <div class="indice">
+                <p>On simplifie l'équation.</p>
+            </div>
+            <div class="solution">
+                <p>$10x^2+39x-14=17x-18$</p>
+                <p>$10x^2+39x-14-17x+18=0$</p>
+                <p>$10x^2+22x+4=0$</p>
+                <p>On simplifie par $2.$</p>
+                <p>$5x^2+11x+2=0$</p>
+                <p>$\Delta=11^2-4\times 5\times 2$</p>
+                <p>$\Delta=121-40=81$</p>
+                <p>$x_1=\dfrac{-b-\sqrt{\Delta}}{2a}$</p>
+                <p>$x_1=\dfrac{-11-9}{2\times 5}$</p>
+                <p>$x_1=\dfrac{-20}{10}$</p>
+                <p>$x_1=-2$</p>
+                <p>$x_2=\dfrac{-b+\sqrt{\Delta}}{2a}$</p>
+                <p>$x_2=\dfrac{-11+9}{2\times 5}$</p>
+                <p>$x_2=\dfrac{-2}{10}$</p>
+                <p>$x_2=-\dfrac{1}{5}$</p>
+                <p>Les solutions de cette équation sont donc $-2$ et $-\dfrac{1}{5}$</p>
+            </div>
+        </ol>
+    </div>
+</div>
+    </main>
+    <footer>
+        Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
+        Licence CC BY-NC-SA.
+    </footer>
+</body>
+
+</html>
