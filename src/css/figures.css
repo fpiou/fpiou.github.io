@@ -1,0 +1,36 @@
+/* Si le point est dans la class draggable, la class selectioneur a pour paramètre stroke: orange sinon transparent */
+.draggable .selectionneur {
+    stroke: orange;
+}
+/* Taille de police des formules Katex dans les figures */
+.figure .katex {
+    font-size: 1em;
+}
+/* Fullscreen */
+/* La figure en fullscreen a un fond blanc 
+De plus elle doit 
+*/
+.figure:fullscreen {
+    background-color: white;
+}
+
+svg {
+    display:block;
+    margin:auto;
+    width:50%;
+    height:auto;
+    max-width:100%;
+    max-height:100%;
+}
+
+@media screen and (max-width: 600px) {
+    svg {
+        display:block;
+        margin:auto;
+        width:100%;
+        height:auto;
+        max-width:100%;
+        max-height:100%;
+    }
+}
+

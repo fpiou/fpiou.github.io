@@ -1,0 +1,201 @@
+/* Fonte commune */
+html {
+    font-family: 'Source Code Pro';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+  width: 100vw;
+  max-width: 600px;
+}
+
+.definition {
+  background-color: rgba(255, 100, 100, 0.269);
+  padding: 0.5em 1em;
+  margin: 1em 0em;
+  border: 1px solid red;
+  border-radius: 10px;
+}
+
+/* Entetes des définitions, propriétés, remarques, exemples */
+.header {
+  font-weight:bold;
+  padding:0em 1em;
+}
+
+.header-definition {
+  color:white;
+  background-color:red;
+}
+
+.header-propriete {
+  color:white;
+  background-color:green;
+}
+
+.header-remarque {
+  color:black;
+  background-color:transparent;
+  font-style:italic;
+}
+
+.header-exemple {
+  color:black;
+  background-color:transparent;
+  font-style:italic;
+}
+
+.header-proof {
+  color:black;
+  background-color:transparent;
+  font-style:italic;
+}
+
+.propriete {
+  background-color: rgba(100, 255, 100, 0.269);
+  padding: 0.5em 1em;
+  margin: 1em 0em;
+  border: 1px solid green;
+  border-radius: 10px;
+}
+
+.remarque {
+  background-color: rgba(100, 100, 255, 0.269);
+  padding: 0.5em 1em;
+  margin: 1em 0em;
+  border: 1px solid blue;
+  border-radius: 10px;
+}
+
+p {
+  line-height:2;
+  /*text-align:justify;*/
+}
+
+#tableOfContents {
+  padding:1em 1em;
+  line-height:2;
+}
+
+#tableOfContents a {
+  color: blue;
+  /*text-decoration: none;*/
+}
+
+
+#tableOfContents a:hover {
+  text-decoration: underline;
+}
+
+
+/* Une marge basse dans les listes notamment pour les formules */
+li {
+    margin-bottom: 1em;
+}
+
+details {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 1em;
+  padding: 0.5em 1em;
+  margin: 1em 0em;
+}
+
+summary {
+  color: #31708F;
+}
+
+.detailExemple {
+  background-color: transparent;
+}
+
+.detailDemonstration {
+  background-color: transparent;
+}
+
+
+svg.fullscreen {
+  background-color: white;
+}
+
+/* Pour la balise avec l'identifiant svgContainer mettre au moment du fullscreen un background blanc */
+#svgContainer svg.fullscreen {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#svgContainer.fullscreen {
+  /*Lorsque la div est en plein écran elle doit s'adapter à la largeur et la hauteur pour prendr ele plus d'espace possible*/
+  width: 100vw;
+  height: 100vh;
+}
+
+.important {
+  font-weight: bold;
+}
+
+/*La fonte Katex dans un objeft p doit être plus grande que la fonte du document*/
+.katex {
+  font-size: 1.2em;
+}
+
+/* Mettre la fonte katex en gras dans une balise important ou dans un titre h1, h2, h3*/
+.important .katex, h1 .katex, h2 .katex, h3 .katex {
+  font-weight: bold;
+}
+
+
+.tableausigne {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin: 1em 0em;
+}
+
+/* Aligner à gauche le contenu de la deuxième colonne */
+.tableausigne tr td:nth-child(2) {
+    text-align: left;
+}
+
+/* Aligner à droite le contenu de la dernière colonne */
+.tableausigne tr td:last-child {
+    text-align: right;
+}
+
+.tableausigne tr:nth-child(n+2) td:nth-child(4), 
+.tableausigne tr:nth-child(n+2) td:nth-child(6) {
+    position: relative;
+}
+
+.tableausigne tr:nth-child(n+2) td:nth-child(4)::before, 
+.tableausigne tr:nth-child(n+2) td:nth-child(6)::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid #000000;
+}
+
+.tableausigne tr:nth-child(n+2) td:nth-child(4) span, 
+.tableausigne tr:nth-child(n+2) td:nth-child(6) span {
+    position: relative;
+}
+
+.tableausigne td:nth-child(1) {
+  border-right: 1px solid black;
+}
+.tableausigne tr:nth-child(1) {
+  border-bottom: 1px solid black;
+}
+
+summary {
+  color: #31708F;
+}

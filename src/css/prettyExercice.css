@@ -1,0 +1,151 @@
+/* Fonte commune */
+html {
+    font-family: 'Source Code Pro';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+  width: 100vw;
+  max-width: 600px;
+}
+
+p {
+  line-height:2;
+  /*text-align:justify;*/
+}
+
+/* Une marge basse dans les listes notamment pour les formules */
+li {
+    margin-bottom: 1em;
+}
+
+details {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 1em;
+  padding: 0.5em 1em;
+  margin: 1em 0em;
+}
+
+summary {
+  color: #31708F;
+}
+
+svg.fullscreen {
+  background-color: white;
+}
+
+/* Pour la balise avec l'identifiant svgContainer mettre au moment du fullscreen un background blanc */
+#svgContainer svg.fullscreen {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#svgContainer.fullscreen {
+  /*Lorsque la div est en plein écran elle doit s'adapter à la largeur et la hauteur pour prendr ele plus d'espace possible*/
+  width: 100vw;
+  height: 100vh;
+}
+
+/*La fonte Katex dans un objeft p doit être plus grande que la fonte du document*/
+.katex {
+  font-size: 1.2em;
+}
+
+.tableausigne {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin: 1em 0em;
+}
+
+/* Aligner à gauche le contenu de la deuxième colonne */
+.tableausigne tr td:nth-child(2) {
+    text-align: left;
+}
+
+/* Aligner à droite le contenu de la dernière colonne */
+.tableausigne tr td:last-child {
+    text-align: right;
+}
+
+.tableausigne tr:nth-child(n+2) td:nth-child(4), 
+.tableausigne tr:nth-child(n+2) td:nth-child(6) {
+    position: relative;
+}
+
+.tableausigne tr:nth-child(n+2) td:nth-child(4)::before, 
+.tableausigne tr:nth-child(n+2) td:nth-child(6)::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid #000000;
+}
+
+.tableausigne tr:nth-child(n+2) td:nth-child(4) span, 
+.tableausigne tr:nth-child(n+2) td:nth-child(6) span {
+    position: relative;
+}
+
+.tableausigne td:nth-child(1) {
+  border-right: 1px solid black;
+}
+.tableausigne tr:nth-child(1) {
+  border-bottom: 1px solid black;
+}
+
+summary {
+  color: #31708F;
+}
+
+details.solution {
+  background-color: #fdd;
+  border: 1px solid #f00;
+  border-radius: 4px;
+  padding: 1em;
+  margin: 0.5em 0em 1em 0em;
+}
+
+details.indice {
+  background-color: #eee;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 1em;
+  margin: 0.5em 0em 1em 0em;
+}
+
+.titreExercice {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.reveal {
+  position: relative;
+  display: block;
+}
+
+.reveal::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: grey;
+  opacity: 1;
+  transition: opacity 1s linear;
+}
+
+.reveal.clicked::after {
+  opacity: 0;
+  pointer-events: none;
+}

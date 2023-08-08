@@ -1,0 +1,28 @@
+@media print {
+  body {
+    column-count: 2;
+    column-rule: 1px solid black;
+    width: 100vw;
+    max-width: 100vw;
+  }
+
+  html {
+    font-size: 10pt;
+  }
+
+  p {
+    margin: 0em;
+  }
+
+  @page {
+    size: A4;
+  }
+  /* Ne pas couper les définitions, propriétés, remarques, exemples */
+  div {
+    page-break-inside: avoid;
+  }
+  /* Ne pas afficher les .solution */
+  .solution {
+    display: none;
+  }
+}

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Polynomes</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+        <link rel="stylesheet" href="../../../../../src/css/prettyLesson.css">
+    
+        <link rel="stylesheet" href="../../../../../src/css/print1colonne.css">
+    
+
+    <!--Scripts personnalisés-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script></head>
+
+<body>
+    <main>
+        <h1>Le second degré</h1>
+<details id="sommaire">
+    <summary>Sommaire</summary>
+    <nav id="tableOfContents">
+    </nav>
+</details>
+<h2>Fonction polynôme du second degré</h2>
+<div class="definition" recto="Fonction polynôme du second degré">
+    <p>Une fonction polynôme du second degré (ou fonction trinôme) est une fonction qui peut s'écrire sous la forme
+        développée&nbsp;:
+        $$f(x)=ax^2+bx+c\quad \text{ avec } a\neq 0.$$
+    </p>
+    <p>
+        On appelle&nbsp;:
+    <ul>
+        <li>$a$ le coefficient du terme de degré 2</li>
+        <li>$b$ le coefficient du terme de degré 1</li>
+        <li>$c$ le coefficient du terme de degré 0</li>
+    </ul>
+    </p>
+</div>
+<div class="exemple">
+    <p>$f(x)=2x^2+3x-5$ est la forme développée d'une fonction polynôme du second degré avec $a=2$, $b=3$ et $c=-5.$</p>
+</div>
+<h2>Racines d'une fonction polynôme</h2>
+<div class="definition" recto="Racines d'une fonction polynôme">
+    <p>Les racines d'une fonction polynôme $f$ du second degré sont les solutions de l'équation $f(x)=0.$</p>
+</div>
+<div class="exemple">
+    <p>Les racines du trinôme défini par $f(x)=2x^2+3x-5$ sont les solutions de l'équation $2x^2+3x-5=0.$</p>
+</div>
+<h2>Forme factorisée d'une fonction polynôme</h2>
+<div class="definition" recto="Forme factorisée">
+    <p>On dit qu'une fonction polynôme $f$ de la forme
+        $$f(x)=ax^2+bx+c$$
+        avec $a\neq 0$ est sous forme factorisée lorsqu'elle s'écrit</p>
+    $$f(x)=a(x-x_1)(x-x_2)$$
+    où $x_1$ et $x_2$ sont deux nombres réels.</p>
+</div>
+<div class="propriete">
+    <p>Soit $f$ une fonction polynôme de la forme
+        $$f(x)=ax^2+bx+c.$$</p>
+    <p>Si $f(x)$ peut s'écrire sous la forme factorisée
+        $$f(x)=a(x-x_1)(x-x_2)$$
+        où $x_1$ et $x_2$ sont deux nombres réels, alors $x_1$ et $x_2$ sont les racines de $f.$</p>
+</div>
+<div class="demonstration">
+    <p>Si $f(x)$ peut s'écrire sous la forme
+        $$f(x)=a(x-x_1)(x-x_2),$$ alors $f(x_1)=0$ et $f(x_2)=0.$</p>
+    <p>Or un produit est nul si et seulement si l'un de ses facteurs est nul.</p>
+    <p>Donc les solutions de l'équation $f(x)=0$ sont $x_1$ et $x_2.$</p>
+</div>
+<div class="exemple">
+    <p>La fonction trinôme $f$ définie par $$f(x)=2x^2+3x-5$$ peut s'écrire sous la forme factorisée
+        $$f(x)=2(x-1)\left(x-(-2{,}5)\right)$$ donc $1$ et $-2{,}5$ sont les racines de $f.$</p>
+</div>
+<h2>Signe d'une fonction polynôme factorisée</h2>
+<div class="propriete" recto="signe">
+    <p>Soit $f$ une fonction trinôme sous forme factorisée
+        $$f(x)=a(x-x_1)(x-x_2)$$
+        tel que $x_1< x_2.$</p>
+            <ul>
+                <li>Si $a>0$, alors $f$ est positive sur $]-\infty;x_1[\cup]x_2;+\infty[$ et négative sur $]x_1;x_2[.$
+                </li>
+                <table class="tableausigne">
+                    <tr style="border:1px solid black;">
+                        <td style="border:1px solid black;">$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$x_1$</td>
+                        <td></td>
+                        <td>$x_2$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr style="border:1px solid black;">
+                        <td style="border:1px solid black;">$a$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr style="border:1px solid black;">
+                        <td style="border:1px solid black;">$x-x_1$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr style="border:1px solid black;">
+                        <td style="border:1px solid black;">$x-x_2$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr style="border:1px solid black;">
+                        <td style="border:1px solid black;">$f(x)$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td>$0$</td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <li>Si $a< 0$, alors $f$ est négative sur $]-\infty;x_1[\cup]x_2;+\infty[$ et positive sur
+                        $]x_1;x_2[.$</li>
+                        <table class="tableausigne">
+                            <tr style="border:1px solid black;">
+                                <td style="border:1px solid black;">$x$</td>
+                                <td>$-\infty$</td>
+                                <td></td>
+                                <td>$x_1$</td>
+                                <td></td>
+                                <td>$x_2$</td>
+                                <td></td>
+                                <td>$+\infty$</td>
+                            </tr>
+                            <tr style="border:1px solid black;">
+                                <td style="border:1px solid black;">$a$</td>
+                                <td></td>
+                                <td>$-$</td>
+                                <td></td>
+                                <td>$-$</td>
+                                <td></td>
+                                <td>$-$</td>
+                                <td></td>
+                            </tr>
+                            <tr style="border:1px solid black;">
+                                <td style="border:1px solid black;">$x-x_1$</td>
+                                <td></td>
+                                <td>$-$</td>
+                                <td>$0$</td>
+                                <td>$+$</td>
+                                <td></td>
+                                <td>$+$</td>
+                                <td></td>
+                            </tr>
+                            <tr style="border:1px solid black;">
+                                <td style="border:1px solid black;">$x-x_2$</td>
+                                <td></td>
+                                <td>$-$</td>
+                                <td></td>
+                                <td>$-$</td>
+                                <td>$0$</td>
+                                <td>$+$</td>
+                                <td></td>
+                            </tr>
+                            <tr style="border:1px solid black;">
+                                <td style="border:1px solid black;">$f(x)$</td>
+                                <td></td>
+                                <td>$-$</td>
+                                <td>$0$</td>
+                                <td>$+$</td>
+                                <td>$0$</td>
+                                <td>$-$</td>
+                                <td></td>
+                            </tr>
+                        </table>
+            </ul>
+</div>
+<div class="exemple">
+    <p>Considérons la fonction $g$ définie par&nbsp;: $$g(x)=2(1-x)(x+2{,}5).$$
+    <p>Elle n'est pas sous la forme $$a(x-x_1)(x-x_2)$$, on ne peut donc pas conclure sur son signe.</p>
+    <p>Cependant, on a&nbsp;: $$g(x)=-2(x-1)\left(x-(-2{,}5)\right)$$ qui est sous la forme $a(x-x_1)(x-x_2)$ avec
+        $a=-2$, $x_1=1$ et $x_2=-2{,}5.$</p>
+    <p>D'où $g$ est négative sur $]-\infty;1[\cup]-2{,}5;+\infty[$ et positive sur $]1;-2{,}5[.$</p>
+</div>
+<h2>Factorisation d'une fonction polynôme</h2>
+<div class="propriete" recto="forme factorisée">
+    <p>Soit $f$ une fonction trinôme de la forme $$f(x)=ax^2+bx+c.$$ avec $a\neq 0.$</p>
+    <p>Si $f$ admet deux racines distinctes $x_1$ et $x_2$, alors $f(x)$ peut s'écrire sous la forme
+        $$f(x)=a(x-x_1)(x-x_2).$$</p>
+</div>
+<div class="demonstration">
+    <p>Soit $f$ une fonction polynôme de la forme $$f(x)=ax^2+bx+c.$$ avec $a\neq 0.$</p>
+    <p>Supposons que $f$ admet deux racines distinctes $x_1$ et $x_2.$</p>
+    <p>Puisque $x_1$ est une racine de $f$, on a $$f(x_1)=0.$$
+    <p>D'où
+        $$a{x_1}^2+b{x_1}+c=0.$$</p>
+    <p>On en déduit
+        $$c=-a{x_1}^2-b{x_1}.$$</p>
+    <p>Que l'on substitue dans l'expression de $f(x)$&nbsp;:
+        $$f(x)=ax^2+bx-a{x_1}^2-b{x_1}.$$</p>
+    <p>On regroupe les termes de degré 2 et de degré 1&nbsp;:
+        $$f(x)=a(x^2-x_1^2)+b(x-x_1).$$</p>
+    <p>On utilise la troisième identité remarquable&nbsp;:
+        $$f(x)=a(x-x_1)(x+x_1)+b(x-x_1)$$</p>
+    <p>On factorise ensuite $f(x)$ par $x-x_1$&nbsp;:
+        $$f(x)=(x-x_1)\left(a(x+a{x_1})+b\right)$$</p>
+    <p>On obtient finalement&nbsp;:
+        $$f(x)=(x-x_1)(ax+a{x_1}+b).$$</p>
+    <p>D'autre part $f(x_2)=0$, d'où
+        $$(x_2-x_1)(ax_2+a{x_1}+b)=0.$$</p>
+    <p>Or $x_2\neq x_1$ donc
+        $$ax_2+a{x_1}+b=0.$$</p>
+    <p>On en déduit
+        $$b=-ax_2-a{x_1}.$$</p>
+    <p>Que l'on substitue dans l'expression de $f(x)$&nbsp;:
+        $$f(x)=(x-x_1)(ax+a{x_1}-ax_2-a{x_1}).$$</p>
+    <p>Que l'on simplifie ensuite&nbsp;:
+        $$f(x)=(x-x_1)(ax-ax_2).$$</p>
+    <p>Et finalement on peut factoriser par $a$&nbsp;:
+        $$f(x)=(x-x_1)\times a(x-x_2).$$</p>
+    <p>Donc $f(x)$ peut s'écrire sous la forme&nbsp;:
+        $$f(x)=a(x-x_1)(x-x_2).$$</p>
+</div>
+<div class="exemple">
+    <p>La fonction $f$ définie par $$f(x)=2x^2+3x-5$$ peut s'écrire sous la forme $$f(x)=2(x-x_1)(x-x_2)$$ où $x_1$ et
+        $x_2$ sont les racines de $f.$</p>
+</div>
+<h2>Somme et produit des racines</h2>
+<div class="propriete" recto="somme et produit">
+    <p>Soit $f$ une fonction polynôme de la forme $$f(x)=ax^2+bx+c.$$ avec $a\neq 0.$</p>
+    <p>Si $f$ admet deux racines distinctes $x_1$ et $x_2$, alors
+    <ul>
+        <li>la somme des racines est $x_1+x_2=-\dfrac{b}{a};$</li>
+        <li>le produit des racines est $x_1\times x_2=\dfrac{c}{a}.$</li>
+    </ul>
+    </p>
+</div>
+<div class="demonstration">
+    <p>Considérons une fonction polynôme $f$ de la forme $f(x)=ax^2+bx+c$ avec $a\neq 0.$</p>
+    <p>Supposons que $f$ admet deux racines distinctes $x_1$ et $x_2.$</p>
+    <p>On en déduit la forme factorisée de $f$&nbsp;:
+        $$f(x)=a(x-x_1)(x-x_2).$$</p>
+    <p>En développant on obtient&nbsp;:
+        $$f(x)=a\left(x^2-x_1x-x_2x+x_1x_2\right).$$</p>
+    <p>On développe à nouveau en regroupant les termes de même degré&nbsp;:</p>
+    $$f(x)=ax^2-a(x_1+x_2)x+ax_1x_2.$$
+    <p>On identifie les coefficients de $x^2$, $x$ et $1$&nbsp;:</p>
+    $$\begin{cases}
+    a&=a\\
+    -a(x_1+x_2)&=b\\
+    ax_1x_2&=c
+    \end{cases}$$
+    <p>On en déduit&nbsp;:</p>
+    $$\begin{cases}
+    x_1+x_2&=-\dfrac{b}{a}\\
+    x_1x_2&=\dfrac{c}{a}
+    \end{cases}$$
+</div>
+<div class="exemple">
+    <p>La fonction $f$ définie par $$f(x)=2x^2+3x-5$$ admet deux racines distinctes $x_1=1$ et $x_2=-2{,}5.$</p>
+    <p>On a $$x_1+x_2=-\dfrac{3}{2}$$ et $$x_1\times x_2=-\dfrac{5}{2}.$$</p>
+</div>
+<h2>Forme canonique d'une fonction polynôme</h2>
+<div class="definition" recto="forme canonique">
+    <p>Soit $f$ une fonction trinôme de la forme
+        $$f(x)=ax^2+bx+c$$
+        où $a\neq 0.$</p>
+    <p>On dit que la forme suivante est sa forme canonique&nbsp;:</p>
+    $$f(x)=a\left(x-\alpha\right)^2+\beta$$
+    où $\alpha$ et $\beta$ sont deux nombres réels.</p>
+    </p>
+</div>
+<div class="propriete">
+    <p>Soit $f$ une fonction trinôme de la forme
+        $$f(x)=ax^2+bx+c$$
+        où $a\neq 0.$</p>
+    <p>Sa forme canonique est
+        $$f(x)=a\left(x-\alpha\right)^2+\beta$$
+        où $\alpha=-\dfrac{b}{2a}$ et $\beta=-\dfrac{\Delta}{4a}$ en notant ${\Delta=b^2-4ac}.$</p>
+</div>
+<div class="demonstration">
+    <p>Soit $f$ une fonction trinôme de la forme
+        $$f(x)=ax^2+bx+c$$
+        où $a\neq 0.$</p>
+    <p>On cherche à exprimer $f(x)$ sous la forme $$f(x)=a\left(x-\alpha\right)^2+\beta.$$</p>
+    <p>On commence par factoriser par $a$ les deux premiers termes&nbsp;:
+        $$f(x)=a\left(x^2+\dfrac{b}{a}x\right)+c.$$</p>
+    <p>On écrit le terme entre parenthèses comme le début du développement d'une identité remarquable&nbsp;:
+        $$f(x)=a\left(x^2+2\times \dfrac{b}{2a}x\right)+c.$$</p>
+    <p>Il manque une partie à l'identité&nbsp;:
+        $$f(x)=a\left(x^2+2\times \dfrac{b}{2a}x+\left(\dfrac{b}{2a}\right)^2-\left(\dfrac{b}{2a}\right)^2\right)+c.$$
+    </p>
+    <p>On peut maintenant la factoriser.
+        $$f(x)=a\left(\left(x+\dfrac{b}{2a}\right)^2-\left(\dfrac{b}{2a}\right)^2\right)+c.$$</p>
+    <p>On distribue $a$&nbsp;:
+        $$f(x)=a\left(x+\dfrac{b}{2a}\right)^2-a\left(\dfrac{b}{2a}\right)^2+c.$$</p>
+    <p>On simplifie&nbsp;:
+        $$f(x)=a\left(x+\dfrac{b}{2a}\right)^2-\dfrac{b^2}{4a}+c.$$</p>
+    <p>On réduit au même dénominateur&nbsp;:
+        $$f(x)=a\left(x+\dfrac{b}{2a}\right)^2-\dfrac{b^2}{4a}+\dfrac{4ac}{4a}.$$</p>
+    <p>Ou encore&nbsp;:
+        $$f(x)=a\left(x+\dfrac{b}{2a}\right)^2-\left(\dfrac{b^2}{4a}-\dfrac{4ac}{4a}\right).$$</p>
+    <p>On simplifie&nbsp;:
+        $$f(x)=a\left(x+\dfrac{b}{2a}\right)^2-\dfrac{b^2-4ac}{4a}.$$</p>
+    <p>On reconnaît $\Delta=b^2-4ac$&nbsp;:
+        $$f(x)=a\left(x+\dfrac{b}{2a}\right)^2-\dfrac{\Delta}{4a}.$$</p>
+    <p>On obtient la forme canonique&nbsp;:
+        $$f(x)=a\left(x-\left(-\dfrac{b}{2a}\right)\right)^2-\dfrac{\Delta}{4a}.$$</p>
+</div>
+<h2>Discriminant d'une fonction polynôme</h2>
+<div class="definition" recto="discriminant">
+    <p>Soit $f$ une fonction trinôme de la forme
+        $$f(x)=ax^2+bx+c$$
+        où $a\neq 0.$</p>
+    <p>On appelle discriminant de $f$ le nombre $\Delta=b^2-4ac.$</p>
+</div>
+<div class="propriete">
+    <p>Soit $f$ une fonction trinôme de la forme
+        $$f(x)=ax^2+bx+c$$
+        où $a\neq 0.$</p>
+    <ul>
+        <li>Si $\Delta < 0$, alors $f$ n'admet pas de racine (sous-entendu pas de racine dans $\mathbb{R}$).</li>
+        <li>Si $\Delta=0$, alors $f$ admet une seule racine (appelée racine double).</li>
+        <li>Si $\Delta>0$, alors $f$ admet deux racines distinctes.</li>
+    </ul>
+</div>
+<div class="demonstration">
+    <p>$$f(x)=0$$ équivaut à $$a\left(x+\dfrac{b}{2a}\right)^2-\dfrac{\Delta}{4a}=0.$$
+        ou encore en divisant par $a$ à
+        $$\left(x+\dfrac{b}{2a}\right)^2-\dfrac{\Delta}{4a^2}=0.$$</p>
+    <ul>
+        <li>Si $\Delta < 0$, alors $-\dfrac{\Delta}{4a^2}>0$ puis
+                $$\left(x+\dfrac{b}{2a}\right)^2-\dfrac{\Delta}{4a^2}>0.$$
+                Par conséquent $f$ n'admet pas de racine dans $\mathbb{R}.$</li>
+        <li>Si $\Delta=0$, alors $-\dfrac{\Delta}{4a}=0.$
+            On en déduit&nbsp;: $$x+\dfrac{b}{2a}=0.$$ qui équivaut à $$x=-\dfrac{b}{2a}.$$
+            L'équation $a\left(x+\dfrac{b}{2a}\right)^2-\dfrac{\Delta}{4a}=0$ admet donc une seule solution dans
+            $\mathbb{R}.$</li>
+        <li>Si $\Delta>0$, alors $-\dfrac{\Delta}{4a}< 0.$ Remarquons dans ce cas que
+                $$\frac{\Delta}{4a^2}=\left(\frac{\sqrt{\Delta}}{2a}\right)^2.$$ L'équation peut donc s'écrire&nbsp;:
+                $$a\left(x+\dfrac{b}{2a}\right)^2-\left(\frac{\sqrt{\Delta}}{2a}\right)^2=0.$$ D'après la troisième
+                identité remarquable, on en déduit&nbsp;:
+                $$\left[\left(x+\dfrac{b}{2a}\right)-\dfrac{\sqrt{\Delta}}{2a}\right]\left[\left(x+\dfrac{b}{2a}\right)+\dfrac{\sqrt{\Delta}}{2a}\right]=0.$$
+                Or un produit est nul si et seulement si l'un de ses facteurs est nul. Donc
+                $$\left(x+\dfrac{b}{2a}\right)-\dfrac{\sqrt{\Delta}}{2a}=0$$ ou
+                $$\left(x+\dfrac{b}{2a}\right)+\dfrac{\sqrt{\Delta}}{2a}=0.$$ </ul>
+</div>
+<div class="propriete">
+    <p>Soit $f$ une fonction trinôme de la forme
+        $$f(x)=ax^2+bx+c$$
+        où $a\neq 0.$</p>
+    <p>Si $\Delta=0$, alors la racine double de $f$ est&nbsp;:
+        $$x_0=-\dfrac{b}{2a}.$$
+    <p>Si $\Delta>0$, alors les racines de $f$ sont&nbsp;:
+        $$x_1=\dfrac{-b-\sqrt{\Delta}}{2a}\quad \text{ et }\quad x_2=\dfrac{-b+\sqrt{\Delta}}{2a}.$$
+    </p>
+</div>
+<div class="remarque">
+    <p>Déterminer les solutions d'une équation de la forme $ax^2+bx+c=0$ revient à déterminer les racines de la fonction
+        trinôme $f$ définie par $f(x)=ax^2+bx+c.$</p>
+</div>
+    </main>
+    <footer>
+        Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
+        Licence CC BY-NC-SA.
+    </footer>
+</body>
+
+</html>
