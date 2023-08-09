@@ -46,9 +46,33 @@
 
 <body>
     <main>
-        <!-- Scripts pour les figures JSXGraph -->
+        <!-- Début exception -->
+<!-- Scripts pour les figures JSXGraph -->
 <link rel="stylesheet" type="text/css" href="https://jsxgraph.org/distrib/jsxgraph.css" />
 <script type="text/javascript" src="https://jsxgraph.org/distrib/jsxgraphcore.js"></script>
+
+<!-- Le Katex sera rendu pour les figures JSXGraph -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        //
+        // Partie concernant les formules Katex
+        //
+        renderMathInElement(document.body, {
+            // customised options
+            // • auto-render specific keys, e.g.:
+            delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true }
+            ],
+            // • rendering keys, e.g.:
+            throwOnError: false
+        });
+    });
+</script>
+<!-- Fin exception -->
+
 <h1>Manipuler les nombres réels</h1>
 <details>
     <summary>Sommaire</summary>
@@ -310,7 +334,7 @@
         <ellipse cx="340" cy="150" rx="50" ry="40" stroke="black" stroke-width="0.5" fill="red" fill-opacity="0.1" />
         <g style="font-size: 1.2em;">
             <foreignObject x="90" y="0" width="30" height="40">
-                math.renderMath("\\mathbb{R}")
+                $\mathbb{R}$
             </foreignObject>
             <foreignObject x="150" y="15" width="30" height="40">
                 $\mathbb{Q}$
