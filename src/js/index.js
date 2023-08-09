@@ -1,3 +1,4 @@
+import 'core-js/stable';
 import { createFigures } from './interactif2.js';
 
 var insererEntetesBlocsLesson = function () {
