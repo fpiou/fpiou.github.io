@@ -109,24 +109,33 @@ var addQuadrillage = function (figure) {
     // On ajoute un quadrillage
     var quadrillage = document.createElementNS("http://www.w3.org/2000/svg", "g");
     quadrillage.setAttribute("id", "quadrillage");
+    // On récupère les dimensions de la figure avec viewBox
+    var viewBox = figure.querySelector("svg").getAttribute("viewBox").split(" ");
+    var width = parseFloat(viewBox[2]);
+    var height = parseFloat(viewBox[3]);
+    var xmin = parseFloat(viewBox[0]);
+    var ymin = parseFloat(viewBox[1]);
+    // On calcule le nombres de lignes et de colonnes
+    var nblignes = Math.floor(height / 10);
+    var nbcolonnes = Math.floor(width / 10);
     // On ajoute les lignes verticales
-    for (var i = 0; i < 21; i++) {
+    for (i = 0; i < nbcolonnes+1; i++) {
         var ligne = document.createElementNS("http://www.w3.org/2000/svg", "line");
-        ligne.setAttribute("x1", i * 10);
-        ligne.setAttribute("y1", 0);
-        ligne.setAttribute("x2", i * 10);
-        ligne.setAttribute("y2", 200);
+        ligne.setAttribute("x1", xmin + i * 10);
+        ligne.setAttribute("y1", ymin);
+        ligne.setAttribute("x2", xmin + i * 10);
+        ligne.setAttribute("y2", ymin + height);
         ligne.setAttribute("stroke", "gray");
         ligne.setAttribute("stroke-width", "0.2");
         quadrillage.appendChild(ligne);
     }
     // On ajoute les lignes horizontales
-    for (var i = 0; i < 21; i++) {
+    for (var i = 0; i < nblignes+1; i++) {
         var ligne = document.createElementNS("http://www.w3.org/2000/svg", "line");
-        ligne.setAttribute("x1", 0);
-        ligne.setAttribute("y1", i * 10);
-        ligne.setAttribute("x2", 200);
-        ligne.setAttribute("y2", i * 10);
+        ligne.setAttribute("x1", xmin);
+        ligne.setAttribute("y1", ymin + i * 10);
+        ligne.setAttribute("x2", xmin + width);
+        ligne.setAttribute("y2", ymin + i * 10);
         ligne.setAttribute("stroke", "gray");
         ligne.setAttribute("stroke-width", "0.2");
         quadrillage.appendChild(ligne);
@@ -211,6 +220,9 @@ var constructCrossPoint = function (point) {
     path.setAttribute("stroke", "black");
     path.setAttribute("class", "crosspoint");
     path.style.userSelect = "none";
+    // Récupérer le style du point
+    var style = point.getAttribute("style");
+    path.setAttribute("style", style);
     point.appendChild(path);
 }
 var automaticHideCrossPoint = function (point) {

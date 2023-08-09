@@ -99,7 +99,7 @@ var insererEntetesBlocsExercices = function () {
         details.appendChild(indices[i]);
     }
 };
-var wrapElementsInReveal = function(parent) {
+var wrapElementsInReveal = function (parent) {
     var elements = parent.querySelectorAll('li, p, td,.katex-display');
 
     for (var i = 0; i < elements.length; i++) {
@@ -139,15 +139,17 @@ var insererFigures = function () {
                 var id = figure.id;
                 var svg = doc.getElementById(id);
                 // On essaie de voir s'il a trouvé la figure. Si oui, on l'ajoute dans la div de class figure, sinon on affiche un message d'erreur
-                if (svg == null) {
-                    // On affiche en bleu le message d'erreur
-                    // On affiche en rouge le message d'erreur
-                    figure.style.color = "blue";
-                    // Le message est barré
-                    figure.style.textDecoration = "line-through";
-                    figure.innerHTML = "<i>Erreur : La figure " + id + " n'a pas été trouvée</i>";
-                } else {
-                    figure.appendChild(svg);
+                // Si la figure est déjà présente dans le document, on ne fait rien
+                if (figure.querySelector("svg") == null) {
+                    if (svg == null) {
+                        // On affiche en bleu le message d'erreur
+                        figure.style.color = "blue";
+                        // Le message est barré
+                        figure.style.textDecoration = "line-through";
+                        figure.innerHTML = "<i>Erreur : La figure " + id + " n'a pas été trouvée</i>";
+                    } else {
+                        figure.appendChild(svg);
+                    }
                 }
             })
             createFigures();
@@ -188,7 +190,7 @@ var ajouterSommaire = function () {
     }
 }
 var openAvantPrint = function () {
-    window.onbeforeprint = function() {
+    window.onbeforeprint = function () {
         const detailsElements = document.querySelectorAll('details');
         detailsElements.forEach(details => {
             details.setAttribute('open', '');

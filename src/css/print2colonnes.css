@@ -25,4 +25,8 @@
   .solution {
     display: none;
   }
+  /* Masquer les boutons */
+  button {
+    display: none;
+  }
 }
