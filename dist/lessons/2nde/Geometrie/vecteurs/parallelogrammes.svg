@@ -1,0 +1,75 @@
+<html>
+    <body>
+    <svg id="figure1" xmlns="http://www.w3.org/2000/svg" width="200" height="200"
+            preserveAspectRatio="xMinYMin meet" viewBox="0 0 200 200"
+            style="display:block;margin:auto;width:100%;max-width:400;height:auto;">
+            <!-- Début de la figure -->
+            <g name="A" class="point labeled draggable" x="30" y="120"></g>
+            <g name="B" class="point labeled draggable" x="110" y="60"></g>
+            <g name="D" class="point labeled draggable" x="90" y="140"></g>
+            <g name="C" class="point labeled translation" linkto="A B D"></g>
+
+            <g name="ABCD" class="polygone" linkto="A B C D" fill="green" fill-opacity="0.2"></g>
+
+            <g name="AB" class="droite" linkto="A B" stroke="red" stroke-width="2" stroke-opacity="0.3"></g>
+            <g name="CD" class="droite" linkto="C D" stroke="red" stroke-width="2" stroke-opacity="0.3"></g>
+            <g name="AD" class="droite" linkto="A D" stroke="blue" stroke-width="2" stroke-opacity="0.3"></g>
+            <g name="BC" class="droite" linkto="B C" stroke="blue" stroke-width="2" stroke-opacity="0.3"></g>
+            
+            <!-- Fin de la figure -->
+    </svg>
+    <svg id="figure2" xmlns="http://www.w3.org/2000/svg" width="200" height="200"
+            preserveAspectRatio="xMinYMin meet" viewBox="0 0 200 200"
+            style="display:block;margin:auto;width:100%;max-width:400;height:auto;">
+            <!-- Début de la figure -->
+            <g name="A" class="point labeled draggable" x="30" y="120"></g>
+            <g name="B" class="point labeled draggable" x="110" y="60"></g>
+            <g class="label" linkto="B" x="-10" y="-20">B</g>
+            <g name="D" class="point labeled draggable" x="90" y="140"></g>
+            <g name="C" class="point labeled translation" linkto="A B D"></g>
+            <g name="I" class="point labeled translation" linkto="A C A" data="0.5"></g>
+            <g name="ABCD" class="polygone" linkto="A B C D" fill="green" fill-opacity="0.2"></g>
+            <g name="AI" class="segment codage" linkto="A I"></g>
+            <g name="CI" class="segment codage" linkto="C I AI"></g>
+            <g name="BI" class="segment codage" linkto="B I"></g>
+            <g name="DI" class="segment codage" linkto="D I BI"></g>
+
+            <!-- Fin de la figure -->
+    </svg>
+    <svg id="figure3" xmlns="http://www.w3.org/2000/svg" width="200" height="200"
+            preserveAspectRatio="xMinYMin meet" viewBox="0 0 200 200"
+            style="display:block;margin:auto;width:100%;max-width:400;height:auto;">
+            <!-- Début de la figure -->
+            <g name="A" class="point labeled draggable" x="30" y="120"></g>
+            <g name="B" class="point labeled draggable" x="110" y="60"></g>
+            <g class="label" linkto="B" x="-10" y="-20">B</g>
+            <g name="D" class="point labeled draggable" x="90" y="140"></g>
+            <g name="C" class="point labeled translation" linkto="A B D"></g>
+            
+            <g name="ABCD" class="polygone" linkto="A B C D" fill="green" fill-opacity="0.2"></g>
+            <g name="AB" class="segment codage" linkto="A B"></g>
+            <g name="DC" class="segment codage" linkto="D C AB"></g>
+            <g name="BC" class="segment codage" linkto="B C"></g>
+            <g name="AD" class="segment codage" linkto="A D BC"></g>
+
+            <!-- Fin de la figure -->
+    </svg>
+    <svg id="figure4" xmlns="http://www.w3.org/2000/svg" width="200" height="200"
+            preserveAspectRatio="xMinYMin meet" viewBox="0 0 200 200"
+            style="display:block;margin:auto;width:100%;max-width:400;height:auto;">
+            <!-- Début de la figure -->
+            <g name="A" class="point labeled draggable" x="30" y="120"></g>
+            <g name="B" class="point labeled draggable" x="110" y="60"></g>
+            <g class="label" linkto="B" x="-10" y="-20">B</g>
+            <g name="D" class="point labeled draggable" x="90" y="140"></g>
+            <g name="C" class="point labeled translation" linkto="A B D"></g>
+            
+            <g name="ABCD" class="polygone" linkto="A B C D" fill="green" fill-opacity="0.2"></g>
+            <g name="AB" class="segment codage" linkto="A B"></g>
+            <g name="DC" class="segment codage" linkto="D C AB"></g>
+            <g name="AB" class="droite" linkto="A B" stroke="red" stroke-width="2" stroke-opacity="0.3"></g>
+            <g name="CD" class="droite" linkto="C D" stroke="red" stroke-width="2" stroke-opacity="0.3"></g>
+            <!-- Fin de la figure -->
+    </svg>
+    </body>
+</html>

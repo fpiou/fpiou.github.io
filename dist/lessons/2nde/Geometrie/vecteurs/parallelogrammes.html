@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Parallelogrammes</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+        <link rel="stylesheet" href="../../../../../src/css/prettyLesson.css">
+    
+        <link rel="stylesheet" href="../../../../../src/css/print1colonne.css">
+    
+        <link rel="stylesheet" href="../../../../../src/css/figures.css">
+    
+
+    <!--Scripts personnalisés-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+<body>
+    <main>
+        <h1> Propriétés des parallélogrammes</h1>
+<details>
+    <summary>Sommaire</summary>
+    <nav id="tableOfContents">
+    </nav>
+</details>
+<h2> Caractérisations des parallélogrammes</h2>
+<style>
+    .Propriete {
+        font-weight: bold;
+    }
+
+    .Reciproque {
+        font-weight: bold;
+    }
+
+    .Theoreme {
+        font-weight: bold;
+    }
+</style>
+<div class="propriete">
+    <div id="figure1" class="figure interactive"></div>
+    <p><span class="Propriete">Propriété</span> : Si un quadrilatère est un parallélogramme, alors ses côtés opposés
+        sont parallèles deux à deux.</p>
+    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longrightarrow}\quad (AB)//(CD)~\text{ et }~(AD)//(BC)$$
+    <p><span class="Reciproque">Réciproque</span> : Si un quadrilatère a ses côtés opposés parallèles deux à deux, alors
+        c'est un parallélogramme.</p>
+    $$(AB)//(CD)~\text{ et }~(AD)//(BC) \quad{\color{red}\Longrightarrow}\quad ABCD ~\text{parallélogramme}$$
+    <p><span class="Theoreme">Théorème</span> : Un quadrilatère est un parallélogramme si et seulement si ses côtés
+        opposés sont parallèles deux à deux.</p>
+    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longleftrightarrow}\quad (AB)//(CD)~\text{ et }~(AD)//(BC)$$
+</div>
+<div class="propriete">
+    <div id="figure2" class="figure"></div>
+    <p><span class="Propriete">Propriété</span> : Si un quadrilatère est un parallélogramme, alors ses diagonales se
+        coupent en leur milieu.</p>
+    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longrightarrow}\quad mil(A,C)=mil(B,D)$$
+    <p><span class="Reciproque">Réciproque</span> : Si un quadrilatère a ses diagonales qui se coupent en leur milieu,
+        alors c'est un parallélogramme.</p>
+    $$mil(A,C)=mil(B,D) \quad{\color{red}\Longrightarrow}\quad ABCD ~\text{parallélogramme}$$
+    <p><span class="Theoreme">Théorème</span> : Un quadrilatère est un parallélogramme si et seulement si ses diagonales
+        se coupent en leur milieu.</p>
+    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longleftrightarrow}\quad mil(A,C)=mil(B,D)$$
+</div>
+<div class="propriete">
+    <div id="figure3" class="figure"></div>
+    <p><span class="Propriete">Propriété</span> : Si un quadrilatère est un parallélogramme, alors ses côtés opposés
+        sont de même longueur deux à deux.</p>
+    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longrightarrow}\quad AB=CD~\text{ et }~AD=BC$$
+    <p><span class="Reciproque">Réciproque</span> : Si un quadrilatère a ses côtés opposés de même longueur deux à deux,
+        alors c'est un parallélogramme.</p>
+    $$AB=CD~\text{ et }~AD=BC \quad{\color{red}\Longrightarrow}\quad ABCD ~\text{parallélogramme}$$
+    <p><span class="Theoreme">Théorème</span> : Un quadrilatère est un parallélogramme si et seulement si ses côtés
+        opposés sont de même longueur deux à deux.</p>
+    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longleftrightarrow}\quad AB=CD~\text{ et }~AD=BC$$
+</div>
+<div class="propriete">
+    <div id="figure4" class="figure"></div>
+    <p><span class="Propriete">Propriété</span> : Si un quadrilatère est un parallélogramme, alors il possède deux côtés
+        opposés parallèles et de même longueur.</p>
+    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longrightarrow}\quad (AB)//(CD)~\text{ et }~AB=CD$$
+    <p><span class="Reciproque">Réciproque</span> : Si un quadrilatère a deux côtés opposés parallèles et de même
+        longueur, alors c'est un parallélogramme.</p>
+    $$(AB)//(CD)~\text{ et }~AB=CD \quad{\color{red}\Longrightarrow}\quad ABCD ~\text{parallélogramme}$$
+    <p><span class="Theoreme">Théorème</span> : Un quadrilatère est un parallélogramme si et seulement s'il possède deux
+        côtés opposés parallèles et de même longueur.</p>
+    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longleftrightarrow}\quad (AB)//(CD)~\text{ et }~AB=CD$$
+</div>
+    </main>
+    <footer>
+        Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
+        Licence CC BY-NC-SA.
+    </footer>
+</body>
+
+</html>

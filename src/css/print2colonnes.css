@@ -21,8 +21,11 @@
   div {
     page-break-inside: avoid;
   }
-  /* Ne pas afficher les .solution */
+  /* Ne pas afficher les .solution et les indice */
   .solution {
+    display: none;
+  }
+  .indice {
     display: none;
   }
   /* Masquer les boutons */

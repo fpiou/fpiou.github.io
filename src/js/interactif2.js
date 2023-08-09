@@ -52,7 +52,12 @@ var setUniqueIds = function () {
                     ids[j].setAttribute("id", id + "-" + j);
                 } else {
                     // On créé un id pour l'élément à partir du linkto
-                    ids[j].setAttribute("id", id + "-" + ids[j].getAttribute("linkto"));
+                    // Sauf s'il est de la class label
+                    if (!ids[j].classList.contains("label")) {
+                        ids[j].setAttribute("id", id + "-" + ids[j].getAttribute("linkto"));
+                    } else {
+                        ids[j].setAttribute("id", id + "-" + ids[j].getAttribute("linkto")+"-label");
+                    }
                 }
                 // On ajoute également l'identifiant à tous les éléments du linkto
                 if (ids[j].getAttribute("linkto") != null) {
@@ -146,7 +151,17 @@ var addQuadrillage = function (figure) {
     quadrillage.style.userSelect = "none";
     quadrillage.style.pointerEvents = "none";
     quadrillage.id = figure.id + "-quadrillage";
+    // On place un cadre autour du quadrillage
+    var cadre = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    cadre.setAttribute("x", xmin);
+    cadre.setAttribute("y", ymin);
+    cadre.setAttribute("width", width);
+    cadre.setAttribute("height", height);
+    cadre.setAttribute("fill", "lightgray");
+    cadre.setAttribute("fill-opacity", "0.2");
+    // Avec un effet d'ombre
     figure.querySelector("svg").prepend(quadrillage);
+    figure.querySelector("svg").prepend(cadre);
 }
 var getLinkto = function (objet) {
     return objet.getAttribute("linkto").split(" ");
@@ -513,6 +528,7 @@ var constructPolygone = function (polygone) {
     var d = "M" + points.join(" L") + " Z";
     path.setAttribute("d", d);
     setStroke(polygone, path);
+    path.setAttribute("style",polygone.getAttribute("style"));
     polygone.appendChild(path);
 }
 var initialiserPolygone = function (polygone) {
@@ -852,8 +868,15 @@ var controlerCoordonneesPoint = function (point, figure) {
         }
     } else {
         // Il ne faut pas dépasser les limites du cadre
-        x = Math.min(Math.max(d3.event.x, 0), 200);
-        y = Math.min(Math.max(d3.event.y, 0), 200);
+        // On récupère les dimensions du cadre avec le viewBox
+        var cadre = figure.querySelector("svg");
+        var viewBox = cadre.getAttribute("viewBox").split(" ");
+        var xmin = parseFloat(viewBox[0]);
+        var ymin = parseFloat(viewBox[1]);
+        var width = parseFloat(viewBox[2]);
+        var height = parseFloat(viewBox[3]);
+        x = Math.min(Math.max(d3.event.x, xmin), xmin + width);
+        y = Math.min(Math.max(d3.event.y, ymin), ymin + height);
         // Si le quadrillage est affiché, on déplace le point sur le quadrillage
         if (figure.querySelector("#" + figure.id + "-quadrillage").style.display == "block") {
             x = Math.round(x / 10) * 10;
