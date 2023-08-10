@@ -34,10 +34,6 @@ summary {
   color: #31708F;
 }
 
-svg.fullscreen {
-  background-color: white;
-}
-
 /* Pour la balise avec l'identifiant svgContainer mettre au moment du fullscreen un background blanc */
 #svgContainer svg.fullscreen {
   background-color: white;

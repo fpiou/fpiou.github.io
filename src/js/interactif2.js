@@ -10,6 +10,7 @@
 // Les attributs x et y initialisent les coordonnées du point
 // Les coordonnées x et y sont données par l'attribut transform="translate(x,y)"
 // Est-il possible que si on déplace un point dont un point est lié avec un rapport k, ce rapport ne change pas si on le déplace ?
+import { add } from 'lodash';
 import { Point, Vecteur, Segment } from './class2.js'
 
 // Liste des codages possibles
@@ -56,7 +57,7 @@ var setUniqueIds = function () {
                     if (!ids[j].classList.contains("label")) {
                         ids[j].setAttribute("id", id + "-" + ids[j].getAttribute("linkto"));
                     } else {
-                        ids[j].setAttribute("id", id + "-" + ids[j].getAttribute("linkto")+"-label");
+                        ids[j].setAttribute("id", id + "-" + ids[j].getAttribute("linkto") + "-label");
                     }
                 }
                 // On ajoute également l'identifiant à tous les éléments du linkto
@@ -71,11 +72,9 @@ var setUniqueIds = function () {
         }
     }
 }
-var addBoutonQuadrillage = function (figure) {
-    // On ajoute un bouton pour afficher/masquer le quadrillage
-    var bouton = document.createElement("button");
-    bouton.innerHTML = "Afficher/masquer le quadrillage";
+var addListenerButtonQuadrillage = function (figure) {
     var quadrillage = figure.querySelector("#" + figure.id + "-quadrillage");
+    var bouton = figure.querySelector(".bouton-quadrillage");
     bouton.addEventListener("click", function () {
         if (quadrillage.style.display == "none") {
             quadrillage.style.display = "block";
@@ -83,12 +82,20 @@ var addBoutonQuadrillage = function (figure) {
             quadrillage.style.display = "none";
         }
     });
-    figure.appendChild(bouton);
 }
-var addBoutonPleinEcran = function (figure) {
-    // On ajoute un bouton pour afficher/masquer le quadrillage
-    var bouton = document.createElement("button");
-    bouton.innerHTML = "Plein écran";
+var addBoutonQuadrillage = function (figure) {
+    // Tester si la figure a déjà un bouton de la classe bouton-quadrillage
+    if (figure.querySelector(".bouton-quadrillage") == null) {
+        // On ajoute un bouton pour afficher/masquer le quadrillage
+        var bouton = document.createElement("button");
+        // Ajouter une classe au bouton
+        bouton.classList.add("bouton-quadrillage");
+        bouton.innerHTML = "Afficher/masquer le quadrillage";
+        figure.appendChild(bouton);
+    }
+}
+var addListenerButtonPleinEcran = function (figure) {
+    var bouton = figure.querySelector(".bouton-pleinecran");
     bouton.addEventListener("click", function () {
         if (!document.fullscreenElement) {
             if (figure.requestFullscreen) {
@@ -108,7 +115,14 @@ var addBoutonPleinEcran = function (figure) {
             }
         }
     });
-    figure.appendChild(bouton);
+}
+var addBoutonPleinEcran = function (figure) {
+    if (figure.querySelector(".bouton-pleinecran") == null) {
+        var bouton = document.createElement("button");
+        bouton.classList.add("bouton-pleinecran");
+        bouton.innerHTML = "Plein écran";
+        figure.appendChild(bouton);
+    }
 }
 var addQuadrillage = function (figure) {
     // On ajoute un quadrillage
@@ -124,7 +138,7 @@ var addQuadrillage = function (figure) {
     var nblignes = Math.floor(height / 10);
     var nbcolonnes = Math.floor(width / 10);
     // On ajoute les lignes verticales
-    for (i = 0; i < nbcolonnes+1; i++) {
+    for (i = 0; i < nbcolonnes + 1; i++) {
         var ligne = document.createElementNS("http://www.w3.org/2000/svg", "line");
         ligne.setAttribute("x1", xmin + i * 10);
         ligne.setAttribute("y1", ymin);
@@ -135,7 +149,7 @@ var addQuadrillage = function (figure) {
         quadrillage.appendChild(ligne);
     }
     // On ajoute les lignes horizontales
-    for (var i = 0; i < nblignes+1; i++) {
+    for (var i = 0; i < nblignes + 1; i++) {
         var ligne = document.createElementNS("http://www.w3.org/2000/svg", "line");
         ligne.setAttribute("x1", xmin);
         ligne.setAttribute("y1", ymin + i * 10);
@@ -528,7 +542,7 @@ var constructPolygone = function (polygone) {
     var d = "M" + points.join(" L") + " Z";
     path.setAttribute("d", d);
     setStroke(polygone, path);
-    path.setAttribute("style",polygone.getAttribute("style"));
+    path.setAttribute("style", polygone.getAttribute("style"));
     polygone.appendChild(path);
 }
 var initialiserPolygone = function (polygone) {
@@ -846,7 +860,6 @@ var controlerCoordonneesPoint = function (point, figure) {
                 point.setAttribute("data", (alpha / Math.PI * 180).toString() + " " + k.toString());
                 x = N.x;
                 y = N.y;
-                if (isNaN(N.x)) { console.log("N.x", N.x, "N.y", N.y); }
             }
         } else if (point.getAttribute("linkto").split(" ").length == 3) {
             // Les points sont A, P, Q tels que AQ=AP
@@ -918,6 +931,13 @@ var draggablesAuPremierPlan = function (figure) {
         svg.appendChild(draggable[i]);
     }
 }
+export var addListenerInteractivite = function (figure) {
+    addListenerButtonQuadrillage(figure);
+    addListenerButtonPleinEcran(figure);
+    figure.addEventListener("mouseenter", function () {
+        interactivity(this);
+    });
+}
 
 // Créer les figures
 export var createFigures = function () {
@@ -928,9 +948,7 @@ export var createFigures = function () {
             initialiserFigure(figures[i]);
             actualiserPointsFigure(figures[i]);
             draggablesAuPremierPlan(figures[i]);
-            figures[i].addEventListener("mouseenter", function () {
-                interactivity(this);
-            });
+            addListenerInteractivite(figures[i]);
         }
     }
 }

@@ -1,8 +1,6 @@
 <html>
     <body>
-    <svg id="figure1" xmlns="http://www.w3.org/2000/svg" width="200" height="200"
-            preserveAspectRatio="xMinYMin meet" viewBox="0 0 200 200"
-            style="display:block;margin:auto;width:100%;max-width:400;height:auto;">
+    <svg id="figure1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
             <!-- Début de la figure -->
             <g name="A" class="point labeled draggable" x="30" y="120"></g>
             <g name="B" class="point labeled draggable" x="110" y="60"></g>
@@ -18,9 +16,7 @@
             
             <!-- Fin de la figure -->
     </svg>
-    <svg id="figure2" xmlns="http://www.w3.org/2000/svg" width="200" height="200"
-            preserveAspectRatio="xMinYMin meet" viewBox="0 0 200 200"
-            style="display:block;margin:auto;width:100%;max-width:400;height:auto;">
+    <svg id="figure2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
             <!-- Début de la figure -->
             <g name="A" class="point labeled draggable" x="30" y="120"></g>
             <g name="B" class="point labeled draggable" x="110" y="60"></g>
@@ -36,9 +32,7 @@
 
             <!-- Fin de la figure -->
     </svg>
-    <svg id="figure3" xmlns="http://www.w3.org/2000/svg" width="200" height="200"
-            preserveAspectRatio="xMinYMin meet" viewBox="0 0 200 200"
-            style="display:block;margin:auto;width:100%;max-width:400;height:auto;">
+    <svg id="figure3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
             <!-- Début de la figure -->
             <g name="A" class="point labeled draggable" x="30" y="120"></g>
             <g name="B" class="point labeled draggable" x="110" y="60"></g>
@@ -54,9 +48,7 @@
 
             <!-- Fin de la figure -->
     </svg>
-    <svg id="figure4" xmlns="http://www.w3.org/2000/svg" width="200" height="200"
-            preserveAspectRatio="xMinYMin meet" viewBox="0 0 200 200"
-            style="display:block;margin:auto;width:100%;max-width:400;height:auto;">
+    <svg id="figure4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
             <!-- Début de la figure -->
             <g name="A" class="point labeled draggable" x="30" y="120"></g>
             <g name="B" class="point labeled draggable" x="110" y="60"></g>

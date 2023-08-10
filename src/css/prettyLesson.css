@@ -116,11 +116,6 @@ summary {
   background-color: transparent;
 }
 
-
-svg.fullscreen {
-  background-color: white;
-}
-
 /* Pour la balise avec l'identifiant svgContainer mettre au moment du fullscreen un background blanc */
 #svgContainer svg.fullscreen {
   background-color: white;
@@ -131,7 +126,7 @@ svg.fullscreen {
   justify-content: center;
 }
 #svgContainer.fullscreen {
-  /*Lorsque la div est en plein écran elle doit s'adapter à la largeur et la hauteur pour prendr ele plus d'espace possible*/
+  /*Lorsque la div est en plein écran elle doit s'adapter à la largeur et la hauteur pour prendr le plus d'espace possible*/
   width: 100vw;
   height: 100vh;
 }

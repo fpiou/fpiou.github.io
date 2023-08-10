@@ -154,6 +154,8 @@ var insererFigures = function () {
                 }
             })
             createFigures();
+            // Envoyer un message pour indiquer aux autres programmes (quiz) que les figures ont été créées
+            window.parent.postMessage("figures_created", "*");
         });
     }
 }
