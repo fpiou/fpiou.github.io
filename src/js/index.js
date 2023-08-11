@@ -43,6 +43,15 @@ var insererEntetesBlocsLesson = function () {
         </span>${remarque.innerHTML}`;
     });
 
+    // Méthodes
+    const methodes = document.querySelectorAll('.methode');
+    methodes.forEach((methode, index) => {
+        methode.innerHTML = `
+        <span id="methode${index + 1}" class="header header-methode">
+            Méthode ${index + 1}.
+        </span>${methode.innerHTML}`;
+    });
+
     // Démonstrations
     const demonstrations = document.querySelectorAll('.demonstration');
     demonstrations.forEach((demo, i) => {
@@ -122,41 +131,83 @@ var masquerSolutionsExercices = function () {
         wrapElementsInReveal(solution);
     });
 }
-var insererFigures = function () {
-    // Tester si le document contient des éléments de la class figure
-    if (document.querySelector(".figure") != null) {
-        // Recupérer le nom du fichier
-        var filename = window.location.pathname.split("/").pop();
-        // Modifier son extension en svg
-        filename = filename.replace(/\.[^/.]+$/, ".svg");
-        // Charger le fichier svg et le script d'interactivité si nécessaire
-        d3.text(filename).then(function (svgData) {
+var includeSVGinFigure_old = function (svgData) {
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(svgData, "image/svg+xml");
+    // Rechercher dans le document toutes les balises de class figure
+    var figures = document.querySelectorAll(".figure");
+    // Pour chaque figure, on récupère son id et on va chercher la figure dans doc
+    figures.forEach(function (figure) {
+        var id = figure.id;
+        var svg = doc.getElementById(id);
+        // On essaie de voir s'il a trouvé la figure. Si oui, on l'ajoute dans la div de class figure, sinon on affiche un message d'erreur
+        // Si la figure est déjà présente dans le document, on ne fait rien
+        if (figure.querySelector("svg") == null) {
+            if (svg == null) {
+                // On affiche en bleu le message d'erreur
+                figure.style.color = "blue";
+                // Le message est barré
+                figure.style.textDecoration = "line-through";
+                figure.innerHTML = "<i>Erreur : La figure " + id + " n'a pas été trouvée</i>";
+            } else {
+                figure.appendChild(svg);
+            }
+        }
+    })
+}
+var includeSVGinFigure = function () {
+    // Récupérer le nom du fichier
+    var filename = window.location.pathname.split("/").pop();
+    // Modifier son extension en svg
+    filename = filename.replace(/\.[^/.]+$/, ".svg");
+
+    // Utiliser fetch pour obtenir le contenu du fichier SVG
+    fetch(filename)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Fichier non trouvé');
+            }
+            // Envoi d'un message à window que les svg ont été inclus
+            window.parent.postMessage("svg_included", "*");
+            return response.text();
+        })
+        .then(svgData => {
             var parser = new DOMParser();
             var doc = parser.parseFromString(svgData, "image/svg+xml");
-            // Rechercher dans le document toutes les balises de class figure
             var figures = document.querySelectorAll(".figure");
-            // Pour chaque figure, on récupère son id et on va chercher la figure dans doc
             figures.forEach(function (figure) {
                 var id = figure.id;
                 var svg = doc.getElementById(id);
-                // On essaie de voir s'il a trouvé la figure. Si oui, on l'ajoute dans la div de class figure, sinon on affiche un message d'erreur
-                // Si la figure est déjà présente dans le document, on ne fait rien
                 if (figure.querySelector("svg") == null) {
                     if (svg == null) {
-                        // On affiche en bleu le message d'erreur
                         figure.style.color = "blue";
-                        // Le message est barré
                         figure.style.textDecoration = "line-through";
                         figure.innerHTML = "<i>Erreur : La figure " + id + " n'a pas été trouvée</i>";
                     } else {
                         figure.appendChild(svg);
                     }
                 }
-            })
-            createFigures();
-            // Envoyer un message pour indiquer aux autres programmes (quiz) que les figures ont été créées
-            window.parent.postMessage("figures_created", "*");
+            });
+            // Envoi d'un message à window que les svg ont été inclus
+            window.parent.postMessage("svg_included", "*");
+        })
+        .catch(error => {
+            //console.error("Erreur lors de la récupération du fichier SVG:", error);
+            // Envoi d'un message à window que les svg ont été inclus
+            window.parent.postMessage("svg_included", "*");
         });
+}
+var insererFigures = function () {
+    if (document.querySelector(".figure") != null) {
+        includeSVGinFigure();
+        // Attendre que les figures soient incluses pour créer les figures interactives
+        window.addEventListener("message", function (event) {
+            if (event.data == "svg_included") {
+                createFigures();
+            }
+        });
+    } else {
+        window.parent.postMessage("figures_created", "*");
     }
 }
 var convertirKatexEnMathML = function () {

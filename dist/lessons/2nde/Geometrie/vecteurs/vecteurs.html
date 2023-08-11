@@ -48,7 +48,8 @@
 
 <body>
     <main>
-        <h1>Manipuler les vecteurs</h1>
+        
+<h1>Manipuler les vecteurs</h1>
 <details>
     <summary>Sommaire</summary>
     <nav id="tableOfContents">
@@ -56,15 +57,16 @@
 </details>
 <h2>Translation de vecteur $\overrightarrow{AB}$</h2>
 <div class="definition">
-    <p>Soit $A$ et $B$ deux points du plan.</p>
-    <p>On appelle translation qui transforme $A$ en $B$ la translation qui à tout point $M$ du plan associe le point
-        $M'$ tel que les segments $[AM']$ et $[BM]$ ont le même milieu.</p>
+    <p>Soit $A$ et $B$ deux points du plan. On appelle <span class="important">translation qui transforme $A$ en
+            $B$</span> la translation qui à tout point $M$ du plan associe le point $M'$ tel que les segments
+        $[AM']$ et $[BM]$ ont le même milieu.</p>
     <div id="figure1" class="figure" height="auto"></div>
 </div>
 <div class="propriete">
     <p>Considérons la translation qui transforme $A$ en $B$ et $M$ en $M'$.</p>
     <ul>
-        <li>Si $A$ et $B$ sont confondus, alors la translation qui transforme $A$ en $B$ est la translation qui laisse
+        <li>Si $A$ et $B$ sont confondus, alors la translation qui transforme $A$ en $B$ est la translation qui
+            laisse
             tous les points du plan fixes.</li>
         <li>Si $A$, $B$ et $M$ sont non alignés, alors $AMM'B$ est un parallélogramme.</li>
         <div id="figure2" class="figure"></div>
@@ -77,93 +79,220 @@
         Lorsque $A$ et $B$ sont distincts, le vecteur $\overrightarrow{AB}$ est caractérisé par :<br>
     <ul>
         <li><span class="important">sa direction</span> : celle de la droite $(AB)$ ;</li>
-        <div id="figure4" class="figure"></div>
         <li><span class="important">son sens</span> : de $A$ vers $B$ ;</li>
         <li><span class="important">sa longueur</span> : la longueur $AB.$</li>
-        <div id="figure5" class="figure"></div>
+        <div id="figure4" class="figure"></div>
     </ul>
     </p>
 </div>
-<div class="remarque">
+<div class="definition">
     <p>La longueur du vecteur $\overrightarrow{AB}$ est appelée <span class="important">norme du vecteur
             $\overrightarrow{AB}$</span> et est notée $||\overrightarrow{AB}||.$</p>
     $$||\overrightarrow{AB}||=AB$$
 </div>
-<!--
-        En HTML, Pour mettre un E accent aigu majuscule : &Eacute;
-        Sinon le raccouci clavier sous windows est Alt + 0201
-    -->
+<h2>Vecteur nul</h2>
+<div class="remarque">
+    <p>Soit $A$ un point du plan. La translation de vecteur $\overrightarrow{AA}$ laisse invariant tous les
+        points du plan. Le vecteur $\overrightarrow{AA}$ ne possède donc ni direction, ni sens et sa longueur
+        est nulle. Il ne peut donc pas se représenter par une flèche comme les autres vecteurs.</p>
+</div>
+<div class="definition">
+    <p> On appelle <span class="important">vecteur nul</span> et on note <span
+            class="important">$\overrightarrow{0}$</span> le vecteur de la translation qui laisse invariant tous
+        les points du plan. On a donc $||\overrightarrow{0}||=0.$</p>
+</div>
+<div class="propriete">
+    <p>Soient $A$ et $B$ deux points du plan.</p>
+    <p><span class="important">Propriété : </span>Si $A$ et $B$ sont confondus, alors
+        ${\overrightarrow{AB}=\overrightarrow{0}.}$
+        $$A=B \quad{\color{red}\Longrightarrow}\quad \overrightarrow{AB}=\overrightarrow{0}$$
+    </p>
+    <p><span class="important">Réciproque : </span>Si ${\overrightarrow{AB}=\overrightarrow{0},}$ alors $A$ et
+        $B$ sont confondus.</p>
+    $$\overrightarrow{AB}=\overrightarrow{0} \quad{\color{red}\Longrightarrow}\quad A=B$$
+    <p><span class="important">Théorème : </span>$A$ et $B$ sont confondus si et seulement si
+        ${\overrightarrow{AB}=\overrightarrow{0}.}$</p>
+    $$A=B \quad{\color{red}\Longleftrightarrow}\quad \overrightarrow{AB}=\overrightarrow{0}$$
+</div>
+<h2>Opposé d'un vecteur</h2>
+<div class="remarque">
+    <p>$\overrightarrow{AB}$ et $\overrightarrow{BA}$ sont deux vecteurs de même direction et de même longueur
+        mais de sens opposé.</p>
+    <p>La translation de vecteur $\overrightarrow{AB}$ suivie de la translation de vecteur $\overrightarrow{BA}$
+        laisse invariant tous les points du plan.</p>
+</div>
+<div class="definition">
+    <p>Soient $A$ et $B$ deux points du plan. On appelle <span class="important">opposé du vecteur
+            $\overrightarrow{AB}$</span> et on note <span class="important">$-\overrightarrow{AB}$</span> le
+        vecteur de la translation qui transforme $B$ en $A$.</p>
+</div>
+<div class="propriete">
+    <p>Soient $A$ et $B$ deux points du plan. On a :</p>
+    <ul
+        style="display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-around; list-style-type:none;">
+        <li>${\overrightarrow{BA}=-\overrightarrow{AB}~;}$</li>
+        <li>${\overrightarrow{AB}+\overrightarrow{BA}=\overrightarrow{0}~;}$</li>
+        <li>${||\overrightarrow{BA}||=||\overrightarrow{AB}||.}$</li>
+    </ul>
+</div>
 <h2>Égalité de deux vecteurs</h2>
-<!-- Utiliser la translation pour définir l'égalité -->
+<div class="remarque">
+    <p>Si $ABCD$ est un parallélogramme, alors la translation de vecteur $\overrightarrow{AB}$ transforme $D$ en
+        $C$ et la translation de vecteur $\overrightarrow{DC}$ transforme $A$ en $B$. C'est deux transformations
+        sont donc identiques.</p>
+    <p><span class="important">Important ! </span>On dit que deux droites ont la même direction si elles sont
+        parallèles.</p>
+    <p>Dans ce cas, ces deux vecteurs ont la même direction (autrement dit les droites qui les supportent sont
+        parallèles), le même sens et la même norme.</p>
+</div>
 <div class="definition">
     <p>$A$, $B$, $C$ et $D$ sont quatre points du plan.</p>
-    <p>Les vecteurs <span class="important">$\overrightarrow{AB}$ et $\overrightarrow{DC}$ sont égaux</span> signifie :
-    </p>
-    <ul>
-        <li>que la translation de vecteur $\overrightarrow{AB}$ transforme $D$ en $C$ ;</li>
-        $$\overrightarrow{AB}=\overrightarrow{DC} \quad{\color{red}\Longleftrightarrow}\quad
-        D~\overset{\overrightarrow{AB}}{\xrightarrow{\hspace{1cm}}}~C$$
-        <li> ou que la translation de vecteur $\overrightarrow{DC}$ transforme $A$ en $B$.</li>
-        $$\overrightarrow{AB}=\overrightarrow{DC} \quad{\color{red}\Longleftrightarrow}\quad
-        A~\overset{\overrightarrow{DC}}{\xrightarrow{\hspace{1cm}}}~B$$
-    </ul>
-    <div id="figure6" class="figure"></div>
+    <p>On dit que les vecteurs $\overrightarrow{AB}$ et $\overrightarrow{DC}$ sont <span
+            class="important">égaux</span> et on note ${\overrightarrow{AB}=\overrightarrow{DC}}$, s'ils ont la
+        même direction, le même sens et la même norme.</p>
 </div>
 <div class="propriete">
     <div id="figure7" class="figure"></div>
-    <p><span class="Propriete">Propriété</span> : Si $\overrightarrow{AB}=\overrightarrow{DC}$, alors les segments
+    <p><span class="important">Propriété</span> : Si $\overrightarrow{AB}=\overrightarrow{DC}$, alors les
+        segments
         $[AC]$ et $[BD]$ ont le même milieu.</p>
     $$\overrightarrow{AB}=\overrightarrow{DC} \quad{\color{red}\Longrightarrow}\quad mil(A,C)=mil(B,D)$$
-    <p><span class="Reciproque">Réciproque</span> : Si les segments $[AC]$ et $[BD]$ ont le même milieu, alors
+    <p><span class="important">Réciproque</span> : Si les segments $[AC]$ et $[BD]$ ont le même milieu,
+        alors
         $\overrightarrow{AB}=\overrightarrow{DC}$.</p>
     $$mil(A,C)=mil(B,D) \quad{\color{red}\Longrightarrow}\quad \overrightarrow{AB}=\overrightarrow{DC}$$
-    <p><span class="Theoreme">Théorème</span> : $\overrightarrow{AB}=\overrightarrow{DC}$ si et seulement si les
+    <p><span class="important">Théorème</span> : $\overrightarrow{AB}=\overrightarrow{DC}$ si et seulement si
+        les
         segments $[AC]$ et $[BD]$ ont le même milieu.</p>
     $$\overrightarrow{AB}=\overrightarrow{DC} \quad{\color{red}\Longleftrightarrow}\quad mil(A,C)=mil(B,D)$$
 </div>
 <div class="propriete">
     <div id="figure8" class="figure"></div>
-    <p><span class="Propriete">Propriété</span> : Si $\overrightarrow{AB}=\overrightarrow{DC}$, alors le quadrilatère
+    <p><span class="important">Propriété</span> : Si $\overrightarrow{AB}=\overrightarrow{DC}$, alors le
+        quadrilatère
         $ABCD$ est un parallélogramme.</p>
-    $$\overrightarrow{AB}=\overrightarrow{DC} \quad{\color{red}\Longrightarrow}\quad ABCD ~\text{parallélogramme}$$
-    <p><span class="Reciproque">Réciproque</span> : Si le quadrilatère $ABCD$ est un parallélogramme, alors
+    $$\overrightarrow{AB}=\overrightarrow{DC} \quad{\color{red}\Longrightarrow}\quad ABCD
+    ~\text{parallélogramme}$$
+    <p><span class="important">Réciproque</span> : Si le quadrilatère $ABCD$ est un parallélogramme, alors
         $\overrightarrow{AB}=\overrightarrow{DC}$.</p>
-    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longrightarrow}\quad \overrightarrow{AB}=\overrightarrow{DC}$$
-    <p><span class="Theoreme">Théorème</span> : $\overrightarrow{AB}=\overrightarrow{DC}$ si et seulement si le
+    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longrightarrow}\quad
+    \overrightarrow{AB}=\overrightarrow{DC}$$
+    <p><span class="important">Théorème</span> : $\overrightarrow{AB}=\overrightarrow{DC}$ si et seulement si
+        le
         quadrilatère $ABCD$ est un parallélogramme.</p>
-    $$\overrightarrow{AB}=\overrightarrow{DC} \quad{\color{red}\Longleftrightarrow}\quad ABCD ~\text{parallélogramme}$$
+    $$\overrightarrow{AB}=\overrightarrow{DC} \quad{\color{red}\Longleftrightarrow}\quad ABCD
+    ~\text{parallélogramme}$$
 </div>
 <div class="propriete">
-    <p><span class="Propriete">Propriété</span> : Si $\overrightarrow{AB}=\overrightarrow{DC}$, alors les vecteurs
+    <p><span class="important">Propriété</span> : Si $\overrightarrow{AB}=\overrightarrow{DC}$, alors les
+        vecteurs
         $\overrightarrow{AB}$ et $\overrightarrow{DC}$ ont :</p>
     <ul>
         <li>la même direction ;</li>
-        $$\overrightarrow{AB}=\overrightarrow{DC} \quad{\color{red}\Longrightarrow}\quad (AB)\backslash\backslash(DC)$$
+        $$\overrightarrow{AB}=\overrightarrow{DC} \quad{\color{red}\Longrightarrow}\quad
+        (AB)//(DC)$$
         <li>le même sens ;</li>
-        $$\overrightarrow{AB}=\overrightarrow{DC} \quad{\color{red}\Longrightarrow}\quad A~\xrightarrow{\hspace{1cm}}~B
+        $$\overrightarrow{AB}=\overrightarrow{DC} \quad{\color{red}\Longrightarrow}\quad
+        A~\xrightarrow{\hspace{1cm}}~B
         \quad \text{ et } \quad D~\xrightarrow{\hspace{1cm}}~C$$
-        <li>la même longueur.</li>
-        $$\overrightarrow{AB}=\overrightarrow{DC} \quad{\color{red}\Longrightarrow}\quad AB=DC \quad \text{ (ou }
-        ||\overrightarrow{AB}||=||\overrightarrow{DC}||\text{)}$$
+        <li>la même norme.</li>
+        $$\overrightarrow{AB}=\overrightarrow{DC} \quad{\color{red}\Longrightarrow}\quad ||\overrightarrow{AB}||=||\overrightarrow{DC}||$$
     </ul>
-    <span class="Reciproque">Réciproque</span> : Si les vecteurs $\overrightarrow{AB}$ et $\overrightarrow{DC}$ ont la
-    même direction, le même sens et la même longueur, alors $\overrightarrow{AB}=\overrightarrow{DC}$.</p>
-    <p><span class="Theoreme">Théorème</span> : $\overrightarrow{AB}=\overrightarrow{DC}$ si et seulement si les
-        vecteurs $\overrightarrow{AB}$ et $\overrightarrow{DC}$ ont la même direction, le même sens et la même longueur.
+    <span class="important">Réciproque</span> : Si les vecteurs $\overrightarrow{AB}$ et
+    $\overrightarrow{DC}$ ont la
+    même direction, le même sens et la même norme, alors ${\overrightarrow{AB}=\overrightarrow{DC}.}$</p>
+    <p><span class="important">Théorème</span> : $\overrightarrow{AB}=\overrightarrow{DC}$ si et seulement si
+        les
+        vecteurs $\overrightarrow{AB}$ et $\overrightarrow{DC}$ ont la même direction, le même sens et la
+        même norme.
     </p>
 </div>
 <div class="propriete">
     Soit $A$ et $B$ deux points distincts.<br>
     <div id="figure9" class="figure"></div>
-    <p><span class="Propriete">Propriété</span> : Si $I$ est le milieu du segment $[AB]$, alors
+    <p><span class="important">Propriété</span> : Si $I$ est le milieu du segment $[AB]$, alors
         $\overrightarrow{AI}=\overrightarrow{IB}$.</p>
     $$I=mil(A,B) \quad{\color{red}\Longrightarrow}\quad \overrightarrow{AI}=\overrightarrow{IB}$$
-    <p><span class="Reciproque">Réciproque</span> : Si $\overrightarrow{AI}=\overrightarrow{IB}$, alors $I$ est le
+    <p><span class="important">Réciproque</span> : Si $\overrightarrow{AI}=\overrightarrow{IB}$, alors $I$
+        est le
         milieu du segment $[AB]$.</p>
     $$\overrightarrow{AI}=\overrightarrow{IB} \quad{\color{red}\Longrightarrow}\quad I=mil(A,B)$$
-    <p><span class="Theoreme">Théorème</span> : $I$ est le milieu du segment $[AB]$ si et seulement si
+    <p><span class="important">Théorème</span> : $I$ est le milieu du segment $[AB]$ si et seulement si
         $\overrightarrow{AI}=\overrightarrow{IB}$.</p>
     $$I=mil(A,B) \quad{\color{red}\Longleftrightarrow}\quad \overrightarrow{AI}=\overrightarrow{IB}$$
+</div>
+<h2>Vecteur représentant</h2>
+<div class="definition">
+    <p>Soient $A$ et $B$ deux points du plan. Notons $\overrightarrow{u}$ le vecteur de la translation qui transforme $A$ en $B.$ Alors on dit que $\overrightarrow{AB}$ est le <span class="important">vecteur réprésentant d'origine $A$ du vecteur $\overrightarrow{u}.$</span></p>
+</div>
+<div class="propriete">
+    <p>Soient $A$ et $B$ deux points du plan et $\overrightarrow{u}$ un vecteur. On a :</p>
+    <p><span class="important">Propriété :</span> Si $\overrightarrow{AB}$ est le représentant d'origine $A$ du vecteur $\overrightarrow{u}$, alors $\overrightarrow{AB}=\overrightarrow{u}$.</p>
+    <p><span class="important">Réciproque :</span> Si $\overrightarrow{AB}=\overrightarrow{u}$, alors $\overrightarrow{AB}$ est le représentant d'origine $A$ du vecteur $\overrightarrow{u}$.</p>
+    <p><span class="important">Théorème :</span> $\overrightarrow{AB}$ est le représentant d'origine $A$ du vecteur $\overrightarrow{u}$ si et seulement si $\overrightarrow{AB}=\overrightarrow{u}$.</p>
+</div>
+<div class="propriete">
+    <p>Soient $A$ et $B$ deux points du plan et $\overrightarrow{u}$ un vecteur.Si $\overrightarrow{AB}$ est le représentant d'origine $A$ du vecteur $\overrightarrow{u}$, alors $\overrightarrow{BA}$ est le représentant d'origine $B$ du vecteur $-\overrightarrow{u}$.</p>
+</div>
+<div class="methode">
+    <p>Pour <span class="important">construire l'image $M$ d'un point $A$ par une translation de vecteur non nul $\overrightarrow{u},$</span> il suffit de construire le représentant d'origine $A$ du vecteur $\overrightarrow{u}$. Le point $M$ est alors l'extrémité de ce représentant.</p>
+</div>
+<h2>Somme de deux vecteurs</h2>
+<div class="definition">
+    <p>Soient $\overrightarrow{u}$ et $\overrightarrow{v}$ deux vecteurs. On appelle <span class="important">somme des vecteurs $\overrightarrow{u}$ et $\overrightarrow{v}$</span> et on note <span class="important">$\overrightarrow{u}+\overrightarrow{v}$</span> le vecteur de l'enchaînement des translations de vecteurs $\overrightarrow{u}$ et $\overrightarrow{v}$.</p>
+</div>
+<div class="propriete">
+    <p>Pour tous points $A$, $B$ et $C$ du plan :
+    $$\overrightarrow{AB}+\overrightarrow{BC}=\overrightarrow{AC}$$</p>
+    <p>Cette égalité est appelée la <span class="important">relation de Chasles</span>.</p>
+</div>
+<div class="demonstration">
+    <p>La translation qui transforme un point $A$ en un point $B$ suivie de la translation qui transforme ce point $B$ en un point $C$ est équivalente à la translation qui transforme $A$ en $C$.</p>
+</div>
+<div class="propriete">
+    <p>Soient $A$, $B$, $C$ et $M$ quatre points du plan. On a :</p>
+    <p><span class="important">Propriété :</span> Si $ABMC$ est un parallélogramme, alors ${\overrightarrow{AM}=\overrightarrow{AB}+\overrightarrow{AC}.}$</p>
+    $$ABMC ~\text{parallélogramme} \quad{\color{red}\Longrightarrow}\quad \overrightarrow{AM}=\overrightarrow{AB}+\overrightarrow{AC}$$
+    <p><span class="important">Réciproque :</span> Si $\overrightarrow{AM}=\overrightarrow{AB}+\overrightarrow{AC}$, alors $ABMC$ est un parallélogramme.</p>
+    $$\overrightarrow{AM}=\overrightarrow{AB}+\overrightarrow{AC} \quad{\color{red}\Longrightarrow}\quad ABMC ~\text{parallélogramme}$$
+    <p><span class="important">Théorème :</span> $ABMC$ est un parallélogramme si et seulement si $\overrightarrow{AM}=\overrightarrow{AB}+\overrightarrow{AC}$.</p>
+    $$ABMC ~\text{parallélogramme} \quad{\color{red}\Longleftrightarrow}\quad \overrightarrow{AM}=\overrightarrow{AB}+\overrightarrow{AC}$$
+</div>
+<div class="demonstration">
+    <p><span class="important">Propriété :</span> Supposons que $ABMC$ est un parallélogramme. Donc $$\overrightarrow{BM}= \overrightarrow{AC}.$$ Or d'après la relation de Chasles $${\overrightarrow{AM}=\overrightarrow{AB}+\overrightarrow{BM}.}$$ Donc $${\overrightarrow{AM}=\overrightarrow{AB}+\overrightarrow{AC}.}$$</p>
+    <p><span class="important">Réciproque :</span> Supposons que $${\overrightarrow{AM}=\overrightarrow{AB}+\overrightarrow{AC}.}$$ Or d'après la relation de Chasles, $${\overrightarrow{AM}=\overrightarrow{AB}+\overrightarrow{BM}.}$$ D'où $${\overrightarrow{AB}+\overrightarrow{BM}=\overrightarrow{AB}+\overrightarrow{AC}.}$$ Donc $${\overrightarrow{BM}=\overrightarrow{AC}.}$$ Ce qui suffit à conclure que $ABMC$ est un parallélogramme.</p>
+    <p><span class="important">Théorème :</span> Le théorème est la conséquence directe des deux propriétés précédentes.</p>
+</div>
+<div class="propriete">
+    <p>Soient $\overrightarrow{u}$, $\overrightarrow{v}$ et $\overrightarrow{w}$ trois vecteurs. On a :</p>
+    <ul>
+        <li>${\overrightarrow{u}+\overrightarrow{0}=\overrightarrow{u}}$ ;</li>
+        <li>$\overrightarrow{u}+(-\overrightarrow{u})=\overrightarrow{0}.$</li>
+        <li>${\overrightarrow{u}+\overrightarrow{v}=\overrightarrow{v}+\overrightarrow{u}}$ ;</li>
+        <li>${(\overrightarrow{u}+\overrightarrow{v})+\overrightarrow{w}=\overrightarrow{u}+(\overrightarrow{v}+\overrightarrow{w})}= \overrightarrow{u}+\overrightarrow{v}+\overrightarrow{w}.$</li>
+    </ul>
+</div>
+<div class="definition">
+    <p>Soient $\overrightarrow{u}$ et $\overrightarrow{v}$ deux vecteurs. On appelle <span class="important">différence des vecteurs $\overrightarrow{u}$ et $\overrightarrow{v}$</span> et on note <span class="important">$\overrightarrow{u}-\overrightarrow{v}$</span> le vecteur $\overrightarrow{u}+(-\overrightarrow{v}).$</p>
+</div>
+<h2>Produit d'un vecteur par un nombre réel</h2>
+<div class="definition">
+    <p>Soient $\overrightarrow{u}$ un vecteur et $k$ un nombre réel. On appelle <span class="important">produit du vecteur $\overrightarrow{u}$ par le nombre réel $k$</span> et on note <span class="important">$k\overrightarrow{u}$</span> le vecteur suivant si $k\neq 0$ et si $\overrightarrow{u}\neq \overrightarrow{0}$ :</p>
+    <ul>
+        <li>de même direction que $\overrightarrow{u}$ ;</li>
+        <li>de même sens que $\overrightarrow{u}$ si $k > 0$ ;</li>
+        <li>de sens opposé à celui de $\overrightarrow{u}$ si $k<0$ ;</li>
+        <li>de norme $|k|\times||\overrightarrow{u}||$.</li>
+    </ul>
+    <p>Si $k=0$ ou si $\overrightarrow{u}=\overrightarrow{0}$, alors $k\overrightarrow{u}=\overrightarrow{0}.$</p>
+</div>
+<div class="propriete">
+    <p>Soient $\overrightarrow{u}$ et $\overrightarrow{v}$ deux vecteurs et $k$ et $k'$ deux nombres réels. On a :</p>
+    <ul>
+        <li>${(k+k')\overrightarrow{u}=k\overrightarrow{u}+k'\overrightarrow{u}}~;$</li>
+        <li>${k(k'\overrightarrow{u})=(kk')\overrightarrow{u}}~;$</li>
+        <li>${k(\overrightarrow{u}+\overrightarrow{v})=k\overrightarrow{u}+k\overrightarrow{v}}.$</li>
+    </ul>
 </div>
     </main>
     <footer>

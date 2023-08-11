@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vecteurs_04</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+        <link rel="stylesheet" href="../../../../../src/css/prettyExercice.css">
+    
+        <link rel="stylesheet" href="../../../../../src/css/print2colonnes.css">
+    
+        <link rel="stylesheet" href="../../../../../src/css/figures.css">
+    
+
+    <!--Scripts personnalisés-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script><script defer src="../../../../interactivite.bundle.js"></script><script defer src="../../../../quiz.bundle.js"></script><script defer src="../../../../scorm.bundle.js"></script></head>
+
+<body>
+    <header>
+        <h1>Exercices</h1>
+    </header>
+    <main>
+        <div class="exercice">
+    <div class="enonce">
+        <div id="figure1_exercice1" class="figure">
+            <svg id="figure1_exercice1" xmlns="http://www.w3.org/2000/svg" viewBox="10 0 150 80" class="quadrillage">
+                <!-- Début de la figure -->
+                <g name="Au" class="point" x="50" y="20" visibility="hidden"></g>
+                <g name="Bu" class="point" x="20" y="20" visibility="hidden"></g>
+                <g name="u" class="vecteur labeled" linkto="Au Bu" style="stroke:blue;color:blue;font-size:0.8rem;"></g>
+                <g name="Av" class="point" x="70" y="30" visibility="hidden"></g>
+                <g name="Bv" class="point" x="110" y="10" visibility="hidden"></g>
+                <g name="v" class="vecteur labeled" linkto="Av Bv" style="stroke:red;color:red;font-size:0.8rem;"></g>
+                <g name="Aw" class="point" x="20" y="40" visibility="hidden"></g>
+                <g name="Bw" class="point" x="80" y="70" visibility="hidden"></g>
+                <g name="w" class="vecteur labeled" linkto="Aw Bw" style="stroke:green;color:green;font-size:0.8rem;">
+                </g>
+                <g name="Ap" class="point" x="130" y="10" visibility="hidden"></g>
+                <g name="Bp" class="point" x="140" y="30" visibility="hidden"></g>
+                <g name="p" class="vecteur labeled" linkto="Ap Bp" style="stroke:purple;color:purple;font-size:0.8rem;">
+                </g>
+                <g name="At" class="point" x="100" y="70" visibility="hidden"></g>
+                <g name="Bt" class="point" x="100" y="30" visibility="hidden"></g>
+                <g name="t" class="vecteur labeled" linkto="At Bt" style="stroke:orange;color:orange;font-size:0.8rem;">
+                </g>
+                <g name="Ah" class="point" x="130" y="70" visibility="hidden"></g>
+                <g name="Bh" class="point" x="140" y="40" visibility="hidden"></g>
+                <g name="h" class="vecteur labeled" linkto="Ah Bh" style="stroke:brown;color:brown;font-size:0.8rem;">
+                </g>
+                <!-- Fin de la figure -->
+            </svg>
+        </div>
+        <p>Reproduire la figure ci-dessus. Pour chaque énoncé, placer un point A avant de répondre.</p>
+        <ol>
+            <li>
+                <div id="enonce1_exercice1"></div>
+            </li>
+            <div class="solution">
+                <div id="figure1_exercice1_solution1" class="figure">
+                    <svg id="figure1_exercice1_solution1" xmlns="http://www.w3.org/2000/svg" viewBox="-80 -50 160 100"
+                        class="quadrillage">
+                        <!-- Début de la figure -->
+                        <g name="A" class="point labeled" x="0" y="0" style="font-size:0.8rem;"></g>
+                        <g class="label" linkto="A" x="-10" y="-10">A</g>
+                        <g name="M" class="point labeled" x="10" y="10" style="font-size:0.8rem;"></g>
+                        <g class="label" linkto="M">P</g>
+                        <g name="M0" class="point" x="-20" y="-20" visibility="hidden"></g>
+                        <g name="s0" class="vecteur" linkto="A M0" style="stroke:green;color:green;font-size:0.8rem;">
+                        </g>
+                        <g name="s1" class="vecteur" linkto="M0 M" style="stroke:red;color:red;font-size:0.8rem;">
+                        </g>
+                        <!-- Fin de la figure -->
+                    </svg>
+                </div>
+            </div>
+            <li>
+                <div id="enonce2_exercice1"></div>
+            </li>
+            <div class="solution">
+                <div id="figure1_exercice1_solution2" class="figure">
+                    <svg id="figure1_exercice1_solution2" xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 200 200"
+                        class="quadrillage">
+                        <!-- Début de la figure -->
+                        <g name="A" class="point labeled" x="0" y="0" style="font-size:0.8rem;"></g>
+                        <g name="M" class="point labeled" x="10" y="10" style="font-size:0.8rem;"></g>
+                        <g class="label" linkto="M">M</g>
+                        <g name="M0" class="point" x="-20" y="-20" visibility="hidden"></g>
+                        <g name="s0" class="vecteur" linkto="A M0" style="stroke:green;color:green;font-size:0.8rem;">
+                        </g>
+                        <g name="s1" class="vecteur" linkto="M0 M" style="stroke:red;color:red;font-size:0.8rem;">
+                        </g>
+                        <!-- Fin de la figure -->
+                    </svg>
+                </div>
+            </div>
+            <li>
+                <div id="enonce3_exercice1"></div>
+            </li>
+            <div class="solution">
+                <div id="figure1_exercice1_solution3" class="figure">
+                    <svg id="figure1_exercice1_solution3" xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 200 200"
+                        class="quadrillage">
+                        <!-- Début de la figure -->
+                        <g name="A" class="point labeled" x="0" y="0" style="font-size:0.8rem;"></g>
+                        <g name="M" class="point labeled" x="10" y="10" style="font-size:0.8rem;"></g>
+                        <g class="label" linkto="M">N</g>
+                        <g name="M0" class="point" x="-20" y="-20" visibility="hidden"></g>
+                        <g name="s0" class="vecteur" linkto="A M0" style="stroke:green;color:green;font-size:0.8rem;">
+                        </g>
+                        <g name="s1" class="vecteur" linkto="M0 M" style="stroke:red;color:red;font-size:0.8rem;">
+                        </g>
+                        <!-- Fin de la figure -->
+                    </svg>
+                </div>
+            </div>
+        </ol>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var Au = new Point(50, 20);
+        var Bu = new Point(20, 20);
+        var u = new Vecteur(0, 0);
+        u.setCoordonneesVecteur2Points(Au, Bu);
+        var Av = new Point(70, 30);
+        var Bv = new Point(110, 10);
+        var v = new Vecteur(0, 0);
+        v.setCoordonneesVecteur2Points(Av, Bv);
+        var Aw = new Point(20, 40);
+        var Bw = new Point(80, 70);
+        var w = new Vecteur(0, 0);
+        w.setCoordonneesVecteur2Points(Aw, Bw);
+        var Ap = new Point(130, 10);
+        var Bp = new Point(140, 30);
+        var p = new Vecteur(0, 0);
+        p.setCoordonneesVecteur2Points(Ap, Bp);
+        var At = new Point(100, 70);
+        var Bt = new Point(100, 30);
+        var t = new Vecteur(0, 0);
+        t.setCoordonneesVecteur2Points(At, Bt);
+        var Ah = new Point(130, 70);
+        var Bh = new Point(140, 40);
+        var h = new Vecteur(0, 0);
+        h.setCoordonneesVecteur2Points(Ah, Bh);
+        var ku = [u.multiplicationVecteur(4 / 3), u.multiplicationVecteur(-4 / 3), u.multiplicationVecteur(2), u.multiplicationVecteur(-2)];
+        ku.latex = ["\\frac{4}{3}\\overrightarrow{u}", "-\\frac{4}{3}\\overrightarrow{u}", "2\\overrightarrow{u}", "-2\\overrightarrow{u}"];
+        var kv = [v.multiplicationVecteur(1 / 2), v.multiplicationVecteur(-1 / 2), v.multiplicationVecteur(3 / 2), v.multiplicationVecteur(-3 / 2)];
+        kv.latex = ["\\frac{1}{2}\\overrightarrow{v}", "-\\frac{1}{2}\\overrightarrow{v}", "\\frac{3}{2}\\overrightarrow{v}", "-\\frac{3}{2}\\overrightarrow{v}"];
+        var kw = [w.multiplicationVecteur(1 / 3), w.multiplicationVecteur(-1 / 3), w.multiplicationVecteur(2 / 3), w.multiplicationVecteur(-2 / 3)];
+        kw.latex = ["\\frac{1}{3}\\overrightarrow{w}", "-\\frac{1}{3}\\overrightarrow{w}", "\\frac{2}{3}\\overrightarrow{w}", "-\\frac{2}{3}\\overrightarrow{w}"];
+        var kt = [t.multiplicationVecteur(1 / 4), t.multiplicationVecteur(-1 / 4), t.multiplicationVecteur(5 / 4), t.multiplicationVecteur(-5 / 4)];
+        kt.latex = ["\\frac{1}{4}\\overrightarrow{t}", "-\\frac{1}{4}\\overrightarrow{t}", "\\frac{5}{4}\\overrightarrow{t}", "-\\frac{5}{4}\\overrightarrow{t}"];
+        var kp = [p.multiplicationVecteur(1), p.multiplicationVecteur(-1), p.multiplicationVecteur(2), p.multiplicationVecteur(-2)];
+        kp.latex = ["\\overrightarrow{p}", "-\\overrightarrow{p}", "2\\overrightarrow{p}", "-2\\overrightarrow{p}"];
+        var kh = [h.multiplicationVecteur(1), h.multiplicationVecteur(-1), h.multiplicationVecteur(2), h.multiplicationVecteur(-2)];
+        kh.latex = ["\\overrightarrow{h}", "-\\overrightarrow{h}", "2\\overrightarrow{h}", "-2\\overrightarrow{h}"];
+        var enonce1 = `Placer le point $P$ tel que $$ {AP=${kp.latex[0]}+${kh.latex[0]}.}$$`;
+        var enonce1_html = document.getElementById("enonce1_exercice1");
+        enonce1_html.innerHTML = enonce1;
+        var s1 = kp[0].additionVecteur(kh[0])
+        var A1 = new Point(0, 0);
+        var M1 = new Point(s1.x, s1.y);
+        M1.svg = document.getElementById("figure1_exercice1_solution1").querySelector("g[name='M']");
+        M1.svg.setAttribute("x", M1.x);
+        M1.svg.setAttribute("y", M1.y);
+        var M01 = new Point(kp[0].x, kp[0].y);
+        M01.svg = document.getElementById("figure1_exercice1_solution1").querySelector("g[name='M0']");
+        M01.svg.setAttribute("x", M01.x);
+        M01.svg.setAttribute("y", M01.y);
+        // Mettre la couleur des vecteurs s0 et s1 de la figure de la même couleur que les termes de la somme
+        var s01 = document.getElementById("figure1_exercice1_solution1").querySelector("g[name='s0']");
+        s01.style.stroke = "purple";
+        s01.style.color = "purple";
+        var s11 = document.getElementById("figure1_exercice1_solution1").querySelector("g[name='s1']");
+        s11.style.stroke = "brown";
+        s11.style.color = "brown";
+        // Calculer les dimensions de la figure à partir des points A, M0 et M
+        var ymin1 = Math.min(A1.y, M01.y, M1.y);
+        var ymax1 = Math.max(A1.y, M01.y, M1.y);
+        var height1 = ymax1 - ymin1;
+        // Remplacer la viewBox par les nouvelles dimensions en conservant la largeur
+        var svg1 = document.querySelector("#figure1_exercice1_solution1 svg");
+        svg1.getAttribute("viewBox");
+        var width1 = svg1.viewBox.baseVal.width;
+        var xmin1 = svg1.viewBox.baseVal.x;
+        svg1.setAttribute("viewBox", `${xmin1} ${ymin1 - 20} ${width1} ${height1 + 40}`);
+
+        var enonce2 = `Placer le point $M$ tel que $$ {AM=${kv.latex[0]}+${ku.latex[0]}.}$$`;
+        var enonce2_html = document.getElementById("enonce2_exercice1");
+        enonce2_html.innerHTML = enonce2;
+        var s2 = kv[0].additionVecteur(ku[0])
+        var A2 = new Point(0, 0);
+        var M2 = new Point(s2.x, s2.y);
+        M2.svg = document.getElementById("figure1_exercice1_solution2").querySelector("g[name='M']");
+        M2.svg.setAttribute("x", M2.x);
+        M2.svg.setAttribute("y", M2.y);
+        var M02 = new Point(kv[0].x, kv[0].y);
+        M02.svg = document.getElementById("figure1_exercice1_solution2").querySelector("g[name='M0']");
+        M02.svg.setAttribute("x", M02.x);
+        M02.svg.setAttribute("y", M02.y);
+        // Mettre la couleur des vecteurs s0 et s1 de la figure de la même couleur que les termes de la somme
+        var s02 = document.getElementById("figure1_exercice1_solution2").querySelector("g[name='s0']");
+        s02.style.stroke = "red";
+        s02.style.color = "red";
+        var s12 = document.getElementById("figure1_exercice1_solution2").querySelector("g[name='s1']");
+        s12.style.stroke = "blue";
+        s12.style.color = "blue";
+
+        // Calculer les dimensions de la figure à partir des points A, M0 et M
+        var ymin2 = Math.min(A2.y, M02.y, M2.y);
+        var ymax2 = Math.max(A2.y, M02.y, M2.y);
+        var height2 = ymax2 - ymin2;
+        // Remplacer la viewBox par les nouvelles dimensions en conservant la largeur
+        var svg2 = document.querySelector("#figure1_exercice1_solution2 svg");
+        svg2.getAttribute("viewBox");
+        var width2 = svg2.viewBox.baseVal.width;
+        var xmin2 = svg2.viewBox.baseVal.x;
+        svg2.setAttribute("viewBox", `${xmin2} ${ymin2 - 20} ${width2} ${height2 + 40}`);
+        
+        var enonce3 = `Placer le point $N$ tel que $$ {AN=${kw.latex[0]}+${kt.latex[1]}.}$$`;
+        enonce3 = enonce3.replace("+-", "-");
+        var enonce3_html = document.getElementById("enonce3_exercice1");
+        enonce3_html.innerHTML = enonce3;
+        var s3 = kw[0].additionVecteur(kt[1])
+        var A3 = new Point(0, 0);
+        var M3 = new Point(s3.x, s3.y);
+        M3.svg = document.getElementById("figure1_exercice1_solution3").querySelector("g[name='M']");
+        M3.svg.setAttribute("x", M3.x);
+        M3.svg.setAttribute("y", M3.y);
+        var M03 = new Point(kw[0].x, kw[0].y);
+        M03.svg = document.getElementById("figure1_exercice1_solution3").querySelector("g[name='M0']");
+        M03.svg.setAttribute("x", M03.x);
+        M03.svg.setAttribute("y", M03.y);
+        // Mettre la couleur des vecteurs s0 et s1 de la figure de la même couleur que les termes de la somme
+        var s03 = document.getElementById("figure1_exercice1_solution3").querySelector("g[name='s0']");
+        s03.style.stroke = "green";
+        s03.style.color = "green";
+        var s13 = document.getElementById("figure1_exercice1_solution3").querySelector("g[name='s1']");
+        s13.style.stroke = "orange";
+        s13.style.color = "orange";
+        // Calculer les dimensions de la figure à partir des points A, M0 et M
+        var ymin3 = Math.min(A3.y, M03.y, M3.y);
+        var ymax3 = Math.max(A3.y, M03.y, M3.y);
+        var height3 = ymax3 - ymin3;
+        // Remplacer la viewBox par les nouvelles dimensions en conservant la largeur
+        var svg3 = document.querySelector("#figure1_exercice1_solution3 svg");
+        svg3.getAttribute("viewBox");
+        var width3 = svg3.viewBox.baseVal.width;
+        var xmin3 = svg3.viewBox.baseVal.x;
+        svg3.setAttribute("viewBox", `${xmin3} ${ymin3 - 20} ${width3} ${height3 + 40}`);
+    });
+</script>
+
+<!--Exercice 2-->
+
+<div class="exercice">
+    <div class="enonce">
+        <div id="figure1_exercice2" class="figure">
+            <svg id="figure1_exercice2" xmlns="http://www.w3.org/2000/svg" viewBox="10 0 150 80" class="quadrillage">
+                <!-- Début de la figure -->
+                <g name="Au" class="point" x="50" y="20" visibility="hidden"></g>
+                <g name="Bu" class="point" x="20" y="20" visibility="hidden"></g>
+                <g name="u" class="vecteur labeled" linkto="Au Bu" style="stroke:blue;color:blue;font-size:0.8rem;"></g>
+                <g name="Av" class="point" x="70" y="30" visibility="hidden"></g>
+                <g name="Bv" class="point" x="110" y="10" visibility="hidden"></g>
+                <g name="v" class="vecteur labeled" linkto="Av Bv" style="stroke:red;color:red;font-size:0.8rem;"></g>
+                <g name="Aw" class="point" x="20" y="40" visibility="hidden"></g>
+                <g name="Bw" class="point" x="80" y="70" visibility="hidden"></g>
+                <g name="w" class="vecteur labeled" linkto="Aw Bw" style="stroke:green;color:green;font-size:0.8rem;">
+                </g>
+                <g name="Ap" class="point" x="130" y="10" visibility="hidden"></g>
+                <g name="Bp" class="point" x="140" y="30" visibility="hidden"></g>
+                <g name="p" class="vecteur labeled" linkto="Ap Bp" style="stroke:purple;color:purple;font-size:0.8rem;">
+                </g>
+                <g name="At" class="point" x="100" y="70" visibility="hidden"></g>
+                <g name="Bt" class="point" x="100" y="30" visibility="hidden"></g>
+                <g name="t" class="vecteur labeled" linkto="At Bt" style="stroke:orange;color:orange;font-size:0.8rem;">
+                </g>
+                <g name="Ah" class="point" x="130" y="70" visibility="hidden"></g>
+                <g name="Bh" class="point" x="140" y="40" visibility="hidden"></g>
+                <g name="h" class="vecteur labeled" linkto="Ah Bh" style="stroke:brown;color:brown;font-size:0.8rem;">
+                </g>
+                <!-- Fin de la figure -->
+            </svg>
+        </div>
+        <p>Reproduire la figure ci-dessus. Pour chaque énoncé, placer un point A avant de répondre.</p>
+        <ol>
+            <li>
+                <div id="enonce1_exercice2"></div>
+            </li>
+            <div class="solution">
+                <div id="figure1_exercice2_solution1" class="figure">
+                    <svg id="figure1_exercice2_solution1" xmlns="http://www.w3.org/2000/svg" viewBox="-80 -50 160 100"
+                        class="quadrillage">
+                        <!-- Début de la figure -->
+                        <g name="A" class="point labeled" x="0" y="0" style="font-size:0.8rem;"></g>
+                        <g name="M" class="point labeled" x="10" y="10" style="font-size:0.8rem;"></g>
+                        <g class="label" linkto="M">P</g>
+                        <g name="M0" class="point" x="-20" y="-20" visibility="hidden"></g>
+                        <g name="s0" class="vecteur" linkto="A M0" style="stroke:green;color:green;font-size:0.8rem;">
+                        </g>
+                        <g name="s1" class="vecteur" linkto="M0 M" style="stroke:red;color:red;font-size:0.8rem;">
+                        </g>
+                        <!-- Fin de la figure -->
+                    </svg>
+                </div>
+            </div>
+            <li>
+                <div id="enonce2_exercice2"></div>
+            </li>
+            <div class="solution">
+                <div id="figure1_exercice2_solution2" class="figure">
+                    <svg id="figure1_exercice2_solution2" xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 200 200"
+                        class="quadrillage">
+                        <!-- Début de la figure -->
+                        <g name="A" class="point labeled" x="0" y="0" style="font-size:0.8rem;"></g>
+                        <g name="M" class="point labeled" x="10" y="10" style="font-size:0.8rem;"></g>
+                        <g class="label" linkto="M">M</g>
+                        <g name="M0" class="point" x="-20" y="-20" visibility="hidden"></g>
+                        <g name="s0" class="vecteur" linkto="A M0" style="stroke:green;color:green;font-size:0.8rem;">
+                        </g>
+                        <g name="s1" class="vecteur" linkto="M0 M" style="stroke:red;color:red;font-size:0.8rem;">
+                        </g>
+                        <!-- Fin de la figure -->
+                    </svg>
+                </div>
+            </div>
+            <li>
+                <div id="enonce3_exercice2"></div>
+            </li>
+            <div class="solution">
+                <div id="figure1_exercice2_solution3" class="figure">
+                    <svg id="figure1_exercice2_solution3" xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 200 200"
+                        class="quadrillage">
+                        <!-- Début de la figure -->
+                        <g name="A" class="point labeled" x="0" y="0" style="font-size:0.8rem;"></g>
+                        <g name="M" class="point labeled" x="10" y="10" style="font-size:0.8rem;"></g>
+                        <g class="label" linkto="M">N</g>
+                        <g name="M0" class="point" x="-20" y="-20" visibility="hidden"></g>
+                        <g name="s0" class="vecteur" linkto="A M0" style="stroke:green;color:green;font-size:0.8rem;">
+                        </g>
+                        <g name="s1" class="vecteur" linkto="M0 M" style="stroke:red;color:red;font-size:0.8rem;">
+                        </g>
+                        <!-- Fin de la figure -->
+                    </svg>
+                </div>
+            </div>
+        </ol>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var Au = new Point(50, 20);
+        var Bu = new Point(20, 20);
+        var u = new Vecteur(0, 0);
+        u.setCoordonneesVecteur2Points(Au, Bu);
+        var Av = new Point(70, 30);
+        var Bv = new Point(110, 10);
+        var v = new Vecteur(0, 0);
+        v.setCoordonneesVecteur2Points(Av, Bv);
+        var Aw = new Point(20, 40);
+        var Bw = new Point(80, 70);
+        var w = new Vecteur(0, 0);
+        w.setCoordonneesVecteur2Points(Aw, Bw);
+        var Ap = new Point(130, 10);
+        var Bp = new Point(140, 30);
+        var p = new Vecteur(0, 0);
+        p.setCoordonneesVecteur2Points(Ap, Bp);
+        var At = new Point(100, 70);
+        var Bt = new Point(100, 30);
+        var t = new Vecteur(0, 0);
+        t.setCoordonneesVecteur2Points(At, Bt);
+        var Ah = new Point(130, 70);
+        var Bh = new Point(140, 40);
+        var h = new Vecteur(0, 0);
+        h.setCoordonneesVecteur2Points(Ah, Bh);
+        var ku = [u.multiplicationVecteur(4 / 3), u.multiplicationVecteur(-4 / 3), u.multiplicationVecteur(2), u.multiplicationVecteur(-2)];
+        ku.latex = ["\\frac{4}{3}\\overrightarrow{u}", "-\\frac{4}{3}\\overrightarrow{u}", "2\\overrightarrow{u}", "-2\\overrightarrow{u}"];
+        var kv = [v.multiplicationVecteur(1 / 2), v.multiplicationVecteur(-1 / 2), v.multiplicationVecteur(3 / 2), v.multiplicationVecteur(-3 / 2)];
+        kv.latex = ["\\frac{1}{2}\\overrightarrow{v}", "-\\frac{1}{2}\\overrightarrow{v}", "\\frac{3}{2}\\overrightarrow{v}", "-\\frac{3}{2}\\overrightarrow{v}"];
+        var kw = [w.multiplicationVecteur(1 / 3), w.multiplicationVecteur(-1 / 3), w.multiplicationVecteur(2 / 3), w.multiplicationVecteur(-2 / 3)];
+        kw.latex = ["\\frac{1}{3}\\overrightarrow{w}", "-\\frac{1}{3}\\overrightarrow{w}", "\\frac{2}{3}\\overrightarrow{w}", "-\\frac{2}{3}\\overrightarrow{w}"];
+        var kt = [t.multiplicationVecteur(1 / 4), t.multiplicationVecteur(-1 / 4), t.multiplicationVecteur(5 / 4), t.multiplicationVecteur(-5 / 4)];
+        kt.latex = ["\\frac{1}{4}\\overrightarrow{t}", "-\\frac{1}{4}\\overrightarrow{t}", "\\frac{5}{4}\\overrightarrow{t}", "-\\frac{5}{4}\\overrightarrow{t}"];
+        var kp = [p.multiplicationVecteur(1), p.multiplicationVecteur(-1), p.multiplicationVecteur(2), p.multiplicationVecteur(-2)];
+        kp.latex = ["\\overrightarrow{p}", "-\\overrightarrow{p}", "2\\overrightarrow{p}", "-2\\overrightarrow{p}"];
+        var kh = [h.multiplicationVecteur(1), h.multiplicationVecteur(-1), h.multiplicationVecteur(2), h.multiplicationVecteur(-2)];
+        kh.latex = ["\\overrightarrow{h}", "-\\overrightarrow{h}", "2\\overrightarrow{h}", "-2\\overrightarrow{h}"];
+        var enonce1 = `Placer le point $P$ tel que $$ {AP=${kp.latex[3]}+${kh.latex[2]}.}$$`;
+        var enonce1_html = document.getElementById("enonce1_exercice2");
+        enonce1_html.innerHTML = enonce1;
+        var s1 = kp[3].additionVecteur(kh[2])
+        var A1 = new Point(0, 0);
+        var M1 = new Point(s1.x, s1.y);
+        M1.svg = document.getElementById("figure1_exercice2_solution1").querySelector("g[name='M']");
+        M1.svg.setAttribute("x", M1.x);
+        M1.svg.setAttribute("y", M1.y);
+        var M01 = new Point(kp[3].x, kp[3].y);
+        M01.svg = document.getElementById("figure1_exercice2_solution1").querySelector("g[name='M0']");
+        M01.svg.setAttribute("x", M01.x);
+        M01.svg.setAttribute("y", M01.y);
+        // Mettre la couleur des vecteurs s0 et s1 de la figure de la même couleur que les termes de la somme
+        var s01 = document.getElementById("figure1_exercice2_solution1").querySelector("g[name='s0']");
+        s01.style.stroke = "purple";
+        s01.style.color = "purple";
+        var s11 = document.getElementById("figure1_exercice2_solution1").querySelector("g[name='s1']");
+        s11.style.stroke = "brown";
+        s11.style.color = "brown";
+        // Calculer les dimensions de la figure à partir des points A, M0 et M
+        var ymin1 = Math.min(A1.y, M01.y, M1.y);
+        var ymax1 = Math.max(A1.y, M01.y, M1.y);
+        var height1 = ymax1 - ymin1;
+        // Remplacer la viewBox par les nouvelles dimensions en conservant la largeur
+        var svg1 = document.querySelector("#figure1_exercice2_solution1 svg");
+        svg1.getAttribute("viewBox");
+        var width1 = svg1.viewBox.baseVal.width;
+        var xmin1 = svg1.viewBox.baseVal.x;
+        svg1.setAttribute("viewBox", `${xmin1} ${ymin1 - 20} ${width1} ${height1 + 40}`);
+
+        var enonce2 = `Placer le point $M$ tel que $$ {AM=${kv.latex[3]}+${kt.latex[2]}.}$$`;
+        var enonce2_html = document.getElementById("enonce2_exercice2");
+        enonce2_html.innerHTML = enonce2;
+        var s2 = kv[3].additionVecteur(kt[2])
+        var A2 = new Point(0, 0);
+        var M2 = new Point(s2.x, s2.y);
+        M2.svg = document.getElementById("figure1_exercice2_solution2").querySelector("g[name='M']");
+        M2.svg.setAttribute("x", M2.x);
+        M2.svg.setAttribute("y", M2.y);
+        var M02 = new Point(kv[3].x, kv[3].y)
+        M02.svg = document.getElementById("figure1_exercice2_solution2").querySelector("g[name='M0']");
+        M02.svg.setAttribute("x", M02.x);
+        M02.svg.setAttribute("y", M02.y);
+        // Mettre la couleur des vecteurs s0 et s1 de la figure de la même couleur que les termes de la somme
+        var s02 = document.getElementById("figure1_exercice2_solution2").querySelector("g[name='s0']");
+        s02.style.stroke = "red";
+        s02.style.color = "red";
+        var s12 = document.getElementById("figure1_exercice2_solution2").querySelector("g[name='s1']");
+        s12.style.stroke = "orange";
+        s12.style.color = "orange";        
+
+        // Calculer les dimensions de la figure à partir des points A, M0 et M
+        var ymin2 = Math.min(A2.y, M02.y, M2.y);
+        var ymax2 = Math.max(A2.y, M02.y, M2.y);
+        var height2 = ymax2 - ymin2;
+        // Remplacer la viewBox par les nouvelles dimensions en conservant la largeur
+        var svg2 = document.querySelector("#figure1_exercice2_solution2 svg");
+        svg2.getAttribute("viewBox");
+        var width2 = svg2.viewBox.baseVal.width;
+        var xmin2 = svg2.viewBox.baseVal.x;
+        svg2.setAttribute("viewBox", `${xmin2} ${ymin2 - 20} ${width2} ${height2 + 40}`);
+        
+        var enonce3 = `Placer le point $N$ tel que $$ {AN=${ku.latex[3]}+${kw.latex[3]}.}$$`;
+        enonce3 = enonce3.replace("+-", "-");
+        var enonce3_html = document.getElementById("enonce3_exercice2");
+        enonce3_html.innerHTML = enonce3;
+        var s3 = ku[3].additionVecteur(kw[3])
+        var A3 = new Point(0, 0);
+        var M3 = new Point(s3.x, s3.y);
+        M3.svg = document.getElementById("figure1_exercice2_solution3").querySelector("g[name='M']");
+        M3.svg.setAttribute("x", M3.x);
+        M3.svg.setAttribute("y", M3.y);
+        var M03 = new Point(ku[3].x, ku[3].y);
+        M03.svg = document.getElementById("figure1_exercice2_solution3").querySelector("g[name='M0']");
+        M03.svg.setAttribute("x", M03.x);
+        M03.svg.setAttribute("y", M03.y);
+        // Mettre la couleur des vecteurs s0 et s1 de la figure de la même couleur que les termes de la somme
+        var s03 = document.getElementById("figure1_exercice2_solution3").querySelector("g[name='s0']");
+        s03.style.stroke = "blue";
+        s03.style.color = "blue";
+        var s13 = document.getElementById("figure1_exercice2_solution3").querySelector("g[name='s1']");
+        s13.style.stroke = "green";
+        s13.style.color = "green";
+        // Calculer les dimensions de la figure à partir des points A, M0 et M
+        var ymin3 = Math.min(A3.y, M03.y, M3.y);
+        var ymax3 = Math.max(A3.y, M03.y, M3.y);
+        var height3 = ymax3 - ymin3;
+        // Remplacer la viewBox par les nouvelles dimensions en conservant la largeur
+        var svg3 = document.querySelector("#figure1_exercice2_solution3 svg");
+        svg3.getAttribute("viewBox");
+        var width3 = svg3.viewBox.baseVal.width;
+        var xmin3 = svg3.viewBox.baseVal.x;
+        svg3.setAttribute("viewBox", `${xmin3} ${ymin3 - 20} ${width3} ${height3 + 40}`);
+    });
+</script>
+    </main>
+    <footer>
+        Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
+        Licence CC BY-NC-SA.
+    </footer>
+</body>
+
+</html>

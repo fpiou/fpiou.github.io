@@ -197,6 +197,7 @@ var constructLabelPoint = function (point) {
             foreignObject.setAttribute("text-anchor", "start");
             foreignObject.setAttribute("width", "20");
             foreignObject.setAttribute("height", "20");
+            foreignObject.setAttribute("style", point.getAttribute("style"));
             foreignObject.innerHTML = katex.renderToString(point.getAttribute("name"), { output: "mathml" });
         } else {
             var label = labelLinkto[0];
@@ -332,7 +333,20 @@ var constructHeadVecteur = function (vecteur) {
     path.setAttribute("fill", "black");
     path.setAttribute("stroke-width", "0.5");
     path.classList.add("headVecteur");
+    path.style.userSelect = "none";
     setStroke(vecteur, path);
+    // Ajouter le style du vecteur au path
+    path.setAttribute("style", vecteur.getAttribute("style"));
+    // Si dans le style il y a un stroke alors on ajoute la même couleur au fill du path
+    if (vecteur.getAttribute("style")!=null && vecteur.getAttribute("style").includes("stroke")) {
+        // Récupérer le stroke du style
+        var stroke = vecteur.getAttribute("style").split(";").filter(
+            style => style.includes("stroke")
+        )[0];
+        // Récupérer la couleur du stroke
+        var color = stroke.split(":")[1];
+        path.setAttribute("fill", color);
+    }
     vecteur.appendChild(path);
 }
 var constructLabelVecteur = function (vecteur) {
@@ -345,6 +359,8 @@ var constructLabelVecteur = function (vecteur) {
     foreignObject.setAttribute("y", I.y);
     foreignObject.setAttribute("width", "20");
     foreignObject.setAttribute("height", "20");
+    foreignObject.setAttribute("style", vecteur.getAttribute("style"));
+    // Ajouter le style du vecteur
     foreignObject.setAttribute("style", vecteur.getAttribute("style"));
     foreignObject.innerHTML = katex.renderToString("\\overrightarrow{" + vecteur.getAttribute("name") + "}", { output: "mathml" });
     foreignObject.style.userSelect = "none";
@@ -359,6 +375,8 @@ var constructVecteur = function (vecteur) {
     setStroke(vecteur, path);
     vecteur.appendChild(path);
     constructHeadVecteur(vecteur);
+    // Ajouter le style du vecteur au path
+    path.setAttribute("style", vecteur.getAttribute("style"));
     if (vecteur.classList.contains("labeled")) {
         constructLabelVecteur(vecteur);
     }
@@ -951,4 +969,5 @@ export var createFigures = function () {
             addListenerInteractivite(figures[i]);
         }
     }
+    window.parent.postMessage("figures_created", "*");
 }
