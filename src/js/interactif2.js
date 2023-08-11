@@ -273,9 +273,9 @@ var constructHightlightPoint = function (point) {
         circle.setAttribute("fill", "transparent");
         circle.setAttribute("stroke", "transparent");
         circle.setAttribute("fill-opacity", "0.2");
-        circle.setAttribute("r", "20");
+        circle.setAttribute("r", "0");
         circle.style.userSelect = "none";
-        point.appendChild(circle);
+        point.prepend(circle);
     }
 }
 var constructSelectPoint = function (point) {
@@ -798,9 +798,11 @@ var actualiserPointsFigure = function (figure) {
 }
 var setHightlightPointOn = function (point) {
     d3.select(point).select("circle.selectionne").attr("fill", "orange");
+    d3.select(point).select("circle.selectionne").attr("r", "20");
 }
 var setHightlightPointOff = function (point) {
     d3.select(point).select("circle.selectionne").attr("fill", "transparent");
+    d3.select(point).select("circle.selectionne").attr("r", "0");
 }
 var controlerCoordonneesPoint = function (point, figure) {
     let x = 0
