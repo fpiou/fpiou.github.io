@@ -936,7 +936,7 @@ var initialiserPointsFigure = function (figure) {
         initialiserPointTransform(point);
         constructLabelPoint(point);
         constructCrossPoint(point);
-        //constructHightlightPoint(point);
+        constructHightlightPoint(point);
         constructSelectPoint(point);
         automaticHideCrossPoint(point);
         initialiserDataPoint(point);
