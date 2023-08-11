@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vecteurs_05</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+        <link rel="stylesheet" href="../../../../../src/css/prettyExercice.css">
+    
+        <link rel="stylesheet" href="../../../../../src/css/print2colonnes.css">
+    
+        <link rel="stylesheet" href="../../../../../src/css/figures.css">
+    
+
+    <!--Scripts personnalisés-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script><script defer src="../../../../interactivite.bundle.js"></script><script defer src="../../../../quiz.bundle.js"></script><script defer src="../../../../scorm.bundle.js"></script></head>
+
+<body>
+    <header>
+        <h1>Exercices</h1>
+    </header>
+    <main>
+        <div class="exercice">
+    <div class="enonce">
+        <p>$ABCD$ est un quadrilatère. $M$ est un point tel que
+            $${\overrightarrow{AM}=\overrightarrow{BD}+\overrightarrow{AC}.}$$
+            Quelle est la nature de $BDMC$ ?</p>
+    </div>
+    <div class="indice">
+        <div id="figure1" class="figure">
+            <svg id="figure1" xmlns="http://www.w3.org/2000/svg" viewBox="40 40 140 140">
+                <!-- Début de la figure -->
+                <g name="A" class="point labeled draggable" x="60" y="130" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="A" x="-15" y="-5">A</g>
+                <g name="B" class="point labeled draggable" x="60" y="60" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="B" x="0" y="-20">B</g>
+                <g name="C" class="point labeled draggable" x="130" y="70" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="C" x="0" y="0">C</g>
+                <g name="D" class="point labeled draggable" x="90" y="150" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="D" x="0" y="0">D</g>
+                <g name="ABCD" class="polygone" linkto="A B C D" style="fill:green;fill-opacity:0.1;"></g>
+                <g name="M" class="point labeled translation" linkto="B D C" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="M" x="0" y="0">M</g>
+                <!-- Tracer le vecteur AC -->
+                <g name="AC" class="vecteur" stroke="red" linkto="A C"></g>
+                <!-- Tracer le vecteur CP -->
+                <g name="CM" class="vecteur" stroke="blue" linkto="C M"></g>
+                <!-- Tracer le quadrilatère BDMC -->
+                <g name="BDMC" class="polygone" linkto="B D M C" style="fill:blue;fill-opacity:0.1;"></g>
+            </svg>
+        </div>
+    </div>
+    <div class="solution">
+        <p>On a $${\overrightarrow{AM}=\overrightarrow{BD}+\overrightarrow{AC}.}$$</p>
+        <p>D'où $$\overrightarrow{BD}=\overrightarrow{AM}-\overrightarrow{AC}.$$</p>
+        <p>Ou encore $$\overrightarrow{BD}=\overrightarrow{AM}+\overrightarrow{CA}.$$</p>
+        <p>Ou encore $$\overrightarrow{BD}=\overrightarrow{CA}+\overrightarrow{AM}.$$</p>
+        <p>Donc $$\overrightarrow{BD}=\overrightarrow{CM}.$$</p>
+        <p>Ce qui suffit à démontrer que $BDMC$ est un parallélogramme.</p>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <p>$ABCD$ est un parallélogramme. $M$ est le point tel que
+            $${\overrightarrow{AM}=\frac{1}{5}\overrightarrow{AB}}.
+            $$ $N$ est le point tel que
+            $${\overrightarrow{AN}=\frac{4}{5}\overrightarrow{DC}.}$$
+            Quelle est la nature du quadrilatère $AMCN~?$</p>
+    </div>
+    <div class="indice">
+        <div id="figure2" class="figure">
+            <svg id="figure2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 100">
+                <!-- Début de la figure -->
+                <g name="A" class="point labeled draggable" x="20" y="70" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="A" x="-10" y="-10">A</g>
+                <g name="B" class="point labeled draggable" x="70" y="80" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="B" x="0" y="0">B</g>
+                <g name="C" class="point labeled draggable" x="120" y="30" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="C" x="0" y="-15">C</g>
+                <g name="D" class="point labeled translation" linkto="B A C" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="D" x="-10" y="-15">D</g>
+                <g name="ABCD" class="polygone" linkto="A B C D" style="fill:green;fill-opacity:0.1;"></g>
+                <g name="M" class="point labeled translation" linkto="A B A" data="0.2" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="M" x="-5" y="0">M</g>
+                <g name="N" class="point labeled translation" linkto="D C D" data="0.8" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="N" x="-10" y="-15">N</g>
+                <g name="AMCN" class="polygone" linkto="A M C N" style="fill:blue;fill-opacity:0.1;"></g>
+            </svg>
+        </div>
+    </div>
+    <div class="solution">
+        <p>On a $${\overrightarrow{DN}=\frac{4}{5}\overrightarrow{DC}}.$$</p>
+        <p>D'après la relation de Chasles, on en déduit :
+            $${\overrightarrow{DC}+\overrightarrow{CN}=\frac{4}{5}\overrightarrow{DC}.}$$
+        </p>
+        <p>D'où $${\overrightarrow{DC}-\frac{4}{5}\overrightarrow{DC}=-\overrightarrow{CN}.}$$</p>
+        <p>Ainsi $${\frac{1}{5}\overrightarrow{DC}=\overrightarrow{NC}.}$$</p>
+        <p>Par ailleurs $ABCD$ est un parallélogramme. Donc $$\overrightarrow{AB}=\overrightarrow{DC}.$$</p>
+        <p>D'où $${\overrightarrow{NC}=\frac{1}{5}\overrightarrow{AB}.}$$</p>
+        <p>Or $${\overrightarrow{AM}=\frac{1}{5}\overrightarrow{AB}.}$$</p>
+        <p>Donc $$\overrightarrow{AM}=\overrightarrow{NC}.$$</p>
+        <p>Ce qui suffit à démontrer que $AMCN$ est un parallélogramme.</p>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>$ABCD$ est un quadrilatère. $I$, $J$, $K$ et $L$ sont les milieux respectifs des côtés $[AB],$ $[BC],$
+            $[CD]$ et $[DA].$ Quelle est la nature du quadrilatère $IJKL~?$</p>
+    </div>
+    <div class="indice">
+        <div id="figure3" class="figure">
+            <svg id="figure3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 100">
+                <!-- Début de la figure -->
+                <g name="A" class="point labeled draggable" x="20" y="70" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="A" x="-10" y="-10">A</g>
+                <g name="B" class="point labeled draggable" x="120" y="80" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="B" x="0" y="0">B</g>
+                <g name="C" class="point labeled draggable" x="120" y="30" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="C" x="0" y="-15">C</g>
+                <g name="D" class="point labeled draggable" x="70" y="20" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="D" x="0" y="-15">D</g>
+                <g name="ABCD" class="polygone" linkto="A B C D" style="fill:green;fill-opacity:0.1;"></g>
+                <g name="I" class="point labeled translation" linkto="A B A" data="0.5" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="I" x="-5" y="0">I</g>
+                <g name="J" class="point labeled translation" linkto="B C B" data="0.5" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="J" x="-5" y="0">J</g>
+                <g name="K" class="point labeled translation" linkto="C D C" data="0.5" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="K" x="-5" y="0">K</g>
+                <g name="L" class="point labeled translation" linkto="D A D" data="0.5" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="L" x="-5" y="0">L</g>
+                <g name="IJKL" class="polygone" linkto="I J K L" style="fill:blue;fill-opacity:0.1;"></g>
+            </svg>
+        </div>
+    </div>
+    <div class="solution">
+        <p>D'après la relation de Chasles, on a :
+            $${\overrightarrow{IJ}=\overrightarrow{IB}+\overrightarrow{BJ}.}$$
+        </p>
+        <p>Or $${\overrightarrow{IB}=\frac{1}{2}\overrightarrow{AB}\quad\text{ et }\quad\overrightarrow{BJ}=\frac{1}{2}\overrightarrow{BC}.}$$</p>
+        <p>Donc $${\overrightarrow{IJ}=\frac{1}{2}\overrightarrow{AB}+\frac{1}{2}\overrightarrow{BC}.}$$</p>
+        <p>Ou encore $${\overrightarrow{IJ}=\frac{1}{2}\left(\overrightarrow{AB}+\overrightarrow{BC}\right).}$$</p>
+        <p>D'où $${\overrightarrow{IJ}=\frac{1}{2}\overrightarrow{AC}.}$$</p>
+        <p>De même, on montre que $${\overrightarrow{LK}=\frac{1}{2}\overrightarrow{AC}.}$$</p>
+        <p>Donc $${\overrightarrow{IJ}=\overrightarrow{LK}.}$$</p>
+        <p>Ce qui suffit à démontrer que $IJKL$ est un parallélogramme.</p>
+    </div>
+</div>
+    </main>
+    <footer>
+        Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
+        Licence CC BY-NC-SA.
+    </footer>
+</body>
+
+</html>
