@@ -338,7 +338,7 @@ var constructHeadVecteur = function (vecteur) {
     // Ajouter le style du vecteur au path
     path.setAttribute("style", vecteur.getAttribute("style"));
     // Si dans le style il y a un stroke alors on ajoute la même couleur au fill du path
-    if (vecteur.getAttribute("style")!=null && vecteur.getAttribute("style").includes("stroke")) {
+    if (vecteur.getAttribute("style") != null && vecteur.getAttribute("style").includes("stroke")) {
         // Récupérer le stroke du style
         var stroke = vecteur.getAttribute("style").split(";").filter(
             style => style.includes("stroke")
@@ -366,7 +366,6 @@ var constructLabelVecteur = function (vecteur) {
     foreignObject.style.userSelect = "none";
     vecteur.appendChild(foreignObject);
 }
-
 var constructVecteur = function (vecteur) {
     var A = new Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
     var B = new Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
@@ -571,6 +570,91 @@ var initialiserPolygonesFigure = function (figure) {
         initialiserPolygone(polygone);
     });
 }
+var getGraduationsFigure = function (figure) {
+    var graduations = document.querySelectorAll("g.graduation");
+    var graduationsArray = Array.from(graduations);
+    return graduationsArray.filter(
+        graduation => graduation.id.split("-")[0] == figure.id
+    );
+}
+var constructGraduation = function (graduation) {
+    var A = new Point(...getCoordonneesPoint(getElementLinkto(graduation, 0)));
+    var B = new Point(...getCoordonneesPoint(getElementLinkto(graduation, 1)));
+    var parametres = eval('({' + graduation.getAttribute("parametres") + '})');
+    // Si parametres.vsize n'existe pas alors on prend 4
+    if (parametres.vsize == undefined) {
+        parametres.vsize = 4;
+    }
+    if (parametres.distance == undefined) {
+        parametres.distance = 10;
+    }
+    var AB = new Vecteur(0, 0);
+    AB.setCoordonneesVecteur2Points(A, B);
+    var u = AB.normalisation();
+    var graduations = [];
+    for (var i = 0; i < parametres.n + 1; i++) {
+        graduations.push(A.translation(u.multiplicationVecteur(i * AB.norme() / parametres.n)));
+    }
+    // Construire les graduations de taille verticale vsize
+    var graduationsSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    var style = graduation.getAttribute("style");
+    graduationsSVG.setAttribute("style", style);
+    for (var i = 0; i < parametres.n + 1; i++) {
+        var graduationSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        // La graduation est pour moitié en dessous et pour moitié au dessus du point
+        // La graduation doit être orientée selon le vecteur u
+        var x1 = graduations[i].x - parametres.vsize / 2 * u.y;
+        var y1 = graduations[i].y + parametres.vsize / 2 * u.x;
+        var x2 = graduations[i].x + parametres.vsize / 2 * u.y;
+        var y2 = graduations[i].y - parametres.vsize / 2 * u.x;
+        graduationSVG.setAttribute("d", "M" + x1 + "," + y1 + " L" + x2 + "," + y2);
+        graduationSVG.setAttribute("stroke", "black");
+        graduationSVG.setAttribute("stroke-width", "0.5");
+        graduationSVG.style.userSelect = "none";
+        graduationsSVG.appendChild(graduationSVG);
+    }
+    // On ajoute maintenant les abscisses des graduations si la class abscisses est présente
+    if (graduation.classList.contains("abscisses")) {
+        // Si parametres.nmin n'existe pas alors on prend 0
+        if (parametres.nmin == undefined) {
+            parametres.nmin = 0;
+        }
+
+        var angle = Math.atan2(u.y, u.x); // Angle de u par rapport à l'axe des abscisses
+
+        var abscissesSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        for (var i = 0; i < parametres.n + 1; i++) {
+            var abscisseSVG = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            var offsetX = 0, offsetY = parametres.distance; // Par défaut, placez les abscisses en dessous
+
+            // Si l'angle est dans le 2ème ou 3ème quadrant, placez les abscisses au-dessus
+            if (angle > Math.PI / 2 && angle < 3 * Math.PI / 2) {
+                offsetY = -parametres.distance;
+            }
+
+            abscisseSVG.setAttribute("x", graduations[i].x + offsetX);
+            abscisseSVG.setAttribute("y", graduations[i].y + offsetY);
+            abscisseSVG.setAttribute("text-anchor", "middle");
+            abscisseSVG.setAttribute("font-size", "10");
+            abscisseSVG.setAttribute("fill", "black");
+            abscisseSVG.setAttribute("stroke", "transparent");
+            abscisseSVG.setAttribute("stroke-width", "0.5");
+            abscisseSVG.setAttribute("style", "user-select:none");
+            abscisseSVG.setAttribute("style", style);
+            abscisseSVG.innerHTML = (parametres.nmin + i * (parametres.nmax - parametres.nmin) / parametres.n).toFixed(0);
+            graduationsSVG.appendChild(abscisseSVG);
+        }
+    }
+    graduation.appendChild(graduationsSVG);
+}
+var initialiserGraduation = function (graduation) {
+    constructGraduation(graduation);
+}
+var initialiserGraduationsFigure = function (figure) {
+    getGraduationsFigure(figure).forEach(function (graduation) {
+        initialiserGraduation(graduation);
+    });
+}
 var initialiserFigure = function (figure) {
     addQuadrillage(figure);
     addBoutonQuadrillage(figure);
@@ -581,6 +665,7 @@ var initialiserFigure = function (figure) {
     initialiserDemiDroitesFigure(figure);
     initialiserSegmentsFigure(figure);
     initialiserPolygonesFigure(figure);
+    initialiserGraduationsFigure(figure);
 }
 var getCoordonneesPoint = function (point) {
     var data = point.getAttribute("transform").split("translate(")[1].split(")")[0].split(",");

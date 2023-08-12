@@ -155,7 +155,7 @@ summary {
 }
 
 /* Mettre la fonte katex en gras dans une balise important ou dans un titre h1, h2, h3*/
-.important .katex, h1 .katex, h2 .katex, h3 .katex {
+.important .katex, h1 .katex, h2 .katex, h3 .katex strong .katex{
   font-weight: bold;
 }
 
@@ -207,4 +207,35 @@ summary {
 
 summary {
   color: #31708F;
+}
+
+.responsive-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+}
+
+.responsive-list li {
+  flex: 1;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+/* Empêcher le retour à la ligne des formules */
+.katex {
+  white-space: nowrap;
+}
+
+
+/* Lorsque la largeur de l'écran est inférieure à 600px, les éléments passent en colonnes */
+@media (max-width: 600px) {
+  .responsive-list {
+      flex-direction: column;
+  }
+
+  .responsive-list li {
+      margin-bottom: 20px; /* Ajout d'une marge en bas pour l'espacement entre les éléments */
+  }
 }

@@ -145,3 +145,8 @@ details.indice {
   opacity: 0;
   pointer-events: none;
 }
+
+/* Empêcher le retour à la ligne des formules */
+.katex {
+  white-space: nowrap;
+}
