@@ -1,10 +1,10 @@
 /* Fonte commune */
 html {
-    font-family: 'Source Code Pro';
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  font-family: 'Source Code Pro';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 body {
@@ -13,47 +13,53 @@ body {
 }
 
 .navbar {
+  display: flex;
   background-color: #0c655ca8;
-  overflow: hidden;
+  width: 100%;
 }
 
-.navbar a {
-  float: left;
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+.navbar ul {
+  display:flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .dropdown {
-  float: left;
-  overflow: hidden;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-size: 17px;
 }
 
-.dropdown .dropdown-content {
-  display: none;
+
+.navbar li {
+  flex:1;
+  padding: 10px;
+  text-align: center;
+  justify-content: center;
+}
+
+.dropdown-content {
+  display:none;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  flex-direction: column;
 }
 
 .dropdown-content a {
-  float: none;
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  text-align: left;
 }
 
-.navbar a:hover,
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
+/* Affichez le sous-menu lorsque le parent est survolé ou a la classe 'active'*/
+.dropdown:hover .dropdown-content,
+.dropdown.active .dropdown-content {
+  display: flex;
+  flex-direction: column;
 }
