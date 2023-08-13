@@ -49,11 +49,22 @@ body {
   text-align: left;
 }
 
-.navbar a:hover,
+/*.navbar a:hover,
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
 .dropdown:hover .dropdown-content {
+  display: block;
+}*/
+
+/* Cachez le sous-menu par défaut */
+.dropdown-content {
+  display: none;
+}
+
+/* Affichez le sous-menu lorsque le parent a la classe 'active' */
+.dropdown:hover .dropdown-content,
+.dropdown.active .dropdown-content {
   display: block;
 }
