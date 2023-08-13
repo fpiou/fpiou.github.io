@@ -338,5 +338,4 @@ document.addEventListener("DOMContentLoaded", function () {
   ajouterSommaire();
   dropdownMenusBandeau();
   openAvantPrint();
-  console.log("coucou")
 });
