@@ -7,9 +7,6 @@
     font-size: 1em;
 }
 /* Fullscreen */
-/* La figure en fullscreen a un fond blanc 
-De plus elle doit 
-*/
 .figure:fullscreen {
     background-color: white;
 }

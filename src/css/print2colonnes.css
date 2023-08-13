@@ -32,4 +32,8 @@
   button {
     display: none;
   }
+  /* Ne pas afficher le bandeau de navigation */
+  nav {
+    display: none;
+  }
 }
