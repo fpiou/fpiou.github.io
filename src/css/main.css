@@ -28,17 +28,11 @@ body {
 }
 
 .navbar li {
+  color: white;
   padding: 10px 20px;
 }
 
-.navbar li{
-  color: white;
-  text-decoration: none;
-  text-align: center;
-  font-size: 17px;
-}
-
-.dropdown {
+.dropdown a {
   color: white;
   text-decoration: none;
   text-align: center;
