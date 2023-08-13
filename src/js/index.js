@@ -320,39 +320,11 @@ var openAvantPrint = function () {
 };
 var dropdownMenusBandeau = function () {
   document.addEventListener("click", function (event) {
-    console.log(event.target)
-    var allDropdownContents = document.querySelectorAll(".dropdown-content");
-    
-    // Si l'event n'est pas un dropdown on ferme tous les dropdowns
-    if (!event.target.closest(".dropdown")) {
-      allDropdownContents.forEach(function (content) {
-        content.style.display = "none";
-      });
-    } else {
-      var currentDropdown = event.target.closest(".dropdown");
-      var currentContent = currentDropdown.querySelector(".dropdown-content");
-      
-      // Si l'event est un dropdown mais pas un lien, on affiche son contenu
-      if (!event.target.closest("a")) {
-        currentContent.style.display = "flex";
-      } else {
-        // Si l'event est une balise a d'un dropdown
-        if (currentContent.style.display === "none") {
-          // Si le dropdown est fermé, on ne suit pas le lien
-          event.preventDefault();
-          currentContent.style.display = "flex";
-        } else {
-          // Si le dropdown est déjà ouvert, on ferme le dropdown et on suit le lien
-          currentContent.style.display = "none";
-        }
-      }
-      
-      // Fermer tous les autres menus déroulants ouverts
-      allDropdownContents.forEach(function (content) {
-        if (content !== currentContent) {
-          content.style.display = "none";
-        }
-      });
+    if (
+      event.target.href == "#"
+    ) {
+      var dropdown = document.querySelector(".dropdown");
+      dropdown.classList.toggle("show");
     }
   });
 };
