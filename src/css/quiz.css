@@ -1,0 +1,38 @@
+html {
+  font-family: 'Source Code Pro';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+width: 100vw;
+max-width: 300px;
+}
+
+
+.choix {
+  padding: 1em;
+}
+
+.qcm {
+  visibility: hidden;
+}
+
+/* Si le svg est situé dans un div de la class class="formulaire-quizz" le width du svg est à 100%*/
+.div-formulaire svg {
+  width:100%;
+}
+
+.quiz-choices {
+  display:grid;
+  align-items:center;
+  justify-content:center;
+}
+
+.quiz-button-valider {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
