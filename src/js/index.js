@@ -319,27 +319,33 @@ var openAvantPrint = function () {
   };
 };
 var dropdownMenusBandeau = function () {
-  // Sélectionnez tous les éléments avec la classe 'dropdown'
-  const dropdowns = document.querySelectorAll(".dropdown");
+  var dropdowns = document.querySelectorAll(".dropdown");
 
-  // Ajoutez un écouteur d'événements à chaque élément
-  dropdowns.forEach((dropdown) => {
+  dropdowns.forEach(function (dropdown) {
     dropdown.addEventListener("click", function (event) {
-      // Si le menu est déjà actif, le désactiver
-      if (this.classList.contains("active")) {
-        this.classList.remove("active");
-      } else {
-        // Sinon, désactivez tous les autres menus et activez celui-ci
-        dropdowns.forEach((d) => d.classList.remove("active"));
-        this.classList.add("active");
+      // Si l'élément cliqué est un lien, permettre la navigation
+      if (event.target.tagName === "A") {
+        return;
       }
-      event.stopPropagation();
+
+      var content = this.querySelector(".dropdown-content");
+      if (content.style.display === "flex") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "flex";
+      }
+      event.preventDefault(); // Empêche la navigation vers le lien
     });
   });
 
-  // Fermez le menu déroulant si l'utilisateur clique en dehors du menu
-  document.addEventListener("click", function () {
-    dropdowns.forEach((d) => d.classList.remove("active"));
+  // Ferme le menu déroulant si l'utilisateur tape en dehors du menu
+  document.addEventListener("click", function (event) {
+    if (!event.target.closest(".dropdown")) {
+      var dropdownContents = document.querySelectorAll(".dropdown-content");
+      dropdownContents.forEach(function (content) {
+        content.style.display = "none";
+      });
+    }
   });
 };
 document.addEventListener("DOMContentLoaded", function () {
@@ -349,6 +355,6 @@ document.addEventListener("DOMContentLoaded", function () {
   convertirKatexEnMathML();
   masquerSolutionsExercices();
   ajouterSommaire();
-  openAvantPrint();
   dropdownMenusBandeau();
+  openAvantPrint();
 });
