@@ -134,62 +134,6 @@ var masquerSolutionsExercices = function () {
     wrapElementsInReveal(solution);
   });
 };
-var includeSVGinFigure = function () {
-  // Récupérer le nom du fichier
-  var filename = window.location.pathname.split("/").pop();
-  // Modifier son extension en svg
-  filename = filename.replace(/\.[^/.]+$/, ".svg");
-
-  // Utiliser fetch pour obtenir le contenu du fichier SVG
-  fetch(filename)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Fichier non trouvé");
-      }
-      // Envoi d'un message à window que les svg ont été inclus
-      window.parent.postMessage("svg_included", "*");
-      return response.text();
-    })
-    .then((svgData) => {
-      var parser = new DOMParser();
-      var doc = parser.parseFromString(svgData, "image/svg+xml");
-      var figures = document.querySelectorAll(".figure");
-      figures.forEach(function (figure) {
-        var id = figure.id;
-        var svg = doc.getElementById(id);
-        if (figure.querySelector("svg") == null) {
-          if (svg == null) {
-            figure.style.color = "blue";
-            figure.style.textDecoration = "line-through";
-            figure.innerHTML =
-              "<i>Erreur : La figure " + id + " n'a pas été trouvée</i>";
-          } else {
-            figure.appendChild(svg);
-          }
-        }
-      });
-      // Envoi d'un message à window que les svg ont été inclus
-      window.parent.postMessage("svg_included", "*");
-    })
-    .catch((error) => {
-      //console.error("Erreur lors de la récupération du fichier SVG:", error);
-      // Envoi d'un message à window que les svg ont été inclus
-      window.parent.postMessage("svg_included", "*");
-    });
-};
-var insererFigures = function () {
-  if (document.querySelector(".figure") != null) {
-    includeSVGinFigure();
-    // Attendre que les figures soient incluses pour créer les figures interactives
-    window.addEventListener("message", function (event) {
-      if (event.data == "svg_included") {
-        createFigures();
-      }
-    });
-  } else {
-    window.parent.postMessage("figures_created", "*");
-  }
-};
 function formatNumberForLatex(strNum) {
   // Remplacez d'abord les points ou virgules par {,}
   strNum = strNum.replace(/[.,]/g, "{,}");
@@ -345,7 +289,7 @@ var dropdownMenusBandeau = function () {
 document.addEventListener("DOMContentLoaded", function () {
   insererEntetesBlocsLesson();
   insererEntetesBlocsExercices();
-  insererFigures();
+  createFigures();
   convertirKatexEnMathML();
   masquerSolutionsExercices();
   ajouterSommaire();

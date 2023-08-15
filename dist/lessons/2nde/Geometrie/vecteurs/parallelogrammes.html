@@ -48,7 +48,7 @@
 
     <!-- Marqueurs pour les figures en SVG-->
     <div id="interactivite"></div>
-<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script><script defer src="../../../../quiz.bundle.js"></script><script defer src="../../../../scorm.bundle.js"></script></head>
 
 <body>
     <nav class="navbar">
@@ -115,7 +115,24 @@
     }
 </style>
 <div class="propriete">
-    <div id="figure1" class="figure interactive"></div>
+    <div id="figure1" class="figure interactive">
+        <svg id="figure1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+            <!-- Début de la figure -->
+            <g name="A" class="point labeled draggable" x="30" y="120"></g>
+            <g name="B" class="point labeled draggable" x="110" y="60"></g>
+            <g name="D" class="point labeled draggable" x="90" y="140"></g>
+            <g name="C" class="point labeled translation" linkto="A B D"></g>
+
+            <g name="ABCD" class="polygone" linkto="A B C D" fill="green" fill-opacity="0.2"></g>
+
+            <g name="AB" class="droite" linkto="A B" stroke="red" stroke-width="2" stroke-opacity="0.3"></g>
+            <g name="CD" class="droite" linkto="C D" stroke="red" stroke-width="2" stroke-opacity="0.3"></g>
+            <g name="AD" class="droite" linkto="A D" stroke="blue" stroke-width="2" stroke-opacity="0.3"></g>
+            <g name="BC" class="droite" linkto="B C" stroke="blue" stroke-width="2" stroke-opacity="0.3"></g>
+            
+            <!-- Fin de la figure -->
+    </svg>
+    </div>
     <p><span class="Propriete">Propriété</span> : Si un quadrilatère est un parallélogramme, alors ses côtés opposés
         sont parallèles deux à deux.</p>
     $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longrightarrow}\quad (AB)//(CD)~\text{ et }~(AD)//(BC)$$
@@ -127,7 +144,24 @@
     $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longleftrightarrow}\quad (AB)//(CD)~\text{ et }~(AD)//(BC)$$
 </div>
 <div class="propriete">
-    <div id="figure2" class="figure"></div>
+    <div id="figure2" class="figure">
+        <svg id="figure2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+            <!-- Début de la figure -->
+            <g name="A" class="point labeled draggable" x="30" y="120"></g>
+            <g name="B" class="point labeled draggable" x="110" y="60"></g>
+            <g class="label" linkto="B" x="-10" y="-20">B</g>
+            <g name="D" class="point labeled draggable" x="90" y="140"></g>
+            <g name="C" class="point labeled translation" linkto="A B D"></g>
+            <g name="I" class="point labeled translation" linkto="A C A" data="0.5"></g>
+            <g name="ABCD" class="polygone" linkto="A B C D" fill="green" fill-opacity="0.2"></g>
+            <g name="AI" class="segment codage" linkto="A I"></g>
+            <g name="CI" class="segment codage" linkto="C I AI"></g>
+            <g name="BI" class="segment codage" linkto="B I"></g>
+            <g name="DI" class="segment codage" linkto="D I BI"></g>
+
+            <!-- Fin de la figure -->
+    </svg>
+    </div>
     <p><span class="Propriete">Propriété</span> : Si un quadrilatère est un parallélogramme, alors ses diagonales se
         coupent en leur milieu.</p>
     $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longrightarrow}\quad mil(A,C)=mil(B,D)$$
@@ -139,7 +173,24 @@
     $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longleftrightarrow}\quad mil(A,C)=mil(B,D)$$
 </div>
 <div class="propriete">
-    <div id="figure3" class="figure"></div>
+    <div id="figure3" class="figure">
+        <svg id="figure3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+            <!-- Début de la figure -->
+            <g name="A" class="point labeled draggable" x="30" y="120"></g>
+            <g name="B" class="point labeled draggable" x="110" y="60"></g>
+            <g class="label" linkto="B" x="-10" y="-20">B</g>
+            <g name="D" class="point labeled draggable" x="90" y="140"></g>
+            <g name="C" class="point labeled translation" linkto="A B D"></g>
+            
+            <g name="ABCD" class="polygone" linkto="A B C D" fill="green" fill-opacity="0.2"></g>
+            <g name="AB" class="segment codage" linkto="A B"></g>
+            <g name="DC" class="segment codage" linkto="D C AB"></g>
+            <g name="BC" class="segment codage" linkto="B C"></g>
+            <g name="AD" class="segment codage" linkto="A D BC"></g>
+
+            <!-- Fin de la figure -->
+    </svg>
+    </div>
     <p><span class="Propriete">Propriété</span> : Si un quadrilatère est un parallélogramme, alors ses côtés opposés
         sont de même longueur deux à deux.</p>
     $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longrightarrow}\quad AB=CD~\text{ et }~AD=BC$$
@@ -151,7 +202,23 @@
     $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longleftrightarrow}\quad AB=CD~\text{ et }~AD=BC$$
 </div>
 <div class="propriete">
-    <div id="figure4" class="figure"></div>
+    <div id="figure4" class="figure">
+        <svg id="figure4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+            <!-- Début de la figure -->
+            <g name="A" class="point labeled draggable" x="30" y="120"></g>
+            <g name="B" class="point labeled draggable" x="110" y="60"></g>
+            <g class="label" linkto="B" x="-10" y="-20">B</g>
+            <g name="D" class="point labeled draggable" x="90" y="140"></g>
+            <g name="C" class="point labeled translation" linkto="A B D"></g>
+            
+            <g name="ABCD" class="polygone" linkto="A B C D" fill="green" fill-opacity="0.2"></g>
+            <g name="AB" class="segment codage" linkto="A B"></g>
+            <g name="DC" class="segment codage" linkto="D C AB"></g>
+            <g name="AB" class="droite" linkto="A B" stroke="red" stroke-width="2" stroke-opacity="0.3"></g>
+            <g name="CD" class="droite" linkto="C D" stroke="red" stroke-width="2" stroke-opacity="0.3"></g>
+            <!-- Fin de la figure -->
+    </svg>
+    </div>
     <p><span class="Propriete">Propriété</span> : Si un quadrilatère est un parallélogramme, alors il possède deux côtés
         opposés parallèles et de même longueur.</p>
     $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longrightarrow}\quad (AB)//(CD)~\text{ et }~AB=CD$$

@@ -48,7 +48,7 @@
 
     <!-- Marqueurs pour les figures en SVG-->
     <div id="interactivite"></div>
-<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script><script defer src="../../../../quiz.bundle.js"></script><script defer src="../../../../scorm.bundle.js"></script></head>
 
 <body>
     <nav class="navbar">
@@ -106,7 +106,20 @@
     <p>Soit $A$ et $B$ deux points du plan. On appelle <span class="important">translation qui transforme $A$ en
             $B$</span> la translation qui à tout point $M$ du plan associe le point $M'$ tel que les segments
         $[AM']$ et $[BM]$ ont le même milieu.</p>
-    <div id="figure1" class="figure" height="auto"></div>
+    <div id="figure1" class="figure">
+        <svg id="figure1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+            <!-- Début de la figure -->
+            <g name="A" class="point labeled draggable" x="30" y="120"></g>
+            <g name="B" class="point labeled draggable" x="110" y="60"></g>
+            <g name="M" class="point labeled draggable" x="90" y="140"></g>
+            <g name="N" class="point labeled translation" linkto="A B M"></g>
+            <g class="label" linkto="N">M'</g>
+
+            <g name="u" class="vecteur" linkto="A B"></g>
+            <g name="v" class="vecteur" linkto="M N" style="stroke-dasharray: 5, 5;" stroke-opacity="0.5" stroke="green"></g>
+            <!-- Fin de la figure -->
+    </svg>
+    </div>
 </div>
 <div class="propriete">
     <p>Considérons la translation qui transforme $A$ en $B$ et $M$ en $M'$.</p>
@@ -115,9 +128,40 @@
             laisse
             tous les points du plan fixes.</li>
         <li>Si $A$, $B$ et $M$ sont non alignés, alors $AMM'B$ est un parallélogramme.</li>
-        <div id="figure2" class="figure"></div>
+        <div id="figure2" class="figure">
+            <svg id="figure2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                <!-- Début de la figure -->
+                <g name="A" class="point labeled draggable" x="30" y="120"></g>
+                <g name="B" class="point labeled draggable" x="110" y="60"></g>
+                <g name="M" class="point labeled draggable" x="90" y="140"></g>
+                <g name="N" class="point labeled translation" linkto="A B M"></g>
+                <g class="label" linkto="N">M'</g>
+    
+                <g name="ABNM" class="polygone" linkto="A B N M" fill-opacity="0.3" fill="green" stroke="transparent"></g>
+                
+                <g name="u" class="vecteur" linkto="A B"></g>
+                <g name="v" class="vecteur" linkto="M N" style="stroke-dasharray: 5, 5;" stroke-opacity="0.5" stroke="red"></g>
+    
+                <!-- Fin de la figure -->
+        </svg>
+        </div>
         <li>Si $A$, $B$ et $M$ sont alignés, alors $AMM'B$ est un parallélogramme aplati.</li>
-        <div id="figure3" class="figure"></div>
+        <div id="figure3" class="figure">
+            <svg id="figure3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                <!-- Début de la figure -->
+                <g name="A" class="point labeled draggable" x="30" y="120"></g>
+                <g name="B" class="point labeled draggable" x="110" y="60"></g>
+                <g name="M" class="point labeled translation draggable" linkto="A B A" data="0.3"></g>
+                <g name="N" class="point labeled translation" linkto="A B M"></g>
+                <g class="label" linkto="N">M'</g>
+    
+                <g name="u" class="vecteur" linkto="A B"></g>
+                <g name="v" class="vecteur" linkto="M N" style="stroke-dasharray: 5, 5;" stroke-opacity="0.5" stroke="red"></g>
+    
+                <g name="ABNM" class="polygone" linkto="A B N M" stroke-opacity="0.5" stroke="green" stroke-width="3"></g>
+                <!-- Fin de la figure -->
+        </svg>
+        </div>
     </ul>
 </div>
 <div class="propriete">
@@ -127,7 +171,17 @@
         <li><span class="important">sa direction</span> : celle de la droite $(AB)$ ;</li>
         <li><span class="important">son sens</span> : de $A$ vers $B$ ;</li>
         <li><span class="important">sa longueur</span> : la longueur $AB.$</li>
-        <div id="figure4" class="figure"></div>
+        <div id="figure4" class="figure">
+            <svg id="figure4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                <!-- Début de la figure -->
+                <g name="A" class="point labeled draggable" x="30" y="120"></g>
+                <g name="B" class="point labeled draggable" x="110" y="60"></g>
+                <g name="AB" class="droite" linkto="A B" style="stroke-dasharray: 5, 5;" stroke-opacity="0.5" stroke="red"></g>
+                vecteur AB
+                <g name="u" class="vecteur" linkto="A B"></g>
+                <!-- Fin de la figure -->
+        </svg>
+        </div>
     </ul>
     </p>
 </div>
@@ -198,7 +252,7 @@
         même direction, le même sens et la même norme.</p>
 </div>
 <div class="propriete">
-    <div id="figure7" class="figure"></div>
+    <div id="figure7" class="figure">Figure àfaire</div>
     <p><span class="important">Propriété</span> : Si $\overrightarrow{AB}=\overrightarrow{DC}$, alors les
         segments
         $[AC]$ et $[BD]$ ont le même milieu.</p>
@@ -213,7 +267,7 @@
     $$\overrightarrow{AB}=\overrightarrow{DC} \quad{\color{red}\Longleftrightarrow}\quad mil(A,C)=mil(B,D)$$
 </div>
 <div class="propriete">
-    <div id="figure8" class="figure"></div>
+    <div id="figure8" class="figure">Figure à faire</div>
     <p><span class="important">Propriété</span> : Si $\overrightarrow{AB}=\overrightarrow{DC}$, alors le
         quadrilatère
         $ABCD$ est un parallélogramme.</p>
@@ -255,7 +309,7 @@
 </div>
 <div class="propriete">
     Soit $A$ et $B$ deux points distincts.<br>
-    <div id="figure9" class="figure"></div>
+    <div id="figure9" class="figure">Figure à faire</div>
     <p><span class="important">Propriété</span> : Si $I$ est le milieu du segment $[AB]$, alors
         $\overrightarrow{AI}=\overrightarrow{IB}$.</p>
     $$I=mil(A,B) \quad{\color{red}\Longrightarrow}\quad \overrightarrow{AI}=\overrightarrow{IB}$$
