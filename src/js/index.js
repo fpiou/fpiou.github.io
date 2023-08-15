@@ -208,7 +208,6 @@ function formatNumberForLatex(strNum) {
 
   return intPart;
 }
-
 function formatSIForLatex(value, unit) {
   // Remplacer les modificateurs par leur forme textuelle
   unit = unit.replace(/\\square\\(\w+)/g, "\\text{$1}^2");
@@ -218,7 +217,6 @@ function formatSIForLatex(value, unit) {
 
   return formatNumberForLatex(value) + "\\," + unit;
 }
-
 function preprocessLatexText(text) {
   const delimiters = [
     /\$(.*?)\$/g,
@@ -244,7 +242,6 @@ function preprocessLatexText(text) {
   }
   return text;
 }
-
 function isDescendantOfScript(node) {
   while (node) {
     if (node.tagName === "SCRIPT") {
@@ -254,7 +251,6 @@ function isDescendantOfScript(node) {
   }
   return false;
 }
-
 function preprocessLatex() {
   // Parcourir tous les noeuds textuels du document
   const walk = document.createTreeWalker(
@@ -346,7 +342,6 @@ var dropdownMenusBandeau = function () {
     }
   });
 };
-
 document.addEventListener("DOMContentLoaded", function () {
   insererEntetesBlocsLesson();
   insererEntetesBlocsExercices();

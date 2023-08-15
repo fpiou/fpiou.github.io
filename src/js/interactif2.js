@@ -1,16 +1,4 @@
 // Version: 1.0.0
-
-///////////////////////
-////// Remarques //////
-///////////////////////
-// L'attribut "name" ne doit pas comporter de tiret - (voir automaticHideCrossPoint)). Faut-il ajouter un attribut figureId pour identifier les points autrement ?
-// La class "selectionne" est utilisée pour afficher ou non le disque de surlignage (est-ce une bonne solution ?) : "unselected" et "selected" peuvent-elle remplacer cette classe (fonctionnement différent) ?
-// On reconnait un point draggable par le fait qu'il possède un petit cercle sélectionnerur (class="selectionneur")
-// Les points liés sont ceux qui ont un attribu linkto qui contient l'id du point déplacé
-// Les attributs x et y initialisent les coordonnées du point
-// Les coordonnées x et y sont données par l'attribut transform="translate(x,y)"
-// Est-il possible que si on déplace un point dont un point est lié avec un rapport k, ce rapport ne change pas si on le déplace ?
-import { add } from 'lodash';
 import { Point, Vecteur, Segment } from './class2.js'
 
 // Liste des codages possibles
