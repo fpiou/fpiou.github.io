@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Egalites_inegalites</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+        <link rel="stylesheet" href="/src/css/prettyLesson.css">
+    
+        <link rel="stylesheet" href="/src/css/print1colonne.css">
+    
+        <link rel="stylesheet" href="/src/css/main.css">
+    
+        <link rel="stylesheet" href="/src/css/print.css">
+    
+
+    <!--Scripts personnalisés-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script><script defer src="../../../../interactivite.bundle.js"></script><script defer src="../../../../quiz.bundle.js"></script><script defer src="../../../../scorm.bundle.js"></script></head>
+
+<body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1ereGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+    <main>
+        <h1>Egalités et inégalités</h1>
+<details>
+  <summary>Sommaire</summary>
+  <nav id="tableOfContents"></nav>
+</details>
+<h2>Opérations sur les égalités</h2>
+<div class="propriete">
+  <ul>
+    <li>
+      On peut ajouter ou soustraire un même nombre aux deux membres d'une
+      égalité sans changer l'égalité.
+    </li>
+    <li>
+      On peut multiplier ou diviser les deux membres d'une égalité par un même
+      nombre non nul sans changer l'égalité.
+    </li>
+  </ul>
+</div>
+<div class="exemple">
+  <p>
+    Dans un rectangle, nous avons la formule suivante du périmètre $p$ en
+    fonction de la longueur $L$ et de la largeur $\ell$ : $$p=2L+2\ell.$$
+  </p>
+  <p>
+    On souhaite exprimer la longueur $L$ en fonction du périmètre $p$ et de la
+    largeur $\ell$.
+  </p>
+  <p>
+    On a $p=2L+2\ell$ donc $$p-2\ell=2L$$ et finalement $$L=\frac{p-2\ell}{2}.$$
+    ou encore $$L=\frac{p}{2}-\ell.$$
+  </p>
+</div>
+
+<div class="propriete">
+  <p>
+    Si les deux membres d'une égalité sont positifs, on peut prendre la racine
+    carrée des deux membres sans changer l'égalité.
+  </p>
+</div>
+<div class="exemple">
+  <p>
+    Un carré a une aire égale à $x-2$ pour $x>2$. On souhaite exprimer la
+    longueur du côté du carré en fonction de son aire.
+  </p>
+  <p>
+    L'aire d'un carré est égale au carré de la longueur de son côté. Notons $a$
+    la longueur du côté du carré. On a donc $a^2=x-2$.
+  </p>
+  <p>
+    On prend la racine carrée des deux membres de l'égalité. Comme $x-2>0$, on a
+    $$a=\sqrt{x-2}.$$
+  </p>
+</div>
+
+<h2>Opérations sur les inégalités</h2>
+<div class="propriete">
+  <p>$a$, $b$ et $c$ désignent des nombres réels.</p>
+  $$a < b \iff a+c < b+c$$
+</div>
+<div class="exemple">
+  <ul>
+    <li>
+      $\frac{3}{7} < 1$ d'où $\frac{3}{7}+1 < 1+1$ donc $\frac{3}{7}+1 < 2$.
+    </li>
+    <li>$\pi>3$ d'où $\pi+1>3+1$ donc $\pi+1>4$.</li>
+  </ul>
+</div>
+<div class="propriete">
+  <p>$a$, $b$, $c$ et $d$ désignent des nombres réels.</p>
+  Si $a < b$ et $c < d$ alors $$a+c < b+d.$$
+</div>
+<div class="exemple">
+  <ul>
+    <li>
+      $\frac{3}{7} < 1$ et $-2 < \frac{1}{2}$ d'où $\frac{3}{7}+(-2) <
+      1+\frac{1}{2}$ donc $\frac{3}{7}-2 < \frac{3}{2}$.
+    </li>
+    <li>$\pi>3$ et $-1>-2$ d'où $\pi+(-1)>3+(-2)$ donc $\pi-1>1$.</li>
+  </ul>
+</div>
+<div class="propriete">
+  <p>$a$, $b$ et $k$ désignent des nombres réels.</p>
+  <ul>
+    <li>Si $k > 0$ alors $$a < b \iff ka < kb$$</li>
+    <li>Si $k < 0$ alors $$a < b \iff ka > kb$$</li>
+  </ul>
+</div>
+<div class="exemple">
+  <ul>
+    <li>
+      $\frac{3}{7} < 1$ d'où $\frac{3}{7}\times 12 < 1\times 12$ donc
+      $\frac{36}{7} < 12$.
+    </li>
+    <li>$\pi>3$ d'où $\pi\times (-4) < 3\times (-4)$ donc $-\pi < -12$.</li>
+  </ul>
+</div>
+<div class="propriete">
+  <p>$a$, $b$ désignent des nombres réels positifs.</p>
+  $$a < b \iff \sqrt{a} < \sqrt{b}$$
+</div>
+<div class="exemple">
+  <ul>
+    <li>
+      $\frac{3}{7} < 1$ d'où $\sqrt{\frac{3}{7}} < \sqrt{1}$ donc
+      $\frac{\sqrt{3}}{\sqrt{7}} < 1$.
+    </li>
+    <li>$\pi>3$ d'où $\sqrt{\pi} > \sqrt{3}$.</li>
+  </ul>
+</div>
+<div class="remarque">
+  <p>
+    Ces propriétés autorisent donc un certains nombres d'opérations sur les
+    inégalités.
+  </p>
+  <li>
+    On peut ajouter ou soustraire un même nombre aux deux membres d'une
+    inégalité sans changer le sens de l'inégalité.
+  </li>
+  <li>On peut ajouter membres à membres deux inégalités de même sens.</li>
+  <li>
+    On peut multiplier ou diviser les deux membres d'une inégalité par un même
+    nombre strictement positif sans changer le sens de l'inégalité.
+  </li>
+  <li>
+    On peut multiplier ou diviser les deux membres d'une inégalité par un même
+    nombre strictement négatif en changeant le sens de l'inégalité.
+  </li>
+  <li>
+    On peut prendre la racine carrée des deux membres d'une inégalité si les
+    deux membres sont positifs sans changer le sens de l'inégalité.
+  </li>
+</div>
+<div class="exemple">
+  <p>
+    Considérons un rectangle dont le périmètre est inférieur à $\SI{10}{cm}$ et
+    dont la longueur est supérieure à $\SI{2}{cm}$. Quelle est la plus petite
+    valeur possible de la largeur de ce rectangle ?
+  </p>
+  <p>
+    On note $\ell$ la largeur du rectangle. On a d'une part $2L+2\ell < 10$ et
+    d'autre part $L>2$.
+  </p>
+  $$\begin{align*} 2L+2\ell &< 10 \\ 2\ell &< 10-2L \\ \ell &< 5-L
+  \end{align*}$$
+  <p>
+    On a donc $\ell < 5-L$ et $L>2$ ou encore $2 < L$. On peut donc ajouter les
+    deux inégalités.
+  </p>
+  $$\begin{align*} \ell +2&< 5-L+L \\ \ell +2&< 5\\ \ell &< 5-2 \\ \ell &< 3
+  \end{align*}$$
+  <p>La largeur du rectangle est donc strictement inférieure à $\SI{3}{cm}$.</p>
+</div>
+<div class="exemple">
+  <p>
+    Considérons un carré dont l'aire est supérieure à $\SI{9}{cm^2}$. Quelle est
+    la plus petite valeur possible du côté de ce carré ?
+  </p>
+  <p>
+    On note $a$ la longueur du côté du carré. On a $a\geqslant 0$ et $a^2>9$.
+  </p>
+  $$\begin{align*} a^2 &> 9 \\ a &> \sqrt{9} \\ a &> 3 \end{align*}$$
+  <p>Le côté du carré est donc strictement supérieur à $\SI{3}{cm}$.</p>
+</div>
+<h2>Comparer deux quantités</h2>
+<div class="propriete">
+  <p>$a$ et $b$ désignent des nombres réels.</p>
+  <ul>
+    <li>Si $a-b = 0$ alors $a = b$.</li>
+    <li>Si $a-b > 0$ alors $a > b$.</li>
+    <li>Si $a-b < 0$ alors $a < b$.</li>
+    <li>Si $b\neq 0$ et $\frac{a}{b} > 1$ alors $a > b$.</li>
+    <li>Si $b\neq 0$ et $\frac{a}{b} < 1$ alors $a < b$.</li>
+  </ul>
+</div>
+<div class="remarque">
+  <p>
+    On peut comparer deux quantités en les soustrayant. Si le résultat est
+    positif, la première quantité est plus grande que la seconde. Si le résultat
+    est négatif, la première quantité est plus petite que la seconde. Si le
+    résultat est nul, les deux quantités sont égales.
+  </p>
+  <p>On peut aussi comparer deux quantités en les divisant en s'assurant que l'on ne divise pas par zéro. Si le résultat est
+    supérieur à $1$, la première quantité est plus grande que la seconde. Si le
+    résultat est inférieur à $1$, la première quantité est plus petite que la
+    seconde.</p>
+</div>
+<div class="exemple">
+  <p>
+    Comparons $a=\frac{3}{7}$ et $b=\frac{1}{2}$ de deux manières.
+  </p>
+  <p>
+    $$\frac{3}{7}-\frac{1}{2}=\frac{6}{14}-\frac{7}{14}=-\frac{1}{14} < 0$$
+  </p>
+  <p>
+    On a aussi $$\frac{\frac{3}{7}}{\frac{1}{2}}=\frac{3}{7}\times
+    \frac{2}{1}=\frac{6}{7} < 1$$
+  </p>
+  <p>Dans chacun des cas, on en déduit que $\frac{3}{7} < \frac{1}{2}$.</p>
+</div>
+    </main>
+    <footer>
+        Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
+        Licence CC BY-NC-SA.
+    </footer>
+</body>
+
+</html>

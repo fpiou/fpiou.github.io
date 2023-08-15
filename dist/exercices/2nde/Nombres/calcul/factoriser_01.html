@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Polynomes_07</title>
+    <title>Factoriser_01</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -96,57 +96,46 @@
     </header>
     <main>
         <div class="exercice">
-    <div class="enonce">
-        Chaque polynôme possède deux racines $x_1$ et $x_2$ dont une évidente ($1$ ou $-1$).<br>
-        Sans utiliser le discriminant, déterminer les deux racines du polynôme.
-        <ol>
-            <li>$f(x)=2x^2+3x-5$</li>
-            <div class="solution">
-                <p>On a $f(1)=2\times 1^2+3\times 1-5$</p>
-                <p>Soit $f(1)=2+3-5=0$</p>
-                <p>Donc $1$ est racine du polynôme.</p>
-                <p>On a $x_1\times x_2=\frac{c}{a}$</p>
-                <p>D'où $1\times x_2=\frac{-5}{2}$</p>
-                <p>Donc $x_2=-\frac{5}{2}$</p>
-            </div>
-            <li>$f(x)=-7x^2-4x+3$</li>
-            <div class="solution">
-                <p>On a $f(-1)=-7\times (-1)^2-4\times (-1)+3=0$</p>
-                <p>Soit $f(-1)=-7+4+3=0$</p>
-                <p>Donc $x_1=-1$ est racine du polynôme.</p>
-                <p>On a $x_1\times x_2=\frac{c}{a}$</p>
-                <p>D'où $(-1)\times x_2=\frac{3}{-7}$</p>
-                <p>Donc $x_2=\frac{3}{7}$</p>
-            </div>
-        </ol>
-    </div>
+  <div class="enonce">
+    <p>Factoriser les expressions suivantes :</p>
+    <ul>
+      <li>$A=(x+3)(x-2)+(x+3)(x+5)$</li>
+      <li>$B=(5x+3)(x-2)-(x-2)(x+5)$</li>
+      <li>$C=(3x+5)^2-(x+3)(3x+5)$</li>
+    </ul>
+  </div>
+  <div class="solution">
+    <ul>
+      <li>
+        <p>
+          On remarque que les deux termes de chaque expression ont un facteur
+          commun : $x+3$.
+        </p>
+        $$\begin{align*} A&=(x+3)(x-2)+(x+3)(x+5)\\ &=(x+3)(x-2)+(x+3)(x+5)\\
+        &=(x+3)\left[(x-2)+(x+5)\right]\\ &=(x+3)(2x+3) \end{align*}$$
+      </li>
+      <li>
+        <p>
+          On remarque que les deux termes de chaque expression ont un facteur
+          commun : $x-2$.
+        </p>
+        $$\begin{align*} B&=(5x+3)(x-2)-(x-2)(x+5)\\
+        &=(x-2)\left[(5x+3)-(x+5)\right]\\ &=(x-2)\left[5x+3-x-5\right]\\
+        &=(x-2)(4x-2) \end{align*}$$
+      </li>
+      <li>
+        <p>
+          On remarque que les deux termes de chaque expression ont un facteur
+          commun : $3x+5$.
+        </p>
+        $$\begin{align*} C&=(3x+5)^2-(x+3)(3x+5)\\
+        &=(3x+5)\left[(3x+5)-(x+3)\right]\\ &=(3x+5)\left[3x+5-x-3\right]\\
+        &=(3x+5)(2x+2) \end{align*}$$
+      </li>
+    </ul>
+  </div>
 </div>
-<div class="exercice">
-    <div class="enonce">
-        Chaque polynôme possède deux racines $x_1$ et $x_2$ dont une évidente ($2$ ou $-2$).<br>
-        Sans utiliser le discriminant, déterminer les deux racines du polynôme.
-        <ol>
-            <li>$f(x)=3x^2-5x-2$</li>
-            <div class="solution">
-                <p>On a $f(2)=3\times 2^2-5\times 2-2$</p>
-                <p>Soit $f(2)=3\times 4-10-2=12-12=0$</p>
-                <p>Donc $2$ est racine du polynôme.</p>
-                <p>On a $x_1\times x_2=\frac{c}{a}$</p>
-                <p>D'où $2\times x_2=\frac{-2}{3}$</p>
-                <p>Donc $x_2=-\frac{1}{3}$</p>
-            </div>
-            <li>$f(x)=-4x^2-3x+10$</li>
-            <div class="solution">
-                <p>On a $f(-2)=-4\times (-2)^2-3\times (-2)+10$</p>
-                <p>Soit $f(-2)=-4\times 4+6+10=-16+16=0$</p>
-                <p>Donc $-2$ est racine du polynôme.</p>
-                <p>On a $x_1\times x_2=\frac{c}{a}$</p>
-                <p>D'où $(-2)\times x_2=\frac{10}{-4}$</p>
-                <p>Donc $x_2=\frac{5}{4}$</p>
-            </div>
-        </ol>
-    </div>
-</div>
+
     </main>
     <footer>
         Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>

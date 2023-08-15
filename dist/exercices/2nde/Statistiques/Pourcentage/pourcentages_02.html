@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Pourcentages_02</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+        <link rel="stylesheet" href="/src/css/prettyExercice.css">
+    
+        <link rel="stylesheet" href="/src/css/print2colonnes.css">
+    
+        <link rel="stylesheet" href="/src/css/main.css">
+    
+        <link rel="stylesheet" href="/src/css/print.css">
+    
+
+    <!--Scripts personnalisés-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script><script defer src="../../../../interactivite.bundle.js"></script><script defer src="../../../../quiz.bundle.js"></script><script defer src="../../../../scorm.bundle.js"></script></head>
+
+<body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1ereGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+    <header>
+        <h1>Exercices</h1>
+    </header>
+    <main>
+        <div class="exercice">
+  <div class="enonce">
+    <p>
+      Un club de sport situé à la frontière franco-italienne propose à ses
+      566&nbsp;adhérents plusieurs activités : musculation&nbsp;(M),
+      athlétisme&nbsp;(A), escrime&nbsp;(E), natation&nbsp;(N), plongée
+      sous-marine&nbsp;(P) et cyclisme&nbsp;(C).
+    </p>
+    <p>
+      Il y a 107&nbsp;adhérents à l'activité natation, dont 52&nbsp;français ;
+      75&nbsp;italiens font de la muscuation et ils représentent 60&nbsp;% des
+      adhérents inscrits à cette activité. 43&nbsp;français et 39&nbsp;italiens
+      font de la plongée. Il y a autant de cyclistes que d'adhérents à la
+      plongée, mais parmi les cyclistes il n'y a que 28&nbsp;italiens. Il y a
+      autant de français que d'italiens inscrits à l'athlétisme.
+      92&nbsp;adhérents pratiquent l'athlétisme. 31&nbsp;français ont choisi
+      l'escrime contre 47&nbsp;italiens. Chaque adhérent pratique un seul sport.
+    </p>
+
+    <ol start="1">
+      <li>Résumer ces informations dans un tableau à double entrée.</li>
+    </ol>
+  </div>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th,
+    td {
+      width: 30%; /* Contrôle la largeur des colonnes */
+      padding: 1em;
+      text-align: center;
+    }
+  </style>
+  <div class="indice">
+    <table>
+      <tr>
+        <th></th>
+        <th>Fr.</th>
+        <th>It.</th>
+        <th>Total</th>
+      </tr>
+      <tr>
+        <td>M</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>E</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>N</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>P</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+  <div class="solution">
+    <p>
+      Notons $x$ le nombre d'adhérents inscrits à la musculation. On a 60&nbsp;
+      de $x$ est égal à 75. D'où
+    </p>
+    $$ \begin{align*} \dfrac{60}{100} \times x&=75\\ \dfrac{60\times x}{100}
+    &=75\\ 60\times x &=75\times 100\\ x&=\dfrac{75\times 100}{60}\\
+    x&=\dfrac{25\times 3\times 20\times 5}{20\times 3}\\ x&=25\times 5\\ x&=125
+    \end{align*} $$
+    <p>Le nombre total d'inscrits à la musculation est donc 125.</p>
+    <table>
+      <tr>
+        <th></th>
+        <th>Fr.</th>
+        <th>It.</th>
+        <th>Total</th>
+      </tr>
+      <tr>
+        <td>M</td>
+        <td>50</td>
+        <td>75</td>
+        <td>125</td>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>46</td>
+        <td>46</td>
+        <td>92</td>
+      </tr>
+      <tr>
+        <td>E</td>
+        <td>31</td>
+        <td>47</td>
+        <td>78</td>
+      </tr>
+      <tr>
+        <td>N</td>
+        <td>52</td>
+        <td>55</td>
+        <td>107</td>
+      </tr>
+      <tr>
+        <td>P</td>
+        <td>43</td>
+        <td>49</td>
+        <td>82</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>28</td>
+        <td>54</td>
+        <td>82</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td>250</td>
+        <td>316</td>
+        <td>566</td>
+      </tr>
+    </table>
+  </div>
+  <ol start="2">
+    <li>
+      Y a-t-il plus d'italiens inscrits à l'escrime que de français à
+      l'athlétisme&nbsp;?
+    </li>
+  </ol>
+  <div class="solution">
+    <p>47 italiens sont inscrits à l'escrime et 46 français sont inscrit à
+    l'athlétisme.</p>
+    <p>Donc il y a plus d'italiens inscrits à l'escrime que de français à
+    l'athlétisme.</p>
+  </div>
+  <ol start="3">
+    <li>
+      Quelle est la proportion de français parmi les adhérents de ce club&nbsp;?
+    </li>
+  </ol>
+  <div class="solution">
+    $$\dfrac{250}{566}=\dfrac{250\div 2}{566\div 2}=\dfrac{125}{283}$$
+    <p>La proportion de français parmi les adhérents de ce club est donc
+    $\dfrac{125}{283}.$</p>
+    </div>
+  <ol start="4">
+    <li>
+      Quelle est la proportion en pourcentage d'italiens parmi les adhérents qui
+      pratiquent la musculation&nbsp;?
+    </li>
+  </ol>
+  <div class="solution">
+    <summary>Solution 4.</summary>
+    $$\dfrac{75}{125}=\dfrac{75\div 5}{125\div 5}=\dfrac{15}{25}=\dfrac{15\times
+    4}{25\times 4}=\dfrac{60}{100}$$
+    <p>La proportion en pourcentage d'italiens
+    parmi les adhérents qui pratiquent la musculation est 60&nbsp;%.</p>
+    </div>
+  <ol start="5">
+    <li>
+      Quelle est la proportion en pourcentage de nageurs parmi les
+      français&nbsp;?
+    </li>
+  </ol>
+  <div class="solution">
+    $$\dfrac{52}{250}=\dfrac{52\times 4}{250\times
+    4}=\dfrac{208}{1000}=\dfrac{20{,}8}{100}$$
+    <p>La proportion en pourcentage de
+    nageurs parmi les français est 20,8&nbsp;%.</p>
+    </div>
+  <ol start="6">
+    <li>
+      Quelle est la proportion d'italiens pratiquant l'athlétisme parmi
+      l'ensemble des italiens&nbsp;?
+    </li>
+  </ol>
+  <div class="solution">
+    $$\dfrac{46}{316}=\dfrac{46\div 2}{316\div 2}=\dfrac{23}{158}$$
+    <p>La proportion d'italiens pratiquant l'athlétisme parmi l'ensemble des italiens
+    est $\dfrac{23}{158}$.</p>
+    </div>
+  <ol start="7">
+    <li>
+      Quelle est la proportion d'italiens inscrits à l'escrime parmi les
+      adhérents&nbsp;?
+    </li>
+  </ol>
+  <div class="solution">
+    <p>La proportion d'italiens inscrits à l'escrime parmi les adhérents est
+    $\dfrac{47}{566}$.</p>
+  </div>
+  <ol start="8">
+    <li>
+      Quelle est la proportion en pourcentage d'inscrits à l'athlétisme parmi
+      les français&nbsp;?
+    </li>
+  </ol>
+  <div class="solution">
+    $$\dfrac{46}{250}=\dfrac{46\times 4}{250\times
+    4}=\dfrac{184}{1000}=\dfrac{18{,}4}{100}$$
+    <p>La proportion en pourcentage
+    d'inscrits à l'athlétisme parmi les français est 18,4&nbsp;%.</p>
+    </div>
+</div>
+
+    </main>
+    <footer>
+        Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
+        Licence CC BY-NC-SA.
+    </footer>
+</body>
+
+</html>

@@ -8,14 +8,6 @@
     font-size: 10pt;
   }
 
-  /* Gain d'espace */
-  p,
-  li,
-  ol,
-  ul {
-    margin: 0em;
-  }
-
   @page {
     size: A4;
   }
@@ -29,41 +21,5 @@
   /* Ne pas isoler un titre de section */
   h2 {
     page-break-after: avoid;
-  }
-
-  /* Pour gagner de l'espace les formules éléments de la class .katex-display contenus dans des éléments p sont en inline-block*/
-  .katex-display p {
-    display: inline-block;
-    margin: 0em;
-  }
-  
-  /* Ne pas afficher les .solution et l'id sommaire*/
-  .solution,
-  #sommaire {
-    display: none;
-  }
-
-  /* Masquer les boutons */
-  button {
-    display: none;
-  }
-
-  /* Responsive listes */
-  .responsive-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0;
-  }
-  
-  .responsive-list li {
-    flex: 1;
-    padding: 0 10px;
-    box-sizing: border-box;
-  }
-  /* Ne pas afficher le bandeau de navigation */
-  nav {
-    display: none;
   }
 }

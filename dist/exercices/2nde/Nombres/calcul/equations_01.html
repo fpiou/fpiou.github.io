@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Polynomes_07</title>
+    <title>Equations_01</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -96,57 +96,61 @@
     </header>
     <main>
         <div class="exercice">
-    <div class="enonce">
-        Chaque polynôme possède deux racines $x_1$ et $x_2$ dont une évidente ($1$ ou $-1$).<br>
-        Sans utiliser le discriminant, déterminer les deux racines du polynôme.
-        <ol>
-            <li>$f(x)=2x^2+3x-5$</li>
-            <div class="solution">
-                <p>On a $f(1)=2\times 1^2+3\times 1-5$</p>
-                <p>Soit $f(1)=2+3-5=0$</p>
-                <p>Donc $1$ est racine du polynôme.</p>
-                <p>On a $x_1\times x_2=\frac{c}{a}$</p>
-                <p>D'où $1\times x_2=\frac{-5}{2}$</p>
-                <p>Donc $x_2=-\frac{5}{2}$</p>
-            </div>
-            <li>$f(x)=-7x^2-4x+3$</li>
-            <div class="solution">
-                <p>On a $f(-1)=-7\times (-1)^2-4\times (-1)+3=0$</p>
-                <p>Soit $f(-1)=-7+4+3=0$</p>
-                <p>Donc $x_1=-1$ est racine du polynôme.</p>
-                <p>On a $x_1\times x_2=\frac{c}{a}$</p>
-                <p>D'où $(-1)\times x_2=\frac{3}{-7}$</p>
-                <p>Donc $x_2=\frac{3}{7}$</p>
-            </div>
-        </ol>
-    </div>
+  <div class="enonce">
+    <p>Résoudre l'équation suivante : $$7(x+3)=9x-5.$$</p>
+  </div>
+  <div class="solution">
+    <p>On commence par développer le membre de gauche.</p>
+    $$\begin{align*} 7(x+3)&=9x-5\\ 7x+21&=9x-5 \end{align*}$$
+    <p>On regroupe les termes en $x$ dans le membre de gauche.</p>
+    $$\begin{align*} 7x+21&=9x-5\\ 7x-9x&=-5-21\\ -2x&=-26 \end{align*}$$
+    <p>On divise par $-2$.</p>
+    $$\begin{align*} -2x&=-26\\ \frac{-2x}{-2}&=\frac{-26}{-2}\\ x&=13
+    \end{align*}$$
+    <p>On vérifie que $x=13$ est bien solution de l'équation.</p>
+    <p>D'une part, $$7(x+3)=7(13+3)=7\times 16=112.$$</p>
+    <p>D'autre part, $$9x-5=9\times 13-5=117-5=112.$$</p>
+    <p>On a bien $7(x+3)=9x-5$ pour $x=13$.</p>
+    <p>Donc $x=13$ est bien solution de l'équation.</p>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    <p>Résoudre l'équation suivante : $$(4x+3)(7x-5)=0.$$</p>
+  </div>
+  <div class="solution">
+    <p>On reconnait une équation produit-nul.</p>
+    <p>Or un produit est nul si et seulement si l'un des facteurs est nul.</p>
+    <p>Donc $(4x+3)(7x-5)=0$ si et seulement si $4x+3=0$ ou $7x-5=0$.</p>
+    <p>On résout chacune de ces équations.</p>
+    $$\begin{align*} 4x+3&=0&&\text{ ou }&7x-5&=0\\ 4x&=-3&&\text{ ou
+    }&&7x&=5\\ x&=-\frac{3}{4}&&&x&=\frac{5}{7} \end{align*}$$
+    <p>
+      Donc les solutions de l'équation sont $-\frac{3}{4}$ et $\frac{5}{7}$.
+    </p>
+  </div>
 </div>
 <div class="exercice">
     <div class="enonce">
-        Chaque polynôme possède deux racines $x_1$ et $x_2$ dont une évidente ($2$ ou $-2$).<br>
-        Sans utiliser le discriminant, déterminer les deux racines du polynôme.
-        <ol>
-            <li>$f(x)=3x^2-5x-2$</li>
-            <div class="solution">
-                <p>On a $f(2)=3\times 2^2-5\times 2-2$</p>
-                <p>Soit $f(2)=3\times 4-10-2=12-12=0$</p>
-                <p>Donc $2$ est racine du polynôme.</p>
-                <p>On a $x_1\times x_2=\frac{c}{a}$</p>
-                <p>D'où $2\times x_2=\frac{-2}{3}$</p>
-                <p>Donc $x_2=-\frac{1}{3}$</p>
-            </div>
-            <li>$f(x)=-4x^2-3x+10$</li>
-            <div class="solution">
-                <p>On a $f(-2)=-4\times (-2)^2-3\times (-2)+10$</p>
-                <p>Soit $f(-2)=-4\times 4+6+10=-16+16=0$</p>
-                <p>Donc $-2$ est racine du polynôme.</p>
-                <p>On a $x_1\times x_2=\frac{c}{a}$</p>
-                <p>D'où $(-2)\times x_2=\frac{10}{-4}$</p>
-                <p>Donc $x_2=\frac{5}{4}$</p>
-            </div>
-        </ol>
+      <p>Résoudre l'équation suivante : $$\frac{7x+3}{4x-5}=0.$$</p>
+    </div>
+    <div class="solution">
+      <p>On reconnait une équation quotient-nul.</p>
+      <p>Or un quotient est nul si et seulement si le numérateur est nul et le
+      dénominateur non nul.</p>
+      <p>Donc $\frac{7x+3}{4x-5}=0$ si et seulement si $7x+3=0$ et $4x-5\neq
+      0$.</p>
+      <p>On détermine les valeurs interdites.</p>
+        $$\begin{align*} 4x-5&=0\\ 4x&=5\\ x&=\frac{5}{4} \end{align*}$$
+        <p>Donc $x=\frac{5}{4}$ est valeur interdite.</p>
+        <p>On résout l'équation sans le dénominateur.</p>
+        $$\begin{align*} 7x+3&=0\\ 7x&=-3\\ x&=-\frac{3}{7} \end{align*}$$
+        <p>$-\frac{3}{7}$ n'est pas valeur interdite.</p>
+        <p>Donc les solutions de l'équation sont $-\frac{3}{7}$.</p>
     </div>
 </div>
+
+
     </main>
     <footer>
         Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>

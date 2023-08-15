@@ -209,6 +209,16 @@ function formatNumberForLatex(strNum) {
   return intPart;
 }
 
+function formatSIForLatex(value, unit) {
+  // Remplacer les modificateurs par leur forme textuelle
+  unit = unit.replace(/\\square\\(\w+)/g, "\\text{$1}^2");
+  unit = unit.replace(/\\cubic\\(\w+)/g, "\\text{$1}^3");
+  unit = unit.replace(/\\(\w+)/g, "\\text{$1}");
+  // Ajoutez d'autres remplacements d'unités si nécessaire
+
+  return formatNumberForLatex(value) + "\\," + unit;
+}
+
 function preprocessLatexText(text) {
   const delimiters = [
     /\$(.*?)\$/g,
@@ -219,9 +229,17 @@ function preprocessLatexText(text) {
 
   for (let delimiter of delimiters) {
     text = text.replace(delimiter, function (match) {
-      return match.replace(/\\num\{(-?[\d.,]+)\}/g, function (_, p1) {
+      // Traitement pour \num{}
+      match = match.replace(/\\num\{(-?[\d.,]+)\}/g, function (_, p1) {
         return formatNumberForLatex(p1);
       });
+
+      // Traitement pour \SI{...}{...}
+      match = match.replace(/\\SI\{(-?[\d.,]+)\}\{(.*?)\}/g, function (_, p1, p2) {
+        return formatSIForLatex(p1, p2);
+      });
+
+      return match;
     });
   }
   return text;

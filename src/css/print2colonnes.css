@@ -10,30 +10,7 @@
     font-size: 10pt;
   }
 
-  p {
-    margin: 0em;
-  }
-
   @page {
     size: A4;
-  }
-  /* Ne pas couper les définitions, propriétés, remarques, exemples */
-  div {
-    page-break-inside: avoid;
-  }
-  /* Ne pas afficher les .solution et les indice */
-  .solution {
-    display: none;
-  }
-  .indice {
-    display: none;
-  }
-  /* Masquer les boutons */
-  button {
-    display: none;
-  }
-  /* Ne pas afficher le bandeau de navigation */
-  nav {
-    display: none;
   }
 }

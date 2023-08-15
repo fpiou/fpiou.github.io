@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Racinecarrée</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+        <link rel="stylesheet" href="/src/css/prettyLesson.css">
+    
+        <link rel="stylesheet" href="/src/css/print1colonne.css">
+    
+        <link rel="stylesheet" href="/src/css/main.css">
+    
+        <link rel="stylesheet" href="/src/css/print.css">
+    
+
+    <!--Scripts personnalisés-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script><script defer src="../../../../interactivite.bundle.js"></script><script defer src="../../../../quiz.bundle.js"></script><script defer src="../../../../scorm.bundle.js"></script></head>
+
+<body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1ereGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+    <main>
+        <h1>Racine carrée<em></em></h1>
+<details>
+  <summary>Sommaire</summary>
+  <nav id="tableOfContents"></nav>
+</details>
+<h2>Généralités</h2>
+
+<div class="definition">
+  <p>
+    Soit $a$ un nombre réel positif ou nul ($a\geqslant 0$).<br>
+    On appelle <strong>racine carrée</strong> de $a$ et on note $\sqrt{a}$ le nombre réel positif ou nul dont le carré vaut $a$. $$\sqrt{a}=b\text{ si et seulement si } b\geqslant 0\text{ et }b^2=a$$
+    Remarque : la racine carrée d'un nombre négatif n'est pas définie.
+  </p>
+</div>
+<div class="exemple">
+  <ul>
+    <li>$\sqrt{25}=5$ car $5^2=25$</li>
+    <li>$\sqrt{100}=10$ car $10^2=100$</li>
+    <li>$\sqrt{0}=0$ car $0^2=0$</li>
+    <li>$\sqrt{1}=1$ car $1^2=1$</li>
+  </ul>
+</div>
+<div class="remarque">
+  <p>Voici quelques racines carrées usuelles à connaître par coeur :</p>
+  <style>
+    table {
+      border-collapse: collapse; /* Pour que les bordures des cellules se touchent */
+      width: 100%; /* Utilisez la largeur que vous souhaitez pour la table */
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black; /* Ajoute des bordures à la table et à chaque cellule */
+    }
+
+    th,
+    td {
+      text-align: center; /* Centre le contenu des cellules */
+      padding: 8px; /* Ajoute un peu d'espace autour du contenu des cellules */
+    }
+  </style>
+  <ul style="list-style-type: none;padding:10px 0;">
+    <li>
+      <table>
+        <tr>
+          <th>$a$</th>
+          <th>$0$</th>
+          <th>$1$</th>
+          <th>$4$</th>
+          <th>$9$</th>
+          <th>$16$</th>
+          <th>$25$</th>
+          <th>$36$</th>
+          <th>$49$</th>
+          <th>$64$</th>
+          <th>$81$</th>
+          <th>$100$</th>
+        </tr>
+        <tr>
+          <th>$\sqrt{a}$</th>
+          <th>$0$</th>
+          <th>$1$</th>
+          <th>$2$</th>
+          <th>$3$</th>
+          <th>$4$</th>
+          <th>$5$</th>
+          <th>$6$</th>
+          <th>$7$</th>
+          <th>$8$</th>
+          <th>$9$</th>
+          <th>$10$</th>
+        </tr>
+      </table>
+    </li>
+    <li>
+      <table>
+        <tr>
+          <th>$a$</th>
+          <th>$121$</th>
+          <th>$144$</th>
+          <th>$169$</th>
+          <th>$196$</th>
+          <th>$225$</th>
+        </tr>
+        <tr>
+          <th>$\sqrt{a}$</th>
+          <th>$11$</th>
+          <th>$12$</th>
+          <th>$13$</th>
+          <th>$14$</th>
+          <th>$15$</th>
+        </tr>
+      </table>
+    </li>
+  </ul>
+</div>
+<div class="remarque">
+    <p> $\sqrt{2}$ est un nombre irrationnel. Sa valeur approchée à $10^{-2}$ près est $\sqrt{2}\approx 1,41$.</p>
+    <p> Il existe une infinité de nombres irrationnels que l'on peut obtenir en calculant des racines carrées.</p>
+</div>
+<div class="exemple">
+    <ul>
+        <li>$\sqrt{3}$ est irrationnel et $\sqrt{3}\approx 1,73$</li>
+        <li>$\sqrt{\num{2,5}}$ est irrationnel et $\sqrt{\num{2,5}}\approx 1,58$</li>
+        <li>Mais $\sqrt{\num{0,25}}$ est décimal car en effet $\sqrt{\num{0,25}}=\num{0,5}$</li>
+    </ul>
+</div>
+</div>
+<div class="propriete">
+  <p>Soit $a$ un nombre réel positif ou nul ($a\geqslant 0$).</p>
+  $$\left(\sqrt{a}\right)^2=a \quad\text{ et }\quad \sqrt{a^2}=a$$
+</div>
+<div class="exemple">
+  <ul>
+    <li>$\left(\sqrt{36}\right)^2=36$ et $\sqrt{36^2}=36$</li>
+    <li>$\left(\sqrt{17}\right)^2=17$ et $\sqrt{17^2}=17$</li>
+  </ul>
+</div>
+<div class="remarque">
+  <p>Attention, ces propriétés ne sont valables que si $a$ est positif ou nul.</p>
+  <p>Par exemple $\left(\sqrt{-12}\right)^2\neq -12$ car la racine carrée d'un nombre négatif n'est pas définie.</p>
+  <p>Cependant, $\sqrt{(-12)^2}=12$ car $(-12)^2=12$.</p>
+</div>
+<!-- Opérations -->
+<h2>Opérations</h2>
+<div class="propriete">
+  <p>
+    Soit $a$ et $b$ deux nombres réels positifs ou nuls ($a\geqslant 0$ et $b\geqslant 0$).
+    $$\sqrt{a\times b}=\sqrt{a}\times\sqrt{b}$$
+  </p>
+</div>
+<div class="exemple">
+  <ul>
+    <li>$\sqrt{25\times 16}=\sqrt{25}\times\sqrt{16}=5\times 4=20$</li>
+    <li>$\sqrt{100\times 81}=\sqrt{100}\times\sqrt{81}=10\times 9=90$</li>
+  </ul>
+</div>
+<div class="propriete">
+  <p>
+    Soit $a$ et $b$ deux nombres réels positifs tels que $b\neq 0$ ($a\geqslant 0$ et $b>0$).
+    $$\sqrt{\frac{a}{b}}=\frac{\sqrt{a}}{\sqrt{b}}$$
+  </p>
+</div>
+<div class="exemple">
+  <ul>
+    <li>$\sqrt{\frac{25}{16}}=\frac{\sqrt{25}}{\sqrt{16}}=\frac{5}{4}$</li>
+    <li>$\sqrt{\frac{100}{81}}=\frac{\sqrt{100}}{\sqrt{81}}=\frac{10}{9}$</li>
+  </ul>
+</div>
+<div class="remarque">
+    <p>Attention, ces propriétés ne sont valables que si $a$ et $b$ sont positifs ou nuls.</p>
+    <p>Il n'existe pas de règles pour calculer la racine carrée d'une somme ou d'une différence. En effet, si $a$ et $b$ sont non nuls alors $$\sqrt{a+b}\neq \sqrt{a}+\sqrt{b}.$$</p>
+</div>
+<div class="exemple">
+    <ul>
+        <li>
+            $\sqrt{(-25)\times (-16)}\neq\sqrt{(-25)}\times\sqrt{(-16)}$ car la racine carrée d'un nombre négatif n'est pas définie.
+        </li>
+        <li>
+            $\sqrt{25+9}=\sqrt{34}$ et $\sqrt{25}+\sqrt{9}=5+3=8$ mais $8\neq \sqrt{34}$.
+        </li>
+    </ul>
+    
+</div>
+<!-- Simplification -->
+<h2>Simplification</h2>
+<div class="propriete">
+    <p>Soit $a$ un nombre réel positif ou nul ($a\geqslant 0$) et $k$ un entier naturel.</p>
+        $$\sqrt{a^{2k}}=a^k$$
+</div>
+<div class="demonstration">
+    $$\sqrt{a^{2k}}=\sqrt{\left(a^k\right)^2}=a^k$$
+</div>
+<div class="methode">
+    <p>Pour calculer la racine carrée d'une puissance d'exposant pair, il suffit de diviser l'exposant par $2$.</p>
+</div>
+<div class="exemple">
+    <ul>
+        <li>$\sqrt{5^{24}}=5^{12}$ car $24\div 2=12$</li>
+        <li>$\sqrt{2^9}=\sqrt{2^8\times 2}=\sqrt{2^8}\times\sqrt{2}=2^4\times\sqrt{2}=16\sqrt{2}$</li>
+    </ul>
+</div>
+<div class="remarque">
+    <p>Pour simplifier la racine carrée d'un nombre rationnel positif, on cherche à l'écrire sous la forme $a\sqrt{b}$ où $a$ est un nombre rationnel positif ou nul et $b$ est un nombre entier positif ou nul le plus petit possible.</p>
+</div>
+<div class="exemple">
+    <ul>
+        <li>$\sqrt{50}=\sqrt{25\times 2}=\sqrt{25}\times\sqrt{2}=5\sqrt{2}$</li>
+        <li>$\sqrt{45}=\sqrt{9\times 5}=\sqrt{9}\times\sqrt{5}=3\sqrt{5}$</li>
+        <li>$\sqrt{15}$ est déjà simplifiée car $\sqrt{15}=\sqrt{3\times 5}$ et on ne trouve pas de carrés parfaits.</li>
+        <li>$\sqrt{\frac{20}{9}}=\frac{\sqrt{20}}{\sqrt{9}}=\frac{\sqrt{4\times 5}}{\sqrt{9}}=\frac{\sqrt{4}\times\sqrt{5}}{\sqrt{9}}=\frac{2\sqrt{5}}{3}=\frac{2}{3}\sqrt{5}$</li>
+    </ul>
+</div>
+<div class="methode">
+    <p>Pour simplifier la racine carrée d'un nombre rationnel positif écrit sous sa forme irréductible il suffit de décomposer le numérateur et le dénominateur en produit de facteurs premiers et de les regrouper pour obtenir des puissances d'exposant pair.</p>
+</div>
+<div class="exemple">
+    $$
+    \begin{align*}
+    \sqrt{\frac{160}{441}}&=\frac{\sqrt{160}}{\sqrt{441}}\\
+    &=\frac{\sqrt{2^5\times 5}}{\sqrt{3^2\times 7^2}}\\
+    &=\frac{\sqrt{2^4\times 2\times 5}}{\sqrt{3^2\times 7^2}}\\
+    &=\frac{\sqrt{2^4}\times\sqrt{2}\times\sqrt{5}}{\sqrt{3^2}\times\sqrt{7^2}}\\
+    &=\frac{2^2\times\sqrt{2}\times\sqrt{5}}{3\times 7}\\
+    &=\frac{4\sqrt{10}}{21}\\
+    &=\frac{4}{21}\sqrt{10}
+    \end{align*}
+    $$
+</div>
+<div class="methode">
+    <p>Pour simplifier une écriture de la forme $\frac{a}{\sqrt{b}}$ où $a$ et $b$ sont des nombres rationnels positifs non nuls, on multiplie le numérateur et le dénominateur par $\sqrt{b}$.</p>
+</div>
+<div class="exemple">
+    <ul>
+        <li>$\frac{5}{\sqrt{2}}=\frac{5\times \sqrt{2}}{\sqrt{2}\times \sqrt{2}}=\frac{5\sqrt{2}}{2}=\frac{5}{2}\sqrt{2}$</li>
+        <li>$\frac{3}{\sqrt{5}}=\frac{3\times \sqrt{5}}{\sqrt{5}\times \sqrt{5}}=\frac{3\sqrt{5}}{5}=\frac{3}{5}\sqrt{5}$</li>
+    </ul>
+</div>
+    </main>
+    <footer>
+        Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
+        Licence CC BY-NC-SA.
+    </footer>
+</body>
+
+</html>

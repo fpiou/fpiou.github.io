@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Parallelogrammes</title>
+    <title>Inequations</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,8 +32,6 @@
         <link rel="stylesheet" href="/src/css/prettyLesson.css">
     
         <link rel="stylesheet" href="/src/css/print1colonne.css">
-    
-        <link rel="stylesheet" href="/src/css/figures.css">
     
         <link rel="stylesheet" href="/src/css/main.css">
     
@@ -94,74 +92,113 @@
     </ul>
 </nav>
     <main>
-        <h1> Propriétés des parallélogrammes</h1>
+        <h1>Inéquations</h1>
 <details>
-    <summary>Sommaire</summary>
-    <nav id="tableOfContents">
-    </nav>
+  <summary>Sommaire</summary>
+  <nav id="tableOfContents"></nav>
 </details>
-<h2> Caractérisations des parallélogrammes</h2>
-<style>
-    .Propriete {
-        font-weight: bold;
-    }
+<h2>Généralités</h2>
+<div class="definition">
+  <p>
+    Une inéquation est une inégalité dans laquelle figure une ou plusieurs
+    lettres appelées inconnues.
+  </p>
+</div>
+<div class="exemple">
+  <p>
+    L'inéquation $2x+3\leqslant 5$ a pour inconnue $x$. On dit que $x$ est
+    l'inconnue de l'inéquation $2x+3\leqslant 5$.
+  </p>
+</div>
+<div class="definition">
+  <p>
+    On appelle solution d'une inéquation toute valeur de l'inconnue qui rend
+    l'inégalité vraie.
+  </p>
+</div>
+<div class="exemple">
+  <p>
+    $-2$ est une solution de l'inéquation $2x+3\leqslant 5$ car $2\times
+    (-2)+3=-1\leqslant 5$.
+  </p>
+</div>
+<div class="definition">
+  <p>
+    On appelle ensemble des solutions d'une inéquation l'ensemble des valeurs de
+    l'inconnue qui rendent l'inégalité vraie.
+  </p>
+</div>
+<div class="exemple">
+  <p>
+    On se propose de déterminer l'ensemble des solutions de l'inéquation
+    $2x+3\leqslant 5$.
+  </p>
+  <p>
+    On a $2x+3\leqslant 5$ ce qui est équivalent à $2x\leqslant 5-3$ et
+    finalement $x\leqslant \frac{5-3}{2}$ ou encore $x\leqslant \frac{2}{2}$.
+  </p>
+  <p>
+    L'ensemble des solutions de l'inéquation $2x+3\leqslant 5$ est donc
+    $\{x\in\mathbb{R} \text{ tel que } x\leqslant 1\}$.
+  </p>
+</div>
+<div class="methode">
+  <p>
+    Pour résoudre une inéquation du premier degré à une inconnue, on utilise la
+    méthode suivante :
+  </p>
+  <ol>
+    <li>On développe et on réduit les deux membres.</li>
+    <li>On isole l'inconnue à gauche de l'inégalité.</li>
+    <li>On simplifie l'inégalité.</li>
+    <li>On détermine l'ensemble des solutions.</li>
+  </ol>
+</div>
+<div class="exemple">
+  <p>On souhaite résoudre l'inéquation $2(x-3)< 8x+12$.</p>
+  <ol>
+    <li>
+      On développe et on réduit les deux membres : $$2x-6< 8x+12.$$
+    </li>
+    <li>
+      On isole l'inconnue à gauche de l'inégalité : $$2x-8x< 12+6.$$
+    </li>
+    <li>On simplifie l'inégalité : $$-6x < 18.$$</li>
+    <li>
+      On détermine l'ensemble des solutions : $$x > \frac{18}{-6}$$ ou
+      encore $$x > -3.$$
+    </li>
+  </ol>
+  <p>
+    L'ensemble des solutions de l'inéquation $2(x-3) < 8x+12$ est donc
+    $\{x\in\mathbb{R} \text{ tel que } x > -3\}$.
+  </p>
+</div>
+<div class="remarque">
+  <p>
+    L'ensemble des solutions d'une inéquation du premier degré à une inconnue
+    est un intervalle. On peut donc exprimer l'ensemble des solutions sous la
+    forme d'un intervalle.
+  </p>
+</div>
+<div class="exemple">
+<ul>
+    <li>
+        L'ensemble $S$ des solutions de l'inéquation $2x+3\leqslant 5$ est
+        $$S=\{x\in\mathbb{R} \text{ tel que } x\leqslant 1\}.$$
+            On peut aussi écrire l'ensemble des solutions de l'inéquation $2x+3\leqslant
+            5$ sous la forme d'un intervalle : $$S=]-\infty;1].$$
+    </li>
+    <li>
+        L'ensemble $S'$ des solutions de l'inéquation $2(x-3)< 8x+12$ est
+            $$S'=\{x\in\mathbb{R} \text{ tel que } x > -3\}.$$
+            On peut aussi écrire l'ensemble des solutions de l'inéquation $2(x-3)< 8x+12$
+            sous la forme d'un intervalle : $$S'=]-3;+\infty[.$$
+    </li>
+</ul>
+</div>
 
-    .Reciproque {
-        font-weight: bold;
-    }
 
-    .Theoreme {
-        font-weight: bold;
-    }
-</style>
-<div class="propriete">
-    <div id="figure1" class="figure interactive"></div>
-    <p><span class="Propriete">Propriété</span> : Si un quadrilatère est un parallélogramme, alors ses côtés opposés
-        sont parallèles deux à deux.</p>
-    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longrightarrow}\quad (AB)//(CD)~\text{ et }~(AD)//(BC)$$
-    <p><span class="Reciproque">Réciproque</span> : Si un quadrilatère a ses côtés opposés parallèles deux à deux, alors
-        c'est un parallélogramme.</p>
-    $$(AB)//(CD)~\text{ et }~(AD)//(BC) \quad{\color{red}\Longrightarrow}\quad ABCD ~\text{parallélogramme}$$
-    <p><span class="Theoreme">Théorème</span> : Un quadrilatère est un parallélogramme si et seulement si ses côtés
-        opposés sont parallèles deux à deux.</p>
-    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longleftrightarrow}\quad (AB)//(CD)~\text{ et }~(AD)//(BC)$$
-</div>
-<div class="propriete">
-    <div id="figure2" class="figure"></div>
-    <p><span class="Propriete">Propriété</span> : Si un quadrilatère est un parallélogramme, alors ses diagonales se
-        coupent en leur milieu.</p>
-    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longrightarrow}\quad mil(A,C)=mil(B,D)$$
-    <p><span class="Reciproque">Réciproque</span> : Si un quadrilatère a ses diagonales qui se coupent en leur milieu,
-        alors c'est un parallélogramme.</p>
-    $$mil(A,C)=mil(B,D) \quad{\color{red}\Longrightarrow}\quad ABCD ~\text{parallélogramme}$$
-    <p><span class="Theoreme">Théorème</span> : Un quadrilatère est un parallélogramme si et seulement si ses diagonales
-        se coupent en leur milieu.</p>
-    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longleftrightarrow}\quad mil(A,C)=mil(B,D)$$
-</div>
-<div class="propriete">
-    <div id="figure3" class="figure"></div>
-    <p><span class="Propriete">Propriété</span> : Si un quadrilatère est un parallélogramme, alors ses côtés opposés
-        sont de même longueur deux à deux.</p>
-    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longrightarrow}\quad AB=CD~\text{ et }~AD=BC$$
-    <p><span class="Reciproque">Réciproque</span> : Si un quadrilatère a ses côtés opposés de même longueur deux à deux,
-        alors c'est un parallélogramme.</p>
-    $$AB=CD~\text{ et }~AD=BC \quad{\color{red}\Longrightarrow}\quad ABCD ~\text{parallélogramme}$$
-    <p><span class="Theoreme">Théorème</span> : Un quadrilatère est un parallélogramme si et seulement si ses côtés
-        opposés sont de même longueur deux à deux.</p>
-    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longleftrightarrow}\quad AB=CD~\text{ et }~AD=BC$$
-</div>
-<div class="propriete">
-    <div id="figure4" class="figure"></div>
-    <p><span class="Propriete">Propriété</span> : Si un quadrilatère est un parallélogramme, alors il possède deux côtés
-        opposés parallèles et de même longueur.</p>
-    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longrightarrow}\quad (AB)//(CD)~\text{ et }~AB=CD$$
-    <p><span class="Reciproque">Réciproque</span> : Si un quadrilatère a deux côtés opposés parallèles et de même
-        longueur, alors c'est un parallélogramme.</p>
-    $$(AB)//(CD)~\text{ et }~AB=CD \quad{\color{red}\Longrightarrow}\quad ABCD ~\text{parallélogramme}$$
-    <p><span class="Theoreme">Théorème</span> : Un quadrilatère est un parallélogramme si et seulement s'il possède deux
-        côtés opposés parallèles et de même longueur.</p>
-    $$ABCD ~\text{parallélogramme} \quad{\color{red}\Longleftrightarrow}\quad (AB)//(CD)~\text{ et }~AB=CD$$
-</div>
     </main>
     <footer>
         Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>

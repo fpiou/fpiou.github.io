@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Equations</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+        <link rel="stylesheet" href="/src/css/prettyLesson.css">
+    
+        <link rel="stylesheet" href="/src/css/print1colonne.css">
+    
+        <link rel="stylesheet" href="/src/css/main.css">
+    
+        <link rel="stylesheet" href="/src/css/print.css">
+    
+
+    <!--Scripts personnalisés-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script><script defer src="../../../../interactivite.bundle.js"></script><script defer src="../../../../quiz.bundle.js"></script><script defer src="../../../../scorm.bundle.js"></script></head>
+
+<body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1ereGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+    <main>
+        <h1>Equations</h1>
+<details>
+  <summary>Sommaire</summary>
+  <nav id="tableOfContents"></nav>
+</details>
+<h2>Généralités</h2>
+<div class="definition">
+  <p>
+    Une équation est une égalité dans laquelle figure une ou plusieurs lettres
+    appelées inconnues.
+  </p>
+</div>
+<div class="exemple">
+  <p>
+    L'équation $2x+3=5$ a pour inconnue $x$. On dit que $x$ est l'inconnue de
+    l'équation $2x+3=5$.
+  </p>
+</div>
+<div class="definition">
+    <p>
+        On appelle solution d'une équation toute valeur de l'inconnue qui rend l'égalité vraie.
+    </p>
+</div>
+<div class="exemple">
+    <p>
+        $1$ est une solution de l'équation $2x+3=5$ car $2\times 1+3=5$.
+    </p>
+</div>
+<div class="definition">
+    <p>
+        On appelle ensemble des solutions d'une équation l'ensemble des valeurs de l'inconnue qui rendent l'égalité vraie.
+    </p>
+</div>
+<div class="exemple">
+    <p>
+        L'ensemble des solutions de l'équation $2x+3=5$ est $\{1\}$.
+    </p>
+</div>
+<div class="definition">
+    <p>
+        On appelle résoudre une équation le fait de déterminer son ensemble des solutions.
+    </p>
+</div>
+<div class="exemple">
+    <p>
+        On souhaite résoudre l'équation $2x+3=5$.
+    </p>
+    <p>
+        On a $2x+3=5$ ce qui est équivalent à $2x=5-3$ et finalement $x=\frac{5-3}{2}$ ou encore $x=\frac{2}{2}$.
+    </p>
+    <p>
+        L'ensemble des solutions de l'équation $2x+3=5$ est donc $\{1\}$.
+    </p>
+</div>
+<div class="methode">
+    <p>Pour résoudre une équation du premier degré à une inconnue, on utilise la méthode suivante :</p>
+    <ol>
+        <li>On développe et on réduit les deux membres.</li>
+        <li>On isole l'inconnue à gauche de l'égalité.</li>
+        <li>On simplifie l'égalité.</li>
+        <li>On détermine l'ensemble des solutions.</li>
+    </ol>
+</div>
+<div class="exemple">
+    <p>On souhaite résoudre l'équation $2(x+3)=5x-7$.</p>
+    <ol>
+        <li>On développe et on réduit les deux membres : $$2x+6=5x-7.$$</li>
+        <li>On isole l'inconnue à gauche de l'égalité : $$2x-5x=-7-6.$$</li>
+        <li>On simplifie l'égalité : $$-3x=-13.$$</li>
+        <li>On détermine l'unique solution : $x=\frac{-13}{-3}$ ou encore $x=\frac{13}{3}$.</li>
+    </ol>
+    <p>L'ensemble des solutions de l'équation $2(x+3)=5x-7$ est donc $\left\{\frac{13}{3}\right\}$.</p>
+</div>
+<h2>Equation produit-nul</h2>
+<div class="propriete">
+    <p>Un produit est nul si et seulement si l'un de ses facteurs est nul.</p>
+</div>
+<div class="demonstration">
+    <p>Soit $A$ et $B$ deux nombres réels.</p>
+    <p>On se propose de démontrer que $A\times B=0$ si et seulement si $A=0$ ou $B=0$.</p>
+    <p>Supposons que $A=0$. Alors $A\times B=0\times B=0$.</p>
+    <p>Supposons que $B=0$. Alors $A\times B=A\times 0=0$.</p>
+    <p>Réciproquement, supposons que $A\times B=0$ et supposons que $A\neq 0$.</p>
+    <p>On peut donc diviser par $A$.</p>
+    <p>On a donc $B=\frac{0}{A}=0$.</p>
+    <p>Donc $B=0$.</p>
+    <p>De même, en supposant que $B\neq 0$, on obtient $A=0$.</p>
+</div>
+<div class="definition">
+    <p>
+        On appelle équation produit-nul à une inconnue une équation de la forme $A\times B=0$ où $A$ et $B$ sont des nombres réels qui dépendent de l'inconnue.
+    </p>
+</div>
+<div class="exemple">
+    <p>
+        On souhaite résoudre l'équation $x^2-4=0$.
+    </p>
+    <p>
+        On a $x^2-4=0$ ce qui est équivalent à $(x-2)(x+2)=0$.
+    </p>
+    <p>Or un produit est nul si et seulement si l'un de ses facteurs est nul.</p>
+    $$\begin{align*}
+        x-2&=0&&\text{ou}&&x+2=0\\
+        x&=2&&&&x=-2
+    \end{align*}$$
+    <p>
+        L'ensemble des solutions de l'équation $x^2-4=0$ est donc $\{-2;2\}$.
+    </p>
+</div>
+<div class="methode">
+    <p>Pour résoudre une équation pouvant se ramener à une équation produit-nul, on utilise la méthode suivante :</p>
+    <ol>
+        <li>On isole tous les termes dans le membre de gauche de l'égalité.</li>
+        <li>On factorise le membre de gauche de l'égalité.</li>
+        <li>On détermine l'ensemble des solutions.</li>
+    </ol>
+</div>
+<div class="exemple">
+    <p>On souhaite résoudre l'équation $(2x-3)(6x+5)=(2x+8)(2x-3)$.</p>
+    <ol>
+        <li>On isole tous les termes dans le membre de gauche de l'égalité : $$(2x-3)(6x+5)-(2x+8)(2x-3)=0.$$</li>
+        <li>On factorise le membre de gauche de l'égalité : $$(2x-3)\left[(6x+5)-(2x+8)\right]=0.$$</li>
+    </ol>
+    <p>L'équation est donc équivalente à $$(2x-3)(4x-3)=0.$$</p>
+    <p>Or un produit est nul si et seulement si l'un de ses facteurs est nul.</p>
+    $$\begin{align*}
+        2x-3&=0&&\text{ou}&&4x-3=0\\
+        2x&=3&&&&4x=3\\
+        x&=\frac{3}{2}&&&&x=\frac{3}{4}
+    \end{align*}$$
+    <p>L'ensemble des solutions de l'équation $(2x-3)(6x+5)=(2x+8)(2x-3)$ est donc $\left\{\frac{3}{2};\frac{3}{4}\right\}$.</p>
+</div>
+<h2>Equation quotient-nul</h2>
+<div class="propriete">
+    <p>Un quotient est nul si et seulement si son numérateur est nul et son dénominateur non nul.</p>
+</div>
+<div class="demonstration">
+    <p>Soit $A$ et $B$ deux nombres réels.</p>
+    <p>On se propose de démontrer que $\frac{A}{B}=0$ si et seulement si $A=0$ et $B\neq 0$.</p>
+    <p>$\frac{A}{B}=0$ si et seulement si $A\times \frac{1}{B}=0$.</p>
+    <p>Or un produit est nul si et seulement si l'un de ses facteurs est nul.</p>
+    <p>Donc $A=0$ ou $\frac{1}{B}=0$.</p>
+    <p>Or $0$ n'est pas l'inverse d'un nombre réel.</p>
+    <p>Donc $\frac{1}{B}\neq 0$.</p>
+    <p>Par conséquent, $\frac{A}{B}=0$ si et seulement si $A=0$ et $B\neq 0$.</p>
+</div>
+<div class="definition">
+    <p>
+        On appelle équation quotient-nul à une inconnue une équation de la forme $\frac{A}{B}=0$ où $A$ et $B$ sont des nombres réels qui dépendent de l'inconnue.
+    </p>
+</div>
+<div class="exemple">
+    <p>
+        On souhaite résoudre l'équation $\frac{x^2-4}{x-2}=0$.
+    </p>
+    <p>Or un quotient est nul si et seulement si son numérateur est nul et son dénominateur non nul.</p>
+    <p>
+        Donc $\frac{x^2-4}{x-2}=0$ est équivalent à $x^2-4=0$ et $x-2\neq 0$.
+    </p>
+    <p>On commence par déterminer les valeurs interdites.</p>
+    $$\begin{align*}
+        x-2&=0\\
+        x&=2
+    \end{align*}$$
+    <p>On a donc $x\neq 2$.</p>
+    <p>Donc l'équation $\frac{x^2-4}{x-2}=0$ est équivalente à $x^2-4=0$ et $x\neq 2$.</p>
+    <p>On résout ensuite l'équation $x^2-4=0$.</p>
+    $$\begin{align*}
+        x^2-4&=0\\
+        (x-2)(x+2)&=0\\
+        x-2=0&&\text{ou}&&x+2=0\\
+        x=2&&&&x=-2
+    \end{align*}$$
+    <p>La valeur $x=2$ est interdite donc on ne la retient pas.</p>
+    <p>L'ensemble des solutions de l'équation $\frac{x^2-4}{x-2}=0$ est donc $\{-2\}$.</p>
+</div>
+<div class="methode">
+    <p>Pour résoudre une équation quotient-nul, on utilise la méthode suivante :</p>
+    <ol>
+        <li>On détermine les valeurs interdites.</li>
+        <li>On résout l'équation obtenue sans le dénominateur.</li>
+        <li>On détermine l'ensemble des solutions.</li>
+    </ol>
+</div>
+<div class="exemple">
+    <p>On souhaite résoudre l'équation $\frac{(2x+1)(x-2)}{x+1}=0$.</p>
+    <ol>
+        <li>On détermine les valeurs interdites : $$x+1=0$$ donc $$x=-1.$$</li>
+        <li>On résout l'équation obtenue sans le dénominateur : $$(2x+1)(x-2)=0.$$</li>
+        <li>On détermine l'ensemble des solutions : $$\begin{align*}
+            2x+1&=0&&\text{ou}&&x-2=0\\
+            2x&=-1&&&&x=2\\
+            x&=-\frac{1}{2}&&&&
+        \end{align*}$$</li>
+    </ol>
+    <p>On constate que les solutions obtenues sont toutes autorisées.</p>
+    <p>L'ensemble des solutions de l'équation $\frac{(2x+1)(x-2)}{x+1}=0$ est donc $\left\{-\frac{1}{2};2\right\}$.</p>
+</div>
+    </main>
+    <footer>
+        Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
+        Licence CC BY-NC-SA.
+    </footer>
+</body>
+
+</html>
