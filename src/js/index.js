@@ -1,5 +1,6 @@
 import "core-js/stable";
 import { createFigures } from "./interactif2.js";
+import { createQuizs } from "./quiz.js";
 
 var insererEntetesBlocsLesson = function () {
   // Définitions
@@ -214,7 +215,7 @@ function preprocessLatex() {
     }
   }
 }
-var convertirKatexEnMathML = function () {
+export var convertirKatexEnMathML = function () {
   preprocessLatex();
   renderMathInElement(document.body, {
     // customised options
@@ -289,7 +290,12 @@ var dropdownMenusBandeau = function () {
 document.addEventListener("DOMContentLoaded", function () {
   insererEntetesBlocsLesson();
   insererEntetesBlocsExercices();
-  createFigures();
+  // On teste si on est dans un contexte de quizs ou pas
+  if (document.querySelector(".groupequiz") != null) {
+    createQuizs();
+  } else {
+    createFigures();
+  }
   convertirKatexEnMathML();
   masquerSolutionsExercices();
   ajouterSommaire();
