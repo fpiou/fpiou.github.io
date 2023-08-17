@@ -643,6 +643,164 @@ var initialiserGraduationsFigure = function (figure) {
         initialiserGraduation(graduation);
     });
 }
+var getCourbesFigure = function (figure) {
+    var courbes = document.querySelectorAll("g.courbe");
+    var courbesArray = Array.from(courbes);
+    return courbesArray.filter(
+        courbe => courbe.id.split("-")[0] == figure.id
+    );
+}
+var constructCourbe = function (courbe) {
+    var parametres = eval('({' + courbe.getAttribute("parametres") + '})');
+    var courbeSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    // Si parametres.xunit n'existe pas alors on prend 1
+    if (parametres.xunit == undefined) {
+        parametres.xunit = 1;
+    }
+    // Si parametres.yunit n'existe pas alors on prend 1
+    if (parametres.yunit == undefined) {
+        parametres.yunit = 1;
+    }
+    // Si parametres.expression n'existe pas alors on prend une fonction affine
+    if (parametres.expression == undefined) {
+        parametres.expression = "x";
+    }
+    // Si parametres.xmin n'existe pas alors on prend -10
+    if (parametres.xmin == undefined) {
+        parametres.xmin = -10;
+    }
+    // Si parametres.xmax n'existe pas alors on prend 10
+    if (parametres.xmax == undefined) {
+        parametres.xmax = 10;
+    }
+    // Si parametres.ymin n'existe pas alors on prend -10
+    if (parametres.ymin == undefined) {
+        parametres.ymin = -10;
+    }
+    // Si parametres.ymax n'existe pas alors on prend 10
+    if (parametres.ymax == undefined) {
+        parametres.ymax = 10;
+    }
+    // Si parametres.n n'existe pas alors on prend 100
+    if (parametres.n == undefined) {
+        parametres.n = 100;
+    }
+    // Calcul de l'expression pour les absisses de parametres.xmin à parametres.xmax
+    var x = [];
+    var y = [];
+    for (var i = 0; i < parametres.n + 1; i++) {
+        x.push(parametres.xmin + i * (parametres.xmax - parametres.xmin) / parametres.n);
+        y.push(eval(parametres.expression.replaceAll('x', '('+x[i]+')')));
+    }
+    // On calcule l'échelle en abscisse et en ordonnée en récupérant les dimensions de la figure dans le viewBox
+    var viewBox = courbe.parentNode.getAttribute("viewBox").split(" ");
+    var echelleX = viewBox[2] / (parametres.xmax - parametres.xmin);
+    var echelleY = viewBox[3] / (parametres.ymax - parametres.ymin);
+    // On multiplie les abscisses et les ordonnées par l'échelle
+    for (var i = 0; i < parametres.n + 1; i++) {
+        x[i] = x[i] * echelleX;
+        y[i] = (-1) * y[i] * echelleY; // Attention l'axe des ordonnées est orienté vers le bas
+    }    
+    // On construit le path en prenant en compte les dimensions de la figure
+    var d = "M" + x[0] + "," + y[0];
+    for (var i = 1; i < parametres.n + 1; i++) {
+        d += " L" + x[i] + "," + y[i];
+    }
+    courbeSVG.setAttribute("d", d);
+    courbeSVG.setAttribute("fill", "transparent");
+    courbeSVG.setAttribute("stroke", "black");
+    courbeSVG.setAttribute("stroke-width", "0.5");
+    courbeSVG.setAttribute("style", courbe.getAttribute("style"));
+    courbeSVG.style.userSelect = "none";
+    // Construire les axes
+    var axesSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    var axeX = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    var axeY = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    var xmin = parametres.xmin;
+    var xmax = parametres.xmax;
+    var ymin = parametres.ymin; // Attention l'axe des ordonnées est orienté vers le bas);
+    var ymax = parametres.ymax; // Attention l'axe des ordonnées est orienté vers le bas);
+    axeX.setAttribute("d", "M" + xmin * echelleX + "," + 0 + " L" + xmax * echelleX + "," + 0);
+    axeY.setAttribute("d", "M" + 0 + "," + ymin * (-1) * echelleY + " L" + 0 + "," + ymax * (-1) * echelleY);
+    axeX.setAttribute("stroke", "black");
+    axeY.setAttribute("stroke", "black");
+    axeX.setAttribute("stroke-width", "0.5");
+    axeY.setAttribute("stroke-width", "0.5");
+    axeX.style.userSelect = "none";
+    axeY.style.userSelect = "none";
+    axesSVG.appendChild(axeX);
+    axesSVG.appendChild(axeY);
+    courbe.appendChild(axesSVG);
+    // Construire les graduations
+    var graduationsSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    var style = courbe.getAttribute("style");
+    graduationsSVG.setAttribute("style", style);
+    // parametres.xunit est le pas entre deux graduations
+    for (var i = 0; i < (xmax - xmin) / parametres.xunit + 1; i++) {
+        var graduationAxexSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        // La graduation est pour moitié en dessous et pour moitié au dessus du point
+        // Quelque soit l'échelle on veut que la graduation fasse 10 pixels de long
+        var x1 = xmin * echelleX + i * parametres.xunit * echelleX;
+        var y1 = 2.5;
+        var x2 = xmin * echelleX + i * parametres.xunit * echelleX;
+        var y2 = -2.5;
+        graduationAxexSVG.setAttribute("d", "M" + x1 + "," + y1 + " L" + x2 + "," + y2);
+        graduationAxexSVG.setAttribute("stroke", "black");
+        graduationAxexSVG.setAttribute("stroke-width", "0.5");
+        graduationAxexSVG.style.userSelect = "none";
+        graduationsSVG.appendChild(graduationAxexSVG);
+    }
+    // parametres.yunit est le pas entre deux graduations
+    for (var i = 0; i < (ymax - ymin) / parametres.yunit + 1; i++) {
+        var graduationAxeySVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        // La graduation est pour moitié à gauche et pour moitié à droite du point
+        var x1 = -2.5;
+        var y1 = -ymin * echelleY - i * parametres.yunit * echelleY;
+        var x2 = 2.5;
+        var y2 = -ymin * echelleY - i * parametres.yunit * echelleY;
+        graduationAxeySVG.setAttribute("d", "M" + x1 + "," + y1 + " L" + x2 + "," + y2);
+        graduationAxeySVG.setAttribute("stroke", "black");
+        graduationAxeySVG.setAttribute("stroke-width", "0.5");
+        graduationAxeySVG.style.userSelect = "none";
+        graduationsSVG.appendChild(graduationAxeySVG);
+    }
+    courbe.appendChild(graduationsSVG);
+    // Placer l'unité en abscisse
+    var uniteXSVG = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    uniteXSVG.setAttribute("x", parametres.xunit * echelleX);
+    uniteXSVG.setAttribute("y", 10);
+    uniteXSVG.setAttribute("text-anchor", "middle");
+    uniteXSVG.setAttribute("font-size", "10");
+    uniteXSVG.setAttribute("fill", "black");
+    uniteXSVG.setAttribute("stroke", "transparent");
+    uniteXSVG.setAttribute("stroke-width", "0.5");
+    uniteXSVG.setAttribute("style", "user-select:none");
+    uniteXSVG.setAttribute("style", style);
+    uniteXSVG.innerHTML = parametres.xunit;
+    courbe.appendChild(uniteXSVG);
+    // Placer l'unité en ordonnée
+    var uniteYSVG = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    uniteYSVG.setAttribute("x", -10);
+    uniteYSVG.setAttribute("y", -parametres.yunit * echelleY+2.5);// Décalage de 2.5 pixels
+    uniteYSVG.setAttribute("text-anchor", "middle");
+    uniteYSVG.setAttribute("font-size", "10");
+    uniteYSVG.setAttribute("fill", "black");
+    uniteYSVG.setAttribute("stroke", "transparent");
+    uniteYSVG.setAttribute("stroke-width", "0.5");
+    uniteYSVG.setAttribute("style", "user-select:none");
+    uniteYSVG.setAttribute("style", style);
+    uniteYSVG.innerHTML = parametres.yunit;
+    courbe.appendChild(uniteYSVG);
+    courbe.appendChild(courbeSVG);
+}
+var initialiserCourbe = function (courbe) {
+    constructCourbe(courbe);
+}
+var initialiserCourbesFigure = function (figure) {
+    getCourbesFigure(figure).forEach(function (courbe) {
+        initialiserCourbe(courbe);
+    });
+}
 var initialiserFigure = function (figure) {
     addQuadrillage(figure);
     addBoutonQuadrillage(figure);
@@ -654,6 +812,7 @@ var initialiserFigure = function (figure) {
     initialiserSegmentsFigure(figure);
     initialiserPolygonesFigure(figure);
     initialiserGraduationsFigure(figure);
+    initialiserCourbesFigure(figure);
 }
 var getCoordonneesPoint = function (point) {
     var data = point.getAttribute("transform").split("translate(")[1].split(")")[0].split(",");
