@@ -290,8 +290,8 @@ var dropdownMenusBandeau = function () {
 document.addEventListener("DOMContentLoaded", function () {
   insererEntetesBlocsLesson();
   insererEntetesBlocsExercices();
-  // On teste si on est dans un contexte de quizs ou pas
-  if (document.querySelector(".groupequiz") != null) {
+  // On teste si on est dans un contexte <meta name="quiz" content="true">
+  if (document.querySelector("meta[name=quiz]") != null) {
     createQuizs();
   } else {
     createFigures();
