@@ -736,14 +736,17 @@ var constructCourbe = function (courbe) {
     var style = courbe.getAttribute("style");
     graduationsSVG.setAttribute("style", style);
     // parametres.xunit est le pas entre deux graduations
+    // Il faut que la graduation tombe sur l'origine du repère
+    // Calculons l'abscisse de la première graduation
+    var absFirstGraduation = Math.ceil(xmin / parametres.xunit) * parametres.xunit;
     for (var i = 0; i < (xmax - xmin) / parametres.xunit + 1; i++) {
         var graduationAxexSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
         // La graduation est pour moitié en dessous et pour moitié au dessus du point
-        // Quelque soit l'échelle on veut que la graduation fasse 10 pixels de long
-        var x1 = xmin * echelleX + i * parametres.xunit * echelleX;
+        // Quelque soit l'échelle on veut que la graduation fasse 5 pixels de long
+        var x1 = absFirstGraduation * echelleX + i * parametres.xunit * echelleX;
         var y1 = 2.5;
-        var x2 = xmin * echelleX + i * parametres.xunit * echelleX;
-        var y2 = -2.5;
+        var x2 = x1;
+        var y2 = -y1;
         graduationAxexSVG.setAttribute("d", "M" + x1 + "," + y1 + " L" + x2 + "," + y2);
         graduationAxexSVG.setAttribute("stroke", "black");
         graduationAxexSVG.setAttribute("stroke-width", "0.5");
@@ -751,13 +754,16 @@ var constructCourbe = function (courbe) {
         graduationsSVG.appendChild(graduationAxexSVG);
     }
     // parametres.yunit est le pas entre deux graduations
+    // Il faut que la graduation tombe sur l'origine du repère
+    // Calculons l'ordonnée de la première graduation
+    var ordFirstGraduation = Math.ceil(ymin / parametres.yunit) * parametres.yunit;
     for (var i = 0; i < (ymax - ymin) / parametres.yunit + 1; i++) {
         var graduationAxeySVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
         // La graduation est pour moitié à gauche et pour moitié à droite du point
-        var x1 = -2.5;
-        var y1 = -ymin * echelleY - i * parametres.yunit * echelleY;
-        var x2 = 2.5;
-        var y2 = -ymin * echelleY - i * parametres.yunit * echelleY;
+        var x1 = 2.5;
+        var y1 = -ordFirstGraduation * echelleY - i * parametres.yunit * echelleY;
+        var x2 = -x1;
+        var y2 = y1;
         graduationAxeySVG.setAttribute("d", "M" + x1 + "," + y1 + " L" + x2 + "," + y2);
         graduationAxeySVG.setAttribute("stroke", "black");
         graduationAxeySVG.setAttribute("stroke-width", "0.5");

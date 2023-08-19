@@ -1,17 +1,3 @@
-html {
-  font-family: 'Source Code Pro';
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-body {
-width: 100vw;
-max-width: 300px;
-}
-
-
 .choix {
   padding: 1em;
 }
@@ -25,14 +11,14 @@ max-width: 300px;
   width:100%;
 }
 
-.quiz-choices {
-  display:grid;
-  align-items:center;
-  justify-content:center;
-}
-
 .quiz-button-valider {
   display:flex;
   align-items:center;
   justify-content:center;
+}
+
+.quiz-choices {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:space-around;
 }

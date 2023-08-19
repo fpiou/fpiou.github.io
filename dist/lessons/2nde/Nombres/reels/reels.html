@@ -29,13 +29,15 @@
 
     <!--Styles personnalisés-->
     
+        <link rel="stylesheet" href="/src/css/main.css">
+    
+        <link rel="stylesheet" href="/src/css/print.css">
+    
         <link rel="stylesheet" href="/src/css/prettyLesson.css">
     
         <link rel="stylesheet" href="/src/css/print1colonne.css">
     
-        <link rel="stylesheet" href="/src/css/main.css">
-    
-        <link rel="stylesheet" href="/src/css/print.css">
+        <link rel="stylesheet" href="/src/css/figures.css">
     
 
     <!--Scripts personnalisés-->
@@ -128,45 +130,68 @@
 <h2>Les entiers</h2>
 <div class="definition">
     <p>
-        Un <b>entier</b> est un nombre qui peut s'écrire sans virgule ni décimale.
-        Il peut être positif ou négatif (on parle aussi d'entiers relatifs).<br>
-        On note $\mathbb{Z}$ l'ensemble des entiers.
-        $$\colorbox{lightcoral}{$\mathbb{Z}=\{\ldots~{;}~-3~{;}~-2~{;}~-1~{;}~0~{;}~1~{;}~2~{;}~3~{;}\ldots\}$}$$
-        $0$ est un entier positif et négatif.
+        On dit qu'un nombre est <strong>entier</strong> (ou entier relatif) si sa partie décimale est nulle.<br>
+        Un entier est un nombre qui peut s'écrire sans virgule ni décimale et qui possède un signe positif ou négatif.<br>
     </p>
+</div>
+<div class="remarque">
+    <p>On note $\mathbb{Z}$ l'ensemble des entiers.
+    $$\mathbb{Z}=\{\ldots~{;}~-3~{;}~-2~{;}~-1~{;}~0~{;}~1~{;}~2~{;}~3~{;}\ldots\}$$
+    $0$ est un entier à la fois positif et négatif.</p>
 </div>
 <div class="definition">
     <p>
-        Un <b>entier naturel</b> est un entier positif.<br>
-        On note $\mathbb{N}$ l'ensemble des entiers naturels.
-        $$\colorbox{lightcoral}{$\mathbb{N}=\{0~{;}~1~{;}~2~{;}~3~{;}\ldots\}$}$$
-        L'ensemble $\mathbb{N}^*$ est l'ensemble des entiers naturels non nuls.
-        $$\colorbox{lightcoral}{$\mathbb{N}^*=\mathbb{N}\backslash \{0\}$}$$
-        $$\colorbox{lightcoral}{$\mathbb{N}^*=\{1~{;}~2~{;}~3~{;}\ldots\}$}$$
+        On dit qu'un entier est un <strong>entier naturel</strong> s'il est positif ou nul.<br>
     </p>
 </div>
-
+<div class="remarque">
+    <p>On note $\mathbb{N}$ l'ensemble des entiers naturels :
+        $$\mathbb{N}=\{0~{;}~1~{;}~2~{;}~3~{;}\ldots\}$$
+        L'ensemble $\mathbb{N}^*$ est l'ensemble des entiers naturels non nuls.
+        $$\mathbb{N}^*=\mathbb{N}\backslash \{0\}$$
+        $$\mathbb{N}^*=\{1~{;}~2~{;}~3~{;}\ldots\}$$</p>
+</div>
 <h2>Les décimaux et les rationnels</h2>
 <div class="definition">
     <p>
-        Un <b>décimal</b> est un nombre qui possède une partie décimale finie.
+        Un nombre est dit <strong>décimal</strong> s'il peut s'écrire sous la forme d'un quotient d'un entier relatif par une puissance de $10.$<br>
+    </p>
+</div>
+<div class="remarque">
+    <p>Un décimal est un nombre qui possède une partie décimale finie.
         Il peut être positif ou négatif.<br>
         On note $\mathbb{D}$ l'ensemble des décimaux.
-        $$\colorbox{lightcoral}{$\mathbb{D}=\{\frac{a}{10^n}\text{ avec }a\in\mathbb{Z}\text{ et }n\in\mathbb{N}\}$}$$
+        $$\mathbb{D}=\left\{\frac{a}{10^n}\text{ avec }a\in\mathbb{Z}\text{ et }n\in\mathbb{N}\right\}$$</p>
+</div>
+<div class="methode">
+    <p>
+        Pour montrer qu'un nombre s'écrivant sous la forme $$\frac{n}{2^p\times 5^q}$$ est décimal, il suffit de multiplier le numérateur et le dénominateur par les mêmes puissances de $2$ ou de $5$ pour obtenir un dénominateur qui peut s'écrire sous la forme d'une puissance de $10$.
     </p>
 </div>
-
+<div class="exemple">
+    <p>Montrons que $a=\frac{7}{2^3\times 5^7}$ est un nombre décimal.</p>
+    $$\begin{align*}
+        a&=\frac{7}{2^3\times 5^7}\\
+        &=\frac{7\times 2^4}{2^3\times 5^7\times 2^4}\\
+        &=\frac{7\times 2^4}{2^7\times 5^7}\\
+        &=\frac{7\times 2^4}{\left(2\times 5\right)^7}\\
+        &=\frac{7\times 2^4}{10^7}
+    \end{align*}$$
+    <p>$\frac{7}{2^3\times 5^7}$ est donc bien un nombre décimal.</p>
+</div>
 <div class="definition">
     <p>
-        Un <b>rationnel</b> est un nombre qui peut s'écrire sous la forme d'une fraction.
-        Il peut être positif ou négatif.<br>
+        Un nombre est dit <strong>rationnel</strong> s'il peut s'écrire sous la forme d'un quotient d'un entier relatif par un entier naturel non nul.<br>
+    </p>
+</div>
+<div class="remarque">
+    <p>Un rationnel est un nombre qui peut s'écrire sous la forme d'une fraction avec un signe positif ou négatif.<br>
         On note $\mathbb{Q}$ l'ensemble des rationnels.
-        $$\colorbox{lightcoral}{$\mathbb{Q}=\{\frac{a}{b}\text{ avec }a\in\mathbb{Z}\text{ et }b\in\mathbb{N}^*\}$}$$
-    </p>
+        $$\mathbb{Q}=\left\{\frac{a}{b}\text{ avec }a\in\mathbb{Z}\text{ et }b\in\mathbb{N}^*\right\}$$</p>
 </div>
 <div class="definition">
     <p>
-        Déterminer la <b>nature d'un nombre</b> revient à déterminer le plus petit ensemble auquel il appartient.
+        Déterminer la <strong>nature d'un nombre</strong> revient à déterminer le plus petit ensemble auquel il appartient.
     </p>
 </div>
 <div class="exemple">
@@ -204,11 +229,8 @@
     Or $3$ est premier avec $10$ donc $3$ divise $10$ et $3$ divise $10^n$.<br>
     C'est absurde car $3$ ne divise pas $10.$
 </div>
-<div class="propriete">
-    <p>
-        Un nombre est décimal si et seulement s'il peut s'écrire sous la forme d'une fraction dont le dénominateur est
-        un produit uniquement de $2$ et de $5$.
-    </p>
+<div class="methode">
+    <p>Pour montrer qu'un nombre rationnel n'est pas décimal, il suffit de décomposer son dénominateur en produit de facteurs premiers et de vérifier qu'il n'y a pas de facteur premier autre que $2$ et $5$.</p>
 </div>
 <div class="exemple">
     <p>
@@ -799,8 +821,8 @@
 </div>
 <div class="remarque">
     <p>
-        Lorsque l'on donne un résultat à la calculatrice, il faut toujours arrondir le résultat à un nombre de chiffres
-        significatifs cohérent avec les données de l'énoncé.
+        Lorsque on donne le résultat d'un calcul, il faut toujours arrondir le résultat à un nombre de chiffres
+        significatifs égal aux nombres de chiffres significatifs de la donnée ayant le moins de chiffres significatifs.
     </p>
 </div>
 <!-- Passons à la définition de la notation scientifique-->
@@ -1592,7 +1614,38 @@
 <h2>Distance et valeur absolue</h2>
 <div class="definition">
     <p>
-        La <b>distance</b> entre deux nombres réels $a$ et $b$ est notée $\vert a-b\vert$.
+        La <strong>valeur absolue</strong> d'un nombre réel $x$ est le nombre noté $\vert x\vert$ qui vérifie :
+    <ul>
+        <li>si $x\geqslant 0$, alors $\vert x\vert=x;$</li>
+        <li>si $x < 0$, alors $\vert x\vert=-x.$</li>
+    </ul>
+    </p>
+</div>
+<div class="exemple">
+    <p>
+    <ul>
+        <li>$\vert 3\vert=3$</li>
+        <li>$\vert -7\vert=-(-7)=7$</li>
+    </ul>
+    </p>
+</div>
+<div class="propriete">
+    <p>
+        La valeur absolue d'un nombre réel et la valeur absolue de son opposé sont égales.
+        $$\vert x\vert=\vert -x\vert\quad\text{ avec $x$ réel.}$$
+    </p>
+</div>
+<div class="exemple">
+    <p>
+    <ul>
+        <li>$\vert 3\vert=\vert -3\vert=3$</li>
+        <li>$\vert -7\vert=\vert -(-7)\vert=7$</li>
+    </ul>
+    </p>
+</div>
+<div class="definition">
+    <p>
+        La <strong>distance</strong> entre deux nombres réels $a$ et $b$ est notée $\vert a-b\vert$.
     <ul>
         <li>Si $a\leqslant b$, alors $\vert a-b\vert=b-a.$</li>
         <li>Si $a\geqslant b$, alors $\vert a-b\vert=a-b.$</li>
@@ -1609,9 +1662,16 @@
     </ul>
     </p>
 </div>
+<div class="remarque">
+    <ul>
+        <li>Si $x$ désigne un nombre réel, alors $\vert x\vert$ est donc la distance de $x$ à $0.$
+            $$\vert x\vert=\vert x-0\vert$$</li>
+    </ul>
+</div>
 <div class="propriete">
     <p>
-        La distance entre $a$ et $b$ est la même que la distance entre $b$ et $a$.
+        $a$ et $b$ sont deux nombres réels.
+        La distance entre $a$ et $b$ est égale à la distance entre $b$ et $a$.
         $$\vert a-b\vert=\vert b-a\vert$$
     </p>
 </div>
@@ -1620,39 +1680,6 @@
     <ul>
         <li>$\vert 3-5\vert=\vert 5-3\vert=2$</li>
         <li>$\vert -3-5\vert=\vert 5-(-3)\vert=8$</li>
-    </ul>
-    </p>
-</div>
-<div class="definition">
-    <p>
-        La <b>valeur absolue</b> d'un nombre réel $x$ est notée $\vert x\vert$.
-    <ul>
-        <li>Si $x\geqslant 0$, alors $\vert x\vert=x.$</li>
-        <li>Si $x< 0$, alors $\vert x\vert=-x.$</li>
-    </ul>
-    $\vert x\vert$ est donc la distance de $x$ à $0$
-    $$\vert x\vert=\vert x-0\vert$$
-    </p>
-</div>
-<div class="exemple">
-    <p>
-    <ul>
-        <li>$\vert 3\vert=3$</li>
-        <li>$\vert -7\vert=-(-7)=7$</li>
-    </ul>
-    </p>
-</div>
-<div class="propriete">
-    <p>
-        La valeur absolue d'un nombre réel $x$ est la même que la valeur absolue de son opposé.
-        $$\vert x\vert=\vert -x\vert$$
-    </p>
-</div>
-<div class="exemple">
-    <p>
-    <ul>
-        <li>$\vert 3\vert=\vert -3\vert=3$</li>
-        <li>$\vert -7\vert=\vert -(-7)\vert=7$</li>
     </ul>
     </p>
 </div>
@@ -1748,6 +1775,29 @@
         </li>
     </ul>
     </p>
+</div>
+<div class="remarque">
+    <p>Sur une droite graduée, la distance entre deux points $A$ et $B$ où $x_A$ et $x_B$ sont deux nombres réels désignants les abscisses respectives de $A$ et $B$ est $\vert x_A-x_B\vert=\vert x_B-x_A\vert$.
+        $$AB=\vert x_B-x_A\vert=\vert x_A-x_B\vert=BA$$
+    </p>
+    <div id="figure1" class="figure">
+        <svg id="figure1" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -20 140 40">
+            <!-- Début de la figure -->
+            <g name="A" class="point labeled" x="20" y="0" style="font-size:0.7rem;"></g>
+            <g class="label" x="-2.5" y="-15" linkto="A">A</g>
+            <g name="B" class="point labeled" x="100" y="0" style="font-size:0.7rem;"></g>
+            <g class="label" x="-2.5" y="-15" linkto="B">B</g>
+            <g name="d" class="droite" linkto="A B"></g>
+            <g name="xA" class="point translation labeled" linkto="A A A" data="0" style="font-size:0.5rem;stroke:transparent;"></g>
+            <g class="label" x="-5" y="0" linkto="xA">x_A</g>
+            <g name="xB" class="point translation labeled" linkto="B B B" data="0" style="font-size:0.5rem;stroke:transparent;"></g>
+            <g class="label" x="-5" y="0" linkto="xB">x_B</g>
+            <g name="M" class="point" x="-10" y="0" visibility="hidden"></g>
+            <g name="N" class="point" x="140" y="0" visibility="hidden"></g>
+            <g name="graduation1" class="graduation" linkto="M N" parametres="n:12"></g>
+            <!-- Fin de la figure -->
+        </svg>
+    </div>
 </div>
     </main>
     <footer>

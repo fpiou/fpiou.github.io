@@ -12,6 +12,32 @@ body {
   max-width: 600px;
 }
 
+.reveal {
+  position: relative;
+  display: block;
+}
+
+.reveal::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: grey;
+  opacity: 1;
+  transition: opacity 1s linear;
+}
+
+.reveal.clicked::after {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.reveal:not(.clicked)::after {
+  transition: none;
+}
+
 p {
   line-height:2;
 }
