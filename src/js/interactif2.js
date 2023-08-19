@@ -712,6 +712,7 @@ var constructCourbe = function (courbe) {
     courbeSVG.setAttribute("stroke-width", "0.5");
     courbeSVG.setAttribute("style", courbe.getAttribute("style"));
     courbeSVG.style.userSelect = "none";
+    courbe.appendChild(courbeSVG);
     // Construire les axes
     var axesSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
     var axeX = document.createElementNS("http://www.w3.org/2000/svg", "path");
@@ -797,7 +798,6 @@ var constructCourbe = function (courbe) {
     uniteYSVG.setAttribute("style", style);
     uniteYSVG.innerHTML = parametres.yunit;
     courbe.appendChild(uniteYSVG);
-    courbe.appendChild(courbeSVG);
 }
 var initialiserCourbe = function (courbe) {
     constructCourbe(courbe);
