@@ -750,6 +750,14 @@ var setUniqueIds = function () {
           }
           ids[j].setAttribute("linkto", linkto.join(" "));
         }
+        // On ajoute également l'identifiant à tous les éléments du pentes qui est un string de la forme "A:0.5,B:1,C:2"
+        if (ids[j].getAttribute("pentes") != null) {
+          var pentes = ids[j].getAttribute("pentes").split(",");
+          for (var k = 0; k < pentes.length; k++) {
+            pentes[k] = id + "-" + pentes[k].split(":")[0] + ":" + pentes[k].split(":")[1];
+          }
+          ids[j].setAttribute("pentes", pentes.join(","));
+        }
       }
       // On sélectionne maintenant tous qui n'ont pas la class name
       var ids = figures[i].querySelector("svg").querySelectorAll("*:not([name])");
@@ -888,7 +896,12 @@ var addQuadrillage = function (figure) {
   figure.querySelector("svg").prepend(cadre);
 };
 var getLinkto = function (objet) {
-  return objet.getAttribute("linkto").split(" ");
+  //on teste si l'objet a un attribut linkto
+  if (objet.hasAttribute("linkto")) {
+    return objet.getAttribute("linkto").split(" ");
+  } else {
+    return [];
+  }
 };
 var getElementLinkto = function (objet, n) {
   return document.getElementById(getLinkto(objet)[n]);
@@ -1247,7 +1260,7 @@ var initialiserSegmentsFigure = function (figure) {
   });
 };
 var constructPolygone = function (polygone) {
-  var points = getLinkto(polygone).map(point => new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(document.getElementById(point)))).map(point => [point.x, point.y].join(','));
+  var points = getLinkto(polygone).map(point => new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(document.getElementById(point)))).map(point => [point.x, point.y].join(","));
   var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   var d = "M" + points.join(" L") + " Z";
   path.setAttribute("d", d);
@@ -1271,7 +1284,7 @@ var getGraduationsFigure = function (figure) {
 var constructGraduation = function (graduation) {
   var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(graduation, 0)));
   var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(graduation, 1)));
-  var parametres = eval('({' + graduation.getAttribute("parametres") + '})');
+  var parametres = eval("({" + graduation.getAttribute("parametres") + "})");
   // Si parametres.vsize n'existe pas alors on prend 4
   if (parametres.vsize == undefined) {
     parametres.vsize = 4;
@@ -1350,7 +1363,7 @@ var getCourbesFigure = function (figure) {
   var courbesArray = Array.from(courbes);
   return courbesArray.filter(courbe => courbe.id.split("-")[0] == figure.id);
 };
-var constructCourbe = function (courbe) {
+var addDebug = function () {
   // Ajout d'un élément debug dans le DOM
   var debug = document.createElement("div");
   debug.id = "debug";
@@ -1363,8 +1376,27 @@ var constructCourbe = function (courbe) {
     debug.innerHTML += "<span style='color:red'>" + message + "</span><br>";
   };
   console.log("%%%%% DEBUG %%%%%%%");
-  var parametres = eval('({' + courbe.getAttribute("parametres") + '})');
-  var courbeSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
+};
+var convertStringToParametres = function (paramString) {
+  // Divisez la chaîne en paires clé-valeur
+  var pairs = paramString.split(",");
+
+  // Traitez chaque paire
+  var processedPairs = pairs.map(pair => {
+    var [key, value] = pair.split(":");
+    // Si la valeur n'est pas clairement numérique, considérez-la comme une chaîne
+    if (isNaN(parseFloat(value))) {
+      value = '"' + value + '"';
+    }
+    return '"' + key + '":' + value;
+  });
+  // Recombinez les paires traitées en une seule chaîne
+  var jsonStr = "{" + processedPairs.join(",") + "}";
+  return JSON.parse(jsonStr);
+};
+var initialiserParametresCourbe = function (courbe) {
+  var paramString = courbe.getAttribute("parametres");
+  var parametres = convertStringToParametres(paramString);
   // Si parametres.xunit n'existe pas alors on prend 1
   if (parametres.xunit == undefined) {
     parametres.xunit = 1;
@@ -1372,10 +1404,6 @@ var constructCourbe = function (courbe) {
   // Si parametres.yunit n'existe pas alors on prend 1
   if (parametres.yunit == undefined) {
     parametres.yunit = 1;
-  }
-  // Si parametres.expression n'existe pas alors on prend une fonction affine
-  if (parametres.expression == undefined) {
-    parametres.expression = "x";
   }
   // Si parametres.xmin n'existe pas alors on prend -10
   if (parametres.xmin == undefined) {
@@ -1397,46 +1425,164 @@ var constructCourbe = function (courbe) {
   if (parametres.n == undefined) {
     parametres.n = 100;
   }
-  // Calcul de l'expression pour les absisses de parametres.xmin à parametres.xmax
+  return parametres;
+};
+var recupererPentesCourbe = function (courbe) {
+  var pentes = courbe.getAttribute("pentes");
+  if (pentes != null) {
+    var parametresPentes = convertStringToParametres(pentes);
+    // parametresPentes est un dictionnaire, chaque clé est la pente. Il faut la convertir en son opposée
+    for (var key in parametresPentes) {
+      parametresPentes[key] = -parametresPentes[key];
+    }
+    return parametresPentes;
+  } else {
+    return null;
+  }
+};
+var calculCoordonneesPointsCourbe = function (expression, parametres) {
   var x = [];
   var y = [];
   for (var i = 0; i < parametres.n + 1; i++) {
     x.push(parametres.xmin + i * (parametres.xmax - parametres.xmin) / parametres.n);
-    y.push(mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate(parametres.expression, {
+    y.push(mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate(expression, {
       x: x[i]
     }).valueOf());
   }
-  // On calcule l'échelle en abscisse et en ordonnée en récupérant les dimensions de la figure dans le viewBox
-  var viewBox = courbe.parentNode.getAttribute("viewBox").split(" ");
-  var echelleX = viewBox[2] / (parametres.xmax - parametres.xmin);
-  var echelleY = viewBox[3] / (parametres.ymax - parametres.ymin);
-  // On multiplie les abscisses et les ordonnées par l'échelle
+  return {
+    x,
+    y
+  };
+};
+var constructPathCourbe = function (x, y, echelleX, echelleY, viewBox, parametres) {
+  // On met les coordonnées des points à l'échelle tout en effectuant un changement de repère
   for (var i = 0; i < parametres.n + 1; i++) {
-    x[i] = x[i] * echelleX;
-    y[i] = -1 * y[i] * echelleY; // Attention l'axe des ordonnées est orienté vers le bas
+    x[i] = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[0], "+(").concat(x[i], " - ").concat(parametres.xmin, ") * ").concat(echelleX)).valueOf();
+    y[i] = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[1], "+(-1*").concat(y[i], " + ").concat(parametres.ymax, ") * ").concat(echelleY)).valueOf();
   }
-  // On construit le path en prenant en compte les dimensions de la figure
+  // On construit le path
   var d = "M" + x[0] + "," + y[0];
   for (var i = 1; i < parametres.n + 1; i++) {
     d += " L" + x[i] + "," + y[i];
   }
+  return d;
+};
+var getOrigineAxes = function (courbe, parametres, echelleX, echelleY, viewBox) {
+  // Calcul des positions des axes en fonction de l'échelle et du changement de repère
+  var xOrigin = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[0], "+(-1 * ").concat(parametres.xmin, ") * ").concat(echelleX)).valueOf();
+  var yOrigin = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[1], "+").concat(parametres.ymax, " * ").concat(echelleY)).valueOf();
+  return {
+    xOrigin,
+    yOrigin
+  };
+};
+var constructPathAxeX = function (xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres) {
+  return "M" + mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[0], "+(").concat(parametres.xmin, " - ").concat(parametres.xmin, ") * ").concat(echelleX)).valueOf() + "," + yOrigin + " L" + mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[0], "+(").concat(parametres.xmax, " - ").concat(parametres.xmin, ") * ").concat(echelleX)).valueOf() + "," + yOrigin;
+};
+var constructPathAxeY = function (xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres) {
+  return "M" + xOrigin + "," + mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[1], "+(-1*").concat(parametres.ymin, " + ").concat(parametres.ymax, ") * ").concat(echelleY)).valueOf() + " L" + xOrigin + "," + mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[1], "+(-1*").concat(parametres.ymax, " + ").concat(parametres.ymax, ") * ").concat(echelleY)).valueOf();
+};
+var constructPathTickXGraduation = function (i, xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres, absFirstGraduation) {
+  var x1 = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[0], "+(").concat(absFirstGraduation + i * parametres.xunit, " - ").concat(parametres.xmin, ") * ").concat(echelleX)).valueOf();
+  var y1 = yOrigin + 1;
+  var x2 = x1;
+  var y2 = yOrigin - 1;
+  var d = "M" + x1 + "," + y1 + " L" + x2 + "," + y2;
+  return d;
+};
+var constructPathTickYGraduation = function (i, xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres, ordFirstGraduation) {
+  var x1 = xOrigin + 1;
+  var y1 = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[1], "+(-1*").concat(ordFirstGraduation + i * parametres.yunit, " + ").concat(parametres.ymax, ") * ").concat(echelleY)).valueOf();
+  var x2 = xOrigin - 1;
+  var y2 = y1;
+  var d = "M" + x1 + "," + y1 + " L" + x2 + "," + y2;
+  return d;
+};
+function combinedControlPoints(points) {
+  let tension = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.5;
+  var controlPoints = [];
+  for (var i = 0; i < points.length - 1; i++) {
+    var point = points[i];
+    var nextPoint = points[i + 1];
+    var delta = tension * (nextPoint[0] - point[0]);
+    if (point.pente !== undefined) {
+      var dy = point.pente * delta;
+      controlPoints.push([point[0] + delta, point[1] + dy]);
+    } else {
+      var p0 = points[i - 1] || point;
+      controlPoints.push([point[0] + (nextPoint[0] - p0[0]) / 6, point[1] + (nextPoint[1] - p0[1]) / 6]);
+    }
+    if (nextPoint.pente !== undefined) {
+      var dyNext = nextPoint.pente * delta;
+      controlPoints.push([nextPoint[0] - delta, nextPoint[1] - dyNext]);
+    } else {
+      var p3 = points[i + 2] || nextPoint;
+      controlPoints.push([nextPoint[0] - (p3[0] - point[0]) / 6, nextPoint[1] - (p3[1] - point[1]) / 6]);
+    }
+  }
+  return controlPoints;
+}
+var constructCourbe = function (courbe) {
+  var parametres = initialiserParametresCourbe(courbe);
+  var expression = courbe.getAttribute("expression");
+  // On récupère le viewBox de la figure (X_0 Y_0 Width Height)
+  var viewBox = courbe.parentNode.getAttribute("viewBox").split(" ").map(Number);
+  // On calcule l'échelle en abscisse et en ordonnée par rapport au viewBox
+  var echelleX = viewBox[2] / (parametres.xmax - parametres.xmin);
+  var echelleY = viewBox[3] / (parametres.ymax - parametres.ymin);
+  // On détermine les coordonnées de l'origine des axes
+  var {
+    xOrigin,
+    yOrigin
+  } = getOrigineAxes(courbe, parametres, echelleX, echelleY, viewBox);
+  // Construire la courbe
+  // On compte le nombre d'éléments dans linkto
+  var linkto = getLinkto(courbe);
+  var d;
+  // On test si linkto existe
+  if (linkto.length <= 1) {
+    // La courbe est définie par son expression lorsque le paramètre linkto est vide ou ne comporte qu'un seul élément
+    var {
+      x,
+      y
+    } = calculCoordonneesPointsCourbe(expression, parametres);
+    var d = constructPathCourbe(x, y, echelleX, echelleY, viewBox, parametres);
+  } else {
+    // La courbe est définie par des points, on fait passer la courbe par ces points
+    // On récupère les pentes des tangentes aux points lorsqu'elles sont définies
+    var pentes = recupererPentesCourbe(courbe);
+    // On récupère les coordonnées de ces points et on ajoute la propriete pente si elle existe
+    var points = [];
+    for (var i = 0; i < linkto.length; i++) {
+      var point = courbe.parentNode.querySelector("#" + linkto[i]);
+      var coords = getCoordonneesPoint(point);
+      if (pentes != null && pentes[point.id] != undefined) {
+        coords.pente = pentes[point.id];
+      }
+      linkto[i] = coords;
+      points.push(coords);
+    }
+    var d = "M" + points[0].join(",");
+    var controlPoints = combinedControlPoints(points);
+    for (var i = 0; i < points.length - 1; i++) {
+      d += " C" + controlPoints[2 * i].join(",") + " " + controlPoints[2 * i + 1].join(",") + " " + points[i + 1].join(",");
+    }
+  }
+  var courbeSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
   courbeSVG.setAttribute("d", d);
   courbeSVG.setAttribute("fill", "transparent");
   courbeSVG.setAttribute("stroke", "black");
   courbeSVG.setAttribute("stroke-width", "0.5");
   courbeSVG.setAttribute("style", courbe.getAttribute("style"));
   courbeSVG.style.userSelect = "none";
-  courbe.appendChild(courbeSVG);
   // Construire les axes
   var axesSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
   var axeX = document.createElementNS("http://www.w3.org/2000/svg", "path");
   var axeY = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  var xmin = parametres.xmin;
-  var xmax = parametres.xmax;
-  var ymin = parametres.ymin; // Attention l'axe des ordonnées est orienté vers le bas);
-  var ymax = parametres.ymax; // Attention l'axe des ordonnées est orienté vers le bas);
-  axeX.setAttribute("d", "M" + xmin * echelleX + "," + 0 + " L" + xmax * echelleX + "," + 0);
-  axeY.setAttribute("d", "M" + 0 + "," + ymin * -1 * echelleY + " L" + 0 + "," + ymax * -1 * echelleY);
+  var pathAxeX = constructPathAxeX(xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres);
+  axeX.setAttribute("d", pathAxeX);
+  var pathAxeY = constructPathAxeY(xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres);
+  axeY.setAttribute("d", pathAxeY);
   axeX.setAttribute("stroke", "black");
   axeY.setAttribute("stroke", "black");
   axeX.setAttribute("stroke-width", "0.5");
@@ -1445,51 +1591,39 @@ var constructCourbe = function (courbe) {
   axeY.style.userSelect = "none";
   axesSVG.appendChild(axeX);
   axesSVG.appendChild(axeY);
-  courbe.appendChild(axesSVG);
   // Construire les graduations
   var graduationsSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
   var style = courbe.getAttribute("style");
   graduationsSVG.setAttribute("style", style);
-  // parametres.xunit est le pas entre deux graduations
-  // Il faut que la graduation tombe sur l'origine du repère
+
   // Calculons l'abscisse de la première graduation
-  var absFirstGraduation = Math.ceil(xmin / parametres.xunit) * parametres.xunit;
-  for (var i = 0; i < (xmax - xmin) / parametres.xunit + 1; i++) {
+  var absFirstGraduation = Math.ceil(parametres.xmin / parametres.xunit) * parametres.xunit;
+  for (var i = 0; i < (parametres.xmax - parametres.xmin) / parametres.xunit + 1; i++) {
     var graduationAxexSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    // La graduation est pour moitié en dessous et pour moitié au dessus du point
-    // Quelque soit l'échelle on veut que la graduation fasse 5 pixels de long
-    var x1 = absFirstGraduation * echelleX + i * parametres.xunit * echelleX;
-    var y1 = 2.5;
-    var x2 = x1;
-    var y2 = -y1;
-    graduationAxexSVG.setAttribute("d", "M" + x1 + "," + y1 + " L" + x2 + "," + y2);
+    var d = constructPathTickXGraduation(i, xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres, absFirstGraduation);
+    graduationAxexSVG.setAttribute("d", d);
     graduationAxexSVG.setAttribute("stroke", "black");
     graduationAxexSVG.setAttribute("stroke-width", "0.5");
     graduationAxexSVG.style.userSelect = "none";
     graduationsSVG.appendChild(graduationAxexSVG);
   }
-  // parametres.yunit est le pas entre deux graduations
-  // Il faut que la graduation tombe sur l'origine du repère
+
   // Calculons l'ordonnée de la première graduation
-  var ordFirstGraduation = Math.ceil(ymin / parametres.yunit) * parametres.yunit;
-  for (var i = 0; i < (ymax - ymin) / parametres.yunit + 1; i++) {
+  var ordFirstGraduation = Math.ceil(parametres.ymin / parametres.yunit) * parametres.yunit;
+  for (var i = 0; i < (parametres.ymax - parametres.ymin) / parametres.yunit + 1; i++) {
     var graduationAxeySVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    // La graduation est pour moitié à gauche et pour moitié à droite du point
-    var x1 = 2.5;
-    var y1 = -ordFirstGraduation * echelleY - i * parametres.yunit * echelleY;
-    var x2 = -x1;
-    var y2 = y1;
-    graduationAxeySVG.setAttribute("d", "M" + x1 + "," + y1 + " L" + x2 + "," + y2);
+    var d = constructPathTickYGraduation(i, xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres, ordFirstGraduation);
+    graduationAxeySVG.setAttribute("d", d);
     graduationAxeySVG.setAttribute("stroke", "black");
     graduationAxeySVG.setAttribute("stroke-width", "0.5");
     graduationAxeySVG.style.userSelect = "none";
     graduationsSVG.appendChild(graduationAxeySVG);
   }
-  courbe.appendChild(graduationsSVG);
+
   // Placer l'unité en abscisse
   var uniteXSVG = document.createElementNS("http://www.w3.org/2000/svg", "text");
-  uniteXSVG.setAttribute("x", parametres.xunit * echelleX);
-  uniteXSVG.setAttribute("y", 10);
+  uniteXSVG.setAttribute("x", xOrigin + parametres.xunit * echelleX);
+  uniteXSVG.setAttribute("y", yOrigin + 10);
   uniteXSVG.setAttribute("text-anchor", "middle");
   uniteXSVG.setAttribute("font-size", "10");
   uniteXSVG.setAttribute("fill", "black");
@@ -1498,11 +1632,10 @@ var constructCourbe = function (courbe) {
   uniteXSVG.setAttribute("style", "user-select:none");
   uniteXSVG.setAttribute("style", style);
   uniteXSVG.innerHTML = parametres.xunit;
-  courbe.appendChild(uniteXSVG);
   // Placer l'unité en ordonnée
   var uniteYSVG = document.createElementNS("http://www.w3.org/2000/svg", "text");
-  uniteYSVG.setAttribute("x", -10);
-  uniteYSVG.setAttribute("y", -parametres.yunit * echelleY + 2.5); // Décalage de 2.5 pixels
+  uniteYSVG.setAttribute("x", xOrigin - 5);
+  uniteYSVG.setAttribute("y", yOrigin - parametres.yunit * echelleY + 2.5); // Décalage de 2.5 pixels
   uniteYSVG.setAttribute("text-anchor", "middle");
   uniteYSVG.setAttribute("font-size", "10");
   uniteYSVG.setAttribute("fill", "black");
@@ -1511,7 +1644,11 @@ var constructCourbe = function (courbe) {
   uniteYSVG.setAttribute("style", "user-select:none");
   uniteYSVG.setAttribute("style", style);
   uniteYSVG.innerHTML = parametres.yunit;
+  courbe.appendChild(axesSVG);
+  courbe.appendChild(graduationsSVG);
+  courbe.appendChild(uniteXSVG);
   courbe.appendChild(uniteYSVG);
+  courbe.appendChild(courbeSVG);
 };
 var initialiserCourbe = function (courbe) {
   constructCourbe(courbe);
@@ -1565,7 +1702,7 @@ var actualiserCoordonneesPointClassTranslation = function (point) {
 var actualiserCoordonneesPointClassDilatation = function (point) {
   if (point.classList.contains("dilatation")) {
     // H est le projeté de P selon la direction formant un angle alpha avec le vecteur AB
-    // M est l'image de P par l'homothétie de rapport k et de centre H 
+    // M est l'image de P par l'homothétie de rapport k et de centre H
     var A = getElementLinkto(point, 0);
     var B = getElementLinkto(point, 1);
     var P = getElementLinkto(point, 2);
@@ -1718,7 +1855,7 @@ var actualiserCoordonneesSegmentsLies = function (point) {
   }
 };
 var actualiserPolygone = function (polygone) {
-  var points = getLinkto(polygone).map(point => new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(document.getElementById(point)))).map(point => [point.x, point.y].join(','));
+  var points = getLinkto(polygone).map(point => new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(document.getElementById(point)))).map(point => [point.x, point.y].join(","));
   var path = polygone.querySelector("path");
   var d = "M" + points.join(" L") + " Z";
   path.setAttribute("d", d);
