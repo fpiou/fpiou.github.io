@@ -1349,6 +1349,18 @@ var getCourbesFigure = function (figure) {
   return courbesArray.filter(courbe => courbe.id.split("-")[0] == figure.id);
 };
 var constructCourbe = function (courbe) {
+  // Ajout d'un élément debug dans le DOM
+  var debug = document.createElement("div");
+  debug.id = "debug";
+  document.body.appendChild(debug);
+  // Afficher tous les messages de console.log() dans le div debug
+  console.log = function (message) {
+    debug.innerHTML += message + "<br>";
+  };
+  console.error = function (message) {
+    debug.innerHTML += "<span style='color:red'>" + message + "</span><br>";
+  };
+  console.log("%%%%% DEBUG %%%%%%%");
   var parametres = eval('({' + courbe.getAttribute("parametres") + '})');
   var courbeSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
   // Si parametres.xunit n'existe pas alors on prend 1
@@ -1388,7 +1400,9 @@ var constructCourbe = function (courbe) {
   var y = [];
   for (var i = 0; i < parametres.n + 1; i++) {
     x.push(parametres.xmin + i * (parametres.xmax - parametres.xmin) / parametres.n);
+    console.log("x[" + i + "] = " + x[i]);
     y.push(eval(parametres.expression.replaceAll('x', '(' + x[i] + ')')));
+    console.log("y[" + i + "] = " + y[i]);
   }
   // On calcule l'échelle en abscisse et en ordonnée en récupérant les dimensions de la figure dans le viewBox
   var viewBox = courbe.parentNode.getAttribute("viewBox").split(" ");
