@@ -8,7 +8,7 @@ html {
 }
 
 body {
-  width: 100vw;
+  width: 95vw;
   max-width: 600px;
 }
 
@@ -119,6 +119,12 @@ summary {
   display: block;
 }
 
+/* Affichez le sous-menu lorsque le parent est survolé ou a la classe 'active'
+.dropdown:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+}*/
+
 /*La fonte Katex*/
 .katex {
   font-size: 1.2em;
@@ -129,12 +135,7 @@ summary {
 }
 
 
-/* Affichez le sous-menu lorsque le parent est survolé ou a la classe 'active'*/
-.dropdown:hover .dropdown-content,
-.dropdown.active .dropdown-content {
-  display: flex;
-  flex-direction: column;
-}
+
 
 /* Formattage personnalisés */
 .responsive-list {
