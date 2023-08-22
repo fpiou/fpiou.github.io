@@ -83,13 +83,13 @@ var insererEntetesBlocsExercices = function () {
   });
 
   // Exercices sans calculatrice
-  var exercicesSansCalculatrice = document.querySelectorAll(
-    ".exercice:not(.calculator)"
-  );
-  for (var i = 0; i < exercicesSansCalculatrice.length; i++) {
-    exercicesSansCalculatrice[i].querySelector(".titreExercice").innerHTML +=
-      ' <span class="fa-stack fa-lg" style="font-size: 18px;"><i class="fas fa-calculator fa-stack-1x"></i><i class="fas fa-ban fa-stack-2x" style="color:Tomato"></i></span>';
-  }
+  // var exercicesSansCalculatrice = document.querySelectorAll(
+  //   ".exercice:not(.calculator)"
+  // );
+  // for (var i = 0; i < exercicesSansCalculatrice.length; i++) {
+  //   exercicesSansCalculatrice[i].querySelector(".titreExercice").innerHTML +=
+  //     ' <span class="fa-stack fa-lg" style="font-size: 18px;"><i class="fas fa-calculator fa-stack-1x"></i><i class="fas fa-ban fa-stack-2x" style="color:Tomato"></i></span>';
+  // }
 
   // Solutions
   var solutions = document.querySelectorAll(".solution");
@@ -178,9 +178,12 @@ function preprocessLatexText(text) {
       });
 
       // Traitement pour \SI{...}{...}
-      match = match.replace(/\\SI\{(-?[\d.,]+)\}\{(.*?)\}/g, function (_, p1, p2) {
-        return formatSIForLatex(p1, p2);
-      });
+      match = match.replace(
+        /\\SI\{(-?[\d.,]+)\}\{(.*?)\}/g,
+        function (_, p1, p2) {
+          return formatSIForLatex(p1, p2);
+        }
+      );
 
       return match;
     });
@@ -277,16 +280,63 @@ var openAvantPrint = function () {
     });
   };
 };
+var adapterPositionDropdown = function (event) {
+  var dropdownContent = event.currentTarget.querySelector(".dropdown-content");
+
+  // Affichez le dropdown pour pouvoir obtenir ses dimensions
+  dropdownContent.style.display = "flex";
+  dropdownContent.style.flexDirection = "column";
+
+  // Calculez la distance entre le bord droit du dropdown et le bord droit de la fenêtre
+  var overflowDistance =
+    dropdownContent.getBoundingClientRect().right - window.innerWidth;
+
+  // Si le dropdown déborde à droite
+  if (overflowDistance > 0) {
+    // Ajustez la position du dropdown
+    // Par exemple, déplacez le dropdown vers la gauche de la distance de débordement
+    dropdownContent.style.right = overflowDistance + "px";
+  } else {
+    // Réinitialisez la position si elle a été précédemment ajustée
+    dropdownContent.style.right = "auto";
+  }
+};
 var dropdownMenusBandeau = function () {
-  document.addEventListener("click", function (event) {
-    if (
-      event.target.href == "#"
-    ) {
-      var dropdown = document.querySelector(".dropdown");
-      dropdown.classList.toggle("show");
-    }
+  var dropdowns = document.querySelectorAll(".dropdown");
+  dropdowns.forEach((dropdown) => {
+    dropdown.addEventListener("click", function (event) {
+      if (event.currentTarget.classList.contains("dropdown")) {
+        // Masquer tous les dropdowns sauf celui cliqué
+        dropdowns.forEach((dropdown) => {
+          if (dropdown != event.target.parentNode) {
+            dropdown.querySelector(".dropdown-content").style.display = "none";
+          }
+        });
+        // Afficher ou masquer le dropdown cliqué
+        var dropdownContent = event.currentTarget.querySelector(".dropdown-content");
+        if (dropdownContent.style.display == "flex") {
+          dropdownContent.style.display = "none";
+        } else {
+          adapterPositionDropdown(event);
+          //dropdownContent.style.display = "flex";
+        }
+      }
+    });
+    dropdown.addEventListener("mouseover", function (event) {
+      // On survole un élément dropdown
+      if (event.target.classList.contains("dropdown")) {
+        adapterPositionDropdown(event);
+      }
+    });
+    dropdown.addEventListener("mouseleave", function (event) {
+      if (event.target.classList.contains("dropdown")) {
+        var dropdownContent = event.target.querySelector(".dropdown-content");
+        dropdownContent.style.display = "none";
+      }
+    });
   });
 };
+
 document.addEventListener("DOMContentLoaded", function () {
   insererEntetesBlocsLesson();
   insererEntetesBlocsExercices();

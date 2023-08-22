@@ -36,13 +36,13 @@
     
         <link rel="stylesheet" href="/src/css/main.css">
     
-        <link rel="stylesheet" href="/src/css/print.css">
-    
         <link rel="stylesheet" href="/src/css/prettyLesson.css">
     
         <link rel="stylesheet" href="/src/css/print1colonne.css">
     
         <link rel="stylesheet" href="/src/css/figures.css">
+    
+        <link rel="stylesheet" href="/src/css/print.css">
     
 
     <!--Scripts personnalisés-->
@@ -1215,13 +1215,24 @@
             </g>
         </svg>
 </div>
+<div class="definition">
+    <p>Soit $I$ et $j$ deux intervalles. On dit qu'ils sont :</p>
+    <ul>
+        <li><strong>disjoints</strong> s'ils n'ont aucun point en commun, autrement dit si leur intersection est l'ensemble vide ;</li>
+        <li><strong>comlémentaires dans $\mathbb{R}$</strong> si leur réunion est $\mathbb{R}.$</li>
+    </ul>
+</div>
+<div class="exemple">
+    <ul>
+        <li>$[-1{;}3]$ et $[4{;}5]$ sont disjoints car $[-1{;}3]\cap [4{;}5]=\emptyset$.</li>
+        <li>$[-\infty{;}5[$ et $]-2{;}+\infty[$ sont complémentaires dans $\mathbb{R}$ car $[-\infty{;}5[\cup]-2{;}+\infty[=\mathbb{R}$.</li>
+    </ul>
+</div>
 <div class="propriete">
     <p>
     <ul>
-        <li>L'intersection de deux intervalles est soit un intervalle, soit un ensemble ne comportant qu'un seul nombre,
-            ou soit vide.</li>
-        <li>La réunion de deux intervalles est un intervalle ou la réunion de deux intervalles disjoints (c'est-à-dire
-            qui n'ont aucun nombre en commun).</li>
+        <li>L'intersection de deux intervalles est soit un intervalle, soit un ensemble ne comportant qu'un seul nombre, ou soit vide.</li>
+        <li>La réunion de deux intervalles est un intervalle ou la réunion de deux intervalles disjoints.</li>
     </ul>
     </p>
 </div>
@@ -1803,6 +1814,50 @@
             <!-- Fin de la figure -->
         </svg>
     </div>
+</div>
+<div class="propriete">
+    <p>
+        $p$ et $q$ désignent deux nombres réels tels que $p\leqslant q$.<br>
+        Le milieu d'un intervalle d'extrémité $p$ et $q$ est $\frac{p+q}{2}$ et la distance entre $p$ et $q$ est $\vert p-q\vert$.
+    </p>
+</div>
+<div class="methode">
+    <p>
+        Pour traduire une inégalité avec la valeur absolue, on peut suivre les étapes suivantes.</br>
+        $p$ et $q$ désignent deux nombres réels tels que $p\leqslant q$.
+        Supposons que $p \leqslant x \leqslant q$. Nous souhaitons déterminer les nombres réels $a$ et $r$ tels que $\vert x-a\vert\leqslant r$.
+    </p>
+    <ul>
+        <li>$a$ est le milieu de l'intervalle d'extrémités $p$ et $q$ donc il suffit d'appliquer la formule suivante pour trouver $a.$
+            $$a=\frac{p+q}{2}$$
+        </li>
+        <li>$r$ est la moitié de la distance entre $p$ et $q$. Donc il suffit d'appliquer la formule suivante pour trouver $r.$
+            $$r=\frac{q-p}{2}$$
+        </li>
+    </ul>
+    <p>On a ainsi, $\vert x-a\vert\leqslant r$.</p>
+</div>
+<div class="exemple">
+    <p>
+    <ul>
+        <li>Soit $x$ un nombre réel tel que $-3\leqslant x\leqslant 7$. Traduisons cette inégalité à l'aide de la valeur absolue.<br>
+            On souhaite déterminer les nombres réels $a$ et $r$ tels que $\vert x-a\vert\leqslant r$.
+            <ul>
+                <li>$a$ est le milieu de l'intervalle $[-3;7]$. Donc $a=\frac{-3+7}{2}=2$.</li>
+                <li>$r$ est la moitié de la distance entre $-3$ et $7$. Donc $r=\frac{7-(-3)}{2}=\frac{10}{2}=5$.</li>
+            </ul>
+            On a ainsi, $\vert x-2\vert\leqslant 5$.
+        </li>
+        <li>Soit $x$ un nombre réel tel que $-8 < x < -2$. Traduisons cette inégalité à l'aide de la valeur absolue.<br>
+            On souhaite déterminer les nombres réels $a$ et $r$ tels que $\vert x-a\vert < r$.
+            <ul>
+                <li>$a$ est le milieu de l'intervalle $]-8;-2[$. Donc $a=\frac{-8+(-2)}{2}=-5$.</li>
+                <li>$r$ est la moitié de la distance entre $-8$ et $-2$. Donc $r=\frac{-2-(-8)}{2}=\frac{-2+8}{2}=3$.</li>
+            </ul>
+            On a ainsi, $\vert x-(-5)\vert < 3$ ou encore $\vert x+5\vert < 3$.
+        </li>
+    </ul>
+    </p>
 </div>
     </main>
     <footer>

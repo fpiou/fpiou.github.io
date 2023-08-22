@@ -177,7 +177,7 @@ function tourSuivant() {
       // La première réponse est la bonne réponse
       answer = answers[0];
       // On mélange les réponses
-      const shuffledAnswers = shuffle(answers);
+      const shuffledAnswers = shuffle([answer, ...shuffle(answers.slice(1)).slice(0, 3)]);
       // On conserve la bonne réponse
       const correctAnswer = shuffledAnswers.indexOf(answer);
       // On ajoute la question et ses réponses à la prochaine série
@@ -190,15 +190,17 @@ function tourSuivant() {
   });
   // On mélange les questions
   nextQuestions = shuffle(nextQuestions);
+  // On ajoute le div pour l'impression du quiz
+  printQuiz(nextQuestions);
 }
 
 function remplirFormulaire(questionText, answersArray) {
-  // Accédez à l'élément DOM pour la question et mettez à jour le texte
+  // Accéder à l'élément DOM pour la question et mettre à jour le texte
   const questionElement = document.querySelector("#question");
   // Mettre à jour le contenu de questionElement
   questionElement.innerHTML = questionText;
 
-  // Accédez aux éléments DOM pour les choix de réponse et mettez à jour leurs labels
+  // Accéder aux éléments DOM pour les choix de réponse et mettre à jour leurs labels
   const choiceElements = document.querySelectorAll(".choix label");
   answersArray.forEach((answer, index) => {
     choiceElements[index].innerHTML = answer;
@@ -251,13 +253,19 @@ function ajouterEcouteursQuiz() {
   // Ajouter un écouteur pour le message "questionSuivante"
   window.addEventListener("message", function (event) {
     if (event.data == "questionSuivante") {
+      document.querySelector("#question").innerHTML = "";
+      document.querySelectorAll(".label").innerHTML = "";
+      document.querySelector("#formulaire").style.display = "none";
+      // On supprime le printquiz s'il existe
+      if (document.getElementById("printquiz")) {
+        document.getElementById("printquiz").remove();
+      }
       // On passe à la question suivante s'il en reste
       if (nextQuestions.length == 0) {
         // On a fini le tour, on recommence si la serie n'est pas vide
         if (series.length > 0) {
           tourSuivant();
-          // Ne pas afficher le formulaire
-          document.querySelector("#formulaire").style.display = "none";
+          // Vider le formulaire
           document.getElementById("Valider").innerHTML = "Suivant";
           document.getElementById("Valider").style.display = "inline";
         } else {
@@ -305,6 +313,47 @@ function nextQuestion(nextQuestions) {
   // On supprime la question et les réponses du tableau
   nextQuestions.shift();
   return { questionText, answersArray };
+}
+
+function printQuiz(nextQuestions) {
+  let quiz = "";
+  for (let i = 0; i < nextQuestions.length; i++) {
+    quiz += `
+<strong>Question ${i + 1} : </strong>${nextQuestions[i].question}<br>
+<form class="quiz-choices">
+    <div class="choix">
+        <input type="radio" name="choix">
+        <label>${nextQuestions[i].answers[0]}</label>
+    </div>
+
+    <div class="choix">
+        <input type="radio" name="choix">
+        <label>${nextQuestions[i].answers[1]}</label>
+    </div>
+
+    <div class="choix">
+        <input type="radio" name="choix">
+        <label>${nextQuestions[i].answers[2]}</label>
+    </div>
+
+    <div class="choix">
+        <input type="radio" name="choix">
+        <label>${nextQuestions[i].answers[3]}</label>
+    </div>
+</form>
+`;
+  }
+  // On créee un élément div pour contenir le quiz
+  const quizElement = document.createElement("div");
+  // On ajoute le quiz à l'élément div
+  quizElement.innerHTML = quiz;
+  // On le rend invisible
+  // quizElement.style.display = "none";
+  // On lui donne un idientifiant pour le css
+  quizElement.id = "printquiz";
+  // On ajoute l'élément div au body
+  document.body.appendChild(quizElement);
+  mettreEnFormeQuiz();
 }
 
 export async function createQuizs() {

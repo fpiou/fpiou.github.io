@@ -208,3 +208,8 @@ summary {
 .tableausigne tr:nth-child(1) {
   border-bottom: 1px solid black;
 }
+
+/* Footer en réflexion */
+footer {
+  display:none;
+}
