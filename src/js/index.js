@@ -114,7 +114,7 @@ var insererEntetesBlocsExercices = function () {
   }
 };
 var wrapElementsInReveal = function (parent) {
-  var elements = parent.querySelectorAll("li, p, td,.katex-display");
+  var elements = parent.querySelectorAll("p, td,.katex-display");
 
   for (var i = 0; i < elements.length; i++) {
     var reveal = document.createElement("div");

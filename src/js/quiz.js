@@ -204,6 +204,13 @@ function remplirFormulaire(questionText, answersArray) {
   const choiceElements = document.querySelectorAll(".choix label");
   answersArray.forEach((answer, index) => {
     choiceElements[index].innerHTML = answer;
+    if (answer=="") {
+      //Le bouton radio dans lequel est contenu le label est désactivé est caché
+      choiceElements[index].parentElement.style.display = "none";
+    } else {
+      //Le bouton radio dans lequel est contenu le label est activé et affiché
+      choiceElements[index].parentElement.style.display = "block";
+    }
   });
 }
 

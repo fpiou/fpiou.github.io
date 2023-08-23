@@ -534,7 +534,7 @@ var insererEntetesBlocsExercices = function () {
   }
 };
 var wrapElementsInReveal = function (parent) {
-  var elements = parent.querySelectorAll("li, p, td,.katex-display");
+  var elements = parent.querySelectorAll("p, td,.katex-display");
   for (var i = 0; i < elements.length; i++) {
     var reveal = document.createElement("div");
     reveal.className = "reveal";
@@ -2308,6 +2308,13 @@ function remplirFormulaire(questionText, answersArray) {
   const choiceElements = document.querySelectorAll(".choix label");
   answersArray.forEach((answer, index) => {
     choiceElements[index].innerHTML = answer;
+    if (answer == "") {
+      //Le bouton radio dans lequel est contenu le label est désactivé est caché
+      choiceElements[index].parentElement.style.display = "none";
+    } else {
+      //Le bouton radio dans lequel est contenu le label est activé et affiché
+      choiceElements[index].parentElement.style.display = "block";
+    }
   });
 }
 function ajouterEcouteursQuiz() {

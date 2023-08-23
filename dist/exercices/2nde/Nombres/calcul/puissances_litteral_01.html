@@ -118,12 +118,49 @@
     </header>
     <main><div class="exercice">
     <div class="enonce">
-        <p>Simplifier pour $a$ et $b$ des réels non nuls :
-        $$A=\left(\frac{\left(a^{-2}\right)^3\times a^5}{\left(a^3\times b\right)^2}\right)^2.$$</p>
-        <p>Simplifier pour $n\in\mathbb{N}$ : </p>
+        <p>Simplifier le plus possible pour $a$ et $b$ des réels non nuls :
+        $$A=\left(\dfrac{\left(a^{-2}\right)^3\times a^5}{\left(a^3\times b\right)^2}\right)^2.$$</p>
+        <p>Simplifier le plus possible pour $n\in\mathbb{N}$ : </p>
         <ul class="responsive-list" style="list-style-type: none;">
-            <li>$$B=\frac{\left(2^{n-1}\right)^3\times 2^{-n}}{2^{4n}}~;$$</li>
+            <li>$$B=\dfrac{\left(2^{n-1}\right)^3\times 2^{-n}}{2^{4n}}~;$$</li>
             <li>$$C=\left(4^{n+1}\right)^3\times 2^5\times 16^{-n}.$$</li>
+        </ul>
+    </div>
+    <div class="solution">
+        <ul>
+            <li>
+                <p>$A=\left(\dfrac{\left(a^{-2}\right)^3\times a^5}{\left(a^3\times b\right)^2}\right)^2$</p>
+                <p>$A=\left(\dfrac{a^{-2\times 3}\times a^5}{a^{3\times 2}\times b^2}\right)^2$</p>
+                <p>$A=\left(\dfrac{a^{-6}\times a^5}{a^{6}\times b^2}\right)^2$</p>
+                <p>$A=\left(\dfrac{a^{-6+5}}{a^{6}\times b^2}\right)^2$</p>
+                <p>$A=\left(\dfrac{a^{-1}}{a^{6}\times b^2}\right)^2$</p>
+                <p>$A=\left(\dfrac{a^{-1-6}}{b^2}\right)^2$</p>
+                <p>$A=\left(\dfrac{a^{-7}}{b^2}\right)^2$</p>
+                <p>$A=\dfrac{a^{-7\times 2}}{b^{2\times 2}}$</p>
+                <p>$A=\dfrac{a^{-14}}{b^{4}}$</p>
+                <p>$A=a^{-18}b^{-4}$</p>
+                <p>ou encore $A=\dfrac{1}{a^{18}b^{4}}$</p>
+            </li>
+            <li>
+                <p>$B=\dfrac{\left(2^{n-1}\right)^3\times 2^{-n}}{2^{4n}}$</p>
+                <p>$B=\dfrac{2^{3\times (n-1)}\times 2^{-n}}{2^{4n}}$</p>
+                <p>$B=\dfrac{2^{3\times (n-1)-n}}{2^{4n}}$</p>
+                <p>$B=\dfrac{2^{3n-3-n}}{2^{4n}}$</p>
+                <p>$B=\dfrac{2^{2n-3}}{2^{4n}}$</p>
+                <p>$B=2^{2n-3-4n}$</p>
+                <p>$B=2^{-2n-3}$</p>
+                <p>ou encore $B=\dfrac{1}{2^{2n+3}}$</p>
+            </li>
+            <li>
+                <p>$C=\left(4^{n+1}\right)^3\times 2^5\times 16^{-n}$</p>
+                <p>$C=4^{3\times (n+1)}\times 2^5\times 16^{-n}$</p>
+                <p>$C=4^{3n+3}\times 2^5\times 16^{-n}$</p>
+                <p>$C=(2^2)^{3n+3}\times 2^5\times (2^4)^{-n}$</p>
+                <p>$C=2^{2\times (3n+3)}\times 2^5\times 2^{4\times (-n)}$</p>
+                <p>$C=2^{6n+6}\times 2^5\times 2^{-4n}$</p>
+                <p>$C=2^{6n+6+5-4n}$</p>
+                <p>$C=2^{2n+11}$</p>
+            </li>
         </ul>
     </div>
 </div></main>

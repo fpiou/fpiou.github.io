@@ -118,11 +118,49 @@
     </header>
     <main><div class="exercice">
     <div class="enonce">
-        <p>Simplifier l'écriture des expressions suvantes sous la forme $a\sqrt{b}$ où $a\in\mathbb{Q}$ et $b\in\mathbb{N}$.</p>
-        $$A=\sqrt{27}-\sqrt{24}+\sqrt{300}$$
+        <p>Simplifier l'écriture des expressions suivantes sous la forme $a\sqrt{b}$ où $a\in\mathbb{Q}$ et $b\in\mathbb{N}$.</p>
+        $$A=\sqrt{27}-\sqrt{48}+\sqrt{300}$$
         <ul class="responsive-list" style="list-style-type: none;">
-            <li>$$B=\sqrt{\frac{45}{784}}$$</li>
-            <li>$$C=\frac{\sqrt{448}}{\sqrt{21}}$$</li>
+            <li>$$B=\sqrt{\dfrac{45}{784}}$$</li>
+            <li>$$C=\dfrac{\sqrt{448}}{\sqrt{21}}$$</li>
+        </ul>
+    </div>
+    <div class="solution">
+        <ul>
+            <li>
+                <p>$A=\sqrt{27}-\sqrt{48}+\sqrt{300}$</p>
+                <p>En décomposant les radicandes en produit de facteurs premiers, on obtient :</p>
+                <p>$A=\sqrt{3^2\times 3}-\sqrt{2^4\times 3}+\sqrt{2^2\times 3\times 5^2}$</p>
+                <p>$A=3\sqrt{3}-2^2\sqrt{3}+2\times 5\sqrt{3}$</p>
+                <p>$A=3\sqrt{3}-4\sqrt{3}+10\sqrt{3}$</p>
+                <p>En factorisant par $\sqrt{3}$, on obtient :</p>
+                <p>$A=(3-4+10)\sqrt{3}$</p>
+                <p>$A=9\sqrt{3}$</p>
+            </li>
+            <li>
+                <p>$B=\sqrt{\dfrac{45}{784}}$</p>
+                <p>On décompose le numérateur et le dénominateur du radicande en produit de facteurs premiers :</p>
+                <p>$B=\sqrt{\dfrac{3^2\times 5}{2^4\times 7^2}}$</p>
+                <p>$B=\dfrac{\sqrt{3^2\times 5}}{\sqrt{2^4\times 7^2}}$</p>
+                <p>$B=\dfrac{3\sqrt{5}}{2^2\times 7}$</p>
+                <p>$B=\dfrac{3\sqrt{5}}{4\times 7}$</p>
+                <p>$B=\dfrac{3\sqrt{5}}{28}$</p>
+                <p>$B=\dfrac{3}{28}\sqrt{5}$</p>
+            </li>
+            <li>
+                <p>$C=\dfrac{\sqrt{448}}{\sqrt{21}}$</p>
+                <p>On décompose les radicandes en produit de facteurs premiers :</p>
+                <p>$C=\dfrac{\sqrt{2^6\times 7}}{\sqrt{3\times 7}}$</p>
+                <p>$C=\dfrac{\sqrt{2^6\times 7}}{\sqrt{3\times 7}}$</p>
+                <p>$C=\dfrac{\sqrt{2^6}\times \sqrt{7}}{\sqrt{3}\times \sqrt{7}}$</p>
+                <p>$C=\dfrac{2^3\times \sqrt{7}}{\sqrt{3}\times \sqrt{7}}$</p>
+                <p>$C=\dfrac{2^3}{\sqrt{3}}$</p>
+                <p>$C=\dfrac{8}{\sqrt{3}}$</p>
+                <p>On multiple le numérateur et le dénominateur par $\sqrt{3}$ pour ne plsu avoir de radical au dénominateur :</p>
+                <p>$C=\dfrac{8\sqrt{3}}{\sqrt{3}\times \sqrt{3}}$</p>
+                <p>$C=\dfrac{8\sqrt{3}}{3}$</p>
+                <p>$C=\dfrac{8}{3}\sqrt{3}$</p>
+            </li>
         </ul>
     </div>
 </div></main>
