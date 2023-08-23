@@ -16,7 +16,7 @@
     display: inline-block;
     margin: 0em;
   }
-  
+
   /* Ne pas imprimer */
   .solution,
   .indice,
@@ -25,14 +25,40 @@
   .quiz-choices,
   .quiz-button-valider,
   button,
-  nav {
-    display: none;
+  nav,
+  .introduction-quiz,
+  #score {
+    display: none !important;
   }
 
   #printquiz {
     display: block;
   }
-  
+
+  .nom-prenom-classe {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 0em;
+    gap: 1em; /* Espacement entre les colonnes */
+  }
+
+  .titrePrintQuiz-date {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 0em 2em 0em;
+    gap: 1em; /* Espacement entre les colonnes */
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+  }
+
+  .question {
+    padding: 0em 0em 1em 0em;
+  }
 
   /* Responsive listes */
   .responsive-list {
@@ -48,7 +74,7 @@
     padding: 0 10px;
     box-sizing: border-box;
   }
-  
+
   /* Cette partie permet de mettre l'énoncé de la question juste après le titre de la question */
   div > strong,
   div > p {

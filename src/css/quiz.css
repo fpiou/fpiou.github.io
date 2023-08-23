@@ -14,7 +14,7 @@
 .quiz-button-valider {
   display:flex;
   align-items:center;
-  justify-content:center;
+  justify-content:space-around;
 }
 
 .quiz-choices {
@@ -25,4 +25,33 @@
 
 #printquiz {
   display: none;
+}
+
+#num-nb {
+  font-size: large;
+  font-weight: bold;
+  padding: 1em 0em;
+}
+
+#question {
+  padding: 0em 0em 1em 0em;
+}
+
+#score {
+  padding: 1em;
+  align-content: center;
+  text-align: center;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.score {
+  padding: 1em;
+  align-content: center;
+  text-align: center;
+  font-weight: bold;
+}
+
+.introduction-quiz {
+  display:"none";
 }

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Vecteurs</title>
+    <title>Geometrieplane</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -99,7 +99,46 @@
     </ul>
 </nav>
     <main>
-        
+        <h1>Géométrie plane</h1>
+<details>
+    <summary>Sommaire</summary>
+    <nav id="tableOfContents">
+    </nav>
+</details>
+<h2>Projeté orthogonal</h2>
+<div class="definition">
+    <p>Soit $(d)$ une droite et $P$ un point du plan. On appelle <span class="important">projeté orthogonal de $P$ sur $(d)$</span> le point $H$ de la droite $(d)$ tel que la droite $(PH)$ est perpendiculaire à la droite $(d)$.</p>
+    <div id="figure15" class="figure">
+        <svg id="figure7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+            <!-- Début de la figure -->
+            
+            <!-- Projeté orthogonal de P sur (AB)  -->
+            <g name="H" class="point labeled dilatation" linkto="A B P" data="90 0"></g>
+
+            <!-- Droite -->
+            <g name="AB" class="droite" linkto="A B"></g>
+            <g name="HP" class="droite" linkto="H P" style="stroke-dasharray: 5, 5;" stroke-opacity="0.5" stroke="red"></g>
+            <!-- Point libre -->
+            <g name="A" class="point draggable" x="50" y="50"></g>
+            <g name="B" class="point draggable" x="150" y="100"></g>
+            <g name="P" class="point labeled  draggable" x="50" y="150"></g>
+
+            <!-- Fin de la figure -->
+        </svg>
+    </div>
+</div>
+<div class="remarque">
+    <p>Lorsque le point $P$ appartient à la droite $(d)$, le projeté orthogonal de $P$ sur $(d)$ est le point $P$ lui-même.</p>
+</div>
+<div class="propriete">
+    <p>Le projeté orthogonal d'un point $P$ sur une droite $(d)$ est le point $H$ de la droite $(d)$ le plus proche de $P$.</p>
+</div>
+<div class="demonstration">
+    <p>Soit $P$ un point du plan et $(d)$ une droite. Soit $H$ le projeté orthogonal de $P$ sur $(d)$. Soit $M$ un point de la droite $(d)$ distinct de $H$. Alors $PHM$ est un triangle rectangle en $H$. Or dans un triangle rectangle, l'hypoténuse est le plus grand côté. D'où $PH < PM$. Donc $H$ est le point de la droite $(d)$ le plus proche de $P$.</p>
+</div>
+<div class="definition">
+    <p>Soit $(d)$ une droite et $P$ un point du plan. Soit $H$ le projeté orthogonal de $P$ sur $(d)$. On appelle <span class="important">distance du point $P$ à la droite $(d)$</span> la longueur $PH$.</p>
+</div>
 <h1>Manipuler les vecteurs</h1>
 <details>
     <summary>Sommaire</summary>

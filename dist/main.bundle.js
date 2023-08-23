@@ -2200,11 +2200,18 @@ function getCorrection(response) {
   var radios = document.getElementsByClassName("choix");
   for (var i = 0, length = radios.length; i < length; i++) {
     radios[i].disabled = true;
-    if (i == correctAnswerId) {
-      radios[i].style.background = "#008000";
+    // La réponse est correcte
+    if (i == correctAnswerId && i == response) {
+      radios[i].style.background = "rgba(0, 255, 100, 0.5)";
+      nbResponsesCorrectes++;
     }
+    // La réponse correcte en cas d'erreur
+    if (i == correctAnswerId && i != response) {
+      radios[i].style.background = "rgba(255, 0, 0,0.5)";
+    }
+    // La réponse sélectionnée en cas d'erreur
     if (i == response && response != correctAnswerId) {
-      radios[i].style.background = "#FF0000";
+      radios[i].style.background = "rgb(128, 128, 128,0.2)";
     }
   }
 }
@@ -2221,6 +2228,9 @@ let correctAnswerId;
 let series = [];
 let nextQuestions = [];
 let db;
+let numQuestion = 0;
+let nbQuestions = 0;
+let nbResponsesCorrectes = 0;
 function creerSerieQuizs(database) {
   // On détermine le nombre de groupes
   const query = "SELECT MAX(group_id) FROM questions_answers;";
@@ -2295,6 +2305,8 @@ function tourSuivant() {
   });
   // On mélange les questions
   nextQuestions = shuffle(nextQuestions);
+  // On conserve le nombre de questions
+  nbQuestions = nextQuestions.length;
   // On ajoute le div pour l'impression du quiz
   printQuiz(nextQuestions);
 }
@@ -2324,12 +2336,12 @@ function ajouterEcouteursQuiz() {
       document.getElementById("Valider").style.display = "inline";
     });
   }
+  // Sélection du bouton radio d'un choix du quiz
   var choixDivs = document.getElementsByClassName("choix");
   for (var i = 0; i < choixDivs.length; i++) {
     choixDivs[i].addEventListener("click", function () {
       // Montrer la sélection en la grisant que si le bouton Valider n'est pas sur "Suivant"
       if (document.getElementById("Valider").innerHTML != "Suivant") {
-        // When a .choix div is clicked, select the radio button inside it
         var radioButton = this.querySelector("input[type=radio]");
         radioButton.checked = true;
 
@@ -2339,16 +2351,22 @@ function ajouterEcouteursQuiz() {
         for (var j = 0; j < choixDivs.length; j++) {
           choixDivs[j].style.background = "none";
         }
-        this.style.background = "#eeeeee";
+        this.style.background = "rgb(0, 0, 255,0.2)";
       }
     });
   }
+  // Sélection du bouton Valider
   var Valider = document.getElementById("Valider");
   Valider.addEventListener("click", function () {
-    if (this.innerHTML == "Suivant") {
+    if (this.innerHTML == "Suivant" || this.innerHTML == "En ligne") {
       window.parent.postMessage("questionSuivante", "*");
       var formulaire = document.querySelector(".quiz-choices");
       formulaire.classList.remove("clicked");
+      // Ne plus afficher le bouton Imprimer
+      document.querySelector("#Imprimer").style.display = "none";
+      // Ne plus afficher l'introduction
+      document.querySelector(".introduction-quiz").style.display = "none";
+      document.querySelector("#score").style.display = "none";
     } else {
       getCorrection(getAnswer());
       // Récupérer tous les boutons radios
@@ -2371,12 +2389,20 @@ function ajouterEcouteursQuiz() {
       }
       // On passe à la question suivante s'il en reste
       if (nextQuestions.length == 0) {
+        // On affiche le score en pourcentage dans #score
+        document.querySelector("#score").innerHTML = "Score pr\xE9c\xE9dent : ".concat(Math.round(nbResponsesCorrectes / nbQuestions * 100), "%");
         // On a fini le tour, on recommence si la serie n'est pas vide
+        document.querySelector("#score").style.display = "block";
         if (series.length > 0) {
+          // On passe au tour suivant car la série n'est pas vide
           tourSuivant();
           // Vider le formulaire
-          document.getElementById("Valider").innerHTML = "Suivant";
+          document.getElementById("Valider").innerHTML = "En ligne";
           document.getElementById("Valider").style.display = "inline";
+          document.querySelector("#Imprimer").style.display = "inline";
+          numQuestion = 0;
+          // Afficher l'introduction
+          document.querySelector(".introduction-quiz").style.display = "block";
         } else {
           // On a fini la série, on affiche un message
           document.getElementById("question").innerHTML = "C'est terminé !";
@@ -2384,6 +2410,10 @@ function ajouterEcouteursQuiz() {
           document.querySelector("#formulaire").style.display = "none";
         }
       } else {
+        // On a encore des questions, on passe à la suivante
+        // On ajoute 1 au numéro de la question
+        numQuestion++;
+        // On prépare la question suivante
         var {
           questionText,
           answersArray
@@ -2412,6 +2442,10 @@ function initialiserAffichageQuiz(question, shuffledAnswers) {
   mettreEnFormeQuiz();
   // Afficher le formulaire
   document.querySelector("#formulaire").style.display = "block";
+  // Ajouter le numéro de la question et le nombre de questions i/n
+  // <div id="num-nb"></div>
+  var numNb = document.getElementById("num-nb");
+  numNb.innerHTML = "Question ".concat(numQuestion, "/").concat(nbQuestions, " :");
 }
 function nextQuestion(nextQuestions) {
   // On récupère la question et les réponses
@@ -2428,18 +2462,28 @@ function nextQuestion(nextQuestions) {
 }
 function printQuiz(nextQuestions) {
   let quiz = "";
+  let solution = "";
   for (let i = 0; i < nextQuestions.length; i++) {
-    quiz += "\n<strong>Question ".concat(i + 1, " : </strong>").concat(nextQuestions[i].question, "<br>\n<form class=\"quiz-choices\">\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[0], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[1], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[2], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[3], "</label>\n    </div>\n</form>\n");
+    quiz += "\n    <div class=\"question\">\n<strong>Question ".concat(i + 1, " : </strong>").concat(nextQuestions[i].question, "\n</div>\n<form class=\"quiz-choices\">\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[0], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[1], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[2], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[3], "</label>\n    </div>\n</form>\n");
+    solution += "\n<strong>Question ".concat(i + 1, " : </strong>").concat(nextQuestions[i].answers[nextQuestions[i].correctAnswer], "\n");
   }
-  // On créee un élément div pour contenir le quiz
+  // On créé un élément div pour contenir le quiz
   const quizElement = document.createElement("div");
+  // On lui donne un identifiant pour le css
+  quizElement.id = "printquiz";
+  // On ajoute une entete avec un titre, la date, un espace pour le nom, le prénom et la classe
+  var entete = document.createElement("div");
+  entete.id = "enteteQuiz";
+  entete.innerHTML = "\n<div class=\"nom-prenom-classe\">\n  <div id=\"nom\">Nom :</div>\n  <div id=\"prenom\">Pr\xE9nom :</div>\n  <div id=\"classe\">Classe :</div>\n</div>\n<div class=\"titrePrintQuiz-date\">\n  <div class=\"titrePrintQuiz\">Quiz</div>\n  <div class=\"date\">".concat(new Date().toLocaleDateString(), "</div>\n</div>\n    ");
   // On ajoute le quiz à l'élément div
   quizElement.innerHTML = quiz;
+  // On ajoute l'entete à l'élément div
+  quizElement.prepend(entete);
   // On le rend invisible
   // quizElement.style.display = "none";
-  // On lui donne un idientifiant pour le css
-  quizElement.id = "printquiz";
   // On ajoute l'élément div au body
+  // On ajoute les solutions à l'élément div
+  quizElement.innerHTML += "\n<div class=\"titrePrintQuiz-date\">\n  <div class=\"titrePrintQuiz\">Quiz - Solutions</div>\n  <div class=\"date\">".concat(new Date().toLocaleDateString(), "</div>\n</div>\n  ") + solution;
   document.body.appendChild(quizElement);
   mettreEnFormeQuiz();
 }
@@ -2449,9 +2493,13 @@ async function createQuizs() {
     creerSerieQuizs(db);
     tourSuivant();
     ajouterEcouteursQuiz();
-    document.getElementById("Valider").innerHTML = "Suivant";
+    document.getElementById("Valider").innerHTML = "En ligne";
     document.getElementById("Valider").style.display = "inline";
     document.querySelector("#formulaire").style.display = "none";
+    document.getElementById("Imprimer").addEventListener("click", function () {
+      window.print();
+    });
+    document.querySelector(".introduction-quiz").innerHTML = "\n    <p>Bienvenue au quiz ! Vous \xEAtes sur le point de r\xE9pondre \xE0 </p>\n    <div class=\"score\"><strong>".concat(nbQuestions, " questions.</strong></div>\n    <p>Voici quelques recommandations pour une exp\xE9rience optimale :</p>\n\n<ul>\n    <li>Prenez un moment pour r\xE9fl\xE9chir avant de r\xE9v\xE9ler les choix et surtout mettez vos pens\xE9es par \xE9crit. Cela aide \xE0 clarifier votre r\xE9flexion, \xE0 r\xE9duire la charge mentale et \xE0 progresser plus efficacement.</li>\n    <li>Une fois les choix affich\xE9s, s\xE9lectionnez votre r\xE9ponse. Rappelez-vous, il n'y a qu'une seule bonne r\xE9ponse.</li>\n    <li>Vous avez la libert\xE9 de changer votre choix tant que vous n'avez pas valid\xE9 en cliquant sur \"R\xE9pondre\".</li>\n    <li>Apr\xE8s avoir r\xE9pondu, utilisez le bouton \"Suivant\" pour passer \xE0 la question suivante.</li>\n    <li>Si vous souhaitez avoir une version papier du quiz, cliquez simplement sur \"Imprimer\".</li>\n    <li>N'h\xE9sitez pas \xE0 retenter le quiz autant de fois que n\xE9cessaire pour ma\xEEtriser le sujet.</li>\n</ul>\n\n<p>Rassurez-vous, votre vie priv\xE9e est respect\xE9e : aucune de vos informations personnelles n'est enregistr\xE9e.</p>\n");
   } catch (error) {
     console.error("Erreur lors de l'importation de la base de données :", error);
   }
