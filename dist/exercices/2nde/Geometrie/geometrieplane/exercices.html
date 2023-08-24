@@ -137,16 +137,14 @@
 <div class="figure" id="figure1">
 <svg id="figure1" viewbox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
 <g class="point labeled draggable" name="A" x="40" y="20"></g>
-<g class="label" linkto="A" style="font-size: 0.8em;" x="-10" y="-10">
+<g class="label" linkto="A" style="font-size: 0.8em" x="-10" y="-10">
           A
         </g>
 <g class="point labeled draggable" name="B" x="180" y="40"></g>
-<g class="label" linkto="B" style="font-size: 0.8em;" x="0" y="-10">
-          B
-        </g>
+<g class="label" linkto="B" style="font-size: 0.8em" x="0" y="-10">B</g>
 <!-- C est sur la perpendiculaire à (AB) passant par A-->
 <g class="point labeled rotation draggable rapport" data="90 0.5" linkto="A B" name="C"></g>
-<g class="label" linkto="C" style="font-size: 0.8em;" x="-10" y="-10">
+<g class="label" linkto="C" style="font-size: 0.8em" x="-10" y="-10">
           C
         </g>
 <g class="point labeled translation draggable" data="0.5" linkto="B C B" name="M"></g>
@@ -198,6 +196,94 @@
         </p>
 </li>
 </ol>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>
+      Pour le festival annuel du lycée, les élèves envisagent d'installer une
+      passerelle amovible afin de relier la scène principale, située sur un côté
+      de la cour, à la zone de restauration de l'autre côté. Entre ces deux
+      points, il y a un petit ruisseau décoratif. La passerelle doit être
+      perpendiculaire aux rives du ruisseau, qui sont parallèles. L'objectif est
+      de positionner cette structure temporaire de manière à faciliter la
+      circulation et à minimiser la distance entre la scène et la zone de
+      restauration. Après le festival, la passerelle serait retirée pour
+      préserver l'espace de la cour.
+    </p>
+<p>Modéliser cette situation et résoudre le problème.</p>
+<div class="figure" id="figure2">
+<svg id="figure2" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<g class="point labeled" name="S" x="40" y="20"></g>
+<g class="label" linkto="S" style="font-size: 0.8em;width:3rem;" x="-10" y="-20">
+          Scène
+        </g>
+<g class="point labeled" name="R" x="150" y="150"></g>
+<g class="label" linkto="R" style="font-size: 0.8em;width:5rem;" x="-30" y="0">
+          Restauration</g>
+<g class="point" name="A" visibility="hidden" x="0" y="80"></g>
+<g class="point" name="B" visibility="hidden" x="200" y="80"></g>
+<g class="point" name="C" visibility="hidden" x="0" y="120"></g>
+<g class="point" name="D" visibility="hidden" x="200" y="120"></g>
+<g class="polygone" linkto="A B D C" name="ABDC" style="fill: blue; fill-opacity: 0.5"></g>
+</svg>
+</div>
+<div class="indice">
+<p>Notons $S$ le point de la scène et $R$ le point de la restauration.</p>
+<p>Notons $(d)$ la rive la plus proche de la scène et $(d')$ la rive la plus proche de la restauration.</p>
+<p>Notons $M$ l'extrémité de la passerelle sur $(d)$ et $N$ l'extrémité de la passerelle sur $(d')$.</p>
+<p>Notons $S'$ l'image de $S$ par la translation de vecteur $\overrightarrow{MN}$.</p>
+<div class="figure" id="figure3">
+<svg id="figure3" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<g class="point labeled" name="S" x="40" y="20"></g>
+<g class="label" linkto="S" style="font-size: 0.8em;" x="-5" y="-20">
+        S
+      </g>
+<g class="point labeled" name="R" x="150" y="150"></g>
+<g class="label" linkto="R" style="font-size: 0.8em;" x="-5" y="0">
+        R</g>
+<g class="point" name="A" visibility="hidden" x="0" y="80"></g>
+<g class="point" name="B" visibility="hidden" x="200" y="80"></g>
+<g class="point" name="C" visibility="hidden" x="0" y="120"></g>
+<g class="point" name="D" visibility="hidden" x="200" y="120"></g>
+<g class="polygone" linkto="A B D C" name="ABDC" style="fill: blue; fill-opacity: 0.5"></g>
+<!-- S' est l'image de S par la translation de vecteur AC -->
+<g class="point labeled translation" linkto="A C S" name="S1"></g>
+<g class="label" linkto="S1" style="font-size: 0.8em;" x="-10" y="-10">
+        S'
+      </g>
+<!-- M est un point de la droite (AB)-->
+<g class="point labeled translation draggable" data="0.5" linkto="A B A" name="M"></g>
+<g class="label" linkto="M" style="font-size: 0.8em;" x="0" y="-20">
+        M
+      </g>
+<!-- N est l'image du point M par la translation de vecteur AC-->
+<g class="point labeled translation" data="1" linkto="A C M" name="N"></g>
+<g class="label" linkto="N" style="font-size: 0.8em;" x="-10" y="0">
+        N
+      </g>
+<g class="segment" linkto="M N" name="MN"></g>
+<!-- SM et NR en pointillés-->
+<g class="segment" linkto="S M" name="SM" style="stroke: blue; stroke-width: 2; stroke-dasharray: 5 5; stroke-opacity: 0.8;"></g>
+<g class="segment" linkto="N R" name="NR" style="stroke: blue; stroke-width: 2; stroke-dasharray: 5 5; stroke-opacity: 0.8;"></g>
+<!-- SMNS' -->
+<g class="polygone" linkto="S M N S1" name="SMNS1" style="fill: green; fill-opacity: 0.2;"></g>
+<!-- Vecteur SS' et MN -->
+<g class="vecteur" linkto="S S1" name="SS1" style="stroke: red; stroke-width: 1;"></g>
+<g class="vecteur" linkto="M N" name="MN" style="stroke: red; stroke-width: 1;"></g>
+<!-- Fin de la figure -->
+</svg>
+</div>
+</div>
+<div class="solution">
+<p>Pour minimiser la distance à parcourir entre la scène et la restauration, il faut minimiser la distance $SM+MN+NR$.</p>
+<p>Comme $S'$ est l'image de $S$ par la translation de vecteur $\overrightarrow{MN}$, $SMNS'$ est un parallelogramme.</p>
+<p>D'où $SM=NS'$ et $SS'=MN$.</p>
+<p>Par conséquent, minimiser $SM+MN+NR$ revient à minimiser $NS'+SS'+NR$.</p>
+<p>Comme $SS'$ est fixe, minimiser $NS'+SS'+NR$ revient à minimiser $NS'+NR$.</p>
+<p>Les point $S'$ et $R$ sont fixes donc le point $N$ doit être aligné avec $S'$ et $R$.</p>
+<p>Il suffit donc de placer $N$ à l'intersection de la droite $(S'R)$ et de la rive $(d')$.</p>
+</div>
 </div>
 </div>
 <div class='exercice'>
