@@ -154,10 +154,15 @@ function formatNumberForLatex(strNum) {
   return intPart;
 }
 function formatSIForLatex(value, unit) {
-  // Remplacer les modificateurs par leur forme textuelle
-  unit = unit.replace(/\\square\\(\w+)/g, "\\text{$1}^2");
-  unit = unit.replace(/\\cubic\\(\w+)/g, "\\text{$1}^3");
-  unit = unit.replace(/\\(\w+)/g, "\\text{$1}");
+  // Remplacer \cm, \m, etc. par \text{cm}, \text{m}, etc., mais exclure \square et \cubic
+  unit = unit.replace(/\\(?!square|cubic)(\w+)/g, "\\text{$1}");
+
+  // Remplacer \square\text{cm} par \text{cm}^2 et similaires
+  unit = unit.replace(/\\square\\text\{(\w+)\}/g, "\\text{$1}^2");
+
+  // Remplacer \cubic\text{cm} par \text{cm}^3 et similaires
+  unit = unit.replace(/\\cubic\\text\{(\w+)\}/g, "\\text{$1}^3");
+  console.log(unit);
   // Ajoutez d'autres remplacements d'unités si nécessaire
 
   return formatNumberForLatex(value) + "\\," + unit;

@@ -571,10 +571,15 @@ function formatNumberForLatex(strNum) {
   return intPart;
 }
 function formatSIForLatex(value, unit) {
-  // Remplacer les modificateurs par leur forme textuelle
-  unit = unit.replace(/\\square\\(\w+)/g, "\\text{$1}^2");
-  unit = unit.replace(/\\cubic\\(\w+)/g, "\\text{$1}^3");
-  unit = unit.replace(/\\(\w+)/g, "\\text{$1}");
+  // Remplacer \cm, \m, etc. par \text{cm}, \text{m}, etc., mais exclure \square et \cubic
+  unit = unit.replace(/\\(?!square|cubic)(\w+)/g, "\\text{$1}");
+
+  // Remplacer \square\text{cm} par \text{cm}^2 et similaires
+  unit = unit.replace(/\\square\\text\{(\w+)\}/g, "\\text{$1}^2");
+
+  // Remplacer \cubic\text{cm} par \text{cm}^3 et similaires
+  unit = unit.replace(/\\cubic\\text\{(\w+)\}/g, "\\text{$1}^3");
+  console.log(unit);
   // Ajoutez d'autres remplacements d'unités si nécessaire
 
   return formatNumberForLatex(value) + "\\," + unit;
@@ -1212,6 +1217,7 @@ var constructDemiDroite = function (demidroite) {
   var E = extremites[1];
   path.setAttribute("d", "M" + A.x + "," + A.y + " L" + E.x + "," + E.y);
   setStroke(demidroite, path);
+  path.setAttribute("style", demidroite.getAttribute("style"));
   demidroite.appendChild(path);
 };
 var initialiserDemiDroite = function (demidroite) {
@@ -2202,7 +2208,7 @@ function getCorrection(response) {
     radios[i].disabled = true;
     // La réponse est correcte
     if (i == correctAnswerId && i == response) {
-      radios[i].style.background = "rgba(0, 255, 100, 0.5)";
+      radios[i].style.background = "rgba(0, 200, 0, 0.7)";
       nbResponsesCorrectes++;
     }
     // La réponse correcte en cas d'erreur

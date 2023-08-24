@@ -88,7 +88,7 @@ function getCorrection(response) {
     radios[i].disabled = true;
     // La réponse est correcte
     if (i == correctAnswerId && i == response) {
-      radios[i].style.background = "rgba(0, 255, 100, 0.5)";
+      radios[i].style.background = "rgba(0, 200, 0, 0.7)";
       nbResponsesCorrectes++;
     }
     // La réponse correcte en cas d'erreur

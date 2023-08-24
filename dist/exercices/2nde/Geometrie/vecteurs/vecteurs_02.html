@@ -119,60 +119,107 @@
       <h1>Exercices</h1>
     </header>
     <main><div class="exercice">
-    <div class="enonce">
-        Reproduire la figure ci-dessous.
-        <div id="figure1" class="figure" stroke="transparent" fill="transparent">
-            <svg id="figure1"
-            xmlns="http://www.w3.org/2000/svg" viewBox="30 60 150 60" class="quadrillage">
+  <div class="enonce">
+    Reproduire la figure ci-dessous.
+    <div id="figure1" class="figure" stroke="transparent" fill="transparent">
+      <svg
+        id="figure1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="30 60 150 60"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <g name="A0" class="point" x="100" y="100" visibility="hidden"></g>
+        <g name="B0" class="point" x="60" y="70" visibility="hidden"></g>
+        <g
+          name="u"
+          class="vecteur labeled"
+          style="font-size: 0.8em; color: green"
+          stroke="green"
+          linkto="A0 B0"
+        ></g>
+        <g name="A1" class="point" x="120" y="80" visibility="hidden"></g>
+        <g name="B1" class="point" x="120" y="100" visibility="hidden"></g>
+        <g
+          name="w"
+          class="vecteur labeled"
+          stroke="blue"
+          style="font-size: 0.8em; color: blue"
+          linkto="A1 B1"
+        ></g>
+        <g name="A2" class="point" x="120" y="80" visibility="hidden"></g>
+        <g name="B2" class="point" x="150" y="70" visibility="hidden"></g>
+        <g
+          name="v"
+          class="vecteur labeled"
+          stroke="red"
+          style="font-size: 0.8em; color: red"
+          linkto="A2 B2"
+        ></g>
+        <g name="A" class="point labeled" x="50" y="100"></g>
+        <g class="label" linkto="A" style="font-size: 0.8em" x="-15" y="-5">
+          A
+        </g>
+        <g name="B" class="point labeled" x="120" y="80"></g>
+        <g class="label" linkto="B" style="font-size: 0.8em" x="-15" y="-15">
+          B
+        </g>
+        <!-- Fin de la figure-->
+      </svg>
+    </div>
+    <ul>
+      <li>
+        Construire le représentant d'origine $A$ du vecteur
+        $\overrightarrow{u}+\overrightarrow{v}$
+      </li>
+      <div class="solution">
+        <div id="figure1_1" class="figure">
+          <svg
+            id="figure1_1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 50 60 70"
+            class="quadrillage"
+          >
             <!-- Début de la figure -->
             <g name="A0" class="point" x="100" y="100" visibility="hidden"></g>
             <g name="B0" class="point" x="60" y="70" visibility="hidden"></g>
-            <g name="u" class="vecteur labeled" style="font-size:0.8em;color:green" stroke="green" linkto="A0 B0"></g>
-            <g name="A1" class="point" x="120" y="80" visibility="hidden"></g>
-            <g name="B1" class="point" x="120" y="100" visibility="hidden"></g>
-            <g name="w" class="vecteur labeled" stroke="blue" style="font-size:0.8em;color:blue" linkto="A1 B1"></g>
-            <g name="A2" class="point" x="120" y="80" visibility="hidden"></g>
-            <g name="B2" class="point" x="150" y="70" visibility="hidden"></g>
-            <g name="v" class="vecteur labeled" stroke="red" style="font-size:0.8em;color:red;" linkto="A2 B2"></g>
-            <g name="A" class="point labeled" x="50" y="100"></g>
-            <g class="label" linkto="A" style="font-size:0.8em;" x="-15" y="-5">A</g>
-            <g name="B" class="point labeled" x="120" y="80"></g>
-            <g class="label" linkto="B" style="font-size:0.8em;" x="-15" y="-15">B</g>
-            <!-- Fin de la figure-->
-        </svg>
-        </div>
-        <ul>
-            <li>Construire le représentant d'origine $A$ du vecteur $\overrightarrow{u}+\overrightarrow{v}$</li>
-            <div class="solution">
-                <div id="figure1_1" class="figure">
-                    <svg id="figure1_1"
-            xmlns="http://www.w3.org/2000/svg" viewBox="0 50 60 70" class="quadrillage">
-            <!-- Début de la figure -->
-            <g name="A0" class="point" x="100" y="100" visibility="hidden"></g>
-            <g name="B0" class="point" x="60" y="70" visibility="hidden"></g>
             <g name="A1" class="point" x="120" y="80" visibility="hidden"></g>
             <g name="B1" class="point" x="120" y="100" visibility="hidden"></g>
             <g name="A2" class="point" x="120" y="80" visibility="hidden"></g>
             <g name="B2" class="point" x="150" y="70" visibility="hidden"></g>
             <g name="A" class="point labeled" x="50" y="100"></g>
-            <g class="label" linkto="A" style="font-size:0.8em;" x="-15" y="-5">A</g>
+            <g class="label" linkto="A" style="font-size: 0.8em" x="-15" y="-5">
+              A
+            </g>
 
             <g name="A3" class="point" x="10" y="70" visibility="hidden"></g>
             <g name="u2" class="vecteur" stroke="green" linkto="A A3"></g>
             <g name="A4" class="point" x="40" y="60" visibility="hidden"></g>
             <g name="u3" class="vecteur" stroke="red" linkto="A3 A4"></g>
 
-            <g name="u4" class="vecteur" stroke="black" stroke-width="0.5" linkto="A A4">
-            </g>
+            <g
+              name="u4"
+              class="vecteur"
+              stroke="black"
+              stroke-width="0.5"
+              linkto="A A4"
+            ></g>
             <!-- Fin de la figure -->
-        </svg>
-                </div>
-            </div>
-            <li>Construire le représentant d'origine $A$ du vecteur $\overrightarrow{u}+\overrightarrow{w}$</li>
-            <div class="solution">
-                <div id="figure1_2" class="figure">
-                    <svg id="figure1_2"
-            xmlns="http://www.w3.org/2000/svg" viewBox="0 50 60 70" class="quadrillage">
+          </svg>
+        </div>
+      </div>
+      <li>
+        Construire le représentant d'origine $A$ du vecteur
+        $\overrightarrow{u}+\overrightarrow{w}$
+      </li>
+      <div class="solution">
+        <div id="figure1_2" class="figure">
+          <svg
+            id="figure1_2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 50 60 70"
+            class="quadrillage"
+          >
             <!-- Début de la figure -->
             <g name="A0" class="point" x="100" y="100" visibility="hidden"></g>
             <g name="B0" class="point" x="60" y="70" visibility="hidden"></g>
@@ -181,25 +228,38 @@
             <g name="A2" class="point" x="120" y="80" visibility="hidden"></g>
             <g name="B2" class="point" x="150" y="70" visibility="hidden"></g>
             <g name="A" class="point labeled" x="50" y="100"></g>
-            <g class="label" linkto="A" style="font-size:0.8em;" x="-15" y="-5">A</g>
+            <g class="label" linkto="A" style="font-size: 0.8em" x="-15" y="-5">
+              A
+            </g>
 
             <g name="A3" class="point" x="10" y="70" visibility="hidden"></g>
             <g name="u2" class="vecteur" stroke="green" linkto="A A3"></g>
             <g name="A4" class="point" x="10" y="90" visibility="hidden"></g>
             <g name="u3" class="vecteur" stroke="blue" linkto="A3 A4"></g>
 
-            <g name="u4" class="vecteur" stroke="black" stroke-width="0.5" linkto="A A4">
-            </g>
+            <g
+              name="u4"
+              class="vecteur"
+              stroke="black"
+              stroke-width="0.5"
+              linkto="A A4"
+            ></g>
             <!-- Fin de la figure -->
-        </svg>
-                </div>
-            </div>
-            <li>Construire le représentant d'origine $B$ du vecteur $\overrightarrow{v}+\overrightarrow{w}.$
-            </li>
-            <div class="solution">
-                <div id="figure1_3" class="figure">
-                    <svg id="figure1_3"
-            xmlns="http://www.w3.org/2000/svg" viewBox="90 60 70 50" class="quadrillage">
+          </svg>
+        </div>
+      </div>
+      <li>
+        Construire le représentant d'origine $B$ du vecteur
+        $\overrightarrow{v}+\overrightarrow{w}.$
+      </li>
+      <div class="solution">
+        <div id="figure1_3" class="figure">
+          <svg
+            id="figure1_3"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="90 60 70 50"
+            class="quadrillage"
+          >
             <!-- Début de la figure -->
             <g name="A0" class="point" x="100" y="100" visibility="hidden"></g>
             <g name="B0" class="point" x="60" y="70" visibility="hidden"></g>
@@ -210,54 +270,95 @@
             <g name="v" class="vecteur" stroke="red" linkto="A2 B2"></g>
             <g class="label" linkto="A" x="-15" y="-5">A</g>
             <g name="B" class="point labeled" x="120" y="80"></g>
-            <g class="label" linkto="B" style="font-size:0.8em;" x="-15" y="-15">B</g>
+            <g
+              class="label"
+              linkto="B"
+              style="font-size: 0.8em"
+              x="-15"
+              y="-15"
+            >
+              B
+            </g>
 
             <g name="A3" class="point" x="150" y="70" visibility="hidden"></g>
             <g name="A4" class="point" x="150" y="90" visibility="hidden"></g>
             <g name="u2" class="vecteur" stroke="blue" linkto="A3 A4"></g>
 
-            <g name="u3" class="vecteur" stroke="black" stroke-width="0.5" linkto="B A4">
-            </g>
+            <g
+              name="u3"
+              class="vecteur"
+              stroke="black"
+              stroke-width="0.5"
+              linkto="B A4"
+            ></g>
             <!-- Fin de la figure -->
-        </svg>
-                </div>
-            </div>
-        </ul>
-    </div>
+          </svg>
+        </div>
+      </div>
+    </ul>
+  </div>
 </div>
 <div class="exercice">
-    <div class="enonce">
-        Reproduire la figure ci-dessous.
-        <div id="figure2" class="figure" stroke="transparent" fill="transparent">
-            <svg id="figure2"
-            xmlns="http://www.w3.org/2000/svg" viewBox="0 60 150 60" class="quadrillage">
-            <!-- Début de la figure -->
-            <g name="A0" class="point" x="50" y="100" visibility="hidden"></g>
-            <g name="B0" class="point" x="10" y="80" visibility="hidden"></g>
-            <g name="u" class="vecteur labeled" style="font-size:0.8em;color:green" stroke="green" linkto="A0 B0"></g>
+  <div class="enonce">
+    Reproduire la figure ci-dessous.
+    <div id="figure2" class="figure" stroke="transparent" fill="transparent">
+      <svg
+        id="figure2"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 60 150 60"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <g name="A0" class="point" x="50" y="100" visibility="hidden"></g>
+        <g name="B0" class="point" x="10" y="80" visibility="hidden"></g>
+        <g
+          name="u"
+          class="vecteur labeled"
+          style="font-size: 0.8em; color: green"
+          stroke="green"
+          linkto="A0 B0"
+        ></g>
 
-            <g name="A1" class="point" x="50" y="100" visibility="hidden"></g>
-            <g name="B1" class="point" x="70" y="100" visibility="hidden"></g>
-            <g name="w" class="vecteur labeled" style="font-size:0.8em;color:blue;" stroke="blue" linkto="A1 B1"></g>
+        <g name="A1" class="point" x="50" y="100" visibility="hidden"></g>
+        <g name="B1" class="point" x="70" y="100" visibility="hidden"></g>
+        <g
+          name="w"
+          class="vecteur labeled"
+          style="font-size: 0.8em; color: blue"
+          stroke="blue"
+          linkto="A1 B1"
+        ></g>
 
-            <g name="A2" class="point" x="120" y="80" visibility="hidden"></g>
-            <g name="B2" class="point" x="100" y="100" visibility="hidden"></g>
-            <g name="v" class="vecteur labeled" style="font-size:0.8em;color:red;" stroke="red" linkto="A2 B2"></g>
+        <g name="A2" class="point" x="120" y="80" visibility="hidden"></g>
+        <g name="B2" class="point" x="100" y="100" visibility="hidden"></g>
+        <g
+          name="v"
+          class="vecteur labeled"
+          style="font-size: 0.8em; color: red"
+          stroke="red"
+          linkto="A2 B2"
+        ></g>
 
-            <g name="A" class="point labeled" x="50" y="100"></g>
-            <g class="label" linkto="A" x="-10" y="0" style="font-size:0.8em">A</g>
-            <g name="B" class="point labeled" x="120" y="80"></g>
-            <g class="label" linkto="B" x="-15" y="-15">B</g>
-            <!-- Fin de la figure-->
-        </svg>
-        </div>
-        <ul>
-            <li>Construire le point $E$ tel que $\overrightarrow{AE}=\overrightarrow{u}+\overrightarrow{w.}$
-            </li>
-            <div class="solution">
-                <div id="figure2_1" class="figure">
-                    <svg id="figure2_1"
-            xmlns="http://www.w3.org/2000/svg" viewBox="0 50 60 70" class="quadrillage">
+        <g name="A" class="point labeled" x="50" y="100"></g>
+        <g class="label" linkto="A" x="-10" y="0" style="font-size: 0.8em">A</g>
+        <g name="B" class="point labeled" x="120" y="80"></g>
+        <g class="label" linkto="B" x="-15" y="-15">B</g>
+        <!-- Fin de la figure-->
+      </svg>
+    </div>
+    <ul>
+      <li>
+        Construire le point $E$ tel que
+        $\overrightarrow{AE}=\overrightarrow{u}+\overrightarrow{w.}$
+      </li>
+      <div class="solution">
+        <div id="figure2_1" class="figure">
+          <svg
+            id="figure2_1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 50 60 70"
+            class="quadrillage"
+          >
             <!-- Début de la figure -->
             <g name="A0" class="point" x="100" y="100" visibility="hidden"></g>
             <g name="B0" class="point" x="60" y="70" visibility="hidden"></g>
@@ -273,18 +374,29 @@
             <g name="A4" class="point" x="40" y="60" visibility="hidden"></g>
             <g name="u3" class="vecteur" stroke="red" linkto="A3 A4"></g>
 
-            <g name="u4" class="vecteur" stroke="black" stroke-width="0.5" linkto="A A4">
-            </g>
+            <g
+              name="u4"
+              class="vecteur"
+              stroke="black"
+              stroke-width="0.5"
+              linkto="A A4"
+            ></g>
             <!-- Fin de la figure -->
-        </svg>
-                </div>
-            </div>
-            <li>Construire le point $F$ tel que $\overrightarrow{BF}=\overrightarrow{v}+\overrightarrow{u.}$
-            </li>
-            <div class="solution">
-                <div id="figure2_2" class="figure">
-                    <svg id="figure2_2"
-            xmlns="http://www.w3.org/2000/svg" viewBox="0 50 60 70" class="quadrillage">
+          </svg>
+        </div>
+      </div>
+      <li>
+        Construire le point $F$ tel que
+        $\overrightarrow{BF}=\overrightarrow{v}+\overrightarrow{u.}$
+      </li>
+      <div class="solution">
+        <div id="figure2_2" class="figure">
+          <svg
+            id="figure2_2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 50 60 70"
+            class="quadrillage"
+          >
             <!-- Début de la figure -->
             <g name="A0" class="point" x="100" y="100" visibility="hidden"></g>
             <g name="B0" class="point" x="60" y="70" visibility="hidden"></g>
@@ -300,18 +412,29 @@
             <g name="A4" class="point" x="10" y="90" visibility="hidden"></g>
             <g name="u3" class="vecteur" stroke="blue" linkto="A3 A4"></g>
 
-            <g name="u4" class="vecteur" stroke="black" stroke-width="0.5" linkto="A A4">
-            </g>
+            <g
+              name="u4"
+              class="vecteur"
+              stroke="black"
+              stroke-width="0.5"
+              linkto="A A4"
+            ></g>
             <!-- Fin de la figure -->
-        </svg>
-                </div>
-            </div>
-            <li>Construire le point $G$ tel que $\overrightarrow{BG}=\overrightarrow{u}+\overrightarrow{w}.$
-            </li>
-            <div class="solution">
-                <div id="figure2_3" class="figure">
-                    <svg id="figure2_3"
-            xmlns="http://www.w3.org/2000/svg" viewBox="90 60 70 50" class="quadrillage">
+          </svg>
+        </div>
+      </div>
+      <li>
+        Construire le point $G$ tel que
+        $\overrightarrow{BG}=\overrightarrow{u}+\overrightarrow{w}.$
+      </li>
+      <div class="solution">
+        <div id="figure2_3" class="figure">
+          <svg
+            id="figure2_3"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="90 60 70 50"
+            class="quadrillage"
+          >
             <!-- Début de la figure -->
             <g name="A0" class="point" x="100" y="100" visibility="hidden"></g>
             <g name="B0" class="point" x="60" y="70" visibility="hidden"></g>
@@ -328,206 +451,330 @@
             <g name="A4" class="point" x="150" y="90" visibility="hidden"></g>
             <g name="u2" class="vecteur" stroke="blue" linkto="A3 A4"></g>
 
-            <g name="u3" class="vecteur" stroke="black" stroke-width="0.5" linkto="B A4">
-            </g>
+            <g
+              name="u3"
+              class="vecteur"
+              stroke="black"
+              stroke-width="0.5"
+              linkto="B A4"
+            ></g>
             <!-- Fin de la figure -->
-        </svg>
-                </div>
-            </div>
-        </ul>
-    </div>
+          </svg>
+        </div>
+      </div>
+    </ul>
+  </div>
 </div>
 <div class="exercice">
-    <div class="enonce">
-        Reproduire la figure puis construire le représentant d'origine $M$ du vecteur
-        $\overrightarrow{u}-\overrightarrow{v}.$
-        <div id="figure3" class="figure" stroke="transparent" fill="transparent">
-            <svg id="figure3"
-            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 80" class="quadrillage">
-            <!-- Début de la figure -->
-            <g name="A0" class="point" x="80" y="50" visibility="hidden"></g>
-            <g name="B0" class="point" x="120" y="30" visibility="hidden"></g>
-            <g name="u" class="vecteur labeled" style="font-size:0.8em;color:red" stroke="red" linkto="A0 B0"></g>
+  <div class="enonce">
+    Reproduire la figure puis construire le représentant d'origine $M$ du
+    vecteur $\overrightarrow{u}-\overrightarrow{v}.$
+    <div id="figure3" class="figure" stroke="transparent" fill="transparent">
+      <svg
+        id="figure3"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 130 80"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <g name="A0" class="point" x="80" y="50" visibility="hidden"></g>
+        <g name="B0" class="point" x="120" y="30" visibility="hidden"></g>
+        <g
+          name="u"
+          class="vecteur labeled"
+          style="font-size: 0.8em; color: red"
+          stroke="red"
+          linkto="A0 B0"
+        ></g>
 
-            <g name="A1" class="point" x="10" y="10" visibility="hidden"></g>
-            <g name="B1" class="point" x="20" y="40" visibility="hidden"></g>
-            <g name="I1" class="point labeled translation" style="stroke:transparent;" linkto="A1 B1 A1" data="0.5"></g>
-            <g class="label" linkto="I1" x="0" y="-10" style="font-size:0.6em;color:blue">\overrightarrow{v}</g>
-            <g name="v" class="vecteur" style="font-size:0.8em;color:blue;" stroke="blue" linkto="A1 B1"></g>
+        <g name="A1" class="point" x="10" y="10" visibility="hidden"></g>
+        <g name="B1" class="point" x="20" y="40" visibility="hidden"></g>
+        <g
+          name="I1"
+          class="point labeled translation"
+          style="stroke: transparent"
+          linkto="A1 B1 A1"
+          data="0.5"
+        ></g>
+        <g
+          class="label"
+          linkto="I1"
+          x="0"
+          y="-10"
+          style="font-size: 0.6em; color: blue"
+        >
+          \overrightarrow{v}
+        </g>
+        <g
+          name="v"
+          class="vecteur"
+          style="font-size: 0.8em; color: blue"
+          stroke="blue"
+          linkto="A1 B1"
+        ></g>
 
-            <g name="M" class="point labeled" x="40" y="60"></g>
-            <g class="label" linkto="M" x="-10" y="0" style="font-size:0.8em">M</g>
-            <!-- Fin de la figure-->
-        </svg>
-        </div>
-        <div class="solution">
-            <div id="figure3_solution" class="figure">
-                <svg id="figure3_solution"
-            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 80" class="quadrillage">
-            <!-- Début de la figure -->
-            <g name="A0" class="point" x="40" y="60" visibility="hidden"></g>
-            <g name="B0" class="point" x="80" y="40" visibility="hidden"></g>
-            <g name="u" class="vecteur labeled" style="font-size:0.8em;color:red" stroke="red" linkto="A0 B0"></g>
-
-            <g name="A1" class="point" x="80" y="40" visibility="hidden"></g>
-            <g name="B1" class="point" x="70" y="10" visibility="hidden"></g>
-            <g name="I1" class="point labeled translation" style="stroke:transparent;" linkto="A1 B1 A1" data="0.5"></g>
-            <g class="label" linkto="I1" x="0" y="-10" style="font-size:0.6em;color:blue">-\overrightarrow{v}</g>
-            <g name="v" class="vecteur" style="font-size:0.8em;color:blue;" stroke="blue" linkto="A1 B1"></g>
-
-
-            <g name="A2" class="point" x="40" y="60" visibility="hidden"></g>
-            <g name="B2" class="point" x="70" y="10" visibility="hidden"></g>
-            <g name="I2" class="point labeled translation" style="stroke:transparent;" linkto="A2 B2 A2" data="0.5"></g>
-            <g class="label" linkto="I2" x="-30" y="-10" style="font-size:0.6em;color:green;width:30px;">\overrightarrow{u}-\overrightarrow{v}</g>
-            <g name="w" class="vecteur" style="font-size:0.8em;color:green;" stroke="green" linkto="A2 B2"></g>
-
-            <g name="M" class="point labeled" x="40" y="60"></g>
-            <g class="label" linkto="M" x="-10" y="0" style="font-size:0.8em">M</g>
-            <!-- Fin de la figure-->
-        </svg>
-            </div>
-        </div>
+        <g name="M" class="point labeled" x="40" y="60"></g>
+        <g class="label" linkto="M" x="-10" y="0" style="font-size: 0.8em">M</g>
+        <!-- Fin de la figure-->
+      </svg>
     </div>
+    <div class="solution">
+      <div id="figure3_solution" class="figure">
+        <svg
+          id="figure3_solution"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 130 80"
+          class="quadrillage"
+        >
+          <!-- Début de la figure -->
+          <g name="A0" class="point" x="40" y="60" visibility="hidden"></g>
+          <g name="B0" class="point" x="80" y="40" visibility="hidden"></g>
+          <g
+            name="u"
+            class="vecteur labeled"
+            style="font-size: 0.8em; color: red"
+            stroke="red"
+            linkto="A0 B0"
+          ></g>
+
+          <g name="A1" class="point" x="80" y="40" visibility="hidden"></g>
+          <g name="B1" class="point" x="70" y="10" visibility="hidden"></g>
+          <g
+            name="I1"
+            class="point labeled translation"
+            style="stroke: transparent"
+            linkto="A1 B1 A1"
+            data="0.5"
+          ></g>
+          <g
+            class="label"
+            linkto="I1"
+            x="0"
+            y="-10"
+            style="font-size: 0.6em; color: blue"
+          >
+            -\overrightarrow{v}
+          </g>
+          <g
+            name="v"
+            class="vecteur"
+            style="font-size: 0.8em; color: blue"
+            stroke="blue"
+            linkto="A1 B1"
+          ></g>
+
+          <g name="A2" class="point" x="40" y="60" visibility="hidden"></g>
+          <g name="B2" class="point" x="70" y="10" visibility="hidden"></g>
+          <g
+            name="I2"
+            class="point labeled translation"
+            style="stroke: transparent"
+            linkto="A2 B2 A2"
+            data="0.5"
+          ></g>
+          <g
+            class="label"
+            linkto="I2"
+            x="-30"
+            y="-10"
+            style="font-size: 0.6em; color: green; width: 30px"
+          >
+            \overrightarrow{u}-\overrightarrow{v}
+          </g>
+          <g
+            name="w"
+            class="vecteur"
+            style="font-size: 0.8em; color: green"
+            stroke="green"
+            linkto="A2 B2"
+          ></g>
+
+          <g name="M" class="point labeled" x="40" y="60"></g>
+          <g class="label" linkto="M" x="-10" y="0" style="font-size: 0.8em">
+            M
+          </g>
+          <!-- Fin de la figure-->
+        </svg>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="exercice">
-    <div class="enonce">
-        Reproduire la figure puis construire le représentant d'origine $M$ du vecteur
-        $\overrightarrow{u}-\overrightarrow{v}.$
-        <div id="figure4" class="figure" stroke="transparent" fill="transparent">
-            <svg id="figure4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 80" class="quadrillage">
-                <!-- Début de la figure -->
-                <g name="A0" class="point" x="40" y="60" visibility="hidden"></g>
-                <g name="B0" class="point" x="80" y="40" visibility="hidden"></g>
-                <g name="u" class="vecteur labeled" style="font-size:0.8em;color:red" stroke="red"
-                    linkto="A0 B0"></g>
+  <div class="enonce">
+    Reproduire la figure puis construire le représentant d'origine $M$ du
+    vecteur $\overrightarrow{u}-\overrightarrow{v}.$
+    <div id="figure4" class="figure" stroke="transparent" fill="transparent">
+      <svg
+        id="figure4"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 130 80"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <g name="A0" class="point" x="40" y="60" visibility="hidden"></g>
+        <g name="B0" class="point" x="80" y="40" visibility="hidden"></g>
+        <g
+          name="u"
+          class="vecteur labeled"
+          style="font-size: 0.8em; color: red"
+          stroke="red"
+          linkto="A0 B0"
+        ></g>
 
-                <g name="A1" class="point" x="80" y="40" visibility="hidden"></g>
-                <g name="B1" class="point" x="70" y="10" visibility="hidden"></g>
-                <g name="v" class="vecteur labeled" style="font-size:0.8em;color:blue;" stroke="blue"
-                    linkto="A1 B1">
-                </g>
+        <g name="A1" class="point" x="80" y="40" visibility="hidden"></g>
+        <g name="B1" class="point" x="70" y="10" visibility="hidden"></g>
+        <g
+          name="v"
+          class="vecteur labeled"
+          style="font-size: 0.8em; color: blue"
+          stroke="blue"
+          linkto="A1 B1"
+        ></g>
 
-                <g name="M" class="point labeled" x="40" y="60"></g>
-                <g class="label" linkto="M" x="-10" y="0" style="font-size:0.8em">M</g>
-                <!-- Fin de la figure-->
-            </svg>
-        </div>
-        <div class="solution">
-            <div id="figure4_solution" class="figure">
-                <svg id="figure4_solution" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 80"
-                    class="quadrillage">
-                    <!-- Début de la figure -->
-                    <g name="A0" class="point" x="40" y="60" visibility="hidden"></g>
-                    <g name="B0" class="point" x="80" y="40" visibility="hidden"></g>
-                    
-                    <g name="A1" class="point" x="80" y="40" visibility="hidden"></g>
-                    <g name="B1" class="point" x="70" y="10" visibility="hidden"></g>
-                    
-
-                    <g name="w" class="vecteur" style="font-size:0.8em;color:green;" stroke="green"
-                        linkto="M B1">
-                    </g>
-
-                    <g name="M" class="point labeled" x="40" y="60"></g>
-                    <g class="label" linkto="M" x="-10" y="0" style="font-size:0.8em">M</g>
-                    <!-- Fin de la figure-->
-                </svg>
-            </div>
-        </div>
+        <g name="M" class="point labeled" x="40" y="60"></g>
+        <g class="label" linkto="M" x="-10" y="0" style="font-size: 0.8em">M</g>
+        <!-- Fin de la figure-->
+      </svg>
     </div>
+    <div class="solution">
+      <div id="figure4_solution" class="figure">
+        <svg
+          id="figure4_solution"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 130 80"
+          class="quadrillage"
+        >
+          <!-- Début de la figure -->
+          <g name="A0" class="point" x="40" y="60" visibility="hidden"></g>
+          <g name="B0" class="point" x="80" y="40" visibility="hidden"></g>
+
+          <g name="A1" class="point" x="80" y="40" visibility="hidden"></g>
+          <g name="B1" class="point" x="70" y="10" visibility="hidden"></g>
+
+          <g
+            name="w"
+            class="vecteur"
+            style="font-size: 0.8em; color: green"
+            stroke="green"
+            linkto="M B1"
+          ></g>
+
+          <g name="M" class="point labeled" x="40" y="60"></g>
+          <g class="label" linkto="M" x="-10" y="0" style="font-size: 0.8em">
+            M
+          </g>
+          <!-- Fin de la figure-->
+        </svg>
+      </div>
+    </div>
+  </div>
 </div>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Récupérer les informations de la viewBox
-        var svg = document.querySelector("#figure4 svg");
-        var viewBox = svg.getAttribute("viewBox").split(" ");
-        var width = parseFloat(viewBox[2]);
-        var height = parseFloat(viewBox[3]);
-        var xmin = parseFloat(viewBox[0]);
-        var ymin = parseFloat(viewBox[1]);
-        // On choisit 5 points distincts aléatoirement dans la viewBox et sur le quadrillage
-        // Pour ça on fait la liste des points possibles
-        var liste_points = [];
-        for (var i = 1; i < (width-10) / 10; i++) {
-            for (var j = 1; j < (height-10) / 10; j++) {
-                liste_points.push(new Point(xmin + 10 * i, ymin + 10 * j));
-            }
-        }
-        // On choisit 5 points distincts aléatoirement dans la liste
-        var liste_points_choisis = [];
-        for (var i = 0; i < 5; i++) {
-            var index = Math.floor(Math.random() * liste_points.length);
-            liste_points_choisis.push(liste_points[index]);
-            liste_points.splice(index, 1);
-        }
-        
-        var A0 = liste_points_choisis[0];
-        var B0 = liste_points_choisis[1];
-        var A1 = liste_points_choisis[2];
-        var B1 = liste_points_choisis[3];
-        var M = liste_points_choisis[4];
-        // Placer ces informations dans la figure4
-        var A0_figure = document.querySelector("#figure4 g[name='A0']");
-        A0_figure.setAttribute("x", A0.x);
-        A0_figure.setAttribute("y", A0.y);
-        var B0_figure = document.querySelector("#figure4 g[name='B0']");
-        B0_figure.setAttribute("x", B0.x);
-        B0_figure.setAttribute("y", B0.y);
-        var A1_figure = document.querySelector("#figure4 g[name='A1']");
-        A1_figure.setAttribute("x", A1.x);
-        A1_figure.setAttribute("y", A1.y);
-        var B1_figure = document.querySelector("#figure4 g[name='B1']");
-        B1_figure.setAttribute("x", B1.x);
-        B1_figure.setAttribute("y", B1.y);
-        var M_figure = document.querySelector("#figure4 g[name='M']");
-        M_figure.setAttribute("x", M.x);
-        M_figure.setAttribute("y", M.y);
-        
-        // u est le vecteur d'origine A0 et d'extrémité B0, on le déplace en M
-        // A0_prime est le translaté de A0 par le vecteur d'origine A0 et d'extrémité M
-        var vecteur_A0M = new Vecteur(0, 0);
-        vecteur_A0M.setCoordonneesVecteur2Points(A0,M);
-        var A0_prime = A0.translation(vecteur_A0M);
-        // B0_prime est le translaté de B0 par le vecteur d'origine A0 et d'extrémité M
-        var B0_prime = B0.translation(vecteur_A0M);
+  document.addEventListener("DOMContentLoaded", function () {
+    // Récupérer les informations de la viewBox
+    var svg = document.querySelector("#figure4 svg");
+    var viewBox = svg.getAttribute("viewBox").split(" ");
+    var width = parseFloat(viewBox[2]);
+    var height = parseFloat(viewBox[3]);
+    var xmin = parseFloat(viewBox[0]);
+    var ymin = parseFloat(viewBox[1]);
+    // On choisit 5 points distincts aléatoirement dans la viewBox et sur le quadrillage
+    // Pour ça on fait la liste des points possibles
+    var liste_points = [];
+    for (var i = 1; i < (width - 10) / 10; i++) {
+      for (var j = 1; j < (height - 10) / 10; j++) {
+        liste_points.push(new Point(xmin + 10 * i, ymin + 10 * j));
+      }
+    }
+    // On choisit 5 points distincts aléatoirement dans la liste
+    var liste_points_choisis = [];
+    for (var i = 0; i < 5; i++) {
+      var index = Math.floor(Math.random() * liste_points.length);
+      liste_points_choisis.push(liste_points[index]);
+      liste_points.splice(index, 1);
+    }
 
-        // -v est le vecteur d'origine B1 et d'extrémité A1, on le déplace en B0_prime
-        // On remplace v par -v
-        var vecteur_B1A1 = new Vecteur(0, 0);
-        vecteur_B1A1.setCoordonneesVecteur2Points(B1,A1);
-        // A1_prime devient B0_prime
-        var A1_prime = B0_prime;
-        // B1_prime est le translaté de A1_prime par le vecteur d'origine B1 et d'extrémité A1
-        var B1_prime = A1_prime.translation(vecteur_B1A1);
-        // On recarde la figure avec des marges de 10
-        var xmin = Math.min(A0_prime.x, B0_prime.x, A1_prime.x, B1_prime.x, M.x) - 10;
-        var ymin = Math.min(A0_prime.y, B0_prime.y, A1_prime.y, B1_prime.y, M.y) - 10;
-        var xmax = Math.max(A0_prime.x, B0_prime.x, A1_prime.x, B1_prime.x, M.x) + 10;
-        var ymax = Math.max(A0_prime.y, B0_prime.y, A1_prime.y, B1_prime.y, M.y) + 10;
-        var width = xmax - xmin;
-        var height = ymax - ymin;
-        var svg = document.querySelector("#figure4_solution svg");
-        svg.setAttribute("viewBox", xmin + " " + ymin + " " + width + " " + height);
-        // Dans la figure solution A0 devient A0_prime etc
-        var A0_prime_figure = document.querySelector("#figure4_solution g[name='A0']");
-        A0_prime_figure.setAttribute("x", A0_prime.x);
-        A0_prime_figure.setAttribute("y", A0_prime.y);
-        var B0_prime_figure = document.querySelector("#figure4_solution g[name='B0']");
-        B0_prime_figure.setAttribute("x", B0_prime.x);
-        B0_prime_figure.setAttribute("y", B0_prime.y);
-        var A1_prime_figure = document.querySelector("#figure4_solution g[name='A1']");
-        A1_prime_figure.setAttribute("x", A1_prime.x);
-        A1_prime_figure.setAttribute("y", A1_prime.y);
-        var B1_prime_figure = document.querySelector("#figure4_solution g[name='B1']");
-        B1_prime_figure.setAttribute("x", B1_prime.x);
-        B1_prime_figure.setAttribute("y", B1_prime.y);
-        // Le point M reste à sa place
-        var M_solution_figure = document.querySelector("#figure4_solution g[name='M']");
-        M_solution_figure.setAttribute("x", M.x);
-        M_solution_figure.setAttribute("y", M.y);
-    });
-</script></main>
+    var A0 = liste_points_choisis[0];
+    var B0 = liste_points_choisis[1];
+    var A1 = liste_points_choisis[2];
+    var B1 = liste_points_choisis[3];
+    var M = liste_points_choisis[4];
+    // Placer ces informations dans la figure4
+    var A0_figure = document.querySelector("#figure4 g[name='A0']");
+    A0_figure.setAttribute("x", A0.x);
+    A0_figure.setAttribute("y", A0.y);
+    var B0_figure = document.querySelector("#figure4 g[name='B0']");
+    B0_figure.setAttribute("x", B0.x);
+    B0_figure.setAttribute("y", B0.y);
+    var A1_figure = document.querySelector("#figure4 g[name='A1']");
+    A1_figure.setAttribute("x", A1.x);
+    A1_figure.setAttribute("y", A1.y);
+    var B1_figure = document.querySelector("#figure4 g[name='B1']");
+    B1_figure.setAttribute("x", B1.x);
+    B1_figure.setAttribute("y", B1.y);
+    var M_figure = document.querySelector("#figure4 g[name='M']");
+    M_figure.setAttribute("x", M.x);
+    M_figure.setAttribute("y", M.y);
+
+    // u est le vecteur d'origine A0 et d'extrémité B0, on le déplace en M
+    // A0_prime est le translaté de A0 par le vecteur d'origine A0 et d'extrémité M
+    var vecteur_A0M = new Vecteur(0, 0);
+    vecteur_A0M.setCoordonneesVecteur2Points(A0, M);
+    var A0_prime = A0.translation(vecteur_A0M);
+    // B0_prime est le translaté de B0 par le vecteur d'origine A0 et d'extrémité M
+    var B0_prime = B0.translation(vecteur_A0M);
+
+    // -v est le vecteur d'origine B1 et d'extrémité A1, on le déplace en B0_prime
+    // On remplace v par -v
+    var vecteur_B1A1 = new Vecteur(0, 0);
+    vecteur_B1A1.setCoordonneesVecteur2Points(B1, A1);
+    // A1_prime devient B0_prime
+    var A1_prime = B0_prime;
+    // B1_prime est le translaté de A1_prime par le vecteur d'origine B1 et d'extrémité A1
+    var B1_prime = A1_prime.translation(vecteur_B1A1);
+    // On recarde la figure avec des marges de 10
+    var xmin =
+      Math.min(A0_prime.x, B0_prime.x, A1_prime.x, B1_prime.x, M.x) - 10;
+    var ymin =
+      Math.min(A0_prime.y, B0_prime.y, A1_prime.y, B1_prime.y, M.y) - 10;
+    var xmax =
+      Math.max(A0_prime.x, B0_prime.x, A1_prime.x, B1_prime.x, M.x) + 10;
+    var ymax =
+      Math.max(A0_prime.y, B0_prime.y, A1_prime.y, B1_prime.y, M.y) + 10;
+    var width = xmax - xmin;
+    var height = ymax - ymin;
+    var svg = document.querySelector("#figure4_solution svg");
+    svg.setAttribute("viewBox", xmin + " " + ymin + " " + width + " " + height);
+    // Dans la figure solution A0 devient A0_prime etc
+    var A0_prime_figure = document.querySelector(
+      "#figure4_solution g[name='A0']"
+    );
+    A0_prime_figure.setAttribute("x", A0_prime.x);
+    A0_prime_figure.setAttribute("y", A0_prime.y);
+    var B0_prime_figure = document.querySelector(
+      "#figure4_solution g[name='B0']"
+    );
+    B0_prime_figure.setAttribute("x", B0_prime.x);
+    B0_prime_figure.setAttribute("y", B0_prime.y);
+    var A1_prime_figure = document.querySelector(
+      "#figure4_solution g[name='A1']"
+    );
+    A1_prime_figure.setAttribute("x", A1_prime.x);
+    A1_prime_figure.setAttribute("y", A1_prime.y);
+    var B1_prime_figure = document.querySelector(
+      "#figure4_solution g[name='B1']"
+    );
+    B1_prime_figure.setAttribute("x", B1_prime.x);
+    B1_prime_figure.setAttribute("y", B1_prime.y);
+    // Le point M reste à sa place
+    var M_solution_figure = document.querySelector(
+      "#figure4_solution g[name='M']"
+    );
+    M_solution_figure.setAttribute("x", M.x);
+    M_solution_figure.setAttribute("y", M.y);
+  });
+</script>
+</main>
     <footer>
       Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
       Henry Bergson à Angers.<br />

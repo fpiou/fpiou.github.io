@@ -494,6 +494,7 @@ var constructDemiDroite = function (demidroite) {
   var E = extremites[1];
   path.setAttribute("d", "M" + A.x + "," + A.y + " L" + E.x + "," + E.y);
   setStroke(demidroite, path);
+  path.setAttribute("style", demidroite.getAttribute("style"));
   demidroite.appendChild(path);
 };
 var initialiserDemiDroite = function (demidroite) {
