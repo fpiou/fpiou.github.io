@@ -1209,6 +1209,62 @@ var initialiserCourbesFigure = function (figure) {
     initialiserCourbe(courbe);
   });
 };
+var getSecteursFigure = function (figure) {
+  var secteurs = document.querySelectorAll("g.secteur");
+  var secteursArray = Array.from(secteurs);
+  return secteursArray.filter(
+    (secteur) => secteur.id.split("-")[0] == figure.id
+  );
+};
+function createSVGElement(tagName) {
+  return document.createElementNS("http://www.w3.org/2000/svg", tagName);
+}
+
+function constructSecteur(secteur) {
+  const centre = getElementLinkto(secteur, 0);
+  var paramString = secteur.getAttribute("parametres");
+  const defaultParams = {
+      r: 10,
+      departAngle: 0,
+      angle: 90,
+      sens: 0
+  };
+  const parametres = { ...defaultParams, ...convertStringToParametres(paramString) };
+
+  const secteurSVG = createSVGElement("path");
+  const [x, y] = getCoordonneesPoint(centre);
+  const angleRad = (parametres.angle / 180) * Math.PI;
+  const departAngleRad = (parametres.departAngle / 180) * Math.PI;
+  const r = parametres.r;
+  const senscoeff = parametres.sens==0 ? 1 : -1;
+  const x1 = x + r * Math.cos(departAngleRad);
+  const y1 = y - senscoeff * r * Math.sin(departAngleRad);
+  const x2 = x + r * Math.cos(angleRad+departAngleRad);
+  const y2 = y - senscoeff * r * Math.sin(angleRad+departAngleRad);
+
+  const largeArcFlag = parametres.angle > 180 ? 1 : 0;
+  const d = `M${x},${y} L${x1},${y1} A${r},${r} 0 ${largeArcFlag},${parametres.sens} ${x2},${y2} Z`;
+
+  secteurSVG.setAttribute("d", d);
+  secteurSVG.setAttribute("fill", "transparent");
+  secteurSVG.setAttribute("stroke", "black");
+  secteurSVG.setAttribute("stroke-width", "0.5");
+  secteurSVG.setAttribute("style", secteur.getAttribute("style"));
+  secteurSVG.style.userSelect = "none";
+
+  secteur.appendChild(secteurSVG);
+}
+
+var initialiserSecteur = function (secteur) {
+  constructSecteur(secteur);
+};
+var initialiserSecteursFigure = function (figure) {
+  getSecteursFigure(figure).forEach(function (secteur) {
+    initialiserSecteur(secteur);
+  });
+};
+
+
 var initialiserFigure = function (figure) {
   addQuadrillage(figure);
   addBoutonQuadrillage(figure);
@@ -1221,6 +1277,7 @@ var initialiserFigure = function (figure) {
   initialiserPolygonesFigure(figure);
   initialiserGraduationsFigure(figure);
   initialiserCourbesFigure(figure);
+  initialiserSecteursFigure(figure);
 };
 var getCoordonneesPoint = function (point) {
   var data = point

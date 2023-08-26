@@ -1,2518 +1,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/js/class2.js":
-/*!**************************!*\
-  !*** ./src/js/class2.js ***!
-  \**************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Cercle: () => (/* binding */ Cercle),
-/* harmony export */   Droite: () => (/* binding */ Droite),
-/* harmony export */   Point: () => (/* binding */ Point),
-/* harmony export */   Points: () => (/* binding */ Points),
-/* harmony export */   Segment: () => (/* binding */ Segment),
-/* harmony export */   Vecteur: () => (/* binding */ Vecteur)
-/* harmony export */ });
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-class Point {
-  constructor(_x, _y) {
-    _defineProperty(this, "setCoordonneesPoint", function (point, x, y) {
-      point.x = x;
-      point.y = y;
-    });
-    _defineProperty(this, "getCoordonneesPoint", function (point) {
-      return [point.x, point.y];
-    });
-    _defineProperty(this, "translation", function (vecteur) {
-      return new Point(this.x + vecteur.x, this.y + vecteur.y);
-    });
-    _defineProperty(this, "symetrieCentrale", function (point) {
-      return new Point(2 * point.x - this.x, 2 * point.y - this.y);
-    });
-    _defineProperty(this, "symetrieAxiale", function (point, droite) {
-      let vecteur = new Vecteur(droite.point2.x - droite.point1.x, droite.point2.y - droite.point1.y);
-      let vecteurNormal = new Vecteur(-vecteur.y, vecteur.x);
-      let vecteurNormalUnitaire = new Vecteur(vecteurNormal.x / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y), vecteurNormal.y / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y));
-      let vecteurPointDroite = new Vecteur(point.x - droite.point1.x, point.y - droite.point1.y);
-      let projection = vecteurNormalUnitaire.x * vecteurPointDroite.x + vecteurNormalUnitaire.y * vecteurPointDroite.y;
-      let symetrique = new Vecteur(point.x - 2 * projection * vecteurNormalUnitaire.x, point.y - 2 * projection * vecteurNormalUnitaire.y);
-      return new Point(symetrique.x, symetrique.y);
-    });
-    _defineProperty(this, "distance", function (point1) {
-      return Math.sqrt(Math.pow(this.x - point1.x, 2) + Math.pow(this.y - point1.y, 2));
-    });
-    _defineProperty(this, "homothetie", function (centre, k) {
-      return new Point(centre.x + k * (this.x - centre.x), centre.y + k * (this.y - centre.y));
-    });
-    _defineProperty(this, "homothetiePoint", function (centre, point) {
-      let k = centre.distance(point) / centre.distance(this);
-      return this.homothetie(centre, k);
-    });
-    _defineProperty(this, "angle", function (point1, point2) {
-      // Retourne l'angle orienté entre les vecteurs (this, point1) et (this, point2)
-      let vecteur1 = new Vecteur(point1.x - this.x, point1.y - this.y);
-      let vecteur2 = new Vecteur(point2.x - this.x, point2.y - this.y);
-      return vecteur1.angle(vecteur2);
-    });
-    _defineProperty(this, "distancePointDroite", function (A, B) {
-      return (B.x - A.x) * (this.y - A.y) - (B.y - A.y) * (this.x - A.x);
-    });
-    _defineProperty(this, "projectionOrthogonale", function (A, B) {
-      // Projection de this sur la droite (AB)
-      let AB = new Vecteur(B.x - A.x, B.y - A.y);
-      let AC = new Vecteur(this.x - A.x, this.y - A.y);
-      let k = AB.produitScalaire(AC) / (AB.norme() * AB.norme());
-      return new Point(A.x + k * AB.x, A.y + k * AB.y);
-    });
-    _defineProperty(this, "projectionAngle", function (A, B, angle) {
-      let AB = new Droite();
-      AB.setCoefficientsDroite2Points(A, B);
-      let u = new Vecteur();
-      u.setCoordonneesVecteur2Points(A, B);
-      let v = u.rotation(angle);
-      let C = this.translation(v);
-      let AC = new Droite();
-      AC.setCoefficientsDroite2Points(this, C);
-      return AB.intersection(AC);
-    });
-    this.x = _x;
-    this.y = _y;
-  }
-  rotation(centre, angle) {
-    let dx = this.x - centre.x;
-    let dy = this.y - centre.y;
-    let rotatedX = centre.x + dx * Math.cos(angle) - dy * Math.sin(angle);
-    let rotatedY = centre.y + dx * Math.sin(angle) + dy * Math.cos(angle);
-    return new Point(rotatedX, rotatedY);
-  }
-}
-class Vecteur {
-  constructor(_x2, _y2) {
-    _defineProperty(this, "setCoordonneesVecteur", function (vecteur, x, y) {
-      vecteur.x = x;
-      vecteur.y = y;
-    });
-    // Méthode pour construire le vecteur à partir de deux points
-    _defineProperty(this, "setCoordonneesVecteur2Points", function (point1, point2) {
-      this.x = point2.x - point1.x;
-      this.y = point2.y - point1.y;
-    });
-    _defineProperty(this, "getCoordonneesVecteur", function () {
-      return [this.x, this.y];
-    });
-    _defineProperty(this, "additionVecteur", function (vecteur) {
-      return new Vecteur(this.x + vecteur.x, this.y + vecteur.y);
-    });
-    _defineProperty(this, "soustractionVecteur", function (vecteur) {
-      return new Vecteur(this.x - vecteur.x, this.y - vecteur.y);
-    });
-    _defineProperty(this, "multiplicationVecteur", function (k) {
-      return new Vecteur(k * this.x, k * this.y);
-    });
-    _defineProperty(this, "produitScalaire", function (vecteur) {
-      return this.x * vecteur.x + this.y * vecteur.y;
-    });
-    _defineProperty(this, "norme", function () {
-      return Math.sqrt(this.x * this.x + this.y * this.y);
-    });
-    _defineProperty(this, "normalisation", function () {
-      return new Vecteur(this.x / this.norme(), this.y / this.norme());
-    });
-    _defineProperty(this, "produitVectoriel", function (vecteur) {
-      return this.x * vecteur.y - this.y * vecteur.x;
-    });
-    _defineProperty(this, "angle", function (vecteur) {
-      // Prévoir un angle signé
-      return Math.atan2(this.produitVectoriel(vecteur), this.produitScalaire(vecteur));
-    });
-    _defineProperty(this, "projection", function (vecteur) {
-      return this.produitScalaire(vecteur) / this.norme();
-    });
-    _defineProperty(this, "projectionOrthogonale", function (vecteur) {
-      return this.produitVectoriel(vecteur) / this.norme();
-    });
-    _defineProperty(this, "rotation", function (angle) {
-      return new Vecteur(this.x * Math.cos(angle) - this.y * Math.sin(angle), this.x * Math.sin(angle) + this.y * Math.cos(angle));
-    });
-    this.x = _x2;
-    this.y = _y2;
-  }
-}
-class Cercle {
-  constructor(_centre, _rayon) {
-    _defineProperty(this, "setCoordonneesCercle", function (centre, rayon) {
-      this.centre = centre;
-      this.rayon = rayon;
-    });
-    _defineProperty(this, "getCoordonneesCercle", function () {
-      return [this.centre, this.rayon];
-    });
-    _defineProperty(this, "translation", function (vecteur) {
-      return new Cercle(new Point(this.centre.x + vecteur.x, this.centre.y + vecteur.y), this.rayon);
-    });
-    _defineProperty(this, "symetrieCentrale", function (centre) {
-      return new Cercle(new Point(2 * centre.x - this.centre.x, 2 * centre.y - this.centre.y), this.rayon);
-    });
-    _defineProperty(this, "symetrieAxiale", function (droite) {
-      let vecteur = new Vecteur(droite.point2.x - droite.point1.x, droite.point2.y - droite.point1.y);
-      let vecteurNormal = new Vecteur(-vecteur.y, vecteur.x);
-      let vecteurNormalUnitaire = new Vecteur(vecteurNormal.x / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y), vecteurNormal.y / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y));
-      let vecteurCentreDroite = new Vecteur(this.centre.x - droite.point1.x, this.centre.y - droite.point1.y);
-      let projection = vecteurNormalUnitaire.x * vecteurCentreDroite.x + vecteurNormalUnitaire.y * vecteurCentreDroite.y;
-      let symetrique = new Vecteur(this.centre.x - 2 * projection * vecteurNormalUnitaire.x, this.centre.y - 2 * projection * vecteurNormalUnitaire.y);
-      return new Cercle(new Point(symetrique.x, symetrique.y), this.rayon);
-    });
-    _defineProperty(this, "rotation", function (angle, centre) {
-      return new Cercle(new Point((this.centre.x - centre.x) * Math.cos(angle) - (this.centre.y - centre.y) * Math.sin(angle) + centre.x, (this.centre.x - centre.x) * Math.sin(angle) + (this.centre.y - centre.y) * Math.cos(angle) + centre.y), this.rayon);
-    });
-    _defineProperty(this, "homothetie", function (centre, k) {
-      return new Cercle(new Point(centre.x + k * (this.centre.x - centre.x), centre.y + k * (this.centre.y - centre.y)), k * this.rayon);
-    });
-    _defineProperty(this, "translation", function (vecteur) {
-      return new Cercle(new Point(this.centre.x + vecteur.x, this.centre.y + vecteur.y), this.rayon);
-    });
-    this.centre = _centre;
-    this.rayon = _rayon;
-  }
-}
-class Points {
-  constructor(_points) {
-    _defineProperty(this, "setCoordonneesPoints", function (points) {
-      this.points = points;
-    });
-    _defineProperty(this, "getCoordonneesPoints", function () {
-      return this.points;
-    });
-    _defineProperty(this, "translation", function (vecteur) {
-      let points = [];
-      for (let i = 0; i < this.points.length; i++) {
-        points.push(new Point(this.points[i].x + vecteur.x, this.points[i].y + vecteur.y));
-      }
-      return new Points(points);
-    });
-    _defineProperty(this, "rotation", function (angle, center) {
-      let points = [];
-      for (let i = 0; i < this.points.length; i++) {
-        points.push(new Point((this.points[i].x - center.x) * Math.cos(angle) - (this.points[i].y - center.y) * Math.sin(angle) + center.x, (this.points[i].x - center.x) * Math.sin(angle) + (this.points[i].y - center.y) * Math.cos(angle) + center.y));
-      }
-      return new Points(points);
-    });
-    _defineProperty(this, "symetriecentrale", function (centre) {
-      let points = [];
-      for (let i = 0; i < this.points.length; i++) {
-        points.push(new Point(2 * centre.x - this.points[i].x, 2 * centre.y - this.points[i].y));
-      }
-      return new Points(points);
-    });
-    _defineProperty(this, "symetrieaxiale", function (droite) {
-      let vecteur = new Vecteur(droite.point2.x - droite.point1.x, droite.point2.y - droite.point1.y);
-      let vecteurNormal = new Vecteur(-vecteur.y, vecteur.x);
-      let vecteurNormalUnitaire = new Vecteur(vecteurNormal.x / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y), vecteurNormal.y / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y));
-      let points = [];
-      for (let i = 0; i < this.points.length; i++) {
-        let vecteurPointDroite = new Vecteur(this.points[i].x - droite.point1.x, this.points[i].y - droite.point1.y);
-        let projection = vecteurNormalUnitaire.x * vecteurPointDroite.x + vecteurNormalUnitaire.y * vecteurPointDroite.y;
-        let symetrique = new Vecteur(this.points[i].x - 2 * projection * vecteurNormalUnitaire.x, this.points[i].y - 2 * projection * vecteurNormalUnitaire.y);
-        points.push(new Point(symetrique.x, symetrique.y));
-      }
-      return new Points(points);
-    });
-    _defineProperty(this, "homothetie", function (centre, k) {
-      let points = [];
-      for (let i = 0; i < this.points.length; i++) {
-        points.push(new Point(centre.x + k * (this.points[i].x - centre.x), centre.y + k * (this.points[i].y - centre.y)));
-      }
-      return new Points(points);
-    });
-    _defineProperty(this, "translation", function (vecteur) {
-      let points = [];
-      for (let i = 0; i < this.points.length; i++) {
-        points.push(new Point(this.points[i].x + vecteur.x, this.points[i].y + vecteur.y));
-      }
-      return new Points(points);
-    });
-    this.points = _points;
-  }
-}
-class Droite {
-  constructor(_a, _b, _c) {
-    _defineProperty(this, "setCoefficientsDroite", function (a, b, c) {
-      this.a = a;
-      this.b = b;
-      this.c = c;
-    });
-    _defineProperty(this, "getCoefficientsDroite", function () {
-      return [this.a, this.b, this.c];
-    });
-    _defineProperty(this, "setCoefficientsDroite2Points", function (point1, point2) {
-      this.a = point2.y - point1.y;
-      this.b = point1.x - point2.x;
-      this.c = point1.y * point2.x - point1.x * point2.y;
-    });
-    _defineProperty(this, "translation", function (vecteur) {
-      return new Droite(this.a, this.b, this.c + this.a * vecteur.x + this.b * vecteur.y);
-    });
-    _defineProperty(this, "rotation", function (angle, centre) {
-      return new Droite(this.a * Math.cos(angle) - this.b * Math.sin(angle), this.a * Math.sin(angle) + this.b * Math.cos(angle), this.c + this.a * (centre.y - centre.x * Math.sin(angle)) + this.b * (centre.x * Math.cos(angle) - centre.y));
-    });
-    _defineProperty(this, "symetrieCentrale", function (centre) {
-      return new Droite(this.a, this.b, this.c + 2 * this.a * centre.x + 2 * this.b * centre.y);
-    });
-    _defineProperty(this, "symetrieAxiale", function (droite) {
-      let vecteur = new Vecteur(droite.point2.x - droite.point1.x, droite.point2.y - droite.point1.y);
-      let vecteurNormal = new Vecteur(-vecteur.y, vecteur.x);
-      let vecteurNormalUnitaire = new Vecteur(vecteurNormal.x / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y), vecteurNormal.y / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y));
-      let vecteurPointDroite = new Vecteur(this.a, this.b);
-      let projection = vecteurNormalUnitaire.x * vecteurPointDroite.x + vecteurNormalUnitaire.y * vecteurPointDroite.y;
-      let symetrique = new Vecteur(this.a - 2 * projection * vecteurNormalUnitaire.x, this.b - 2 * projection * vecteurNormalUnitaire.y);
-      return new Droite(symetrique.x, symetrique.y, this.c);
-    });
-    _defineProperty(this, "homothetie", function (centre, k) {
-      return new Droite(this.a, this.b, this.c + this.a * (centre.x - k * centre.x) + this.b * (centre.y - k * centre.y));
-    });
-    _defineProperty(this, "perpendiculaire", function (point) {
-      return new Droite(-this.b, this.a, this.b * point.x - this.a * point.y);
-    });
-    _defineProperty(this, "parallele", function (point) {
-      return new Droite(this.a, this.b, this.c - this.a * point.x + this.b * point.y);
-    });
-    _defineProperty(this, "intersection", function (droite) {
-      let x = (this.b * droite.c - droite.b * this.c) / (this.a * droite.b - droite.a * this.b);
-      let y = (this.c * droite.a - droite.c * this.a) / (this.a * droite.b - droite.a * this.b);
-      return new Point(x, y);
-    });
-    this.a = _a;
-    this.b = _b;
-    this.c = _c;
-  }
-}
-class Segment {
-  constructor(_point, _point2) {
-    _defineProperty(this, "setCoordonneesSegment", function (point1, point2) {
-      this.point1 = point1;
-      this.point2 = point2;
-    });
-    _defineProperty(this, "getCoordonneesSegment", function () {
-      return [this.point1, this.point2];
-    });
-    _defineProperty(this, "translation", function (vecteur) {
-      return new Segment(new Point(this.point1.x + vecteur.x, this.point1.y + vecteur.y), new Point(this.point2.x + vecteur.x, this.point2.y + vecteur.y));
-    });
-    _defineProperty(this, "rotation", function (angle, centre) {
-      return new Segment(new Point((this.point1.x - centre.x) * Math.cos(angle) - (this.point1.y - centre.y) * Math.sin(angle) + centre.x, (this.point1.x - centre.x) * Math.sin(angle) + (this.point1.y - centre.y) * Math.cos(angle) + centre.y), new Point((this.point2.x - centre.x) * Math.cos(angle) - (this.point2.y - centre.y) * Math.sin(angle) + centre.x, (this.point2.x - centre.x) * Math.sin(angle) + (this.point2.y - centre.y) * Math.cos(angle) + centre.y));
-    });
-    _defineProperty(this, "symetrieCentrale", function (centre) {
-      return new Segment(new Point(2 * centre.x - this.point1.x, 2 * centre.y - this.point1.y), new Point(2 * centre.x - this.point2.x, 2 * centre.y - this.point2.y));
-    });
-    _defineProperty(this, "symetrieAxiale", function (droite) {
-      let vecteur = new Vecteur(droite.point2.x - droite.point1.x, droite.point2.y - droite.point1.y);
-      let vecteurNormal = new Vecteur(-vecteur.y, vecteur.x);
-      let vecteurNormalUnitaire = new Vecteur(vecteurNormal.x / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y), vecteurNormal.y / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y));
-      let vecteurPointDroite1 = new Vecteur(this.point1.x - droite.point1.x, this.point1.y - droite.point1.y);
-      let projection1 = vecteurNormalUnitaire.x * vecteurPointDroite1.x + vecteurNormalUnitaire.y * vecteurPointDroite1.y;
-      let symetrique1 = new Vecteur(this.point1.x - 2 * projection1 * vecteurNormalUnitaire.x, this.point1.y - 2 * projection1 * vecteurNormalUnitaire.y);
-      let vecteurPointDroite2 = new Vecteur(this.point2.x - droite.point1.x, this.point2.y - droite.point1.y);
-      let projection2 = vecteurNormalUnitaire.x * vecteurPointDroite2.x + vecteurNormalUnitaire.y * vecteurPointDroite2.y;
-      let symetrique2 = new Vecteur(this.point2.x - 2 * projection2 * vecteurNormalUnitaire.x, this.point2.y - 2 * projection2 * vecteurNormalUnitaire.y);
-      return new Segment(new Point(symetrique1.x, symetrique1.y), new Point(symetrique2.x, symetrique2.y));
-    });
-    _defineProperty(this, "homothetie", function (centre, k) {
-      return new Segment(new Point(centre.x + k * (this.point1.x - centre.x), centre.y + k * (this.point1.y - centre.y)), new Point(centre.x + k * (this.point2.x - centre.x), centre.y + k * (this.point2.y - centre.y)));
-    });
-    _defineProperty(this, "perpendiculaire", function (point) {
-      let droite = new Droite(this.point1, this.point2);
-      return droite.perpendiculaire(point);
-    });
-    _defineProperty(this, "parallele", function (point) {
-      let droite = new Droite(this.point1, this.point2);
-      return droite.parallele(point);
-    });
-    _defineProperty(this, "milieu", function () {
-      return new Point((this.point1.x + this.point2.x) / 2, (this.point1.y + this.point2.y) / 2);
-    });
-    _defineProperty(this, "longueur", function () {
-      return Math.sqrt(Math.pow(this.point1.x - this.point2.x, 2) + Math.pow(this.point1.y - this.point2.y, 2));
-    });
-    _defineProperty(this, "angle", function () {
-      // Retourne l'angle orienté entre le segment et l'axe des abscisses
-      let vecteur = new Vecteur(this.point2.x - this.point1.x, this.point2.y - this.point1.y);
-      return vecteur.angle(new Vecteur(1, 0));
-    });
-    this.point1 = _point;
-    this.point2 = _point2;
-  }
-}
-
-/***/ }),
-
-/***/ "./src/js/index.js":
-/*!*************************!*\
-  !*** ./src/js/index.js ***!
-  \*************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   convertirKatexEnMathML: () => (/* binding */ convertirKatexEnMathML)
-/* harmony export */ });
-/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
-/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_array_reverse_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.reverse.js */ "./node_modules/core-js/modules/es.array.reverse.js");
-/* harmony import */ var core_js_modules_es_array_reverse_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_reverse_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es_array_unscopables_flat_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.array.unscopables.flat.js */ "./node_modules/core-js/modules/es.array.unscopables.flat.js");
-/* harmony import */ var core_js_modules_es_array_unscopables_flat_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_unscopables_flat_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_es_array_unscopables_flat_map_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.array.unscopables.flat-map.js */ "./node_modules/core-js/modules/es.array.unscopables.flat-map.js");
-/* harmony import */ var core_js_modules_es_array_unscopables_flat_map_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_unscopables_flat_map_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es_array_buffer_slice_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.array-buffer.slice.js */ "./node_modules/core-js/modules/es.array-buffer.slice.js");
-/* harmony import */ var core_js_modules_es_array_buffer_slice_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_buffer_slice_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_es_object_from_entries_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.object.from-entries.js */ "./node_modules/core-js/modules/es.object.from-entries.js");
-/* harmony import */ var core_js_modules_es_object_from_entries_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_from_entries_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var core_js_modules_es_promise_finally_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.promise.finally.js */ "./node_modules/core-js/modules/es.promise.finally.js");
-/* harmony import */ var core_js_modules_es_promise_finally_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_promise_finally_js__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.string.replace.js */ "./node_modules/core-js/modules/es.string.replace.js");
-/* harmony import */ var core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.string.trim.js */ "./node_modules/core-js/modules/es.string.trim.js");
-/* harmony import */ var core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var core_js_modules_es_string_trim_end_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.string.trim-end.js */ "./node_modules/core-js/modules/es.string.trim-end.js");
-/* harmony import */ var core_js_modules_es_string_trim_end_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_trim_end_js__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var core_js_modules_es_typed_array_float32_array_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/es.typed-array.float32-array.js */ "./node_modules/core-js/modules/es.typed-array.float32-array.js");
-/* harmony import */ var core_js_modules_es_typed_array_float32_array_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_float32_array_js__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var core_js_modules_es_typed_array_float64_array_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/es.typed-array.float64-array.js */ "./node_modules/core-js/modules/es.typed-array.float64-array.js");
-/* harmony import */ var core_js_modules_es_typed_array_float64_array_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_float64_array_js__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var core_js_modules_es_typed_array_int8_array_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! core-js/modules/es.typed-array.int8-array.js */ "./node_modules/core-js/modules/es.typed-array.int8-array.js");
-/* harmony import */ var core_js_modules_es_typed_array_int8_array_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_int8_array_js__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var core_js_modules_es_typed_array_int16_array_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! core-js/modules/es.typed-array.int16-array.js */ "./node_modules/core-js/modules/es.typed-array.int16-array.js");
-/* harmony import */ var core_js_modules_es_typed_array_int16_array_js__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_int16_array_js__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var core_js_modules_es_typed_array_int32_array_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! core-js/modules/es.typed-array.int32-array.js */ "./node_modules/core-js/modules/es.typed-array.int32-array.js");
-/* harmony import */ var core_js_modules_es_typed_array_int32_array_js__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_int32_array_js__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var core_js_modules_es_typed_array_uint8_array_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! core-js/modules/es.typed-array.uint8-array.js */ "./node_modules/core-js/modules/es.typed-array.uint8-array.js");
-/* harmony import */ var core_js_modules_es_typed_array_uint8_array_js__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_uint8_array_js__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var core_js_modules_es_typed_array_uint8_clamped_array_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! core-js/modules/es.typed-array.uint8-clamped-array.js */ "./node_modules/core-js/modules/es.typed-array.uint8-clamped-array.js");
-/* harmony import */ var core_js_modules_es_typed_array_uint8_clamped_array_js__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_uint8_clamped_array_js__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var core_js_modules_es_typed_array_uint16_array_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! core-js/modules/es.typed-array.uint16-array.js */ "./node_modules/core-js/modules/es.typed-array.uint16-array.js");
-/* harmony import */ var core_js_modules_es_typed_array_uint16_array_js__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_uint16_array_js__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var core_js_modules_es_typed_array_uint32_array_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! core-js/modules/es.typed-array.uint32-array.js */ "./node_modules/core-js/modules/es.typed-array.uint32-array.js");
-/* harmony import */ var core_js_modules_es_typed_array_uint32_array_js__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_uint32_array_js__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var core_js_modules_es_typed_array_fill_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! core-js/modules/es.typed-array.fill.js */ "./node_modules/core-js/modules/es.typed-array.fill.js");
-/* harmony import */ var core_js_modules_es_typed_array_fill_js__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_fill_js__WEBPACK_IMPORTED_MODULE_19__);
-/* harmony import */ var core_js_modules_es_typed_array_from_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! core-js/modules/es.typed-array.from.js */ "./node_modules/core-js/modules/es.typed-array.from.js");
-/* harmony import */ var core_js_modules_es_typed_array_from_js__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_from_js__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var core_js_modules_es_typed_array_of_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! core-js/modules/es.typed-array.of.js */ "./node_modules/core-js/modules/es.typed-array.of.js");
-/* harmony import */ var core_js_modules_es_typed_array_of_js__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_of_js__WEBPACK_IMPORTED_MODULE_21__);
-/* harmony import */ var core_js_modules_es_typed_array_set_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! core-js/modules/es.typed-array.set.js */ "./node_modules/core-js/modules/es.typed-array.set.js");
-/* harmony import */ var core_js_modules_es_typed_array_set_js__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_set_js__WEBPACK_IMPORTED_MODULE_22__);
-/* harmony import */ var core_js_modules_es_typed_array_sort_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! core-js/modules/es.typed-array.sort.js */ "./node_modules/core-js/modules/es.typed-array.sort.js");
-/* harmony import */ var core_js_modules_es_typed_array_sort_js__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_sort_js__WEBPACK_IMPORTED_MODULE_23__);
-/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
-/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_24__);
-/* harmony import */ var core_js_modules_web_immediate_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! core-js/modules/web.immediate.js */ "./node_modules/core-js/modules/web.immediate.js");
-/* harmony import */ var core_js_modules_web_immediate_js__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_immediate_js__WEBPACK_IMPORTED_MODULE_25__);
-/* harmony import */ var core_js_modules_web_queue_microtask_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! core-js/modules/web.queue-microtask.js */ "./node_modules/core-js/modules/web.queue-microtask.js");
-/* harmony import */ var core_js_modules_web_queue_microtask_js__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_queue_microtask_js__WEBPACK_IMPORTED_MODULE_26__);
-/* harmony import */ var core_js_modules_web_url_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! core-js/modules/web.url.js */ "./node_modules/core-js/modules/web.url.js");
-/* harmony import */ var core_js_modules_web_url_js__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_url_js__WEBPACK_IMPORTED_MODULE_27__);
-/* harmony import */ var core_js_modules_web_url_to_json_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! core-js/modules/web.url.to-json.js */ "./node_modules/core-js/modules/web.url.to-json.js");
-/* harmony import */ var core_js_modules_web_url_to_json_js__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_url_to_json_js__WEBPACK_IMPORTED_MODULE_28__);
-/* harmony import */ var core_js_modules_web_url_search_params_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! core-js/modules/web.url-search-params.js */ "./node_modules/core-js/modules/web.url-search-params.js");
-/* harmony import */ var core_js_modules_web_url_search_params_js__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_url_search_params_js__WEBPACK_IMPORTED_MODULE_29__);
-/* harmony import */ var _interactif2_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./interactif2.js */ "./src/js/interactif2.js");
-/* harmony import */ var _quiz_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./quiz.js */ "./src/js/quiz.js");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var insererEntetesBlocsLesson = function () {
-  // Définitions
-  const definitions = document.querySelectorAll(".definition");
-  definitions.forEach((definition, index) => {
-    definition.innerHTML = "\n        <span id=\"def".concat(index + 1, "\" class=\"header header-definition\">\n            D\xE9finition ").concat(index + 1, ".\n        </span>").concat(definition.innerHTML);
-  });
-
-  // Exemples
-  const exemples = document.querySelectorAll(".exemple");
-  exemples.forEach((exemple, index) => {
-    exemple.innerHTML = "\n        <details class=\"detailExemple\">\n            <summary>\n                <span id=\"exemple".concat(index + 1, "\" class=\"header header-exemple\">\n                    Exemple ").concat(index + 1, ".\n                </span>\n            </summary>\n            ").concat(exemple.innerHTML, "\n        </details>");
-  });
-
-  // Propriétés
-  const proprietes = document.querySelectorAll(".propriete");
-  proprietes.forEach((propriete, index) => {
-    propriete.innerHTML = "\n        <span id=\"prop".concat(index + 1, "\" class=\"header header-propriete\">\n            Propri\xE9t\xE9 ").concat(index + 1, ".\n        </span>").concat(propriete.innerHTML);
-  });
-
-  // Remarques
-  const remarques = document.querySelectorAll(".remarque");
-  remarques.forEach((remarque, index) => {
-    remarque.innerHTML = "\n        <span id=\"remarque".concat(index + 1, "\" class=\"header header-remarque\">\n            Remarque ").concat(index + 1, ".\n        </span>").concat(remarque.innerHTML);
-  });
-
-  // Méthodes
-  const methodes = document.querySelectorAll(".methode");
-  methodes.forEach((methode, index) => {
-    methode.innerHTML = "\n        <span id=\"methode".concat(index + 1, "\" class=\"header header-methode\">\n            M\xE9thode ").concat(index + 1, ".\n        </span>").concat(methode.innerHTML);
-  });
-
-  // Démonstrations
-  const demonstrations = document.querySelectorAll(".demonstration");
-  demonstrations.forEach((demo, i) => {
-    demo.innerHTML = "\n    <details class=\"detailDemonstration\">\n      <summary>\n        <span id=\"proof".concat(i + 1, "\"\n            class=\"header header-proof\">\n          D\xE9monstration ").concat(i + 1, ".\n        </span>\n      </summary>\n      ").concat(demo.innerHTML, "\n      <span style=\"font-size: 150%;\">&#9633;</span>\n    </details>\n  ");
-  });
-};
-var insererEntetesBlocsExercices = function () {
-  // Exercices
-  const exercices = document.querySelectorAll(".exercice");
-  exercices.forEach((exercice, index) => {
-    const title = document.createElement("titreExercice");
-    title.innerHTML = "\n        <span class=\"titreExercice\">\n            Exercice ".concat(index + 1, "\n        </span>");
-    exercice.insertBefore(title, exercice.firstChild);
-  });
-
-  // Exercices sans calculatrice
-  // var exercicesSansCalculatrice = document.querySelectorAll(
-  //   ".exercice:not(.calculator)"
-  // );
-  // for (var i = 0; i < exercicesSansCalculatrice.length; i++) {
-  //   exercicesSansCalculatrice[i].querySelector(".titreExercice").innerHTML +=
-  //     ' <span class="fa-stack fa-lg" style="font-size: 18px;"><i class="fas fa-calculator fa-stack-1x"></i><i class="fas fa-ban fa-stack-2x" style="color:Tomato"></i></span>';
-  // }
-
-  // Solutions
-  var solutions = document.querySelectorAll(".solution");
-  for (var i = 0; i < solutions.length; i++) {
-    var details = document.createElement("details");
-    //details.setAttribute('open', '');
-    details.classList.add("solution");
-    details.innerHTML = "<summary>Solution</summary>";
-    solutions[i].parentNode.insertBefore(details, solutions[i]);
-    details.appendChild(solutions[i]);
-  }
-
-  // Indice
-  var indices = document.querySelectorAll(".indice");
-  for (var i = 0; i < indices.length; i++) {
-    var details = document.createElement("details");
-    //details.setAttribute('open', '');
-    details.classList.add("indice");
-    details.innerHTML = "<summary>Indice</summary>";
-    indices[i].parentNode.insertBefore(details, indices[i]);
-    details.appendChild(indices[i]);
-  }
-};
-var wrapElementsInReveal = function (parent) {
-  var elements = parent.querySelectorAll("p, td,.katex-display");
-  for (var i = 0; i < elements.length; i++) {
-    var reveal = document.createElement("div");
-    reveal.className = "reveal";
-    reveal.innerHTML = elements[i].innerHTML;
-    elements[i].innerHTML = "";
-    elements[i].appendChild(reveal);
-    reveal.addEventListener("click", function () {
-      this.classList.add("clicked");
-    });
-    wrapElementsInReveal(reveal);
-  }
-};
-var masquerSolutionsExercices = function () {
-  var solutions = document.querySelectorAll("details.solution .solution");
-  solutions.forEach(function (solution) {
-    wrapElementsInReveal(solution);
-  });
-};
-function formatNumberForLatex(strNum) {
-  // Remplacez d'abord les points ou virgules par {,}
-  strNum = strNum.replace(/[.,]/g, "{,}");
-
-  // Séparez la partie entière et décimale
-  let [intPart, decPart] = strNum.split("{,}");
-
-  // Ajoutez des espaces pour séparer les milliers dans la partie entière
-  intPart = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, "\\ ");
-
-  // Si une partie décimale existe, ajoutez des espaces pour séparer les milliers
-  if (decPart) {
-    decPart = decPart.replace(/(\d{3})\B/g, "$1\\ ");
-    return intPart + "{,}" + decPart;
-  }
-  return intPart;
-}
-function formatSIForLatex(value, unit) {
-  // Remplacer \cm, \m, etc. par \text{cm}, \text{m}, etc., mais exclure \square et \cubic
-  unit = unit.replace(/\\(?!square|cubic)(\w+)/g, "\\text{$1}");
-
-  // Remplacer \square\text{cm} par \text{cm}^2 et similaires
-  unit = unit.replace(/\\square\\text\{(\w+)\}/g, "\\text{$1}^2");
-
-  // Remplacer \cubic\text{cm} par \text{cm}^3 et similaires
-  unit = unit.replace(/\\cubic\\text\{(\w+)\}/g, "\\text{$1}^3");
-  console.log(unit);
-  // Ajoutez d'autres remplacements d'unités si nécessaire
-
-  return formatNumberForLatex(value) + "\\," + unit;
-}
-function preprocessLatexText(text) {
-  const delimiters = [/\$(.*?)\$/g, /\$\$(.*?)\$\$/g, /\\\((.*?)\\\)/g, /\\\[.*?\\\]/g];
-  for (let delimiter of delimiters) {
-    text = text.replace(delimiter, function (match) {
-      // Traitement pour \num{}
-      match = match.replace(/\\num\{(-?[\d.,]+)\}/g, function (_, p1) {
-        return formatNumberForLatex(p1);
-      });
-
-      // Traitement pour \SI{...}{...}
-      match = match.replace(/\\SI\{(-?[\d.,]+)\}\{(.*?)\}/g, function (_, p1, p2) {
-        return formatSIForLatex(p1, p2);
-      });
-      return match;
-    });
-  }
-  return text;
-}
-function isDescendantOfScript(node) {
-  while (node) {
-    if (node.tagName === "SCRIPT") {
-      return true;
-    }
-    node = node.parentNode;
-  }
-  return false;
-}
-function preprocessLatex() {
-  // Parcourir tous les noeuds textuels du document
-  const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
-  let node;
-  while (node = walk.nextNode()) {
-    if (node.nodeValue && /\$|\\\[|\\\(/.test(node.nodeValue) && !isDescendantOfScript(node)) {
-      node.nodeValue = preprocessLatexText(node.nodeValue);
-    }
-  }
-}
-var convertirKatexEnMathML = function () {
-  preprocessLatex();
-  renderMathInElement(document.body, {
-    // customised options
-    // • auto-render specific keys, e.g.:
-    delimiters: [{
-      left: "$$",
-      right: "$$",
-      display: true
-    }, {
-      left: "$",
-      right: "$",
-      display: false
-    }, {
-      left: "\\(",
-      right: "\\)",
-      display: false
-    }, {
-      left: "\\[",
-      right: "\\]",
-      display: true
-    }],
-    // • rendering keys, e.g.:
-    throwOnError: false,
-    ignoredTags: ["svg"],
-    output: "html" // Compatibilité avec Apple notamment
-  });
-};
-
-var ajouterSommaire = function () {
-  if (document.querySelector("#tableOfContents") != null) {
-    var toc = document.getElementById("tableOfContents");
-    var headers = document.querySelectorAll("h1, h2, h3, h4");
-    var currentLists = [document.createElement("ul")]; // Liste principale pour les h1
-    toc.appendChild(currentLists[0]);
-    headers.forEach(function (header, index) {
-      var id = "title" + index;
-      header.id = id;
-      var link = document.createElement("a");
-      link.href = "#" + id;
-      link.textContent = header.textContent;
-      var listItem = document.createElement("li");
-      listItem.appendChild(link);
-      var level = parseInt(header.tagName[1]) - 1; // h1 -> 0, h2 -> 1, etc.
-
-      // Si la liste actuelle est plus profonde que le niveau actuel, remontez
-      while (currentLists.length - 1 > level) {
-        currentLists.pop();
-      }
-
-      // Si le niveau actuel est plus profond que la liste actuelle, créez une nouvelle liste imbriquée
-      if (currentLists.length - 1 < level) {
-        var newList = document.createElement("ul");
-        currentLists[currentLists.length - 1].lastChild.appendChild(newList);
-        currentLists.push(newList);
-      }
-      currentLists[currentLists.length - 1].appendChild(listItem);
-    });
-  }
-};
-var openAvantPrint = function () {
-  window.onbeforeprint = function () {
-    const detailsElements = document.querySelectorAll("details");
-    detailsElements.forEach(details => {
-      details.setAttribute("open", "");
-    });
-  };
-};
-var adapterPositionDropdown = function (event) {
-  var dropdownContent = event.currentTarget.querySelector(".dropdown-content");
-
-  // Affichez le dropdown pour pouvoir obtenir ses dimensions
-  dropdownContent.style.display = "flex";
-  dropdownContent.style.flexDirection = "column";
-
-  // Calculez la distance entre le bord droit du dropdown et le bord droit de la fenêtre
-  var overflowDistance = dropdownContent.getBoundingClientRect().right - window.innerWidth;
-
-  // Si le dropdown déborde à droite
-  if (overflowDistance > 0) {
-    // Ajustez la position du dropdown
-    // Par exemple, déplacez le dropdown vers la gauche de la distance de débordement
-    dropdownContent.style.right = overflowDistance + "px";
-  } else {
-    // Réinitialisez la position si elle a été précédemment ajustée
-    dropdownContent.style.right = "auto";
-  }
-};
-var dropdownMenusBandeau = function () {
-  var dropdowns = document.querySelectorAll(".dropdown");
-  dropdowns.forEach(dropdown => {
-    dropdown.addEventListener("click", function (event) {
-      if (event.currentTarget.classList.contains("dropdown")) {
-        // Masquer tous les dropdowns sauf celui cliqué
-        dropdowns.forEach(dropdown => {
-          if (dropdown != event.target.parentNode) {
-            dropdown.querySelector(".dropdown-content").style.display = "none";
-          }
-        });
-        // Afficher ou masquer le dropdown cliqué
-        var dropdownContent = event.currentTarget.querySelector(".dropdown-content");
-        if (dropdownContent.style.display == "flex") {
-          dropdownContent.style.display = "none";
-        } else {
-          adapterPositionDropdown(event);
-          //dropdownContent.style.display = "flex";
-        }
-      }
-    });
-
-    dropdown.addEventListener("mouseover", function (event) {
-      // On survole un élément dropdown
-      if (event.target.classList.contains("dropdown")) {
-        adapterPositionDropdown(event);
-      }
-    });
-    dropdown.addEventListener("mouseleave", function (event) {
-      if (event.target.classList.contains("dropdown")) {
-        var dropdownContent = event.target.querySelector(".dropdown-content");
-        dropdownContent.style.display = "none";
-      }
-    });
-  });
-};
-document.addEventListener("DOMContentLoaded", function () {
-  insererEntetesBlocsLesson();
-  insererEntetesBlocsExercices();
-  // On teste si on est dans un contexte <meta name="quiz" content="true">
-  if (document.querySelector("meta[name=quiz]") != null) {
-    (0,_quiz_js__WEBPACK_IMPORTED_MODULE_31__.createQuizs)();
-  } else {
-    (0,_interactif2_js__WEBPACK_IMPORTED_MODULE_30__.createFigures)();
-  }
-  convertirKatexEnMathML();
-  masquerSolutionsExercices();
-  ajouterSommaire();
-  dropdownMenusBandeau();
-  openAvantPrint();
-});
-
-/***/ }),
-
-/***/ "./src/js/interactif2.js":
-/*!*******************************!*\
-  !*** ./src/js/interactif2.js ***!
-  \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   addListenerInteractivite: () => (/* binding */ addListenerInteractivite),
-/* harmony export */   createFigures: () => (/* binding */ createFigures)
-/* harmony export */ });
-/* harmony import */ var _class2_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./class2.js */ "./src/js/class2.js");
-/* harmony import */ var mathjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mathjs */ "./node_modules/mathjs/lib/esm/entry/impureFunctionsAny.generated.js");
-// Version: 1.0.0
-
-
-
-// Liste des codages possibles
-var codagesSegment = ["M-5,-5 L0,5 M0,-5 L5,5", "M-2.5,-5 L2.5,5", "M-5,-5 L-1,5 M-1,-5 L3,5 M3,-5 L7,5", "M-5,-5 L-2,5 M-2,-5 L1,5 M1,-5 L4,5 M4,-5 L7,5"];
-var setUniqueIds = function () {
-  // On récupère toutes les balises de class figure
-  var figures = document.querySelectorAll(".figure");
-  // On rend unique les identifiants des éléments constitutifs de la figure
-  for (var i = 0; i < figures.length; i++) {
-    // On récupère l'identifiant de la figure
-    var id = figures[i].id;
-    // on teste si la figure contient un svg
-    if (figures[i].querySelector("svg") != null) {
-      var ids = figures[i].querySelector("svg").querySelectorAll("*[name]");
-      // Pour chaque identifiant
-      for (var j = 0; j < ids.length; j++) {
-        // On créé un id pour l'élément
-        ids[j].setAttribute("id", id + "-" + ids[j].getAttribute("name"));
-
-        // On ajoute également l'identifiant à tous les éléments du linkto
-        if (ids[j].getAttribute("linkto") != null) {
-          var linkto = ids[j].getAttribute("linkto").split(" ");
-          for (var k = 0; k < linkto.length; k++) {
-            linkto[k] = id + "-" + linkto[k];
-          }
-          ids[j].setAttribute("linkto", linkto.join(" "));
-        }
-        // On ajoute également l'identifiant à tous les éléments du pentes qui est un string de la forme "A:0.5,B:1,C:2"
-        if (ids[j].getAttribute("pentes") != null) {
-          var pentes = ids[j].getAttribute("pentes").split(",");
-          for (var k = 0; k < pentes.length; k++) {
-            pentes[k] = id + "-" + pentes[k].split(":")[0] + ":" + pentes[k].split(":")[1];
-          }
-          ids[j].setAttribute("pentes", pentes.join(","));
-        }
-      }
-      // On sélectionne maintenant tous qui n'ont pas la class name
-      var ids = figures[i].querySelector("svg").querySelectorAll("*:not([name])");
-      // On ajoute un identifiant s'ils n'ont pas de linkto
-      for (var j = 0; j < ids.length; j++) {
-        if (ids[j].getAttribute("linkto") == null) {
-          ids[j].setAttribute("id", id + "-" + j);
-        } else {
-          // On créé un id pour l'élément à partir du linkto
-          // Sauf s'il est de la class label
-          if (!ids[j].classList.contains("label")) {
-            ids[j].setAttribute("id", id + "-" + ids[j].getAttribute("linkto"));
-          } else {
-            ids[j].setAttribute("id", id + "-" + ids[j].getAttribute("linkto") + "-label");
-          }
-        }
-        // On ajoute également l'identifiant à tous les éléments du linkto
-        if (ids[j].getAttribute("linkto") != null) {
-          var linkto = ids[j].getAttribute("linkto").split(" ");
-          for (var k = 0; k < linkto.length; k++) {
-            linkto[k] = id + "-" + linkto[k];
-          }
-          ids[j].setAttribute("linkto", linkto.join(" "));
-        }
-      }
-    }
-  }
-};
-var addListenerButtonQuadrillage = function (figure) {
-  var quadrillage = figure.querySelector("#" + figure.id + "-quadrillage");
-  var bouton = figure.querySelector(".bouton-quadrillage");
-  bouton.addEventListener("click", function () {
-    if (quadrillage.style.display == "none") {
-      quadrillage.style.display = "block";
-    } else {
-      quadrillage.style.display = "none";
-    }
-  });
-};
-var addBoutonQuadrillage = function (figure) {
-  // Tester si la figure a déjà un bouton de la classe bouton-quadrillage
-  if (figure.querySelector(".bouton-quadrillage") == null) {
-    // On ajoute un bouton pour afficher/masquer le quadrillage
-    var bouton = document.createElement("button");
-    // Ajouter une classe au bouton
-    bouton.classList.add("bouton-quadrillage");
-    bouton.innerHTML = "Afficher/masquer le quadrillage";
-    figure.appendChild(bouton);
-  }
-};
-var addListenerButtonPleinEcran = function (figure) {
-  var bouton = figure.querySelector(".bouton-pleinecran");
-  bouton.addEventListener("click", function () {
-    if (!document.fullscreenElement) {
-      if (figure.requestFullscreen) {
-        figure.requestFullscreen();
-      } else if (figure.webkitRequestFullscreen) {
-        /* Safari */
-        figure.webkitRequestFullscreen();
-      } else if (figure.msRequestFullscreen) {
-        /* IE11 */
-        figure.msRequestFullscreen();
-      }
-    } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) {
-        /* Safari */
-        document.webkitExitFullScreen();
-      } else if (document.msExitFullscreen) {
-        /* IE11 */
-        document.msExitFullScreen();
-      }
-    }
-  });
-};
-var addBoutonPleinEcran = function (figure) {
-  if (figure.querySelector(".bouton-pleinecran") == null) {
-    var bouton = document.createElement("button");
-    bouton.classList.add("bouton-pleinecran");
-    bouton.innerHTML = "Plein écran";
-    figure.appendChild(bouton);
-  }
-};
-var addQuadrillage = function (figure) {
-  // On ajoute un quadrillage
-  var quadrillage = document.createElementNS("http://www.w3.org/2000/svg", "g");
-  quadrillage.setAttribute("id", "quadrillage");
-  // On récupère les dimensions de la figure avec viewBox
-  var viewBox = figure.querySelector("svg").getAttribute("viewBox").split(" ");
-  var width = parseFloat(viewBox[2]);
-  var height = parseFloat(viewBox[3]);
-  var xmin = parseFloat(viewBox[0]);
-  var ymin = parseFloat(viewBox[1]);
-  // On calcule le nombres de lignes et de colonnes
-  var nblignes = Math.floor(height / 10);
-  var nbcolonnes = Math.floor(width / 10);
-  // On ajoute les lignes verticales
-  for (i = 0; i < nbcolonnes + 1; i++) {
-    var ligne = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    ligne.setAttribute("x1", xmin + i * 10);
-    ligne.setAttribute("y1", ymin);
-    ligne.setAttribute("x2", xmin + i * 10);
-    ligne.setAttribute("y2", ymin + height);
-    ligne.setAttribute("stroke", "gray");
-    ligne.setAttribute("stroke-width", "0.2");
-    quadrillage.appendChild(ligne);
-  }
-  // On ajoute les lignes horizontales
-  for (var i = 0; i < nblignes + 1; i++) {
-    var ligne = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    ligne.setAttribute("x1", xmin);
-    ligne.setAttribute("y1", ymin + i * 10);
-    ligne.setAttribute("x2", xmin + width);
-    ligne.setAttribute("y2", ymin + i * 10);
-    ligne.setAttribute("stroke", "gray");
-    ligne.setAttribute("stroke-width", "0.2");
-    quadrillage.appendChild(ligne);
-  }
-  if (!figure.querySelector("svg").classList.contains("quadrillage")) {
-    quadrillage.style.display = "none";
-  }
-  quadrillage.style.userSelect = "none";
-  quadrillage.style.pointerEvents = "none";
-  quadrillage.id = figure.id + "-quadrillage";
-  // On place un cadre autour du quadrillage
-  var cadre = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-  cadre.setAttribute("x", xmin);
-  cadre.setAttribute("y", ymin);
-  cadre.setAttribute("width", width);
-  cadre.setAttribute("height", height);
-  cadre.setAttribute("fill", "lightgray");
-  cadre.setAttribute("fill-opacity", "0.2");
-  // Avec un effet d'ombre
-  figure.querySelector("svg").prepend(quadrillage);
-  figure.querySelector("svg").prepend(cadre);
-};
-var getLinkto = function (objet) {
-  //on teste si l'objet a un attribut linkto
-  if (objet.hasAttribute("linkto")) {
-    return objet.getAttribute("linkto").split(" ");
-  } else {
-    return [];
-  }
-};
-var getElementLinkto = function (objet, n) {
-  return document.getElementById(getLinkto(objet)[n]);
-};
-var constructLabelPoint = function (point) {
-  if (point.classList.contains("labeled")) {
-    var idfigure = point.id.split("-")[0];
-    var labels = document.getElementById(idfigure).querySelectorAll("g.label");
-    var labelLinkto = Array.from(labels).filter(label => label.getAttribute("linkto") == point.id);
-    var foreignObject = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject");
-    if (labelLinkto.length == 0) {
-      foreignObject.setAttribute("x", "0");
-      foreignObject.setAttribute("y", "0");
-      foreignObject.setAttribute("text-anchor", "start");
-      foreignObject.setAttribute("width", "20");
-      foreignObject.setAttribute("height", "20");
-      foreignObject.setAttribute("style", point.getAttribute("style"));
-      foreignObject.innerHTML = katex.renderToString(point.getAttribute("name"), {
-        output: "mathml"
-      });
-    } else {
-      var label = labelLinkto[0];
-      if (label.hasAttribute("x")) {
-        foreignObject.setAttribute("x", label.getAttribute("x"));
-      } else {
-        foreignObject.setAttribute("x", "0");
-      }
-      if (label.hasAttribute("y")) {
-        foreignObject.setAttribute("y", label.getAttribute("y"));
-      } else {
-        foreignObject.setAttribute("y", "0");
-      }
-      if (label.hasAttribute("width")) {
-        foreignObject.setAttribute("width", label.getAttribute("width"));
-      } else {
-        foreignObject.setAttribute("width", "20");
-      }
-      if (label.hasAttribute("height")) {
-        foreignObject.setAttribute("height", label.getAttribute("height"));
-      } else {
-        foreignObject.setAttribute("height", "20");
-      }
-      if (label.hasAttribute("text-anchor")) {
-        foreignObject.setAttribute("text-anchor", label.getAttribute("text-anchor"));
-      } else {
-        foreignObject.setAttribute("text-anchor", "middle");
-      }
-      if (label.hasAttribute("fill")) {
-        foreignObject.setAttribute("fill", label.getAttribute("fill"));
-      } else {
-        foreignObject.setAttribute("fill", "black");
-      }
-      if (label.hasAttribute("stroke")) {
-        foreignObject.setAttribute("stroke", label.getAttribute("stroke"));
-      } else {
-        foreignObject.setAttribute("stroke", "stroke");
-      }
-      foreignObject.setAttribute("style", labelLinkto[0].getAttribute("style"));
-      foreignObject.innerHTML = katex.renderToString(label.innerHTML, {
-        output: "mathml"
-      });
-    }
-    foreignObject.style.userSelect = "none";
-    point.appendChild(foreignObject);
-  }
-};
-var constructCrossPoint = function (point) {
-  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  path.setAttribute("d", "M-2,-2 L2,2 M-2,2 L2,-2");
-  path.setAttribute("fill", "transparent");
-  path.setAttribute("stroke", "black");
-  path.setAttribute("class", "crosspoint");
-  path.style.userSelect = "none";
-  // Récupérer le style du point
-  var style = point.getAttribute("style");
-  path.setAttribute("style", style);
-  point.appendChild(path);
-};
-var automaticHideCrossPoint = function (point) {
-  var idfigure = point.id.split("-")[0];
-  getPolygonesFigure(idfigure).forEach(function (polygone) {
-    var linkto = getLinkto(polygone);
-    if (linkto.includes(point.id)) {
-      point.querySelector("path.crosspoint").setAttribute("stroke", "transparent");
-    }
-  });
-};
-var constructHightlightPoint = function (point) {
-  if (point.classList.contains("draggable")) {
-    var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    circle.setAttribute("class", "selectionne");
-    circle.setAttribute("cx", "0");
-    circle.setAttribute("cy", "0");
-    circle.setAttribute("fill", "transparent");
-    circle.setAttribute("stroke", "transparent");
-    circle.setAttribute("fill-opacity", "0.2");
-    circle.setAttribute("r", "0");
-    circle.style.userSelect = "none";
-    point.prepend(circle);
-  }
-};
-var constructSelectPoint = function (point) {
-  if (point.classList.contains("draggable")) {
-    var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    circle.setAttribute("class", "selectionneur");
-    circle.setAttribute("cx", "0");
-    circle.setAttribute("cy", "0");
-    circle.setAttribute("fill", "transparent");
-    circle.setAttribute("r", "4");
-    point.appendChild(circle);
-  }
-};
-var getPointsFigure = function (figure) {
-  var points = document.querySelectorAll("g.point");
-  var pointsArray = Array.from(points);
-  return pointsArray.filter(point => point.id.split("-")[0] == figure.id);
-};
-var initialiserPointTransform = function (point) {
-  var x = 0;
-  var y = 0;
-  if (point.hasAttribute("x")) {
-    x = point.getAttribute("x");
-  }
-  if (point.hasAttribute("y")) {
-    y = point.getAttribute("y");
-  }
-  point.setAttribute("transform", "translate(" + x + "," + y + ")");
-};
-var getPolygonesFigure = function (idfigure) {
-  var polygones = document.querySelectorAll("g.polygone");
-  var polygonesArray = Array.from(polygones);
-  return polygonesArray.filter(polygone => polygone.id.split("-")[0] == idfigure);
-};
-var getVecteursFigure = function (figure) {
-  var vecteurs = document.querySelectorAll("g.vecteur");
-  var vecteursArray = Array.from(vecteurs);
-  return vecteursArray.filter(vecteur => vecteur.id.split("-")[0] == figure.id);
-};
-var constructHeadVecteur = function (vecteur) {
-  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
-  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
-  var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Segment(A, B);
-  var alpha = AB.angle() / Math.PI * 180;
-  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  path.setAttribute("d", "M-7,-2 L-0,-0 L-7,2");
-  // Déterminer les coordonnées relatives de B par rappport à A
-  path.setAttribute("transform", "translate(" + B.x + "," + B.y + ") rotate(" + -alpha + ")");
-  path.setAttribute("fill", "black");
-  path.setAttribute("stroke-width", "0.5");
-  path.classList.add("headVecteur");
-  path.style.userSelect = "none";
-  setStroke(vecteur, path);
-  // Ajouter le style du vecteur au path
-  path.setAttribute("style", vecteur.getAttribute("style"));
-  // Si dans le style il y a un stroke alors on ajoute la même couleur au fill du path
-  if (vecteur.getAttribute("style") != null && vecteur.getAttribute("style").includes("stroke")) {
-    // Récupérer le stroke du style
-    var stroke = vecteur.getAttribute("style").split(";").filter(style => style.includes("stroke"))[0];
-    // Récupérer la couleur du stroke
-    var color = stroke.split(":")[1];
-    path.setAttribute("fill", color);
-  }
-  vecteur.appendChild(path);
-};
-var constructLabelVecteur = function (vecteur) {
-  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
-  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
-  var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Segment(A, B);
-  var I = AB.milieu();
-  var foreignObject = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject");
-  foreignObject.setAttribute("x", I.x);
-  foreignObject.setAttribute("y", I.y);
-  foreignObject.setAttribute("width", "20");
-  foreignObject.setAttribute("height", "20");
-  foreignObject.setAttribute("style", vecteur.getAttribute("style"));
-  // Ajouter le style du vecteur
-  foreignObject.setAttribute("style", vecteur.getAttribute("style"));
-  foreignObject.innerHTML = katex.renderToString("\\overrightarrow{" + vecteur.getAttribute("name") + "}", {
-    output: "mathml"
-  });
-  foreignObject.style.userSelect = "none";
-  vecteur.appendChild(foreignObject);
-};
-var constructVecteur = function (vecteur) {
-  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
-  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
-  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  path.setAttribute("d", "M" + A.x + "," + A.y + " L" + B.x + "," + B.y);
-  setStroke(vecteur, path);
-  vecteur.appendChild(path);
-  constructHeadVecteur(vecteur);
-  // Ajouter le style du vecteur au path
-  path.setAttribute("style", vecteur.getAttribute("style"));
-  if (vecteur.classList.contains("labeled")) {
-    constructLabelVecteur(vecteur);
-  }
-};
-var initialiserVecteur = function (vecteur) {
-  constructVecteur(vecteur);
-};
-var initialiserVecteursFigure = function (figure) {
-  getVecteursFigure(figure).forEach(function (vecteur) {
-    initialiserVecteur(vecteur);
-  });
-};
-var getDroitesFigure = function (figure) {
-  var droites = document.querySelectorAll("g.droite");
-  var droitesArray = Array.from(droites);
-  return droitesArray.filter(droite => droite.id.split("-")[0] == figure.id);
-};
-var determinerExtremitesDroite = function (droite) {
-  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(droite, 0)));
-  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(droite, 1)));
-  var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
-  AB.setCoordonneesVecteur2Points(A, B);
-  var u = AB.normalisation();
-  var E1 = A.translation(u.multiplicationVecteur(-200));
-  var E2 = A.translation(u.multiplicationVecteur(200));
-  return [E1, E2];
-};
-var setStroke = function (objet, path) {
-  var stroke = objet.hasAttribute("stroke") ? objet.getAttribute("stroke") : "black";
-  path.setAttribute("stroke", stroke);
-  var strokewidth = objet.hasAttribute("stroke-width") ? objet.getAttribute("stroke-width") : "0.5";
-  path.setAttribute("stroke-width", strokewidth);
-  // Si c'est un vecteur il faut que le fill soit le même que le srtoke du vecteur
-  if (objet.classList.contains("vecteur")) {
-    path.setAttribute("fill", stroke);
-  }
-};
-var constructDroite = function (droite) {
-  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  var extremites = determinerExtremitesDroite(droite);
-  var E1 = extremites[0];
-  var E2 = extremites[1];
-  path.setAttribute("d", "M" + E1.x + "," + E1.y + " L" + E2.x + "," + E2.y);
-  setStroke(droite, path);
-  droite.appendChild(path);
-};
-var initialiserDroite = function (droite) {
-  constructDroite(droite);
-};
-var initialiserDroitesFigure = function (figure) {
-  getDroitesFigure(figure).forEach(function (droite) {
-    initialiserDroite(droite);
-  });
-};
-var getDemidroitesFigure = function (figure) {
-  var demidroites = document.querySelectorAll("g.demidroite");
-  var demidroitesArray = Array.from(demidroites);
-  return demidroitesArray.filter(demidroite => demidroite.id.split("-")[0] == figure.id);
-};
-var constructDemiDroite = function (demidroite) {
-  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(demidroite, 0)));
-  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  var extremites = determinerExtremitesDroite(demidroite);
-  var E = extremites[1];
-  path.setAttribute("d", "M" + A.x + "," + A.y + " L" + E.x + "," + E.y);
-  setStroke(demidroite, path);
-  path.setAttribute("style", demidroite.getAttribute("style"));
-  demidroite.appendChild(path);
-};
-var initialiserDemiDroite = function (demidroite) {
-  constructDemiDroite(demidroite);
-};
-var initialiserDemiDroitesFigure = function (figure) {
-  getDemidroitesFigure(figure).forEach(function (demidroite) {
-    initialiserDemiDroite(demidroite);
-  });
-};
-var getSegmentsFigure = function (figure) {
-  var segments = document.querySelectorAll("g.segment");
-  var segmentsArray = Array.from(segments);
-  return segmentsArray.filter(segment => segment.id.split("-")[0] == figure.id);
-};
-var constructCodageSegment = function (segment, codage) {
-  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(segment, 0)));
-  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(segment, 1)));
-  var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Segment(A, B);
-  var I = AB.milieu();
-  var alpha = AB.angle() / Math.PI * 180;
-  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  path.setAttribute("fill", "transparent");
-  path.setAttribute("stroke", "black");
-  path.setAttribute("stroke-width", "0.8");
-  path.setAttribute("transform", "translate(" + I.x + "," + I.y + ") rotate(" + alpha + ")");
-  path.setAttribute("d", codage);
-  path.style.userSelect = "none";
-  path.classList.add("codageSegment");
-  segment.appendChild(path);
-};
-var isCodageSegment = function (segment) {
-  return segment.classList.contains("codage");
-};
-var isSegmentLie = function (segment) {
-  // Dans linkto, on a l'id des deux points et éventuellement l'id d'un segment lié par le codage
-  var linkto = getLinkto(segment);
-  return linkto.length == 3;
-};
-var getSegmentLie = function (segment) {
-  var linkto = getLinkto(segment);
-  return document.getElementById(linkto[2]);
-};
-var getCodageSegmentLie = function (segment) {
-  var linkto = getLinkto(segment);
-  return getSegmentLie(segment).querySelector("path.codageSegment").getAttribute("d");
-};
-var listeCodagesFigure = function (objet) {
-  var idfigure = objet.id.split("-")[0];
-  var codages = document.querySelectorAll("g.codage");
-  var codagesArray = Array.from(codages);
-  var codagesFigure = codagesArray.filter(codage => codage.id.split("-")[0] == idfigure).filter(codage => codage.querySelector("path.codageSegment") != null).map(
-  // On récupère l'attribut d
-  codage => codage.querySelector("path.codageSegment").getAttribute("d"));
-  return codagesFigure;
-};
-var nouveauCodageSegment = function (segment) {
-  var codageExistants = listeCodagesFigure(segment);
-  // On veut un codage qui n'existe pas déjà
-  var i = 0;
-  while (codageExistants.includes(codagesSegment[i])) {
-    i++;
-    if (i == codagesSegment.length) {
-      break;
-    }
-  }
-  if (i < codagesSegment.length) {
-    return codagesSegment[i];
-  } else {
-    // Plus de codages disponibles
-    return "";
-  }
-};
-var constructSegment = function (segment) {
-  var A = getElementLinkto(segment, 0);
-  var B = getElementLinkto(segment, 1);
-  // Construire un élément path
-  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  // A est l'origine et B l'extrémité du path
-  path.setAttribute("d", "M" + getCoordonneesPoint(A).join(",") + " L" + getCoordonneesPoint(B).join(","));
-  setStroke(segment, path);
-  segment.appendChild(path);
-  if (isCodageSegment(segment)) {
-    if (isSegmentLie(segment)) {
-      constructCodageSegment(segment, getCodageSegmentLie(segment));
-    } else {
-      constructCodageSegment(segment, nouveauCodageSegment(segment));
-    }
-  }
-};
-var initialiserSegment = function (segment) {
-  constructSegment(segment);
-};
-var initialiserSegmentsFigure = function (figure) {
-  getSegmentsFigure(figure).forEach(function (segment) {
-    initialiserSegment(segment);
-  });
-};
-var constructPolygone = function (polygone) {
-  var points = getLinkto(polygone).map(point => new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(document.getElementById(point)))).map(point => [point.x, point.y].join(","));
-  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  var d = "M" + points.join(" L") + " Z";
-  path.setAttribute("d", d);
-  setStroke(polygone, path);
-  path.setAttribute("style", polygone.getAttribute("style"));
-  polygone.appendChild(path);
-};
-var initialiserPolygone = function (polygone) {
-  constructPolygone(polygone);
-};
-var initialiserPolygonesFigure = function (figure) {
-  getPolygonesFigure(figure.id).forEach(function (polygone) {
-    initialiserPolygone(polygone);
-  });
-};
-var getGraduationsFigure = function (figure) {
-  var graduations = document.querySelectorAll("g.graduation");
-  var graduationsArray = Array.from(graduations);
-  return graduationsArray.filter(graduation => graduation.id.split("-")[0] == figure.id);
-};
-var constructGraduation = function (graduation) {
-  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(graduation, 0)));
-  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(graduation, 1)));
-  var parametres = eval("({" + graduation.getAttribute("parametres") + "})");
-  // Si parametres.vsize n'existe pas alors on prend 4
-  if (parametres.vsize == undefined) {
-    parametres.vsize = 4;
-  }
-  if (parametres.distance == undefined) {
-    parametres.distance = 10;
-  }
-  var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur(0, 0);
-  AB.setCoordonneesVecteur2Points(A, B);
-  var u = AB.normalisation();
-  var graduations = [];
-  for (var i = 0; i < parametres.n + 1; i++) {
-    graduations.push(A.translation(u.multiplicationVecteur(i * AB.norme() / parametres.n)));
-  }
-  // Construire les graduations de taille verticale vsize
-  var graduationsSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
-  var style = graduation.getAttribute("style");
-  graduationsSVG.setAttribute("style", style);
-  for (var i = 0; i < parametres.n + 1; i++) {
-    var graduationSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    // La graduation est pour moitié en dessous et pour moitié au dessus du point
-    // La graduation doit être orientée selon le vecteur u
-    var x1 = graduations[i].x - parametres.vsize / 2 * u.y;
-    var y1 = graduations[i].y + parametres.vsize / 2 * u.x;
-    var x2 = graduations[i].x + parametres.vsize / 2 * u.y;
-    var y2 = graduations[i].y - parametres.vsize / 2 * u.x;
-    graduationSVG.setAttribute("d", "M" + x1 + "," + y1 + " L" + x2 + "," + y2);
-    graduationSVG.setAttribute("stroke", "black");
-    graduationSVG.setAttribute("stroke-width", "0.5");
-    graduationSVG.style.userSelect = "none";
-    graduationsSVG.appendChild(graduationSVG);
-  }
-  // On ajoute maintenant les abscisses des graduations si la class abscisses est présente
-  if (graduation.classList.contains("abscisses")) {
-    // Si parametres.nmin n'existe pas alors on prend 0
-    if (parametres.nmin == undefined) {
-      parametres.nmin = 0;
-    }
-    var angle = Math.atan2(u.y, u.x); // Angle de u par rapport à l'axe des abscisses
-
-    var abscissesSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    for (var i = 0; i < parametres.n + 1; i++) {
-      var abscisseSVG = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      var offsetX = 0,
-        offsetY = parametres.distance; // Par défaut, placez les abscisses en dessous
-
-      // Si l'angle est dans le 2ème ou 3ème quadrant, placez les abscisses au-dessus
-      if (angle > Math.PI / 2 && angle < 3 * Math.PI / 2) {
-        offsetY = -parametres.distance;
-      }
-      abscisseSVG.setAttribute("x", graduations[i].x + offsetX);
-      abscisseSVG.setAttribute("y", graduations[i].y + offsetY);
-      abscisseSVG.setAttribute("text-anchor", "middle");
-      abscisseSVG.setAttribute("font-size", "10");
-      abscisseSVG.setAttribute("fill", "black");
-      abscisseSVG.setAttribute("stroke", "transparent");
-      abscisseSVG.setAttribute("stroke-width", "0.5");
-      abscisseSVG.setAttribute("style", "user-select:none");
-      abscisseSVG.setAttribute("style", style);
-      abscisseSVG.innerHTML = (parametres.nmin + i * (parametres.nmax - parametres.nmin) / parametres.n).toFixed(0);
-      graduationsSVG.appendChild(abscisseSVG);
-    }
-  }
-  graduation.appendChild(graduationsSVG);
-};
-var initialiserGraduation = function (graduation) {
-  constructGraduation(graduation);
-};
-var initialiserGraduationsFigure = function (figure) {
-  getGraduationsFigure(figure).forEach(function (graduation) {
-    initialiserGraduation(graduation);
-  });
-};
-var getCourbesFigure = function (figure) {
-  var courbes = document.querySelectorAll("g.courbe");
-  var courbesArray = Array.from(courbes);
-  return courbesArray.filter(courbe => courbe.id.split("-")[0] == figure.id);
-};
-var addDebug = function () {
-  // Ajout d'un élément debug dans le DOM
-  var debug = document.createElement("div");
-  debug.id = "debug";
-  document.body.appendChild(debug);
-  // Afficher tous les messages de console.log() dans le div debug
-  console.log = function (message) {
-    debug.innerHTML += message + "<br>";
-  };
-  console.error = function (message) {
-    debug.innerHTML += "<span style='color:red'>" + message + "</span><br>";
-  };
-  console.log("%%%%% DEBUG %%%%%%%");
-};
-var convertStringToParametres = function (paramString) {
-  // Divisez la chaîne en paires clé-valeur
-  var pairs = paramString.split(",");
-
-  // Traitez chaque paire
-  var processedPairs = pairs.map(pair => {
-    var [key, value] = pair.split(":");
-    // Si la valeur n'est pas clairement numérique, considérez-la comme une chaîne
-    if (isNaN(parseFloat(value))) {
-      value = '"' + value + '"';
-    }
-    return '"' + key + '":' + value;
-  });
-  // Recombinez les paires traitées en une seule chaîne
-  var jsonStr = "{" + processedPairs.join(",") + "}";
-  return JSON.parse(jsonStr);
-};
-var initialiserParametresCourbe = function (courbe) {
-  var paramString = courbe.getAttribute("parametres");
-  var parametres = convertStringToParametres(paramString);
-  // Si parametres.xunit n'existe pas alors on prend 1
-  if (parametres.xunit == undefined) {
-    parametres.xunit = 1;
-  }
-  // Si parametres.yunit n'existe pas alors on prend 1
-  if (parametres.yunit == undefined) {
-    parametres.yunit = 1;
-  }
-  // Si parametres.xmin n'existe pas alors on prend -10
-  if (parametres.xmin == undefined) {
-    parametres.xmin = -10;
-  }
-  // Si parametres.xmax n'existe pas alors on prend 10
-  if (parametres.xmax == undefined) {
-    parametres.xmax = 10;
-  }
-  // Si parametres.ymin n'existe pas alors on prend -10
-  if (parametres.ymin == undefined) {
-    parametres.ymin = -10;
-  }
-  // Si parametres.ymax n'existe pas alors on prend 10
-  if (parametres.ymax == undefined) {
-    parametres.ymax = 10;
-  }
-  // Si parametres.n n'existe pas alors on prend 100
-  if (parametres.n == undefined) {
-    parametres.n = 100;
-  }
-  return parametres;
-};
-var recupererPentesCourbe = function (courbe) {
-  var pentes = courbe.getAttribute("pentes");
-  if (pentes != null) {
-    var parametresPentes = convertStringToParametres(pentes);
-    // parametresPentes est un dictionnaire, chaque clé est la pente. Il faut la convertir en son opposée
-    for (var key in parametresPentes) {
-      parametresPentes[key] = -parametresPentes[key];
-    }
-    return parametresPentes;
-  } else {
-    return null;
-  }
-};
-var calculCoordonneesPointsCourbe = function (expression, parametres) {
-  var x = [];
-  var y = [];
-  for (var i = 0; i < parametres.n + 1; i++) {
-    x.push(parametres.xmin + i * (parametres.xmax - parametres.xmin) / parametres.n);
-    y.push(mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate(expression, {
-      x: x[i]
-    }).valueOf());
-  }
-  return {
-    x,
-    y
-  };
-};
-var constructPathCourbe = function (x, y, echelleX, echelleY, viewBox, parametres) {
-  // On met les coordonnées des points à l'échelle tout en effectuant un changement de repère
-  for (var i = 0; i < parametres.n + 1; i++) {
-    x[i] = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[0], "+(").concat(x[i], " - ").concat(parametres.xmin, ") * ").concat(echelleX)).valueOf();
-    y[i] = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[1], "+(-1*").concat(y[i], " + ").concat(parametres.ymax, ") * ").concat(echelleY)).valueOf();
-  }
-  // On construit le path
-  var d = "M" + x[0] + "," + y[0];
-  for (var i = 1; i < parametres.n + 1; i++) {
-    d += " L" + x[i] + "," + y[i];
-  }
-  return d;
-};
-var getOrigineAxes = function (courbe, parametres, echelleX, echelleY, viewBox) {
-  // Calcul des positions des axes en fonction de l'échelle et du changement de repère
-  var xOrigin = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[0], "+(-1 * ").concat(parametres.xmin, ") * ").concat(echelleX)).valueOf();
-  var yOrigin = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[1], "+").concat(parametres.ymax, " * ").concat(echelleY)).valueOf();
-  return {
-    xOrigin,
-    yOrigin
-  };
-};
-var constructPathAxeX = function (xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres) {
-  return "M" + mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[0], "+(").concat(parametres.xmin, " - ").concat(parametres.xmin, ") * ").concat(echelleX)).valueOf() + "," + yOrigin + " L" + mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[0], "+(").concat(parametres.xmax, " - ").concat(parametres.xmin, ") * ").concat(echelleX)).valueOf() + "," + yOrigin;
-};
-var constructPathAxeY = function (xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres) {
-  return "M" + xOrigin + "," + mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[1], "+(-1*").concat(parametres.ymin, " + ").concat(parametres.ymax, ") * ").concat(echelleY)).valueOf() + " L" + xOrigin + "," + mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[1], "+(-1*").concat(parametres.ymax, " + ").concat(parametres.ymax, ") * ").concat(echelleY)).valueOf();
-};
-var constructPathTickXGraduation = function (i, xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres, absFirstGraduation) {
-  var x1 = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[0], "+(").concat(absFirstGraduation + i * parametres.xunit, " - ").concat(parametres.xmin, ") * ").concat(echelleX)).valueOf();
-  var y1 = yOrigin + 1;
-  var x2 = x1;
-  var y2 = yOrigin - 1;
-  var d = "M" + x1 + "," + y1 + " L" + x2 + "," + y2;
-  return d;
-};
-var constructPathTickYGraduation = function (i, xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres, ordFirstGraduation) {
-  var x1 = xOrigin + 1;
-  var y1 = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[1], "+(-1*").concat(ordFirstGraduation + i * parametres.yunit, " + ").concat(parametres.ymax, ") * ").concat(echelleY)).valueOf();
-  var x2 = xOrigin - 1;
-  var y2 = y1;
-  var d = "M" + x1 + "," + y1 + " L" + x2 + "," + y2;
-  return d;
-};
-function combinedControlPoints(points) {
-  let tension = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.5;
-  var controlPoints = [];
-  for (var i = 0; i < points.length - 1; i++) {
-    var point = points[i];
-    var nextPoint = points[i + 1];
-    var delta = tension * (nextPoint[0] - point[0]);
-    if (point.pente !== undefined) {
-      var dy = point.pente * delta;
-      controlPoints.push([point[0] + delta, point[1] + dy]);
-    } else {
-      var p0 = points[i - 1] || point;
-      controlPoints.push([point[0] + (nextPoint[0] - p0[0]) / 6, point[1] + (nextPoint[1] - p0[1]) / 6]);
-    }
-    if (nextPoint.pente !== undefined) {
-      var dyNext = nextPoint.pente * delta;
-      controlPoints.push([nextPoint[0] - delta, nextPoint[1] - dyNext]);
-    } else {
-      var p3 = points[i + 2] || nextPoint;
-      controlPoints.push([nextPoint[0] - (p3[0] - point[0]) / 6, nextPoint[1] - (p3[1] - point[1]) / 6]);
-    }
-  }
-  return controlPoints;
-}
-var constructCourbe = function (courbe) {
-  var parametres = initialiserParametresCourbe(courbe);
-  var expression = courbe.getAttribute("expression");
-  // On récupère le viewBox de la figure (X_0 Y_0 Width Height)
-  var viewBox = courbe.parentNode.getAttribute("viewBox").split(" ").map(Number);
-  // On calcule l'échelle en abscisse et en ordonnée par rapport au viewBox
-  var echelleX = viewBox[2] / (parametres.xmax - parametres.xmin);
-  var echelleY = viewBox[3] / (parametres.ymax - parametres.ymin);
-  // On détermine les coordonnées de l'origine des axes
-  var {
-    xOrigin,
-    yOrigin
-  } = getOrigineAxes(courbe, parametres, echelleX, echelleY, viewBox);
-  // Construire la courbe
-  // On compte le nombre d'éléments dans linkto
-  var linkto = getLinkto(courbe);
-  var d;
-  // On test si linkto existe
-  if (linkto.length <= 1) {
-    // La courbe est définie par son expression lorsque le paramètre linkto est vide ou ne comporte qu'un seul élément
-    var {
-      x,
-      y
-    } = calculCoordonneesPointsCourbe(expression, parametres);
-    var d = constructPathCourbe(x, y, echelleX, echelleY, viewBox, parametres);
-  } else {
-    // La courbe est définie par des points, on fait passer la courbe par ces points
-    // On récupère les pentes des tangentes aux points lorsqu'elles sont définies
-    var pentes = recupererPentesCourbe(courbe);
-    // On récupère les coordonnées de ces points et on ajoute la propriete pente si elle existe
-    var points = [];
-    for (var i = 0; i < linkto.length; i++) {
-      var point = courbe.parentNode.querySelector("#" + linkto[i]);
-      var coords = getCoordonneesPoint(point);
-      if (pentes != null && pentes[point.id] != undefined) {
-        coords.pente = pentes[point.id];
-      }
-      linkto[i] = coords;
-      points.push(coords);
-    }
-    var d = "M" + points[0].join(",");
-    var controlPoints = combinedControlPoints(points);
-    for (var i = 0; i < points.length - 1; i++) {
-      d += " C" + controlPoints[2 * i].join(",") + " " + controlPoints[2 * i + 1].join(",") + " " + points[i + 1].join(",");
-    }
-  }
-  var courbeSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  courbeSVG.setAttribute("d", d);
-  courbeSVG.setAttribute("fill", "transparent");
-  courbeSVG.setAttribute("stroke", "black");
-  courbeSVG.setAttribute("stroke-width", "0.5");
-  courbeSVG.setAttribute("style", courbe.getAttribute("style"));
-  courbeSVG.style.userSelect = "none";
-  // Construire les axes
-  var axesSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
-  var axeX = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  var axeY = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  var pathAxeX = constructPathAxeX(xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres);
-  axeX.setAttribute("d", pathAxeX);
-  var pathAxeY = constructPathAxeY(xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres);
-  axeY.setAttribute("d", pathAxeY);
-  axeX.setAttribute("stroke", "black");
-  axeY.setAttribute("stroke", "black");
-  axeX.setAttribute("stroke-width", "0.5");
-  axeY.setAttribute("stroke-width", "0.5");
-  axeX.style.userSelect = "none";
-  axeY.style.userSelect = "none";
-  axesSVG.appendChild(axeX);
-  axesSVG.appendChild(axeY);
-  // Construire les graduations
-  var graduationsSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
-  var style = courbe.getAttribute("style");
-  graduationsSVG.setAttribute("style", style);
-
-  // Calculons l'abscisse de la première graduation
-  var absFirstGraduation = Math.ceil(parametres.xmin / parametres.xunit) * parametres.xunit;
-  for (var i = 0; i < (parametres.xmax - parametres.xmin) / parametres.xunit + 1; i++) {
-    var graduationAxexSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    var d = constructPathTickXGraduation(i, xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres, absFirstGraduation);
-    graduationAxexSVG.setAttribute("d", d);
-    graduationAxexSVG.setAttribute("stroke", "black");
-    graduationAxexSVG.setAttribute("stroke-width", "0.5");
-    graduationAxexSVG.style.userSelect = "none";
-    graduationsSVG.appendChild(graduationAxexSVG);
-  }
-
-  // Calculons l'ordonnée de la première graduation
-  var ordFirstGraduation = Math.ceil(parametres.ymin / parametres.yunit) * parametres.yunit;
-  for (var i = 0; i < (parametres.ymax - parametres.ymin) / parametres.yunit + 1; i++) {
-    var graduationAxeySVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    var d = constructPathTickYGraduation(i, xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres, ordFirstGraduation);
-    graduationAxeySVG.setAttribute("d", d);
-    graduationAxeySVG.setAttribute("stroke", "black");
-    graduationAxeySVG.setAttribute("stroke-width", "0.5");
-    graduationAxeySVG.style.userSelect = "none";
-    graduationsSVG.appendChild(graduationAxeySVG);
-  }
-
-  // Placer l'unité en abscisse
-  var uniteXSVG = document.createElementNS("http://www.w3.org/2000/svg", "text");
-  uniteXSVG.setAttribute("x", xOrigin + parametres.xunit * echelleX);
-  uniteXSVG.setAttribute("y", yOrigin + 10);
-  uniteXSVG.setAttribute("text-anchor", "middle");
-  uniteXSVG.setAttribute("font-size", "10");
-  uniteXSVG.setAttribute("fill", "black");
-  uniteXSVG.setAttribute("stroke", "transparent");
-  uniteXSVG.setAttribute("stroke-width", "0.5");
-  uniteXSVG.setAttribute("style", "user-select:none");
-  uniteXSVG.setAttribute("style", style);
-  uniteXSVG.innerHTML = parametres.xunit;
-  // Placer l'unité en ordonnée
-  var uniteYSVG = document.createElementNS("http://www.w3.org/2000/svg", "text");
-  uniteYSVG.setAttribute("x", xOrigin - 5);
-  uniteYSVG.setAttribute("y", yOrigin - parametres.yunit * echelleY + 2.5); // Décalage de 2.5 pixels
-  uniteYSVG.setAttribute("text-anchor", "middle");
-  uniteYSVG.setAttribute("font-size", "10");
-  uniteYSVG.setAttribute("fill", "black");
-  uniteYSVG.setAttribute("stroke", "transparent");
-  uniteYSVG.setAttribute("stroke-width", "0.5");
-  uniteYSVG.setAttribute("style", "user-select:none");
-  uniteYSVG.setAttribute("style", style);
-  uniteYSVG.innerHTML = parametres.yunit;
-  courbe.appendChild(axesSVG);
-  courbe.appendChild(graduationsSVG);
-  courbe.appendChild(uniteXSVG);
-  courbe.appendChild(uniteYSVG);
-  courbe.appendChild(courbeSVG);
-};
-var initialiserCourbe = function (courbe) {
-  constructCourbe(courbe);
-};
-var initialiserCourbesFigure = function (figure) {
-  getCourbesFigure(figure).forEach(function (courbe) {
-    initialiserCourbe(courbe);
-  });
-};
-var initialiserFigure = function (figure) {
-  addQuadrillage(figure);
-  addBoutonQuadrillage(figure);
-  addBoutonPleinEcran(figure);
-  initialiserPointsFigure(figure);
-  initialiserVecteursFigure(figure);
-  initialiserDroitesFigure(figure);
-  initialiserDemiDroitesFigure(figure);
-  initialiserSegmentsFigure(figure);
-  initialiserPolygonesFigure(figure);
-  initialiserGraduationsFigure(figure);
-  initialiserCourbesFigure(figure);
-};
-var getCoordonneesPoint = function (point) {
-  var data = point.getAttribute("transform").split("translate(")[1].split(")")[0].split(",");
-  var x = parseFloat(data[0]);
-  var y = parseFloat(data[1]);
-  return [x, y];
-};
-var setCoordonneesPoint = function (point, x, y) {
-  point.setAttribute("transform", "translate(" + x + "," + y + ")");
-};
-var actualiserCoordonneesPointClassTranslation = function (point) {
-  if (point.classList.contains("translation")) {
-    // M est l'image de P par la translation de vecteur kAB
-    var A = getElementLinkto(point, 0);
-    var B = getElementLinkto(point, 1);
-    var P = getElementLinkto(point, 2);
-    let P1 = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(A));
-    let P2 = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(B));
-    let u = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
-    u.setCoordonneesVecteur2Points(P1, P2);
-    let P3 = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(P));
-    var data = point.getAttribute("data").split(" ");
-    var k = parseFloat(data[0]);
-    let P4 = P3.translation(u.multiplicationVecteur(k));
-    var x4 = P4.x;
-    var y4 = P4.y;
-    setCoordonneesPoint(point, x4, y4);
-  }
-};
-var actualiserCoordonneesPointClassDilatation = function (point) {
-  if (point.classList.contains("dilatation")) {
-    // H est le projeté de P selon la direction formant un angle alpha avec le vecteur AB
-    // M est l'image de P par l'homothétie de rapport k et de centre H
-    var A = getElementLinkto(point, 0);
-    var B = getElementLinkto(point, 1);
-    var P = getElementLinkto(point, 2);
-    let P1 = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(A));
-    let P2 = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(B));
-    let P3 = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(P));
-    var data = point.getAttribute("data").split(" ");
-    var k = parseFloat(data[1]);
-    var alpha = parseFloat(data[0]) / 180 * Math.PI;
-    var H = P3.projectionAngle(P1, P2, alpha);
-    var M = P3.homothetie(H, k);
-    setCoordonneesPoint(point, M.x, M.y);
-  }
-};
-var actualiserCoordonneesPointClassRotation = function (point) {
-  if (point.classList.contains("rotation")) {
-    var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 0)));
-    var data = point.getAttribute("data").split(" ");
-    var alpha = parseFloat(data[0]) / 180 * Math.PI;
-    if (getLinkto(point).length == 1) {
-      var k = parseFloat(data[1]);
-      var P = A.translation(new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur(1, 0));
-      var M = P.rotation(A, alpha).homothetie(A, k);
-    } else if (getLinkto(point).length == 2) {
-      var P = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 1)));
-      var k = parseFloat(data[1]);
-      var M = P.rotation(A, alpha).homothetie(A, k);
-    } else if (getLinkto(point).length == 3) {
-      var P = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 1)));
-      var Q = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 2)));
-      var k = parseFloat(data[1]);
-      var N = P.rotation(A, alpha).homothetie(A, k);
-      var u = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
-      u.setCoordonneesVecteur2Points(A, Q);
-      M = N.translation(u);
-    }
-    setCoordonneesPoint(point, M.x, M.y);
-  }
-};
-var actualiserCoordonneesPointsLies = function (point) {
-  // Récursivité pour atteindre tous les points liés
-  var idPoint = point.getAttribute("id");
-  var points = document.querySelectorAll("g.point[linkto*='" + idPoint + "']");
-  for (var i = 0; i < points.length; i++) {
-    actualiserCoordonneesPoint(points[i]);
-  }
-};
-var initialiserDataPoint = function (point) {
-  // Si le point subit une tranformation, on initialise l'attribut data si ce n'est pas déjà fait
-  if (point.hasAttribute("data") == false) {
-    if (point.classList.contains("translation")) {
-      point.setAttribute("data", "1");
-      point.classList.add("transformation");
-    } else if (point.classList.contains("dilatation")) {
-      point.setAttribute("data", "90 -1");
-      point.classList.add("transformation");
-    } else if (point.classList.contains("rotation")) {
-      point.setAttribute("data", "90 1");
-      point.classList.add("transformation");
-    }
-  } else {
-    point.classList.add("transformation");
-  }
-};
-var actualiserLabelVecteur = function (vecteur) {
-  if (vecteur.classList.contains("labeled")) {
-    var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
-    var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
-    var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Segment(A, B);
-    var I = AB.milieu();
-    var foreignObject = vecteur.querySelector("foreignObject");
-    foreignObject.setAttribute("x", I.x);
-    foreignObject.setAttribute("y", I.y);
-  }
-};
-var actualiserVecteur = function (vecteur) {
-  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
-  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
-  var path = vecteur.querySelector("path");
-  path.setAttribute("d", "M" + A.x + "," + A.y + " L" + B.x + "," + B.y);
-  actualiserHeadVecteur(vecteur);
-  actualiserLabelVecteur(vecteur);
-};
-var actualiserCoordonneesVecteursLies = function (point) {
-  var idPoint = point.getAttribute("id");
-  var vecteurs = document.querySelectorAll("g.vecteur[linkto*='" + idPoint + "']");
-  for (var i = 0; i < vecteurs.length; i++) {
-    actualiserVecteur(vecteurs[i]);
-  }
-};
-var actualiserDroite = function (droite) {
-  var path = droite.querySelector("path");
-  var extremites = determinerExtremitesDroite(droite);
-  var E1 = extremites[0];
-  var E2 = extremites[1];
-  path.setAttribute("d", "M" + E1.x + "," + E1.y + " L" + E2.x + "," + E2.y);
-};
-var actualiserCoordonneesDroitesLies = function (point) {
-  var idPoint = point.getAttribute("id");
-  var droites = document.querySelectorAll("g.droite[linkto*='" + idPoint + "']");
-  for (var i = 0; i < droites.length; i++) {
-    actualiserDroite(droites[i]);
-  }
-};
-var actualiserDemiDroite = function (demidroite) {
-  var path = demidroite.querySelector("path");
-  var extremites = determinerExtremitesDroite(demidroite);
-  var E = extremites[1];
-  var A = getElementLinkto(demidroite, 0);
-  path.setAttribute("d", "M" + getCoordonneesPoint(A).join(",") + " L" + E.x + "," + E.y);
-};
-var actualiserCoordonneesDemiDroitesLies = function (point) {
-  var idPoint = point.getAttribute("id");
-  var demidroites = document.querySelectorAll("g.demidroite[linkto*='" + idPoint + "']");
-  for (var i = 0; i < demidroites.length; i++) {
-    actualiserDemiDroite(demidroites[i]);
-  }
-};
-var actualiserCodageSegment = function (segment) {
-  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(segment, 0)));
-  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(segment, 1)));
-  var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Segment(A, B);
-  var I = AB.milieu();
-  var alpha = AB.angle() / Math.PI * 180;
-  var path = segment.querySelector("path.codageSegment");
-  path.setAttribute("transform", "translate(" + I.x + "," + I.y + ") rotate(" + -alpha + ")");
-};
-var actualiserHeadVecteur = function (vecteur) {
-  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
-  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
-  var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Segment(A, B);
-  var alpha = AB.angle() / Math.PI * 180;
-  var path = vecteur.querySelector("path.headVecteur");
-  path.setAttribute("transform", "translate(" + B.x + "," + B.y + ") rotate(" + -alpha + ")");
-};
-var actualiserSegment = function (segment) {
-  var A = getElementLinkto(segment, 0);
-  var B = getElementLinkto(segment, 1);
-  var path = segment.querySelector("path");
-  path.setAttribute("d", "M" + getCoordonneesPoint(A).join(",") + " L" + getCoordonneesPoint(B).join(","));
-  if (isCodageSegment(segment)) {
-    actualiserCodageSegment(segment);
-  }
-};
-var actualiserCoordonneesSegmentsLies = function (point) {
-  var idPoint = point.getAttribute("id");
-  var segments = document.querySelectorAll("g.segment[linkto*='" + idPoint + "']");
-  for (var i = 0; i < segments.length; i++) {
-    actualiserSegment(segments[i]);
-  }
-};
-var actualiserPolygone = function (polygone) {
-  var points = getLinkto(polygone).map(point => new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(document.getElementById(point)))).map(point => [point.x, point.y].join(","));
-  var path = polygone.querySelector("path");
-  var d = "M" + points.join(" L") + " Z";
-  path.setAttribute("d", d);
-};
-var actualiserCoordonneesPolygonesLies = function (point) {
-  var idPoint = point.getAttribute("id");
-  var polygones = document.querySelectorAll("g.polygone[linkto*='" + idPoint + "']");
-  for (var i = 0; i < polygones.length; i++) {
-    actualiserPolygone(polygones[i]);
-  }
-};
-var actualiserCoordonneesPoint = function (point) {
-  actualiserCoordonneesPointClassTranslation(point);
-  actualiserCoordonneesPointClassDilatation(point);
-  actualiserCoordonneesPointClassRotation(point);
-  actualiserCoordonneesPointsLies(point);
-  actualiserCoordonneesVecteursLies(point);
-  actualiserCoordonneesDroitesLies(point);
-  actualiserCoordonneesDemiDroitesLies(point);
-  actualiserCoordonneesSegmentsLies(point);
-  actualiserCoordonneesPolygonesLies(point);
-};
-var actualiserPointsFigure = function (figure) {
-  getPointsFigure(figure).forEach(function (point) {
-    actualiserCoordonneesPoint(point);
-  });
-};
-var setHightlightPointOn = function (point) {
-  d3.select(point).select("circle.selectionne").attr("fill", "orange");
-  d3.select(point).select("circle.selectionne").attr("r", "20");
-};
-var setHightlightPointOff = function (point) {
-  d3.select(point).select("circle.selectionne").attr("fill", "transparent");
-  d3.select(point).select("circle.selectionne").attr("r", "0");
-};
-var controlerCoordonneesPoint = function (point, figure) {
-  let x = 0;
-  let y = 0;
-  // Points draggable avec contrainte
-  if (point.classList.contains("translation")) {
-    // On détermine le projeté orthogonal du pointeur de la souris sur la droite parallèle à (AB) et passant par P
-    var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 0)));
-    var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 1)));
-    var P = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 2)));
-    var M = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(d3.event.x, d3.event.y);
-    var u = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
-    u.setCoordonneesVecteur2Points(A, B);
-    var Q = P.translation(u);
-    var N = M.projectionOrthogonale(P, Q);
-    x = N.x;
-    y = N.y;
-    // On veut la obtenir le rapport signé de la distance PN sur la distance AB
-    var k = P.distance(N) / A.distance(B);
-    // On veut la obtenir la distance signée en utilisant le produit scalaire de u et v
-    var v = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
-    v.setCoordonneesVecteur2Points(P, N);
-    if (u.produitScalaire(v) < 0) {
-      k = -k;
-    }
-    point.setAttribute("data", k.toString());
-  } else if (point.classList.contains("rotation")) {
-    // Tester le nombre de points liés
-    // Si un seul point
-    if (point.getAttribute("linkto").split(" ").length == 1) {
-      var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 0)));
-      var k = parseFloat(point.getAttribute("data").split(" ")[1]);
-      var M = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(d3.event.x, d3.event.y);
-      var d = A.distance(M);
-      var N = M.homothetie(A, k / d);
-      var u = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur(1, 0);
-      var v = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
-      v.setCoordonneesVecteur2Points(A, N);
-      var alpha = u.angle(v) / Math.PI * 180;
-      point.setAttribute("data", alpha.toString() + " " + k.toString());
-      x = N.x;
-      y = N.y;
-    } else if (point.getAttribute("linkto").split(" ").length == 2) {
-      if (!point.classList.contains("rapport")) {
-        var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 0)));
-        var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 1)));
-        var M = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(d3.event.x, d3.event.y);
-        var k = parseFloat(point.getAttribute("data").split(" ")[1]);
-        var u = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
-        u.setCoordonneesVecteur2Points(A, B);
-        var v = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
-        v.setCoordonneesVecteur2Points(A, M);
-        var alpha = u.angle(v) / Math.PI * 180;
-        point.setAttribute("data", alpha.toString() + " " + k.toString());
-        var N = M.homothetie(A, k);
-        x = N.x;
-        y = N.y;
-      } else {
-        // On conserve l'angle mais on change le rapport
-        var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 0)));
-        var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 1)));
-        var M = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(d3.event.x, d3.event.y);
-        var u = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
-        u.setCoordonneesVecteur2Points(A, B);
-        var v = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
-        v.setCoordonneesVecteur2Points(A, M);
-        // Déterminer le signe avec le produit vectoriel
-        var signe = u.produitVectoriel(v) / Math.abs(u.produitVectoriel(v));
-        // On projète M sur l'image de la droite (AB) par la rotation de centre A et d'angle alpha
-        var alpha = parseFloat(point.getAttribute("data").split(" ")[0]) / 180 * Math.PI;
-        var P1 = B.rotation(A, alpha);
-        var N = M.projectionOrthogonale(A, P1);
-        var k = signe * A.distance(N) / A.distance(B);
-        // On veut la obtenir la distance signée en utilisant le produit scalaire de u et v
-        point.setAttribute("data", (alpha / Math.PI * 180).toString() + " " + k.toString());
-        x = N.x;
-        y = N.y;
-      }
-    } else if (point.getAttribute("linkto").split(" ").length == 3) {
-      // Les points sont A, P, Q tels que AQ=AP
-      // Le centre de rotation est maintenant Q mais on veut que le rayon soit toujours AP
-      var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 0)));
-      var P = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 1)));
-      var Q = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 2)));
-      var M = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(d3.event.x, d3.event.y);
-      var k = parseFloat(point.getAttribute("data").split(" ")[1]);
-      var u = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
-      u.setCoordonneesVecteur2Points(A, P);
-      var v = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
-      v.setCoordonneesVecteur2Points(Q, M);
-      var alpha = u.angle(v) / Math.PI * 180;
-      point.setAttribute("data", alpha.toString() + " " + k.toString());
-      var N = M.homothetie(Q, k);
-      x = N.x;
-      y = N.y;
-    }
-  } else {
-    // Il ne faut pas dépasser les limites du cadre
-    // On récupère les dimensions du cadre avec le viewBox
-    var cadre = figure.querySelector("svg");
-    var viewBox = cadre.getAttribute("viewBox").split(" ");
-    var xmin = parseFloat(viewBox[0]);
-    var ymin = parseFloat(viewBox[1]);
-    var width = parseFloat(viewBox[2]);
-    var height = parseFloat(viewBox[3]);
-    x = Math.min(Math.max(d3.event.x, xmin), xmin + width);
-    y = Math.min(Math.max(d3.event.y, ymin), ymin + height);
-    // Si le quadrillage est affiché, on déplace le point sur le quadrillage
-    if (figure.querySelector("#" + figure.id + "-quadrillage").style.display == "block") {
-      x = Math.round(x / 10) * 10;
-      y = Math.round(y / 10) * 10;
-    }
-  }
-  return [x, y];
-};
-var interactivity = function (figure) {
-  d3.selectAll("g.point.draggable").call(d3.drag().on("drag", function () {
-    if (d3.event.x > 0 && d3.event.x < 200 && d3.event.y > 0 && d3.event.y < 200) {
-      setHightlightPointOn(this);
-      setCoordonneesPoint(this, ...controlerCoordonneesPoint(this, figure));
-      actualiserCoordonneesPoint(this);
-    }
-  }).on("end", function () {
-    setHightlightPointOff(this);
-  }));
-};
-var initialiserPointsFigure = function (figure) {
-  getPointsFigure(figure).filter(point => point.id.split("-")[0] == figure.id).forEach(function (point) {
-    initialiserPointTransform(point);
-    constructLabelPoint(point);
-    constructCrossPoint(point);
-    constructHightlightPoint(point);
-    constructSelectPoint(point);
-    automaticHideCrossPoint(point);
-    initialiserDataPoint(point);
-  });
-};
-var draggablesAuPremierPlan = function (figure) {
-  var svg = figure.querySelector("svg");
-  var draggable = figure.querySelectorAll(".draggable");
-  for (var i = 0; i < draggable.length; i++) {
-    svg.appendChild(draggable[i]);
-  }
-};
-var addListenerInteractivite = function (figure) {
-  addListenerButtonQuadrillage(figure);
-  addListenerButtonPleinEcran(figure);
-  figure.addEventListener("mouseenter", function () {
-    interactivity(this);
-  });
-};
-
-// Créer les figures
-var createFigures = function () {
-  setUniqueIds();
-  var figures = document.querySelectorAll(".figure");
-  for (var i = 0; i < figures.length; i++) {
-    if (figures[i].querySelector("svg") != null) {
-      initialiserFigure(figures[i]);
-      actualiserPointsFigure(figures[i]);
-      draggablesAuPremierPlan(figures[i]);
-      addListenerInteractivite(figures[i]);
-    }
-  }
-  window.parent.postMessage("figures_created", "*");
-};
-
-/***/ }),
-
-/***/ "./src/js/quiz.js":
-/*!************************!*\
-  !*** ./src/js/quiz.js ***!
-  \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   createQuizs: () => (/* binding */ createQuizs)
-/* harmony export */ });
-/* harmony import */ var sql_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sql.js */ "./node_modules/sql.js/dist/sql-wasm.js");
-/* harmony import */ var sql_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sql_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.js */ "./src/js/index.js");
-/* harmony import */ var _interactif2_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./interactif2.js */ "./src/js/interactif2.js");
-
-
-
-const config = {
-  locateFile: filename => "/dist/".concat(filename)
-};
-let SQL;
-let isInitialized = false;
-async function initializeSqlJs() {
-  if (!isInitialized) {
-    SQL = await sql_js__WEBPACK_IMPORTED_MODULE_0___default()(config);
-    isInitialized = true;
-  }
-}
-async function importerBD() {
-  await initializeSqlJs();
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    let nomFichier = window.location.pathname.split("/").pop();
-    // Vérifier si le nom du fichier se termine par .html
-    if (!nomFichier.endsWith(".html")) {
-      nomFichier += ".html";
-    }
-    nomFichier = nomFichier.replace(".html", ".sqlite");
-    xhr.open("GET", nomFichier, true);
-    xhr.responseType = "arraybuffer";
-    xhr.onload = function (e) {
-      if (xhr.status === 200) {
-        const db = new SQL.Database(new Uint8Array(this.response));
-        resolve(db);
-      } else {
-        reject("Erreur lors du chargement de la base de données.");
-      }
-    };
-    xhr.onerror = function () {
-      reject("Erreur réseau lors du chargement de la base de données.");
-    };
-    xhr.send();
-  });
-}
-function shuffle(array) {
-  var currentIndex = array.length,
-    temporaryValue,
-    randomIndex;
-  while (0 !== currentIndex) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-  return array;
-}
-function disableRadios() {
-  var radios = document.getElementsByName("choix");
-  for (var i = 0, length = radios.length; i < length; i++) {
-    radios[i].disabled = false;
-    radios[i].checked = false;
-  }
-}
-function hideCorrection(choix) {
-  for (var i = 0, length = choix.length; i < length; i++) {
-    choix[i].style.background = "none";
-  }
-}
-function hideValider() {
-  document.getElementById("Valider").style.display = "none";
-}
-function setValider(text) {
-  document.getElementById("Valider").innerHTML = text;
-}
-function getCorrection(response) {
-  var radios = document.getElementsByClassName("choix");
-  for (var i = 0, length = radios.length; i < length; i++) {
-    radios[i].disabled = true;
-    // La réponse est correcte
-    if (i == correctAnswerId && i == response) {
-      radios[i].style.background = "rgba(0, 200, 0, 0.7)";
-      nbResponsesCorrectes++;
-    }
-    // La réponse correcte en cas d'erreur
-    if (i == correctAnswerId && i != response) {
-      radios[i].style.background = "rgba(255, 0, 0,0.5)";
-    }
-    // La réponse sélectionnée en cas d'erreur
-    if (i == response && response != correctAnswerId) {
-      radios[i].style.background = "rgb(128, 128, 128,0.2)";
-    }
-  }
-}
-function getAnswer() {
-  var radios = document.getElementsByName("choix");
-  for (var i = 0, length = radios.length; i < length; i++) {
-    if (radios[i].checked) {
-      document.getElementById("Valider").innerHTML = "Suivant";
-      return i;
-    }
-  }
-}
-let correctAnswerId;
-let series = [];
-let nextQuestions = [];
-let db;
-let numQuestion = 0;
-let nbQuestions = 0;
-let nbResponsesCorrectes = 0;
-function creerSerieQuizs(database) {
-  // On détermine le nombre de groupes
-  const query = "SELECT MAX(group_id) FROM questions_answers;";
-  const result = database.exec(query);
-  const nbGroupes = result[0].values[0][0];
-  // On parcourt les groupes
-  for (let i = 1; i <= nbGroupes; i++) {
-    // On récupère toutes les questions du groupe
-    const query2 = "SELECT * FROM questions_answers WHERE group_id = ".concat(i, ";");
-    const result2 = database.exec(query2);
-    // On mélange les questions
-    const shuffledQuestions = shuffle(result2[0].values);
-    // On ajoute les questions mélangées à la série
-    series.push(shuffledQuestions);
-  }
-}
-function tourSuivant() {
-  // On détermine le nombre de groupes restant dans la série
-  const nbGroupes = series.length;
-  // On parcourt les groupes de la série
-  let questions = [];
-  for (let i = 0; i < nbGroupes; i++) {
-    // On récupère la première question du groupe
-    const question = series[i].shift();
-    // On ajoute la question au tableau des questions
-    questions.push(question);
-  }
-  // Si un groupe est vide, on le supprime de la série
-  series = series.filter(groupe => groupe.length > 0);
-  // On parcourt les questions
-  questions.forEach(question => {
-    // On récupère la question et la réponse
-    const questionText = question[2];
-    let answer = question[3];
-    // Si answer ne contient pas de balise <div> avec la classe "choice"
-    if (!answer.includes('<div class="choice">')) {
-      // On choisit au hasard 3 réponses possibles du même groupe
-      const query2 = "SELECT * FROM questions_answers WHERE group_id = ".concat(question[1], " AND answer != \"").concat(answer, "\" ORDER BY RANDOM() LIMIT 3;");
-      // On récupère les réponses possibles
-      const result2 = db.exec(query2);
-      // On ajoute la réponse à la fin du tableau
-      const answers = result2[0].values.map(value => value[3]);
-      answers.push(answer);
-      // On mélange les réponses
-      const shuffledAnswers = shuffle(answers);
-      // On conserve la bonne réponse
-      const correctAnswer = shuffledAnswers.indexOf(answer);
-      // On ajoute la question et ses réponses à la prochaine série
-      nextQuestions.push({
-        question: questionText,
-        answers: shuffledAnswers,
-        correctAnswer: correctAnswer
-      });
-    } else {
-      // On récupère les réponses possibles dans les balises <div> avec la classe "choice"
-      const parsedDocument = new DOMParser().parseFromString(answer, "text/html");
-      const choiceElements = Array.from(parsedDocument.querySelectorAll(".choice"));
-      const answers = choiceElements.map(value => value.innerHTML);
-      // La première réponse est la bonne réponse
-      answer = answers[0];
-      // On mélange les réponses
-      const shuffledAnswers = shuffle([answer, ...shuffle(answers.slice(1)).slice(0, 3)]);
-      // On conserve la bonne réponse
-      const correctAnswer = shuffledAnswers.indexOf(answer);
-      // On ajoute la question et ses réponses à la prochaine série
-      nextQuestions.push({
-        question: questionText,
-        answers: shuffledAnswers,
-        correctAnswer: correctAnswer
-      });
-    }
-  });
-  // On mélange les questions
-  nextQuestions = shuffle(nextQuestions);
-  // On conserve le nombre de questions
-  nbQuestions = nextQuestions.length;
-  // On ajoute le div pour l'impression du quiz
-  printQuiz(nextQuestions);
-}
-function remplirFormulaire(questionText, answersArray) {
-  // Accéder à l'élément DOM pour la question et mettre à jour le texte
-  const questionElement = document.querySelector("#question");
-  // Mettre à jour le contenu de questionElement
-  questionElement.innerHTML = questionText;
-
-  // Accéder aux éléments DOM pour les choix de réponse et mettre à jour leurs labels
-  const choiceElements = document.querySelectorAll(".choix label");
-  answersArray.forEach((answer, index) => {
-    choiceElements[index].innerHTML = answer;
-    if (answer == "") {
-      //Le bouton radio dans lequel est contenu le label est désactivé est caché
-      choiceElements[index].parentElement.style.display = "none";
-    } else {
-      //Le bouton radio dans lequel est contenu le label est activé et affiché
-      choiceElements[index].parentElement.style.display = "block";
-    }
-  });
-}
-function ajouterEcouteursQuiz() {
-  var radios = document.getElementsByName("choix");
-  for (var i = 0, length = radios.length; i < length; i++) {
-    radios[i].addEventListener("change", function () {
-      document.getElementById("Valider").style.display = "inline";
-    });
-  }
-  // Sélection du bouton radio d'un choix du quiz
-  var choixDivs = document.getElementsByClassName("choix");
-  for (var i = 0; i < choixDivs.length; i++) {
-    choixDivs[i].addEventListener("click", function () {
-      // Montrer la sélection en la grisant que si le bouton Valider n'est pas sur "Suivant"
-      if (document.getElementById("Valider").innerHTML != "Suivant") {
-        var radioButton = this.querySelector("input[type=radio]");
-        radioButton.checked = true;
-
-        // Trigger the change event on the radio button
-        var event = new Event("change");
-        radioButton.dispatchEvent(event);
-        for (var j = 0; j < choixDivs.length; j++) {
-          choixDivs[j].style.background = "none";
-        }
-        this.style.background = "rgb(0, 0, 255,0.2)";
-      }
-    });
-  }
-  // Sélection du bouton Valider
-  var Valider = document.getElementById("Valider");
-  Valider.addEventListener("click", function () {
-    if (this.innerHTML == "Suivant" || this.innerHTML == "En ligne") {
-      window.parent.postMessage("questionSuivante", "*");
-      var formulaire = document.querySelector(".quiz-choices");
-      formulaire.classList.remove("clicked");
-      // Ne plus afficher le bouton Imprimer
-      document.querySelector("#Imprimer").style.display = "none";
-      // Ne plus afficher l'introduction
-      document.querySelector(".introduction-quiz").style.display = "none";
-      document.querySelector("#score").style.display = "none";
-    } else {
-      getCorrection(getAnswer());
-      // Récupérer tous les boutons radios
-      var radios = document.getElementsByName("choix");
-      // Désactiver tous les boutons radios
-      for (var i = 0, length = radios.length; i < length; i++) {
-        radios[i].disabled = true;
-      }
-    }
-  });
-  // Ajouter un écouteur pour le message "questionSuivante"
-  window.addEventListener("message", function (event) {
-    if (event.data == "questionSuivante") {
-      document.querySelector("#question").innerHTML = "";
-      document.querySelectorAll(".label").innerHTML = "";
-      document.querySelector("#formulaire").style.display = "none";
-      // On supprime le printquiz s'il existe
-      if (document.getElementById("printquiz")) {
-        document.getElementById("printquiz").remove();
-      }
-      // On passe à la question suivante s'il en reste
-      if (nextQuestions.length == 0) {
-        // On affiche le score en pourcentage dans #score
-        document.querySelector("#score").innerHTML = "Score pr\xE9c\xE9dent : ".concat(Math.round(nbResponsesCorrectes / nbQuestions * 100), "%");
-        // On a fini le tour, on recommence si la serie n'est pas vide
-        document.querySelector("#score").style.display = "block";
-        if (series.length > 0) {
-          // On passe au tour suivant car la série n'est pas vide
-          tourSuivant();
-          // Vider le formulaire
-          document.getElementById("Valider").innerHTML = "En ligne";
-          document.getElementById("Valider").style.display = "inline";
-          document.querySelector("#Imprimer").style.display = "inline";
-          numQuestion = 0;
-          // Afficher l'introduction
-          document.querySelector(".introduction-quiz").style.display = "block";
-        } else {
-          // On a fini la série, on affiche un message
-          document.getElementById("question").innerHTML = "C'est terminé !";
-          document.getElementById("Valider").style.display = "none";
-          document.querySelector("#formulaire").style.display = "none";
-        }
-      } else {
-        // On a encore des questions, on passe à la suivante
-        // On ajoute 1 au numéro de la question
-        numQuestion++;
-        // On prépare la question suivante
-        var {
-          questionText,
-          answersArray
-        } = nextQuestion(nextQuestions);
-        initialiserAffichageQuiz(questionText, answersArray);
-      }
-    }
-  });
-  // Ajouter un écouteur pour révéler le formulaire quiz-choices de réponses
-  var formulaire = document.querySelector(".quiz-choices");
-  formulaire.addEventListener("click", function () {
-    this.classList.add("clicked");
-  });
-}
-function mettreEnFormeQuiz() {
-  (0,_index_js__WEBPACK_IMPORTED_MODULE_1__.convertirKatexEnMathML)();
-  (0,_interactif2_js__WEBPACK_IMPORTED_MODULE_2__.createFigures)();
-}
-function initialiserAffichageQuiz(question, shuffledAnswers) {
-  remplirFormulaire(question, shuffledAnswers);
-  setValider("Répondre");
-  hideValider();
-  disableRadios();
-  var choix = document.getElementsByClassName("choix");
-  hideCorrection(choix);
-  mettreEnFormeQuiz();
-  // Afficher le formulaire
-  document.querySelector("#formulaire").style.display = "block";
-  // Ajouter le numéro de la question et le nombre de questions i/n
-  // <div id="num-nb"></div>
-  var numNb = document.getElementById("num-nb");
-  numNb.innerHTML = "Question ".concat(numQuestion, "/").concat(nbQuestions, " :");
-}
-function nextQuestion(nextQuestions) {
-  // On récupère la question et les réponses
-  const questionText = nextQuestions[0].question;
-  const answersArray = nextQuestions[0].answers;
-  // Avant de supprimer la question et les réponses du tableau, on récupère l'indice de la bonne réponse
-  correctAnswerId = nextQuestions[0].correctAnswer;
-  // On supprime la question et les réponses du tableau
-  nextQuestions.shift();
-  return {
-    questionText,
-    answersArray
-  };
-}
-function printQuiz(nextQuestions) {
-  let quiz = "";
-  let solution = "";
-  for (let i = 0; i < nextQuestions.length; i++) {
-    quiz += "\n    <div class=\"question\">\n<strong>Question ".concat(i + 1, " : </strong>").concat(nextQuestions[i].question, "\n</div>\n<form class=\"quiz-choices\">\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[0], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[1], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[2], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[3], "</label>\n    </div>\n</form>\n");
-    solution += "\n<strong>Question ".concat(i + 1, " : </strong>").concat(nextQuestions[i].answers[nextQuestions[i].correctAnswer], "\n");
-  }
-  // On créé un élément div pour contenir le quiz
-  const quizElement = document.createElement("div");
-  // On lui donne un identifiant pour le css
-  quizElement.id = "printquiz";
-  // On ajoute une entete avec un titre, la date, un espace pour le nom, le prénom et la classe
-  var entete = document.createElement("div");
-  entete.id = "enteteQuiz";
-  entete.innerHTML = "\n<div class=\"nom-prenom-classe\">\n  <div id=\"nom\">Nom :</div>\n  <div id=\"prenom\">Pr\xE9nom :</div>\n  <div id=\"classe\">Classe :</div>\n</div>\n<div class=\"titrePrintQuiz-date\">\n  <div class=\"titrePrintQuiz\">Quiz</div>\n  <div class=\"date\">".concat(new Date().toLocaleDateString(), "</div>\n</div>\n    ");
-  // On ajoute le quiz à l'élément div
-  quizElement.innerHTML = quiz;
-  // On ajoute l'entete à l'élément div
-  quizElement.prepend(entete);
-  // On le rend invisible
-  // quizElement.style.display = "none";
-  // On ajoute l'élément div au body
-  // On ajoute les solutions à l'élément div
-  quizElement.innerHTML += "\n<div class=\"titrePrintQuiz-date\">\n  <div class=\"titrePrintQuiz\">Quiz - Solutions</div>\n  <div class=\"date\">".concat(new Date().toLocaleDateString(), "</div>\n</div>\n  ") + solution;
-  document.body.appendChild(quizElement);
-  mettreEnFormeQuiz();
-}
-async function createQuizs() {
-  try {
-    db = await importerBD();
-    creerSerieQuizs(db);
-    tourSuivant();
-    ajouterEcouteursQuiz();
-    document.getElementById("Valider").innerHTML = "En ligne";
-    document.getElementById("Valider").style.display = "inline";
-    document.querySelector("#formulaire").style.display = "none";
-    document.getElementById("Imprimer").addEventListener("click", function () {
-      window.print();
-    });
-    document.querySelector(".introduction-quiz").innerHTML = "\n    <p>Bienvenue au quiz ! Vous \xEAtes sur le point de r\xE9pondre \xE0 </p>\n    <div class=\"score\"><strong>".concat(nbQuestions, " questions.</strong></div>\n    <p>Voici quelques recommandations pour une exp\xE9rience optimale :</p>\n\n<ul>\n    <li>Prenez un moment pour r\xE9fl\xE9chir avant de r\xE9v\xE9ler les choix et surtout mettez vos pens\xE9es par \xE9crit. Cela aide \xE0 clarifier votre r\xE9flexion, \xE0 r\xE9duire la charge mentale et \xE0 progresser plus efficacement.</li>\n    <li>Une fois les choix affich\xE9s, s\xE9lectionnez votre r\xE9ponse. Rappelez-vous, il n'y a qu'une seule bonne r\xE9ponse.</li>\n    <li>Vous avez la libert\xE9 de changer votre choix tant que vous n'avez pas valid\xE9 en cliquant sur \"R\xE9pondre\".</li>\n    <li>Apr\xE8s avoir r\xE9pondu, utilisez le bouton \"Suivant\" pour passer \xE0 la question suivante.</li>\n    <li>Si vous souhaitez avoir une version papier du quiz, cliquez simplement sur \"Imprimer\".</li>\n    <li>N'h\xE9sitez pas \xE0 retenter le quiz autant de fois que n\xE9cessaire pour ma\xEEtriser le sujet.</li>\n</ul>\n\n<p>Rassurez-vous, votre vie priv\xE9e est respect\xE9e : aucune de vos informations personnelles n'est enregistr\xE9e.</p>\n");
-  } catch (error) {
-    console.error("Erreur lors de l'importation de la base de données :", error);
-  }
-}
-
-/***/ }),
-
 /***/ "./node_modules/complex.js/complex.js":
 /*!********************************************!*\
   !*** ./node_modules/complex.js/complex.js ***!
@@ -17268,6 +14756,2539 @@ function _typeof(obj) {
   } : function (obj) {
     return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
   }, _typeof(obj);
+}
+
+/***/ }),
+
+/***/ "./src/js/class2.js":
+/*!**************************!*\
+  !*** ./src/js/class2.js ***!
+  \**************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Cercle: () => (/* binding */ Cercle),
+/* harmony export */   Droite: () => (/* binding */ Droite),
+/* harmony export */   Point: () => (/* binding */ Point),
+/* harmony export */   Points: () => (/* binding */ Points),
+/* harmony export */   Segment: () => (/* binding */ Segment),
+/* harmony export */   Vecteur: () => (/* binding */ Vecteur)
+/* harmony export */ });
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+class Point {
+  constructor(_x, _y) {
+    _defineProperty(this, "setCoordonneesPoint", function (point, x, y) {
+      point.x = x;
+      point.y = y;
+    });
+    _defineProperty(this, "getCoordonneesPoint", function (point) {
+      return [point.x, point.y];
+    });
+    _defineProperty(this, "translation", function (vecteur) {
+      return new Point(this.x + vecteur.x, this.y + vecteur.y);
+    });
+    _defineProperty(this, "symetrieCentrale", function (point) {
+      return new Point(2 * point.x - this.x, 2 * point.y - this.y);
+    });
+    _defineProperty(this, "symetrieAxiale", function (point, droite) {
+      let vecteur = new Vecteur(droite.point2.x - droite.point1.x, droite.point2.y - droite.point1.y);
+      let vecteurNormal = new Vecteur(-vecteur.y, vecteur.x);
+      let vecteurNormalUnitaire = new Vecteur(vecteurNormal.x / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y), vecteurNormal.y / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y));
+      let vecteurPointDroite = new Vecteur(point.x - droite.point1.x, point.y - droite.point1.y);
+      let projection = vecteurNormalUnitaire.x * vecteurPointDroite.x + vecteurNormalUnitaire.y * vecteurPointDroite.y;
+      let symetrique = new Vecteur(point.x - 2 * projection * vecteurNormalUnitaire.x, point.y - 2 * projection * vecteurNormalUnitaire.y);
+      return new Point(symetrique.x, symetrique.y);
+    });
+    _defineProperty(this, "distance", function (point1) {
+      return Math.sqrt(Math.pow(this.x - point1.x, 2) + Math.pow(this.y - point1.y, 2));
+    });
+    _defineProperty(this, "homothetie", function (centre, k) {
+      return new Point(centre.x + k * (this.x - centre.x), centre.y + k * (this.y - centre.y));
+    });
+    _defineProperty(this, "homothetiePoint", function (centre, point) {
+      let k = centre.distance(point) / centre.distance(this);
+      return this.homothetie(centre, k);
+    });
+    _defineProperty(this, "angle", function (point1, point2) {
+      // Retourne l'angle orienté entre les vecteurs (this, point1) et (this, point2)
+      let vecteur1 = new Vecteur(point1.x - this.x, point1.y - this.y);
+      let vecteur2 = new Vecteur(point2.x - this.x, point2.y - this.y);
+      return vecteur1.angle(vecteur2);
+    });
+    _defineProperty(this, "distancePointDroite", function (A, B) {
+      return (B.x - A.x) * (this.y - A.y) - (B.y - A.y) * (this.x - A.x);
+    });
+    _defineProperty(this, "projectionOrthogonale", function (A, B) {
+      // Projection de this sur la droite (AB)
+      let AB = new Vecteur(B.x - A.x, B.y - A.y);
+      let AC = new Vecteur(this.x - A.x, this.y - A.y);
+      let k = AB.produitScalaire(AC) / (AB.norme() * AB.norme());
+      return new Point(A.x + k * AB.x, A.y + k * AB.y);
+    });
+    _defineProperty(this, "projectionAngle", function (A, B, angle) {
+      let AB = new Droite();
+      AB.setCoefficientsDroite2Points(A, B);
+      let u = new Vecteur();
+      u.setCoordonneesVecteur2Points(A, B);
+      let v = u.rotation(angle);
+      let C = this.translation(v);
+      let AC = new Droite();
+      AC.setCoefficientsDroite2Points(this, C);
+      return AB.intersection(AC);
+    });
+    this.x = _x;
+    this.y = _y;
+  }
+  rotation(centre, angle) {
+    let dx = this.x - centre.x;
+    let dy = this.y - centre.y;
+    let rotatedX = centre.x + dx * Math.cos(angle) - dy * Math.sin(angle);
+    let rotatedY = centre.y + dx * Math.sin(angle) + dy * Math.cos(angle);
+    return new Point(rotatedX, rotatedY);
+  }
+}
+class Vecteur {
+  constructor(_x2, _y2) {
+    _defineProperty(this, "setCoordonneesVecteur", function (vecteur, x, y) {
+      vecteur.x = x;
+      vecteur.y = y;
+    });
+    // Méthode pour construire le vecteur à partir de deux points
+    _defineProperty(this, "setCoordonneesVecteur2Points", function (point1, point2) {
+      this.x = point2.x - point1.x;
+      this.y = point2.y - point1.y;
+    });
+    _defineProperty(this, "getCoordonneesVecteur", function () {
+      return [this.x, this.y];
+    });
+    _defineProperty(this, "additionVecteur", function (vecteur) {
+      return new Vecteur(this.x + vecteur.x, this.y + vecteur.y);
+    });
+    _defineProperty(this, "soustractionVecteur", function (vecteur) {
+      return new Vecteur(this.x - vecteur.x, this.y - vecteur.y);
+    });
+    _defineProperty(this, "multiplicationVecteur", function (k) {
+      return new Vecteur(k * this.x, k * this.y);
+    });
+    _defineProperty(this, "produitScalaire", function (vecteur) {
+      return this.x * vecteur.x + this.y * vecteur.y;
+    });
+    _defineProperty(this, "norme", function () {
+      return Math.sqrt(this.x * this.x + this.y * this.y);
+    });
+    _defineProperty(this, "normalisation", function () {
+      return new Vecteur(this.x / this.norme(), this.y / this.norme());
+    });
+    _defineProperty(this, "produitVectoriel", function (vecteur) {
+      return this.x * vecteur.y - this.y * vecteur.x;
+    });
+    _defineProperty(this, "angle", function (vecteur) {
+      // Prévoir un angle signé
+      return Math.atan2(this.produitVectoriel(vecteur), this.produitScalaire(vecteur));
+    });
+    _defineProperty(this, "projection", function (vecteur) {
+      return this.produitScalaire(vecteur) / this.norme();
+    });
+    _defineProperty(this, "projectionOrthogonale", function (vecteur) {
+      return this.produitVectoriel(vecteur) / this.norme();
+    });
+    _defineProperty(this, "rotation", function (angle) {
+      return new Vecteur(this.x * Math.cos(angle) - this.y * Math.sin(angle), this.x * Math.sin(angle) + this.y * Math.cos(angle));
+    });
+    this.x = _x2;
+    this.y = _y2;
+  }
+}
+class Cercle {
+  constructor(_centre, _rayon) {
+    _defineProperty(this, "setCoordonneesCercle", function (centre, rayon) {
+      this.centre = centre;
+      this.rayon = rayon;
+    });
+    _defineProperty(this, "getCoordonneesCercle", function () {
+      return [this.centre, this.rayon];
+    });
+    _defineProperty(this, "translation", function (vecteur) {
+      return new Cercle(new Point(this.centre.x + vecteur.x, this.centre.y + vecteur.y), this.rayon);
+    });
+    _defineProperty(this, "symetrieCentrale", function (centre) {
+      return new Cercle(new Point(2 * centre.x - this.centre.x, 2 * centre.y - this.centre.y), this.rayon);
+    });
+    _defineProperty(this, "symetrieAxiale", function (droite) {
+      let vecteur = new Vecteur(droite.point2.x - droite.point1.x, droite.point2.y - droite.point1.y);
+      let vecteurNormal = new Vecteur(-vecteur.y, vecteur.x);
+      let vecteurNormalUnitaire = new Vecteur(vecteurNormal.x / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y), vecteurNormal.y / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y));
+      let vecteurCentreDroite = new Vecteur(this.centre.x - droite.point1.x, this.centre.y - droite.point1.y);
+      let projection = vecteurNormalUnitaire.x * vecteurCentreDroite.x + vecteurNormalUnitaire.y * vecteurCentreDroite.y;
+      let symetrique = new Vecteur(this.centre.x - 2 * projection * vecteurNormalUnitaire.x, this.centre.y - 2 * projection * vecteurNormalUnitaire.y);
+      return new Cercle(new Point(symetrique.x, symetrique.y), this.rayon);
+    });
+    _defineProperty(this, "rotation", function (angle, centre) {
+      return new Cercle(new Point((this.centre.x - centre.x) * Math.cos(angle) - (this.centre.y - centre.y) * Math.sin(angle) + centre.x, (this.centre.x - centre.x) * Math.sin(angle) + (this.centre.y - centre.y) * Math.cos(angle) + centre.y), this.rayon);
+    });
+    _defineProperty(this, "homothetie", function (centre, k) {
+      return new Cercle(new Point(centre.x + k * (this.centre.x - centre.x), centre.y + k * (this.centre.y - centre.y)), k * this.rayon);
+    });
+    _defineProperty(this, "translation", function (vecteur) {
+      return new Cercle(new Point(this.centre.x + vecteur.x, this.centre.y + vecteur.y), this.rayon);
+    });
+    this.centre = _centre;
+    this.rayon = _rayon;
+  }
+}
+class Points {
+  constructor(_points) {
+    _defineProperty(this, "setCoordonneesPoints", function (points) {
+      this.points = points;
+    });
+    _defineProperty(this, "getCoordonneesPoints", function () {
+      return this.points;
+    });
+    _defineProperty(this, "translation", function (vecteur) {
+      let points = [];
+      for (let i = 0; i < this.points.length; i++) {
+        points.push(new Point(this.points[i].x + vecteur.x, this.points[i].y + vecteur.y));
+      }
+      return new Points(points);
+    });
+    _defineProperty(this, "rotation", function (angle, center) {
+      let points = [];
+      for (let i = 0; i < this.points.length; i++) {
+        points.push(new Point((this.points[i].x - center.x) * Math.cos(angle) - (this.points[i].y - center.y) * Math.sin(angle) + center.x, (this.points[i].x - center.x) * Math.sin(angle) + (this.points[i].y - center.y) * Math.cos(angle) + center.y));
+      }
+      return new Points(points);
+    });
+    _defineProperty(this, "symetriecentrale", function (centre) {
+      let points = [];
+      for (let i = 0; i < this.points.length; i++) {
+        points.push(new Point(2 * centre.x - this.points[i].x, 2 * centre.y - this.points[i].y));
+      }
+      return new Points(points);
+    });
+    _defineProperty(this, "symetrieaxiale", function (droite) {
+      let vecteur = new Vecteur(droite.point2.x - droite.point1.x, droite.point2.y - droite.point1.y);
+      let vecteurNormal = new Vecteur(-vecteur.y, vecteur.x);
+      let vecteurNormalUnitaire = new Vecteur(vecteurNormal.x / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y), vecteurNormal.y / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y));
+      let points = [];
+      for (let i = 0; i < this.points.length; i++) {
+        let vecteurPointDroite = new Vecteur(this.points[i].x - droite.point1.x, this.points[i].y - droite.point1.y);
+        let projection = vecteurNormalUnitaire.x * vecteurPointDroite.x + vecteurNormalUnitaire.y * vecteurPointDroite.y;
+        let symetrique = new Vecteur(this.points[i].x - 2 * projection * vecteurNormalUnitaire.x, this.points[i].y - 2 * projection * vecteurNormalUnitaire.y);
+        points.push(new Point(symetrique.x, symetrique.y));
+      }
+      return new Points(points);
+    });
+    _defineProperty(this, "homothetie", function (centre, k) {
+      let points = [];
+      for (let i = 0; i < this.points.length; i++) {
+        points.push(new Point(centre.x + k * (this.points[i].x - centre.x), centre.y + k * (this.points[i].y - centre.y)));
+      }
+      return new Points(points);
+    });
+    _defineProperty(this, "translation", function (vecteur) {
+      let points = [];
+      for (let i = 0; i < this.points.length; i++) {
+        points.push(new Point(this.points[i].x + vecteur.x, this.points[i].y + vecteur.y));
+      }
+      return new Points(points);
+    });
+    this.points = _points;
+  }
+}
+class Droite {
+  constructor(_a, _b, _c) {
+    _defineProperty(this, "setCoefficientsDroite", function (a, b, c) {
+      this.a = a;
+      this.b = b;
+      this.c = c;
+    });
+    _defineProperty(this, "getCoefficientsDroite", function () {
+      return [this.a, this.b, this.c];
+    });
+    _defineProperty(this, "setCoefficientsDroite2Points", function (point1, point2) {
+      this.a = point2.y - point1.y;
+      this.b = point1.x - point2.x;
+      this.c = point1.y * point2.x - point1.x * point2.y;
+    });
+    _defineProperty(this, "translation", function (vecteur) {
+      return new Droite(this.a, this.b, this.c + this.a * vecteur.x + this.b * vecteur.y);
+    });
+    _defineProperty(this, "rotation", function (angle, centre) {
+      return new Droite(this.a * Math.cos(angle) - this.b * Math.sin(angle), this.a * Math.sin(angle) + this.b * Math.cos(angle), this.c + this.a * (centre.y - centre.x * Math.sin(angle)) + this.b * (centre.x * Math.cos(angle) - centre.y));
+    });
+    _defineProperty(this, "symetrieCentrale", function (centre) {
+      return new Droite(this.a, this.b, this.c + 2 * this.a * centre.x + 2 * this.b * centre.y);
+    });
+    _defineProperty(this, "symetrieAxiale", function (droite) {
+      let vecteur = new Vecteur(droite.point2.x - droite.point1.x, droite.point2.y - droite.point1.y);
+      let vecteurNormal = new Vecteur(-vecteur.y, vecteur.x);
+      let vecteurNormalUnitaire = new Vecteur(vecteurNormal.x / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y), vecteurNormal.y / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y));
+      let vecteurPointDroite = new Vecteur(this.a, this.b);
+      let projection = vecteurNormalUnitaire.x * vecteurPointDroite.x + vecteurNormalUnitaire.y * vecteurPointDroite.y;
+      let symetrique = new Vecteur(this.a - 2 * projection * vecteurNormalUnitaire.x, this.b - 2 * projection * vecteurNormalUnitaire.y);
+      return new Droite(symetrique.x, symetrique.y, this.c);
+    });
+    _defineProperty(this, "homothetie", function (centre, k) {
+      return new Droite(this.a, this.b, this.c + this.a * (centre.x - k * centre.x) + this.b * (centre.y - k * centre.y));
+    });
+    _defineProperty(this, "perpendiculaire", function (point) {
+      return new Droite(-this.b, this.a, this.b * point.x - this.a * point.y);
+    });
+    _defineProperty(this, "parallele", function (point) {
+      return new Droite(this.a, this.b, this.c - this.a * point.x + this.b * point.y);
+    });
+    _defineProperty(this, "intersection", function (droite) {
+      let x = (this.b * droite.c - droite.b * this.c) / (this.a * droite.b - droite.a * this.b);
+      let y = (this.c * droite.a - droite.c * this.a) / (this.a * droite.b - droite.a * this.b);
+      return new Point(x, y);
+    });
+    this.a = _a;
+    this.b = _b;
+    this.c = _c;
+  }
+}
+class Segment {
+  constructor(_point, _point2) {
+    _defineProperty(this, "setCoordonneesSegment", function (point1, point2) {
+      this.point1 = point1;
+      this.point2 = point2;
+    });
+    _defineProperty(this, "getCoordonneesSegment", function () {
+      return [this.point1, this.point2];
+    });
+    _defineProperty(this, "translation", function (vecteur) {
+      return new Segment(new Point(this.point1.x + vecteur.x, this.point1.y + vecteur.y), new Point(this.point2.x + vecteur.x, this.point2.y + vecteur.y));
+    });
+    _defineProperty(this, "rotation", function (angle, centre) {
+      return new Segment(new Point((this.point1.x - centre.x) * Math.cos(angle) - (this.point1.y - centre.y) * Math.sin(angle) + centre.x, (this.point1.x - centre.x) * Math.sin(angle) + (this.point1.y - centre.y) * Math.cos(angle) + centre.y), new Point((this.point2.x - centre.x) * Math.cos(angle) - (this.point2.y - centre.y) * Math.sin(angle) + centre.x, (this.point2.x - centre.x) * Math.sin(angle) + (this.point2.y - centre.y) * Math.cos(angle) + centre.y));
+    });
+    _defineProperty(this, "symetrieCentrale", function (centre) {
+      return new Segment(new Point(2 * centre.x - this.point1.x, 2 * centre.y - this.point1.y), new Point(2 * centre.x - this.point2.x, 2 * centre.y - this.point2.y));
+    });
+    _defineProperty(this, "symetrieAxiale", function (droite) {
+      let vecteur = new Vecteur(droite.point2.x - droite.point1.x, droite.point2.y - droite.point1.y);
+      let vecteurNormal = new Vecteur(-vecteur.y, vecteur.x);
+      let vecteurNormalUnitaire = new Vecteur(vecteurNormal.x / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y), vecteurNormal.y / Math.sqrt(vecteurNormal.x * vecteurNormal.x + vecteurNormal.y * vecteurNormal.y));
+      let vecteurPointDroite1 = new Vecteur(this.point1.x - droite.point1.x, this.point1.y - droite.point1.y);
+      let projection1 = vecteurNormalUnitaire.x * vecteurPointDroite1.x + vecteurNormalUnitaire.y * vecteurPointDroite1.y;
+      let symetrique1 = new Vecteur(this.point1.x - 2 * projection1 * vecteurNormalUnitaire.x, this.point1.y - 2 * projection1 * vecteurNormalUnitaire.y);
+      let vecteurPointDroite2 = new Vecteur(this.point2.x - droite.point1.x, this.point2.y - droite.point1.y);
+      let projection2 = vecteurNormalUnitaire.x * vecteurPointDroite2.x + vecteurNormalUnitaire.y * vecteurPointDroite2.y;
+      let symetrique2 = new Vecteur(this.point2.x - 2 * projection2 * vecteurNormalUnitaire.x, this.point2.y - 2 * projection2 * vecteurNormalUnitaire.y);
+      return new Segment(new Point(symetrique1.x, symetrique1.y), new Point(symetrique2.x, symetrique2.y));
+    });
+    _defineProperty(this, "homothetie", function (centre, k) {
+      return new Segment(new Point(centre.x + k * (this.point1.x - centre.x), centre.y + k * (this.point1.y - centre.y)), new Point(centre.x + k * (this.point2.x - centre.x), centre.y + k * (this.point2.y - centre.y)));
+    });
+    _defineProperty(this, "perpendiculaire", function (point) {
+      let droite = new Droite(this.point1, this.point2);
+      return droite.perpendiculaire(point);
+    });
+    _defineProperty(this, "parallele", function (point) {
+      let droite = new Droite(this.point1, this.point2);
+      return droite.parallele(point);
+    });
+    _defineProperty(this, "milieu", function () {
+      return new Point((this.point1.x + this.point2.x) / 2, (this.point1.y + this.point2.y) / 2);
+    });
+    _defineProperty(this, "longueur", function () {
+      return Math.sqrt(Math.pow(this.point1.x - this.point2.x, 2) + Math.pow(this.point1.y - this.point2.y, 2));
+    });
+    _defineProperty(this, "angle", function () {
+      // Retourne l'angle orienté entre le segment et l'axe des abscisses
+      let vecteur = new Vecteur(this.point2.x - this.point1.x, this.point2.y - this.point1.y);
+      return vecteur.angle(new Vecteur(1, 0));
+    });
+    this.point1 = _point;
+    this.point2 = _point2;
+  }
+}
+
+/***/ }),
+
+/***/ "./src/js/index.js":
+/*!*************************!*\
+  !*** ./src/js/index.js ***!
+  \*************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   convertirKatexEnMathML: () => (/* binding */ convertirKatexEnMathML)
+/* harmony export */ });
+/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+/* harmony import */ var core_js_modules_es_array_reverse_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.reverse.js */ "./node_modules/core-js/modules/es.array.reverse.js");
+/* harmony import */ var core_js_modules_es_array_unscopables_flat_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.array.unscopables.flat.js */ "./node_modules/core-js/modules/es.array.unscopables.flat.js");
+/* harmony import */ var core_js_modules_es_array_unscopables_flat_map_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.array.unscopables.flat-map.js */ "./node_modules/core-js/modules/es.array.unscopables.flat-map.js");
+/* harmony import */ var core_js_modules_es_array_buffer_slice_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.array-buffer.slice.js */ "./node_modules/core-js/modules/es.array-buffer.slice.js");
+/* harmony import */ var core_js_modules_es_object_from_entries_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.object.from-entries.js */ "./node_modules/core-js/modules/es.object.from-entries.js");
+/* harmony import */ var core_js_modules_es_promise_finally_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.promise.finally.js */ "./node_modules/core-js/modules/es.promise.finally.js");
+/* harmony import */ var core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.string.replace.js */ "./node_modules/core-js/modules/es.string.replace.js");
+/* harmony import */ var core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.string.trim.js */ "./node_modules/core-js/modules/es.string.trim.js");
+/* harmony import */ var core_js_modules_es_string_trim_end_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.string.trim-end.js */ "./node_modules/core-js/modules/es.string.trim-end.js");
+/* harmony import */ var core_js_modules_es_typed_array_float32_array_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/es.typed-array.float32-array.js */ "./node_modules/core-js/modules/es.typed-array.float32-array.js");
+/* harmony import */ var core_js_modules_es_typed_array_float64_array_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/es.typed-array.float64-array.js */ "./node_modules/core-js/modules/es.typed-array.float64-array.js");
+/* harmony import */ var core_js_modules_es_typed_array_int8_array_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! core-js/modules/es.typed-array.int8-array.js */ "./node_modules/core-js/modules/es.typed-array.int8-array.js");
+/* harmony import */ var core_js_modules_es_typed_array_int16_array_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! core-js/modules/es.typed-array.int16-array.js */ "./node_modules/core-js/modules/es.typed-array.int16-array.js");
+/* harmony import */ var core_js_modules_es_typed_array_int32_array_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! core-js/modules/es.typed-array.int32-array.js */ "./node_modules/core-js/modules/es.typed-array.int32-array.js");
+/* harmony import */ var core_js_modules_es_typed_array_uint8_array_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! core-js/modules/es.typed-array.uint8-array.js */ "./node_modules/core-js/modules/es.typed-array.uint8-array.js");
+/* harmony import */ var core_js_modules_es_typed_array_uint8_clamped_array_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! core-js/modules/es.typed-array.uint8-clamped-array.js */ "./node_modules/core-js/modules/es.typed-array.uint8-clamped-array.js");
+/* harmony import */ var core_js_modules_es_typed_array_uint16_array_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! core-js/modules/es.typed-array.uint16-array.js */ "./node_modules/core-js/modules/es.typed-array.uint16-array.js");
+/* harmony import */ var core_js_modules_es_typed_array_uint32_array_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! core-js/modules/es.typed-array.uint32-array.js */ "./node_modules/core-js/modules/es.typed-array.uint32-array.js");
+/* harmony import */ var core_js_modules_es_typed_array_fill_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! core-js/modules/es.typed-array.fill.js */ "./node_modules/core-js/modules/es.typed-array.fill.js");
+/* harmony import */ var core_js_modules_es_typed_array_from_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! core-js/modules/es.typed-array.from.js */ "./node_modules/core-js/modules/es.typed-array.from.js");
+/* harmony import */ var core_js_modules_es_typed_array_of_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! core-js/modules/es.typed-array.of.js */ "./node_modules/core-js/modules/es.typed-array.of.js");
+/* harmony import */ var core_js_modules_es_typed_array_set_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! core-js/modules/es.typed-array.set.js */ "./node_modules/core-js/modules/es.typed-array.set.js");
+/* harmony import */ var core_js_modules_es_typed_array_sort_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! core-js/modules/es.typed-array.sort.js */ "./node_modules/core-js/modules/es.typed-array.sort.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var core_js_modules_web_immediate_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! core-js/modules/web.immediate.js */ "./node_modules/core-js/modules/web.immediate.js");
+/* harmony import */ var core_js_modules_web_queue_microtask_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! core-js/modules/web.queue-microtask.js */ "./node_modules/core-js/modules/web.queue-microtask.js");
+/* harmony import */ var core_js_modules_web_url_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! core-js/modules/web.url.js */ "./node_modules/core-js/modules/web.url.js");
+/* harmony import */ var core_js_modules_web_url_to_json_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! core-js/modules/web.url.to-json.js */ "./node_modules/core-js/modules/web.url.to-json.js");
+/* harmony import */ var core_js_modules_web_url_search_params_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! core-js/modules/web.url-search-params.js */ "./node_modules/core-js/modules/web.url-search-params.js");
+/* harmony import */ var _interactif2_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./interactif2.js */ "./src/js/interactif2.js");
+/* harmony import */ var _quiz_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./quiz.js */ "./src/js/quiz.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var insererEntetesBlocsLesson = function () {
+  // Définitions
+  const definitions = document.querySelectorAll(".definition");
+  definitions.forEach((definition, index) => {
+    definition.innerHTML = "\n        <span id=\"def".concat(index + 1, "\" class=\"header header-definition\">\n            D\xE9finition ").concat(index + 1, ".\n        </span>").concat(definition.innerHTML);
+  });
+
+  // Exemples
+  const exemples = document.querySelectorAll(".exemple");
+  exemples.forEach((exemple, index) => {
+    exemple.innerHTML = "\n        <details class=\"detailExemple\">\n            <summary>\n                <span id=\"exemple".concat(index + 1, "\" class=\"header header-exemple\">\n                    Exemple ").concat(index + 1, ".\n                </span>\n            </summary>\n            ").concat(exemple.innerHTML, "\n        </details>");
+  });
+
+  // Propriétés
+  const proprietes = document.querySelectorAll(".propriete");
+  proprietes.forEach((propriete, index) => {
+    propriete.innerHTML = "\n        <span id=\"prop".concat(index + 1, "\" class=\"header header-propriete\">\n            Propri\xE9t\xE9 ").concat(index + 1, ".\n        </span>").concat(propriete.innerHTML);
+  });
+
+  // Remarques
+  const remarques = document.querySelectorAll(".remarque");
+  remarques.forEach((remarque, index) => {
+    remarque.innerHTML = "\n        <span id=\"remarque".concat(index + 1, "\" class=\"header header-remarque\">\n            Remarque ").concat(index + 1, ".\n        </span>").concat(remarque.innerHTML);
+  });
+
+  // Méthodes
+  const methodes = document.querySelectorAll(".methode");
+  methodes.forEach((methode, index) => {
+    methode.innerHTML = "\n        <span id=\"methode".concat(index + 1, "\" class=\"header header-methode\">\n            M\xE9thode ").concat(index + 1, ".\n        </span>").concat(methode.innerHTML);
+  });
+
+  // Démonstrations
+  const demonstrations = document.querySelectorAll(".demonstration");
+  demonstrations.forEach((demo, i) => {
+    demo.innerHTML = "\n    <details class=\"detailDemonstration\">\n      <summary>\n        <span id=\"proof".concat(i + 1, "\"\n            class=\"header header-proof\">\n          D\xE9monstration ").concat(i + 1, ".\n        </span>\n      </summary>\n      ").concat(demo.innerHTML, "\n      <span style=\"font-size: 150%;\">&#9633;</span>\n    </details>\n  ");
+  });
+};
+var insererEntetesBlocsExercices = function () {
+  // Exercices
+  const exercices = document.querySelectorAll(".exercice");
+  exercices.forEach((exercice, index) => {
+    const title = document.createElement("titreExercice");
+    title.innerHTML = "\n        <span class=\"titreExercice\">\n            Exercice ".concat(index + 1, "\n        </span>");
+    exercice.insertBefore(title, exercice.firstChild);
+  });
+
+  // Exercices sans calculatrice
+  // var exercicesSansCalculatrice = document.querySelectorAll(
+  //   ".exercice:not(.calculator)"
+  // );
+  // for (var i = 0; i < exercicesSansCalculatrice.length; i++) {
+  //   exercicesSansCalculatrice[i].querySelector(".titreExercice").innerHTML +=
+  //     ' <span class="fa-stack fa-lg" style="font-size: 18px;"><i class="fas fa-calculator fa-stack-1x"></i><i class="fas fa-ban fa-stack-2x" style="color:Tomato"></i></span>';
+  // }
+
+  // Solutions
+  var solutions = document.querySelectorAll(".solution");
+  for (var i = 0; i < solutions.length; i++) {
+    var details = document.createElement("details");
+    //details.setAttribute('open', '');
+    details.classList.add("solution");
+    details.innerHTML = "<summary>Solution</summary>";
+    solutions[i].parentNode.insertBefore(details, solutions[i]);
+    details.appendChild(solutions[i]);
+  }
+
+  // Indice
+  var indices = document.querySelectorAll(".indice");
+  for (var i = 0; i < indices.length; i++) {
+    var details = document.createElement("details");
+    //details.setAttribute('open', '');
+    details.classList.add("indice");
+    details.innerHTML = "<summary>Indice</summary>";
+    indices[i].parentNode.insertBefore(details, indices[i]);
+    details.appendChild(indices[i]);
+  }
+};
+var wrapElementsInReveal = function (parent) {
+  var elements = parent.querySelectorAll("p, td,.katex-display");
+  for (var i = 0; i < elements.length; i++) {
+    var reveal = document.createElement("div");
+    reveal.className = "reveal";
+    reveal.innerHTML = elements[i].innerHTML;
+    elements[i].innerHTML = "";
+    elements[i].appendChild(reveal);
+    reveal.addEventListener("click", function () {
+      this.classList.add("clicked");
+    });
+    wrapElementsInReveal(reveal);
+  }
+};
+var masquerSolutionsExercices = function () {
+  var solutions = document.querySelectorAll("details.solution .solution");
+  solutions.forEach(function (solution) {
+    wrapElementsInReveal(solution);
+  });
+};
+function formatNumberForLatex(strNum) {
+  // Remplacez d'abord les points ou virgules par {,}
+  strNum = strNum.replace(/[.,]/g, "{,}");
+
+  // Séparez la partie entière et décimale
+  let [intPart, decPart] = strNum.split("{,}");
+
+  // Ajoutez des espaces pour séparer les milliers dans la partie entière
+  intPart = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, "\\ ");
+
+  // Si une partie décimale existe, ajoutez des espaces pour séparer les milliers
+  if (decPart) {
+    decPart = decPart.replace(/(\d{3})\B/g, "$1\\ ");
+    return intPart + "{,}" + decPart;
+  }
+  return intPart;
+}
+function formatSIForLatex(value, unit) {
+  // Remplacer \cm, \m, etc. par \text{cm}, \text{m}, etc., mais exclure \square et \cubic
+  unit = unit.replace(/\\(?!square|cubic)(\w+)/g, "\\text{$1}");
+
+  // Remplacer \square\text{cm} par \text{cm}^2 et similaires
+  unit = unit.replace(/\\square\\text\{(\w+)\}/g, "\\text{$1}^2");
+
+  // Remplacer \cubic\text{cm} par \text{cm}^3 et similaires
+  unit = unit.replace(/\\cubic\\text\{(\w+)\}/g, "\\text{$1}^3");
+  console.log(unit);
+  // Ajoutez d'autres remplacements d'unités si nécessaire
+
+  return formatNumberForLatex(value) + "\\," + unit;
+}
+function preprocessLatexText(text) {
+  const delimiters = [/\$(.*?)\$/g, /\$\$(.*?)\$\$/g, /\\\((.*?)\\\)/g, /\\\[.*?\\\]/g];
+  for (let delimiter of delimiters) {
+    text = text.replace(delimiter, function (match) {
+      // Traitement pour \num{}
+      match = match.replace(/\\num\{(-?[\d.,]+)\}/g, function (_, p1) {
+        return formatNumberForLatex(p1);
+      });
+
+      // Traitement pour \SI{...}{...}
+      match = match.replace(/\\SI\{(-?[\d.,]+)\}\{(.*?)\}/g, function (_, p1, p2) {
+        return formatSIForLatex(p1, p2);
+      });
+      return match;
+    });
+  }
+  return text;
+}
+function isDescendantOfScript(node) {
+  while (node) {
+    if (node.tagName === "SCRIPT") {
+      return true;
+    }
+    node = node.parentNode;
+  }
+  return false;
+}
+function preprocessLatex() {
+  // Parcourir tous les noeuds textuels du document
+  const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+  let node;
+  while (node = walk.nextNode()) {
+    if (node.nodeValue && /\$|\\\[|\\\(/.test(node.nodeValue) && !isDescendantOfScript(node)) {
+      node.nodeValue = preprocessLatexText(node.nodeValue);
+    }
+  }
+}
+var convertirKatexEnMathML = function () {
+  preprocessLatex();
+  renderMathInElement(document.body, {
+    // customised options
+    // • auto-render specific keys, e.g.:
+    delimiters: [{
+      left: "$$",
+      right: "$$",
+      display: true
+    }, {
+      left: "$",
+      right: "$",
+      display: false
+    }, {
+      left: "\\(",
+      right: "\\)",
+      display: false
+    }, {
+      left: "\\[",
+      right: "\\]",
+      display: true
+    }],
+    // • rendering keys, e.g.:
+    throwOnError: false,
+    ignoredTags: ["svg"],
+    output: "html" // Compatibilité avec Apple notamment
+  });
+};
+
+var ajouterSommaire = function () {
+  if (document.querySelector("#tableOfContents") != null) {
+    var toc = document.getElementById("tableOfContents");
+    var headers = document.querySelectorAll("h1, h2, h3, h4");
+    var currentLists = [document.createElement("ul")]; // Liste principale pour les h1
+    toc.appendChild(currentLists[0]);
+    headers.forEach(function (header, index) {
+      var id = "title" + index;
+      header.id = id;
+      var link = document.createElement("a");
+      link.href = "#" + id;
+      link.textContent = header.textContent;
+      var listItem = document.createElement("li");
+      listItem.appendChild(link);
+      var level = parseInt(header.tagName[1]) - 1; // h1 -> 0, h2 -> 1, etc.
+
+      // Si la liste actuelle est plus profonde que le niveau actuel, remontez
+      while (currentLists.length - 1 > level) {
+        currentLists.pop();
+      }
+
+      // Si le niveau actuel est plus profond que la liste actuelle, créez une nouvelle liste imbriquée
+      if (currentLists.length - 1 < level) {
+        var newList = document.createElement("ul");
+        currentLists[currentLists.length - 1].lastChild.appendChild(newList);
+        currentLists.push(newList);
+      }
+      currentLists[currentLists.length - 1].appendChild(listItem);
+    });
+  }
+};
+var openAvantPrint = function () {
+  window.onbeforeprint = function () {
+    const detailsElements = document.querySelectorAll("details");
+    detailsElements.forEach(details => {
+      details.setAttribute("open", "");
+    });
+  };
+};
+var adapterPositionDropdown = function (event) {
+  var dropdownContent = event.currentTarget.querySelector(".dropdown-content");
+
+  // Affichez le dropdown pour pouvoir obtenir ses dimensions
+  dropdownContent.style.display = "flex";
+  dropdownContent.style.flexDirection = "column";
+
+  // Calculez la distance entre le bord droit du dropdown et le bord droit de la fenêtre
+  var overflowDistance = dropdownContent.getBoundingClientRect().right - window.innerWidth;
+
+  // Si le dropdown déborde à droite
+  if (overflowDistance > 0) {
+    // Ajustez la position du dropdown
+    // Par exemple, déplacez le dropdown vers la gauche de la distance de débordement
+    dropdownContent.style.right = overflowDistance + "px";
+  } else {
+    // Réinitialisez la position si elle a été précédemment ajustée
+    dropdownContent.style.right = "auto";
+  }
+};
+var dropdownMenusBandeau = function () {
+  var dropdowns = document.querySelectorAll(".dropdown");
+  dropdowns.forEach(dropdown => {
+    dropdown.addEventListener("click", function (event) {
+      if (event.currentTarget.classList.contains("dropdown")) {
+        // Masquer tous les dropdowns sauf celui cliqué
+        dropdowns.forEach(dropdown => {
+          if (dropdown != event.target.parentNode) {
+            dropdown.querySelector(".dropdown-content").style.display = "none";
+          }
+        });
+        // Afficher ou masquer le dropdown cliqué
+        var dropdownContent = event.currentTarget.querySelector(".dropdown-content");
+        if (dropdownContent.style.display == "flex") {
+          dropdownContent.style.display = "none";
+        } else {
+          adapterPositionDropdown(event);
+          //dropdownContent.style.display = "flex";
+        }
+      }
+    });
+
+    dropdown.addEventListener("mouseover", function (event) {
+      // On survole un élément dropdown
+      if (event.target.classList.contains("dropdown")) {
+        adapterPositionDropdown(event);
+      }
+    });
+    dropdown.addEventListener("mouseleave", function (event) {
+      if (event.target.classList.contains("dropdown")) {
+        var dropdownContent = event.target.querySelector(".dropdown-content");
+        dropdownContent.style.display = "none";
+      }
+    });
+  });
+};
+document.addEventListener("DOMContentLoaded", function () {
+  insererEntetesBlocsLesson();
+  insererEntetesBlocsExercices();
+  // On teste si on est dans un contexte <meta name="quiz" content="true">
+  if (document.querySelector("meta[name=quiz]") != null) {
+    (0,_quiz_js__WEBPACK_IMPORTED_MODULE_31__.createQuizs)();
+  } else {
+    (0,_interactif2_js__WEBPACK_IMPORTED_MODULE_30__.createFigures)();
+  }
+  convertirKatexEnMathML();
+  masquerSolutionsExercices();
+  ajouterSommaire();
+  dropdownMenusBandeau();
+  openAvantPrint();
+});
+
+/***/ }),
+
+/***/ "./src/js/interactif2.js":
+/*!*******************************!*\
+  !*** ./src/js/interactif2.js ***!
+  \*******************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   addListenerInteractivite: () => (/* binding */ addListenerInteractivite),
+/* harmony export */   createFigures: () => (/* binding */ createFigures)
+/* harmony export */ });
+/* harmony import */ var _class2_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./class2.js */ "./src/js/class2.js");
+/* harmony import */ var mathjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mathjs */ "./node_modules/mathjs/lib/esm/entry/impureFunctionsAny.generated.js");
+// Version: 1.0.0
+
+
+
+// Liste des codages possibles
+var codagesSegment = ["M-5,-5 L0,5 M0,-5 L5,5", "M-2.5,-5 L2.5,5", "M-5,-5 L-1,5 M-1,-5 L3,5 M3,-5 L7,5", "M-5,-5 L-2,5 M-2,-5 L1,5 M1,-5 L4,5 M4,-5 L7,5"];
+var setUniqueIds = function () {
+  // On récupère toutes les balises de class figure
+  var figures = document.querySelectorAll(".figure");
+  // On rend unique les identifiants des éléments constitutifs de la figure
+  for (var i = 0; i < figures.length; i++) {
+    // On récupère l'identifiant de la figure
+    var id = figures[i].id;
+    // on teste si la figure contient un svg
+    if (figures[i].querySelector("svg") != null) {
+      var ids = figures[i].querySelector("svg").querySelectorAll("*[name]");
+      // Pour chaque identifiant
+      for (var j = 0; j < ids.length; j++) {
+        // On créé un id pour l'élément
+        ids[j].setAttribute("id", id + "-" + ids[j].getAttribute("name"));
+
+        // On ajoute également l'identifiant à tous les éléments du linkto
+        if (ids[j].getAttribute("linkto") != null) {
+          var linkto = ids[j].getAttribute("linkto").split(" ");
+          for (var k = 0; k < linkto.length; k++) {
+            linkto[k] = id + "-" + linkto[k];
+          }
+          ids[j].setAttribute("linkto", linkto.join(" "));
+        }
+        // On ajoute également l'identifiant à tous les éléments du pentes qui est un string de la forme "A:0.5,B:1,C:2"
+        if (ids[j].getAttribute("pentes") != null) {
+          var pentes = ids[j].getAttribute("pentes").split(",");
+          for (var k = 0; k < pentes.length; k++) {
+            pentes[k] = id + "-" + pentes[k].split(":")[0] + ":" + pentes[k].split(":")[1];
+          }
+          ids[j].setAttribute("pentes", pentes.join(","));
+        }
+      }
+      // On sélectionne maintenant tous qui n'ont pas la class name
+      var ids = figures[i].querySelector("svg").querySelectorAll("*:not([name])");
+      // On ajoute un identifiant s'ils n'ont pas de linkto
+      for (var j = 0; j < ids.length; j++) {
+        if (ids[j].getAttribute("linkto") == null) {
+          ids[j].setAttribute("id", id + "-" + j);
+        } else {
+          // On créé un id pour l'élément à partir du linkto
+          // Sauf s'il est de la class label
+          if (!ids[j].classList.contains("label")) {
+            ids[j].setAttribute("id", id + "-" + ids[j].getAttribute("linkto"));
+          } else {
+            ids[j].setAttribute("id", id + "-" + ids[j].getAttribute("linkto") + "-label");
+          }
+        }
+        // On ajoute également l'identifiant à tous les éléments du linkto
+        if (ids[j].getAttribute("linkto") != null) {
+          var linkto = ids[j].getAttribute("linkto").split(" ");
+          for (var k = 0; k < linkto.length; k++) {
+            linkto[k] = id + "-" + linkto[k];
+          }
+          ids[j].setAttribute("linkto", linkto.join(" "));
+        }
+      }
+    }
+  }
+};
+var addListenerButtonQuadrillage = function (figure) {
+  var quadrillage = figure.querySelector("#" + figure.id + "-quadrillage");
+  var bouton = figure.querySelector(".bouton-quadrillage");
+  bouton.addEventListener("click", function () {
+    if (quadrillage.style.display == "none") {
+      quadrillage.style.display = "block";
+    } else {
+      quadrillage.style.display = "none";
+    }
+  });
+};
+var addBoutonQuadrillage = function (figure) {
+  // Tester si la figure a déjà un bouton de la classe bouton-quadrillage
+  if (figure.querySelector(".bouton-quadrillage") == null) {
+    // On ajoute un bouton pour afficher/masquer le quadrillage
+    var bouton = document.createElement("button");
+    // Ajouter une classe au bouton
+    bouton.classList.add("bouton-quadrillage");
+    bouton.innerHTML = "Afficher/masquer le quadrillage";
+    figure.appendChild(bouton);
+  }
+};
+var addListenerButtonPleinEcran = function (figure) {
+  var bouton = figure.querySelector(".bouton-pleinecran");
+  bouton.addEventListener("click", function () {
+    if (!document.fullscreenElement) {
+      if (figure.requestFullscreen) {
+        figure.requestFullscreen();
+      } else if (figure.webkitRequestFullscreen) {
+        /* Safari */
+        figure.webkitRequestFullscreen();
+      } else if (figure.msRequestFullscreen) {
+        /* IE11 */
+        figure.msRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        /* Safari */
+        document.webkitExitFullScreen();
+      } else if (document.msExitFullscreen) {
+        /* IE11 */
+        document.msExitFullScreen();
+      }
+    }
+  });
+};
+var addBoutonPleinEcran = function (figure) {
+  if (figure.querySelector(".bouton-pleinecran") == null) {
+    var bouton = document.createElement("button");
+    bouton.classList.add("bouton-pleinecran");
+    bouton.innerHTML = "Plein écran";
+    figure.appendChild(bouton);
+  }
+};
+var addQuadrillage = function (figure) {
+  // On ajoute un quadrillage
+  var quadrillage = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  quadrillage.setAttribute("id", "quadrillage");
+  // On récupère les dimensions de la figure avec viewBox
+  var viewBox = figure.querySelector("svg").getAttribute("viewBox").split(" ");
+  var width = parseFloat(viewBox[2]);
+  var height = parseFloat(viewBox[3]);
+  var xmin = parseFloat(viewBox[0]);
+  var ymin = parseFloat(viewBox[1]);
+  // On calcule le nombres de lignes et de colonnes
+  var nblignes = Math.floor(height / 10);
+  var nbcolonnes = Math.floor(width / 10);
+  // On ajoute les lignes verticales
+  for (i = 0; i < nbcolonnes + 1; i++) {
+    var ligne = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    ligne.setAttribute("x1", xmin + i * 10);
+    ligne.setAttribute("y1", ymin);
+    ligne.setAttribute("x2", xmin + i * 10);
+    ligne.setAttribute("y2", ymin + height);
+    ligne.setAttribute("stroke", "gray");
+    ligne.setAttribute("stroke-width", "0.2");
+    quadrillage.appendChild(ligne);
+  }
+  // On ajoute les lignes horizontales
+  for (var i = 0; i < nblignes + 1; i++) {
+    var ligne = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    ligne.setAttribute("x1", xmin);
+    ligne.setAttribute("y1", ymin + i * 10);
+    ligne.setAttribute("x2", xmin + width);
+    ligne.setAttribute("y2", ymin + i * 10);
+    ligne.setAttribute("stroke", "gray");
+    ligne.setAttribute("stroke-width", "0.2");
+    quadrillage.appendChild(ligne);
+  }
+  if (!figure.querySelector("svg").classList.contains("quadrillage")) {
+    quadrillage.style.display = "none";
+  }
+  quadrillage.style.userSelect = "none";
+  quadrillage.style.pointerEvents = "none";
+  quadrillage.id = figure.id + "-quadrillage";
+  // On place un cadre autour du quadrillage
+  var cadre = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  cadre.setAttribute("x", xmin);
+  cadre.setAttribute("y", ymin);
+  cadre.setAttribute("width", width);
+  cadre.setAttribute("height", height);
+  cadre.setAttribute("fill", "lightgray");
+  cadre.setAttribute("fill-opacity", "0.2");
+  // Avec un effet d'ombre
+  figure.querySelector("svg").prepend(quadrillage);
+  figure.querySelector("svg").prepend(cadre);
+};
+var getLinkto = function (objet) {
+  //on teste si l'objet a un attribut linkto
+  if (objet.hasAttribute("linkto")) {
+    return objet.getAttribute("linkto").split(" ");
+  } else {
+    return [];
+  }
+};
+var getElementLinkto = function (objet, n) {
+  return document.getElementById(getLinkto(objet)[n]);
+};
+var constructLabelPoint = function (point) {
+  if (point.classList.contains("labeled")) {
+    var idfigure = point.id.split("-")[0];
+    var labels = document.getElementById(idfigure).querySelectorAll("g.label");
+    var labelLinkto = Array.from(labels).filter(label => label.getAttribute("linkto") == point.id);
+    var foreignObject = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject");
+    if (labelLinkto.length == 0) {
+      foreignObject.setAttribute("x", "0");
+      foreignObject.setAttribute("y", "0");
+      foreignObject.setAttribute("text-anchor", "start");
+      foreignObject.setAttribute("width", "20");
+      foreignObject.setAttribute("height", "20");
+      foreignObject.setAttribute("style", point.getAttribute("style"));
+      foreignObject.innerHTML = katex.renderToString(point.getAttribute("name"), {
+        output: "mathml"
+      });
+    } else {
+      var label = labelLinkto[0];
+      if (label.hasAttribute("x")) {
+        foreignObject.setAttribute("x", label.getAttribute("x"));
+      } else {
+        foreignObject.setAttribute("x", "0");
+      }
+      if (label.hasAttribute("y")) {
+        foreignObject.setAttribute("y", label.getAttribute("y"));
+      } else {
+        foreignObject.setAttribute("y", "0");
+      }
+      if (label.hasAttribute("width")) {
+        foreignObject.setAttribute("width", label.getAttribute("width"));
+      } else {
+        foreignObject.setAttribute("width", "20");
+      }
+      if (label.hasAttribute("height")) {
+        foreignObject.setAttribute("height", label.getAttribute("height"));
+      } else {
+        foreignObject.setAttribute("height", "20");
+      }
+      if (label.hasAttribute("text-anchor")) {
+        foreignObject.setAttribute("text-anchor", label.getAttribute("text-anchor"));
+      } else {
+        foreignObject.setAttribute("text-anchor", "middle");
+      }
+      if (label.hasAttribute("fill")) {
+        foreignObject.setAttribute("fill", label.getAttribute("fill"));
+      } else {
+        foreignObject.setAttribute("fill", "black");
+      }
+      if (label.hasAttribute("stroke")) {
+        foreignObject.setAttribute("stroke", label.getAttribute("stroke"));
+      } else {
+        foreignObject.setAttribute("stroke", "stroke");
+      }
+      foreignObject.setAttribute("style", labelLinkto[0].getAttribute("style"));
+      foreignObject.innerHTML = katex.renderToString(label.innerHTML, {
+        output: "mathml"
+      });
+    }
+    foreignObject.style.userSelect = "none";
+    point.appendChild(foreignObject);
+  }
+};
+var constructCrossPoint = function (point) {
+  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", "M-2,-2 L2,2 M-2,2 L2,-2");
+  path.setAttribute("fill", "transparent");
+  path.setAttribute("stroke", "black");
+  path.setAttribute("class", "crosspoint");
+  path.style.userSelect = "none";
+  // Récupérer le style du point
+  var style = point.getAttribute("style");
+  path.setAttribute("style", style);
+  point.appendChild(path);
+};
+var automaticHideCrossPoint = function (point) {
+  var idfigure = point.id.split("-")[0];
+  getPolygonesFigure(idfigure).forEach(function (polygone) {
+    var linkto = getLinkto(polygone);
+    if (linkto.includes(point.id)) {
+      point.querySelector("path.crosspoint").setAttribute("stroke", "transparent");
+    }
+  });
+};
+var constructHightlightPoint = function (point) {
+  if (point.classList.contains("draggable")) {
+    var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("class", "selectionne");
+    circle.setAttribute("cx", "0");
+    circle.setAttribute("cy", "0");
+    circle.setAttribute("fill", "transparent");
+    circle.setAttribute("stroke", "transparent");
+    circle.setAttribute("fill-opacity", "0.2");
+    circle.setAttribute("r", "0");
+    circle.style.userSelect = "none";
+    point.prepend(circle);
+  }
+};
+var constructSelectPoint = function (point) {
+  if (point.classList.contains("draggable")) {
+    var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("class", "selectionneur");
+    circle.setAttribute("cx", "0");
+    circle.setAttribute("cy", "0");
+    circle.setAttribute("fill", "transparent");
+    circle.setAttribute("r", "4");
+    point.appendChild(circle);
+  }
+};
+var getPointsFigure = function (figure) {
+  var points = document.querySelectorAll("g.point");
+  var pointsArray = Array.from(points);
+  return pointsArray.filter(point => point.id.split("-")[0] == figure.id);
+};
+var initialiserPointTransform = function (point) {
+  var x = 0;
+  var y = 0;
+  if (point.hasAttribute("x")) {
+    x = point.getAttribute("x");
+  }
+  if (point.hasAttribute("y")) {
+    y = point.getAttribute("y");
+  }
+  point.setAttribute("transform", "translate(" + x + "," + y + ")");
+};
+var getPolygonesFigure = function (idfigure) {
+  var polygones = document.querySelectorAll("g.polygone");
+  var polygonesArray = Array.from(polygones);
+  return polygonesArray.filter(polygone => polygone.id.split("-")[0] == idfigure);
+};
+var getVecteursFigure = function (figure) {
+  var vecteurs = document.querySelectorAll("g.vecteur");
+  var vecteursArray = Array.from(vecteurs);
+  return vecteursArray.filter(vecteur => vecteur.id.split("-")[0] == figure.id);
+};
+var constructHeadVecteur = function (vecteur) {
+  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
+  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
+  var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Segment(A, B);
+  var alpha = AB.angle() / Math.PI * 180;
+  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", "M-7,-2 L-0,-0 L-7,2");
+  // Déterminer les coordonnées relatives de B par rappport à A
+  path.setAttribute("transform", "translate(" + B.x + "," + B.y + ") rotate(" + -alpha + ")");
+  path.setAttribute("fill", "black");
+  path.setAttribute("stroke-width", "0.5");
+  path.classList.add("headVecteur");
+  path.style.userSelect = "none";
+  setStroke(vecteur, path);
+  // Ajouter le style du vecteur au path
+  path.setAttribute("style", vecteur.getAttribute("style"));
+  // Si dans le style il y a un stroke alors on ajoute la même couleur au fill du path
+  if (vecteur.getAttribute("style") != null && vecteur.getAttribute("style").includes("stroke")) {
+    // Récupérer le stroke du style
+    var stroke = vecteur.getAttribute("style").split(";").filter(style => style.includes("stroke"))[0];
+    // Récupérer la couleur du stroke
+    var color = stroke.split(":")[1];
+    path.setAttribute("fill", color);
+  }
+  vecteur.appendChild(path);
+};
+var constructLabelVecteur = function (vecteur) {
+  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
+  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
+  var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Segment(A, B);
+  var I = AB.milieu();
+  var foreignObject = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject");
+  foreignObject.setAttribute("x", I.x);
+  foreignObject.setAttribute("y", I.y);
+  foreignObject.setAttribute("width", "20");
+  foreignObject.setAttribute("height", "20");
+  foreignObject.setAttribute("style", vecteur.getAttribute("style"));
+  // Ajouter le style du vecteur
+  foreignObject.setAttribute("style", vecteur.getAttribute("style"));
+  foreignObject.innerHTML = katex.renderToString("\\overrightarrow{" + vecteur.getAttribute("name") + "}", {
+    output: "mathml"
+  });
+  foreignObject.style.userSelect = "none";
+  vecteur.appendChild(foreignObject);
+};
+var constructVecteur = function (vecteur) {
+  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
+  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
+  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", "M" + A.x + "," + A.y + " L" + B.x + "," + B.y);
+  setStroke(vecteur, path);
+  vecteur.appendChild(path);
+  constructHeadVecteur(vecteur);
+  // Ajouter le style du vecteur au path
+  path.setAttribute("style", vecteur.getAttribute("style"));
+  if (vecteur.classList.contains("labeled")) {
+    constructLabelVecteur(vecteur);
+  }
+};
+var initialiserVecteur = function (vecteur) {
+  constructVecteur(vecteur);
+};
+var initialiserVecteursFigure = function (figure) {
+  getVecteursFigure(figure).forEach(function (vecteur) {
+    initialiserVecteur(vecteur);
+  });
+};
+var getDroitesFigure = function (figure) {
+  var droites = document.querySelectorAll("g.droite");
+  var droitesArray = Array.from(droites);
+  return droitesArray.filter(droite => droite.id.split("-")[0] == figure.id);
+};
+var determinerExtremitesDroite = function (droite) {
+  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(droite, 0)));
+  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(droite, 1)));
+  var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
+  AB.setCoordonneesVecteur2Points(A, B);
+  var u = AB.normalisation();
+  var E1 = A.translation(u.multiplicationVecteur(-200));
+  var E2 = A.translation(u.multiplicationVecteur(200));
+  return [E1, E2];
+};
+var setStroke = function (objet, path) {
+  var stroke = objet.hasAttribute("stroke") ? objet.getAttribute("stroke") : "black";
+  path.setAttribute("stroke", stroke);
+  var strokewidth = objet.hasAttribute("stroke-width") ? objet.getAttribute("stroke-width") : "0.5";
+  path.setAttribute("stroke-width", strokewidth);
+  // Si c'est un vecteur il faut que le fill soit le même que le srtoke du vecteur
+  if (objet.classList.contains("vecteur")) {
+    path.setAttribute("fill", stroke);
+  }
+};
+var constructDroite = function (droite) {
+  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  var extremites = determinerExtremitesDroite(droite);
+  var E1 = extremites[0];
+  var E2 = extremites[1];
+  path.setAttribute("d", "M" + E1.x + "," + E1.y + " L" + E2.x + "," + E2.y);
+  setStroke(droite, path);
+  droite.appendChild(path);
+};
+var initialiserDroite = function (droite) {
+  constructDroite(droite);
+};
+var initialiserDroitesFigure = function (figure) {
+  getDroitesFigure(figure).forEach(function (droite) {
+    initialiserDroite(droite);
+  });
+};
+var getDemidroitesFigure = function (figure) {
+  var demidroites = document.querySelectorAll("g.demidroite");
+  var demidroitesArray = Array.from(demidroites);
+  return demidroitesArray.filter(demidroite => demidroite.id.split("-")[0] == figure.id);
+};
+var constructDemiDroite = function (demidroite) {
+  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(demidroite, 0)));
+  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  var extremites = determinerExtremitesDroite(demidroite);
+  var E = extremites[1];
+  path.setAttribute("d", "M" + A.x + "," + A.y + " L" + E.x + "," + E.y);
+  setStroke(demidroite, path);
+  path.setAttribute("style", demidroite.getAttribute("style"));
+  demidroite.appendChild(path);
+};
+var initialiserDemiDroite = function (demidroite) {
+  constructDemiDroite(demidroite);
+};
+var initialiserDemiDroitesFigure = function (figure) {
+  getDemidroitesFigure(figure).forEach(function (demidroite) {
+    initialiserDemiDroite(demidroite);
+  });
+};
+var getSegmentsFigure = function (figure) {
+  var segments = document.querySelectorAll("g.segment");
+  var segmentsArray = Array.from(segments);
+  return segmentsArray.filter(segment => segment.id.split("-")[0] == figure.id);
+};
+var constructCodageSegment = function (segment, codage) {
+  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(segment, 0)));
+  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(segment, 1)));
+  var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Segment(A, B);
+  var I = AB.milieu();
+  var alpha = AB.angle() / Math.PI * 180;
+  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("fill", "transparent");
+  path.setAttribute("stroke", "black");
+  path.setAttribute("stroke-width", "0.8");
+  path.setAttribute("transform", "translate(" + I.x + "," + I.y + ") rotate(" + alpha + ")");
+  path.setAttribute("d", codage);
+  path.style.userSelect = "none";
+  path.classList.add("codageSegment");
+  segment.appendChild(path);
+};
+var isCodageSegment = function (segment) {
+  return segment.classList.contains("codage");
+};
+var isSegmentLie = function (segment) {
+  // Dans linkto, on a l'id des deux points et éventuellement l'id d'un segment lié par le codage
+  var linkto = getLinkto(segment);
+  return linkto.length == 3;
+};
+var getSegmentLie = function (segment) {
+  var linkto = getLinkto(segment);
+  return document.getElementById(linkto[2]);
+};
+var getCodageSegmentLie = function (segment) {
+  var linkto = getLinkto(segment);
+  return getSegmentLie(segment).querySelector("path.codageSegment").getAttribute("d");
+};
+var listeCodagesFigure = function (objet) {
+  var idfigure = objet.id.split("-")[0];
+  var codages = document.querySelectorAll("g.codage");
+  var codagesArray = Array.from(codages);
+  var codagesFigure = codagesArray.filter(codage => codage.id.split("-")[0] == idfigure).filter(codage => codage.querySelector("path.codageSegment") != null).map(
+  // On récupère l'attribut d
+  codage => codage.querySelector("path.codageSegment").getAttribute("d"));
+  return codagesFigure;
+};
+var nouveauCodageSegment = function (segment) {
+  var codageExistants = listeCodagesFigure(segment);
+  // On veut un codage qui n'existe pas déjà
+  var i = 0;
+  while (codageExistants.includes(codagesSegment[i])) {
+    i++;
+    if (i == codagesSegment.length) {
+      break;
+    }
+  }
+  if (i < codagesSegment.length) {
+    return codagesSegment[i];
+  } else {
+    // Plus de codages disponibles
+    return "";
+  }
+};
+var constructSegment = function (segment) {
+  var A = getElementLinkto(segment, 0);
+  var B = getElementLinkto(segment, 1);
+  // Construire un élément path
+  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  // A est l'origine et B l'extrémité du path
+  path.setAttribute("d", "M" + getCoordonneesPoint(A).join(",") + " L" + getCoordonneesPoint(B).join(","));
+  setStroke(segment, path);
+  segment.appendChild(path);
+  if (isCodageSegment(segment)) {
+    if (isSegmentLie(segment)) {
+      constructCodageSegment(segment, getCodageSegmentLie(segment));
+    } else {
+      constructCodageSegment(segment, nouveauCodageSegment(segment));
+    }
+  }
+};
+var initialiserSegment = function (segment) {
+  constructSegment(segment);
+};
+var initialiserSegmentsFigure = function (figure) {
+  getSegmentsFigure(figure).forEach(function (segment) {
+    initialiserSegment(segment);
+  });
+};
+var constructPolygone = function (polygone) {
+  var points = getLinkto(polygone).map(point => new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(document.getElementById(point)))).map(point => [point.x, point.y].join(","));
+  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  var d = "M" + points.join(" L") + " Z";
+  path.setAttribute("d", d);
+  setStroke(polygone, path);
+  path.setAttribute("style", polygone.getAttribute("style"));
+  polygone.appendChild(path);
+};
+var initialiserPolygone = function (polygone) {
+  constructPolygone(polygone);
+};
+var initialiserPolygonesFigure = function (figure) {
+  getPolygonesFigure(figure.id).forEach(function (polygone) {
+    initialiserPolygone(polygone);
+  });
+};
+var getGraduationsFigure = function (figure) {
+  var graduations = document.querySelectorAll("g.graduation");
+  var graduationsArray = Array.from(graduations);
+  return graduationsArray.filter(graduation => graduation.id.split("-")[0] == figure.id);
+};
+var constructGraduation = function (graduation) {
+  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(graduation, 0)));
+  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(graduation, 1)));
+  var parametres = eval("({" + graduation.getAttribute("parametres") + "})");
+  // Si parametres.vsize n'existe pas alors on prend 4
+  if (parametres.vsize == undefined) {
+    parametres.vsize = 4;
+  }
+  if (parametres.distance == undefined) {
+    parametres.distance = 10;
+  }
+  var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur(0, 0);
+  AB.setCoordonneesVecteur2Points(A, B);
+  var u = AB.normalisation();
+  var graduations = [];
+  for (var i = 0; i < parametres.n + 1; i++) {
+    graduations.push(A.translation(u.multiplicationVecteur(i * AB.norme() / parametres.n)));
+  }
+  // Construire les graduations de taille verticale vsize
+  var graduationsSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  var style = graduation.getAttribute("style");
+  graduationsSVG.setAttribute("style", style);
+  for (var i = 0; i < parametres.n + 1; i++) {
+    var graduationSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    // La graduation est pour moitié en dessous et pour moitié au dessus du point
+    // La graduation doit être orientée selon le vecteur u
+    var x1 = graduations[i].x - parametres.vsize / 2 * u.y;
+    var y1 = graduations[i].y + parametres.vsize / 2 * u.x;
+    var x2 = graduations[i].x + parametres.vsize / 2 * u.y;
+    var y2 = graduations[i].y - parametres.vsize / 2 * u.x;
+    graduationSVG.setAttribute("d", "M" + x1 + "," + y1 + " L" + x2 + "," + y2);
+    graduationSVG.setAttribute("stroke", "black");
+    graduationSVG.setAttribute("stroke-width", "0.5");
+    graduationSVG.style.userSelect = "none";
+    graduationsSVG.appendChild(graduationSVG);
+  }
+  // On ajoute maintenant les abscisses des graduations si la class abscisses est présente
+  if (graduation.classList.contains("abscisses")) {
+    // Si parametres.nmin n'existe pas alors on prend 0
+    if (parametres.nmin == undefined) {
+      parametres.nmin = 0;
+    }
+    var angle = Math.atan2(u.y, u.x); // Angle de u par rapport à l'axe des abscisses
+
+    var abscissesSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    for (var i = 0; i < parametres.n + 1; i++) {
+      var abscisseSVG = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      var offsetX = 0,
+        offsetY = parametres.distance; // Par défaut, placez les abscisses en dessous
+
+      // Si l'angle est dans le 2ème ou 3ème quadrant, placez les abscisses au-dessus
+      if (angle > Math.PI / 2 && angle < 3 * Math.PI / 2) {
+        offsetY = -parametres.distance;
+      }
+      abscisseSVG.setAttribute("x", graduations[i].x + offsetX);
+      abscisseSVG.setAttribute("y", graduations[i].y + offsetY);
+      abscisseSVG.setAttribute("text-anchor", "middle");
+      abscisseSVG.setAttribute("font-size", "10");
+      abscisseSVG.setAttribute("fill", "black");
+      abscisseSVG.setAttribute("stroke", "transparent");
+      abscisseSVG.setAttribute("stroke-width", "0.5");
+      abscisseSVG.setAttribute("style", "user-select:none");
+      abscisseSVG.setAttribute("style", style);
+      abscisseSVG.innerHTML = (parametres.nmin + i * (parametres.nmax - parametres.nmin) / parametres.n).toFixed(0);
+      graduationsSVG.appendChild(abscisseSVG);
+    }
+  }
+  graduation.appendChild(graduationsSVG);
+};
+var initialiserGraduation = function (graduation) {
+  constructGraduation(graduation);
+};
+var initialiserGraduationsFigure = function (figure) {
+  getGraduationsFigure(figure).forEach(function (graduation) {
+    initialiserGraduation(graduation);
+  });
+};
+var getCourbesFigure = function (figure) {
+  var courbes = document.querySelectorAll("g.courbe");
+  var courbesArray = Array.from(courbes);
+  return courbesArray.filter(courbe => courbe.id.split("-")[0] == figure.id);
+};
+var addDebug = function () {
+  // Ajout d'un élément debug dans le DOM
+  var debug = document.createElement("div");
+  debug.id = "debug";
+  document.body.appendChild(debug);
+  // Afficher tous les messages de console.log() dans le div debug
+  console.log = function (message) {
+    debug.innerHTML += message + "<br>";
+  };
+  console.error = function (message) {
+    debug.innerHTML += "<span style='color:red'>" + message + "</span><br>";
+  };
+  console.log("%%%%% DEBUG %%%%%%%");
+};
+var convertStringToParametres = function (paramString) {
+  // Divisez la chaîne en paires clé-valeur
+  var pairs = paramString.split(",");
+
+  // Traitez chaque paire
+  var processedPairs = pairs.map(pair => {
+    var [key, value] = pair.split(":");
+    // Si la valeur n'est pas clairement numérique, considérez-la comme une chaîne
+    if (isNaN(parseFloat(value))) {
+      value = '"' + value + '"';
+    }
+    return '"' + key + '":' + value;
+  });
+  // Recombinez les paires traitées en une seule chaîne
+  var jsonStr = "{" + processedPairs.join(",") + "}";
+  return JSON.parse(jsonStr);
+};
+var initialiserParametresCourbe = function (courbe) {
+  var paramString = courbe.getAttribute("parametres");
+  var parametres = convertStringToParametres(paramString);
+  // Si parametres.xunit n'existe pas alors on prend 1
+  if (parametres.xunit == undefined) {
+    parametres.xunit = 1;
+  }
+  // Si parametres.yunit n'existe pas alors on prend 1
+  if (parametres.yunit == undefined) {
+    parametres.yunit = 1;
+  }
+  // Si parametres.xmin n'existe pas alors on prend -10
+  if (parametres.xmin == undefined) {
+    parametres.xmin = -10;
+  }
+  // Si parametres.xmax n'existe pas alors on prend 10
+  if (parametres.xmax == undefined) {
+    parametres.xmax = 10;
+  }
+  // Si parametres.ymin n'existe pas alors on prend -10
+  if (parametres.ymin == undefined) {
+    parametres.ymin = -10;
+  }
+  // Si parametres.ymax n'existe pas alors on prend 10
+  if (parametres.ymax == undefined) {
+    parametres.ymax = 10;
+  }
+  // Si parametres.n n'existe pas alors on prend 100
+  if (parametres.n == undefined) {
+    parametres.n = 100;
+  }
+  return parametres;
+};
+var recupererPentesCourbe = function (courbe) {
+  var pentes = courbe.getAttribute("pentes");
+  if (pentes != null) {
+    var parametresPentes = convertStringToParametres(pentes);
+    // parametresPentes est un dictionnaire, chaque clé est la pente. Il faut la convertir en son opposée
+    for (var key in parametresPentes) {
+      parametresPentes[key] = -parametresPentes[key];
+    }
+    return parametresPentes;
+  } else {
+    return null;
+  }
+};
+var calculCoordonneesPointsCourbe = function (expression, parametres) {
+  var x = [];
+  var y = [];
+  for (var i = 0; i < parametres.n + 1; i++) {
+    x.push(parametres.xmin + i * (parametres.xmax - parametres.xmin) / parametres.n);
+    y.push(mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate(expression, {
+      x: x[i]
+    }).valueOf());
+  }
+  return {
+    x,
+    y
+  };
+};
+var constructPathCourbe = function (x, y, echelleX, echelleY, viewBox, parametres) {
+  // On met les coordonnées des points à l'échelle tout en effectuant un changement de repère
+  for (var i = 0; i < parametres.n + 1; i++) {
+    x[i] = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[0], "+(").concat(x[i], " - ").concat(parametres.xmin, ") * ").concat(echelleX)).valueOf();
+    y[i] = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[1], "+(-1*").concat(y[i], " + ").concat(parametres.ymax, ") * ").concat(echelleY)).valueOf();
+  }
+  // On construit le path
+  var d = "M" + x[0] + "," + y[0];
+  for (var i = 1; i < parametres.n + 1; i++) {
+    d += " L" + x[i] + "," + y[i];
+  }
+  return d;
+};
+var getOrigineAxes = function (courbe, parametres, echelleX, echelleY, viewBox) {
+  // Calcul des positions des axes en fonction de l'échelle et du changement de repère
+  var xOrigin = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[0], "+(-1 * ").concat(parametres.xmin, ") * ").concat(echelleX)).valueOf();
+  var yOrigin = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[1], "+").concat(parametres.ymax, " * ").concat(echelleY)).valueOf();
+  return {
+    xOrigin,
+    yOrigin
+  };
+};
+var constructPathAxeX = function (xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres) {
+  return "M" + mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[0], "+(").concat(parametres.xmin, " - ").concat(parametres.xmin, ") * ").concat(echelleX)).valueOf() + "," + yOrigin + " L" + mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[0], "+(").concat(parametres.xmax, " - ").concat(parametres.xmin, ") * ").concat(echelleX)).valueOf() + "," + yOrigin;
+};
+var constructPathAxeY = function (xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres) {
+  return "M" + xOrigin + "," + mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[1], "+(-1*").concat(parametres.ymin, " + ").concat(parametres.ymax, ") * ").concat(echelleY)).valueOf() + " L" + xOrigin + "," + mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[1], "+(-1*").concat(parametres.ymax, " + ").concat(parametres.ymax, ") * ").concat(echelleY)).valueOf();
+};
+var constructPathTickXGraduation = function (i, xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres, absFirstGraduation) {
+  var x1 = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[0], "+(").concat(absFirstGraduation + i * parametres.xunit, " - ").concat(parametres.xmin, ") * ").concat(echelleX)).valueOf();
+  var y1 = yOrigin + 1;
+  var x2 = x1;
+  var y2 = yOrigin - 1;
+  var d = "M" + x1 + "," + y1 + " L" + x2 + "," + y2;
+  return d;
+};
+var constructPathTickYGraduation = function (i, xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres, ordFirstGraduation) {
+  var x1 = xOrigin + 1;
+  var y1 = mathjs__WEBPACK_IMPORTED_MODULE_1__.evaluate("".concat(viewBox[1], "+(-1*").concat(ordFirstGraduation + i * parametres.yunit, " + ").concat(parametres.ymax, ") * ").concat(echelleY)).valueOf();
+  var x2 = xOrigin - 1;
+  var y2 = y1;
+  var d = "M" + x1 + "," + y1 + " L" + x2 + "," + y2;
+  return d;
+};
+function combinedControlPoints(points) {
+  let tension = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.5;
+  var controlPoints = [];
+  for (var i = 0; i < points.length - 1; i++) {
+    var point = points[i];
+    var nextPoint = points[i + 1];
+    var delta = tension * (nextPoint[0] - point[0]);
+    if (point.pente !== undefined) {
+      var dy = point.pente * delta;
+      controlPoints.push([point[0] + delta, point[1] + dy]);
+    } else {
+      var p0 = points[i - 1] || point;
+      controlPoints.push([point[0] + (nextPoint[0] - p0[0]) / 6, point[1] + (nextPoint[1] - p0[1]) / 6]);
+    }
+    if (nextPoint.pente !== undefined) {
+      var dyNext = nextPoint.pente * delta;
+      controlPoints.push([nextPoint[0] - delta, nextPoint[1] - dyNext]);
+    } else {
+      var p3 = points[i + 2] || nextPoint;
+      controlPoints.push([nextPoint[0] - (p3[0] - point[0]) / 6, nextPoint[1] - (p3[1] - point[1]) / 6]);
+    }
+  }
+  return controlPoints;
+}
+var constructCourbe = function (courbe) {
+  var parametres = initialiserParametresCourbe(courbe);
+  var expression = courbe.getAttribute("expression");
+  // On récupère le viewBox de la figure (X_0 Y_0 Width Height)
+  var viewBox = courbe.parentNode.getAttribute("viewBox").split(" ").map(Number);
+  // On calcule l'échelle en abscisse et en ordonnée par rapport au viewBox
+  var echelleX = viewBox[2] / (parametres.xmax - parametres.xmin);
+  var echelleY = viewBox[3] / (parametres.ymax - parametres.ymin);
+  // On détermine les coordonnées de l'origine des axes
+  var {
+    xOrigin,
+    yOrigin
+  } = getOrigineAxes(courbe, parametres, echelleX, echelleY, viewBox);
+  // Construire la courbe
+  // On compte le nombre d'éléments dans linkto
+  var linkto = getLinkto(courbe);
+  var d;
+  // On test si linkto existe
+  if (linkto.length <= 1) {
+    // La courbe est définie par son expression lorsque le paramètre linkto est vide ou ne comporte qu'un seul élément
+    var {
+      x,
+      y
+    } = calculCoordonneesPointsCourbe(expression, parametres);
+    var d = constructPathCourbe(x, y, echelleX, echelleY, viewBox, parametres);
+  } else {
+    // La courbe est définie par des points, on fait passer la courbe par ces points
+    // On récupère les pentes des tangentes aux points lorsqu'elles sont définies
+    var pentes = recupererPentesCourbe(courbe);
+    // On récupère les coordonnées de ces points et on ajoute la propriete pente si elle existe
+    var points = [];
+    for (var i = 0; i < linkto.length; i++) {
+      var point = courbe.parentNode.querySelector("#" + linkto[i]);
+      var coords = getCoordonneesPoint(point);
+      if (pentes != null && pentes[point.id] != undefined) {
+        coords.pente = pentes[point.id];
+      }
+      linkto[i] = coords;
+      points.push(coords);
+    }
+    var d = "M" + points[0].join(",");
+    var controlPoints = combinedControlPoints(points);
+    for (var i = 0; i < points.length - 1; i++) {
+      d += " C" + controlPoints[2 * i].join(",") + " " + controlPoints[2 * i + 1].join(",") + " " + points[i + 1].join(",");
+    }
+  }
+  var courbeSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  courbeSVG.setAttribute("d", d);
+  courbeSVG.setAttribute("fill", "transparent");
+  courbeSVG.setAttribute("stroke", "black");
+  courbeSVG.setAttribute("stroke-width", "0.5");
+  courbeSVG.setAttribute("style", courbe.getAttribute("style"));
+  courbeSVG.style.userSelect = "none";
+  // Construire les axes
+  var axesSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  var axeX = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  var axeY = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  var pathAxeX = constructPathAxeX(xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres);
+  axeX.setAttribute("d", pathAxeX);
+  var pathAxeY = constructPathAxeY(xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres);
+  axeY.setAttribute("d", pathAxeY);
+  axeX.setAttribute("stroke", "black");
+  axeY.setAttribute("stroke", "black");
+  axeX.setAttribute("stroke-width", "0.5");
+  axeY.setAttribute("stroke-width", "0.5");
+  axeX.style.userSelect = "none";
+  axeY.style.userSelect = "none";
+  axesSVG.appendChild(axeX);
+  axesSVG.appendChild(axeY);
+  // Construire les graduations
+  var graduationsSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  var style = courbe.getAttribute("style");
+  graduationsSVG.setAttribute("style", style);
+
+  // Calculons l'abscisse de la première graduation
+  var absFirstGraduation = Math.ceil(parametres.xmin / parametres.xunit) * parametres.xunit;
+  for (var i = 0; i < (parametres.xmax - parametres.xmin) / parametres.xunit + 1; i++) {
+    var graduationAxexSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    var d = constructPathTickXGraduation(i, xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres, absFirstGraduation);
+    graduationAxexSVG.setAttribute("d", d);
+    graduationAxexSVG.setAttribute("stroke", "black");
+    graduationAxexSVG.setAttribute("stroke-width", "0.5");
+    graduationAxexSVG.style.userSelect = "none";
+    graduationsSVG.appendChild(graduationAxexSVG);
+  }
+
+  // Calculons l'ordonnée de la première graduation
+  var ordFirstGraduation = Math.ceil(parametres.ymin / parametres.yunit) * parametres.yunit;
+  for (var i = 0; i < (parametres.ymax - parametres.ymin) / parametres.yunit + 1; i++) {
+    var graduationAxeySVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    var d = constructPathTickYGraduation(i, xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres, ordFirstGraduation);
+    graduationAxeySVG.setAttribute("d", d);
+    graduationAxeySVG.setAttribute("stroke", "black");
+    graduationAxeySVG.setAttribute("stroke-width", "0.5");
+    graduationAxeySVG.style.userSelect = "none";
+    graduationsSVG.appendChild(graduationAxeySVG);
+  }
+
+  // Placer l'unité en abscisse
+  var uniteXSVG = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  uniteXSVG.setAttribute("x", xOrigin + parametres.xunit * echelleX);
+  uniteXSVG.setAttribute("y", yOrigin + 10);
+  uniteXSVG.setAttribute("text-anchor", "middle");
+  uniteXSVG.setAttribute("font-size", "10");
+  uniteXSVG.setAttribute("fill", "black");
+  uniteXSVG.setAttribute("stroke", "transparent");
+  uniteXSVG.setAttribute("stroke-width", "0.5");
+  uniteXSVG.setAttribute("style", "user-select:none");
+  uniteXSVG.setAttribute("style", style);
+  uniteXSVG.innerHTML = parametres.xunit;
+  // Placer l'unité en ordonnée
+  var uniteYSVG = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  uniteYSVG.setAttribute("x", xOrigin - 5);
+  uniteYSVG.setAttribute("y", yOrigin - parametres.yunit * echelleY + 2.5); // Décalage de 2.5 pixels
+  uniteYSVG.setAttribute("text-anchor", "middle");
+  uniteYSVG.setAttribute("font-size", "10");
+  uniteYSVG.setAttribute("fill", "black");
+  uniteYSVG.setAttribute("stroke", "transparent");
+  uniteYSVG.setAttribute("stroke-width", "0.5");
+  uniteYSVG.setAttribute("style", "user-select:none");
+  uniteYSVG.setAttribute("style", style);
+  uniteYSVG.innerHTML = parametres.yunit;
+  courbe.appendChild(axesSVG);
+  courbe.appendChild(graduationsSVG);
+  courbe.appendChild(uniteXSVG);
+  courbe.appendChild(uniteYSVG);
+  courbe.appendChild(courbeSVG);
+};
+var initialiserCourbe = function (courbe) {
+  constructCourbe(courbe);
+};
+var initialiserCourbesFigure = function (figure) {
+  getCourbesFigure(figure).forEach(function (courbe) {
+    initialiserCourbe(courbe);
+  });
+};
+var getSecteursFigure = function (figure) {
+  var secteurs = document.querySelectorAll("g.secteur");
+  var secteursArray = Array.from(secteurs);
+  return secteursArray.filter(secteur => secteur.id.split("-")[0] == figure.id);
+};
+function createSVGElement(tagName) {
+  return document.createElementNS("http://www.w3.org/2000/svg", tagName);
+}
+function constructSecteur(secteur) {
+  const centre = getElementLinkto(secteur, 0);
+  var paramString = secteur.getAttribute("parametres");
+  const defaultParams = {
+    r: 10,
+    departAngle: 0,
+    angle: 90,
+    sens: 0
+  };
+  const parametres = {
+    ...defaultParams,
+    ...convertStringToParametres(paramString)
+  };
+  const secteurSVG = createSVGElement("path");
+  const [x, y] = getCoordonneesPoint(centre);
+  const angleRad = parametres.angle / 180 * Math.PI;
+  const departAngleRad = parametres.departAngle / 180 * Math.PI;
+  const r = parametres.r;
+  const senscoeff = parametres.sens == 0 ? 1 : -1;
+  const x1 = x + r * Math.cos(departAngleRad);
+  const y1 = y - senscoeff * r * Math.sin(departAngleRad);
+  const x2 = x + r * Math.cos(angleRad + departAngleRad);
+  const y2 = y - senscoeff * r * Math.sin(angleRad + departAngleRad);
+  const largeArcFlag = parametres.angle > 180 ? 1 : 0;
+  const d = "M".concat(x, ",").concat(y, " L").concat(x1, ",").concat(y1, " A").concat(r, ",").concat(r, " 0 ").concat(largeArcFlag, ",").concat(parametres.sens, " ").concat(x2, ",").concat(y2, " Z");
+  secteurSVG.setAttribute("d", d);
+  secteurSVG.setAttribute("fill", "transparent");
+  secteurSVG.setAttribute("stroke", "black");
+  secteurSVG.setAttribute("stroke-width", "0.5");
+  secteurSVG.setAttribute("style", secteur.getAttribute("style"));
+  secteurSVG.style.userSelect = "none";
+  secteur.appendChild(secteurSVG);
+}
+var initialiserSecteur = function (secteur) {
+  constructSecteur(secteur);
+};
+var initialiserSecteursFigure = function (figure) {
+  getSecteursFigure(figure).forEach(function (secteur) {
+    initialiserSecteur(secteur);
+  });
+};
+var initialiserFigure = function (figure) {
+  addQuadrillage(figure);
+  addBoutonQuadrillage(figure);
+  addBoutonPleinEcran(figure);
+  initialiserPointsFigure(figure);
+  initialiserVecteursFigure(figure);
+  initialiserDroitesFigure(figure);
+  initialiserDemiDroitesFigure(figure);
+  initialiserSegmentsFigure(figure);
+  initialiserPolygonesFigure(figure);
+  initialiserGraduationsFigure(figure);
+  initialiserCourbesFigure(figure);
+  initialiserSecteursFigure(figure);
+};
+var getCoordonneesPoint = function (point) {
+  var data = point.getAttribute("transform").split("translate(")[1].split(")")[0].split(",");
+  var x = parseFloat(data[0]);
+  var y = parseFloat(data[1]);
+  return [x, y];
+};
+var setCoordonneesPoint = function (point, x, y) {
+  point.setAttribute("transform", "translate(" + x + "," + y + ")");
+};
+var actualiserCoordonneesPointClassTranslation = function (point) {
+  if (point.classList.contains("translation")) {
+    // M est l'image de P par la translation de vecteur kAB
+    var A = getElementLinkto(point, 0);
+    var B = getElementLinkto(point, 1);
+    var P = getElementLinkto(point, 2);
+    let P1 = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(A));
+    let P2 = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(B));
+    let u = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
+    u.setCoordonneesVecteur2Points(P1, P2);
+    let P3 = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(P));
+    var data = point.getAttribute("data").split(" ");
+    var k = parseFloat(data[0]);
+    let P4 = P3.translation(u.multiplicationVecteur(k));
+    var x4 = P4.x;
+    var y4 = P4.y;
+    setCoordonneesPoint(point, x4, y4);
+  }
+};
+var actualiserCoordonneesPointClassDilatation = function (point) {
+  if (point.classList.contains("dilatation")) {
+    // H est le projeté de P selon la direction formant un angle alpha avec le vecteur AB
+    // M est l'image de P par l'homothétie de rapport k et de centre H
+    var A = getElementLinkto(point, 0);
+    var B = getElementLinkto(point, 1);
+    var P = getElementLinkto(point, 2);
+    let P1 = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(A));
+    let P2 = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(B));
+    let P3 = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(P));
+    var data = point.getAttribute("data").split(" ");
+    var k = parseFloat(data[1]);
+    var alpha = parseFloat(data[0]) / 180 * Math.PI;
+    var H = P3.projectionAngle(P1, P2, alpha);
+    var M = P3.homothetie(H, k);
+    setCoordonneesPoint(point, M.x, M.y);
+  }
+};
+var actualiserCoordonneesPointClassRotation = function (point) {
+  if (point.classList.contains("rotation")) {
+    var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 0)));
+    var data = point.getAttribute("data").split(" ");
+    var alpha = parseFloat(data[0]) / 180 * Math.PI;
+    if (getLinkto(point).length == 1) {
+      var k = parseFloat(data[1]);
+      var P = A.translation(new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur(1, 0));
+      var M = P.rotation(A, alpha).homothetie(A, k);
+    } else if (getLinkto(point).length == 2) {
+      var P = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 1)));
+      var k = parseFloat(data[1]);
+      var M = P.rotation(A, alpha).homothetie(A, k);
+    } else if (getLinkto(point).length == 3) {
+      var P = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 1)));
+      var Q = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 2)));
+      var k = parseFloat(data[1]);
+      var N = P.rotation(A, alpha).homothetie(A, k);
+      var u = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
+      u.setCoordonneesVecteur2Points(A, Q);
+      M = N.translation(u);
+    }
+    setCoordonneesPoint(point, M.x, M.y);
+  }
+};
+var actualiserCoordonneesPointsLies = function (point) {
+  // Récursivité pour atteindre tous les points liés
+  var idPoint = point.getAttribute("id");
+  var points = document.querySelectorAll("g.point[linkto*='" + idPoint + "']");
+  for (var i = 0; i < points.length; i++) {
+    actualiserCoordonneesPoint(points[i]);
+  }
+};
+var initialiserDataPoint = function (point) {
+  // Si le point subit une tranformation, on initialise l'attribut data si ce n'est pas déjà fait
+  if (point.hasAttribute("data") == false) {
+    if (point.classList.contains("translation")) {
+      point.setAttribute("data", "1");
+      point.classList.add("transformation");
+    } else if (point.classList.contains("dilatation")) {
+      point.setAttribute("data", "90 -1");
+      point.classList.add("transformation");
+    } else if (point.classList.contains("rotation")) {
+      point.setAttribute("data", "90 1");
+      point.classList.add("transformation");
+    }
+  } else {
+    point.classList.add("transformation");
+  }
+};
+var actualiserLabelVecteur = function (vecteur) {
+  if (vecteur.classList.contains("labeled")) {
+    var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
+    var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
+    var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Segment(A, B);
+    var I = AB.milieu();
+    var foreignObject = vecteur.querySelector("foreignObject");
+    foreignObject.setAttribute("x", I.x);
+    foreignObject.setAttribute("y", I.y);
+  }
+};
+var actualiserVecteur = function (vecteur) {
+  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
+  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
+  var path = vecteur.querySelector("path");
+  path.setAttribute("d", "M" + A.x + "," + A.y + " L" + B.x + "," + B.y);
+  actualiserHeadVecteur(vecteur);
+  actualiserLabelVecteur(vecteur);
+};
+var actualiserCoordonneesVecteursLies = function (point) {
+  var idPoint = point.getAttribute("id");
+  var vecteurs = document.querySelectorAll("g.vecteur[linkto*='" + idPoint + "']");
+  for (var i = 0; i < vecteurs.length; i++) {
+    actualiserVecteur(vecteurs[i]);
+  }
+};
+var actualiserDroite = function (droite) {
+  var path = droite.querySelector("path");
+  var extremites = determinerExtremitesDroite(droite);
+  var E1 = extremites[0];
+  var E2 = extremites[1];
+  path.setAttribute("d", "M" + E1.x + "," + E1.y + " L" + E2.x + "," + E2.y);
+};
+var actualiserCoordonneesDroitesLies = function (point) {
+  var idPoint = point.getAttribute("id");
+  var droites = document.querySelectorAll("g.droite[linkto*='" + idPoint + "']");
+  for (var i = 0; i < droites.length; i++) {
+    actualiserDroite(droites[i]);
+  }
+};
+var actualiserDemiDroite = function (demidroite) {
+  var path = demidroite.querySelector("path");
+  var extremites = determinerExtremitesDroite(demidroite);
+  var E = extremites[1];
+  var A = getElementLinkto(demidroite, 0);
+  path.setAttribute("d", "M" + getCoordonneesPoint(A).join(",") + " L" + E.x + "," + E.y);
+};
+var actualiserCoordonneesDemiDroitesLies = function (point) {
+  var idPoint = point.getAttribute("id");
+  var demidroites = document.querySelectorAll("g.demidroite[linkto*='" + idPoint + "']");
+  for (var i = 0; i < demidroites.length; i++) {
+    actualiserDemiDroite(demidroites[i]);
+  }
+};
+var actualiserCodageSegment = function (segment) {
+  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(segment, 0)));
+  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(segment, 1)));
+  var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Segment(A, B);
+  var I = AB.milieu();
+  var alpha = AB.angle() / Math.PI * 180;
+  var path = segment.querySelector("path.codageSegment");
+  path.setAttribute("transform", "translate(" + I.x + "," + I.y + ") rotate(" + -alpha + ")");
+};
+var actualiserHeadVecteur = function (vecteur) {
+  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
+  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
+  var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Segment(A, B);
+  var alpha = AB.angle() / Math.PI * 180;
+  var path = vecteur.querySelector("path.headVecteur");
+  path.setAttribute("transform", "translate(" + B.x + "," + B.y + ") rotate(" + -alpha + ")");
+};
+var actualiserSegment = function (segment) {
+  var A = getElementLinkto(segment, 0);
+  var B = getElementLinkto(segment, 1);
+  var path = segment.querySelector("path");
+  path.setAttribute("d", "M" + getCoordonneesPoint(A).join(",") + " L" + getCoordonneesPoint(B).join(","));
+  if (isCodageSegment(segment)) {
+    actualiserCodageSegment(segment);
+  }
+};
+var actualiserCoordonneesSegmentsLies = function (point) {
+  var idPoint = point.getAttribute("id");
+  var segments = document.querySelectorAll("g.segment[linkto*='" + idPoint + "']");
+  for (var i = 0; i < segments.length; i++) {
+    actualiserSegment(segments[i]);
+  }
+};
+var actualiserPolygone = function (polygone) {
+  var points = getLinkto(polygone).map(point => new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(document.getElementById(point)))).map(point => [point.x, point.y].join(","));
+  var path = polygone.querySelector("path");
+  var d = "M" + points.join(" L") + " Z";
+  path.setAttribute("d", d);
+};
+var actualiserCoordonneesPolygonesLies = function (point) {
+  var idPoint = point.getAttribute("id");
+  var polygones = document.querySelectorAll("g.polygone[linkto*='" + idPoint + "']");
+  for (var i = 0; i < polygones.length; i++) {
+    actualiserPolygone(polygones[i]);
+  }
+};
+var actualiserCoordonneesPoint = function (point) {
+  actualiserCoordonneesPointClassTranslation(point);
+  actualiserCoordonneesPointClassDilatation(point);
+  actualiserCoordonneesPointClassRotation(point);
+  actualiserCoordonneesPointsLies(point);
+  actualiserCoordonneesVecteursLies(point);
+  actualiserCoordonneesDroitesLies(point);
+  actualiserCoordonneesDemiDroitesLies(point);
+  actualiserCoordonneesSegmentsLies(point);
+  actualiserCoordonneesPolygonesLies(point);
+};
+var actualiserPointsFigure = function (figure) {
+  getPointsFigure(figure).forEach(function (point) {
+    actualiserCoordonneesPoint(point);
+  });
+};
+var setHightlightPointOn = function (point) {
+  d3.select(point).select("circle.selectionne").attr("fill", "orange");
+  d3.select(point).select("circle.selectionne").attr("r", "20");
+};
+var setHightlightPointOff = function (point) {
+  d3.select(point).select("circle.selectionne").attr("fill", "transparent");
+  d3.select(point).select("circle.selectionne").attr("r", "0");
+};
+var controlerCoordonneesPoint = function (point, figure) {
+  let x = 0;
+  let y = 0;
+  // Points draggable avec contrainte
+  if (point.classList.contains("translation")) {
+    // On détermine le projeté orthogonal du pointeur de la souris sur la droite parallèle à (AB) et passant par P
+    var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 0)));
+    var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 1)));
+    var P = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 2)));
+    var M = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(d3.event.x, d3.event.y);
+    var u = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
+    u.setCoordonneesVecteur2Points(A, B);
+    var Q = P.translation(u);
+    var N = M.projectionOrthogonale(P, Q);
+    x = N.x;
+    y = N.y;
+    // On veut la obtenir le rapport signé de la distance PN sur la distance AB
+    var k = P.distance(N) / A.distance(B);
+    // On veut la obtenir la distance signée en utilisant le produit scalaire de u et v
+    var v = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
+    v.setCoordonneesVecteur2Points(P, N);
+    if (u.produitScalaire(v) < 0) {
+      k = -k;
+    }
+    point.setAttribute("data", k.toString());
+  } else if (point.classList.contains("rotation")) {
+    // Tester le nombre de points liés
+    // Si un seul point
+    if (point.getAttribute("linkto").split(" ").length == 1) {
+      var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 0)));
+      var k = parseFloat(point.getAttribute("data").split(" ")[1]);
+      var M = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(d3.event.x, d3.event.y);
+      var d = A.distance(M);
+      var N = M.homothetie(A, k / d);
+      var u = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur(1, 0);
+      var v = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
+      v.setCoordonneesVecteur2Points(A, N);
+      var alpha = u.angle(v) / Math.PI * 180;
+      point.setAttribute("data", alpha.toString() + " " + k.toString());
+      x = N.x;
+      y = N.y;
+    } else if (point.getAttribute("linkto").split(" ").length == 2) {
+      if (!point.classList.contains("rapport")) {
+        var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 0)));
+        var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 1)));
+        var M = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(d3.event.x, d3.event.y);
+        var k = parseFloat(point.getAttribute("data").split(" ")[1]);
+        var u = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
+        u.setCoordonneesVecteur2Points(A, B);
+        var v = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
+        v.setCoordonneesVecteur2Points(A, M);
+        var alpha = u.angle(v) / Math.PI * 180;
+        point.setAttribute("data", alpha.toString() + " " + k.toString());
+        var N = M.homothetie(A, k);
+        x = N.x;
+        y = N.y;
+      } else {
+        // On conserve l'angle mais on change le rapport
+        var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 0)));
+        var B = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 1)));
+        var M = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(d3.event.x, d3.event.y);
+        var u = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
+        u.setCoordonneesVecteur2Points(A, B);
+        var v = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
+        v.setCoordonneesVecteur2Points(A, M);
+        // Déterminer le signe avec le produit vectoriel
+        var signe = u.produitVectoriel(v) / Math.abs(u.produitVectoriel(v));
+        // On projète M sur l'image de la droite (AB) par la rotation de centre A et d'angle alpha
+        var alpha = parseFloat(point.getAttribute("data").split(" ")[0]) / 180 * Math.PI;
+        var P1 = B.rotation(A, alpha);
+        var N = M.projectionOrthogonale(A, P1);
+        var k = signe * A.distance(N) / A.distance(B);
+        // On veut la obtenir la distance signée en utilisant le produit scalaire de u et v
+        point.setAttribute("data", (alpha / Math.PI * 180).toString() + " " + k.toString());
+        x = N.x;
+        y = N.y;
+      }
+    } else if (point.getAttribute("linkto").split(" ").length == 3) {
+      // Les points sont A, P, Q tels que AQ=AP
+      // Le centre de rotation est maintenant Q mais on veut que le rayon soit toujours AP
+      var A = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 0)));
+      var P = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 1)));
+      var Q = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(...getCoordonneesPoint(getElementLinkto(point, 2)));
+      var M = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Point(d3.event.x, d3.event.y);
+      var k = parseFloat(point.getAttribute("data").split(" ")[1]);
+      var u = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
+      u.setCoordonneesVecteur2Points(A, P);
+      var v = new _class2_js__WEBPACK_IMPORTED_MODULE_0__.Vecteur();
+      v.setCoordonneesVecteur2Points(Q, M);
+      var alpha = u.angle(v) / Math.PI * 180;
+      point.setAttribute("data", alpha.toString() + " " + k.toString());
+      var N = M.homothetie(Q, k);
+      x = N.x;
+      y = N.y;
+    }
+  } else {
+    // Il ne faut pas dépasser les limites du cadre
+    // On récupère les dimensions du cadre avec le viewBox
+    var cadre = figure.querySelector("svg");
+    var viewBox = cadre.getAttribute("viewBox").split(" ");
+    var xmin = parseFloat(viewBox[0]);
+    var ymin = parseFloat(viewBox[1]);
+    var width = parseFloat(viewBox[2]);
+    var height = parseFloat(viewBox[3]);
+    x = Math.min(Math.max(d3.event.x, xmin), xmin + width);
+    y = Math.min(Math.max(d3.event.y, ymin), ymin + height);
+    // Si le quadrillage est affiché, on déplace le point sur le quadrillage
+    if (figure.querySelector("#" + figure.id + "-quadrillage").style.display == "block") {
+      x = Math.round(x / 10) * 10;
+      y = Math.round(y / 10) * 10;
+    }
+  }
+  return [x, y];
+};
+var interactivity = function (figure) {
+  d3.selectAll("g.point.draggable").call(d3.drag().on("drag", function () {
+    if (d3.event.x > 0 && d3.event.x < 200 && d3.event.y > 0 && d3.event.y < 200) {
+      setHightlightPointOn(this);
+      setCoordonneesPoint(this, ...controlerCoordonneesPoint(this, figure));
+      actualiserCoordonneesPoint(this);
+    }
+  }).on("end", function () {
+    setHightlightPointOff(this);
+  }));
+};
+var initialiserPointsFigure = function (figure) {
+  getPointsFigure(figure).filter(point => point.id.split("-")[0] == figure.id).forEach(function (point) {
+    initialiserPointTransform(point);
+    constructLabelPoint(point);
+    constructCrossPoint(point);
+    constructHightlightPoint(point);
+    constructSelectPoint(point);
+    automaticHideCrossPoint(point);
+    initialiserDataPoint(point);
+  });
+};
+var draggablesAuPremierPlan = function (figure) {
+  var svg = figure.querySelector("svg");
+  var draggable = figure.querySelectorAll(".draggable");
+  for (var i = 0; i < draggable.length; i++) {
+    svg.appendChild(draggable[i]);
+  }
+};
+var addListenerInteractivite = function (figure) {
+  addListenerButtonQuadrillage(figure);
+  addListenerButtonPleinEcran(figure);
+  figure.addEventListener("mouseenter", function () {
+    interactivity(this);
+  });
+};
+
+// Créer les figures
+var createFigures = function () {
+  setUniqueIds();
+  var figures = document.querySelectorAll(".figure");
+  for (var i = 0; i < figures.length; i++) {
+    if (figures[i].querySelector("svg") != null) {
+      initialiserFigure(figures[i]);
+      actualiserPointsFigure(figures[i]);
+      draggablesAuPremierPlan(figures[i]);
+      addListenerInteractivite(figures[i]);
+    }
+  }
+  window.parent.postMessage("figures_created", "*");
+};
+
+/***/ }),
+
+/***/ "./src/js/quiz.js":
+/*!************************!*\
+  !*** ./src/js/quiz.js ***!
+  \************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createQuizs: () => (/* binding */ createQuizs)
+/* harmony export */ });
+/* harmony import */ var sql_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sql.js */ "./node_modules/sql.js/dist/sql-wasm.js");
+/* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.js */ "./src/js/index.js");
+/* harmony import */ var _interactif2_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./interactif2.js */ "./src/js/interactif2.js");
+
+
+
+const config = {
+  locateFile: filename => "/dist/".concat(filename)
+};
+let SQL;
+let isInitialized = false;
+async function initializeSqlJs() {
+  if (!isInitialized) {
+    SQL = await sql_js__WEBPACK_IMPORTED_MODULE_0__(config);
+    isInitialized = true;
+  }
+}
+async function importerBD() {
+  await initializeSqlJs();
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    let nomFichier = window.location.pathname.split("/").pop();
+    // Vérifier si le nom du fichier se termine par .html
+    if (!nomFichier.endsWith(".html")) {
+      nomFichier += ".html";
+    }
+    nomFichier = nomFichier.replace(".html", ".sqlite");
+    xhr.open("GET", nomFichier, true);
+    xhr.responseType = "arraybuffer";
+    xhr.onload = function (e) {
+      if (xhr.status === 200) {
+        const db = new SQL.Database(new Uint8Array(this.response));
+        resolve(db);
+      } else {
+        reject("Erreur lors du chargement de la base de données.");
+      }
+    };
+    xhr.onerror = function () {
+      reject("Erreur réseau lors du chargement de la base de données.");
+    };
+    xhr.send();
+  });
+}
+function shuffle(array) {
+  var currentIndex = array.length,
+    temporaryValue,
+    randomIndex;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
+function disableRadios() {
+  var radios = document.getElementsByName("choix");
+  for (var i = 0, length = radios.length; i < length; i++) {
+    radios[i].disabled = false;
+    radios[i].checked = false;
+  }
+}
+function hideCorrection(choix) {
+  for (var i = 0, length = choix.length; i < length; i++) {
+    choix[i].style.background = "none";
+  }
+}
+function hideValider() {
+  document.getElementById("Valider").style.display = "none";
+}
+function setValider(text) {
+  document.getElementById("Valider").innerHTML = text;
+}
+function getCorrection(response) {
+  var radios = document.getElementsByClassName("choix");
+  for (var i = 0, length = radios.length; i < length; i++) {
+    radios[i].disabled = true;
+    // La réponse est correcte
+    if (i == correctAnswerId && i == response) {
+      radios[i].style.background = "rgba(0, 200, 0, 0.7)";
+      nbResponsesCorrectes++;
+    }
+    // La réponse correcte en cas d'erreur
+    if (i == correctAnswerId && i != response) {
+      radios[i].style.background = "rgba(255, 0, 0,0.5)";
+    }
+    // La réponse sélectionnée en cas d'erreur
+    if (i == response && response != correctAnswerId) {
+      radios[i].style.background = "rgb(128, 128, 128,0.2)";
+    }
+  }
+}
+function getAnswer() {
+  var radios = document.getElementsByName("choix");
+  for (var i = 0, length = radios.length; i < length; i++) {
+    if (radios[i].checked) {
+      document.getElementById("Valider").innerHTML = "Suivant";
+      return i;
+    }
+  }
+}
+let correctAnswerId;
+let series = [];
+let nextQuestions = [];
+let db;
+let numQuestion = 0;
+let nbQuestions = 0;
+let nbResponsesCorrectes = 0;
+function creerSerieQuizs(database) {
+  // On détermine le nombre de groupes
+  const query = "SELECT MAX(group_id) FROM questions_answers;";
+  const result = database.exec(query);
+  const nbGroupes = result[0].values[0][0];
+  // On parcourt les groupes
+  for (let i = 1; i <= nbGroupes; i++) {
+    // On récupère toutes les questions du groupe
+    const query2 = "SELECT * FROM questions_answers WHERE group_id = ".concat(i, ";");
+    const result2 = database.exec(query2);
+    // On mélange les questions
+    const shuffledQuestions = shuffle(result2[0].values);
+    // On ajoute les questions mélangées à la série
+    series.push(shuffledQuestions);
+  }
+}
+function tourSuivant() {
+  // On remet le compteur de réponses correctes à zéro
+  nbResponsesCorrectes = 0;
+  // On détermine le nombre de groupes restant dans la série
+  const nbGroupes = series.length;
+  // On parcourt les groupes de la série
+  let questions = [];
+  for (let i = 0; i < nbGroupes; i++) {
+    // On récupère la première question du groupe
+    const question = series[i].shift();
+    // On ajoute la question au tableau des questions
+    questions.push(question);
+  }
+  // Si un groupe est vide, on le supprime de la série
+  series = series.filter(groupe => groupe.length > 0);
+  // On parcourt les questions
+  questions.forEach(question => {
+    // On récupère la question et la réponse
+    const questionText = question[2];
+    let answer = question[3];
+    // Si answer ne contient pas de balise <div> avec la classe "choice"
+    if (!answer.includes('<div class="choice">')) {
+      // On choisit au hasard 3 réponses possibles du même groupe
+      const query2 = "SELECT * FROM questions_answers WHERE group_id = ".concat(question[1], " AND answer != \"").concat(answer, "\" ORDER BY RANDOM() LIMIT 3;");
+      // On récupère les réponses possibles
+      const result2 = db.exec(query2);
+      // On ajoute la réponse à la fin du tableau
+      const answers = result2[0].values.map(value => value[3]);
+      answers.push(answer);
+      // On mélange les réponses
+      const shuffledAnswers = shuffle(answers);
+      // On conserve la bonne réponse
+      const correctAnswer = shuffledAnswers.indexOf(answer);
+      // On ajoute la question et ses réponses à la prochaine série
+      nextQuestions.push({
+        question: questionText,
+        answers: shuffledAnswers,
+        correctAnswer: correctAnswer
+      });
+    } else {
+      // On récupère les réponses possibles dans les balises <div> avec la classe "choice"
+      const parsedDocument = new DOMParser().parseFromString(answer, "text/html");
+      const choiceElements = Array.from(parsedDocument.querySelectorAll(".choice"));
+      const answers = choiceElements.map(value => value.innerHTML);
+      // La première réponse est la bonne réponse
+      answer = answers[0];
+      // On mélange les réponses
+      const shuffledAnswers = shuffle([answer, ...shuffle(answers.slice(1)).slice(0, 3)]);
+      // On conserve la bonne réponse
+      const correctAnswer = shuffledAnswers.indexOf(answer);
+      // On ajoute la question et ses réponses à la prochaine série
+      nextQuestions.push({
+        question: questionText,
+        answers: shuffledAnswers,
+        correctAnswer: correctAnswer
+      });
+    }
+  });
+  // On mélange les questions
+  nextQuestions = shuffle(nextQuestions);
+  // On conserve le nombre de questions
+  nbQuestions = nextQuestions.length;
+  // On ajoute le div pour l'impression du quiz
+  printQuiz(nextQuestions);
+}
+function remplirFormulaire(questionText, answersArray) {
+  // Accéder à l'élément DOM pour la question et mettre à jour le texte
+  const questionElement = document.querySelector("#question");
+  // Mettre à jour le contenu de questionElement
+  questionElement.innerHTML = questionText;
+
+  // Accéder aux éléments DOM pour les choix de réponse et mettre à jour leurs labels
+  const choiceElements = document.querySelectorAll(".choix label");
+  answersArray.forEach((answer, index) => {
+    choiceElements[index].innerHTML = answer;
+    if (answer == "") {
+      //Le bouton radio dans lequel est contenu le label est désactivé est caché
+      choiceElements[index].parentElement.style.display = "none";
+    } else {
+      //Le bouton radio dans lequel est contenu le label est activé et affiché
+      choiceElements[index].parentElement.style.display = "block";
+    }
+  });
+}
+function ajouterEcouteursQuiz() {
+  var radios = document.getElementsByName("choix");
+  for (var i = 0, length = radios.length; i < length; i++) {
+    radios[i].addEventListener("change", function () {
+      document.getElementById("Valider").style.display = "inline";
+    });
+  }
+  // Sélection du bouton radio d'un choix du quiz
+  var choixDivs = document.getElementsByClassName("choix");
+  for (var i = 0; i < choixDivs.length; i++) {
+    choixDivs[i].addEventListener("click", function () {
+      // Montrer la sélection en la grisant que si le bouton Valider n'est pas sur "Suivant"
+      if (document.getElementById("Valider").innerHTML != "Suivant") {
+        var radioButton = this.querySelector("input[type=radio]");
+        radioButton.checked = true;
+
+        // Trigger the change event on the radio button
+        var event = new Event("change");
+        radioButton.dispatchEvent(event);
+        for (var j = 0; j < choixDivs.length; j++) {
+          choixDivs[j].style.background = "none";
+        }
+        this.style.background = "rgb(0, 0, 255,0.2)";
+      }
+    });
+  }
+  // Sélection du bouton Valider
+  var Valider = document.getElementById("Valider");
+  Valider.addEventListener("click", function () {
+    if (this.innerHTML == "Suivant" || this.innerHTML == "En ligne") {
+      window.parent.postMessage("questionSuivante", "*");
+      var formulaire = document.querySelector(".quiz-choices");
+      formulaire.classList.remove("clicked");
+      // Ne plus afficher le bouton Imprimer
+      document.querySelector("#Imprimer").style.display = "none";
+      // Ne plus afficher l'introduction
+      document.querySelector(".introduction-quiz").style.display = "none";
+      document.querySelector("#score").style.display = "none";
+    } else {
+      getCorrection(getAnswer());
+      // Récupérer tous les boutons radios
+      var radios = document.getElementsByName("choix");
+      // Désactiver tous les boutons radios
+      for (var i = 0, length = radios.length; i < length; i++) {
+        radios[i].disabled = true;
+      }
+    }
+  });
+  // Ajouter un écouteur pour le message "questionSuivante"
+  window.addEventListener("message", function (event) {
+    if (event.data == "questionSuivante") {
+      document.querySelector("#question").innerHTML = "";
+      document.querySelectorAll(".label").innerHTML = "";
+      document.querySelector("#formulaire").style.display = "none";
+      // On supprime le printquiz s'il existe
+      if (document.getElementById("printquiz")) {
+        document.getElementById("printquiz").remove();
+      }
+      // On passe à la question suivante s'il en reste
+      if (nextQuestions.length == 0) {
+        // On affiche le score en pourcentage dans #score
+        document.querySelector("#score").innerHTML = "Score pr\xE9c\xE9dent : ".concat(Math.round(nbResponsesCorrectes / nbQuestions * 100), "%");
+        // On a fini le tour, on recommence si la serie n'est pas vide
+        document.querySelector("#score").style.display = "block";
+        if (series.length > 0) {
+          // On passe au tour suivant car la série n'est pas vide
+          tourSuivant();
+          // Vider le formulaire
+          document.getElementById("Valider").innerHTML = "En ligne";
+          document.getElementById("Valider").style.display = "inline";
+          document.querySelector("#Imprimer").style.display = "inline";
+          numQuestion = 0;
+          // Afficher l'introduction
+          document.querySelector(".introduction-quiz").style.display = "block";
+        } else {
+          // On a fini la série, on affiche un message
+          document.getElementById("question").innerHTML = "C'est terminé !";
+          document.getElementById("Valider").style.display = "none";
+          document.querySelector("#formulaire").style.display = "none";
+        }
+      } else {
+        // On a encore des questions, on passe à la suivante
+        // On ajoute 1 au numéro de la question
+        numQuestion++;
+        // On prépare la question suivante
+        var {
+          questionText,
+          answersArray
+        } = nextQuestion(nextQuestions);
+        initialiserAffichageQuiz(questionText, answersArray);
+      }
+    }
+  });
+  // Ajouter un écouteur pour révéler le formulaire quiz-choices de réponses
+  var formulaire = document.querySelector(".quiz-choices");
+  formulaire.addEventListener("click", function () {
+    this.classList.add("clicked");
+  });
+}
+function mettreEnFormeQuiz() {
+  (0,_index_js__WEBPACK_IMPORTED_MODULE_1__.convertirKatexEnMathML)();
+  (0,_interactif2_js__WEBPACK_IMPORTED_MODULE_2__.createFigures)();
+}
+function initialiserAffichageQuiz(question, shuffledAnswers) {
+  remplirFormulaire(question, shuffledAnswers);
+  setValider("Répondre");
+  hideValider();
+  disableRadios();
+  var choix = document.getElementsByClassName("choix");
+  hideCorrection(choix);
+  mettreEnFormeQuiz();
+  // Afficher le formulaire
+  document.querySelector("#formulaire").style.display = "block";
+  // Ajouter le numéro de la question et le nombre de questions i/n
+  // <div id="num-nb"></div>
+  var numNb = document.getElementById("num-nb");
+  numNb.innerHTML = "Question ".concat(numQuestion, "/").concat(nbQuestions, " :");
+}
+function nextQuestion(nextQuestions) {
+  // On récupère la question et les réponses
+  const questionText = nextQuestions[0].question;
+  const answersArray = nextQuestions[0].answers;
+  // Avant de supprimer la question et les réponses du tableau, on récupère l'indice de la bonne réponse
+  correctAnswerId = nextQuestions[0].correctAnswer;
+  // On supprime la question et les réponses du tableau
+  nextQuestions.shift();
+  return {
+    questionText,
+    answersArray
+  };
+}
+function printQuiz(nextQuestions) {
+  let quiz = "";
+  let solution = "";
+  for (let i = 0; i < nextQuestions.length; i++) {
+    quiz += "\n    <div class=\"question\">\n<strong>Question ".concat(i + 1, " : </strong>").concat(nextQuestions[i].question, "\n</div>\n<form class=\"quiz-choices\">\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[0], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[1], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[2], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[3], "</label>\n    </div>\n</form>\n");
+    solution += "\n<strong>Question ".concat(i + 1, " : </strong>").concat(nextQuestions[i].answers[nextQuestions[i].correctAnswer], "\n");
+  }
+  // On créé un élément div pour contenir le quiz
+  const quizElement = document.createElement("div");
+  // On lui donne un identifiant pour le css
+  quizElement.id = "printquiz";
+  // On ajoute une entete avec un titre, la date, un espace pour le nom, le prénom et la classe
+  var entete = document.createElement("div");
+  entete.id = "enteteQuiz";
+  entete.innerHTML = "\n<div class=\"nom-prenom-classe\">\n  <div id=\"nom\">Nom :</div>\n  <div id=\"prenom\">Pr\xE9nom :</div>\n  <div id=\"classe\">Classe :</div>\n</div>\n<div class=\"titrePrintQuiz-date\">\n  <div class=\"titrePrintQuiz\">Quiz</div>\n  <div class=\"date\">".concat(new Date().toLocaleDateString(), "</div>\n</div>\n    ");
+  // On ajoute le quiz à l'élément div
+  quizElement.innerHTML = quiz;
+  // On ajoute l'entete à l'élément div
+  quizElement.prepend(entete);
+  // On le rend invisible
+  // quizElement.style.display = "none";
+  // On ajoute l'élément div au body
+  // On ajoute les solutions à l'élément div
+  quizElement.innerHTML += "\n<div class=\"titrePrintQuiz-date\">\n  <div class=\"titrePrintQuiz\">Quiz - Solutions</div>\n  <div class=\"date\">".concat(new Date().toLocaleDateString(), "</div>\n</div>\n  ") + solution;
+  document.body.appendChild(quizElement);
+  mettreEnFormeQuiz();
+}
+async function createQuizs() {
+  try {
+    db = await importerBD();
+    creerSerieQuizs(db);
+    tourSuivant();
+    ajouterEcouteursQuiz();
+    document.getElementById("Valider").innerHTML = "En ligne";
+    document.getElementById("Valider").style.display = "inline";
+    document.querySelector("#formulaire").style.display = "none";
+    document.getElementById("Imprimer").addEventListener("click", function () {
+      window.print();
+    });
+    document.querySelector(".introduction-quiz").innerHTML = "\n    <p>Bienvenue au quiz ! Vous \xEAtes sur le point de r\xE9pondre \xE0 </p>\n    <div class=\"score\"><strong>".concat(nbQuestions, " questions.</strong></div>\n    <p>Voici quelques recommandations pour une exp\xE9rience optimale :</p>\n\n<ul>\n    <li>Prenez un moment pour r\xE9fl\xE9chir avant de r\xE9v\xE9ler les choix et surtout mettez vos pens\xE9es par \xE9crit. Cela aide \xE0 clarifier votre r\xE9flexion, \xE0 r\xE9duire la charge mentale et \xE0 progresser plus efficacement.</li>\n    <li>Une fois les choix affich\xE9s, s\xE9lectionnez votre r\xE9ponse. Rappelez-vous, il n'y a qu'une seule bonne r\xE9ponse.</li>\n    <li>Vous avez la libert\xE9 de changer votre choix tant que vous n'avez pas valid\xE9 en cliquant sur \"R\xE9pondre\".</li>\n    <li>Apr\xE8s avoir r\xE9pondu, utilisez le bouton \"Suivant\" pour passer \xE0 la question suivante.</li>\n    <li>Si vous souhaitez avoir une version papier du quiz, cliquez simplement sur \"Imprimer\".</li>\n    <li>N'h\xE9sitez pas \xE0 retenter le quiz autant de fois que n\xE9cessaire pour ma\xEEtriser le sujet.</li>\n</ul>\n\n<p>Rassurez-vous, votre vie priv\xE9e est respect\xE9e : aucune de vos informations personnelles n'est enregistr\xE9e.</p>\n");
+  } catch (error) {
+    console.error("Erreur lors de l'importation de la base de données :", error);
+  }
 }
 
 /***/ }),
@@ -88969,18 +88990,6 @@ var version = '11.9.1';
 /******/ 	/* webpack/runtime/amd options */
 /******/ 	(() => {
 /******/ 		__webpack_require__.amdO = {};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/define property getters */

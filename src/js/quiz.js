@@ -138,6 +138,8 @@ function creerSerieQuizs(database) {
 }
 
 function tourSuivant() {
+  // On remet le compteur de réponses correctes à zéro
+  nbResponsesCorrectes = 0;
   // On détermine le nombre de groupes restant dans la série
   const nbGroupes = series.length;
   // On parcourt les groupes de la série
