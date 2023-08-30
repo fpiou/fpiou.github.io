@@ -111,8 +111,7 @@
 </div>
 <div class="exemple">
   <p>
-    L'équation $2x+3=5$ a pour inconnue $x$. On dit que $x$ est l'inconnue de
-    l'équation $2x+3=5$.
+    L'équation $2x+3=6x-4$ a pour inconnue $x$.
   </p>
 </div>
 <div class="definition">
@@ -121,8 +120,23 @@
     </p>
 </div>
 <div class="exemple">
+    <p>D'une part :</p>
+    $$\begin{align*}
+        2\times \dfrac{7}{4}+3&=2\times \dfrac{7}{4}+\dfrac{12}{4}\\
+        &=\dfrac{14}{4}+\dfrac{12}{4}\\
+        &=\dfrac{26}{4}\\
+        &=\dfrac{13}{2}
+    \end{align*}$$
+    <p>D'autre part :</p>
+    $$\begin{align*}
+        6\times \dfrac{7}{4}-4&=6\times \dfrac{7}{4}-\dfrac{16}{4}\\
+        &=\dfrac{42}{4}-\dfrac{16}{4}\\
+        &=\dfrac{26}{4}\\
+        &=\dfrac{13}{2}
+    \end{align*}$$
+    <p>On constate que les deux résultats sont égaux.</p>
     <p>
-        $1$ est une solution de l'équation $2x+3=5$ car $2\times 1+3=5$.
+        $\dfrac{7}{4}$ est une solution de l'équation $2x+3=6x-4$ car $2\times \dfrac{7}{4}+3=6\times \dfrac{7}{4}-4$.
     </p>
 </div>
 <div class="definition">
@@ -132,24 +146,53 @@
 </div>
 <div class="exemple">
     <p>
-        L'ensemble des solutions de l'équation $2x+3=5$ est $\{1\}$.
+       Nous verrons plus tard que l'ensemble des solutions de l'équation $2x+3=6x-4$ est $\left\{\dfrac{7}{4}\right\}$. Autrement dit, cette équation a pour seule solution $\dfrac{7}{4}$.
     </p>
 </div>
 <div class="definition">
-    <p>
-        On appelle résoudre une équation le fait de déterminer son ensemble des solutions.
+    <p>On dit que deux équations sont équivalentes si elles ont le même ensemble des solutions.</p>
+</div>
+<div class="propriete">
+    <p>On peut ajouter ou soustraire un même nombre aux deux membres d'une équation sans changer son ensemble des solutions.
     </p>
 </div>
 <div class="exemple">
-    <p>
-        On souhaite résoudre l'équation $2x+3=5$.
-    </p>
-    <p>
-        On a $2x+3=5$ ce qui est équivalent à $2x=5-3$ et finalement $x=\frac{5-3}{2}$ ou encore $x=\frac{2}{2}$.
-    </p>
-    <p>
-        L'ensemble des solutions de l'équation $2x+3=5$ est donc $\{1\}$.
-    </p>
+    <p>Considérons l'équation $$x+3=7.$$</p>
+    <p>Ajoutons $-3$ aux deux membres de l'équation (ce qui revient à soustraire $3$).</p>
+    $$\begin{align*}
+        x+3&=7\\
+        x+3-3&=7-3\\
+        x&=4
+    \end{align*}$$
+    <p>L'équation $x=4$ obtenue est équivalente à l'équation de départ.</p>
+    <p>Ce qui permet d'affirmer que l'ensemble des solutions de l'équation $x+3=7$ est $\{4\}$.</p>
+</div>
+<div class="propriete">
+    <p>On peut multiplier ou diviser les deux membres d'une équation par un même nombre non nul sans changer son ensemble des solutions.</p>
+</div>
+<div class="exemple">
+    <p>Considérons l'équation $$4x+3=5.$$</p>
+    <p>Commençons par soustraire $3$ aux deux membres de l'équation.</p>
+    $$\begin{align*}
+        4x+3&=5\\
+        4x+3-3&=5-3\\
+        4x&=2
+    \end{align*}$$
+    <p>On divise ensuite les deux membres de l'équation par $4$.</p>
+    $$\begin{align*}
+        4x&=2\\
+        \frac{4x}{4}&=\frac{2}{4}\\
+        x&=\frac{1}{2}
+    \end{align*}$$
+    <p>L'équation $x=\frac{1}{2}$ obtenue est équivalente à l'équation de départ.</p>
+    <p>Ce qui permet d'affirmer que l'ensemble des solutions de l'équation $4x+3=5$ est $\left\{\frac{1}{2}\right\}$.</p>
+    <p>On dit qu'on a résolu l'équation $4x+3=5$.</p>
+</div>
+<div class="definition">
+    <p>Résoudre une équation c'est déterminer l'ensemble de ses solutions.</p>
+</div>
+<div class="remarque">
+    <p>En utilisant les propriétés précédentes, on peut résoudre une équation en la transformant en une équation équivalente dont la solution est plus facile à déterminer.</p>
 </div>
 <div class="methode">
     <p>Pour résoudre une équation du premier degré à une inconnue, on utilise la méthode suivante :</p>
@@ -157,7 +200,7 @@
         <li>On développe et on réduit les deux membres.</li>
         <li>On isole l'inconnue à gauche de l'égalité.</li>
         <li>On simplifie l'égalité.</li>
-        <li>On détermine l'ensemble des solutions.</li>
+        <li>On vérifie que le nombre obtenu est bien une solution de l'équation.</li>
     </ol>
 </div>
 <div class="exemple">
@@ -168,7 +211,32 @@
         <li>On simplifie l'égalité : $$-3x=-13.$$</li>
         <li>On détermine l'unique solution : $x=\frac{-13}{-3}$ ou encore $x=\frac{13}{3}$.</li>
     </ol>
-    <p>L'ensemble des solutions de l'équation $2(x+3)=5x-7$ est donc $\left\{\frac{13}{3}\right\}$.</p>
+    <p>On écrit ces calculs sans autre forme d'explications.</p>
+    $$\begin{align*}
+        2(x+3)&=5x-7\\
+        2x+6&=5x-7\\
+        2x-5x&=-7-6\\
+        -3x&=-13\\
+        x&=\frac{-13}{-3}\\
+        x&=\frac{13}{3}
+    \end{align*}$$
+    <p>On vérifie que $\frac{13}{3}$ est bien une solution de l'équation $2(x+3)=5x-7$.</p>
+    <p>D'une part :</p>
+    $$\begin{align*}
+        2\left(\frac{13}{3}+3\right)&=2\left(\frac{13}{3}+\frac{9}{3}\right)\\
+        &=2\left(\frac{13+9}{3}\right)\\
+        &=2\left(\frac{22}{3}\right)\\
+        &=\frac{44}{3}
+    \end{align*}$$
+    <p>D'autre part :</p>
+    $$\begin{align*}
+        5\times \frac{13}{3}-7&=\frac{65}{3}-7\\
+        &=\frac{65}{3}-\frac{21}{3}\\
+        &=\frac{65-21}{3}\\
+        &=\frac{44}{3}
+    \end{align*}$$
+    <p>On constate que les deux résultats sont égaux.</p>
+    <p>Donc $\frac{13}{3}$ est bien la solution de l'équation $2(x+3)=5x-7$.</p>
 </div>
 <h2>Equation produit-nul</h2>
 <div class="propriete">

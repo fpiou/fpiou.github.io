@@ -231,6 +231,21 @@ function remplirFormulaire(questionText, answersArray) {
   });
 }
 
+function questionsDifferentes() {
+  // On agit que si le bouton Imprimer est affiché
+  if (document.querySelector("#Imprimer").style.display == "inline") {
+    nextQuestions = [];
+    if (series.length > 0) {
+      tourSuivant();
+      document.querySelector("#Imprimer").style.display = "inline";
+      numQuestion = 0;
+    } else {
+      // On recharge la page
+      window.location.reload();
+    }
+  }
+}
+
 function ajouterEcouteursQuiz() {
   var radios = document.getElementsByName("choix");
   for (var i = 0, length = radios.length; i < length; i++) {
@@ -262,6 +277,7 @@ function ajouterEcouteursQuiz() {
   var Valider = document.getElementById("Valider");
   Valider.addEventListener("click", function () {
     if (this.innerHTML == "Suivant" || this.innerHTML == "En ligne") {
+      questionsDifferentes();
       window.parent.postMessage("questionSuivante", "*");
       var formulaire = document.querySelector(".quiz-choices");
       formulaire.classList.remove("clicked");
@@ -293,7 +309,9 @@ function ajouterEcouteursQuiz() {
       // On passe à la question suivante s'il en reste
       if (nextQuestions.length == 0) {
         // On affiche le score en pourcentage dans #score
-        document.querySelector("#score").innerHTML = `Score précédent : ${Math.round(
+        document.querySelector(
+          "#score"
+        ).innerHTML = `Score précédent : ${Math.round(
           (nbResponsesCorrectes / nbQuestions) * 100
         )}%`;
         // On a fini le tour, on recommence si la serie n'est pas vide
@@ -307,8 +325,7 @@ function ajouterEcouteursQuiz() {
           document.querySelector("#Imprimer").style.display = "inline";
           numQuestion = 0;
           // Afficher l'introduction
-          document.querySelector(".introduction-quiz").style.display =
-            "block";
+          document.querySelector(".introduction-quiz").style.display = "block";
         } else {
           // On a fini la série, on affiche un message
           document.getElementById("question").innerHTML = "C'est terminé !";
@@ -329,6 +346,10 @@ function ajouterEcouteursQuiz() {
   var formulaire = document.querySelector(".quiz-choices");
   formulaire.addEventListener("click", function () {
     this.classList.add("clicked");
+  });
+  // On ajoute un écouteur pour l'impression du quiz
+  window.addEventListener("beforeprint", function () {
+    questionsDifferentes();
   });
 }
 
@@ -365,6 +386,10 @@ function nextQuestion(nextQuestions) {
 }
 
 function printQuiz(nextQuestions) {
+  // On vide le div printquiz s'il existe
+  if (document.getElementById("printquiz")) {
+    document.getElementById("printquiz").remove();
+  }
   let quiz = "";
   let solution = "";
   for (let i = 0; i < nextQuestions.length; i++) {
@@ -446,6 +471,7 @@ export async function createQuizs() {
     document.getElementById("Valider").innerHTML = "En ligne";
     document.getElementById("Valider").style.display = "inline";
     document.querySelector("#formulaire").style.display = "none";
+    document.querySelector("#Imprimer").style.display = "inline";
     document.getElementById("Imprimer").addEventListener("click", function () {
       window.print();
     });

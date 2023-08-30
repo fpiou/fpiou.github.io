@@ -1,4 +1,5 @@
 // Version: 1.0.0
+import { get } from "lodash";
 import { Point, Vecteur, Segment } from "./class2.js";
 import * as math from "mathjs";
 
@@ -271,8 +272,20 @@ var constructLabelPoint = function (point) {
   }
 };
 var constructCrossPoint = function (point) {
+  // Récupérer les paramètres du point
+  var paramString = point.getAttribute("parametres");
+  if (paramString == null) {
+    paramString = "";
+  }
+  var parametres = convertStringToParametres(paramString);
+  // Si le point a des paramètres
   var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  path.setAttribute("d", "M-2,-2 L2,2 M-2,2 L2,-2");
+  // Si le point a un parametre forme
+  if (parametres.forme != undefined && parametres.forme == "+") {
+    path.setAttribute("d", "M-2,0 L2,0 M0,-2 L0,2");
+  } else {
+    path.setAttribute("d", "M-2,-2 L2,2 M-2,2 L2,-2");
+  }
   path.setAttribute("fill", "transparent");
   path.setAttribute("stroke", "black");
   path.setAttribute("class", "crosspoint");
@@ -787,17 +800,29 @@ var initialiserParametresCourbe = function (courbe) {
   if (parametres.xmin == undefined) {
     parametres.xmin = -10;
   }
+  if (parametres.xBoxmin == undefined) {
+    parametres.xBoxmin = parametres.xmin;
+  }
   // Si parametres.xmax n'existe pas alors on prend 10
   if (parametres.xmax == undefined) {
     parametres.xmax = 10;
+  }
+  if (parametres.xBoxmax == undefined) {
+    parametres.xBoxmax = parametres.xmax;
   }
   // Si parametres.ymin n'existe pas alors on prend -10
   if (parametres.ymin == undefined) {
     parametres.ymin = -10;
   }
+  if (parametres.yBoxmin == undefined) {
+    parametres.yBoxmin = parametres.ymin;
+  }
   // Si parametres.ymax n'existe pas alors on prend 10
   if (parametres.ymax == undefined) {
     parametres.ymax = 10;
+  }
+  if (parametres.yBoxmax == undefined) {
+    parametres.yBoxmax = parametres.ymax;
   }
   // Si parametres.n n'existe pas alors on prend 100
   if (parametres.n == undefined) {
@@ -840,10 +865,12 @@ var constructPathCourbe = function (
   // On met les coordonnées des points à l'échelle tout en effectuant un changement de repère
   for (var i = 0; i < parametres.n + 1; i++) {
     x[i] = math
-      .evaluate(`${viewBox[0]}+(${x[i]} - ${parametres.xmin}) * ${echelleX}`)
+      .evaluate(`${viewBox.xO}+(${x[i]} - ${parametres.xBoxmin}) * ${echelleX}`)
       .valueOf();
     y[i] = math
-      .evaluate(`${viewBox[1]}+(-1*${y[i]} + ${parametres.ymax}) * ${echelleY}`)
+      .evaluate(
+        `${viewBox.yO}+(-1*${y[i]} + ${parametres.yBoxmax}) * ${echelleY}`
+      )
       .valueOf();
   }
   // On construit le path
@@ -852,22 +879,6 @@ var constructPathCourbe = function (
     d += " L" + x[i] + "," + y[i];
   }
   return d;
-};
-var getOrigineAxes = function (
-  courbe,
-  parametres,
-  echelleX,
-  echelleY,
-  viewBox
-) {
-  // Calcul des positions des axes en fonction de l'échelle et du changement de repère
-  var xOrigin = math
-    .evaluate(`${viewBox[0]}+(-1 * ${parametres.xmin}) * ${echelleX}`)
-    .valueOf();
-  var yOrigin = math
-    .evaluate(`${viewBox[1]}+${parametres.ymax} * ${echelleY}`)
-    .valueOf();
-  return { xOrigin, yOrigin };
 };
 var constructPathAxeX = function (
   xOrigin,
@@ -881,7 +892,7 @@ var constructPathAxeX = function (
     "M" +
     math
       .evaluate(
-        `${viewBox[0]}+(${parametres.xmin} - ${parametres.xmin}) * ${echelleX}`
+        `${viewBox.xO}+(${parametres.xmin} - ${parametres.xmin}) * ${echelleX}`
       )
       .valueOf() +
     "," +
@@ -889,7 +900,7 @@ var constructPathAxeX = function (
     " L" +
     math
       .evaluate(
-        `${viewBox[0]}+(${parametres.xmax} - ${parametres.xmin}) * ${echelleX}`
+        `${viewBox.xO}+(${parametres.xmax} - ${parametres.xmin}) * ${echelleX}`
       )
       .valueOf() +
     "," +
@@ -910,7 +921,7 @@ var constructPathAxeY = function (
     "," +
     math
       .evaluate(
-        `${viewBox[1]}+(-1*${parametres.ymin} + ${parametres.ymax}) * ${echelleY}`
+        `${viewBox.yO}+(-1*${parametres.ymin} + ${parametres.ymax}) * ${echelleY}`
       )
       .valueOf() +
     " L" +
@@ -918,7 +929,7 @@ var constructPathAxeY = function (
     "," +
     math
       .evaluate(
-        `${viewBox[1]}+(-1*${parametres.ymax} + ${parametres.ymax}) * ${echelleY}`
+        `${viewBox.yO}+(-1*${parametres.ymax} + ${parametres.ymax}) * ${echelleY}`
       )
       .valueOf()
   );
@@ -935,7 +946,7 @@ var constructPathTickXGraduation = function (
 ) {
   var x1 = math
     .evaluate(
-      `${viewBox[0]}+(${absFirstGraduation + i * parametres.xunit} - ${
+      `${viewBox.xO}+(${absFirstGraduation + i * parametres.xunit} - ${
         parametres.xmin
       }) * ${echelleX}`
     )
@@ -959,7 +970,7 @@ var constructPathTickYGraduation = function (
   var x1 = xOrigin + 1;
   var y1 = math
     .evaluate(
-      `${viewBox[1]}+(-1*${ordFirstGraduation + i * parametres.yunit} + ${
+      `${viewBox.yO}+(-1*${ordFirstGraduation + i * parametres.yunit} + ${
         parametres.ymax
       }) * ${echelleY}`
     )
@@ -1000,72 +1011,15 @@ function combinedControlPoints(points, tension = 0.5) {
   }
   return controlPoints;
 }
-
-var constructCourbe = function (courbe) {
-  var parametres = initialiserParametresCourbe(courbe);
-  var expression = courbe.getAttribute("expression");
-  // On récupère le viewBox de la figure (X_0 Y_0 Width Height)
-  var viewBox = courbe.parentNode
-    .getAttribute("viewBox")
-    .split(" ")
-    .map(Number);
-  // On calcule l'échelle en abscisse et en ordonnée par rapport au viewBox
-  var echelleX = viewBox[2] / (parametres.xmax - parametres.xmin);
-  var echelleY = viewBox[3] / (parametres.ymax - parametres.ymin);
-  // On détermine les coordonnées de l'origine des axes
-  var { xOrigin, yOrigin } = getOrigineAxes(
-    courbe,
-    parametres,
-    echelleX,
-    echelleY,
-    viewBox
-  );
-  // Construire la courbe
-  // On compte le nombre d'éléments dans linkto
-  var linkto = getLinkto(courbe);
-  var d;
-  // On test si linkto existe
-  if (linkto.length <= 1) {
-    // La courbe est définie par son expression lorsque le paramètre linkto est vide ou ne comporte qu'un seul élément
-    var { x, y } = calculCoordonneesPointsCourbe(expression, parametres);
-    var d = constructPathCourbe(x, y, echelleX, echelleY, viewBox, parametres);
-  } else {
-    // La courbe est définie par des points, on fait passer la courbe par ces points
-    // On récupère les pentes des tangentes aux points lorsqu'elles sont définies
-    var pentes = recupererPentesCourbe(courbe);
-    // On récupère les coordonnées de ces points et on ajoute la propriete pente si elle existe
-    var points = [];
-    for (var i = 0; i < linkto.length; i++) {
-      var point = courbe.parentNode.querySelector("#" + linkto[i]);
-      var coords = getCoordonneesPoint(point);
-      if (pentes != null && pentes[point.id] != undefined) {
-        coords.pente = pentes[point.id];
-      }
-      linkto[i] = coords;
-      points.push(coords);
-    }
-    var d = "M" + points[0].join(",");
-    var controlPoints = combinedControlPoints(points);
-    for (var i = 0; i < points.length - 1; i++) {
-      d +=
-        " C" +
-        controlPoints[2 * i].join(",") +
-        " " +
-        controlPoints[2 * i + 1].join(",") +
-        " " +
-        points[i + 1].join(",");
-    }
-  }
-  var courbeSVG = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "path"
-  );
-  courbeSVG.setAttribute("d", d);
-  courbeSVG.setAttribute("fill", "transparent");
-  courbeSVG.setAttribute("stroke", "black");
-  courbeSVG.setAttribute("stroke-width", "0.5");
-  courbeSVG.setAttribute("style", courbe.getAttribute("style"));
-  courbeSVG.style.userSelect = "none";
+var constructAxes = function (
+  courbe,
+  xOrigin,
+  yOrigin,
+  echelleX,
+  echelleY,
+  viewBox,
+  parametres
+) {
   // Construire les axes
   var axesSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
   var axeX = document.createElementNS("http://www.w3.org/2000/svg", "path");
@@ -1194,11 +1148,85 @@ var constructCourbe = function (courbe) {
   uniteYSVG.setAttribute("style", "user-select:none");
   uniteYSVG.setAttribute("style", style);
   uniteYSVG.innerHTML = parametres.yunit;
+  return [axesSVG, graduationsSVG, uniteXSVG, uniteYSVG];
+};
+var constructCourbe = function (courbe) {
+  var parametres = initialiserParametresCourbe(courbe);
+  var expression = courbe.getAttribute("expression");
+  var viewBox = getViewBoxFigure(courbe.parentNode);
+  var echelleX = viewBox.width / (parametres.xBoxmax - parametres.xBoxmin);
+  var echelleY = viewBox.height / (parametres.yBoxmax - parametres.yBoxmin);
+  var [xOrigin, yOrigin] = changementEchelleRepere(
+    [0],
+    [0],
+    parametres.xBoxmin,
+    parametres.yBoxmax,
+    echelleX,
+    echelleY,
+    viewBox
+  );
 
-  courbe.appendChild(axesSVG);
-  courbe.appendChild(graduationsSVG);
-  courbe.appendChild(uniteXSVG);
-  courbe.appendChild(uniteYSVG);
+  // Construire la courbe
+  // On compte le nombre d'éléments dans linkto
+  var linkto = getLinkto(courbe);
+  var d;
+  // On test si linkto existe
+  if (linkto.length <= 1) {
+    // La courbe est définie par son expression lorsque le paramètre linkto est vide ou ne comporte qu'un seul élément
+    var { x, y } = calculCoordonneesPointsCourbe(expression, parametres);
+    var d = constructPathCourbe(x, y, echelleX, echelleY, viewBox, parametres);
+  } else {
+    // La courbe est définie par des points, on fait passer la courbe par ces points
+    // On récupère les pentes des tangentes aux points lorsqu'elles sont définies
+    var pentes = recupererPentesCourbe(courbe);
+    // On récupère les coordonnées de ces points et on ajoute la propriete pente si elle existe
+    var points = [];
+    for (var i = 0; i < linkto.length; i++) {
+      var point = courbe.parentNode.querySelector("#" + linkto[i]);
+      var coords = getCoordonneesPoint(point);
+      if (pentes != null && pentes[point.id] != undefined) {
+        coords.pente = pentes[point.id];
+      }
+      linkto[i] = coords;
+      points.push(coords);
+    }
+    var d = "M" + points[0].join(",");
+    var controlPoints = combinedControlPoints(points);
+    for (var i = 0; i < points.length - 1; i++) {
+      d +=
+        " C" +
+        controlPoints[2 * i].join(",") +
+        " " +
+        controlPoints[2 * i + 1].join(",") +
+        " " +
+        points[i + 1].join(",");
+    }
+  }
+  var courbeSVG = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "path"
+  );
+  courbeSVG.setAttribute("d", d);
+  courbeSVG.setAttribute("fill", "transparent");
+  courbeSVG.setAttribute("stroke", "black");
+  courbeSVG.setAttribute("stroke-width", "0.5");
+  courbeSVG.setAttribute("style", courbe.getAttribute("style"));
+  courbeSVG.style.userSelect = "none";
+  if (parametres.afficherAxes) {
+    var [axesSVG, graduationsSVG, uniteXSVG, uniteYSVG] = constructAxes(
+      courbe,
+      xOrigin,
+      yOrigin,
+      echelleX,
+      echelleY,
+      viewBox,
+      parametres
+    );
+    courbe.appendChild(axesSVG);
+    courbe.appendChild(graduationsSVG);
+    courbe.appendChild(uniteXSVG);
+    courbe.appendChild(uniteYSVG);
+  }
   courbe.appendChild(courbeSVG);
 };
 var initialiserCourbe = function (courbe) {
@@ -1219,28 +1247,34 @@ var getSecteursFigure = function (figure) {
 function createSVGElement(tagName) {
   return document.createElementNS("http://www.w3.org/2000/svg", tagName);
 }
-
 function constructSecteur(secteur) {
   const centre = getElementLinkto(secteur, 0);
   var paramString = secteur.getAttribute("parametres");
   const defaultParams = {
-      r: 10,
-      departAngle: 0,
-      angle: 90,
-      sens: 0
+    r: 10,
+    departAngle: 0,
+    angle: 90,
+    sens: 0,
+    afficherNoms: false,
+    coeffDistanceEtiquette: 0.7,
   };
-  const parametres = { ...defaultParams, ...convertStringToParametres(paramString) };
-
+  const parametres = {
+    ...defaultParams,
+    ...convertStringToParametres(paramString),
+  };
   const secteurSVG = createSVGElement("path");
-  const [x, y] = getCoordonneesPoint(centre);
+  var [x, y] = [parametres.xOrigin, parametres.yOrigin];
+  if (centre != null) {
+    [x, y] = getCoordonneesPoint(centre);
+  }
   const angleRad = (parametres.angle / 180) * Math.PI;
   const departAngleRad = (parametres.departAngle / 180) * Math.PI;
   const r = parametres.r;
-  const senscoeff = parametres.sens==0 ? 1 : -1;
+  const senscoeff = parametres.sens == 0 ? 1 : -1;
   const x1 = x + r * Math.cos(departAngleRad);
   const y1 = y - senscoeff * r * Math.sin(departAngleRad);
-  const x2 = x + r * Math.cos(angleRad+departAngleRad);
-  const y2 = y - senscoeff * r * Math.sin(angleRad+departAngleRad);
+  const x2 = x + r * Math.cos(angleRad + departAngleRad);
+  const y2 = y - senscoeff * r * Math.sin(angleRad + departAngleRad);
 
   const largeArcFlag = parametres.angle > 180 ? 1 : 0;
   const d = `M${x},${y} L${x1},${y1} A${r},${r} 0 ${largeArcFlag},${parametres.sens} ${x2},${y2} Z`;
@@ -1251,10 +1285,33 @@ function constructSecteur(secteur) {
   secteurSVG.setAttribute("stroke-width", "0.5");
   secteurSVG.setAttribute("style", secteur.getAttribute("style"));
   secteurSVG.style.userSelect = "none";
-
   secteur.appendChild(secteurSVG);
+  // On regarde si on doit afficher le nom du secteur
+  if (parametres.afficherNoms) {
+    var nomSVG = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    // On caclule le milieu du secteur
+    var x =
+      x +
+      parametres.coeffDistanceEtiquette *
+        r *
+        Math.cos(angleRad / 2 + departAngleRad);
+    var y =
+      y -
+      parametres.coeffDistanceEtiquette *
+        senscoeff *
+        r *
+        Math.sin(angleRad / 2 + departAngleRad);
+    nomSVG.setAttribute("x", x);
+    nomSVG.setAttribute("y", y);
+    nomSVG.setAttribute("text-anchor", "middle");
+    nomSVG.setAttribute("font-size", "10");
+    nomSVG.setAttribute("fill", "black");
+    nomSVG.setAttribute("stroke", "transparent");
+    nomSVG.setAttribute("style", "fill-opacity:1;user-select:none");
+    nomSVG.innerHTML = secteur.getAttribute("nom");
+    secteur.appendChild(nomSVG);
+  }
 }
-
 var initialiserSecteur = function (secteur) {
   constructSecteur(secteur);
 };
@@ -1263,7 +1320,481 @@ var initialiserSecteursFigure = function (figure) {
     initialiserSecteur(secteur);
   });
 };
+var getDiagrammesCirculairesFigure = function (figure) {
+  var diagrammesCirculaires = document.querySelectorAll(
+    "g.diagrammeCirculaire"
+  );
+  var diagrammesCirculairesArray = Array.from(diagrammesCirculaires);
+  return diagrammesCirculairesArray.filter(
+    (diagrammeCirculaire) => diagrammeCirculaire.id.split("-")[0] == figure.id
+  );
+};
+var getViewBoxFigure = function (figure) {
+  var viewbox = figure.getAttribute("viewBox").split(" ").map(Number);
+  return {
+    xO: viewbox[0],
+    yO: viewbox[1],
+    width: viewbox[2],
+    height: viewbox[3],
+  };
+};
+var changementEchelleRepere = function (
+  x,
+  y,
+  xBoxmin,
+  yBoxmax,
+  echelleX,
+  echelleY,
+  viewBox
+) {
+  return [
+    math.evaluate(`${viewBox.xO}+(${x} - ${xBoxmin}) * ${echelleX}`).valueOf(),
+    math
+      .evaluate(`${viewBox.yO}+(-1*${y} + ${yBoxmax}) * ${echelleY}`)
+      .valueOf(),
+  ];
+};
+var constructDiagrammeCirculaire = function (diagrammeCirculaire) {
+  // Les données séparées par des ; sont au format csv dans le innerHTML de diagrammeCirculaire
+  var data = diagrammeCirculaire.innerHTML.split("\n");
+  // On supprime les lignes vides
+  data = data.filter((ligne) => ligne != "");
+  // On supprime les espaces en début et fin de ligne
+  data = data.map((ligne) => ligne.trim());
+  // On supprime les espaces en trop dans les lignes
+  data = data.map((ligne) => ligne.replace(/ +/g, " "));
+  // On supprime les espaces avant et après les ;
+  data = data.map((ligne) => ligne.replace(/ *; */g, ";"));
+  // On récupère les données dans un tableau
+  data = data.map((ligne) => ligne.split(";"));
+  // La première ligne contient les catégories des données
+  data.shift();
+  // La dernière ligne est à supprimer si elle est vide
+  if (data[data.length - 1].length == 1 && data[data.length - 1][0] == "") {
+    data.pop();
+  }
+  // La première colonne contient les noms des secteurs
+  var nomsSecteurs = data.map((ligne) => ligne[0]);
+  // L'autre colonne contient les valeurs des secteurs
+  var valeursSecteurs = data.map((ligne) => parseFloat(ligne[1]));
+  // On récupère les paramètres
+  var paramString = diagrammeCirculaire.getAttribute("parametres");
+  var parametres = convertStringToParametres(paramString);
+  // On récupère le viewBox de la figure (X_0 Y_0 Width Height)
+  var viewBox = getViewBoxFigure(diagrammeCirculaire.parentNode);
+  // Si parametres.r n'existe pas alors on prend la moitié de la plus petite dimension du viewBox
+  if (parametres.r == undefined) {
+    parametres.r = Math.min(viewBox.width, viewBox.height) / 2;
+  }
+  // Si parametres.departAngle n'existe pas alors on prend 0
+  if (parametres.departAngle == undefined) {
+    parametres.departAngle = 0;
+  }
+  // Si coeffDistanceEtiquette n'existe pas alors on prend 0.7
+  if (parametres.coeffDistanceEtiquette == undefined) {
+    parametres.coeffDistanceEtiquette = 0.7;
+  }
+  // L'échelle en abscisse et en ordonnée par rapport au viewBox est viewBox.echelleX et viewBox.echelleY
+  // Dans parametres on a parametres.r qui est le rayon du diagramme circulaire et parametres.departAngle qui est l'angle de départ et parametres.sens qui est le sens de rotation et parametres.afficherValeurs qui est un booléen et parametres.afficherNoms qui est un booléen et parametres.afficherPourcentages qui est un booléen et xOrigin et yOrigin qui sont les coordonnées du centre du diagramme circulaire
+  // Si xOrigin et yOrigin n'existent pas alors on prend le centre du viewBox
+  if (parametres.xOrigin == undefined) {
+    parametres.xOrigin = viewBox.xO + viewBox.width / 2;
+  }
+  if (parametres.yOrigin == undefined) {
+    parametres.yOrigin = viewBox.yO + viewBox.height / 2;
+  }
+  // Si parametres.sens n'existe pas alors on prend 0
+  if (parametres.sens == undefined) {
+    parametres.sens = 0;
+  }
+  // On calcule les angles de départ et d'arrivée de chaque secteur
+  var angles = [];
+  var somme = valeursSecteurs.reduce((a, b) => a + b, 0);
+  var angleDepart = parametres.departAngle;
+  var angleArrivee = angleDepart;
+  for (var i = 0; i < valeursSecteurs.length; i++) {
+    angleDepart = angleArrivee;
+    angleArrivee = angleDepart + (valeursSecteurs[i] * 360) / somme;
+    angles.push({
+      nom: nomsSecteurs[i],
+      valeur: valeursSecteurs[i],
+      angleDepart: angleDepart,
+      angleArrivee: angleArrivee,
+    });
+  }
+  const couleurs = [
+    "red",
+    "green",
+    "blue",
+    "yellow",
+    "orange",
+    "purple",
+    "pink",
+    "brown",
+    "grey",
+    "black",
+  ];
+  // On construit les secteurs
+  valeursSecteurs.forEach((valeur, index) => {
+    var secteur = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    secteur.classList.add("secteur");
+    // AJouter parametres à secteur
+    var parametresSecteur = "";
+    secteur.id = diagrammeCirculaire.id + "-" + index;
+    parametresSecteur = "";
+    parametresSecteur += "r:" + parametres.r;
+    parametresSecteur += ",departAngle:" + angles[index].angleDepart;
+    parametresSecteur +=
+      ",angle:" + (angles[index].angleArrivee - angles[index].angleDepart);
+    parametresSecteur += ",sens:" + parametres.sens;
+    parametresSecteur += ",xOrigin:" + parametres.xOrigin;
+    parametresSecteur += ",yOrigin:" + parametres.yOrigin;
+    parametresSecteur += ",afficherValeurs:" + parametres.afficherValeurs;
+    parametresSecteur += ",afficherNoms:" + parametres.afficherNoms;
+    parametresSecteur +=
+      ",afficherPourcentages:" + parametres.afficherPourcentages;
+    parametresSecteur += ",style:" + diagrammeCirculaire.getAttribute("style");
+    parametresSecteur +=
+      ",coeffDistanceEtiquette:" + parametres.coeffDistanceEtiquette;
+    // On ajoute le nom du secteur
+    secteur.setAttribute("nom", angles[index].nom);
+    secteur.setAttribute("parametres", parametresSecteur);
+    // On ajoute la couleur
+    secteur.setAttribute(
+      "style",
+      "fill-opacity:0.2;fill:" + couleurs[index % couleurs.length]
+    );
+    // On ajoute le secteur à la figure
+    diagrammeCirculaire.parentNode.appendChild(secteur);
+  });
+};
+var initialiserDiagrammeCirculaire = function (diagrammeCirculaire) {
+  constructDiagrammeCirculaire(diagrammeCirculaire);
+};
+var initialiserDiagrammesCirculairesFigure = function (figure) {
+  getDiagrammesCirculairesFigure(figure).forEach(function (
+    diagrammeCirculaire
+  ) {
+    initialiserDiagrammeCirculaire(diagrammeCirculaire);
+  });
+};
+var getNuagesPointsFigure = function (figure) {
+  var nuagesPoints = document.querySelectorAll("g.nuagePoints");
+  var nuagesPointsArray = Array.from(nuagesPoints);
+  return nuagesPointsArray.filter(
+    (nuagePoints) => nuagePoints.id.split("-")[0] == figure.id
+  );
+};
+var constructNuagePoints = function (nuagePoints) {
+  var viewBox = getViewBoxFigure(nuagePoints.parentNode);
+  var paramString = nuagePoints.getAttribute("parametres");
+  var parametres = convertStringToParametres(paramString);
+  // Si dans parametres il y a un paramètre expression alors on construit le nuage de points à partir de l'expression
+  var abscisses = [];
+  var ordonnees = [];
+  if (parametres.expression == undefined) {
+    var data = nuagePoints.innerHTML.split("\n");
+    // On supprime les lignes vides
+    data = data.filter((ligne) => ligne != "");
+    // On supprime les espaces en début et fin de ligne
+    data = data.map((ligne) => ligne.trim());
+    // On supprime les espaces en trop dans les lignes
+    data = data.map((ligne) => ligne.replace(/ +/g, " "));
+    // On supprime les espaces avant et après les ;
+    data = data.map((ligne) => ligne.replace(/ *; */g, ";"));
+    // On récupère les données dans un tableau
+    data = data.map((ligne) => ligne.split(";"));
+    // La première ligne contient les catégories des données
+    data.shift();
+    // La dernière ligne est à supprimer si elle est vide
+    if (data[data.length - 1].length == 1 && data[data.length - 1][0] == "") {
+      data.pop();
+    }
+    // La première colonne contient les abscisses des points
+    abscisses = data.map((ligne) => parseFloat(ligne[0]));
+    // L'autre colonne contient les ordonnées des points
+    ordonnees = data.map((ligne) => parseFloat(ligne[1]));
+  } else {
+    // On calcule les coordonnées avec l'expression
+    var { x, y } = calculCoordonneesPointsCourbe(
+      parametres.expression,
+      parametres
+    );
+    abscisses = x;
+    ordonnees = y;
+  }
+  // L'objectif est de construire un + pour chaque point
+  // Pour les axes, si aucune indication n'est donnée, on prend les valeurs min et max des abscisses et des ordonnées
+  // Si parametres.xmin n'existe pas alors on prend la valeur minimale des abscisses
+  if (parametres.xmin == undefined) {
+    parametres.xmin = Math.min(...abscisses);
+  }
+  if (parametres.xBoxmin == undefined) {
+    parametres.xBoxmin = parametres.xmin;
+  }
+  // Si parametres.xmax n'existe pas alors on prend la valeur maximale des abscisses
+  if (parametres.xmax == undefined) {
+    parametres.xmax = Math.max(...abscisses);
+  }
+  if (parametres.xBoxmax == undefined) {
+    parametres.xBoxmax = parametres.xmax;
+  }
+  // Calcul de l'échelle en x
+  var echelleX = viewBox.width / (parametres.xBoxmax - parametres.xBoxmin);
+  // Si parametres.ymin n'existe pas alors on prend la valeur minimale des ordonnées
+  if (parametres.ymin == undefined) {
+    parametres.ymin = Math.min(...ordonnees);
+  }
+  if (parametres.yBoxmin == undefined) {
+    parametres.yBoxmin = parametres.ymin;
+  }
+  // Si parametres.ymax n'existe pas alors on prend la valeur maximale des ordonnées
+  if (parametres.ymax == undefined) {
+    parametres.ymax = Math.max(...ordonnees);
+  }
+  if (parametres.yBoxmax == undefined) {
+    parametres.yBoxmax = parametres.ymax;
+  }
+  // Calcul de l'échelle en y
+  var echelleY = viewBox.height / (parametres.yBoxmax - parametres.yBoxmin);
+  // Si parametres.xunit n'existe pas alors on prend 1
+  if (parametres.xunit == undefined) {
+    parametres.xunit = 1;
+  }
+  // Si parametres.yunit n'existe pas alors on prend 1
+  if (parametres.yunit == undefined) {
+    parametres.yunit = 1;
+  }
+  // Si parametres.afficherAxes n'existe pas alors on prend true
+  if (parametres.afficherAxes == undefined) {
+    parametres.afficherAxes = true;
+  }
+  // Si parametres.afficherGraduations n'existe pas alors on prend true
+  if (parametres.afficherGraduations == undefined) {
+    parametres.afficherGraduations = true;
+  }
+  //parametres = initialiserParametresCourbe(parametres);
+  // On calcule les coordonnées des points en prenant en compte le changement d'échelle et le changement d'origine
+  var points = [];
+  for (var i = 0; i < abscisses.length; i++) {
+    var [x, y] = changementEchelleRepere(
+      abscisses[i],
+      ordonnees[i],
+      parametres.xBoxmin,
+      parametres.yBoxmax,
+      echelleX,
+      echelleY,
+      viewBox
+    );
+    points.push([x, y]);
+  }
+  // On construit les points
+  points.forEach((point, index) => {
+    var pointSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    pointSVG.classList.add("point");
+    // AJouter parametres à point
+    var parametresPoint = "";
+    pointSVG.id = nuagePoints.id + "-" + index;
+    pointSVG.setAttribute("x", point[0]);
+    pointSVG.setAttribute("y", point[1]);
+    parametresPoint = "";
+    parametresPoint += "forme:+,";
+    parametresPoint += ",style:" + nuagePoints.getAttribute("style");
+    pointSVG.setAttribute("parametres", parametresPoint);
+    // On ajoute le point à la figure
+    nuagePoints.parentNode.appendChild(pointSVG);
+    initialiserPoint(pointSVG);
+  });
+  // On construit les axes
+  var [xOrigin, yOrigin] = changementEchelleRepere(
+    [0],
+    [0],
+    parametres.xBoxmin,
+    parametres.yBoxmax,
+    echelleX,
+    echelleY,
+    viewBox
+  );
 
+  if (parametres.afficherAxes) {
+    var [axesSVG, graduationsSVG, uniteXSVG, uniteYSVG] = constructAxes(
+      nuagePoints,
+      xOrigin,
+      yOrigin,
+      echelleX,
+      echelleY,
+      viewBox,
+      parametres
+    );
+  }
+  // On ajoute les axes à la figure
+  if (parametres.afficherAxes) {
+    nuagePoints.parentNode.appendChild(axesSVG);
+    nuagePoints.parentNode.appendChild(graduationsSVG);
+    nuagePoints.parentNode.appendChild(uniteXSVG);
+    nuagePoints.parentNode.appendChild(uniteYSVG);
+  }
+};
+var initialiserNuagePoints = function (nuagePoints) {
+  constructNuagePoints(nuagePoints);
+};
+var initialiserNuagesPointsFigure = function (figure) {
+  getNuagesPointsFigure(figure).forEach(function (nuagePoints) {
+    initialiserNuagePoints(nuagePoints);
+  });
+};
+var getCarresFigure = function (figure) {
+  var carres = document.querySelectorAll("g.carre");
+  var carresArray = Array.from(carres);
+  return carresArray.filter((carre) => carre.id.split("-")[0] == figure.id);
+};
+var constructCarre = function (carre) {
+  // Le carré est déterminer par un point et un vecteur
+  // On récupère le point
+  var point = getElementLinkto(carre, 0);
+  var P1 = new Point(...getCoordonneesPoint(point));
+  // On récupère le vecteur
+  var vecteur = getElementLinkto(carre, 1);
+  var A = getElementLinkto(vecteur, 0);
+  var B = getElementLinkto(vecteur, 1);
+  var P2 = new Point(...getCoordonneesPoint(A));
+  var P3 = new Point(...getCoordonneesPoint(B));
+  var u = new Vecteur();
+  u.setCoordonneesVecteur2Points(P2, P3);
+  // On récupère les paramètres
+  // var paramString = carre.getAttribute("parametres");
+  // var parametres = convertStringToParametres(paramString);
+  // On construit les trois points du carré qui manquent
+  var P2 = P1.translation(u);
+  var P3 = P2.translation(u.rotation(-Math.PI / 2));
+  var P4 = P1.translation(u.rotation(-Math.PI / 2));
+  // On ajoute les points
+  var linktoCarre = "";
+  for (var i = 0; i < 4; i++) {
+    var pointSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    pointSVG.classList.add("point");
+    // Ajouter parametres à point
+    pointSVG.id = carre.id + "-" + i;
+    pointSVG.setAttribute("x", [P1, P2, P3, P4][i].x);
+    pointSVG.setAttribute("y", [P1, P2, P3, P4][i].y);
+    // On le rend invisible
+    pointSVG.setAttribute("visibility", "hidden");
+    // On ajoute le point à la figure
+    carre.appendChild(pointSVG);
+    // On initialise le point
+    initialiserPoint(pointSVG);
+    linktoCarre += pointSVG.id + " ";
+  }
+  linktoCarre = linktoCarre.slice(0, -1);
+  var carreSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  carreSVG.classList.add("polygone");
+  carreSVG.setAttribute("linkto", linktoCarre);
+  var style = carre.getAttribute("style");
+  carreSVG.setAttribute("style", style);
+  carre.appendChild(carreSVG);
+  initialiserPolygone(carreSVG);
+};
+var initialiserCarre = function (carre) {
+  constructCarre(carre);
+};
+var initialiserCarresFigure = function (figure) {
+  getCarresFigure(figure).forEach(function (carre) {
+    initialiserCarre(carre);
+  });
+};
+var getPatternsFigure = function (figure) {
+  var patterns = document.querySelectorAll("g.pattern");
+  var patternsArray = Array.from(patterns);
+  return patternsArray.filter(
+    (pattern) => pattern.id.split("-")[0] == figure.id
+  );
+};
+var constructPattern = function (pattern) {
+  // On récupère dans le innerHTML les données sont au format csv : class&x&y&parametres
+  var data = pattern.innerHTML.split("\n");
+  // On supprime les lignes vides
+  data = data.filter((ligne) => ligne != "");
+  // On supprime les espaces en début et fin de ligne
+  data = data.map((ligne) => ligne.trim());
+  // On supprime les espaces en trop dans les lignes
+  data = data.map((ligne) => ligne.replace(/ +/g, " "));
+  // On supprime les espaces avant et après les ;
+  data = data.map((ligne) => ligne.replace(/ *; */g, ";"));
+  // On récupère les données dans un tableau
+  data = data.map((ligne) => ligne.split(";"));
+  // On supprime la dernière ligne si elle est vide
+  if (data[data.length - 1].length == 1 && data[data.length - 1][0] == "") {
+    data.pop();
+  }
+  // On récupère les coordonnées du point dans linkto
+  var [x, y] = getCoordonneesPoint(getElementLinkto(pattern, 0));
+  // Le reste du linkto est conservée
+  var linkto = pattern.getAttribute("linkto").split(" ");
+  linkto.shift();
+  linkto = linkto.join(" ");
+  // Pour chaque ligne
+  data.forEach((ligne, index) => {
+    // On récupère la classe
+    var classe = ligne[0];
+    // On récupère les coordonnées
+    var x1 = parseFloat(ligne[1]);
+    var y1 = parseFloat(ligne[2]);
+    // On récupère les paramètres
+    var paramString = ligne[3];
+    // On construit le nouveau point
+    var pointSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    pointSVG.classList.add("point");
+    pointSVG.id = pattern.id + "-" + index;
+    var name = pattern.id + "-" + index;
+    pointSVG.setAttribute("name", name);
+    pointSVG.setAttribute("x", x + x1);
+    pointSVG.setAttribute("y", y + y1);
+    pointSVG.setAttribute("visibility", "hidden");
+    pattern.appendChild(pointSVG);
+    initialiserPoint(pointSVG);
+    // On construit l'élément
+    var element = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    element.id = pattern.id + "-" + index;
+    element.setAttribute("style", paramString.replace(',',";"));
+    element.setAttribute("linkto", name + " " + linkto);
+    element.classList.add(classe);
+    pattern.appendChild(element);
+    initialiserElement(element);
+  });
+};
+var initialiserPattern = function (pattern) {
+  constructPattern(pattern);
+};
+var initialiserPatternsFigure = function (figure) {
+  getPatternsFigure(figure).forEach(function (pattern) {
+    initialiserPattern(pattern);
+  });
+};
+var initialiserElement = function (element) {
+  if (element.classList.contains("point")) {
+    initialiserPoint(element);
+  } else if (element.classList.contains("vecteur")) {
+    initialiserVecteur(element);
+  } else if (element.classList.contains("droite")) {
+    initialiserDroite(element);
+  } else if (element.classList.contains("demiDroite")) {
+    initialiserDemiDroite(element);
+  } else if (element.classList.contains("segment")) {
+    initialiserSegment(element);
+  } else if (element.classList.contains("polygone")) {
+    initialiserPolygone(element);
+  } else if (element.classList.contains("courbe")) {
+    initialiserCourbe(element);
+  } else if (element.classList.contains("secteur")) {
+    initialiserSecteur(element);
+  } else if (element.classList.contains("nuagePoints")) {
+    initialiserNuagePoints(element);
+  } else if (element.classList.contains("carre")) {
+    initialiserCarre(element);
+  } else if (element.classList.contains("pattern")) {
+    initialiserPattern(element);
+  }
+};
 
 var initialiserFigure = function (figure) {
   addQuadrillage(figure);
@@ -1277,7 +1808,11 @@ var initialiserFigure = function (figure) {
   initialiserPolygonesFigure(figure);
   initialiserGraduationsFigure(figure);
   initialiserCourbesFigure(figure);
+  initialiserDiagrammesCirculairesFigure(figure);
   initialiserSecteursFigure(figure);
+  initialiserNuagesPointsFigure(figure);
+  initialiserCarresFigure(figure);
+  initialiserPatternsFigure(figure);
 };
 var getCoordonneesPoint = function (point) {
   var data = point
@@ -1675,6 +2210,15 @@ var interactivity = function (figure) {
         setHightlightPointOff(this);
       })
   );
+};
+var initialiserPoint = function (point) {
+  initialiserPointTransform(point);
+  constructLabelPoint(point);
+  constructCrossPoint(point);
+  constructHightlightPoint(point);
+  constructSelectPoint(point);
+  automaticHideCrossPoint(point);
+  initialiserDataPoint(point);
 };
 var initialiserPointsFigure = function (figure) {
   getPointsFigure(figure)

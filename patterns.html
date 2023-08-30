@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Geometrieplane</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+      integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
+      crossorigin="anonymous"
+    />
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+      integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+
+    <link rel="stylesheet" href="/src/css/main.css" />
+
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+
+    <link rel="stylesheet" href="/src/css/print2colonnes.css" />
+
+    <link rel="stylesheet" href="/src/css/figures.css" />
+
+    <link rel="stylesheet" href="/src/css/print.css" />
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+    <script defer src="/dist/main.bundle.js"></script>
+    <script defer src="/dist/trinomes.bundle.js"></script>
+    <script defer src="/dist/geometrie.bundle.js"></script>
+  </head>
+
+  <body>
+    <h2 id="hpattern1">Pattern 1 (2nd) : $n$</h2>
+    <div id="pattern1" class="figure">
+      <svg
+        id="pattern1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 30"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="20" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="20" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;20;0;fill:red,fill-opacity:0.2
+          carre;30;0;fill:red,fill-opacity:0.2
+          carre;50;0;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;70;0;fill:red,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    <h2 id="hpattern2">Pattern 2 (2nd): $2n$</h2>
+    <div id="pattern2" class="figure">
+      <svg
+        id="pattern2"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 40"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="20" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="20" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;20;0;fill:red,fill-opacity:0.2
+          carre;30;0;fill:red,fill-opacity:0.2
+          carre;50;0;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;70;0;fill:red,fill-opacity:0.2
+          carre;0;10;fill:red,fill-opacity:0.2
+          carre;20;10;fill:red,fill-opacity:0.2
+          carre;30;10;fill:red,fill-opacity:0.2
+          carre;50;10;fill:red,fill-opacity:0.2
+          carre;60;10;fill:red,fill-opacity:0.2
+          carre;70;10;fill:red,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    <div id="pattern2-solution" class="figure">
+      <svg
+        id="pattern2-solution"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 40"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="20" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="20" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;20;0;fill:red,fill-opacity:0.2
+          carre;30;0;fill:red,fill-opacity:0.2
+          carre;50;0;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;70;0;fill:red,fill-opacity:0.2
+          carre;0;10;fill:green,fill-opacity:0.2
+          carre;20;10;fill:green,fill-opacity:0.2
+          carre;30;10;fill:green,fill-opacity:0.2
+          carre;50;10;fill:green,fill-opacity:0.2
+          carre;60;10;fill:green,fill-opacity:0.2
+          carre;70;10;fill:green,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    <h2>Pattern 3 (2nd): $2n-1$</h2>
+    <div id="pattern3" class="figure">
+      <svg
+        id="pattern3"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 50"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;20;0;fill:red,fill-opacity:0.2
+          carre;20;-10;fill:red,fill-opacity:0.2
+          carre;30;0;fill:red,fill-opacity:0.2
+          carre;50;0;fill:red,fill-opacity:0.2
+          carre;50;-10;fill:red,fill-opacity:0.2
+          carre;50;-20;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;70;0;fill:red,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    $$\color{green}n\color{black}+\color{red}(n-1)\color{black}$$
+    <div id="pattern3-solution1" class="figure">
+      <svg
+        id="pattern3-solution1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 50"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:green,fill-opacity:0.2
+          carre;20;0;fill:green,fill-opacity:0.2
+          carre;20;-10;fill:red,fill-opacity:0.2
+          carre;30;0;fill:green,fill-opacity:0.2
+          carre;50;0;fill:green,fill-opacity:0.2
+          carre;50;-10;fill:red,fill-opacity:0.2
+          carre;50;-20;fill:red,fill-opacity:0.2
+          carre;60;0;fill:green,fill-opacity:0.2
+          carre;70;0;fill:green,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    $$2\times {\color{green}n}-1$$
+    <div id="pattern3-solution2" class="figure">
+      <svg
+        id="pattern3-solution2"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 50"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:green,fill-opacity:0.2
+          carre;20;0;fill:green,fill-opacity:0.2
+          carre;20;-10;fill:red,fill-opacity:0.2
+          carre;30;0;fill:green,fill-opacity:0.2
+          carre;50;0;fill:green,fill-opacity:0.2
+          carre;50;-10;fill:red,fill-opacity:0.2
+          carre;60;-10;fill:red,fill-opacity:0.2
+          carre;60;0;fill:green,fill-opacity:0.2
+          carre;70;0;fill:green,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    <h2>Pattern 4 (2nd): $n^2$</h2>
+    <div id="pattern4" class="figure">
+      <svg
+        id="pattern4"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 50"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;20;0;fill:red,fill-opacity:0.2
+          carre;20;-10;fill:red,fill-opacity:0.2
+          carre;30;0;fill:red,fill-opacity:0.2
+          carre;30;-10;fill:red,fill-opacity:0.2
+          carre;50;0;fill:red,fill-opacity:0.2
+          carre;50;-10;fill:red,fill-opacity:0.2
+          carre;50;-20;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;60;-10;fill:red,fill-opacity:0.2
+          carre;60;-20;fill:red,fill-opacity:0.2
+          carre;70;0;fill:red,fill-opacity:0.2
+          carre;70;-10;fill:red,fill-opacity:0.2
+          carre;70;-20;fill:red,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    $${\color{green}n}\times {\color{green}n} = {\color{green}(2n-1)} +
+    {\color{red}(n-1)^2}$$
+    <div id="pattern4-solution" class="figure">
+      <svg
+        id="pattern4-solution"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 50"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:green,fill-opacity:0.2
+          carre;20;0;fill:green,fill-opacity:0.2
+          carre;20;-10;fill:green,fill-opacity:0.2
+          carre;30;0;fill:green,fill-opacity:0.2
+          carre;30;-10;fill:red,fill-opacity:0.2
+          carre;50;0;fill:green,fill-opacity:0.2
+          carre;50;-10;fill:green,fill-opacity:0.2
+          carre;50;-20;fill:green,fill-opacity:0.2
+          carre;60;0;fill:green,fill-opacity:0.2
+          carre;60;-10;fill:red,fill-opacity:0.2
+          carre;60;-20;fill:red,fill-opacity:0.2
+          carre;70;0;fill:green,fill-opacity:0.2
+          carre;70;-10;fill:red,fill-opacity:0.2
+          carre;70;-20;fill:red,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    <h2>Pattern 5 (1re): $\dfrac{n(n+1)}{2}$</h2>
+    <div id="pattern5" class="figure">
+      <svg
+        id="pattern5"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 50"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;20;0;fill:red,fill-opacity:0.2
+          carre;20;-10;fill:red,fill-opacity:0.2
+          carre;30;0;fill:red,fill-opacity:0.2
+          carre;50;0;fill:red,fill-opacity:0.2
+          carre;50;-10;fill:red,fill-opacity:0.2
+          carre;50;-20;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;60;-10;fill:red,fill-opacity:0.2
+          carre;70;0;fill:red,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    $${\color{green}\dfrac{n^2}{2}}+{\color{red}\dfrac{n}{2}}$$
+    <div id="pattern5-solution" class="figure">
+      <svg
+        id="pattern5-solution"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 50"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;20;0;fill:red,fill-opacity:0.2
+          carre;20;-10;fill:red,fill-opacity:0.2
+          carre;30;0;fill:red,fill-opacity:0.2
+          carre;50;0;fill:red,fill-opacity:0.2
+          carre;50;-10;fill:red,fill-opacity:0.2
+          carre;50;-20;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;60;-10;fill:red,fill-opacity:0.2
+          carre;70;0;fill:red,fill-opacity:0.2
+        </g>
+        <g name="B" class="point" x="10" y="30" visibility="hidden"></g>
+        <g
+          name="t1"
+          class="polygone"
+          linkto="O A B"
+          style="fill: green; fill-opacity: 0.7"
+        ></g>
+        <g name="O1" class="point" x="30" y="40" visibility="hidden"></g>
+        <g name="A1" class="point" x="50" y="40" visibility="hidden"></g>
+        <g name="B1" class="point" x="30" y="20" visibility="hidden"></g>
+        <g
+          name="t2"
+          class="polygone"
+          linkto="O1 A1 B1"
+          style="fill: green; fill-opacity: 0.7"
+        ></g>
+        <g name="O2" class="point" x="60" y="40" visibility="hidden"></g>
+        <g name="A2" class="point" x="90" y="40" visibility="hidden"></g>
+        <g name="B2" class="point" x="60" y="10" visibility="hidden"></g>
+        <g
+          name="t3"
+          class="polygone"
+          linkto="O2 A2 B2"
+          style="fill: green; fill-opacity: 0.7"
+        ></g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    <h2 id="hpattern6">Pattern 6 (2nd): $3n$</h2>
+    <div id="pattern6" class="figure">
+      <svg
+        id="pattern6"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="-10 -10 200 90"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;-10;10;fill:red,fill-opacity:0.2
+          carre;10;-10;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;50;10;fill:red,fill-opacity:0.2
+          carre;40;20;fill:red,fill-opacity:0.2
+          carre;70;-10;fill:red,fill-opacity:0.2
+          carre;80;-10;fill:red,fill-opacity:0.2
+          carre;70;-20;fill:red,fill-opacity:0.2
+          carre;130;0;fill:red,fill-opacity:0.2
+          carre;120;10;fill:red,fill-opacity:0.2
+          carre;110;20;fill:red,fill-opacity:0.2
+          carre;100;30;fill:red,fill-opacity:0.2
+          carre;140;-10;fill:red,fill-opacity:0.2
+          carre;150;-10;fill:red,fill-opacity:0.2
+          carre;160;-10;fill:red,fill-opacity:0.2
+          carre;140;-20;fill:red,fill-opacity:0.2
+          carre;140;-30;fill:red,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    $${\color{green}n}+{\color{red}1}+{\color{blue}2n-1}$$
+    <div id="pattern6-solution" class="figure">
+      <svg
+        id="pattern6-solution"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="-10 -10 200 90"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;-10;10;fill:green,fill-opacity:0.2
+          carre;10;-10;fill:blue,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;50;10;fill:green,fill-opacity:0.2
+          carre;40;20;fill:green,fill-opacity:0.2
+          carre;70;-10;fill:blue,fill-opacity:0.2
+          carre;80;-10;fill:blue,fill-opacity:0.2
+          carre;70;-20;fill:blue,fill-opacity:0.2
+          carre;130;0;fill:red,fill-opacity:0.2
+          carre;120;10;fill:green,fill-opacity:0.2
+          carre;110;20;fill:green,fill-opacity:0.2
+          carre;100;30;fill:green,fill-opacity:0.2
+          carre;140;-10;fill:blue,fill-opacity:0.2
+          carre;150;-10;fill:blue,fill-opacity:0.2
+          carre;160;-10;fill:blue,fill-opacity:0.2
+          carre;140;-20;fill:blue,fill-opacity:0.2
+          carre;140;-30;fill:blue,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    $${\color{green}n}+({\color{red}1}+{\color{blue}n-1})+{\color{blue}n}=3
+    \times {\color{green}n}$$
+    <div id="pattern6-solution2" class="figure">
+      <svg
+        id="pattern6-solution2"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="-10 -10 200 90"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;0;10;fill:green,fill-opacity:0.2
+          carre;0;-10;fill:blue,fill-opacity:0.2
+          carre;40;0;fill:red,fill-opacity:0.2
+          carre;50;10;fill:green,fill-opacity:0.2
+          carre;40;10;fill:green,fill-opacity:0.2
+          carre;40;-10;fill:blue,fill-opacity:0.2
+          carre;50;-10;fill:blue,fill-opacity:0.2
+          carre;50;0;fill:blue,fill-opacity:0.2
+          carre;100;0;fill:red,fill-opacity:0.2
+          carre;120;10;fill:green,fill-opacity:0.2
+          carre;110;10;fill:green,fill-opacity:0.2
+          carre;100;10;fill:green,fill-opacity:0.2
+          carre;100;-10;fill:blue,fill-opacity:0.2
+          carre;110;-10;fill:blue,fill-opacity:0.2
+          carre;120;-10;fill:blue,fill-opacity:0.2
+          carre;110;0;fill:blue,fill-opacity:0.2
+          carre;120;0;fill:blue,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    <h2 id="hpattern7">Pattern 7 (2nd): $n^2+n=n(n+1)$</h2>
+    <div id="pattern7" class="figure">
+      <svg
+        id="pattern7"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 150 50"
+        class="quadrillage"
+      >
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;10;0;fill:red,fill-opacity:0.2
+          carre;40;0;fill:red,fill-opacity:0.2
+          carre;50;0;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;40;-10;fill:red,fill-opacity:0.2
+          carre;50;-10;fill:red,fill-opacity:0.2
+          carre;60;-10;fill:red,fill-opacity:0.2
+          carre;90;0;fill:red,fill-opacity:0.2
+          carre;100;0;fill:red,fill-opacity:0.2
+          carre;110;0;fill:red,fill-opacity:0.2
+          carre;120;0;fill:red,fill-opacity:0.2
+          carre;90;-10;fill:red,fill-opacity:0.2
+          carre;100;-10;fill:red,fill-opacity:0.2
+          carre;110;-10;fill:red,fill-opacity:0.2
+          carre;120;-10;fill:red,fill-opacity:0.2
+          carre;90;-20;fill:red,fill-opacity:0.2
+          carre;100;-20;fill:red,fill-opacity:0.2
+          carre;110;-20;fill:red,fill-opacity:0.2
+          carre;120;-20;fill:red,fill-opacity:0.2
+        </g>
+      </svg>
+    </div>
+    $${\color{green}n^2}+{\color{red}n}$$
+    <div id="pattern7-solution" class="figure">
+      <svg
+        id="pattern7-solution"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 150 50"
+        class="quadrillage"
+      >
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:green,fill-opacity:0.2
+          carre;10;0;fill:red,fill-opacity:0.2
+          carre;40;0;fill:green,fill-opacity:0.2
+          carre;50;0;fill:green,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;40;-10;fill:green,fill-opacity:0.2
+          carre;50;-10;fill:green,fill-opacity:0.2
+          carre;60;-10;fill:red,fill-opacity:0.2
+          carre;90;0;fill:green,fill-opacity:0.2
+          carre;100;0;fill:green,fill-opacity:0.2
+          carre;110;0;fill:green,fill-opacity:0.2
+          carre;120;0;fill:red,fill-opacity:0.2
+          carre;90;-10;fill:green,fill-opacity:0.2
+          carre;100;-10;fill:green,fill-opacity:0.2
+          carre;110;-10;fill:green,fill-opacity:0.2
+          carre;120;-10;fill:red,fill-opacity:0.2
+          carre;90;-20;fill:green,fill-opacity:0.2
+          carre;100;-20;fill:green,fill-opacity:0.2
+          carre;110;-20;fill:green,fill-opacity:0.2
+          carre;120;-20;fill:red,fill-opacity:0.2
+        </g>
+      </svg>
+    </div>
+    $${\color{green}n}\times ({\color{green}n+1})={\color{green}2n}+{\color{red}n}\times({\color{red}n-1})$$
+    <div id="pattern7-solution2" class="figure">
+      <svg
+        id="pattern7-solution2"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 150 50"
+        class="quadrillage"
+      >
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:green,fill-opacity:0.2
+          carre;10;0;fill:green,fill-opacity:0.2
+          carre;40;0;fill:green,fill-opacity:0.2
+          carre;50;0;fill:green,fill-opacity:0.2
+          carre;60;0;fill:green,fill-opacity:0.2
+          carre;40;-10;fill:green,fill-opacity:0.2
+          carre;50;-10;fill:red,fill-opacity:0.2
+          carre;60;-10;fill:red,fill-opacity:0.2
+          carre;90;0;fill:green,fill-opacity:0.2
+          carre;100;0;fill:green,fill-opacity:0.2
+          carre;110;0;fill:green,fill-opacity:0.2
+          carre;120;0;fill:green,fill-opacity:0.2
+          carre;90;-10;fill:green,fill-opacity:0.2
+          carre;100;-10;fill:red,fill-opacity:0.2
+          carre;110;-10;fill:red,fill-opacity:0.2
+          carre;120;-10;fill:red,fill-opacity:0.2
+          carre;90;-20;fill:green,fill-opacity:0.2
+          carre;100;-20;fill:red,fill-opacity:0.2
+          carre;110;-20;fill:red,fill-opacity:0.2
+          carre;120;-20;fill:red,fill-opacity:0.2
+        </g>
+      </svg>
+    </div>
+    <h2 id="hpattern8">Pattern 8 (2nd): $n^2+3n=n(n+3)$</h2>
+    <div id="pattern8" class="figure">
+      <svg
+        id="pattern8"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="-10 -10 210 90"
+        class="quadrillage"
+      >
+      <g name="O" class="point" x="10" y="50" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="50" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;-10;-10;fill:red,fill-opacity:0.2
+          carre;-10;-20;fill:red,fill-opacity:0.2
+          carre;10;-10;fill:red,fill-opacity:0.2
+
+          carre;50;0;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;40;10;fill:red,fill-opacity:0.2
+          carre;40;-10;fill:red,fill-opacity:0.2
+          carre;40;-20;fill:red,fill-opacity:0.2
+          carre;40;-30;fill:red,fill-opacity:0.2
+          carre;70;-10;fill:red,fill-opacity:0.2
+          carre;80;-10;fill:red,fill-opacity:0.2
+          carre;70;-20;fill:red,fill-opacity:0.2
+          carre;80;-20;fill:red,fill-opacity:0.2
+
+          carre;120;0;fill:red,fill-opacity:0.2
+          carre;130;0;fill:red,fill-opacity:0.2
+          carre;140;0;fill:red,fill-opacity:0.2
+          carre;110;10;fill:red,fill-opacity:0.2
+          carre;100;20;fill:red,fill-opacity:0.2
+          carre;110;-10;fill:red,fill-opacity:0.2
+          carre;110;-20;fill:red,fill-opacity:0.2
+          carre;110;-30;fill:red,fill-opacity:0.2
+          carre;110;-40;fill:red,fill-opacity:0.2
+          carre;150;-10;fill:red,fill-opacity:0.2
+          carre;160;-10;fill:red,fill-opacity:0.2
+          carre;170;-10;fill:red,fill-opacity:0.2
+          carre;150;-20;fill:red,fill-opacity:0.2
+          carre;160;-20;fill:red,fill-opacity:0.2
+          carre;170;-20;fill:red,fill-opacity:0.2
+          carre;150;-30;fill:red,fill-opacity:0.2
+          carre;160;-30;fill:red,fill-opacity:0.2
+          carre;170;-30;fill:red,fill-opacity:0.2
+        </g>
+      </svg>
+    </div>
+    $${\color{green}n}+({\color{blue}n+1})+({{\color{orange}n-1}})+{\color{red}n^2}$$
+    <div id="pattern8-solution1" class="figure">
+      <svg
+        id="pattern8-solution1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="-10 -10 210 90"
+        class="quadrillage"
+      >
+      <g name="O" class="point" x="10" y="50" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="50" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:green,fill-opacity:0.2
+          carre;-10;-10;fill:blue,fill-opacity:0.2
+          carre;-10;-20;fill:blue,fill-opacity:0.2
+          carre;10;-10;fill:red,fill-opacity:0.2
+
+          carre;50;0;fill:green,fill-opacity:0.2
+          carre;60;0;fill:green,fill-opacity:0.2
+          carre;40;10;fill:orange,fill-opacity:0.2
+          carre;40;-10;fill:blue,fill-opacity:0.2
+          carre;40;-20;fill:blue,fill-opacity:0.2
+          carre;40;-30;fill:blue,fill-opacity:0.2
+          carre;70;-10;fill:red,fill-opacity:0.2
+          carre;80;-10;fill:red,fill-opacity:0.2
+          carre;70;-20;fill:red,fill-opacity:0.2
+          carre;80;-20;fill:red,fill-opacity:0.2
+
+          carre;120;0;fill:green,fill-opacity:0.2
+          carre;130;0;fill:green,fill-opacity:0.2
+          carre;140;0;fill:green,fill-opacity:0.2
+          carre;110;10;fill:orange,fill-opacity:0.2
+          carre;100;20;fill:orange,fill-opacity:0.2
+          carre;110;-10;fill:blue,fill-opacity:0.2
+          carre;110;-20;fill:blue,fill-opacity:0.2
+          carre;110;-30;fill:blue,fill-opacity:0.2
+          carre;110;-40;fill:blue,fill-opacity:0.2
+          carre;150;-10;fill:red,fill-opacity:0.2
+          carre;160;-10;fill:red,fill-opacity:0.2
+          carre;170;-10;fill:red,fill-opacity:0.2
+          carre;150;-20;fill:red,fill-opacity:0.2
+          carre;160;-20;fill:red,fill-opacity:0.2
+          carre;170;-20;fill:red,fill-opacity:0.2
+          carre;150;-30;fill:red,fill-opacity:0.2
+          carre;160;-30;fill:red,fill-opacity:0.2
+          carre;170;-30;fill:red,fill-opacity:0.2
+        </g>
+      </svg>
+    </div>
+    $$(n+1)^2+(n-1)$$
+    <div id="pattern8-solution2" class="figure">
+      <svg
+        id="pattern8-solution2"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="-10 -10 210 90"
+        class="quadrillage"
+      >
+      <g name="O" class="point" x="10" y="50" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="50" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:green,fill-opacity:0.2
+          carre;-10;0;fill:blue,fill-opacity:0.2
+          carre;-10;-10;fill:blue,fill-opacity:0.2
+          carre;0;-10;fill:red,fill-opacity:0.2
+
+          carre;50;0;fill:green,fill-opacity:0.2
+          carre;60;0;fill:green,fill-opacity:0.2
+          carre;40;10;fill:orange,fill-opacity:0.2
+          carre;40;0;fill:blue,fill-opacity:0.2
+          carre;40;-10;fill:blue,fill-opacity:0.2
+          carre;40;-20;fill:blue,fill-opacity:0.2
+          carre;50;-10;fill:red,fill-opacity:0.2
+          carre;60;-10;fill:red,fill-opacity:0.2
+          carre;50;-20;fill:red,fill-opacity:0.2
+          carre;60;-20;fill:red,fill-opacity:0.2
+
+          carre;120;0;fill:green,fill-opacity:0.2
+          carre;130;0;fill:green,fill-opacity:0.2
+          carre;140;0;fill:green,fill-opacity:0.2
+          carre;110;10;fill:orange,fill-opacity:0.2
+          carre;120;10;fill:orange,fill-opacity:0.2
+          carre;110;0;fill:blue,fill-opacity:0.2
+          carre;110;-10;fill:blue,fill-opacity:0.2
+          carre;110;-20;fill:blue,fill-opacity:0.2
+          carre;110;-30;fill:blue,fill-opacity:0.2
+          carre;120;-10;fill:red,fill-opacity:0.2
+          carre;130;-10;fill:red,fill-opacity:0.2
+          carre;140;-10;fill:red,fill-opacity:0.2
+          carre;120;-20;fill:red,fill-opacity:0.2
+          carre;130;-20;fill:red,fill-opacity:0.2
+          carre;140;-20;fill:red,fill-opacity:0.2
+          carre;120;-30;fill:red,fill-opacity:0.2
+          carre;130;-30;fill:red,fill-opacity:0.2
+          carre;140;-30;fill:red,fill-opacity:0.2
+        </g>
+      </svg>
+    </div>
+    $$({\color{orange}n-1}+{\color{blue}1})+({\color{blue}n-1})+{\color{green}n}+{\color{red}n^2}$$
+    <div id="pattern8-solution3" class="figure">
+      <svg
+        id="pattern8-solution3"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="-20 -10 220 90"
+        class="quadrillage"
+      >
+      <g name="O" class="point" x="10" y="50" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="50" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:green,fill-opacity:0.2
+          carre;-10;0;fill:blue,fill-opacity:0.2
+          carre;-20;0;fill:blue,fill-opacity:0.2
+          carre;10;0;fill:red,fill-opacity:0.2
+
+          carre;60;-10;fill:green,fill-opacity:0.2
+          carre;60;0;fill:green,fill-opacity:0.2
+          carre;40;0;fill:orange,fill-opacity:0.2
+          carre;50;0;fill:blue,fill-opacity:0.2
+          carre;50;-10;fill:blue,fill-opacity:0.2
+          carre;40;-10;fill:blue,fill-opacity:0.2
+          carre;70;0;fill:red,fill-opacity:0.2
+          carre;80;0;fill:red,fill-opacity:0.2
+          carre;70;-10;fill:red,fill-opacity:0.2
+          carre;80;-10;fill:red,fill-opacity:0.2
+
+          carre;140;-20;fill:green,fill-opacity:0.2
+          carre;140;-10;fill:green,fill-opacity:0.2
+          carre;140;0;fill:green,fill-opacity:0.2
+          carre;120;0;fill:orange,fill-opacity:0.2
+          carre;120;-10;fill:orange,fill-opacity:0.2
+          carre;130;0;fill:blue,fill-opacity:0.2
+          carre;130;-10;fill:blue,fill-opacity:0.2
+          carre;130;-20;fill:blue,fill-opacity:0.2
+          carre;120;-20;fill:blue,fill-opacity:0.2
+          carre;150;0;fill:red,fill-opacity:0.2
+          carre;160;0;fill:red,fill-opacity:0.2
+          carre;170;0;fill:red,fill-opacity:0.2
+          carre;150;-10;fill:red,fill-opacity:0.2
+          carre;160;-10;fill:red,fill-opacity:0.2
+          carre;170;-10;fill:red,fill-opacity:0.2
+          carre;150;-20;fill:red,fill-opacity:0.2
+          carre;160;-20;fill:red,fill-opacity:0.2
+          carre;170;-20;fill:red,fill-opacity:0.2
+        </g>
+      </svg>
+    </div>
+    $${\color{green}n}\times 3+{\color{red}n^2}={\color{red}n}\times ({\color{red}n}+{\color{green}3})$$
+    <div id="pattern8-solution4" class="figure">
+      <svg
+        id="pattern8-solution4"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="-20 -10 220 90"
+        class="quadrillage"
+      >
+      <g name="O" class="point" x="10" y="50" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="50" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:green,fill-opacity:0.2
+          carre;-10;0;fill:green,fill-opacity:0.2
+          carre;-20;0;fill:green,fill-opacity:0.2
+          carre;10;0;fill:red,fill-opacity:0.2
+
+          carre;60;-10;fill:green,fill-opacity:0.2
+          carre;60;0;fill:green,fill-opacity:0.2
+          carre;40;0;fill:green,fill-opacity:0.2
+          carre;50;0;fill:green,fill-opacity:0.2
+          carre;50;-10;fill:green,fill-opacity:0.2
+          carre;40;-10;fill:green,fill-opacity:0.2
+          carre;70;0;fill:red,fill-opacity:0.2
+          carre;80;0;fill:red,fill-opacity:0.2
+          carre;70;-10;fill:red,fill-opacity:0.2
+          carre;80;-10;fill:red,fill-opacity:0.2
+
+          carre;140;-20;fill:green,fill-opacity:0.2
+          carre;140;-10;fill:green,fill-opacity:0.2
+          carre;140;0;fill:green,fill-opacity:0.2
+          carre;120;0;fill:green,fill-opacity:0.2
+          carre;120;-10;fill:green,fill-opacity:0.2
+          carre;130;0;fill:green,fill-opacity:0.2
+          carre;130;-10;fill:green,fill-opacity:0.2
+          carre;130;-20;fill:green,fill-opacity:0.2
+          carre;120;-20;fill:green,fill-opacity:0.2
+          carre;150;0;fill:red,fill-opacity:0.2
+          carre;160;0;fill:red,fill-opacity:0.2
+          carre;170;0;fill:red,fill-opacity:0.2
+          carre;150;-10;fill:red,fill-opacity:0.2
+          carre;160;-10;fill:red,fill-opacity:0.2
+          carre;170;-10;fill:red,fill-opacity:0.2
+          carre;150;-20;fill:red,fill-opacity:0.2
+          carre;160;-20;fill:red,fill-opacity:0.2
+          carre;170;-20;fill:red,fill-opacity:0.2
+        </g>
+      </svg>
+    </div>
+    <h2 id="hpattern9">Pattern 9 (2nd): $5(n+1)$</h2>
+    <div id="pattern9" class="figure">
+      <svg
+        id="pattern9"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 180 70"
+        class="quadrillage"
+      >
+      <g name="O" class="point" x="10" y="60" visibility="hidden"></g>
+      <g name="A" class="point" x="20" y="60" visibility="hidden"></g>
+      <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+      <g name="p" class="pattern" linkto="O u">
+        carre;0;0;fill:red,fill-opacity:0.2
+        carre;10;0;fill:red,fill-opacity:0.2
+        carre;20;0;fill:red,fill-opacity:0.2
+        carre;0;-10;fill:red,fill-opacity:0.2
+        carre;10;-10;fill:red,fill-opacity:0.2
+        carre;20;-10;fill:red,fill-opacity:0.2
+        carre;0;-20;fill:red,fill-opacity:0.2
+        carre;10;-20;fill:red,fill-opacity:0.2
+        carre;20;-20;fill:red,fill-opacity:0.2
+        carre;10;-30;fill:red,fill-opacity:0.2
+
+        carre;50;0;fill:red,fill-opacity:0.2
+        carre;60;0;fill:red,fill-opacity:0.2
+        carre;70;0;fill:red,fill-opacity:0.2
+        carre;80;0;fill:red,fill-opacity:0.2
+        carre;50;-10;fill:red,fill-opacity:0.2
+        carre;60;-10;fill:red,fill-opacity:0.2
+        carre;70;-10;fill:red,fill-opacity:0.2
+        carre;80;-10;fill:red,fill-opacity:0.2
+        carre;50;-20;fill:red,fill-opacity:0.2
+        carre;60;-20;fill:red,fill-opacity:0.2
+        carre;70;-20;fill:red,fill-opacity:0.2
+        carre;80;-20;fill:red,fill-opacity:0.2
+        carre;60;-30;fill:red,fill-opacity:0.2
+        carre;70;-30;fill:red,fill-opacity:0.2
+        carre;60;-40;fill:red,fill-opacity:0.2
+
+        carre;110;0;fill:red,fill-opacity:0.2
+        carre;120;0;fill:red,fill-opacity:0.2
+        carre;130;0;fill:red,fill-opacity:0.2
+        carre;140;0;fill:red,fill-opacity:0.2
+        carre;150;0;fill:red,fill-opacity:0.2
+        carre;110;-10;fill:red,fill-opacity:0.2
+        carre;120;-10;fill:red,fill-opacity:0.2
+        carre;130;-10;fill:red,fill-opacity:0.2
+        carre;140;-10;fill:red,fill-opacity:0.2
+        carre;150;-10;fill:red,fill-opacity:0.2
+        carre;110;-20;fill:red,fill-opacity:0.2
+        carre;120;-20;fill:red,fill-opacity:0.2
+        carre;130;-20;fill:red,fill-opacity:0.2
+        carre;140;-20;fill:red,fill-opacity:0.2
+        carre;150;-20;fill:red,fill-opacity:0.2
+        carre;120;-30;fill:red,fill-opacity:0.2
+        carre;130;-30;fill:red,fill-opacity:0.2
+        carre;140;-30;fill:red,fill-opacity:0.2
+        carre;120;-40;fill:red,fill-opacity:0.2
+        carre;130;-40;fill:red,fill-opacity:0.2
+      </g>
+      </svg>
+    </div>
+    $$3({\color{green}n}+{\color{orange}2})+({\color{blue}2n-1})$$
+    <div id="pattern9-solution1" class="figure">
+      <svg
+        id="pattern9-solution1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 180 70"
+        class="quadrillage"
+      >
+      <g name="O" class="point" x="10" y="60" visibility="hidden"></g>
+      <g name="A" class="point" x="20" y="60" visibility="hidden"></g>
+      <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+      <g name="p" class="pattern" linkto="O u">
+        carre;0;0;fill:green,fill-opacity:0.2
+        carre;10;0;fill:orange,fill-opacity:0.2
+        carre;20;0;fill:orange,fill-opacity:0.2
+        carre;0;-10;fill:red,fill-opacity:0.2
+        carre;10;-10;fill:red,fill-opacity:0.2
+        carre;20;-10;fill:red,fill-opacity:0.2
+        carre;0;-20;fill:red,fill-opacity:0.2
+        carre;10;-20;fill:red,fill-opacity:0.2
+        carre;20;-20;fill:red,fill-opacity:0.2
+        carre;10;-30;fill:blue,fill-opacity:0.2
+
+        carre;50;0;fill:green,fill-opacity:0.2
+        carre;60;0;fill:green,fill-opacity:0.2
+        carre;70;0;fill:orange,fill-opacity:0.2
+        carre;80;0;fill:orange,fill-opacity:0.2
+        carre;50;-10;fill:red,fill-opacity:0.2
+        carre;60;-10;fill:red,fill-opacity:0.2
+        carre;70;-10;fill:red,fill-opacity:0.2
+        carre;80;-10;fill:red,fill-opacity:0.2
+        carre;50;-20;fill:red,fill-opacity:0.2
+        carre;60;-20;fill:red,fill-opacity:0.2
+        carre;70;-20;fill:red,fill-opacity:0.2
+        carre;80;-20;fill:red,fill-opacity:0.2
+        carre;60;-30;fill:blue,fill-opacity:0.2
+        carre;70;-30;fill:blue,fill-opacity:0.2
+        carre;60;-40;fill:blue,fill-opacity:0.2
+
+        carre;110;0;fill:green,fill-opacity:0.2
+        carre;120;0;fill:green,fill-opacity:0.2
+        carre;130;0;fill:green,fill-opacity:0.2
+        carre;140;0;fill:orange,fill-opacity:0.2
+        carre;150;0;fill:orange,fill-opacity:0.2
+        carre;110;-10;fill:red,fill-opacity:0.2
+        carre;120;-10;fill:red,fill-opacity:0.2
+        carre;130;-10;fill:red,fill-opacity:0.2
+        carre;140;-10;fill:red,fill-opacity:0.2
+        carre;150;-10;fill:red,fill-opacity:0.2
+        carre;110;-20;fill:red,fill-opacity:0.2
+        carre;120;-20;fill:red,fill-opacity:0.2
+        carre;130;-20;fill:red,fill-opacity:0.2
+        carre;140;-20;fill:red,fill-opacity:0.2
+        carre;150;-20;fill:red,fill-opacity:0.2
+        carre;120;-30;fill:blue,fill-opacity:0.2
+        carre;130;-30;fill:blue,fill-opacity:0.2
+        carre;140;-30;fill:blue,fill-opacity:0.2
+        carre;120;-40;fill:blue,fill-opacity:0.2
+        carre;130;-40;fill:blue,fill-opacity:0.2
+      </g>
+      </svg>
+    </div>
+    $${\color{green}3n}+{\color{orange}6}+{\color{blue}2n-1}$$
+    <div id="pattern9-solution2" class="figure">
+      <svg
+        id="pattern9-solution2"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 180 70"
+        class="quadrillage"
+      >
+      <g name="O" class="point" x="10" y="60" visibility="hidden"></g>
+      <g name="A" class="point" x="20" y="60" visibility="hidden"></g>
+      <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+      <g name="p" class="pattern" linkto="O u">
+        carre;0;0;fill:green,fill-opacity:0.2
+        carre;10;0;fill:orange,fill-opacity:0.2
+        carre;20;0;fill:orange,fill-opacity:0.2
+        carre;0;-10;fill:green,fill-opacity:0.2
+        carre;10;-10;fill:orange,fill-opacity:0.2
+        carre;20;-10;fill:orange,fill-opacity:0.2
+        carre;0;-20;fill:green,fill-opacity:0.2
+        carre;10;-20;fill:orange,fill-opacity:0.2
+        carre;20;-20;fill:orange,fill-opacity:0.2
+        carre;10;-30;fill:blue,fill-opacity:0.2
+
+        carre;50;0;fill:green,fill-opacity:0.2
+        carre;60;0;fill:green,fill-opacity:0.2
+        carre;70;0;fill:orange,fill-opacity:0.2
+        carre;80;0;fill:orange,fill-opacity:0.2
+        carre;50;-10;fill:green,fill-opacity:0.2
+        carre;60;-10;fill:green,fill-opacity:0.2
+        carre;70;-10;fill:orange,fill-opacity:0.2
+        carre;80;-10;fill:orange,fill-opacity:0.2
+        carre;50;-20;fill:green,fill-opacity:0.2
+        carre;60;-20;fill:green,fill-opacity:0.2
+        carre;70;-20;fill:orange,fill-opacity:0.2
+        carre;80;-20;fill:orange,fill-opacity:0.2
+        carre;60;-30;fill:blue,fill-opacity:0.2
+        carre;70;-30;fill:blue,fill-opacity:0.2
+        carre;60;-40;fill:blue,fill-opacity:0.2
+
+        carre;110;0;fill:green,fill-opacity:0.2
+        carre;120;0;fill:green,fill-opacity:0.2
+        carre;130;0;fill:green,fill-opacity:0.2
+        carre;140;0;fill:orange,fill-opacity:0.2
+        carre;150;0;fill:orange,fill-opacity:0.2
+        carre;110;-10;fill:green,fill-opacity:0.2
+        carre;120;-10;fill:green,fill-opacity:0.2
+        carre;130;-10;fill:green,fill-opacity:0.2
+        carre;140;-10;fill:orange,fill-opacity:0.2
+        carre;150;-10;fill:orange,fill-opacity:0.2
+        carre;110;-20;fill:green,fill-opacity:0.2
+        carre;120;-20;fill:green,fill-opacity:0.2
+        carre;130;-20;fill:green,fill-opacity:0.2
+        carre;140;-20;fill:orange,fill-opacity:0.2
+        carre;150;-20;fill:orange,fill-opacity:0.2
+        carre;120;-30;fill:blue,fill-opacity:0.2
+        carre;130;-30;fill:blue,fill-opacity:0.2
+        carre;140;-30;fill:blue,fill-opacity:0.2
+        carre;120;-40;fill:blue,fill-opacity:0.2
+        carre;130;-40;fill:blue,fill-opacity:0.2
+      </g>
+      </svg>
+    </div>
+    $$({\color{green}3n}+{\color{blue}2n-1}+{\color{orange}1})+{\color{orange}5}$$
+    <div id="pattern9-solution3" class="figure">
+      <svg
+        id="pattern9-solution3"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 180 70"
+        class="quadrillage"
+      >
+      <g name="O" class="point" x="10" y="60" visibility="hidden"></g>
+      <g name="A" class="point" x="20" y="60" visibility="hidden"></g>
+      <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+      <g name="p" class="pattern" linkto="O u">
+        carre;0;0;fill:green,fill-opacity:0.2
+        carre;10;0;fill:orange,fill-opacity:0.2
+        carre;20;0;fill:orange,fill-opacity:0.2
+        carre;0;-10;fill:green,fill-opacity:0.2
+        carre;10;-10;fill:orange,fill-opacity:0.2
+        carre;20;-10;fill:orange,fill-opacity:0.2
+        carre;0;-20;fill:green,fill-opacity:0.2
+        carre;10;-20;fill:orange,fill-opacity:0.2
+        carre;0;-40;fill:orange,fill-opacity:0.2
+        carre;0;-30;fill:blue,fill-opacity:0.2
+
+        carre;50;0;fill:green,fill-opacity:0.2
+        carre;60;0;fill:green,fill-opacity:0.2
+        carre;70;0;fill:orange,fill-opacity:0.2
+        carre;80;0;fill:orange,fill-opacity:0.2
+        carre;50;-10;fill:green,fill-opacity:0.2
+        carre;60;-10;fill:green,fill-opacity:0.2
+        carre;70;-10;fill:orange,fill-opacity:0.2
+        carre;80;-10;fill:orange,fill-opacity:0.2
+        carre;50;-20;fill:green,fill-opacity:0.2
+        carre;60;-20;fill:green,fill-opacity:0.2
+        carre;70;-20;fill:orange,fill-opacity:0.2
+        carre;60;-40;fill:orange,fill-opacity:0.2
+        carre;50;-30;fill:blue,fill-opacity:0.2
+        carre;60;-30;fill:blue,fill-opacity:0.2
+        carre;50;-40;fill:blue,fill-opacity:0.2
+
+        carre;110;0;fill:green,fill-opacity:0.2
+        carre;120;0;fill:green,fill-opacity:0.2
+        carre;130;0;fill:green,fill-opacity:0.2
+        carre;140;0;fill:orange,fill-opacity:0.2
+        carre;150;0;fill:orange,fill-opacity:0.2
+        carre;110;-10;fill:green,fill-opacity:0.2
+        carre;120;-10;fill:green,fill-opacity:0.2
+        carre;130;-10;fill:green,fill-opacity:0.2
+        carre;140;-10;fill:orange,fill-opacity:0.2
+        carre;150;-10;fill:orange,fill-opacity:0.2
+        carre;110;-20;fill:green,fill-opacity:0.2
+        carre;120;-20;fill:green,fill-opacity:0.2
+        carre;130;-20;fill:green,fill-opacity:0.2
+        carre;140;-20;fill:orange,fill-opacity:0.2
+        carre;130;-40;fill:orange,fill-opacity:0.2
+        carre;110;-30;fill:blue,fill-opacity:0.2
+        carre;120;-30;fill:blue,fill-opacity:0.2
+        carre;130;-30;fill:blue,fill-opacity:0.2
+        carre;110;-40;fill:blue,fill-opacity:0.2
+        carre;120;-40;fill:blue,fill-opacity:0.2
+      </g>
+      </svg>
+    </div>
+    $${\color{green}5n}+{\color{orange}5}=5({\color{green}n}+{\color{orange}1})$$
+    <div id="pattern9-solution4" class="figure">
+      <svg
+        id="pattern9-solution4"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 180 70"
+        class="quadrillage"
+      >
+      <g name="O" class="point" x="10" y="60" visibility="hidden"></g>
+      <g name="A" class="point" x="20" y="60" visibility="hidden"></g>
+      <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+      <g name="p" class="pattern" linkto="O u">
+        carre;0;0;fill:green,fill-opacity:0.2
+        carre;10;0;fill:orange,fill-opacity:0.2
+        carre;10;-30;fill:orange,fill-opacity:0.2
+        carre;0;-10;fill:green,fill-opacity:0.2
+        carre;10;-10;fill:orange,fill-opacity:0.2
+        carre;10;-40;fill:orange,fill-opacity:0.2
+        carre;0;-20;fill:green,fill-opacity:0.2
+        carre;10;-20;fill:orange,fill-opacity:0.2
+        carre;0;-40;fill:green,fill-opacity:0.2
+        carre;0;-30;fill:green,fill-opacity:0.2
+
+        carre;50;0;fill:green,fill-opacity:0.2
+        carre;60;0;fill:green,fill-opacity:0.2
+        carre;70;0;fill:orange,fill-opacity:0.2
+        carre;70;-30;fill:orange,fill-opacity:0.2
+        carre;50;-10;fill:green,fill-opacity:0.2
+        carre;60;-10;fill:green,fill-opacity:0.2
+        carre;70;-10;fill:orange,fill-opacity:0.2
+        carre;70;-40;fill:orange,fill-opacity:0.2
+        carre;50;-20;fill:green,fill-opacity:0.2
+        carre;60;-20;fill:green,fill-opacity:0.2
+        carre;70;-20;fill:orange,fill-opacity:0.2
+        carre;60;-40;fill:green,fill-opacity:0.2
+        carre;50;-30;fill:green,fill-opacity:0.2
+        carre;60;-30;fill:green,fill-opacity:0.2
+        carre;50;-40;fill:green,fill-opacity:0.2
+
+        carre;110;0;fill:green,fill-opacity:0.2
+        carre;120;0;fill:green,fill-opacity:0.2
+        carre;130;0;fill:green,fill-opacity:0.2
+        carre;140;0;fill:orange,fill-opacity:0.2
+        carre;140;-30;fill:orange,fill-opacity:0.2
+        carre;110;-10;fill:green,fill-opacity:0.2
+        carre;120;-10;fill:green,fill-opacity:0.2
+        carre;130;-10;fill:green,fill-opacity:0.2
+        carre;140;-10;fill:orange,fill-opacity:0.2
+        carre;140;-40;fill:orange,fill-opacity:0.2
+        carre;110;-20;fill:green,fill-opacity:0.2
+        carre;120;-20;fill:green,fill-opacity:0.2
+        carre;130;-20;fill:green,fill-opacity:0.2
+        carre;140;-20;fill:orange,fill-opacity:0.2
+        carre;130;-40;fill:green,fill-opacity:0.2
+        carre;110;-30;fill:green,fill-opacity:0.2
+        carre;120;-30;fill:green,fill-opacity:0.2
+        carre;130;-30;fill:green,fill-opacity:0.2
+        carre;110;-40;fill:green,fill-opacity:0.2
+        carre;120;-40;fill:green,fill-opacity:0.2
+        </g>
+      </svg>
+    </div>
+  </body>
+</html>

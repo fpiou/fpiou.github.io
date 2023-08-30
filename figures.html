@@ -735,7 +735,7 @@
           <!-- Courbe définie par une expression -->
           <g
             name="c"
-            parametres="xmin:-4,xmax:4,ymin:-1,ymax:10,yunit:1"
+            parametres="xBoxmin:-4,xmin:-2,xmax:2,xBoxmax:4,ymin:-1,ymax:10,yunit:1,afficherAxes:1"
             expression="x^2"
             class="courbe"
           ></g>
@@ -747,7 +747,7 @@
           <g name="D" class="point" x="160" y="110"></g>
           <g
             name="c2"
-            parametres="xmin:-4,xmax:4,ymin:-1,ymax:10,yunit:1"
+            parametres="xmin:-4,xmax:4,ymin:-1,ymax:10,yunit:1,afficherAxes:0"
             class="courbe"
             linkto="A B C D"
             pentes="C:0,A:1"
@@ -755,7 +755,7 @@
 
           <g
             name="c3"
-            parametres="xmin:-4,xmax:4,ymin:-1,ymax:10,yunit:1"
+            parametres="xmin:-4,xmax:4,ymin:-1,ymax:10,yunit:1,afficherAxes:0"
             expression="x^2-x-6"
             class="courbe"
           ></g>
@@ -913,8 +913,11 @@
         </ol>
       </div>
       <div id="figure20" class="figure">
-        <svg id="figure20" xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 200 100">
+        <svg
+          id="figure20"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 200 100"
+        >
           <g name="A" class="point labeled draggable" x="40" y="20"></g>
           <g
             class="label"
@@ -951,7 +954,7 @@
           >
             C
           </g>
-          
+
           <g
             name="M"
             class="point labeled translation draggable"
@@ -1021,86 +1024,256 @@
       <h2 id="hfigure21">Exercice d'optimisation</h2>
       <div id="figure21" class="figure">
         <svg
-        id="figure21"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 200 200"
-      >
-        <g name="S" class="point labeled" x="40" y="20"></g>
-        <g class="label" linkto="S" y="-20" x="-5" style="font-size: 0.8em;">
-          S
-        </g>
-        <g name="R" class="point labeled" x="150" y="150"></g>
-        <g class="label" linkto="R" x="-5" y="0" style="font-size: 0.8em;">
-          R</g>
-        <g name="A" class="point" x="0" y="80" visibility="hidden"></g>
-        <g name="B" class="point" x="200" y="80" visibility="hidden"></g>
-        <g name="C" class="point" x="0" y="120" visibility="hidden"></g>
-        <g name="D" class="point" x="200" y="120" visibility="hidden"></g>
-        <g
-          name="ABDC"
-          class="polygone"
-          linkto="A B D C"
-          style="fill: blue; fill-opacity: 0.5"
-        ></g>
-        <!-- S' est l'image de S par la translation de vecteur AC -->
-        <g name="S1" class="point labeled translation" linkto="A C S"></g>
-        <g class="label" linkto="S1" y="-10" x="-10" style="font-size: 0.8em;">
-          S'
-        </g>
-        <!-- M est un point de la droite (AB)-->
-        <g
-          name="M"
-          class="point labeled translation draggable"
-          linkto="A B A"
-          data="0.5"
-        ></g>
-        <g
-          class="label"
-          linkto="M"
-          y="-20"
-          x="0"
-          style="font-size: 0.8em; color: red"
+          id="figure21"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 200 200"
         >
-          M
-        </g>
-        <!-- N est l'image du point M par la translation de vecteur AC-->
-        <g
-          name="N"
-          class="point labeled translation"
-          linkto="A C M"
-          data="1"
+          <g name="S" class="point labeled" x="40" y="20"></g>
+          <g class="label" linkto="S" y="-20" x="-5" style="font-size: 0.8em">
+            S
+          </g>
+          <g name="R" class="point labeled" x="150" y="150"></g>
+          <g class="label" linkto="R" x="-5" y="0" style="font-size: 0.8em">
+            R
+          </g>
+          <g name="A" class="point" x="0" y="80" visibility="hidden"></g>
+          <g name="B" class="point" x="200" y="80" visibility="hidden"></g>
+          <g name="C" class="point" x="0" y="120" visibility="hidden"></g>
+          <g name="D" class="point" x="200" y="120" visibility="hidden"></g>
+          <g
+            name="ABDC"
+            class="polygone"
+            linkto="A B D C"
+            style="fill: blue; fill-opacity: 0.5"
           ></g>
-        <g class="label" linkto="N" y="0" x="-10" style="font-size: 0.8em;">
-          N
-        </g>
+          <!-- S' est l'image de S par la translation de vecteur AC -->
+          <g name="S1" class="point labeled translation" linkto="A C S"></g>
+          <g class="label" linkto="S1" y="-10" x="-10" style="font-size: 0.8em">
+            S'
+          </g>
+          <!-- M est un point de la droite (AB)-->
+          <g
+            name="M"
+            class="point labeled translation draggable"
+            linkto="A B A"
+            data="0.5"
+          ></g>
+          <g
+            class="label"
+            linkto="M"
+            y="-20"
+            x="0"
+            style="font-size: 0.8em; color: red"
+          >
+            M
+          </g>
+          <!-- N est l'image du point M par la translation de vecteur AC-->
+          <g
+            name="N"
+            class="point labeled translation"
+            linkto="A C M"
+            data="1"
+          ></g>
+          <g class="label" linkto="N" y="0" x="-10" style="font-size: 0.8em">
+            N
+          </g>
           <g name="MN" class="segment" linkto="M N"></g>
-        <!-- SM et NR en pointillés-->
-        <g name="SM" class="segment" linkto="S M" style="stroke: blue; stroke-width: 2; stroke-dasharray: 5 5; stroke-opacity: 0.8;"></g>
-        <g name="NR" class="segment" linkto="N R" style="stroke: blue; stroke-width: 2; stroke-dasharray: 5 5; stroke-opacity: 0.8;"></g>
-        <!-- SMNS' -->
-        <g name="SMNS1" class="polygone" linkto="S M N S1" style="fill: green; fill-opacity: 0.2;"></g>
-        <!-- Vecteur SS' et MN -->
-        <g name="SS1" class="vecteur" linkto="S S1" style="stroke: red; stroke-width: 1;"></g>
-        <g name="MN" class="vecteur" linkto="M N" style="stroke: red; stroke-width: 1;"></g>
-        <!-- Fin de la figure -->
-      </svg>
+          <!-- SM et NR en pointillés-->
+          <g
+            name="SM"
+            class="segment"
+            linkto="S M"
+            style="
+              stroke: blue;
+              stroke-width: 2;
+              stroke-dasharray: 5 5;
+              stroke-opacity: 0.8;
+            "
+          ></g>
+          <g
+            name="NR"
+            class="segment"
+            linkto="N R"
+            style="
+              stroke: blue;
+              stroke-width: 2;
+              stroke-dasharray: 5 5;
+              stroke-opacity: 0.8;
+            "
+          ></g>
+          <!-- SMNS' -->
+          <g
+            name="SMNS1"
+            class="polygone"
+            linkto="S M N S1"
+            style="fill: green; fill-opacity: 0.2"
+          ></g>
+          <!-- Vecteur SS' et MN -->
+          <g
+            name="SS1"
+            class="vecteur"
+            linkto="S S1"
+            style="stroke: red; stroke-width: 1"
+          ></g>
+          <g
+            name="MN"
+            class="vecteur"
+            linkto="M N"
+            style="stroke: red; stroke-width: 1"
+          ></g>
+          <!-- Fin de la figure -->
+        </svg>
       </div>
     </div>
     <h2 id="hfigure22">Secteur angulaire</h2>
-      <div id="figure22" class="figure">
-        <svg
+    <div id="figure22" class="figure">
+      <svg
         id="figure21"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 200 200"
       >
-      <g name="O" class="point labeled" x="100" y="100"></g>
-      <g class="label" linkto="O" y="-20" x="-5" style="font-size: 0.8em;">
-        O
-      </g>
-      <g name="s" class="secteur" linkto="O" parametres="angle:10,r:50" style="fill: blue; fill-opacity: 0.5"></g>
-      <g name="s" class="secteur" linkto="O" parametres="departAngle:10,angle:20,r:50" style="fill: red; fill-opacity: 0.5"></g>
-      <g name="s" class="secteur" linkto="O" parametres="departAngle:30,angle:30,r:50" style="fill: green; fill-opacity: 0.5"></g>
+        <g name="O" class="point labeled" x="100" y="100"></g>
+        <g class="label" linkto="O" y="-20" x="-5" style="font-size: 0.8em">
+          O
+        </g>
+        <g
+          name="s"
+          class="secteur"
+          linkto="O"
+          parametres="angle:10,r:50"
+          style="fill: blue; fill-opacity: 0.5"
+        ></g>
+        <g
+          name="s"
+          class="secteur"
+          linkto="O"
+          parametres="departAngle:10,angle:20,r:50"
+          style="fill: red; fill-opacity: 0.5"
+        ></g>
+        <g
+          name="s"
+          class="secteur"
+          linkto="O"
+          parametres="departAngle:30,angle:30,r:50"
+          style="fill: green; fill-opacity: 0.5"
+        ></g>
       </svg>
-      </div>
+    </div>
+    <h2 id="hfigure23">Diagramme circulaire</h2>
+    <div id="figure23" class="figure">
+      <svg
+        id="figure23"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 200"
+      >
+        <g
+          name="d1"
+          class="diagrammeCirculaire"
+          linkto="O"
+          parametres="coeffDistanceEtiquette:1.2,afficherNoms:1,departAngle:90,r:80"
+        >
+          ;Femme
+          2020;90
+          2015;45
+          2010;135
+          2012;50
+          2013;40
+        </g>
+      </svg>
+    </div>
+    <h2 id="hfigure24">Nuage de points</h2>
+    <div id="figure24" class="figure">
+      <svg
+        id="figure24"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 200"
+      >
+        <g
+          name="n1"
+          class="nuagePoints"
+          parametres="xmin:2008,ymin:0,xmax:2022,ymax:150,xunit:1,yunit:10"
+        >
+          ;Femme
+          2020;90
+          2015;45
+          2010;135
+          2012;50
+          2013;40
+        </g>
+      </svg>
+    </div>
+    <h2 id="hfigure25">Pattern</h2>
+    <div id="figure25" class="figure">
+      <svg id="figure25" xmlns="http://www.w3.org/2000/svg" viewBox="0 70 150 40" class="quadrillage">
+        <g name="O" class="point" x="10" y="100" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="100" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="C1" class="carre" linkto="O u" style="fill: red; fill-opacity: 0.5"></g>
+        <g name="B" class="point" x="30" y="100" visibility="hidden"></g>
+        <g name="C2" class="carre" linkto="B u" style="fill: red; fill-opacity: 0.5"></g>
+        <g name="C" class="point" x="40" y="100" visibility="hidden"></g>
+        <g name="C3" class="carre" linkto="C u" style="fill: red; fill-opacity: 0.5"></g>
+        <g name="D" class="point" x="30" y="90" visibility="hidden"></g>
+        <g name="C4" class="carre" linkto="D u" style="fill: red; fill-opacity: 0.5"></g>
+        <g name="E" class="point" x="60" y="100" visibility="hidden"></g>
+        <g name="C5" class="carre" linkto="E u" style="fill: red; fill-opacity: 0.5"></g>
+        <g name="F" class="point" x="70" y="100" visibility="hidden"></g>
+        <g name="C6" class="carre" linkto="F u" style="fill: red; fill-opacity: 0.5"></g>
+        <g name="G" class="point" x="80" y="100" visibility="hidden"></g>
+        <g name="C7" class="carre" linkto="G u" style="fill: red; fill-opacity: 0.5"></g>
+        <g name="H" class="point" x="60" y="90" visibility="hidden"></g>
+        <g name="C8" class="carre" linkto="H u" style="fill: red; fill-opacity: 0.5"></g>
+        <g name="I" class="point" x="70" y="90" visibility="hidden"></g>
+        <g name="C9" class="carre" linkto="I u" style="fill: red; fill-opacity: 0.5"></g>
+        <g name="J" class="point" x="100" y="100" visibility="hidden"></g>
+        <g name="C10" class="carre" linkto="J u" style="fill: red; fill-opacity: 0.5"></g>
+        <g name="K" class="point" x="110" y="100" visibility="hidden"></g>
+        <g name="C11" class="carre" linkto="K u" style="fill: red; fill-opacity: 0.5"></g>  
+        <g name="L" class="point" x="120" y="100" visibility="hidden"></g>
+        <g name="C12" class="carre" linkto="L u" style="fill: red; fill-opacity: 0.5"></g>
+        <g name="M" class="point" x="130" y="100" visibility="hidden"></g>
+        <g name="C13" class="carre" linkto="M u" style="fill: red; fill-opacity: 0.5"></g>
+        <g name="N" class="point" x="100" y="90" visibility="hidden"></g>
+        <g name="C14" class="carre" linkto="N u" style="fill: red; fill-opacity: 0.5"></g>
+        <g name="O1" class="point" x="110" y="90" visibility="hidden"></g>
+        <g name="C15" class="carre" linkto="O1 u" style="fill: red; fill-opacity: 0.5"></g>
+        <g name="P" class="point" x="120" y="90" visibility="hidden"></g>
+        <g name="C16" class="carre" linkto="P u" style="fill: red; fill-opacity: 0.5"></g>
+        <g name="Q" class="point" x="130" y="90" visibility="hidden"></g>
+      </svg>
+    </div>
+    <h2 id="hfigure26">Nuage de points d'une suite</h2>
+    <div id="figure26" class="figure">
+      <svg
+        id="figure26"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 200"
+      >
+        <g
+          name="n1"
+          class="nuagePoints"
+          parametres="expression:x^2,xBoxmin:-1,xBoxmax:11,xmin:0,yBoxmin:-10,ymin:0,xmax:10,ymax:100,xunit:1,yunit:10,n:10"
+        ></g>
+      </svg>
+    </div>
+    <h2 id="hfigure27">Pattern</h2>
+    <div id="figure27" class="figure">
+      <svg
+        id="figure27"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 200"
+      >
+      <g name="O" class="point" x="10" y="100" visibility="hidden"></g>
+      <g name="A" class="point" x="20" y="100" visibility="hidden"></g>
+      <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+      <g name="p" class="pattern" linkto="O u">
+        carre;0;0;fill:red,fill-opacity:0.5
+        carre;20;0;fill:red,fill-opacity:0.5
+        carre;30;0;fill:red,fill-opacity:0.5
+        carre;50;0;fill:red,fill-opacity:0.5
+        carre;60;0;fill:red,fill-opacity:0.5
+      </g>
+      </svg>
+    </div>
   </body>
 </html>
