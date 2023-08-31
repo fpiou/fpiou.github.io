@@ -32757,6 +32757,18 @@ var setUniqueIds = function () {
           }
           ids[j].setAttribute("pentes", pentes.join(","));
         }
+        // On ajoute également l'identifiant à tous les éléments du controls qui est un string de la forme "A:0.5 B:1 C:2"
+        if (ids[j].getAttribute("controls") != null) {
+          var controls = ids[j].getAttribute("controls").split(" ");
+          for (var k = 0; k < controls.length; k++) {
+            controls[k] = id + "-" + controls[k].split(":")[0] + ":" + controls[k].split(":")[1];
+          }
+          ids[j].setAttribute("controls", controls.join(" "));
+        }
+        // On ajoute également l'identifiant à tous les éléments du repere
+        if (ids[j].getAttribute("repere") != null) {
+          ids[j].setAttribute("repere", id + "-" + ids[j].getAttribute("repere"));
+        }
       }
       // On sélectionne maintenant tous qui n'ont pas la class name
       var ids = figures[i].querySelector("svg").querySelectorAll("*:not([name])");
@@ -32982,8 +32994,10 @@ var constructCrossPoint = function (point) {
   } else {
     path.setAttribute("d", "M-2,-2 L2,2 M-2,2 L2,-2");
   }
-  path.setAttribute("fill", "transparent");
-  path.setAttribute("stroke", "black");
+  //path.setAttribute("fill", "transparent");
+  if (point.getAttribute("stroke") == null) {
+    path.setAttribute("stroke", "black");
+  }
   path.setAttribute("class", "crosspoint");
   path.style.userSelect = "none";
   // Récupérer le style du point
@@ -33039,6 +33053,10 @@ var initialiserPointTransform = function (point) {
   if (point.hasAttribute("y")) {
     y = point.getAttribute("y");
   }
+  if (point.hasAttribute("repere")) {
+    var repere = document.getElementById(point.getAttribute("repere"));
+    [x, y] = repere.getCoordonneesDansViewBox(x, y);
+  }
   point.setAttribute("transform", "translate(" + x + "," + y + ")");
 };
 var getPolygonesFigure = function (idfigure) {
@@ -33050,6 +33068,32 @@ var getVecteursFigure = function (figure) {
   var vecteurs = document.querySelectorAll("g.vecteur");
   var vecteursArray = Array.from(vecteurs);
   return vecteursArray.filter(vecteur => vecteur.id.split("-")[0] == figure.id);
+};
+var createHeadLine = function (line) {
+  let forme = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ">";
+  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(line, 0)));
+  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(line, 1)));
+  var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Segment(A, B);
+  var alpha = AB.angle() / Math.PI * 180;
+  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  if (forme == ">") {
+    path.setAttribute("d", "M-7,-2 L-0,-0 L-7,2");
+  }
+  if (forme == "[") {
+    path.setAttribute("d", "M-7,-2 L-0,-0 L-7,2 M-7,-2 L-7,2");
+  }
+  if (forme == "]") {
+    path.setAttribute("d", "M-2,-3 L0,-3 L0,3 L-2,3");
+  }
+  // Déterminer les coordonnées relatives de B par rappport à A
+  path.setAttribute("transform", "translate(" + B.x + "," + B.y + ") rotate(" + -alpha + ")");
+  // Récupérer tous les attributs de line commençant par header- et attribuer l'attribut header-attribut à path
+  var attributs = Array.from(line.attributes).filter(attribut => attribut.name.includes("header-"));
+  attributs.forEach(function (attribut) {
+    path.setAttribute(attribut.name.replace("header-", ""), attribut.value);
+  });
+  path.style.userSelect = "none";
+  line.appendChild(path);
 };
 var constructHeadVecteur = function (vecteur) {
   var A = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
@@ -33261,6 +33305,9 @@ var constructSegment = function (segment) {
     } else {
       constructCodageSegment(segment, nouveauCodageSegment(segment));
     }
+  }
+  if (segment.getAttribute('header') != null) {
+    createHeadLine(segment, segment.getAttribute('header'));
   }
 };
 var initialiserSegment = function (segment) {
@@ -34114,7 +34161,7 @@ var constructPattern = function (pattern) {
     // On construit l'élément
     var element = document.createElementNS("http://www.w3.org/2000/svg", "g");
     element.id = pattern.id + "-" + index;
-    element.setAttribute("style", paramString.replace(',', ";"));
+    element.setAttribute("style", paramString.replace(",", ";"));
     element.setAttribute("linkto", name + " " + linkto);
     element.classList.add(classe);
     pattern.appendChild(element);
@@ -34154,10 +34201,278 @@ var initialiserElement = function (element) {
     initialiserPattern(element);
   }
 };
+var calculerEchelleRepere = function (repere) {
+  var viewBox = getViewBoxFigure(repere.parentNode);
+  var echelleX = viewBox.width / (repere.getAttribute("xmax") - repere.getAttribute("xmin"));
+  var echelleY = viewBox.height / (repere.getAttribute("ymax") - repere.getAttribute("ymin"));
+  repere.setAttribute("echellex", echelleX);
+  repere.setAttribute("echelley", echelleY);
+};
+var getAxesFigure = function (figure) {
+  var axes = document.querySelectorAll("g.axe");
+  var axesArray = Array.from(axes);
+  return axesArray.filter(axe => axe.id.split("-")[0] == figure.id);
+};
+var getCoordonneesDansViewBox = function (repere, x, y) {
+  var echelleX = repere.getAttribute("echellex");
+  var echelleY = repere.getAttribute("echelley");
+  var viewBox = getViewboxFigure(repere.parentNode);
+  var x = mathjs__WEBPACK_IMPORTED_MODULE_2__.evaluate("".concat(viewBox.xmin, "+(").concat(x, " - ").concat(repere.getAttribute("xmin"), ") * ").concat(echelleX)).valueOf();
+  var y = mathjs__WEBPACK_IMPORTED_MODULE_2__.evaluate("".concat(viewBox.ymin, "+(-1*").concat(y, " + ").concat(repere.getAttribute("ymax"), ") * ").concat(echelleY)).valueOf();
+  return [x, y];
+};
+var createAxe = function (axe) {
+  var repere = getElementLinkto(axe, 0);
+  var axeSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  if (axe.classList.contains("ordonnees")) {
+    var ymin = getCoordonneesDansViewBox(repere, 0, repere.getAttribute("ymin"))[1];
+    var ymax = getCoordonneesDansViewBox(repere, 0, repere.getAttribute("ymax"))[1];
+    var xorigine = getCoordonneesDansViewBox(repere, repere.getAttribute("xorigine"), 0)[0];
+    var d = "M ".concat(xorigine, " ").concat(ymin, " V ").concat(ymax);
+  } else {
+    // Par défaut l'axe des abscisses
+    var xmin = getCoordonneesDansViewBox(repere, repere.getAttribute("xmin"), 0)[0];
+    var xmax = getCoordonneesDansViewBox(repere, repere.getAttribute("xmax"), 0)[0];
+    var yorigine = getCoordonneesDansViewBox(repere, 0, repere.getAttribute("yorigine"))[1];
+    var d = "M ".concat(xmin, " ").concat(yorigine, " H ").concat(xmax);
+  }
+  axeSVG.setAttribute("d", d);
+  axe.appendChild(axeSVG);
+};
+var initialiserAxe = function (axe) {
+  createAxe(axe);
+};
+var initialiserAxesFigure = function (figure) {
+  getAxesFigure(figure).forEach(function (axe) {
+    initialiserAxe(axe);
+  });
+};
+var getReperesFigure = function (figure) {
+  var reperes = document.querySelectorAll("g.repere");
+  var reperesArray = Array.from(reperes);
+  return reperesArray.filter(repere => repere.id.split("-")[0] == figure.id);
+};
+var getViewboxFigure = function (figure) {
+  var viewbox = figure.getAttribute("viewBox").split(" ").map(Number);
+  return {
+    xmin: viewbox[0],
+    ymin: viewbox[1],
+    width: viewbox[2],
+    height: viewbox[3]
+  };
+};
+var initialiserRepere = function (repere) {
+  calculerEchelleRepere(repere);
+  // Ajouter une fonction qui donne les coordonnées d'un point dans le repère
+  repere.getCoordonneesDansViewBox = function (x, y) {
+    var viewBox = getViewboxFigure(this.parentNode);
+    var x = mathjs__WEBPACK_IMPORTED_MODULE_2__.evaluate("".concat(viewBox.xmin, "+(").concat(x, " - ").concat(this.getAttribute("xmin"), ") * ").concat(this.getAttribute("echellex"))).valueOf();
+    var y = mathjs__WEBPACK_IMPORTED_MODULE_2__.evaluate("".concat(viewBox.ymin, "+(-1*").concat(y, " + ").concat(this.getAttribute("ymax"), ") * ").concat(this.getAttribute("echelley"))).valueOf();
+    return [x, y];
+  };
+};
+var initialiserReperesFigure = function (figure) {
+  getReperesFigure(figure).forEach(function (repere) {
+    initialiserRepere(repere);
+  });
+};
+var getGraduationsAxesFigure = function (figure) {
+  var graduationsAxes = document.querySelectorAll("g.graduationsAxe");
+  var graduationsAxesArray = Array.from(graduationsAxes);
+  return graduationsAxesArray.filter(graduationsAxe => graduationsAxe.id.split("-")[0] == figure.id);
+};
+var createGraduationsAxe = function (graduationsAxe) {
+  // <g name="repere1" class="repere" xmin="-10" ymin="-10" xmax="10" ymax ="10" xorigine="0" yorigine="0"></g>
+  // <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black"></g>
+  // <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black"></g>
+  // <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black"></g>
+  // <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black"></g>
+  var axe = getElementLinkto(graduationsAxe, 0);
+  var repere = getElementLinkto(axe, 0);
+  var graduationsAxeSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  // Calculer le nombre de graduations en fonction du pas
+  var pas = parseFloat(graduationsAxe.getAttribute("pas"));
+  var xmin = parseFloat(repere.getAttribute("xmin"));
+  var xmax = parseFloat(repere.getAttribute("xmax"));
+  var ymin = parseFloat(repere.getAttribute("ymin"));
+  var ymax = parseFloat(repere.getAttribute("ymax"));
+  var xorigine = parseFloat(repere.getAttribute("xorigine"));
+  var yorigine = parseFloat(repere.getAttribute("yorigine"));
+  var graduations = [];
+  // Les graduations doivent tomber sur 0
+  if (xmin < 0 && xmax > 0) {
+    var x = 0;
+    while (x < xmax) {
+      graduations.push(x);
+      x += pas;
+    }
+    var x = 0;
+    while (x > xmin) {
+      graduations.push(x);
+      x -= pas;
+    }
+  } else if (xmin < 0 && xmax < 0) {
+    var x = 0;
+    while (x > xmin) {
+      graduations.push(x);
+      x -= pas;
+    }
+  } else if (xmin > 0 && xmax > 0) {
+    var x = 0;
+    while (x < xmax) {
+      graduations.push(x);
+      x += pas;
+    }
+  }
+  if (ymin < 0 && ymax > 0) {
+    var y = 0;
+    while (y < ymax) {
+      graduations.push(y);
+      y += pas;
+    }
+    var y = 0;
+    while (y > ymin) {
+      graduations.push(y);
+      y -= pas;
+    }
+  } else if (ymin < 0 && ymax < 0) {
+    var y = 0;
+    while (y > ymin) {
+      graduations.push(y);
+      y -= pas;
+    }
+  } else if (ymin > 0 && ymax > 0) {
+    var y = 0;
+    while (y < ymax) {
+      graduations.push(y);
+      y += pas;
+    }
+  }
+  // On retire les graduations qui sont sur l'origine (xorigine ou yorigine)
+  graduations = graduations.filter(graduation => graduation != xorigine && graduation != yorigine);
+  // On construit les graduations
+  graduations.forEach(graduation => {
+    var graduationSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    if (axe.classList.contains("ordonnees")) {
+      var ymin = getCoordonneesDansViewBox(repere, 0, graduation)[1];
+      var xorigine = getCoordonneesDansViewBox(repere, repere.getAttribute("xorigine"), 0)[0];
+      var d = "M ".concat(xorigine - 2.5, " ").concat(ymin, " H ").concat(xorigine + 2.5);
+    } else {
+      // Par défaut l'axe des abscisses
+      var xmin = getCoordonneesDansViewBox(repere, graduation, 0)[0];
+      var yorigine = getCoordonneesDansViewBox(repere, 0, repere.getAttribute("yorigine"))[1];
+      var d = "M ".concat(xmin, " ").concat(yorigine + 2.5, " V ").concat(yorigine - 2.5);
+    }
+    graduationSVG.setAttribute("d", d);
+    graduationSVG.setAttribute("stroke", graduationsAxe.getAttribute("stroke"));
+    graduationsAxeSVG.appendChild(graduationSVG);
+  });
+  graduationsAxe.appendChild(graduationsAxeSVG);
+};
+var initialiserGraduationsAxe = function (graduationsAxe) {
+  createGraduationsAxe(graduationsAxe);
+};
+var initialiserGraduationsAxesFigure = function (figure) {
+  getGraduationsAxesFigure(figure).forEach(function (graduationsAxe) {
+    initialiserGraduationsAxe(graduationsAxe);
+  });
+};
+var getCourbesRepresentativesFigure = function (figure) {
+  var courbesRepresentatives = document.querySelectorAll("g.courbeRepresentative");
+  var courbesRepresentativesArray = Array.from(courbesRepresentatives);
+  return courbesRepresentativesArray.filter(courbeRepresentative => courbeRepresentative.id.split("-")[0] == figure.id);
+};
+var createCourbeRepresentative = function (courbeRepresentative) {
+  // <g name="c1" class="courbeRepresentative" expression="x^2" pas="0.01" xmin="-2" xmax="3" linkto="repere1" stroke="red" stroke-width="0.5"></g>
+  var repere = getElementLinkto(courbeRepresentative, 0);
+  var xmin = parseFloat(courbeRepresentative.getAttribute("xmin"));
+  var xmax = parseFloat(courbeRepresentative.getAttribute("xmax"));
+  var pas = parseFloat(courbeRepresentative.getAttribute("pas"));
+  var expression = courbeRepresentative.getAttribute("expression");
+  var courbeRepresentativeSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  var d = "";
+  var x = xmin;
+  var y = mathjs__WEBPACK_IMPORTED_MODULE_2__.evaluate(expression, {
+    x: x
+  });
+  d += "M ".concat(getCoordonneesDansViewBox(repere, x, y).join(" "));
+  x += pas;
+  while (x <= xmax) {
+    y = mathjs__WEBPACK_IMPORTED_MODULE_2__.evaluate(expression, {
+      x: x
+    });
+    d += " L ".concat(getCoordonneesDansViewBox(repere, x, y).join(" "));
+    x += pas;
+  }
+  courbeRepresentativeSVG.setAttribute("d", d);
+  courbeRepresentativeSVG.setAttribute("stroke", courbeRepresentative.getAttribute("stroke"));
+  courbeRepresentativeSVG.setAttribute("stroke-width", courbeRepresentative.getAttribute("stroke-width"));
+  courbeRepresentative.appendChild(courbeRepresentativeSVG);
+};
+var initialiserCourbeRepresentative = function (courbeRepresentative) {
+  createCourbeRepresentative(courbeRepresentative);
+};
+var initialiserCourbesRepresentativesFigure = function (figure) {
+  getCourbesRepresentativesFigure(figure).forEach(function (courbeRepresentative) {
+    initialiserCourbeRepresentative(courbeRepresentative);
+  });
+};
+var getpathsPointsControlsFigure = function (figure) {
+  var pathsPointsControls = document.querySelectorAll("g.pathPointsControls");
+  var pathsPointsControlsArray = Array.from(pathsPointsControls);
+  return pathsPointsControlsArray.filter(pathPointsControls => pathPointsControls.id.split("-")[0] == figure.id);
+};
+var getElementsLinkto = function (element) {
+  var linkto = element.getAttribute("linkto").split(" ");
+  var elementsLinkto = [];
+  linkto.forEach(id => {
+    elementsLinkto.push(element.parentNode.querySelector("#" + id));
+  });
+  return elementsLinkto;
+};
+var createpathPointsControls = function (pathPointsControls) {
+  // <g name="c2" class="pathPointsControls" controls="C:0 A:1" linkto="A B C D" stroke="green" stroke-width="0.5" fill="transparent"></g>
+  var pentes = {};
+  if (pathPointsControls.getAttribute("controls") != undefined) {
+    var controlsAttribute = pathPointsControls.getAttribute("controls").split(" ");
+    controlsAttribute.forEach(control => {
+      var [nom, pente] = control.split(":");
+      pentes[nom] = -pente;
+    });
+  }
+  var linkto = pathPointsControls.getAttribute("linkto").split(" ");
+  var points = [];
+  for (var i = 0; i < linkto.length; i++) {
+    var point = pathPointsControls.parentNode.querySelector("#" + linkto[i]);
+    var coords = getCoordonneesPoint(point);
+    if (pentes != null && pentes[point.id] != undefined) {
+      coords.pente = pentes[point.id];
+    }
+    linkto[i] = coords;
+    points.push(coords);
+  }
+  var d = "M" + points[0].join(",");
+  var controlPoints = combinedControlPoints(points);
+  for (var i = 0; i < points.length - 1; i++) {
+    d += " C" + controlPoints[2 * i].join(",") + " " + controlPoints[2 * i + 1].join(",") + " " + points[i + 1].join(",");
+  }
+  var pathPointsControlsSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  pathPointsControlsSVG.setAttribute("d", d);
+  pathPointsControls.appendChild(pathPointsControlsSVG);
+};
+var initialiserpathPointsControls = function (pathPointsControls) {
+  createpathPointsControls(pathPointsControls);
+};
+var initialiserpathsPointsControlsFigure = function (figure) {
+  getpathsPointsControlsFigure(figure).forEach(function (pathPointsControls) {
+    initialiserpathPointsControls(pathPointsControls);
+  });
+};
 var initialiserFigure = function (figure) {
   addQuadrillage(figure);
   addBoutonQuadrillage(figure);
   addBoutonPleinEcran(figure);
+  initialiserReperesFigure(figure);
   initialiserPointsFigure(figure);
   initialiserVecteursFigure(figure);
   initialiserDroitesFigure(figure);
@@ -34171,6 +34486,10 @@ var initialiserFigure = function (figure) {
   initialiserNuagesPointsFigure(figure);
   initialiserCarresFigure(figure);
   initialiserPatternsFigure(figure);
+  initialiserAxesFigure(figure);
+  initialiserGraduationsAxesFigure(figure);
+  initialiserCourbesRepresentativesFigure(figure);
+  initialiserpathsPointsControlsFigure(figure);
 };
 var getCoordonneesPoint = function (point) {
   var data = point.getAttribute("transform").split("translate(")[1].split(")")[0].split(",");
@@ -34506,13 +34825,52 @@ var controlerCoordonneesPoint = function (point, figure) {
   }
   return [x, y];
 };
+function closestPointOnPath(pathNode, point) {
+  const totalLength = pathNode.getTotalLength();
+  let precision = 8;
+  let best;
+  let bestLength;
+  let bestDistance = Infinity;
+  for (let scan, scanLength = 0, scanDistance; scanLength <= totalLength; scanLength += precision) {
+    if ((scanDistance = distance2(scan = pathNode.getPointAtLength(scanLength))) < bestDistance) {
+      best = scan, bestLength = scanLength, bestDistance = scanDistance;
+    }
+  }
+  precision /= 2;
+  while (precision > 0.5) {
+    let before, after, beforeLength, afterLength, beforeDistance, afterDistance;
+    if ((beforeLength = bestLength - precision) >= 0 && (beforeDistance = distance2(before = pathNode.getPointAtLength(beforeLength))) < bestDistance) {
+      best = before, bestLength = beforeLength, bestDistance = beforeDistance;
+    } else if ((afterLength = bestLength + precision) <= totalLength && (afterDistance = distance2(after = pathNode.getPointAtLength(afterLength))) < bestDistance) {
+      best = after, bestLength = afterLength, bestDistance = afterDistance;
+    } else {
+      precision /= 2;
+    }
+  }
+  function distance2(p) {
+    const dx = p.x - point[0];
+    const dy = p.y - point[1];
+    return dx * dx + dy * dy;
+  }
+  return best;
+}
 var interactivity = function (figure) {
-  d3.selectAll("g.point.draggable").call(d3.drag().on("drag", function () {
+  d3.selectAll("g.point.draggable:not(.onpath)").call(d3.drag().on("drag", function () {
     if (d3.event.x > 0 && d3.event.x < 200 && d3.event.y > 0 && d3.event.y < 200) {
       setHightlightPointOn(this);
       setCoordonneesPoint(this, ...controlerCoordonneesPoint(this, figure));
       actualiserCoordonneesPoint(this);
     }
+  }).on("end", function () {
+    setHightlightPointOff(this);
+  }));
+  d3.selectAll("g.point.draggable.onpath").call(d3.drag().on("drag", function () {
+    const pathNode = getElementLinkto(this, 0).querySelector("path");
+    const point = closestPointOnPath(pathNode, [d3.event.x, d3.event.y]);
+    d3.select(this).attr("cx", point.x).attr("cy", point.y);
+    setHightlightPointOn(this);
+    setCoordonneesPoint(this, point.x, point.y);
+    actualiserCoordonneesPoint(this);
   }).on("end", function () {
     setHightlightPointOff(this);
   }));
