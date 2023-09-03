@@ -17,6 +17,10 @@ body {
   display: block;
 }
 
+table.reveal {
+  display: table;
+}
+
 .reveal::after {
   content: "";
   position: absolute;
@@ -34,6 +38,8 @@ body {
   opacity: 0;
   pointer-events: none;
 }
+
+
 
 .reveal:not(.clicked)::after {
   transition: none;
@@ -135,7 +141,10 @@ summary {
   white-space: nowrap;
 }
 
-
+/* Mettre la fonte katex en gras dans une balise important ou dans un titre h1, h2, h3*/
+.important .katex, h1 .katex, h2 .katex, h3 .katex, strong .katex, b .katex, th .katex {
+  font-weight: bold;
+}
 
 
 /* Formattage personnalisés */
@@ -164,8 +173,24 @@ summary {
   }
 }
 
+/* Tableau de valeurs */
+.tableauvaleurs {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin: 1em 0em;
+  table-layout: fixed;
+}
+.tableauvaleurs tr td, .tableauvaleurs th {
+  border: 1px solid black;
+}
+.tableauvaleurs th {
+  font-weight: bold;
+}
+
 /* Tableaux de signes */
-.tableausigne {
+.tableausigne{
   width: 100%;
   text-align: center;
   border-collapse: collapse;
@@ -213,4 +238,3 @@ summary {
 /* Footer en réflexion */
 footer {
   display:none;
-}

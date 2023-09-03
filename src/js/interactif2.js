@@ -2,6 +2,7 @@
 import { get } from "lodash";
 import { Point, Vecteur, Segment } from "./class2.js";
 import * as math from "mathjs";
+import { intersect, shape } from 'svg-intersections';
 
 // Liste des codages possibles
 var codagesSegment = [
@@ -16,10 +17,14 @@ var setUniqueIds = function () {
   var figures = document.querySelectorAll(".figure");
   // On rend unique les identifiants des éléments constitutifs de la figure
   for (var i = 0; i < figures.length; i++) {
+    // On lui ajoute un identifiant unique
+    figures[i].id = figures[i].id=='' ? "figure" + i : figures[i].id+i;
     // On récupère l'identifiant de la figure
     var id = figures[i].id;
     // on teste si la figure contient un svg
     if (figures[i].querySelector("svg") != null) {
+      // On ajoute l'identifiant à l'élément svg
+      figures[i].querySelector("svg").id = id;
       var ids = figures[i].querySelector("svg").querySelectorAll("*[name]");
       // Pour chaque identifiant
       for (var j = 0; j < ids.length; j++) {
@@ -199,6 +204,8 @@ var addQuadrillage = function (figure) {
   quadrillage.id = figure.id + "-quadrillage";
   // On place un cadre autour du quadrillage
   var cadre = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  // On ajoute la classe cadre au cadre
+  cadre.classList.add("background-figure");
   cadre.setAttribute("x", xmin);
   cadre.setAttribute("y", ymin);
   cadre.setAttribute("width", width);
@@ -227,11 +234,11 @@ var constructLabelPoint = function (point) {
     var labelLinkto = Array.from(labels).filter(
       (label) => label.getAttribute("linkto") == point.id
     );
-    var foreignObject = document.createElementNS(
-      "http://www.w3.org/2000/svg",
-      "foreignObject"
-    );
     if (labelLinkto.length == 0) {
+      var foreignObject = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "foreignObject"
+      );
       foreignObject.setAttribute("x", "0");
       foreignObject.setAttribute("y", "0");
       foreignObject.setAttribute("text-anchor", "start");
@@ -242,53 +249,64 @@ var constructLabelPoint = function (point) {
         point.getAttribute("name"),
         { output: "mathml" }
       );
+      foreignObject.style.userSelect = "none";
+      point.appendChild(foreignObject);
     } else {
-      var label = labelLinkto[0];
-      if (label.hasAttribute("x")) {
-        foreignObject.setAttribute("x", label.getAttribute("x"));
-      } else {
-        foreignObject.setAttribute("x", "0");
-      }
-      if (label.hasAttribute("y")) {
-        foreignObject.setAttribute("y", label.getAttribute("y"));
-      } else {
-        foreignObject.setAttribute("y", "0");
-      }
-      if (label.hasAttribute("width")) {
-        foreignObject.setAttribute("width", label.getAttribute("width"));
-      } else {
-        foreignObject.setAttribute("width", "20");
-      }
-      if (label.hasAttribute("height")) {
-        foreignObject.setAttribute("height", label.getAttribute("height"));
-      } else {
-        foreignObject.setAttribute("height", "20");
-      }
-      if (label.hasAttribute("text-anchor")) {
-        foreignObject.setAttribute(
-          "text-anchor",
-          label.getAttribute("text-anchor")
+      labelLinkto.forEach(function (label,index) {
+        var foreignObject = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "foreignObject"
         );
-      } else {
-        foreignObject.setAttribute("text-anchor", "middle");
-      }
-      if (label.hasAttribute("fill")) {
-        foreignObject.setAttribute("fill", label.getAttribute("fill"));
-      } else {
-        foreignObject.setAttribute("fill", "black");
-      }
-      if (label.hasAttribute("stroke")) {
-        foreignObject.setAttribute("stroke", label.getAttribute("stroke"));
-      } else {
-        foreignObject.setAttribute("stroke", "stroke");
-      }
-      foreignObject.setAttribute("style", labelLinkto[0].getAttribute("style"));
-      foreignObject.innerHTML = katex.renderToString(label.innerHTML, {
-        output: "mathml",
+        foreignObject.id = label.id+"-"+index;
+        if (label.hasAttribute("x")) {
+          foreignObject.setAttribute("x", label.getAttribute("x"));
+        } else {
+          foreignObject.setAttribute("x", "0");
+        }
+        if (label.hasAttribute("y")) {
+          foreignObject.setAttribute("y", label.getAttribute("y"));
+        } else {
+          foreignObject.setAttribute("y", "0");
+        }
+        if (label.hasAttribute("width")) {
+          foreignObject.setAttribute("width", label.getAttribute("width"));
+        } else {
+          foreignObject.setAttribute("width", "20");
+        }
+        if (label.hasAttribute("height")) {
+          foreignObject.setAttribute("height", label.getAttribute("height"));
+        } else {
+          foreignObject.setAttribute("height", "20");
+        }
+        if (label.hasAttribute("text-anchor")) {
+          foreignObject.setAttribute(
+            "text-anchor",
+            label.getAttribute("text-anchor")
+          );
+        } else {
+          foreignObject.setAttribute("text-anchor", "middle");
+        }
+        if (label.hasAttribute("fill")) {
+          foreignObject.setAttribute("fill", label.getAttribute("fill"));
+        } else {
+          foreignObject.setAttribute("fill", "black");
+        }
+        if (label.hasAttribute("stroke")) {
+          foreignObject.setAttribute("stroke", label.getAttribute("stroke"));
+        } else {
+          foreignObject.setAttribute("stroke", "black");
+        }
+        foreignObject.setAttribute(
+          "style",
+          labelLinkto[index].getAttribute("style")
+        );
+        foreignObject.innerHTML = katex.renderToString(label.innerHTML, {
+          output: "mathml",
+        });
+        foreignObject.style.userSelect = "none";
+        point.appendChild(foreignObject);
       });
     }
-    foreignObject.style.userSelect = "none";
-    point.appendChild(foreignObject);
   }
 };
 var constructCrossPoint = function (point) {
@@ -393,7 +411,7 @@ var getVecteursFigure = function (figure) {
     (vecteur) => vecteur.id.split("-")[0] == figure.id
   );
 };
-var createHeadLine = function (line,forme = ">") {
+var createHeadLine = function (line, forme = ">") {
   var A = new Point(...getCoordonneesPoint(getElementLinkto(line, 0)));
   var B = new Point(...getCoordonneesPoint(getElementLinkto(line, 1)));
   var AB = new Segment(A, B);
@@ -418,10 +436,7 @@ var createHeadLine = function (line,forme = ">") {
     attribut.name.includes("header-")
   );
   attributs.forEach(function (attribut) {
-    path.setAttribute(
-      attribut.name.replace("header-", ""),
-      attribut.value
-    );
+    path.setAttribute(attribut.name.replace("header-", ""), attribut.value);
   });
   path.style.userSelect = "none";
   line.appendChild(path);
@@ -673,8 +688,8 @@ var constructSegment = function (segment) {
       constructCodageSegment(segment, nouveauCodageSegment(segment));
     }
   }
-  if (segment.getAttribute('header')!=null) {
-    createHeadLine(segment,segment.getAttribute('header'));
+  if (segment.getAttribute("header") != null) {
+    createHeadLine(segment, segment.getAttribute("header"));
   }
 };
 var initialiserSegment = function (segment) {
@@ -846,7 +861,6 @@ var convertStringToParametres = function (paramString) {
   var jsonStr = "{" + processedPairs.join(",") + "}";
   return JSON.parse(jsonStr);
 };
-
 var initialiserParametresCourbe = function (courbe) {
   var paramString = courbe.getAttribute("parametres");
   var parametres = convertStringToParametres(paramString);
@@ -1958,10 +1972,18 @@ var initialiserRepere = function (repere) {
   repere.getCoordonneesDansViewBox = function (x, y) {
     var viewBox = getViewboxFigure(this.parentNode);
     var x = math
-      .evaluate(`${viewBox.xmin}+(${x} - ${this.getAttribute("xmin")}) * ${this.getAttribute("echellex")}`)
+      .evaluate(
+        `${viewBox.xmin}+(${x} - ${this.getAttribute(
+          "xmin"
+        )}) * ${this.getAttribute("echellex")}`
+      )
       .valueOf();
     var y = math
-      .evaluate(`${viewBox.ymin}+(-1*${y} + ${this.getAttribute("ymax")}) * ${this.getAttribute("echelley")}`)
+      .evaluate(
+        `${viewBox.ymin}+(-1*${y} + ${this.getAttribute(
+          "ymax"
+        )}) * ${this.getAttribute("echelley")}`
+      )
       .valueOf();
     return [x, y];
   };
@@ -2106,30 +2128,26 @@ var createCourbeRepresentative = function (courbeRepresentative) {
   var xmax = parseFloat(courbeRepresentative.getAttribute("xmax"));
   var pas = parseFloat(courbeRepresentative.getAttribute("pas"));
   var expression = courbeRepresentative.getAttribute("expression");
-  var courbeRepresentativeSVG = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "path"
-  );
-  var d = "";
-  var x = xmin;
-  var y = math.evaluate(expression, { x: x });
-  d += `M ${getCoordonneesDansViewBox(repere, x, y).join(" ")}`;
-  x += pas;
-  while (x <= xmax) {
-    y = math.evaluate(expression, { x: x });
-    d += ` L ${getCoordonneesDansViewBox(repere, x, y).join(" ")}`;
-    x += pas;
+  var points = [];
+  for (let x = xmin; x <= xmax; x += pas) {
+    let y = math.evaluate(expression, { x: x });
+    points.push([x, y]);
   }
-  courbeRepresentativeSVG.setAttribute("d", d);
-  courbeRepresentativeSVG.setAttribute(
-    "stroke",
-    courbeRepresentative.getAttribute("stroke")
-  );
-  courbeRepresentativeSVG.setAttribute(
-    "stroke-width",
-    courbeRepresentative.getAttribute("stroke-width")
-  );
-  courbeRepresentative.appendChild(courbeRepresentativeSVG);
+
+  // Utilisez D3 pour générer un chemin lissé
+  var lineGenerator = d3
+    .line()
+    .x((d) => getCoordonneesDansViewBox(repere, d[0], d[1])[0])
+    .y((d) => getCoordonneesDansViewBox(repere, d[0], d[1])[1])
+    .curve(d3.curveBasis);
+
+  var d = lineGenerator(points);
+
+  d3.select("#" + courbeRepresentative.id)
+    .append("path")
+    .attr("d", d)
+    .attr("fill", "none")
+    .attr("stroke", courbeRepresentative.getAttribute("stroke"));
 };
 var initialiserCourbeRepresentative = function (courbeRepresentative) {
   createCourbeRepresentative(courbeRepresentative);
@@ -2205,7 +2223,55 @@ var initialiserpathsPointsControlsFigure = function (figure) {
     initialiserpathPointsControls(pathPointsControls);
   });
 };
+var getIntersectionPathsFigure = function (figure) {
+  var intersectionPaths = document.querySelectorAll("g.intersections");
+  var intersectionPathsArray = Array.from(intersectionPaths);
+  return intersectionPathsArray.filter(
+    (intersectionPath) => intersectionPath.id.split("-")[0] == figure.id
+  );
+};
+var createIntersectionPath = function (intersectionPath) {
+  // Obtenez vos éléments path dans linkto
+  var linkto = intersectionPath.getAttribute("linkto").split(" ");
+  var path1 = intersectionPath.parentNode.querySelector("#" + linkto[0]).querySelector("path");
+  var path2 = intersectionPath.parentNode.querySelector("#" + linkto[1]).querySelector("path");
+  // Vérifier s'il y a un paramètre de choix des intersections
+  var indices = intersectionPath.getAttribute("indices");
+  if (indices != undefined) {
+    indices = indices.split(" ");
+    indices = indices.map((indice) => parseInt(indice));
+  }
 
+  // Calculez les intersections
+  const pathShape1 = shape("path", { d: path1.getAttribute("d") });
+  const pathShape2 = shape("path", { d: path2.getAttribute("d") });
+  const result = intersect(pathShape1, pathShape2);
+
+  // Créer les points d'intersections
+  result.points.forEach((point, index) => {
+    if (indices == undefined || indices.includes(index)) {
+      var pointSVG = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "g"
+      );
+      pointSVG.classList.add("point");
+      pointSVG.id = intersectionPath.id + "-" + index;
+      pointSVG.setAttribute("x", point.x);
+      pointSVG.setAttribute("y", point.y);
+      intersectionPath.appendChild(pointSVG);
+      initialiserPoint(pointSVG);
+    }
+  });
+};
+var initialiserIntersectionPath = function (intersectionPath) {
+  createIntersectionPath(intersectionPath);
+};
+var initilialiserIntersectionPathsFigure = function (figure) {
+  getIntersectionPathsFigure(figure).forEach(function (intersectionPath) {
+    initialiserIntersectionPath(intersectionPath);
+  }
+  );
+};
 var initialiserFigure = function (figure) {
   addQuadrillage(figure);
   addBoutonQuadrillage(figure);
@@ -2228,6 +2294,7 @@ var initialiserFigure = function (figure) {
   initialiserGraduationsAxesFigure(figure);
   initialiserCourbesRepresentativesFigure(figure);
   initialiserpathsPointsControlsFigure(figure);
+  initilialiserIntersectionPathsFigure(figure);
 };
 var getCoordonneesPoint = function (point) {
   var data = point
@@ -2612,19 +2679,41 @@ function closestPointOnPath(pathNode, point) {
   let bestLength;
   let bestDistance = Infinity;
 
-  for (let scan, scanLength = 0, scanDistance; scanLength <= totalLength; scanLength += precision) {
-    if ((scanDistance = distance2(scan = pathNode.getPointAtLength(scanLength))) < bestDistance) {
-      best = scan, bestLength = scanLength, bestDistance = scanDistance;
+  for (
+    let scan, scanLength = 0, scanDistance;
+    scanLength <= totalLength;
+    scanLength += precision
+  ) {
+    if (
+      (scanDistance = distance2(
+        (scan = pathNode.getPointAtLength(scanLength))
+      )) < bestDistance
+    ) {
+      (best = scan), (bestLength = scanLength), (bestDistance = scanDistance);
     }
   }
 
   precision /= 2;
   while (precision > 0.5) {
     let before, after, beforeLength, afterLength, beforeDistance, afterDistance;
-    if ((beforeLength = bestLength - precision) >= 0 && (beforeDistance = distance2(before = pathNode.getPointAtLength(beforeLength))) < bestDistance) {
-      best = before, bestLength = beforeLength, bestDistance = beforeDistance;
-    } else if ((afterLength = bestLength + precision) <= totalLength && (afterDistance = distance2(after = pathNode.getPointAtLength(afterLength))) < bestDistance) {
-      best = after, bestLength = afterLength, bestDistance = afterDistance;
+    if (
+      (beforeLength = bestLength - precision) >= 0 &&
+      (beforeDistance = distance2(
+        (before = pathNode.getPointAtLength(beforeLength))
+      )) < bestDistance
+    ) {
+      (best = before),
+        (bestLength = beforeLength),
+        (bestDistance = beforeDistance);
+    } else if (
+      (afterLength = bestLength + precision) <= totalLength &&
+      (afterDistance = distance2(
+        (after = pathNode.getPointAtLength(afterLength))
+      )) < bestDistance
+    ) {
+      (best = after),
+        (bestLength = afterLength),
+        (bestDistance = afterDistance);
     } else {
       precision /= 2;
     }
@@ -2632,13 +2721,11 @@ function closestPointOnPath(pathNode, point) {
 
   function distance2(p) {
     const dx = p.x - point[0];
-    const dy = p.y - point[1];
-    return dx * dx + dy * dy;
+    return dx * dx;
   }
 
   return best;
 }
-
 var interactivity = function (figure) {
   d3.selectAll("g.point.draggable:not(.onpath)").call(
     d3

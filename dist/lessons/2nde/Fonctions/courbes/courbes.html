@@ -111,13 +111,13 @@
     $$
     \begin{array}{cccc}
       f: & \mathcal{D} & \longrightarrow & \mathbb{R} \\
-      & x & \longmapsto & y
+      & x & \longmapsto & f(x)
     \end{array}
     $$
     <p>On dit dans ce cas que $\mathcal{D}$ est <strong>l'ensemble de définition</strong> ou encore le <strong>domaine de définition</strong> de $f$.</p>
 </div>
 <div class="definition">
-  <p>Soit $f$ une fonction définie sur $\mathcal{D}$, on appelle <strong>courbe représentative</strong> ou <strong>représentaton graphique</strong> de $f$ l'ensemble des points $M(x;y)$ du plan tels que $x\in\mathcal{D}$ et $y=f(x)$.</p>
+  <p>Soit $f$ une fonction définie sur $\mathcal{D}$, on appelle <strong>courbe représentative</strong> ou <strong>représentaton graphique</strong> de $f$ l'ensemble des points $M(a~{;}~b)$ du plan tels que $a\in\mathcal{D}$ et $b=f(a)$.</p>
   <div id="figure1" class="figure">
     <svg
       id="figure1"
@@ -134,28 +134,252 @@
       <g name="B" class="point" repere="repere1" x="-1" y="-1" visibility="hidden"></g>
       <g name="C" class="point" repere="repere1" x="1" y="2" visibility="hidden"></g>
       <g name="D" class="point" repere="repere1" x="3" y="1" visibility="hidden"></g>
-      <g name="c1" class="pathPointsControls" controls="A:1 D:-1" linkto="A B C D" stroke="red" stroke-width="0.5" fill="transparent"></g>
-      <g name="min" class="point" repere="repere1" x="-4" y="0" stroke="none"></g>
-      <g name="max" class="point" repere="repere1" x="3" y="0" stroke="none"></g>
-      <g class="segment" linkto="min max" stroke="green" fill-opacity="0.5" stroke-width="2"></g>
-      <path d="M2,-4 L0,-4 L0,4 L2,4" stroke="green" fill="transparent" stroke-width="2" transform="translate(20,80)"></path>
-      <path d="M-2,-4 L0,-4 L0,4 L-2,4" stroke="green" fill="transparent" stroke-width="2" transform="translate(160,80)"></path>
-      <g class="segment" linkto="min A" stroke="green" fill-opacity="0.5" stroke-width="1" stroke-dasharray="2,2"></g>
-      <g class="segment" linkto="max D" stroke="green" fill-opacity="0.5" stroke-width="1" stroke-dasharray="2,2"></g>
-      <g name="d" class="point labeled" repere="repere1" x="-4.5" y="0" stroke="none"></g>
-      <g class="label" linkto="d" x="-5" y="-10" style="font-size:0.8rem;color:green">\mathcal{D}</g>
-      <g name="M" class="point labeled draggable onpath" repere="repere1" x="-4" y="3" linkto="c1" stroke="red"></g>
-      <g class="label" linkto="M" x="-10" y="-15" style="font-size:0.8rem;width:2.5rem">M(x{;}y)</g>
+      
+      <g name="sy" class="segment" linkto="M My" stroke="blue" stroke-width="0.5" stroke-dasharray="2,2"></g>
+      <g name="sx" class="segment" linkto="M Mx" stroke="blue" stroke-width="0.5" stroke-dasharray="2,2"></g>
+      
+      <g name="min" class="point" repere="repere1" x="-4" y="0" stroke="transparent"></g>
+      <g name="max" class="point" repere="repere1" x="3" y="0" stroke="transparent"></g>
       <g name="ymin" class="point" repere="repere1" x="0" y="-1.5" visibility="hidden"></g>
       <g name="ymax" class="point" repere="repere1" x="0" y="4" visibility="hidden"></g>
-      <g name="My" class="point labeled dilatation" linkto="ymin ymax M" data="90 0"></g>
-      <g name="Mx" class="point labeled dilatation" linkto="min max M" data="90 0"></g>
-      <g class="label" linkto="Mx" x="-2.5" y="-1" style="font-size:0.5rem;">x</g>
-      <g class="label" linkto="My" x="-20" y="-5" style="font-size:0.5rem;">f(x)</g>
-      <g name="sy" class="segment" linkto="M My" stroke="red" stroke-width="0.5" stroke-dasharray="2,2"></g>
-      <g name="sx" class="segment" linkto="M Mx" stroke="red" stroke-width="0.5" stroke-dasharray="2,2"></g>
+      
+      <g name="domaine" class="segment" linkto="min max" stroke="green" stroke-opacity="0.5" stroke-width="4"></g>
+      
+      <g name="c1" class="pathPointsControls" controls="A:1 D:-1" linkto="A B C D" stroke="red" stroke-width="1" fill="transparent"></g>
+      
+      <!-- les crochets [ et ] -->
+      <path d="M2,-4 L0,-4 L0,4 L2,4" stroke="green" fill="transparent" stroke-width="2" transform="translate(20,80)"></path>
+      <path d="M-2,-4 L0,-4 L0,4 L-2,4" stroke="green" fill="transparent" stroke-width="2" transform="translate(160,80)"></path>
+      
+      <g name="d" class="point labeled" repere="repere1" x="-4.5" y="0" stroke="transparent" stroke-width="0"></g>
+      
+      <g name="M" class="point labeled draggable onpath" repere="repere1" x="3" y="1" linkto="c1" stroke="red"></g>
+      <g name="My" class="point labeled dilatation" linkto="ymin ymax M" data="90 0" stroke="transparent"></g>
+      <g name="Mx" class="point labeled dilatation" linkto="min max M" data="90 0" stroke="transparent"></g>
+      
+      <g class="label" linkto="M" x="-10" y="-20" style="font-size:0.8rem;width:3rem">M(a~{;}~b)</g>
+      <g class="label" linkto="d" x="-5" y="-10" style="font-size:0.8rem;color:green">\mathcal{D}</g>
+      <g class="label" linkto="Mx" x="-2.5" y="-1" style="font-size:0.5rem">a</g>
+      <g class="label" linkto="My" x="-15" y="-10" style="font-size:0.5rem;color:red">f(a)</g>
+      <g class="label" linkto="My" x="-7.5" y="-2.5" style="font-size:0.5rem;">b</g>
     </svg>
   </div>
+</div>
+<div class="propriete">
+  <p>Considérons une fonction $f$ définie sur un ensemble de définition $\mathcal{D}$. Un point $M$ appartient à $(\mathscr{C})$ si et seulement si ses coordonnées $(a;b)$ vérifient $a\in\mathcal{D}$ et $b=f(a)$.</p>
+</div>
+<div class="methode">
+  <p>Pour <strong>déterminer si un point $M(a~{;}~b)$ appartient à la courbe représentative d'une fonction $f$</strong> définie sur $\mathcal{D}$, on peut procéder de la manière suivante :</p>
+  <ol>
+    <li>On vérifie que $a\in\mathcal{D}$ puis on calcule $f(a)$.</li>
+    <li>Si $f(a)=b$, on conclut que $M(a~{;}~b)$ appartient à la courbe représentative de $f$.</li>
+    <li>Si $f(a)\neq b$, on conclut que $M(a~{;}~b)$ n'appartient pas à la courbe représentative de $f$.</li>
+  </ol>
+</div>
+<div class="exemple">
+  <p>Soient $f$, $g$ et $h$ trois fonctions définies pour tout $x\in\mathbb{R}$ respectivement par : $$f(x)=x^3+x^2-x+2,$$ $$g(x)=-\dfrac{2}{3}x+\dfrac{3}{2},$$ $$h(x)=x+2.$$ <br>Notons $(\mathscr{C})$ la courbe représentative de $f$, $(d_1)$ la droite représentative de $g$ et $(d_2)$ la droite représentative de $h$. <br>
+    Considérons maintenant les points $$A(-\num{1.5}~{;}~\num{2.5})\quad\text{ et }\quad B(1~{;}~3).$$</p>
+  <p>On se propose de déterminer si ces points appartiennent ou non à chacune des représentations graphiques.</p>
+  <ul>
+    <li>$f(\num{-1.5})=\num{7.25}$ donc $A(-\num{1.5}~{;}~\num{2.5})$ n'appartient pas à $(\mathscr{C})$.</li>
+    <li>$g(\num{-1.5})=\num{2.5}$ donc $A(-\num{1.5}~{;}~\num{2.5})$ appartient à $(\mathcal{d_1})$.</li>
+    <li>$h(\num{-1.5})=\num{0.5}$ donc $A(-\num{1.5}~{;}~\num{2.5})$ n'appartient pas à $(\mathcal{d_2})$.</li>
+    <li>$f(1)=3$ donc $B(1~{;}~3)$ appartient à $(\mathscr{C})$.</li>
+    <li>$g(1)=-\dfrac{1}{3}$ donc $B(1~{;}~3)$ n'appartient pas à $(\mathcal{d_1})$.</li>
+    <li>$h(1)=3$ donc $B(1~{;}~3)$ appartient à $(\mathcal{d_2})$.</li>
+  </ul>
+  <p>La figure suivante nous permet de voir que parfois un point semble appartenir à une courbe alors qu'il n'en est rien.</p>
+  <div id="figure1b" class="figure">
+    <svg
+      id="figure1b"
+      viewBox="0 0 200 110"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+    <g name="repere1" class="repere" xmin="-5" ymin="-1.5" xmax="5" ymax ="4" xorigine="0" yorigine="0"></g>
+    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="transparent"></g>
+    <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
+    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="transparent"></g>
+    <g class="label" linkto="J" x="-7" y="-5" style="font-size:0.5rem;">1</g>
+    
+    <g name="c1" class="courbeRepresentative" expression="x^3+x^2-x+2" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+    
+    <g name="d1" class="courbeRepresentative" expression="-2x/3+3/2" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="green" stroke-width="1" fill="transparent"></g>
+    
+    <g name="d2" class="courbeRepresentative" expression="x+2" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="1" fill="transparent"></g>
+    
+    <g name="A" class="point labeled" repere="repere1" x="-1.5" y="2.5"></g> 
+    <g class="label" linkto="A" x="-7.5" y="-5" style="font-size:0.5rem;">A</g>
+    <g name="B" class="point labeled" repere="repere1" x="1" y="3"></g> 
+    <g class="label" linkto="B" x="2.5" y="-5" style="font-size:0.5rem;">B</g>
+    </svg>
+  </div>
+</div>
+<h2>Tableau de valeurs</h2>
+<div class="definition">
+  <p>Soit $f$ une fonction définie sur $\mathcal{D}$, on appelle <strong>tableau de valeurs</strong> de $f$ sur $\mathcal{D}$ un tableau qui, à chaque élément $x$ de $\mathcal{D}$ de la première ligne, associe l'élément $f(x)$ situé dans la même colonne sur la seconde ligne.</p>
+  <table class="tableauvaleurs">
+    <thead>
+      <tr>
+        <th>$x$</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>$f(x)$</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+</table>
+</div>
+<div class="exemple">
+  <p>Soit $f$ la fonction définie sur $\mathcal{D}=\mathbb{R}$ par $f(x)=x^2+1$.<br>
+    On se propose de construire un tableau de valeurs de $f$ en prenant $x$ égal à $-2$ pour la première valeur puis un pas régulier de $1$.</p>
+    <table class="tableauvaleurs">
+      <thead>
+        <tr>
+          <th>$x$</th>
+          <td>$-2$</td>
+          <td>$-1$</td>
+          <td>$0$</td>
+          <td>$1$</td>
+          <td>$2$</td>
+        </tr>
+        <tr>
+          <th>$f(x)$</th>
+          <td>$5$</td>
+          <td>$2$</td>
+          <td>$1$</td>
+          <td>$2$</td>
+          <td>$5$</td>
+        </tr>
+      </thead>
+  </table>  
+</div>
+<div class="methode">
+  <p>Pour tracer la courbe représentative d'une fonction $f$ définie sur $\mathcal{D}$, on peut procéder de la manière suivante :</p>
+  <ol>
+    <li>On construit un tableau de valeurs de $f$ avec un pas régulier suffisamment petit.</li>
+    <li>On place les points de coordonnées $(x~{;}~f(x))$ dans un repère.</li>
+    <li>On relie les points par une courbe.</li>
+  </ol>
+</div>
+<div class="exemple">
+  <p>Considérons la fonction $f$ définie sur $\mathcal{D}=[-2~{;}~2]$ par $$f(x)=\dfrac{x^2+1}{2}.$$<br>
+    On se propose de tracer la courbe représentative de $f$.</p>
+  <ol>
+    <li>On construit un tableau de valeurs de $f$ avec un pas régulier suffisamment petit.</li>
+    <table class="tableauvaleurs">
+      <thead>
+        <tr>
+          <th>$x$</th>
+          <td>$-2$</td>
+          <td>$-1$</td>
+          <td>$0$</td>
+          <td>$1$</td>
+          <td>$2$</td>
+        </tr>
+        <tr>
+          <th>$f(x)$</th>
+          <td>$\num{2.5}$</td>
+          <td>$1$</td>
+          <td>$\num{0.5}$</td>
+          <td>$1$</td>
+          <td>$\num{2.5}$</td>
+        </tr>
+      </thead>
+  </table>
+    <li>On place les points de coordonnées $(x~{;}~f(x))$ dans un repère.</li>
+    <li>On trace une ligne courbe passant par ces points.</li>
+    <div id="figure1c" class="figure">
+      <svg
+        id="figure1c"
+        viewBox="0 0 200 110"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+      <g name="repere1" class="repere" xmin="-5" ymin="-1.5" xmax="5" ymax ="4" xorigine="0" yorigine="0"></g>
+      <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+      <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+      <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+      <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+      <g name="A" class="point" repere="repere1" x="-2" y="2.5"></g>
+      <g name="B" class="point" repere="repere1" x="-1" y="1"></g>
+      <g name="C" class="point" repere="repere1" x="0" y="0.5"></g>
+      <g name="D" class="point" repere="repere1" x="1" y="1"></g>
+      <g name="E" class="point" repere="repere1" x="2" y="2.5"></g>
+      
+      <g name="c1" class="courbeRepresentative" expression="(x^2+1)/2" xmin="-2" xmax="2" pas="0.2" linkto="repere1" stroke="red" stroke-width="1" fill="transparent"></g>
+      </svg>
+    </div>
+  </ol>
+</div>
+<h2>Equation de courbe</h2>
+<div class="definition">
+  <p>Soit $f$ une fonction définie sur $\mathcal{D}$, et soit $(\mathscr{C})$ sa courbe représentative.<br>
+    On appelle <strong>équation de la courbe $(\mathscr{C})$</strong> une équation d'inconnue $x$ et $y$ qui permet de déterminer l'ordonnée $y$ d'un point $M$ de $(\mathscr{C})$ connaissant son abscisse $x$.</p>
+</div>
+<div class="exemple">
+  <p>En reprenant les exemples précédents, on a :</p>
+  <ul>
+    <li>$(\mathscr{C})$ a pour équation $y=x^3+x^2-x+2$ ;</li>
+    <li>$(\mathcal{d_1})$ a pour équation $y=-\dfrac{2}{3}x+\dfrac{3}{2}$ ;</li>
+    <li>$(\mathcal{d_2})$ a pour équation $y=x+2$.</li>
+  </ul>
+</p>
+<p>Remarquons, par exemple, que l'équation $$y-x-2=0$$ est une équation équivalente à $y=x+2$ et que donc $(\mathcal{d_2})$ a aussi pour équation $y-x-2=0$.</p>
+</div>
+<div class="methode">
+  <p>Pour <strong>déterminer l'ordonnée du point $M$ appartenant à une courbe $(\mathscr{C})$ et ayant pour abscisse $a$</strong>, il suffit : 
+  </p>
+  <ol>
+    <li>de remplacer $x$ par $a$ dans l'équation de $(\mathscr{C})$ ;</li>
+    <li>de résoudre l'équation obtenue et d'inconnue $y$.</li>
+  </ol>
+  <p>La solution de cette équation est l'ordonnée du point $M$.</p>
+</div>
+<div class="exemple">
+  <p>Considérons la courbe représentative $(\mathscr{C})$ définie par l'équation $y=x^2-2x+1$.<br>
+    On se propose de déterminer l'ordonnée du point $M$ de $(\mathscr{C})$ d'abscisse $3$.</p>
+  <ol>
+    <li>On remplace $x$ par $3$ dans l'équation de $(\mathscr{C})$ : $$y=3^2-2\times 3+1$$</li>
+    <li>On effectue les calculs : $$y=9-6+1=4$$</li>
+    <li>On conclut :<br> <strong>Donc l'ordonnée du point $M\in(\mathscr{C})$ d'abscisse $3$ est $4$.</strong></li>
+  </ol>
+</div>
+<div class="methode">
+  <p>Pour <strong>déterminer si un point $M(a~{;}~b)$ appartient à une courbe</strong>, on peut procéder de la manière suivante :</p>
+  <ol>
+    <li>On remplace $x$ par $a$ dans l'équation de la courbe.</li>
+    <li>On effectue les calculs.</li>
+    <li>Si $y=b$, on conclut que $M(a~{;}~b)$ appartient à la courbe.</li>
+    <li>Si $y\neq b$, on conclut que $M(a~{;}~b)$ n'appartient pas à la courbe.</li>
+  </ol>
+</div>
+<div class="exemple">
+  <p>Soit $y=x^2-2x+1$ une équation de la courbe représentative $(\mathscr{C})$ d'une fonction $f$ définie sur $\mathbb{R}$.<br>
+    On se propose de déterminer si les points $A(-1~{;}~2)$ et $B(2~{;}~1)$ appartiennent à $(\mathscr{C})$.</p>
+  <ul>
+    <li><ol>
+      <li>On remplace $x$ par $-1$ dans l'équation de $(\mathscr{C})$ : $$y=(-1)^2-2\times(-1)+1$$</li>
+      <li>On effectue les calculs : $$y=1+2+1=4$$ et on constate que $y\neq2$.</li>
+      <li>On conclut :<br> <strong>Donc $A(-1~{;}~2)$ n'appartient pas à $(\mathscr{C})$.</strong></li>
+    </ol></li>
+    <li><ol>
+      <li>On remplace $x$ par $2$ dans l'équation de $(\mathscr{C})$ : $$y=2^2-2\times2+1$$</li>
+      <li>On effectue les calculs : $$y=4-4+1=1$$ et on constate que $y=1$.</li>
+      <li>On conclut :<br> <strong>Donc $B(2~{;}~1)$ appartient à $(\mathscr{C})$.</strong></li>
+    </ol></li>
+  </ul>
 </div>
 <h2>Parité</h2>
 <div class="definition">
@@ -174,7 +398,7 @@
 </div>
 </div>
 <div class="propriete">
-  <p>Si $f$ est paire alors sa courbe représentative est symétrique par rapport à l'axe des ordonnées.</p>
+  <p><strong>Propriété :</strong> Si $f$ est paire alors sa courbe représentative est symétrique par rapport à l'axe des ordonnées.</p>
   <div id="figure2" class="figure">
     <svg
       id="figure2"
@@ -192,35 +416,42 @@
       <g name="A3" class="point" repere="repere1" x="0" y="2" visibility="hidden"></g>
       <g name="A4" class="point" repere="repere1" x="2" y="-1" visibility="hidden"></g>
       <g name="A5" class="point" repere="repere1" x="4" y="3" visibility="hidden"></g>
-      <g name="c1" class="pathPointsControls" controls="A1:1 A2:0 A3:0 A4:0 A5:-1" linkto="A1 A2 A3 A4 A5" stroke="red" stroke-width="0.5" fill="transparent"></g>
-      <g name="min" class="point labeled" repere="repere1" x="-4" y="0" stroke="none"></g>
-        <g class="label" linkto="min" x="-5" y="0" style="font-size:0.8rem;">-4</g>
-        <g name="max" class="point labeled" repere="repere1" x="3" y="0" stroke="none"></g>
-        <g class="label" linkto="max" x="-3" y="0" style="font-size:0.8rem;">3</g>
-        <g name="M" class="point draggable onpath" repere="repere1" x="-4" y="3" linkto="c1" stroke="red"></g>
-        <g name="ymin" class="point" repere="repere1" x="0" y="-1.5" visibility="hidden"></g>
-        <g name="ymax" class="point" repere="repere1" x="0" y="4" visibility="hidden"></g>
-        <g name="My" class="point labeled dilatation" linkto="ymin ymax M" data="90 0" stroke="transparent"></g>
-        <g name="Mx" class="point labeled dilatation" linkto="min max M" data="90 0" stroke="transparent"></g>
-        <g class="label" linkto="Mx" x="-2.5" y="-3" style="font-size:0.5rem;">x</g>
-        <g class="label" linkto="My" x="-20" y="-5" style="font-size:0.5rem;">f(x)</g>
-        <g name="sy" class="segment" linkto="M My" stroke="red" stroke-width="0.5" stroke-dasharray="2,2"></g>
-        <g name="sx" class="segment" linkto="M Mx" stroke="red" stroke-width="0.5" stroke-dasharray="2,2"></g>
-        <g name="O" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
-        <g name="N" class="point dilatation" linkto="ymin ymax M" data="90 -1"></g>
-        <g name="Nx" class="point labeled dilatation" linkto="min max N" data="90 0" stroke="transparent"></g>
-        <g name="Ny" class="point dilatation" linkto="ymin ymax N" data="90 0" stroke="transparent"></g>
-        <g class="label" linkto="Nx" x="-2.5" y="-3" style="font-size:0.5rem;">-x</g>
-        <g name="sy2" class="segment" linkto="N Ny" stroke="blue" stroke-width="0.5" stroke-dasharray="2,2"></g>
-        <g name="sx2" class="segment" linkto="N Nx" stroke="blue" stroke-width="0.5" stroke-dasharray="2,2"></g>
+      
+      <g name="sy" class="segment" linkto="M My" stroke="blue" stroke-width="0.5" stroke-dasharray="2,2"></g>
+      <g name="sx" class="segment" linkto="M Mx" stroke="blue" stroke-width="0.5" stroke-dasharray="2,2"></g>
+      
+      <g name="sy2" class="segment" linkto="N Ny" stroke="blue" stroke-width="0.5" stroke-dasharray="2,2"></g>
+      <g name="sx2" class="segment" linkto="N Nx" stroke="blue" stroke-width="0.5" stroke-dasharray="2,2"></g>
+      
+      <g name="c1" class="pathPointsControls" controls="A1:1 A2:0 A3:0 A4:0 A5:-1" linkto="A1 A2 A3 A4 A5" stroke="red" stroke-width="1" fill="transparent"></g>
+      
+      <g name="O" class="point" repere="repere1" x="0" y="0" stroke="transparent"></g>
+      <g name="min" class="point" repere="repere1" x="-4" y="0" stroke="transparent"></g>
+      <g name="max" class="point" repere="repere1" x="3" y="0" stroke="transparent"></g>
+      <g name="ymin" class="point" repere="repere1" x="0" y="-1.5" visibility="hidden"></g>
+      <g name="ymax" class="point" repere="repere1" x="0" y="4" visibility="hidden"></g>
+      
+      <g name="M" class="point draggable onpath" repere="repere1" x="4" y="3" linkto="c1" stroke="red"></g>
+      <g name="My" class="point labeled dilatation" linkto="ymin ymax M" data="90 0" stroke="transparent"></g>
+      <g name="Mx" class="point labeled dilatation" linkto="min max M" data="90 0" stroke="transparent"></g>
+      
+      <g name="N" class="point dilatation" linkto="ymin ymax M" data="90 -1"></g>
+      <g name="Nx" class="point labeled dilatation" linkto="min max N" data="90 0" stroke="transparent"></g>
+      <g name="Ny" class="point dilatation" linkto="ymin ymax N" data="90 0" stroke="transparent"></g>
+      
+      <g class="label" linkto="My" x="2" y="0" style="font-size:0.3rem;">f(x)</g>
+      <g class="label" linkto="My" x="-17" y="-7.5" style="font-size:0.3rem;">f(-x)</g>
+      <g class="label" linkto="Nx" x="-2.5" y="0" style="font-size:0.4rem;">-x</g>
+      <g class="label" linkto="Mx" x="-2.5" y="0" style="font-size:0.4rem;">x</g>  
     </svg>
   </div>
+  <p><strong>Réciproque :</strong> Si la courbe représentative d'une fonction $f$ est symétrique par rapport à l'axe des ordonnées alors $f$ est paire.</p>
 </div>
 <div class="definition">
   <p>Une fonction est dite impaire si pour tout $x$ de $\mathcal{D}$, $-x$ appartient à $\mathcal{D}$ et $f(-x)=-f(x)$.</p>
 </div>
 <div class="propriete">
-  <p>Si $f$ est impaire alors sa courbe représentative est symétrique par rapport à l'origine.</p>
+  <p><strong>Propriété :</strong>Si $f$ est impaire alors sa courbe représentative est symétrique par rapport à l'origine.</p>
   <div id="figure3" class="figure">
     <svg
       id="figure3"
@@ -233,39 +464,88 @@
       <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
       <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
       <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
-      <g name="A1" class="point" repere="repere1" x="-4" y="3" visibility="hidden"></g>
-      <g name="A2" class="point" repere="repere1" x="-2" y="-1" visibility="hidden"></g>
+      <g name="A1" class="point" repere="repere1" x="-4" y="-3" visibility="hidden"></g>
+      <g name="A2" class="point" repere="repere1" x="-2" y="1" visibility="hidden"></g>
       <g name="A3" class="point" repere="repere1" x="0" y="0" visibility="hidden"></g>
-      <g name="A4" class="point" repere="repere1" x="2" y="1" visibility="hidden"></g>
-      <g name="A5" class="point" repere="repere1" x="4" y="-3" visibility="hidden"></g>
-      <g name="c1" class="pathPointsControls" controls="A1:1 A2:0 A3:0 A4:0 A5:-1" linkto="A1 A2 A3 A4 A5" stroke="red" stroke-width="0.5" fill="transparent"></g>
-      <g name="min" class="point labeled" repere="repere1" x="-4" y="0" stroke="none"></g>
-      <g class="label" linkto="min" x="-5" y="0" style="font-size:0.8rem;">-4</g>
-      <g name="max" class="point labeled" repere="repere1" x="3" y="0" stroke="none"></g>
-      <g class="label" linkto="max" x="-3" y="0" style="font-size:0.8rem;">3</g>
-      <g name="M" class="point draggable onpath" repere="repere1" x="-4" y="3" linkto="c1" stroke="red"></g>
+      <g name="A4" class="point" repere="repere1" x="2" y="-1" visibility="hidden"></g>
+      <g name="A5" class="point" repere="repere1" x="4" y="3" visibility="hidden"></g>
+      
+      <g name="sy" class="segment" linkto="M My" stroke="blue" stroke-width="0.5" stroke-dasharray="2,2"></g>
+      <g name="sx" class="segment" linkto="M Mx" stroke="blue" stroke-width="0.5" stroke-dasharray="2,2"></g>
+      <g name="sy2" class="segment" linkto="N Ny" stroke="blue" stroke-width="0.5" stroke-dasharray="2,2"></g>
+      <g name="sx2" class="segment" linkto="N Nx" stroke="blue" stroke-width="0.5" stroke-dasharray="2,2"></g>
+      
+      <g name="c1" class="pathPointsControls" controls="A1:1 A2:0 A3:0 A4:0 A5:1" linkto="A1 A2 A3 A4 A5" stroke="red" stroke-width="1" fill="transparent"></g>
+      
+      <g name="O" class="point" repere="repere1" x="0" y="0" stroke="transparent"></g>
       <g name="ymin" class="point" repere="repere1" x="0" y="-1.5" visibility="hidden"></g>
       <g name="ymax" class="point" repere="repere1" x="0" y="4" visibility="hidden"></g>
+      <g name="min" class="point" repere="repere1" x="-4" y="0" stroke="transparent"></g>
+      <g name="max" class="point" repere="repere1" x="3" y="0" stroke="transparent"></g>
+      
+      <g name="M" class="point draggable onpath" repere="repere1" x="4" y="3" linkto="c1" stroke="red"></g>
       <g name="My" class="point labeled dilatation" linkto="ymin ymax M" data="90 0" stroke="transparent"></g>
       <g name="Mx" class="point labeled dilatation" linkto="min max M" data="90 0" stroke="transparent"></g>
-      <g class="label" linkto="Mx" x="-2.5" y="-3" style="font-size:0.5rem;">x</g>
-      <g class="label" linkto="My" x="-20" y="-5" style="font-size:0.5rem;">f(x)</g>
-      <g name="sy" class="segment" linkto="M My" stroke="red" stroke-width="0.5" stroke-dasharray="2,2"></g>
-      <g name="sx" class="segment" linkto="M Mx" stroke="red" stroke-width="0.5" stroke-dasharray="2,2"></g>
-      <g name="O" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+      
+      
       <g name="N" class="point translation" linkto="O M O" data="-1"></g>
       <g name="Nx" class="point labeled dilatation" linkto="min max N" data="90 0" stroke="transparent"></g>
       <g name="Ny" class="point labeled dilatation" linkto="ymin ymax N" data="90 0" stroke="transparent"></g>
-      <g class="label" linkto="Nx" x="-2.5" y="-3" style="font-size:0.5rem;">-x</g>
-      <g class="label" linkto="Ny" x="0" y="-5" style="font-size:0.5rem;width:2rem">-f(x)</g>
-      <g name="sy2" class="segment" linkto="N Ny" stroke="blue" stroke-width="0.5" stroke-dasharray="2,2"></g>
-      <g name="sx2" class="segment" linkto="N Nx" stroke="blue" stroke-width="0.5" stroke-dasharray="2,2"></g>
+      
+      <g class="label" linkto="My" x="2" y="0" style="font-size:0.4rem;">f(x)</g>
+      <g class="label" linkto="Ny" x="-20" y="-7.5" style="font-size:0.4rem;">f(-x)</g>
+      <g class="label" linkto="Nx" x="-2.5" y="0" style="font-size:0.4rem;">-x</g>
+      <g class="label" linkto="Mx" x="-2.5" y="0" style="font-size:0.4rem;">x</g>  
     </svg>
   </div>
+  <p><strong>Réciproque :</strong> Si la courbe représentative d'une fonction $f$ est symétrique par rapport à l'origine alors $f$ est impaire.</p>
 </div>
 <h2>Equations, inequations, liens avec les fonctions</h2>
 <div class="propriete">
   <p>Soit $k$ un nombre réel. Les solutions de l'équation $f(x)=k$ sont les abscisses des points d'intersection de la courbe représentative de $f$ avec la droite d'équation $y=k$.</p>
+  <div class="figure">
+    <svg
+      viewBox="0 0 200 130"
+      xmlns="http://www.w3.org/2000/svg"
+      class="quadrillage"
+    >
+    <g name="repere1" class="repere" xmin="-5" ymin="-1.5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+    <g name="A" class="point" repere="repere1" x="-3" y="-1" visibility="hidden"></g>
+    <g name="B" class="point" repere="repere1" x="-2" y="2" visibility="hidden"></g>
+    <g name="U" class="point" repere="repere1" x="-1.5" y="2.3" visibility="hidden"></g>
+    <g name="C" class="point" repere="repere1" x="-1" y="2" visibility="hidden"></g>
+    <g name="D" class="point" repere="repere1" x="1" y="2" visibility="hidden"></g>
+    <g name="V" class="point" repere="repere1" x="3" y="4" visibility="hidden"></g>
+    <g name="E" class="point" repere="repere1" x="4" y="2.5" visibility="hidden"></g>
+    
+    <g name="F" class="point labeled" repere="repere1" x="-4" y="2" stroke="transparent"></g>
+    <g class="label" linkto="F" x="0" y="-11" style="font-size:0.5rem;color:green">y=k</g>
+    
+    <g name="c1" class="pathPointsControls" controls="B:1 U:0 C:-1 V:0" linkto="A B U C D V E" stroke="red" stroke-width="1" fill="transparent"></g>
+
+    <g name="d" class="courbeRepresentative" expression="2" linkto="repere1" xmin="-5" xmax="5" pas="2" stroke="green" stroke-width="1" fill="transparent"></g>
+    
+    <g name="Int" class="intersections" linkto="c1 d" stroke="blue" stroke-width="1"></g>
+    
+    <g name="M1" class="point" repere="repere1" x="-2" y="2" stroke="transparent"></g>
+    <g name="M1x" class="point labeled" repere="repere1" x="-2" y="0" stroke="transparent"></g>
+    <g class="label" linkto="M1x" x="-2" y="0" style="font-size:0.5rem;color:blue">x_1</g>
+    <g name="M1M1x" class="segment" linkto="M1 M1x" stroke="blue" stroke-width="1" stroke-dasharray="2,2"></g>
+    <g name="M2" class="point" repere="repere1" x="-1" y="2" stroke="transparent"></g>
+    <g name="M2x" class="point labeled" repere="repere1" x="-1" y="0" stroke="transparent"></g>
+    <g class="label" linkto="M2x" x="-2" y="0" style="font-size:0.5rem;color:blue">x_2</g>
+    <g name="M2M2x" class="segment" linkto="M2 M2x" stroke="blue" stroke-width="1" stroke-dasharray="2,2"></g>
+    <g name="M3" class="point" repere="repere1" x="1" y="2" stroke="transparent"></g>
+    <g name="M3x" class="point labeled" repere="repere1" x="1" y="0" stroke="transparent"></g>
+    <g class="label" linkto="M3x" x="-2" y="0" style="font-size:0.5rem;color:blue">x_3</g>
+    <g name="M3M3x" class="segment" linkto="M3 M3x" stroke="blue" stroke-width="1" stroke-dasharray="2,2"></g>
+    </svg>
+    </div>
+  </div>
 </div>
     </main>
     <footer>

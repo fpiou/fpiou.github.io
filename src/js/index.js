@@ -114,19 +114,13 @@ var insererEntetesBlocsExercices = function () {
   }
 };
 var wrapElementsInReveal = function (parent) {
-  var elements = parent.querySelectorAll("p, td,.katex-display");
+  var elements = parent.querySelectorAll("p, .katex-display, table, .figure");
 
   for (var i = 0; i < elements.length; i++) {
-    var reveal = document.createElement("div");
-    reveal.className = "reveal";
-    reveal.innerHTML = elements[i].innerHTML;
-    elements[i].innerHTML = "";
-    elements[i].appendChild(reveal);
-    reveal.addEventListener("click", function () {
+    elements[i].classList.add("reveal");
+    elements[i].addEventListener("click", function () {
       this.classList.add("clicked");
     });
-
-    wrapElementsInReveal(reveal);
   }
 };
 var masquerSolutionsExercices = function () {

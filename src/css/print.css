@@ -11,9 +11,9 @@
   }
 
   /* Pour gagner de l'espace les formules éléments de la class .katex-display contenus dans des éléments p sont en inline-block*/
-  p > span > .katex-display,
-  .katex-display p,
-  .katex-display li {
+  p span.katex-display,
+  li span.katex-display
+  {
     display: inline-block;
     margin: 0em;
   }
@@ -21,6 +21,7 @@
   /* Ne pas imprimer */
   .solution,
   .indice,
+  .background-figure,
   #sommaire,
   #formulaire,
   .quiz-choices,

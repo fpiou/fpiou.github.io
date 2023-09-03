@@ -95,12 +95,3 @@ summary {
 .detailDemonstration {
   background-color: transparent;
 }
-
-.important {
-  font-weight: bold;
-}
-
-/* Mettre la fonte katex en gras dans une balise important ou dans un titre h1, h2, h3*/
-.important .katex, h1 .katex, h2 .katex, h3 .katex strong .katex{
-  font-weight: bold;
-}

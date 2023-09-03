@@ -265,5 +265,31 @@
         <g name="c1" class="pathPointsControls" linkto="A M1 B M2 C D" stroke="red" stroke-width="0.5" fill="transparent"></g>
         </svg>
     </div>
+    <h2>Courbe 6 : Une courbe pour illustrer une appartenance à une courbe.</h2>
+    <div id="figure1b" class="figure">
+      <svg
+        id="figure1b"
+        viewBox="0 0 200 110"
+        xmlns="http://www.w3.org/2000/svg"
+        class="quadrillage"
+      >
+      <g name="repere1" class="repere" xmin="-5" ymin="-1.5" xmax="5" ymax ="4" xorigine="0" yorigine="0"></g>
+      <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+      <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+      <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+      <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+      <g name="c1" class="courbeRepresentative" expression="x^3+x^2-x+2" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="0.5" fill="transparent"></g>
+      <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+      <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
+      <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+      <g class="label" linkto="J" x="-7" y="-5" style="font-size:0.5rem;">1</g>
+      <g name="d1" class="courbeRepresentative" expression="-2x/3+3/2" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="green" stroke-width="0.5" fill="transparent"></g>
+      <g name="A" class="point labeled" repere="repere1" x="-1.5" y="2.5"></g> 
+      <g class="label" linkto="A" x="-7.5" y="-5" style="font-size:0.5rem;">A</g>
+      <g name="d2" class="courbeRepresentative" expression="x+2" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="0.5" fill="transparent"></g>
+      <g name="B" class="point labeled" repere="repere1" x="1" y="3"></g> 
+      <g class="label" linkto="B" x="2.5" y="-5" style="font-size:0.5rem;">B</g>
+      </svg>
+    </div>
   </body>
 </html>
