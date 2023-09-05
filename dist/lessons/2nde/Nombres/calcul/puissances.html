@@ -105,17 +105,22 @@
 </details>
 <h2>Généralités</h2>
 <div class="definition">
-    <p>Soit $a$ un nombre relatif et $n$ un entier naturel non nul.<br>
+    <p>Soit $a$ un nombre réel non nul et $n$ un entier naturel non nul.<br>
         On appelle <strong>puissance</strong> de $a$ de <strong>l'exposant</strong> $n$ et on note $a^n$ le nombre
         obtenu en multipliant $a$ par lui-même $n$ fois.</p>
         $$a^n=\underbrace{a\times a\times\cdots\times a}_{n\text{ fois}}$$
 </div>
+<div class="remarque">
+    <p>Le nombre $a$ est appelé <strong>base</strong> de la puissance.</p>
+    <p>Même si la notation $0^n$ existe aussi pour $n$ un entier naturel non nul, il n'y a pas grand intérêt à l'utiliser car $0^n=0$ pour tout entier naturel non nul $n$.</p>
+    <p>Dans la suite de ce cours, on ne considérera que des puissances de nombres réels non nuls.</p>
+</div>
 <div class="exemple">
     <ul>
         <li>$2^3=2\times 2\times 2=8$</li>
-        <li>$(-3)^4=(-3)\times (-3)\times (-3)\times (-3)=81$</li>
-        <li>$(-2)^5=(-2)\times (-2)\times (-2)\times (-2)\times (-2)=-32$</li>
-        <li>$(-2)^6=(-2)\times (-2)\times (-2)\times (-2)\times (-2)\times (-2)=64$</li>
+        <li>$(-3)^4=(-3)\times (-3)\times (-3)\times (-3)$</li>
+        <li>$\num{2.1}^3=\num{2.1}\times \num{2.1}\times \num{2.1}$</li>
+        <li>$\left(\dfrac{3}{4}\right)^5=\dfrac{3}{4}\times \dfrac{3}{4}\times \dfrac{3}{4}\times \dfrac{3}{4}\times \dfrac{3}{4}$</li>
     </ul>
 </div>
 <div class="remarque">
@@ -187,32 +192,46 @@
     </table>
 </div>
 <div class="definition">
-    <p>Soit $a$ un nombre relatif et $n$ un entier naturel non nul.<br>
-        On appelle <strong>puissance</strong> de $a$ de <strong>l'exposant</strong> $-n$ et on note $a^{-n}$ le nombre $\frac{1}{a^n}$.</p>
+    <p>Soit $a$ un nombre réel non nul et $n$ un entier naturel non nul. On appelle <strong>puissance de $a$ d'exposant $-n$</strong> et on note $a^{-n}$ le nombre $\dfrac{1}{a^n}$ :
+    $$a^{-n}=\dfrac{1}{a^n}$$
+    </p>
 </div>
 <div class="exemple">
     <ul>
-        <li>$2^{-3}=\frac{1}{2^3}=\frac{1}{8}$</li>
-        <li>$(-3)^{-4}=\frac{1}{(-3)^4}=\frac{1}{81}$</li>
-        <li>$(-2)^{-5}=\frac{1}{(-2)^5}=\frac{1}{-32}=-\frac{1}{32}$</li>
-        <li>$(-2)^{-6}=\frac{1}{(-2)^6}=\frac{1}{64}$</li>
+        <li>$2^{-3}=\dfrac{1}{2^3}=\dfrac{1}{2\times 2\times 2}$</li>
+        <li>$(-3)^{-4}=\dfrac{1}{(-3)^4}=\dfrac{1}{(-3)\times (-3)\times (-3)\times (-3)}$</li>
+        <li>$(-2)^{-5}=\dfrac{1}{(-2)^5}=\dfrac{1}{(-2)\times (-2)\times (-2)\times (-2)\times (-2)}$</li>
+        <li>$\num{3.5}^{-3}=\dfrac{1}{\num{3.5}^3}=\dfrac{1}{\num{3.5}\times \num{3.5}\times \num{3.5}}$</li>
     </ul>
 </div>
 </div>
 <div class="definition">
-    <p>Soit $a$ un nombre relatif et $n$ un entier naturel non nul.<br>
-        On appelle <strong>puissance</strong> de $a$ de <strong>l'exposant</strong> $0$ et on note $a^0$ le nombre $1$.</p>
+    <p>Soit $a$ un nombre réel non nul.<br>
+        On appelle <strong>puissance de $a$ d'exposant $0$</strong> et on note $a^0$ le nombre $1$ :
+    $$a^0=1$$
+    </p>
 </div>
 <div class="exemple">
     <ul>
         <li>$2^0=1$</li>
         <li>$(-3)^0=1$</li>
-        <li>$(-2)^0=1$</li>
+        <li>$\num{4.6}^0=1$</li>
+        <li>$\left(\dfrac{3}{4}\right)^0=1$</li>
+    </ul>
+</div>
+<div class="propriete">
+    <p>$a$ et $b$ désignent deux nombres réels non nuls et $n$ un entier naturel. $$\left(\dfrac{a}{b}\right)^{-n}= \left(\dfrac{b}{a}\right)^n$$</p>
+</div>
+<div class="exemple">
+    <ul>
+        <li>$\left(\dfrac{2}{3}\right)^{-3}=\left(\dfrac{3}{2}\right)^3$</li>
+        <li>$\left(\dfrac{-3}{4}\right)^{-4}=\left(\dfrac{4}{-3}\right)^4$</li>
+        <li>$\left(\dfrac{-2}{5}\right)^{-5}=\left(\dfrac{5}{-2}\right)^5$</li>
     </ul>
 </div>
 <div class="propriete">
     <p>
-        $a$ désigne un nombre relatif et $n$ un entier relatif non nul.<br>
+        $a$ désigne un nombre réel non nul et $n$ un entier relatif.<br>
         <ul>
             <li> Si $a > 0 $, alors $a^n > 0$</li>
             <li> Si $a < 0 $ et $n$ est pair, alors $a^n > 0$</li>
@@ -231,7 +250,7 @@
 </div>
 <h2>Ordre</h2>
 <div class="propriete">
-    <p> $a$ et $b$ désignent deux nombres relatifs tels que $0\leqslant a < b$ et $n$ un entier relatif.</p>
+    <p> $a$ et $b$ désignent deux nombres réels non nuls tels que $0\leqslant a < b$ et $n$ un entier relatif.</p>
         <ul>
             <li>Si $n > 0$, alors $a^n < b^n$</li>
             <li>Si $n < 0$, alors $a^n > b^n$</li>
@@ -245,58 +264,58 @@
 </div>
 <h2>Opérations</h2>
 <div class="propriete">
-    <p> $a$ et $b$ désignent deux nombres relatifs et $n$ et $m$ désignent deux entiers naturels non nuls.</p>
+    <p> $a$ désigne un nombre réel non nul et $n$ et $m$ désignent deux entiers naturels.</p>
         $$a^n\times a^m=a^{n+m}$$
 </div>
 <div class="exemple">
     <ul>
-        <li>$2^3\times 2^4=2^{3+4}=2^7=128$</li>
-        <li>$(-3)^4\times (-3)^5=(-3)^{4+5}=(-3)^9=-19683$</li>
-        <li>$(-2)^5\times (-2)^6=(-2)^{5+6}=(-2)^{11}=-2048$</li>
+        <li>$2^3\times 2^4=2^{3+4}=2^7$</li>
+        <li>$(-3)^4\times (-3)^5=(-3)^{4+5}=(-3)^9=-3^9$ (car $9$ est impair)</li>
+        <li>$(-2)^5\times (-2)^7=(-2)^{5+7}=(-2)^{12}=2^{12}$ (car $12$ est pair)</li>
     </ul>
 </div>
 <div class="propriete">
-    <p> $a$ et $b$ désignent deux nombres relatifs et $n$ et $m$ désignent deux entiers naturels non nuls.</p>
-        $$\frac{a^n}{a^m}=a^{n-m}$$
+    <p> $a$ désigne un nombre réel non nul et $n$ et $m$ désignent deux entiers naturels.</p>
+        $$\dfrac{a^n}{a^m}=a^{n-m}$$
 </div>
 <div class="exemple">
     <ul>
-        <li>$\frac{2^3}{2^4}=2^{3-4}=2^{-1}=\frac{1}{2}$</li>
-        <li>$\frac{(-3)^4}{(-3)^5}=(-3)^{4-5}=(-3)^{-1}=-\frac{1}{3}$</li>
-        <li>$\frac{(-2)^5}{(-2)^6}=(-2)^{5-6}=(-2)^{-1}=-\frac{1}{2}$</li>
+        <li>$\dfrac{2^3}{2^4}=2^{3-4}=2^{-1}=\dfrac{1}{2}$</li>
+        <li>$\dfrac{(-3)^4}{(-3)^5}=(-3)^{4-5}=(-3)^{-1}=\dfrac{1}{-3}=-\dfrac{1}{3}$</li>
+        <li>$\dfrac{(-2)^5}{(-2)^9}=(-2)^{5-9}=(-2)^{-4}=\dfrac{1}{(-2)^4}=\dfrac{1}{2^4}=\dfrac{1}{16}$</li>
     </ul>
 </div>
 <div class="propriete">
-    <p> $a$ et $b$ désignent deux nombres relatifs et $n$ et $m$ désignent deux entiers naturels non nuls.</p>
+    <p> $a$ désigne un nombre réel non nul et $n$ et $m$ désignent deux entiers naturels.</p>
         $$(a^n)^m=a^{n\times m}$$
 </div>
 <div class="exemple">
     <ul>
-        <li>$(2^3)^4=2^{3\times 4}=2^{12}=4096$</li>
-        <li>$((-3)^4)^5=(-3)^{4\times 5}=(-3)^{20}=3486784401$</li>
-        <li>$((-2)^5)^6=(-2)^{5\times 6}=(-2)^{30}=1073741824$</li>
+        <li>$(2^3)^4=2^{3\times 4}=2^{12}$</li>
+        <li>$((-3)^4)^5=(-3)^{4\times 5}=(-3)^{20}=3^{20}$ (car $20$ est pair)</li>
+        <li>$((-2)^5)^7=(-2)^{5\times 7}=(-2)^{35}=-2^{35}$ (car $35$ est impair)</li>
     </ul>
 </div>
 <div class="propriete">
-    <p> $a$ et $b$ désignent deux nombres relatifs et $n$ et $m$ désignent deux entiers naturels non nuls.</p>
-        $$\left(\frac{a}{b}\right)^n=\frac{a^n}{b^n}$$
+    <p> $a$ et $b$ désignent deux nombres réels non nuls et $n$ et $m$ désignent deux entiers naturels.</p>
+        $$\left(\dfrac{a}{b}\right)^n=\dfrac{a^n}{b^n}$$
 </div>
 <div class="exemple">
     <ul>
-        <li>$\left(\frac{2}{3}\right)^3=\frac{2^3}{3^3}=\frac{8}{27}$</li>
-        <li>$\left(\frac{-3}{4}\right)^4=\frac{(-3)^4}{4^4}=\frac{81}{256}$</li>
-        <li>$\left(\frac{-2}{5}\right)^5=\frac{(-2)^5}{5^5}=\frac{-32}{3125}=-\frac{32}{3125}$</li>
+        <li>$\left(\dfrac{2}{3}\right)^3=\dfrac{2^3}{3^3}=\dfrac{8}{27}$</li>
+        <li>$\left(\dfrac{-3}{4}\right)^4=\dfrac{(-3)^4}{4^4}=\dfrac{3^4}{4^4}$</li>
+        <li>$\left(\dfrac{-2}{5}\right)^5=\dfrac{(-2)^5}{5^5}=\dfrac{-2^5}{5^5}=-\dfrac{2^5}{5^5}$</li>
     </ul>
 </div>
 <div class="propriete">
-    <p> $a$ et $b$ désignent deux nombres relatifs et $n$ et $m$ désignent deux entiers naturels non nuls.</p>
-        $$\left(\frac{a}{b}\right)^{-n}=\frac{b^n}{a^n}$$
+    <p> $a$ et $b$ désignent deux nombres réels non nuls et $n$ et $m$ désignent deux entiers naturels.</p>
+        $$\left(\dfrac{a}{b}\right)^{-n}=\dfrac{b^n}{a^n}$$
 </div>
 <div class="exemple">
     <ul>
-        <li>$\left(\frac{2}{3}\right)^{-3}=\frac{3^3}{2^3}=\frac{27}{8}$</li>
-        <li>$\left(\frac{-3}{4}\right)^{-4}=\frac{4^4}{(-3)^4}=\frac{256}{81}$</li>
-        <li>$\left(\frac{-2}{5}\right)^{-5}=\frac{5^5}{(-2)^5}=-\frac{5^5}{32}$</li>
+        <li>$\left(\dfrac{2}{3}\right)^{-3}=\dfrac{3^3}{2^3}=\dfrac{27}{8}$</li>
+        <li>$\left(\dfrac{-3}{4}\right)^{-4}=\dfrac{4^4}{(-3)^4}=\dfrac{4^4}{3^4}=\dfrac{64}{81}$</li>
+        <li>$\left(\dfrac{-2}{5}\right)^{-5}=\dfrac{5^5}{(-2)^5}=\dfrac{5^5}{-2^5}=-\dfrac{5^5}{2^5}$</li>
     </ul>
 </div>
 <h2>Notation scientifique</h2>
@@ -311,13 +330,14 @@
     </ul>
 </div>
 <div class="methode">
-    <p>On peut écrire $a\times 10^n$ sous la forme $a\times 10^n=a\times 10\times 10\times\cdots\times 10$ ($n$ fois) et donc $a\times 10^n$ s'écrit en décalant les chiffres de $a$ de $n$ rangs vers la gauche si $n$ est positif ou de $-n$ rangs vers la droite si $n$ est négatif.</p>
+    <p>Pour $n$ positif, on peut écrire <strong>$a\times 10^n$</strong> sous la forme $a\times 10^n=a\times 10\times 10\times\cdots\times 10$ ($n$ fois) et donc $a\times 10^n$ s'écrit en décalant les chiffres de $a$ de <strong>$n$ rangs vers la gauche et en complétant avec des zéros si nécessaire.</strong></p>
+    <p>Pour <strong>$a\times 10^{-n}$</strong>, on décale les chiffres de $a$ de <strong>$n$ rangs vers la droite</strong> et on complète avec des zéros si nécessaire.</p>
 </div>
 <div class="exemple">
     <ul>
-        <li>$\num{6,7}\times 10^3=\num{6700}$</li>
-        <li>$\num{-8,2}\times 10^4=\num{-82000}$</li>
-        <li>$\num{-3,5}\times 10^{-2}=\num{-0.035}$</li>
+        <li>$\num{6,7}\times 10^3=\num{6700}$ (le chiffre $6$ a été décalé de $3$ rangs vers la gauche car l'exposant de 10 est positif.)</li>
+        <li>$\num{-8,2}\times 10^4=\num{-82000}$ (le chiffre $8$ a été décalé de $4$ rangs vers la gauche car l'exposant de 10 est positif.)</li>
+        <li>$\num{-3,5}\times 10^{-2}=\num{-0.035}$ (le chiffre $3$ a été décalé de $2$ rangs vers la droite car l'exposant de 10 est négatif.)</li>
     </ul>
 </div>
 

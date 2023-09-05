@@ -166,23 +166,23 @@
     <p>Un décimal est un nombre qui possède une partie décimale finie.
         Il peut être positif ou négatif.<br>
         On note $\mathbb{D}$ l'ensemble des décimaux.
-        $$\mathbb{D}=\left\{\frac{a}{10^n}\text{ avec }a\in\mathbb{Z}\text{ et }n\in\mathbb{N}\right\}$$</p>
+        $$\mathbb{D}=\left\{\dfrac{a}{10^n}\text{ avec }a\in\mathbb{Z}\text{ et }n\in\mathbb{N}\right\}$$</p>
 </div>
 <div class="methode">
     <p>
-        Pour montrer qu'un nombre s'écrivant sous la forme $$\frac{n}{2^p\times 5^q}$$ est décimal, il suffit de multiplier le numérateur et le dénominateur par les mêmes puissances de $2$ ou de $5$ pour obtenir un dénominateur qui peut s'écrire sous la forme d'une puissance de $10$.
+        Pour montrer qu'un nombre s'écrivant sous la forme $$\dfrac{n}{2^p\times 5^q}$$ est décimal, il suffit de multiplier le numérateur et le dénominateur par les mêmes puissances de $2$ ou de $5$ pour obtenir un dénominateur qui peut s'écrire sous la forme d'une puissance de $10$.
     </p>
 </div>
 <div class="exemple">
-    <p>Montrons que $a=\frac{7}{2^3\times 5^7}$ est un nombre décimal.</p>
+    <p>Montrons que $a=\dfrac{7}{2^3\times 5^7}$ est un nombre décimal.</p>
     $$\begin{align*}
-        a&=\frac{7}{2^3\times 5^7}\\
-        &=\frac{7\times 2^4}{2^3\times 5^7\times 2^4}\\
-        &=\frac{7\times 2^4}{2^7\times 5^7}\\
-        &=\frac{7\times 2^4}{\left(2\times 5\right)^7}\\
-        &=\frac{7\times 2^4}{10^7}
+        a&=\dfrac{7}{2^3\times 5^7}\\
+        &=\dfrac{7\times 2^4}{2^3\times 5^7\times 2^4}\\
+        &=\dfrac{7\times 2^4}{2^7\times 5^7}\\
+        &=\dfrac{7\times 2^4}{\left(2\times 5\right)^7}\\
+        &=\dfrac{7\times 2^4}{10^7}
     \end{align*}$$
-    <p>$\frac{7}{2^3\times 5^7}$ est donc bien un nombre décimal.</p>
+    <p>$\dfrac{7}{2^3\times 5^7}$ est donc bien un nombre décimal.</p>
 </div>
 <div class="definition">
     <p>
@@ -192,7 +192,7 @@
 <div class="remarque">
     <p>Un rationnel est un nombre qui peut s'écrire sous la forme d'une fraction avec un signe positif ou négatif.<br>
         On note $\mathbb{Q}$ l'ensemble des rationnels.
-        $$\mathbb{Q}=\left\{\frac{a}{b}\text{ avec }a\in\mathbb{Z}\text{ et }b\in\mathbb{N}^*\right\}$$</p>
+        $$\mathbb{Q}=\left\{\dfrac{a}{b}\text{ avec }a\in\mathbb{Z}\text{ et }b\in\mathbb{N}^*\right\}$$</p>
 </div>
 <div class="definition">
     <p>
@@ -206,8 +206,8 @@
         <li>$-100$ est un entier.</li>
         <li>$2{,}8$ est un décimal.</li>
         <li>$-0{,}14$ est un décimal.</li>
-        <li>$\frac{3}{4}$ est un décimal car $\frac{3}{4}=0{,}75$.</li>
-        <li>$-\frac{3}{2}$ est un décimal car $-\frac{3}{2}=-1{,}5$.</li>
+        <li>$\dfrac{3}{4}$ est un décimal car $\dfrac{3}{4}=0{,}75$.</li>
+        <li>$-\dfrac{3}{2}$ est un décimal car $-\dfrac{3}{2}=-1{,}5$.</li>
     </ul>
     Tous ces nombres sont aussi des rationnels mais ce n'est pas le plus petit ensemble auquel ils appartiennent.
     </p>
@@ -224,15 +224,16 @@
 </div>
 <div class="propriete">
     <p>
-        $\frac{1}{3}$ est un nombre rationnel mais il n'est pas décimal.
+        $\dfrac{1}{3}$ est un nombre rationnel mais il n'est pas décimal.
     </p>
 </div>
 <div class="demonstration">
-    Supposons par l'absurde que $\frac{1}{3}$ soit décimal.<br>
-    Alors il existe $a\in\mathbb{Z}$ et $n\in\mathbb{N}$ tels que $\frac{1}{3}=\frac{a}{10^n}$.<br>
-    On a donc $3a=10^n$ et $3$ divise $10^n$.<br>
-    Or $3$ est premier avec $10$ donc $3$ divise $10$ et $3$ divise $10^n$.<br>
-    C'est absurde car $3$ ne divise pas $10.$
+    <p>Supposons par l'absurde que $\dfrac{1}{3}$ soit décimal.<br>
+    Alors il existe $a\in\mathbb{N}$ et $n\in\mathbb{N}$ tels que $\dfrac{1}{3}=\dfrac{a}{10^n}$.<br>
+    On en déduit d'après l'égalité des produits en croix que $10^n=3a$ et donc $3$ divise $10^n$.<br>
+    Or aucune puissance de $10$ n'est divisible par $3$ car $10^n=2^n\times 5^n$ et $3$ n'est pas un diviseur de $2$ ni de $5$.<br>
+    C'est absurde donc $\dfrac{1}{3}$ n'est pas décimal.</p>
+</p>
 </div>
 <div class="methode">
     <p>Pour montrer qu'un nombre rationnel n'est pas décimal, il suffit de décomposer son dénominateur en produit de facteurs premiers et de vérifier qu'il n'y a pas de facteur premier autre que $2$ et $5$.</p>
@@ -240,9 +241,9 @@
 <div class="exemple">
     <p>
     <ul>
-        <li>$\frac{3}{4}=\frac{3}{2\times 2}$ donc $\frac{3}{4}$ est décimal.</li>
-        <li>$\frac{7}{125}=\frac{7}{5\times 5\times 5}$ donc $\frac{3}{4}$ est décimal.</li>
-        <li>$\frac{8}{30}=\frac{8}{2\times 3\times 5}$ donc $\frac{8}{30}$ n'est pas décimal.</li>
+        <li>$\dfrac{3}{4}=\dfrac{3}{2\times 2}$ donc $\dfrac{3}{4}$ est décimal.</li>
+        <li>$\dfrac{7}{125}=\dfrac{7}{5\times 5\times 5}$ donc $\dfrac{3}{4}$ est décimal.</li>
+        <li>$\dfrac{8}{30}=\dfrac{8}{2\times 3\times 5}$ donc $\dfrac{8}{30}$ n'est pas décimal.</li>
     </ul>
     </p>
 </div>
@@ -254,7 +255,7 @@
 </div>
 <div class="demonstration">
     Supposons par l'absurde que $\sqrt{2}$ soit rationnel.<br>
-    Alors il existe $a\in\mathbb{Z}$ et $b\in\mathbb{N}^*$ tels que $\sqrt{2}=\frac{a}{b}$.<br>
+    Alors il existe $a\in\mathbb{Z}$ et $b\in\mathbb{N}^*$ tels que $\sqrt{2}=\dfrac{a}{b}$.<br>
     On peut également supposer que $a$ et $b$ ont pour seul diviseur commun $1$.<br>
     On a donc $2b^2=a^2$ et $2$ divise $a^2$.<br>
     Or $2$ est premier donc $2$ divise $a$ et $2$ divise $a^2$.<br>
@@ -306,7 +307,7 @@
     </p>
 </div>
 <div class="exemple">
-    $3$, $2{,}5$, $-\frac{2}{3}$, $\sqrt{5}$, $\pi$ sont tous des nombres réels que l'on peut placer sur la droite des
+    $3$, $2{,}5$, $-\dfrac{2}{3}$, $\sqrt{5}$, $\pi$ sont tous des nombres réels que l'on peut placer sur la droite des
     réels.<br>
     <div id="figure_01" class="jxgbox"
         style="width:600px; height:150px;display: block; margin-left: auto; margin-right: auto;border:none;"></div>
@@ -367,7 +368,7 @@
         board.create('text', [
             function () { return pt3.coords.usrCoords[1] + 0.6; },
             function () { return pt3.coords.usrCoords[2] + 0.4; },
-            function () { return '$-\\frac{2}{3}$' }
+            function () { return '$-\\dfrac{2}{3}$' }
         ], { fontSize: 18, anchorY: 'bottom', anchorX: 'middle' })
 
         var pt4 = board.create('point', [Math.sqrt(2), 0], { name: '√2', label: { visible: false }, size: 4, fixed: true, face: 'cross' });
@@ -389,7 +390,7 @@
     <ul>
         <li>$-2$ est un entier naturel donc un rationnel.</li>
         <li>$2{,}5$ est un décimal donc un rationnel.</li>
-        <li>$-\frac{2}{3}$ est un rationnel.</li>
+        <li>$-\dfrac{2}{3}$ est un rationnel.</li>
         <li>$\sqrt{5}$ est un irrationnel.</li>
         <li>$\pi$ est un irrationnel.</li>
     </ul>
@@ -580,13 +581,13 @@
                     </foreignObject>
                 </g>
             </svg>
-            $10^{-n}$ est appelé l'<b>amplitude</b> de l'encadrement.<br>
+            $10^{-n}$ est appelée l'<b>amplitude</b> de l'encadrement.<br>
     </p>
 </div>
 <div class="exemple">
     <p>
-        Considérons le nombre rationnel $\frac{1}{243}.$<br>
-        $$\frac{1}{243}\approx 0{,}004115226337$$
+        Considérons le nombre rationnel $\dfrac{1}{243}.$<br>
+        $$\dfrac{1}{243}\approx 0{,}004115226337$$
         On peut en déduire les informations suivantes :<br>
     <div class="svgContainer">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 580 140" style="display:block;margin:auto;width:90%;">
@@ -616,7 +617,7 @@
                     $0{,}00412$
                 </foreignObject>
                 <foreignObject x="250" y="-40" width="70" height="50">
-                    $\frac{1}{243}$
+                    $\dfrac{1}{243}$
                 </foreignObject>
             </g>
             <!-- 
@@ -647,8 +648,8 @@
             </foreignObject>
         </svg>
     </div>
-    Donc l'encadrement de $\frac{1}{243}$ à $10^{-5}$ près est<br>
-    $$0{,}00411\leqslant \frac{1}{243}< 0{,}00412$$ </p>
+    Donc l'encadrement de $\dfrac{1}{243}$ à $10^{-5}$ près est<br>
+    $$0{,}00411\leqslant \dfrac{1}{243}< 0{,}00412$$ </p>
 </div>
 <div class="definition">
     <p>
@@ -746,7 +747,7 @@
                     $0{,}00412$
                 </foreignObject>
                 <foreignObject x="252" y="-35" width="70" height="50">
-                    $\frac{1}{243}$
+                    $\dfrac{1}{243}$
                 </foreignObject>
             </g>
             <!-- 
@@ -764,9 +765,9 @@
                 <line x1="-5" y1="5" x2="5" y2="-5" />
             </g>
         </svg>
-        $\frac{1}{243}$ est plus proche de $0{,}00412$ que de $0{,}00411$ donc l'arrondi de $\frac{1}{243}$ à $10^{-5}$
+        $\dfrac{1}{243}$ est plus proche de $0{,}00412$ que de $0{,}00411$ donc l'arrondi de $\dfrac{1}{243}$ à $10^{-5}$
         près est $0{,}00412$.
-        $$\frac{1}{243}\approx 0{,}00412$$
+        $$\dfrac{1}{243}\approx 0{,}00412$$
     </p>
 </div>
 <div class="exemple">
@@ -793,8 +794,8 @@
     <ul>
         <li>Les $3$ premiers chiffres significatifs de $\pi$ sont $3$, $1$ et $4.$</li>
         <li>Les $3$ chiffres significatifs de $0{,}000123$ sont $1$, $2$ et $3.$</li>
-        <li>Les $3$ premiers chiffres significatifs de $\frac{1}{243}$ sont $4$, $1$ et $1.$</li>
-        <li>Les chiffres significatifs de l'arrondi de $\frac{1}{243}$ à $10^{-5}$ près sont $4$, $1$ et $2.$</li>
+        <li>Les $3$ premiers chiffres significatifs de $\dfrac{1}{243}$ sont $4$, $1$ et $1.$</li>
+        <li>Les chiffres significatifs de l'arrondi de $\dfrac{1}{243}$ à $10^{-5}$ près sont $4$, $1$ et $2.$</li>
         <li>Les $3$ premiers chiffres significatifs de $0,05067$ sont $5$, $0$ et $6.$</li>
     </ul>
     </p>
@@ -810,7 +811,7 @@
         <li>La masse de sel versée est $5{,}72~\text{g}$.</li>
         <li>Le volume de la solution est $75~\text{cL}=0{,}75~\text{L}$.</li>
         <li>La concentration massique est donc
-            $$c=\frac{5{,}72}{0{,}75}$$
+            $$c=\dfrac{5{,}72}{0{,}75}$$
         </li>
     </ul>
     On peut calculer $c$ à la calculatrice et on obtient
@@ -843,7 +844,7 @@
         <!-- Liste sur deux colonnes -->
     <ul>
         <li>$\pi\approx 3{,}14\times 10^0$</li>
-        <li>$\frac{1}{243}\approx 4{,}12\times 10^{-3}$</li>
+        <li>$\dfrac{1}{243}\approx 4{,}12\times 10^{-3}$</li>
         <li>$0{,}000123=1{,}23\times 10^{-4}$</li>
         <li>$0{,}05067=5{,}067\times 10^{-2}$</li>
     </ul>
@@ -1582,7 +1583,7 @@
     </ul>
 </div>
 <div class="propriete">
-    <p>L'abscisse du milieu de l'intervalle $[a;b]$ est $\frac{a+b}{2}$.</p>
+    <p>L'abscisse du milieu de l'intervalle $[a;b]$ est $\dfrac{a+b}{2}$.</p>
     <!-- Construire une figure svg qui illustre que (a+b)/2 est le milieu de [a;b]-->
     <svg id="intervalle4" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -10 280 50"
         style="display:block;margin:auto;width:50%;">
@@ -1606,7 +1607,7 @@
                 $b$
             </foreignObject>
             <foreignObject x="85" y="10" width="50" height="40">
-                $\frac{a+b}{2}$
+                $\dfrac{a+b}{2}$
             </foreignObject>
         </g>
     </svg>
@@ -1615,14 +1616,14 @@
 <div class="demonstration">
     <p>
         La distance entre $a$ et $b$ est $b-a$ donc la distance entre $a$ et le milieu de $[a;b]$ est
-        $\frac{b-a}{2}$.<br>
-        Par conséquent l'abscisse du milieu de $[a;b]$ est $a+\frac{b-a}{2}$.
+        $\dfrac{b-a}{2}$.<br>
+        Par conséquent l'abscisse du milieu de $[a;b]$ est $a+\dfrac{b-a}{2}$.
         $$
         \begin{align*}
-        a+\frac{b-a}{2}&=a+\frac{b}{2}-\frac{a}{2}\\
-        &=\frac{2a}{2}+\frac{b}{2}-\frac{a}{2}\\
-        &=\frac{2a+b-a}{2}\\
-        a+\frac{b-a}{2}&=\frac{a+b}{2}
+        a+\dfrac{b-a}{2}&=a+\dfrac{b}{2}-\dfrac{a}{2}\\
+        &=\dfrac{2a}{2}+\dfrac{b}{2}-\dfrac{a}{2}\\
+        &=\dfrac{2a+b-a}{2}\\
+        a+\dfrac{b-a}{2}&=\dfrac{a+b}{2}
         \end{align*}
         $$
     </p>
@@ -1818,7 +1819,7 @@
 <div class="propriete">
     <p>
         $p$ et $q$ désignent deux nombres réels tels que $p\leqslant q$.<br>
-        Le milieu d'un intervalle d'extrémité $p$ et $q$ est $\frac{p+q}{2}$ et la distance entre $p$ et $q$ est $\vert p-q\vert$.
+        Le milieu d'un intervalle d'extrémité $p$ et $q$ est $\dfrac{p+q}{2}$ et la distance entre $p$ et $q$ est $\vert p-q\vert$.
     </p>
 </div>
 <div class="methode">
@@ -1829,10 +1830,10 @@
     </p>
     <ul>
         <li>$a$ est le milieu de l'intervalle d'extrémités $p$ et $q$ donc il suffit d'appliquer la formule suivante pour trouver $a.$
-            $$a=\frac{p+q}{2}$$
+            $$a=\dfrac{p+q}{2}$$
         </li>
         <li>$r$ est la moitié de la distance entre $p$ et $q$. Donc il suffit d'appliquer la formule suivante pour trouver $r.$
-            $$r=\frac{q-p}{2}$$
+            $$r=\dfrac{q-p}{2}$$
         </li>
     </ul>
     <p>On a ainsi, $\vert x-a\vert\leqslant r$.</p>
@@ -1843,16 +1844,16 @@
         <li>Soit $x$ un nombre réel tel que $-3\leqslant x\leqslant 7$. Traduisons cette inégalité à l'aide de la valeur absolue.<br>
             On souhaite déterminer les nombres réels $a$ et $r$ tels que $\vert x-a\vert\leqslant r$.
             <ul>
-                <li>$a$ est le milieu de l'intervalle $[-3;7]$. Donc $a=\frac{-3+7}{2}=2$.</li>
-                <li>$r$ est la moitié de la distance entre $-3$ et $7$. Donc $r=\frac{7-(-3)}{2}=\frac{10}{2}=5$.</li>
+                <li>$a$ est le milieu de l'intervalle $[-3;7]$. Donc $a=\dfrac{-3+7}{2}=2$.</li>
+                <li>$r$ est la moitié de la distance entre $-3$ et $7$. Donc $r=\dfrac{7-(-3)}{2}=\dfrac{10}{2}=5$.</li>
             </ul>
             On a ainsi, $\vert x-2\vert\leqslant 5$.
         </li>
         <li>Soit $x$ un nombre réel tel que $-8 < x < -2$. Traduisons cette inégalité à l'aide de la valeur absolue.<br>
             On souhaite déterminer les nombres réels $a$ et $r$ tels que $\vert x-a\vert < r$.
             <ul>
-                <li>$a$ est le milieu de l'intervalle $]-8;-2[$. Donc $a=\frac{-8+(-2)}{2}=-5$.</li>
-                <li>$r$ est la moitié de la distance entre $-8$ et $-2$. Donc $r=\frac{-2-(-8)}{2}=\frac{-2+8}{2}=3$.</li>
+                <li>$a$ est le milieu de l'intervalle $]-8;-2[$. Donc $a=\dfrac{-8+(-2)}{2}=-5$.</li>
+                <li>$r$ est la moitié de la distance entre $-8$ et $-2$. Donc $r=\dfrac{-2-(-8)}{2}=\dfrac{-2+8}{2}=3$.</li>
             </ul>
             On a ainsi, $\vert x-(-5)\vert < 3$ ou encore $\vert x+5\vert < 3$.
         </li>

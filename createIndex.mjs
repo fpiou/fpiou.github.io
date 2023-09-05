@@ -220,7 +220,7 @@ ${entete}
 <body>
     ${bandeau}
     <h1>1ère spécialité - Quizs</h1>
-    ${generateHtmlList(path.resolve(__dirname, "dist/quizs/1ereSPE"))}
+    ${generateHtmlList(path.resolve(__dirname, "dist/quizs/1reSPE"))}
 </body>
 </html>
 `;
@@ -237,12 +237,12 @@ ${entete}
 <body>
     ${bandeau}
     <h1>1ère générale - Quizs</h1>
-    ${generateHtmlList(path.resolve(__dirname, "dist/quizs/1ere"))}
+    ${generateHtmlList(path.resolve(__dirname, "dist/quizs/1re"))}
 </body>
 </html>
 `;
 
 fs.writeFileSync(
-  path.resolve(__dirname, "quizs_1ereGenerale.html"),
+  path.resolve(__dirname, "quizs_1reGenerale.html"),
   quizs1ereGenerale
 );

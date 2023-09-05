@@ -36967,7 +36967,8 @@ function formatSIForLatex(value, unit) {
   return formatNumberForLatex(value) + "\\," + unit;
 }
 function preprocessLatexText(text) {
-  const delimiters = [/\$(.*?)\$/g, /\$\$(.*?)\$\$/g, /\\\((.*?)\\\)/g, /\\\[.*?\\\]/g];
+  console.log("hello");
+  const delimiters = [/(?<=\$)[^$]+(?=\$)/g, /\$\$.*?\$\$/g, /\\\((.*?)\\\)/g, /\\\[.*?\\\]/g];
   for (let delimiter of delimiters) {
     text = text.replace(delimiter, function (match) {
       // Traitement pour \num{}

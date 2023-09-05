@@ -162,9 +162,10 @@ function formatSIForLatex(value, unit) {
   return formatNumberForLatex(value) + "\\," + unit;
 }
 function preprocessLatexText(text) {
+  console.log("hello");
   const delimiters = [
-    /\$(.*?)\$/g,
-    /\$\$(.*?)\$\$/g,
+    /(?<=\$)[^$]+(?=\$)/g,
+    /\$\$.*?\$\$/g,
     /\\\((.*?)\\\)/g,
     /\\\[.*?\\\]/g,
   ];
@@ -312,7 +313,8 @@ var dropdownMenusBandeau = function () {
           }
         });
         // Afficher ou masquer le dropdown cliqué
-        var dropdownContent = event.currentTarget.querySelector(".dropdown-content");
+        var dropdownContent =
+          event.currentTarget.querySelector(".dropdown-content");
         if (dropdownContent.style.display == "flex") {
           dropdownContent.style.display = "none";
         } else {

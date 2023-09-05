@@ -126,7 +126,9 @@
     <p>Les racines d'une fonction polynôme $f$ du second degré sont les solutions de l'équation $f(x)=0.$</p>
 </div>
 <div class="exemple">
-    <p>Les racines du trinôme défini par $f(x)=2x^2+3x-5$ sont les solutions de l'équation $2x^2+3x-5=0.$</p>
+    <p>Les racines du trinôme défini par $$f(x)=2x^2+3x-5$$ sont les solutions de l'équation $$2x^2+3x-5=0.$$</p>
+    <p>On a par exemple : $$2\times 1^2+3\times 1-5=0$$ donc $1$ est une racine de $f.$</p>
+    <p>On a également : $$2\times (-\num{2.5})^2+3\times (-\num{2.5})-5=0$$ donc $-\num{2.5}$ est une racine de $f.$</p>
 </div>
 <h2>Forme factorisée d'une fonction polynôme</h2>
 <div class="definition" recto="Forme factorisée">
@@ -151,13 +153,21 @@
 </div>
 <div class="exemple">
     <p>La fonction trinôme $f$ définie par $$f(x)=2x^2+3x-5$$ peut s'écrire sous la forme factorisée
-        $$f(x)=2(x-1)\left(x-(-2{,}5)\right)$$ donc $1$ et $-2{,}5$ sont les racines de $f.$</p>
+        $$f(x)=2(x-1)\left(x+\num{2.5}\right).$$
+        En effet, en développant on obtient&nbsp;:</p>
+        $$\begin{align*}
+        2(x-1)\left(x+\num{2.5}\right)&=2\left(x^2+\num{2.5}x-x-\num{2.5}\right)\\
+        &=2x^2+5x-2x-5\\
+        &=2x^2+3x-5\\
+        &=f(x).
+        \end{align*}$$
+        <p>De plus $$f(x)=2(x-1)\left(x-(-\num{2.5})\right)$$ donc $1$ et $-\num{2.5}$ sont les racines de $f.$</p>
 </div>
 <h2>Signe d'une fonction polynôme factorisée</h2>
 <div class="propriete" recto="signe">
     <p>Soit $f$ une fonction trinôme sous forme factorisée
         $$f(x)=a(x-x_1)(x-x_2)$$
-        tel que $x_1< x_2.$</p>
+        tel que $x_1 < x_2.$</p>
             <ul>
                 <li>Si $a>0$, alors $f$ est positive sur $]-\infty;x_1[\cup]x_2;+\infty[$ et négative sur $]x_1;x_2[.$
                 </li>
@@ -270,11 +280,11 @@
             </ul>
 </div>
 <div class="exemple">
-    <p>Considérons la fonction $g$ définie par&nbsp;: $$g(x)=2(1-x)(x+2{,}5).$$
+    <p>Considérons la fonction $g$ définie par&nbsp;: $$g(x)=2(1-x)(x+\num{2.5}).$$
     <p>Elle n'est pas sous la forme $$a(x-x_1)(x-x_2)$$, on ne peut donc pas conclure sur son signe.</p>
-    <p>Cependant, on a&nbsp;: $$g(x)=-2(x-1)\left(x-(-2{,}5)\right)$$ qui est sous la forme $a(x-x_1)(x-x_2)$ avec
-        $a=-2$, $x_1=1$ et $x_2=-2{,}5.$</p>
-    <p>D'où $g$ est négative sur $]-\infty;1[\cup]-2{,}5;+\infty[$ et positive sur $]1;-2{,}5[.$</p>
+    <p>Cependant, on a&nbsp;: $$g(x)=-2(x-1)\left(x-(-\num{2.5})\right)$$ qui est sous la forme $a(x-x_1)(x-x_2)$ avec
+        $a=-2$, $x_1=1$ et $x_2=-\num{2.5}.$</p>
+    <p>D'où $g$ est négative sur $]-\infty;1[\cup]-\num{2.5};+\infty[$ et positive sur $]1;-\num{2.5}[.$</p>
 </div>
 <h2>Factorisation d'une fonction polynôme</h2>
 <div class="propriete" recto="forme factorisée">
@@ -351,7 +361,7 @@
     \end{cases}$$
 </div>
 <div class="exemple">
-    <p>La fonction $f$ définie par $$f(x)=2x^2+3x-5$$ admet deux racines distinctes $x_1=1$ et $x_2=-2{,}5.$</p>
+    <p>La fonction $f$ définie par $$f(x)=2x^2+3x-5$$ admet deux racines distinctes $x_1=1$ et $x_2=-\num{2.5}.$</p>
     <p>On a $$x_1+x_2=-\dfrac{3}{2}$$ et $$x_1\times x_2=-\dfrac{5}{2}.$$</p>
 </div>
 <h2>Forme canonique d'une fonction polynôme</h2>
