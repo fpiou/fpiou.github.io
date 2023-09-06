@@ -166,7 +166,7 @@ ${entete}
 <body>
     ${bandeau}
     <h1>1ère générale - Exercices</h1>
-    ${generateHtmlList(path.resolve(__dirname, "dist/exercices/1ere"))}
+    ${generateHtmlList(path.resolve(__dirname, "dist/exercices/1re"))}
 </body>
 </html>
 `;
@@ -184,7 +184,7 @@ ${entete}
 <body>
     ${bandeau}
     <h1>1ère générale - Leçons</h1>
-    ${generateHtmlList(path.resolve(__dirname, "dist/lessons/1ere"))}
+    ${generateHtmlList(path.resolve(__dirname, "dist/lessons/1re"))}
 </body>
 </html>
 `;
