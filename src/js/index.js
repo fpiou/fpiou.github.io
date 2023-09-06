@@ -162,7 +162,6 @@ function formatSIForLatex(value, unit) {
   return formatNumberForLatex(value) + "\\," + unit;
 }
 function preprocessLatexText(text) {
-  console.log("hello");
   const delimiters = [
     /(?<=\$)[^$]+(?=\$)/g,
     /\$\$.*?\$\$/g,

@@ -1,9 +1,3 @@
-// const path = require("path");
-// const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const CopyWebpackPlugin = require("copy-webpack-plugin");
-// const WebpackShellPluginNext = require("webpack-shell-plugin-next");
-// const fs = require("fs");
 import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
@@ -74,7 +68,7 @@ const htmlPlugins = contentFiles.map((file) => {
     cssFiles.push("prettyLesson.css", "print1colonne.css");
   }
   if (file.includes("quizs")) {
-    cssFiles.push("quiz.css");
+    cssFiles.push("quiz.css", "print2colonnes.css");
   }
 
   if (fileContainsFigureClass(file)) {
