@@ -90,7 +90,7 @@ ${entete}
 </html>
 `;
 
-fs.writeFileSync(path.resolve(__dirname, "index.html"), indexContent);
+fs.writeFileSync(path.resolve(__dirname, "index2.html"), indexContent);
 
 // Créer une seconde page dans laquelle on affiche que les contenus de cours du niveau seconde
 const lessons2nde = `

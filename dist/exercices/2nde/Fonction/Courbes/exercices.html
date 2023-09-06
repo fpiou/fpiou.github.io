@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Exercices</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+      integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
+      crossorigin="anonymous"
+    />
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+      integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print2colonnes.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1ereGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <header>
+      <h1>Exercices</h1>
+    </header>
+    <main><div class='exercice'>
+<div class="enonce">
+<p>Notons $(\mathscr{C})$ la courbe représentative de la fonction $g$ définie sur $]-\infty~{;}~3[$ par $f(x)=\dfrac{3x-4}{2x-6}.$</p>
+<ol>
+<li>Montrer que $g(1)=\dfrac{1}{4}.$</li>
+<li>En déduire les coordonnées d'un point appartenant à la courbe $(\mathcal{C}).$</li>
+<li>Montrer que le point $A(-2~;~1)$ appartient à la courbe $(\mathcal{C}).$</li>
+<li>Montrer que le symétrique de $A$ par rapport à l'origine $O$ du repère appartient à la courbe $(\mathcal{C}).$</li>
+<li>Peut-on en déduire que la fonction $g$ est impaire ? Expliquer.</li>
+<li>Déterminer les coordonnées du point $B$ d'abscisse $-1$ appartenant à $(\mathscr{C}).$</li>
+<li>La fonction $g$ est-elle paire ou impaire sur $[-2~;~2]$ ? Justifier.</li>
+<li>Montrer que la courbe $(\mathscr{C})$ coupe l'axe des abscisses en un point d'abscisse $\dfrac{4}{3}.$</li>
+<li>Déterminer les coordonnées du point d'intersection de la courbe $(\mathscr{C})$ avec l'axe des ordonnées.</li>
+<li>Dresser le tableau de valeurs de la fonction $g$ sur $[-2~;~2]$ avec un pas régulier de $1$.</li>
+<li>Tracer sur $[-2~;~2]$ la courbe $(\mathscr{C})$ dans un repère orthonormé avec pour unité graphique $\SI{1}{\cm}.$</li>
+</ol>
+</div>
+<div class="solution">
+<ol>
+<li><p>Calculons $g(1)$ :</p>
+        $$\begin{align*}
+        g(1)&amp;=\dfrac{3\times 1-4}{2\times 1-6}\\
+        &amp;=\dfrac{-1}{-4}\\
+        &amp;=\dfrac{1}{4}
+        \end{align*}$$
+      </li>
+<li><p>On a $g(1)=\dfrac{1}{4}$ donc le point de coordonnées $\left( 1 ~;~ \dfrac{1}{4}\right)$ appartient à la courbe $(\mathscr{C}).$</p>
+</li>
+<li><p>Calculons $g(-2)$ :</p>
+        $$\begin{align*}
+        g(-2)&amp;=\dfrac{3\times (-2)-4}{2\times (-2)-6}\\
+        &amp;=\dfrac{-10}{-10}\\
+        &amp;=1
+        \end{align*}$$
+        <p>Donc $A(-2~;~1)$ appartient à la courbe $(\mathscr{C}).$</p>
+</li>
+<li><p>Le symétrique de $A$ par rapport à l'origine $O$ a pour coordonnées $\left( 2 ~;~ -1\right)$.</p>
+<p>Calculons $g(2)$ :</p>
+        $$\begin{align*}
+        g(2)&amp;=\dfrac{3\times 2-4}{2\times 2-6}\\
+        &amp;=\dfrac{2}{-2}\\
+        &amp;=-1
+        \end{align*}$$
+        <p>Donc le symétrique de $A$ par rapport à l'origine $O$ appartient à la courbe $(\mathscr{C}).$</p>
+</li>
+<li><p>Le symétrique de $A$ par rapport à l'origine $O$ appartient à $(\mathscr{C})$ ce qui est caractéristique des fonctions impaires.</p>
+<p>Cependant on ne peut rien conclure sur la symétrie de la courbe entière par rapport à l'origine $O$.</p>
+<p>Donc on ne peut pas en déduire si la fonction $g$ est impaire ou non pour le moment.</p>
+</li>
+<li><p>Calculons $g(-1)$ :</p>
+        $$\begin{align*}
+        g(-1)&amp;=\dfrac{3\times (-1)-4}{2\times (-1)-6}\\
+        &amp;=\dfrac{-7}{-8}\\
+        &amp;=\dfrac{7}{8}
+        \end{align*}$$
+        <p>Donc $B$ a pour coordonnées $\left( -1 ~;~ \dfrac{7}{8}\right)$.</p>
+</li>
+<li><p>On a $g(-1)=\dfrac{7}{8}$ et $g(1)=\dfrac{1}{4}$.</p>
+<p>Donc $g(-1)\neq g(1)$ et $g(-1)\neq -g(1)$.</p>
+<p>Donc la fonction n'est ni paire ni impaire.</p>
+</li>
+<li><p>Calculons $g\left(\dfrac{4}{3}\right)$</p>
+        $$\begin{align*}
+        g\left(\dfrac{4}{3}\right)&amp;=\dfrac{3\times \dfrac{4}{3}-4}{2\times \dfrac{4}{3}-6}\\
+        &amp;=\dfrac{4-4}{\dfrac{8}{3}-6}\\
+        &amp;=\dfrac{0}{\dfrac{8}{3}-\dfrac{18}{3}}\\
+        &amp;=\dfrac{0}{-\dfrac{10}{3}}\\
+        &amp;=0
+        \end{align*}$$
+        <p>Donc la courbe $(\mathscr{C})$ coupe l'axe des abscisses en un point d'abscisse $\dfrac{4}{3}.$</p>
+</li>
+<li><p>Le point d'intersection de la courbe avec l'axe des ordonnées est le point d'abscisse $0$.</p>
+<p>Calculons $g(0)$ :</p>
+        $$\begin{align*}
+        g(0)&amp;=\dfrac{3\times 0-4}{2\times 0-6}\\
+        &amp;=\dfrac{-4}{-6}\\
+        &amp;=\dfrac{2}{3}
+        \end{align*}$$
+        <p>Donc le point d'intersection de la courbe avec l'axe des ordonnées est le point de coordonnées $\left( 0 ~;~ \dfrac{2}{3}\right)$.</p>
+</li>
+<li>
+<p>On dresse le tableau de valeurs.</p>
+<table class="tableauvaleurs">
+<thead>
+<tr>
+<th>$x$</th>
+<td>$-2$</td>
+<td>$-1$</td>
+<td>$0$</td>
+<td>$1$</td>
+<td>$2$</td>
+</tr>
+<tr>
+<th>$g(x)$</th>
+<td>$1$</td>
+<td>$\dfrac{7}{8}$</td>
+<td>$\dfrac{2}{3}$</td>
+<td>$\dfrac{1}{4}$</td>
+<td>$-1$</td>
+</tr>
+</thead>
+</table>
+</li>
+<li>
+<div class="figure" id="figure1">
+<svg class="quadrillage" id="figure1" viewbox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+<g class="repere" name="repere1" xmax="3" xmin="-3" xorigine="0" ymax="2" ymin="-2" yorigine="0"></g>
+<g class="axe abscisses" linkto="repere1" name="AxeX" stroke="black" stroke-width="0.5"></g>
+<g class="axe ordonnees" linkto="repere1" name="AxeY" stroke="black" stroke-width="0.5"></g>
+<g class="graduationsAxe" linkto="AxeX" name="GraduationsX" pas="1" stroke="black" stroke-width="0.5"></g>
+<g class="graduationsAxe" linkto="AxeY" name="GraduationsY" pas="1" stroke="black" stroke-width="0.5"></g>
+<g class="point" name="A" repere="repere1" x="-2" y="1"></g>
+<g class="point" name="B" repere="repere1" x="-1" y="0.875"></g>
+<g class="point" name="C" repere="repere1" x="0" y="0.667"></g>
+<g class="point" name="D" repere="repere1" x="1" y="0.25"></g>
+<g class="point" name="E" repere="repere1" x="2" y="-1"></g>
+<g class="point labeled" name="O" repere="repere1" stroke="transparent" x="0" y="0"></g>
+<g class="label" linkto="O" style="font-size:0.4rem;" x="-4" y="0">O</g>
+<g class="point labeled" name="I" repere="repere1" stroke="none" x="1" y="0"></g>
+<g class="label" linkto="I" style="font-size:0.4rem;" x="-1" y="2">1</g>
+<g class="point labeled" name="J" repere="repere1" stroke="none" x="0" y="1"></g>
+<g class="label" linkto="J" style="font-size:0.4rem;" x="-8" y="-4">1</g>
+<g class="courbeRepresentative" expression="(3x-4)/(2x-6)" fill="transparent" linkto="repere1" name="c1" pas="0.01" stroke="red" stroke-width="1" xmax="2" xmin="-2"></g>
+</svg>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>Notons $(\mathscr{C})$ la courbe représentative de la fonction $f$ définie sur $]-3{;}+\infty[$ par $f(x)=\dfrac{7x+6}{x+3}.$</p>
+<ol>
+<li>Montrer que le point $A\left( 2 ~;~ 4\right)$ appartient à $(\mathscr{C})$.</li>
+<li>Montrer que le point $B\left( 1 ~;~ 3\right)$ n'appartient pas à $(\mathscr{C})$.</li>
+<li>Déterminer les coordonnées du point $C$ d'abscisse $-1$ appartenant à $(\mathscr{C})$.</li>
+<li>Déterminer les coordonnées du point $D$ d'ordonnée $-8$ appartenant à $(\mathscr{C})$.</li>
+<li>En déduire que la fonction n'est ni paire ni impaire.</li>
+<li>Déterminer les coordonnées du point d'intersection de la courbe avec l'axe des ordonnées.</li>
+<li>Déterminer les coordonnées du point d'intersection de la courbe avec l'axe des abscisses.</li>
+<li>Dresser le tableau de valeurs de la fonction $f$ sur $[-1~;~3]$ avec un pas régulier de $1$.</li>
+<li>Tracer la courbe $(\mathscr{C})$ dans un repère orthonormé avec pour unité graphique $\SI{1}{\cm}.$</li>
+</ol>
+</div>
+<div class="solution">
+<ol>
+<li><p>Calculons $f(2)$ :</p>
+        $$\begin{align*}
+        f(2)&amp;=\dfrac{7\times 2+6}{2+3}\\
+        &amp;=\dfrac{20}{5}\\
+        &amp;=4
+        \end{align*}$$
+        <p>Donc $A\left( 2 ~;~ 4\right)$ appartient à $(\mathscr{C})$.</p>
+</li>
+<li><p>Calculons $f(1)$ :</p>
+        $$\begin{align*}
+        f(1)&amp;=\dfrac{7\times 1+6}{1+3}\\
+        &amp;=\dfrac{13}{4}
+        \end{align*}$$
+        <p>Donc $B\left( 1 ~;~ 3\right)$ n'appartient pas à $(\mathscr{C})$.</p>
+</li>
+<li><p>Calculons $f(-1)$ :</p>
+        $$\begin{align*}
+        f(-1)&amp;=\dfrac{7\times (-1)+6}{(-1)+3}\\
+        &amp;=-\dfrac{1}{2}
+        \end{align*}$$
+        <p>Donc $C$ a pour coordonnées $\left( -1 ~;~ -\dfrac{1}{2}\right)$.</p>
+</li>
+<li><p>Les coordonnées de $D$ vérifient l'équation suivante.</p>
+        $$y=\dfrac{7x+6}{x+3}$$
+        <p>Or $y=-8$ donc il suffit de résoudre l'équation suivante.</p>
+        $$-8=\dfrac{7x+6}{x+3}$$
+        <p>On ajoute $8$ de chaque côté.</p>
+        $$0=\dfrac{7x+6}{x+3}+8$$
+        <p>On réduit au même dénominateur.</p>
+        $$0=\dfrac{7x+6+8(x+3)}{x+3}$$
+        <p>On développe et on réduit le numérateur.</p>
+        $$0=\dfrac{15x+30}{x+3}$$
+        <p>C'est une équation quotient-nul de valeur interdite $-3$.</p>
+<p>Or un quotient est nul si et seulement si son numérateur est nul et son dénominateur est non nul.</p>
+<p>On résout l'équation obtenue en annulant le numérateur.</p>
+        $$\begin{align*}
+        15x+30&amp;=0\\
+        15x&amp;=-30\\
+        \dfrac{15x}{15}&amp;=\dfrac{-30}{15}\\
+        x&amp;=-2
+        \end{align*}$$
+        <p>On vérifie que $x\neq -3$.</p>
+<p>Donc $D$ a pour coordonnées $\left( -2 ~;~ -8\right)$.</p>
+</li>
+<li>
+<p>On a $f(1)=\dfrac{13}{4}$ et $f(-1)=-\dfrac{1}{2}$.</p>
+<p>Donc $f(1)\neq f(-1)$ et $f(-1)\neq -f(1)$.</p>
+<p>Donc la fonction n'est ni paire ni impaire.</p>
+</li>
+<li>
+<p>Le point d'intersection de la courbe avec l'axe des ordonnées est le point d'abscisse $0$.</p>
+<p>Calculons $f(0)$ :</p>
+        $$\begin{align*}
+        f(0)&amp;=\dfrac{7\times 0+6}{0+3}\\
+        &amp;=\dfrac{6}{3}\\
+        &amp;=2
+        \end{align*}$$
+        <p>Donc le point d'intersection de la courbe avec l'axe des ordonnées est le point de coordonnées $\left( 0 ~;~ 2\right)$.</p>
+</li>
+<li>
+<p>Le point d'intersection de la courbe avec l'axe des abscisses est le point d'ordonnée $0$.</p>
+<p>Ses coordonnées vérifient l'équation suivante.</p>
+        $$y=\dfrac{7x+6}{x+3}$$
+        <p>Or $y=0$ donc il suffit de résoudre l'équation suivante.</p>
+        $$0=\dfrac{7x+6}{x+3}$$
+        <p>C'est une équation quotient-nul de valeur interdite $-3$.</p>
+<p>Or un quotient est nul si et seulement si son numérateur est nul et son dénominateur est non nul.</p>
+<p>On résout l'équation obtenue en annulant le numérateur.</p>
+        $$\begin{align*}
+        7x+6&amp;=0\\
+        7x&amp;=-6\\
+        \dfrac{7x}{7}&amp;=\dfrac{-6}{7}\\
+        x&amp;=-\dfrac{6}{7}
+        \end{align*}$$
+        <p>On vérifie que $x\neq -3$.</p>
+<p>Donc le point d'intersection de la courbe avec l'axe des abscisses est le point de coordonnées $\left( -\dfrac{6}{7} ~;~ 0\right)$.</p>
+</li>
+<li>
+<p>On dresse le tableau de valeurs.</p>
+<table class="tableauvaleurs">
+<thead>
+<tr>
+<th>$x$</th>
+<td>$-1$</td>
+<td>$0$</td>
+<td>$1$</td>
+<td>$2$</td>
+<td>$3$</td>
+</tr>
+<tr>
+<th>$f(x)$</th>
+<td>$-\dfrac{1}{2}$</td>
+<td>$2$</td>
+<td>$\dfrac{13}{4}$</td>
+<td>$4$</td>
+<td>$\dfrac{9}{2}$</td>
+</tr>
+</thead>
+</table>
+</li>
+<li>
+<div class="figure" id="figure1">
+<svg class="quadrillage" id="figure1" viewbox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+<g class="repere" name="repere1" xmax="4" xmin="-2" xorigine="0" ymax="5" ymin="-1" yorigine="0"></g>
+<g class="axe abscisses" linkto="repere1" name="AxeX" stroke="black" stroke-width="0.5"></g>
+<g class="axe ordonnees" linkto="repere1" name="AxeY" stroke="black" stroke-width="0.5"></g>
+<g class="graduationsAxe" linkto="AxeX" name="GraduationsX" pas="1" stroke="black" stroke-width="0.5"></g>
+<g class="graduationsAxe" linkto="AxeY" name="GraduationsY" pas="1" stroke="black" stroke-width="0.5"></g>
+<g class="point" name="A" repere="repere1" x="-1" y="-0.5"></g>
+<g class="point" name="B" repere="repere1" x="0" y="2"></g>
+<g class="point" name="C" repere="repere1" x="1" y="3.25"></g>
+<g class="point" name="D" repere="repere1" x="2" y="4"></g>
+<g class="point" name="E" repere="repere1" x="3" y="4.5"></g>
+<g class="point labeled" name="O" repere="repere1" stroke="transparent" x="0" y="0"></g>
+<g class="label" linkto="O" style="font-size:0.4rem;" x="-4" y="0">O</g>
+<g class="point labeled" name="I" repere="repere1" stroke="none" x="1" y="0"></g>
+<g class="label" linkto="I" style="font-size:0.4rem;" x="-1" y="2">1</g>
+<g class="point labeled" name="J" repere="repere1" stroke="none" x="0" y="1"></g>
+<g class="label" linkto="J" style="font-size:0.4rem;" x="-8" y="-4">1</g>
+<g class="courbeRepresentative" expression="(7x+6)/(x+3)" fill="transparent" linkto="repere1" name="c1" pas="0.01" stroke="red" stroke-width="1" xmax="3" xmin="-1"></g>
+</svg>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>

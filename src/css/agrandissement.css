@@ -1,0 +1,13 @@
+@media print {
+    html {
+        font-family: 'Arial';
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    body {
+        column-count: 1;
+        font-size: 20pt;
+    }
+}
