@@ -108,17 +108,17 @@
 <h2>Généralités</h2>
 <div class="definition">
     <p> $a$ et $b$ désignent deux nombres tels que $b\neq 0$.<br>
-        On appelle <strong>quotient</strong> de $a$ par $b$ et on note $\frac{a}{b}$ le nombre qui multiplié par $b$
+        On appelle <strong>quotient</strong> de $a$ par $b$ et on note $\dfrac{a}{b}$ le nombre qui multiplié par $b$
         donne $a$.
-        $$\frac{a}{b}\times b=a$$
+        $$\dfrac{a}{b}\times b=a$$
     </p>
 </div>
 <div class="remarque">
-    <p>On peut écrire $\frac{a}{b}=a\times\frac{1}{b}$.</p>
+    <p>On peut écrire $\dfrac{a}{b}=a\times\dfrac{1}{b}$.</p>
 </div>
 <div class="exemple">
-    <p>Le nombre $\frac{3}{4}$ est le quotient de $3$ par $4$. Autrement dit, $\frac{3}{4}$ est le nombre qui
-        multiplié par $4$ donne $3$.$$\frac{3}{4}\times 4=3$$</p>
+    <p>Le nombre $\dfrac{3}{4}$ est le quotient de $3$ par $4$. Autrement dit, $\dfrac{3}{4}$ est le nombre qui
+        multiplié par $4$ donne $3$.$$\dfrac{3}{4}\times 4=3$$</p>
     <div id="figure1" class="figure">
         <svg id="figure1" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -20 140 70" class="quadrillage">
             <!-- Début de la figure -->
@@ -134,7 +134,7 @@
             </g>
             <g name="M" class="point translation labeled" linkto="A1 B1 A1" data="0.125"
                 style="font-size:0.5rem;stroke:transparent;"></g>
-            <g name="text1" class="label" x="-2.5" y="5" linkto="M">\frac{3}{4}</g>
+            <g name="text1" class="label" x="-2.5" y="5" linkto="M">\dfrac{3}{4}</g>
             <!-- Fin de la figure -->
         </svg>
     </div>
@@ -142,43 +142,51 @@
 <div class="propriete">
     <p> $a$, $b$, $c$ et $d$ désignent quatre nombres tels que $b\neq 0$ et $d\neq 0$.<br>
     <ul>
-        <li>Si $a < b$ alors $\frac{a}{b} < 1$</li>
-        <li>Si $a > b$ alors $\frac{a}{b} > 1$</li>
+        <li>Si $a < b$ alors $\dfrac{a}{b} < 1$</li>
+        <li>Si $a > b$ alors $\dfrac{a}{b} > 1$</li>
     </ul>
     </p>
 </div>
 <div class="methode">
     <p>Pour calculer le quotient de deux nombres, on divise le numérateur par le dénominateur. Cependant, le résultat de
         la division peut ne pas être décimal. C'est pourquoi on écrit le quotient sous forme de fraction s'il est plus
-        petit que $1$ et sou forme de la somme de sa partie entière et de sa partie fractionnaire s'il est plus grand
+        petit que $1$ et sous forme de la somme de sa partie entière et de sa partie fractionnaire (plus petite que $1$) s'il est plus grand
         que $1$.</p>
+    <p>Pour écrire un nombre rationnel (qui peut s'écrire sous la forme d'une fraction) sous la forme partie entière et partie fractionnaire, il suffit :</p>
+    <ul>
+        <li>de déterminer combien de fois on trouve le dénominateur (nombre en-dessous de la barre de fraction) dans le numérateur ;</li>
+        <li>le nombre obtenu est la partie entière;</li>
+        <li>la partie fractionnaire est obtenue est obtenue en écrivant le reste sur le dénominateur.</li>
+    </ul>
 </div>
 <div class="exemple">
+    <p>Considérons $\dfrac{23}{3}$ : on trouve $7$ fois $3$ dans $23$ et il reste $2$. Donc $\dfrac{23}{3}=7+\dfrac{2}{3}$.</p>
+    <p>Autres exemples :</p>
     <ul>
-        <li>$\frac{5}{2} > 1$ donc $\frac{5}{2}=2+\frac{1}{2}.$</li>
-        <li>$\frac{3}{4} < 1$ donc $\frac{3}{4}$ est sa propre écriture fractionnaire.</li>
-        <li>$\frac{7}{3} > 1$ donc $\frac{7}{3}=2+\frac{1}{3}.$</li>
-        <li>$\frac{11}{4} > 1$ donc $\frac{11}{4}=2+\frac{3}{4}.$</li>
+        <li>$\dfrac{5}{2} > 1$ donc $\dfrac{5}{2}=2+\dfrac{1}{2}.$</li>
+        <li>$\dfrac{3}{4} < 1$ donc $\dfrac{3}{4}$ a une partie entière nulle.</li>
+        <li>$\dfrac{7}{3} > 1$ donc $\dfrac{7}{3}=2+\dfrac{1}{3}.$</li>
+        <li>$\dfrac{11}{4} > 1$ donc $\dfrac{11}{4}=2+\dfrac{3}{4}.$</li>
     </ul>
 </div>
 <div class="propriete">
     <p> $a$, $b$ et $k$ désignent trois nombres relatifs tels que $b\neq 0$ et $k\neq 0$.<br>
-        $$\frac{a}{b}=\frac{a\times k}{b\times k}$$
+        $$\dfrac{a}{b}=\dfrac{a\times k}{b\times k}$$
     </p>
 </div>
 <div class="demonstration">
-    <p>$\frac{a \times k}{b\times k}$ vérifie par définition :
-        $$\frac{a \times k}{b\times k}\times b\times k=a \times k$$
-        Or $\frac{a}{b}\times b=a$ donc $\frac{a}{b}\times b\times k=a\times k$.</p>
-    D'où $\frac{a}{b}=\frac{a\times k}{b\times k}.$
+    <p>$\dfrac{a \times k}{b\times k}$ vérifie par définition :
+        $$\dfrac{a \times k}{b\times k}\times b\times k=a \times k$$
+        Or $\dfrac{a}{b}\times b=a$ donc $\dfrac{a}{b}\times b\times k=a\times k$.</p>
+    D'où $\dfrac{a}{b}=\dfrac{a\times k}{b\times k}.$
 </div>
 <div class="exemple">
-    <p>Simplifions $\frac{12}{18}$.
+    <p>Simplifions $\dfrac{12}{18}$.
     <p>
         $$
         \begin{align*}
-        \frac{12}{18}&=\frac{2\times 6}{3\times 6}\\
-        &=\frac{2}{3}
+        \dfrac{12}{18}&=\dfrac{2\times 6}{3\times 6}\\
+        &=\dfrac{2}{3}
         \end{align*}
         $$
     <p>On dit qu'on a simplifié par $6$.</p>
@@ -187,38 +195,38 @@
     <p> Une fraction qui ne peut pas être simplifiée est dite <strong>irréductible</strong>.</p>
 </div>
 <div class="exemple">
-    <p>$\frac{3}{5}$ est une fraction irréductible.</p>
-    <p>$\frac{12}{18}$ n'est pas une fraction irréductible mais $\frac{2}{3}$ est sa forme irréductible.</p>
+    <p>$\dfrac{3}{5}$ est une fraction irréductible.</p>
+    <p>$\dfrac{12}{18}$ n'est pas une fraction irréductible mais $\dfrac{2}{3}$ est sa forme irréductible.</p>
 </div>
 <div class="methode">
     <p>Pour réduire une fraction à sa forme irréductible, on cherche un nombre qui divise le numérateur et le
         dénominateur. Donc il suffit de décomposer le numérateur et le dénominateur en produit de facteurs premiers.</p>
 </div>
 <div class="exemple">
-    <p>Réduisons $\frac{12}{18}$ à sa forme irréductible.</p>
+    <p>Réduisons $\dfrac{12}{18}$ à sa forme irréductible.</p>
     $$
     \begin{align*}
     12&=2\times 2\times 3\\
     18&=2\times 3\times 3
     \end{align*}
     $$
-    <p>On a $\frac{12}{18}=\frac{2\times 2\times 3}{2\times 3\times 3}=\frac{2}{3}$.</p>
+    <p>On a $\dfrac{12}{18}=\dfrac{2\times 2\times 3}{2\times 3\times 3}=\dfrac{2}{3}$.</p>
 </div>
 <div class="propriete">
     <p> $a$, $b$ et $c$ désignent trois nombres relatifs tels que $b\neq 0$ et $c\neq 0$.<br>
-        $$a\times\frac{b}{c}=\frac{a\times b}{c}=b\times \frac{a}{c}$$</p>
+        $$a\times\dfrac{b}{c}=\dfrac{a\times b}{c}=b\times \dfrac{a}{c}$$</p>
 </div>
 <div class="demonstration">
-    <p>On a $a\times\frac{b}{c}=a\times b\times\frac{1}{c}=(a\times b)\times\frac{1}{c}=\frac{a\times b}{c}.$</p>
-    <p>On a $a\times\frac{b}{c}=a\times b\times\frac{1}{c}=b\times a\times\frac{1}{c}=b\times\frac{a}{c}.$</p>
+    <p>On a $a\times\dfrac{b}{c}=a\times b\times\dfrac{1}{c}=(a\times b)\times\dfrac{1}{c}=\dfrac{a\times b}{c}.$</p>
+    <p>On a $a\times\dfrac{b}{c}=a\times b\times\dfrac{1}{c}=b\times a\times\dfrac{1}{c}=b\times\dfrac{a}{c}.$</p>
 </div>
 <div class="exemple">
-    <p>Calculons $3\times\frac{5}{12}$.</p>
+    <p>Calculons $3\times\dfrac{5}{12}$.</p>
     $$
     \begin{align*}
-    3\times\frac{5}{12}&=5\times \frac{3}{12}\\
-    &=5\times\frac{1}{4}\\
-    &=\frac{5}{4}
+    3\times\dfrac{5}{12}&=5\times \dfrac{3}{12}\\
+    &=5\times\dfrac{1}{4}\\
+    &=\dfrac{5}{4}
     \end{align*}
     $$
 </div>
@@ -229,84 +237,84 @@
 <div class="remarque">
     <p>On simplifie des écritures factionnaires en utilisant le règle des signes.</p>
     <ul class="responsive-list">
-        <li>$\frac{-5}{2}=-\frac{5}{2}$</li>
-        <li>$\frac{7}{-3}=-\frac{7}{3}$</li>
-        <li>$\frac{-9}{-4}=\frac{9}{4}$</li>
+        <li>$\dfrac{-5}{2}=-\dfrac{5}{2}$</li>
+        <li>$\dfrac{7}{-3}=-\dfrac{7}{3}$</li>
+        <li>$\dfrac{-9}{-4}=\dfrac{9}{4}$</li>
     </ul>
 </div>
 <div class="definition">
     <p> $a$ et $b$ désignent deux nombres tels que $b\neq 0$.<br>
-        On appelle <strong>inverse</strong> de $b$ et on note $\frac{1}{b}$ le nombre qui multiplié par $b$ donne $1$.
-        $$\frac{1}{b}\times b=1$$
+        On appelle <strong>inverse</strong> de $b$ et on note $\dfrac{1}{b}$ le nombre qui multiplié par $b$ donne $1$.
+        $$\dfrac{1}{b}\times b=1$$
     </p>
 </div>
 <div class="remarque">
-    <p>On peut écrire $\frac{1}{b}=1\times\frac{1}{b}$.</p>
+    <p>On peut écrire $\dfrac{1}{b}=1\times\dfrac{1}{b}$.</p>
 </div>
 <div class="exemple">
     <ul>
-        <li>L'inverse de $2$ est $\frac{1}{2}$ car $2\times\frac{1}{2}=1$. Mais c'est aussi $0{,}5$ car $2\times
+        <li>L'inverse de $2$ est $\dfrac{1}{2}$ car $2\times\dfrac{1}{2}=1$. Mais c'est aussi $0{,}5$ car $2\times
             0{,}5=1$.</li>
-        <li>L'inverse de $-3$ est $-\frac{1}{3}$ car $-3\times-\frac{1}{3}=1$.</li>
-        <li>L'inverse de $4$ est $\frac{1}{4}$ car $4\times\frac{1}{4}=1$. Mais c'est aussi $0{,}25$ car $4\times
+        <li>L'inverse de $-3$ est $-\dfrac{1}{3}$ car $-3\times-\dfrac{1}{3}=1$.</li>
+        <li>L'inverse de $4$ est $\dfrac{1}{4}$ car $4\times\dfrac{1}{4}=1$. Mais c'est aussi $0{,}25$ car $4\times
             0{,}25=1$.</li>
-        <li>L'inverse de $10$ est $\frac{1}{10}$ car $10\times\frac{1}{10}=1$. Mais c'est aussi $0{,}1$ car $10\times
+        <li>L'inverse de $10$ est $\dfrac{1}{10}$ car $10\times\dfrac{1}{10}=1$. Mais c'est aussi $0{,}1$ car $10\times
             0{,}1=1$.</li>
-        <li>L'inverse de $5$ est $\frac{1}{5}$ car $5\times\frac{1}{5}=1$. Mais c'est aussi $0{,}2$ car $5\times
+        <li>L'inverse de $5$ est $\dfrac{1}{5}$ car $5\times\dfrac{1}{5}=1$. Mais c'est aussi $0{,}2$ car $5\times
             0{,}2=1$.</li>
     </ul>
 </div>
 <div class="propriete">
     <p> $a$ et $b$ désignent deux nombres tels que $b\neq 0$.<br>
-        $$\frac{a}{b}\times\frac{b}{a}=1$$
+        $$\dfrac{a}{b}\times\dfrac{b}{a}=1$$
     </p>
 </div>
 <div class="demonstration">
-    <p>On a $\frac{a}{b}\times\frac{b}{a}=a\times \frac{1}{b}\times b\times\frac{1}{a}=a\times
-        b\times\frac{1}{b}\times\frac{1}{a}=a\times b\times\frac{1}{a}\times\frac{1}{b}$</p>
-    <p>Or $a\times\frac{1}{a}=1$ et $b\times\frac{1}{b}=1$ donc $a\times b\times\frac{1}{a}\times\frac{1}{b}=1\times
+    <p>On a $\dfrac{a}{b}\times\dfrac{b}{a}=a\times \dfrac{1}{b}\times b\times\dfrac{1}{a}=a\times
+        b\times\dfrac{1}{b}\times\dfrac{1}{a}=a\times b\times\dfrac{1}{a}\times\dfrac{1}{b}$</p>
+    <p>Or $a\times\dfrac{1}{a}=1$ et $b\times\dfrac{1}{b}=1$ donc $a\times b\times\dfrac{1}{a}\times\dfrac{1}{b}=1\times
         1=1$</p>
-    <p>De plus l'inverse de $a\times b$ est $\frac{1}{a\times b}.$</p>
-    <p>D'où $\frac{1}{a}\times\frac{1}{b}=\frac{1}{a\times b}.$</p>
-    <p>On a donc $\frac{a}{b}\times\frac{b}{a}=1.$
+    <p>De plus l'inverse de $a\times b$ est $\dfrac{1}{a\times b}.$</p>
+    <p>D'où $\dfrac{1}{a}\times\dfrac{1}{b}=\dfrac{1}{a\times b}.$</p>
+    <p>On a donc $\dfrac{a}{b}\times\dfrac{b}{a}=1.$
 </div>
 <div class="methode">
     <p>Pour déterminer l'inverse d'une fraction il suffit donc d'inverser le numérateur et le dénominateur.</p>
 </div>
 <div class="exemple">
     <ul class="responsive-list">
-        <li>L'inverse de $\frac{3}{4}$ est $\frac{4}{3}$.</li>
-        <li>L'inverse de $-\frac{5}{2}$ est $-\frac{2}{5}$.</li>
+        <li>L'inverse de $\dfrac{3}{4}$ est $\dfrac{4}{3}$.</li>
+        <li>L'inverse de $-\dfrac{5}{2}$ est $-\dfrac{2}{5}$.</li>
     </ul>
 </div>
 <h2>Somme et différence de nombres en écritures fractionnaires</h2>
 <div class="propriete">
     <p> $a$, $b$, $c$ et $d$ désignent quatre nombres tels que $b\neq 0$ et $d\neq 0$.<br>
-        $$\frac{a}{b}+\frac{c}{d}=\frac{a\times d+c\times b}{b\times d}$$
+        $$\dfrac{a}{b}+\dfrac{c}{d}=\dfrac{a\times d+c\times b}{b\times d}$$
     </p>
 </div>
 <div class="exemple">
     <ul class="responsive-list">
         <li>
-            <p>Calculons $\frac{3}{4}+\frac{5}{6}$.</p>
+            <p>Calculons $\dfrac{3}{4}+\dfrac{5}{6}$.</p>
             $$
             \begin{align*}
-            \frac{3}{4}+\frac{5}{6}&=\frac{3\times 6+5\times 4}{4\times 6}\\
-            &=\frac{18+20}{24}\\
-            &=\frac{38}{24}\\
-            &=\frac{19}{12}
+            \dfrac{3}{4}+\dfrac{5}{6}&=\dfrac{3\times 6+5\times 4}{4\times 6}\\
+            &=\dfrac{18+20}{24}\\
+            &=\dfrac{38}{24}\\
+            &=\dfrac{19}{12}
             \end{align*}
             $$
         </li>
         <li>
-            <p>Calculons $\frac{3}{4}-\frac{5}{6}$.</p>
+            <p>Calculons $\dfrac{3}{4}-\dfrac{5}{6}$.</p>
             $$
             \begin{align*}
-            \frac{3}{4}-\frac{5}{6}&=\frac{3}{4}+\frac{-5}{6}\\
-            &=\frac{3\times 6-5\times 4}{4\times 6}\\
-            &=\frac{18-20}{24}\\
-            &=\frac{-2}{24}\\
-            &=-\frac{1}{12}
+            \dfrac{3}{4}-\dfrac{5}{6}&=\dfrac{3}{4}+\dfrac{-5}{6}\\
+            &=\dfrac{3\times 6-5\times 4}{4\times 6}\\
+            &=\dfrac{18-20}{24}\\
+            &=\dfrac{-2}{24}\\
+            &=-\dfrac{1}{12}
             \end{align*}
             $$
         </li>
@@ -318,29 +326,29 @@
         dénominateurs ou bien en utilisant un multiple commun.</p>
 </div>
 <div class="exemple">
-    <p>Calculons $\frac{3}{4}+\frac{5}{6}$.</p>
+    <p>Calculons $\dfrac{3}{4}+\dfrac{5}{6}$.</p>
     <p>On a $4\times 3=12$ et $6\times 2=12$ donc $12$ est un multiple commun.</p>
     $$
     \begin{align*}
-    \frac{3}{4}+\frac{5}{6}&=\frac{3\times 3}{4\times 3}+\frac{5\times 2}{6\times 2}\\
-    &=\frac{9}{12}+\frac{10}{12}\\
-    &=\frac{19}{12}
+    \dfrac{3}{4}+\dfrac{5}{6}&=\dfrac{3\times 3}{4\times 3}+\dfrac{5\times 2}{6\times 2}\\
+    &=\dfrac{9}{12}+\dfrac{10}{12}\\
+    &=\dfrac{19}{12}
     \end{align*}
     $$
 </div>
 <h2>Produit de nombres en écritures fractionnaires</h2>
 <div class="propriete">
     <p> $a$, $b$, $c$ et $d$ désignent quatre nombres tels que $b\neq 0$ et $d\neq 0$.<br>
-        $$\frac{a}{b}\times\frac{c}{d}=\frac{a\times c}{b\times d}$$
+        $$\dfrac{a}{b}\times\dfrac{c}{d}=\dfrac{a\times c}{b\times d}$$
     </p>
 </div>
 <div class="exemple">
-    <p>Calculons $\frac{3}{4}\times\frac{5}{6}$.</p>
+    <p>Calculons $\dfrac{3}{4}\times\dfrac{5}{6}$.</p>
     $$
     \begin{align*}
-    \frac{3}{4}\times\frac{5}{6}&=\frac{3\times 5}{4\times 6}\\
-    &=\frac{15}{24}\\
-    &=\frac{5}{8}
+    \dfrac{3}{4}\times\dfrac{5}{6}&=\dfrac{3\times 5}{4\times 6}\\
+    &=\dfrac{15}{24}\\
+    &=\dfrac{5}{8}
     \end{align*}
     $$
 </div>
@@ -350,15 +358,15 @@
         décomposant les numérateurs et les dénominateurs en produit de facteurs premiers.</p>
 </div>
 <div class="exemple">
-    <p>Calculons $\frac{12}{18}\times\frac{15}{20}$.</p>
+    <p>Calculons $\dfrac{12}{18}\times\dfrac{15}{20}$.</p>
     $$
     \begin{align*}
-    \frac{12}{18}\times\frac{15}{20}&=\frac{2\times 2\times 3}{2\times 3\times 3}\times\frac{3\times 5}{2\times 2\times
+    \dfrac{12}{18}\times\dfrac{15}{20}&=\dfrac{2\times 2\times 3}{2\times 3\times 3}\times\dfrac{3\times 5}{2\times 2\times
     5}\\
-    &=\frac{2\times 2\times 3\times 3\times 5}{2\times 3\times 3\times 2\times 2\times 5}\\
-    &=\frac{3\times 3}{3\times 3\times 2\times 2}\\
-    &=\frac{1}{2\times 2}\\
-    &=\frac{1}{4}
+    &=\dfrac{2\times 2\times 3\times 3\times 5}{2\times 3\times 3\times 2\times 2\times 5}\\
+    &=\dfrac{3\times 3}{3\times 3\times 2\times 2}\\
+    &=\dfrac{1}{2\times 2}\\
+    &=\dfrac{1}{4}
     \end{align*}
     $$
 </div>
@@ -368,40 +376,40 @@
 </div>
 <div class="propriete">
     <p> $a$, $b$, $c$ et $d$ désignent quatre nombres tels que $b\neq 0$ et $c\neq 0$.<br>
-        $$\frac{\frac{a}{b}}{\frac{c}{d}}=\frac{a}{b}\times\frac{d}{c}$$
+        $$\dfrac{\dfrac{a}{b}}{\dfrac{c}{d}}=\dfrac{a}{b}\times\dfrac{d}{c}$$
     </p>
 </div>
 <div class="exemple">
     <ul class="responsive-list">
         <li>
-            <p>Calculons $\frac{\frac{3}{4}}{\frac{5}{6}}$.</p>
+            <p>Calculons $\dfrac{\dfrac{3}{4}}{\dfrac{5}{6}}$.</p>
             $$
             \begin{align*}
-            \frac{\frac{3}{4}}{\frac{5}{6}}&=\frac{3}{4}\times\frac{6}{5}\\
-            &=\frac{3\times 6}{4\times 5}\\
-            &=\frac{18}{20}\\
-            &=\frac{9}{10}
+            \dfrac{\dfrac{3}{4}}{\dfrac{5}{6}}&=\dfrac{3}{4}\times\dfrac{6}{5}\\
+            &=\dfrac{3\times 6}{4\times 5}\\
+            &=\dfrac{18}{20}\\
+            &=\dfrac{9}{10}
             \end{align*}
             $$
         </li>
         <li>
-            <p>Calculons $\frac{3}{\frac{5}{6}}$.</p>
+            <p>Calculons $\dfrac{3}{\dfrac{5}{6}}$.</p>
             $$
             \begin{align*}
-            \frac{3}{\frac{5}{6}}&=3\times\frac{6}{5}\\
-            &=\frac{3\times 6}{5}\\
-            &=\frac{18}{5}\\
-            &=3+\frac{3}{5}
+            \dfrac{3}{\dfrac{5}{6}}&=3\times\dfrac{6}{5}\\
+            &=\dfrac{3\times 6}{5}\\
+            &=\dfrac{18}{5}\\
+            &=3+\dfrac{3}{5}
             \end{align*}
             $$
         </li>
         <li>
-            <p>Calculons $\frac{\frac{3}{4}}{5}$.</p>
+            <p>Calculons $\dfrac{\dfrac{3}{4}}{5}$.</p>
             $$
             \begin{align*}
-            \frac{\frac{3}{4}}{5}&=\frac{3}{4}\times\frac{1}{5}\\
-            &=\frac{3}{4\times 5}\\
-            &=\frac{3}{20}
+            \dfrac{\dfrac{3}{4}}{5}&=\dfrac{3}{4}\times\dfrac{1}{5}\\
+            &=\dfrac{3}{4\times 5}\\
+            &=\dfrac{3}{20}
             \end{align*}
             $$
         </li>
