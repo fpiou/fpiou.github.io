@@ -40,6 +40,8 @@
     
         <link rel="stylesheet" href="/src/css/print1colonne.css">
     
+        <link rel="stylesheet" href="/src/css/figures.css">
+    
         <link rel="stylesheet" href="/src/css/print.css">
     
 
@@ -98,14 +100,9 @@
 </nav>
     <main>
         <h1>Le second degré</h1>
-<details id="sommaire">
-    <summary>Sommaire</summary>
-    <nav id="tableOfContents">
-    </nav>
-</details>
 <h2>Fonction polynôme du second degré</h2>
 <div class="definition" recto="Fonction polynôme du second degré">
-    <p>Une fonction polynôme du second degré (ou fonction trinôme) est une fonction qui peut s'écrire sous la forme
+    <p>Une fonction polynôme du second degré (ou fonction trinôme du second degré) est une fonction qui peut s'écrire sous la forme
         développée&nbsp;:
         $$f(x)=ax^2+bx+c\quad \text{ avec } a\neq 0.$$
     </p>
@@ -119,22 +116,88 @@
     </p>
 </div>
 <div class="exemple">
-    <p>$f(x)=2x^2+3x-5$ est la forme développée d'une fonction polynôme du second degré avec $a=2$, $b=3$ et $c=-5.$</p>
+    <ul>
+        <li>$f(x)=2x^2+3x-5$ est la forme développée d'une fonction polynôme du second degré avec $a=2$, $b=3$ et $c=-5.$</li>
+        <li>Considérons la fonction $g$ définie par $$g(x)=x(x+2)+7.$$<br>
+            En développant on obtient&nbsp;: $$g(x)=x^2+2x+7.$$ Donc $g$ est une fonction polynôme du second degré avec $a=1$, $b=2$ et $c=7.$</li>
+        <li>Considérons la fonction $h$ définie par $$h(x)=3x+2$$.<br>
+            $h$ est bien une fonction polynôme mais elle n'est pas du second degré car elle ne peut pas s'écrire sous la forme $ax^2+bx+c$ avec $a\neq 0.$ C'est une fonction polynôme du premier degré.</li>
+        <li>Considérons la fonction $i$ définie par $$i(x)=2x^2-5x^3+3x-1$$.<br>
+            $i$ est bien une fonction polynôme mais elle n'est pas du second degré car elle possède un terme de degré plus grand que 2 : $-5x^3.$</li>
+    </ul>
 </div>
-<h2>Racines d'une fonction polynôme</h2>
+<div class="remarque">
+    <p>$ax^2+bx+c$ est appelé un polynôme de degré 2 et $x$ est appelée l'indéterminée.</p>
+</div>
+<h2>Racines d'un polynôme</h2>
 <div class="definition" recto="Racines d'une fonction polynôme">
-    <p>Les racines d'une fonction polynôme $f$ du second degré sont les solutions de l'équation $f(x)=0.$</p>
+    <p>Les racines d'un polynôme sont les nombres qui l'annulent. Pour une fonction polynôme de la forme $f(x)=ax^2+bx+c$ avec $a\neq 0$ ce sont les solutions de l'équation $f(x)=0$ autrement dit de l'équation $ax^2+bx+c=0.$</p>
 </div>
 <div class="exemple">
     <p>Les racines du trinôme défini par $$f(x)=2x^2+3x-5$$ sont les solutions de l'équation $$2x^2+3x-5=0.$$</p>
     <p>On a par exemple : $$2\times 1^2+3\times 1-5=0$$ donc $1$ est une racine de $f.$</p>
     <p>On a également : $$2\times (-\num{2.5})^2+3\times (-\num{2.5})-5=0$$ donc $-\num{2.5}$ est une racine de $f.$</p>
+    <p>En revanche $2$ n'est pas une racine de $f$ car $$2\times 2^2+3\times 2-5=9\neq 0.$$</p>
+</div>
+<div class="propriete">
+    <p>Les racines d'un polynôme sont les solutions de l'équation $f(x)=0$ donc ce sont aussi les abscisses des points d'intersection de la courbe de la fonction $f$ avec l'axe des abscisses.</p>
+</div>
+<div class="exemple">
+    <p>Considérons la fonction $f$ définie par $$f(x)=\num{0.5}x^2-\num{0.5}x-6.$$</p>
+    <div id="figure1" class="figure">
+        <svg
+          id="figure1"
+          viewBox="0 0 200 200"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+        <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="transparent"></g>
+        <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
+        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="transparent"></g>
+        <g class="label" linkto="J" x="-7" y="-5" style="font-size:0.5rem;">1</g>
+        
+        <g name="c1" class="courbeRepresentative" expression="0.5(x-2)(x+3)" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+
+        <g name="A2" class="point labeled" repere="repere1" x="2" y="0" stroke="red"></g>
+        <g class="label" linkto="A2" x="0" y="0" style="font-size:0.5rem;">A_2</g>
+        <g name="A1" class="point labeled" repere="repere1" x="-3" y="0" stroke="red"></g>
+        <g class="label" linkto="A1" x="-7" y="0" style="font-size:0.5rem;">A_1</g>
+    </svg>
+    </div>
+    <p>Sa courbe représentative coupe l'axe des abscisses en $A_1(-3~;~0)$ et $A_2(2~;~0).$</p>
+    <p>Ce qui signifie bien que $f(-3)=0$ et $f(2)=0$ donc $-3$ et $2$ sont les racines de $f(x).$</p>
+</div>
+<div class="exemple">
+    <p>La courbe représentative de la fonction $f$ définie par $f(x)=x^2+3x+3$ ne coupe pas l'axe des abscisses. Autrement dit le polynôme $f(x)$ n'admet pas de racine.</p>
+    <div id="figure1" class="figure">
+        <svg
+          id="figure1"
+          viewBox="0 0 200 120"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+        <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="transparent"></g>
+        <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
+        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="transparent"></g>
+        <g class="label" linkto="J" x="-7" y="-5" style="font-size:0.5rem;">1</g>
+        
+        <g name="c1" class="courbeRepresentative" expression="x^2+3x+3" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+    </svg>
+    </div>
 </div>
 <h2>Forme factorisée d'une fonction polynôme</h2>
 <div class="definition" recto="Forme factorisée">
     <p>On dit qu'une fonction polynôme $f$ de la forme
         $$f(x)=ax^2+bx+c$$
-        avec $a\neq 0$ est sous forme factorisée lorsqu'elle s'écrit</p>
+        avec $a\neq 0$ peut s'écrire sous forme factorisée lorsqu'elle peut s'écrire sous la forme : </p>
     $$f(x)=a(x-x_1)(x-x_2)$$
     où $x_1$ et $x_2$ sont deux nombres réels.</p>
 </div>
@@ -143,7 +206,7 @@
         $$f(x)=ax^2+bx+c.$$</p>
     <p>Si $f(x)$ peut s'écrire sous la forme factorisée
         $$f(x)=a(x-x_1)(x-x_2)$$
-        où $x_1$ et $x_2$ sont deux nombres réels, alors $x_1$ et $x_2$ sont les racines de $f.$</p>
+        où $x_1$ et $x_2$ sont deux nombres réels, alors $x_1$ et $x_2$ sont les racines de $f(x).$</p>
 </div>
 <div class="demonstration">
     <p>Si $f(x)$ peut s'écrire sous la forme
@@ -157,20 +220,35 @@
         En effet, en développant on obtient&nbsp;:</p>
         $$\begin{align*}
         2(x-1)\left(x+\num{2.5}\right)&=2\left(x^2+\num{2.5}x-x-\num{2.5}\right)\\
-        &=2x^2+5x-2x-5\\
+        &=2(x^2+\num{1.5}x-\num{2.5})\\
         &=2x^2+3x-5\\
         &=f(x).
         \end{align*}$$
-        <p>De plus $$f(x)=2(x-1)\left(x-(-\num{2.5})\right)$$ donc $1$ et $-\num{2.5}$ sont les racines de $f.$</p>
+        <p>De plus $$f(x)=2(x-1)\left(x-(-\num{2.5})\right)$$ donc $1$ et $-\num{2.5}$ sont les racines de $f(x).$</p>
 </div>
 <h2>Signe d'une fonction polynôme factorisée</h2>
-<div class="propriete" recto="signe">
+<div class="propriete">
     <p>Soit $f$ une fonction trinôme sous forme factorisée
         $$f(x)=a(x-x_1)(x-x_2)$$
         tel que $x_1 < x_2.$</p>
+    <ul>
+        <li>Si $a>0$, alors la fonction $f$ est
             <ul>
-                <li>Si $a>0$, alors $f$ est positive sur $]-\infty;x_1[\cup]x_2;+\infty[$ et négative sur $]x_1;x_2[.$
-                </li>
+                <li>strictement positive sur $]-\infty;x_1[\cup]x_2;+\infty[$,</li>
+                <li>strictement négative sur $]x_1;x_2[.$</li>
+            </ul>
+        </li>
+        <li>Si $a < 0$, alors la fonction $f$ est
+            <ul>
+                <li>strictement négative sur $]-\infty;x_1[\cup]x_2;+\infty[$,</li>
+                <li>strictement positive sur $]x_1;x_2[.$</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="demonstration">
+            <ul>
+                <li>Si $a>0$, alors on a le tableau de signe suivant.</li>
                 <table class="tableausigne">
                     <tr style="border:1px solid black;">
                         <td style="border:1px solid black;">$x$</td>
@@ -223,8 +301,7 @@
                         <td></td>
                     </tr>
                 </table>
-                <li>Si $a< 0$, alors $f$ est négative sur $]-\infty;x_1[\cup]x_2;+\infty[$ et positive sur
-                        $]x_1;x_2[.$</li>
+                <li>Si $a < 0$, alors on a le tableau de signe suivant.</li>
                         <table class="tableausigne">
                             <tr style="border:1px solid black;">
                                 <td style="border:1px solid black;">$x$</td>
@@ -281,15 +358,75 @@
 </div>
 <div class="exemple">
     <p>Considérons la fonction $g$ définie par&nbsp;: $$g(x)=2(1-x)(x+\num{2.5}).$$
-    <p>Elle n'est pas sous la forme $$a(x-x_1)(x-x_2)$$, on ne peut donc pas conclure sur son signe.</p>
-    <p>Cependant, on a&nbsp;: $$g(x)=-2(x-1)\left(x-(-\num{2.5})\right)$$ qui est sous la forme $a(x-x_1)(x-x_2)$ avec
-        $a=-2$, $x_1=1$ et $x_2=-\num{2.5}.$</p>
-    <p>D'où $g$ est négative sur $]-\infty;1[\cup]-\num{2.5};+\infty[$ et positive sur $]1;-\num{2.5}[.$</p>
+    <p>Elle n'est pas sous la forme $$a(x-x_1)(x-x_2).$$
+    <p>Elle peut cependant s'écrire sous cette forme :
+    $$g(x)=-2(x-1)\left(x-(-\num{2.5})\right)$$</p>
+    <p>On a ainsi $a=-2$, $x_1=1$ et $x_2=-\num{2.5}.$</p>
+    <p>D'où $g$ est strictement négative sur $]-\infty;1[\cup]-\num{2.5};+\infty[$ et strictement positive sur $]1;-\num{2.5}[.$</p>
+</div>
+<div class="propriete">
+    <p>Soit $f$ une fonction trinôme sous forme factorisée
+        $$f(x)=a(x-x_1)(x-x_2)$$
+        tel que $x_1 < x_2.$</p>
+        <ul>
+            <li>Si $a>0$, alors la courbe représentative de la fonction $f$ est au-dessus de l'axe des abscisses sur $]-\infty;x_1[\cup]x_2;+\infty[$ et en-dessous sur $]x_1;x_2[.$
+            </li>
+            <div id="figure1" class="figure">
+                <svg
+                  id="figure1"
+                  viewBox="0 0 200 200"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="transparent"></g>
+                <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="transparent"></g>
+                <g class="label" linkto="J" x="-7" y="-5" style="font-size:0.5rem;">1</g>
+                
+                <g name="c1" class="courbeRepresentative" expression="0.5(x-2.3)(x+3.6)" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+        
+                <g name="A2" class="point labeled" repere="repere1" x="2.3" y="0" stroke="transparent"></g>
+                <g class="label" linkto="A2" x="0" y="0" style="font-size:0.5rem;">x_2</g>
+                <g name="A1" class="point labeled" repere="repere1" x="-3.6" y="0" stroke="transparent"></g>
+                <g class="label" linkto="A1" x="-7" y="0" style="font-size:0.5rem;">x_1</g>
+            </svg>
+            </div>
+            <li>Si $a < 0$, alors la courbe représentative de la fonction $f$ est en-dessous de l'axe des abscisses sur $]-\infty;x_1[\cup]x_2;+\infty[$ et au-dessus sur
+                    $]x_1;x_2[.$</li>
+                    <div id="figure1" class="figure">
+                        <svg
+                          id="figure1"
+                          viewBox="0 0 200 200"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                        <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="transparent"></g>
+                        <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
+                        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="transparent"></g>
+                        <g class="label" linkto="J" x="-7" y="-5" style="font-size:0.5rem;">1</g>
+                        
+                        <g name="c1" class="courbeRepresentative" expression="-0.5(x-2.3)(x+3.6)" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                
+                        <g name="A2" class="point labeled" repere="repere1" x="2.3" y="0" stroke="transparent"></g>
+                        <g class="label" linkto="A2" x="0" y="0" style="font-size:0.5rem;">x_2</g>
+                        <g name="A1" class="point labeled" repere="repere1" x="-3.6" y="0" stroke="transparent"></g>
+                        <g class="label" linkto="A1" x="-7" y="0" style="font-size:0.5rem;">x_1</g>
+                    </svg>
+                    </div>
+        </ul>
 </div>
 <h2>Factorisation d'une fonction polynôme</h2>
 <div class="propriete" recto="forme factorisée">
     <p>Soit $f$ une fonction trinôme de la forme $$f(x)=ax^2+bx+c.$$ avec $a\neq 0.$</p>
-    <p>Si $f$ admet deux racines distinctes $x_1$ et $x_2$, alors $f(x)$ peut s'écrire sous la forme
+    <p>Si $f(x)$ admet deux racines distinctes $x_1$ et $x_2$, alors $f(x)$ peut s'écrire sous la forme
         $$f(x)=a(x-x_1)(x-x_2).$$</p>
 </div>
 <div class="demonstration">
@@ -326,8 +463,27 @@
         $$f(x)=a(x-x_1)(x-x_2).$$</p>
 </div>
 <div class="exemple">
-    <p>La fonction $f$ définie par $$f(x)=2x^2+3x-5$$ peut s'écrire sous la forme $$f(x)=2(x-x_1)(x-x_2)$$ où $x_1$ et
-        $x_2$ sont les racines de $f.$</p>
+    <p>Considérons la fonction $f$ définie par $$f(x)=2x^2+2x-12.$$
+        On a $f(2)=0$ et $f(-3)=0$ donc $f(x)$ possède deux racines distinctes $x_1=2$ et $x_2=-3.$</p>
+    <p>On a $a=2$ donc $f(x)$ peut s'écrire sous la forme
+        $$f(x)=2(x-2)(x-(-3))$$
+        soit
+        $$f(x)=2(x-2)(x+3).$$</p>
+</div>
+<div class="propriete">
+    <p>Si une fonction polynôme du second degré possède deux racines, alors elle est du signe du coefficient du terme de second degré $a$ sauf entre ses racines.</p>
+</div>
+<div class="demonstration">
+    <p>Soit $f$ une fonction polynôme de la forme $$f(x)=ax^2+bx+c.$$ avec $a\neq 0.$</p>
+    <p>Supposons que $f$ admet deux racines distinctes $x_1$ et $x_2.$</p>
+    <p>On a vu que $f(x)$ peut s'écrire sous la forme
+        $$f(x)=a(x-x_1)(x-x_2).$$</p>
+    <p>Or d'après la propriété précédente, $f$ est strictement positive si $a>0$ sur $]-\infty;x_1[\cup]x_2;+\infty[$ et strictement négative sur $]x_1;x_2[.$ De même $f$ est strictement négative si $a < 0$ sur $]-\infty;x_1[\cup]x_2;+\infty[$ et strictement positive sur $]x_1;x_2[.$</p>
+</div>
+<div class="exemple">
+    <p>Considérons la fonction $f$ définie par $$f(x)=4x^2-3x-10.$$</p>
+    <p>$f(-\num{1.25})=0$ et $f(2)=0$ donc $f(x)$ possède deux racines distinctes $x_1=-\num{1.25}$ et $x_2=2.$</p>
+    <p>On a $a=4>0$ donc $f$ est strictement positive sur $]-\infty;-\num{1.25}[\cup]2;+\infty[$ et strictement négative sur $]-\num{1.25};2[.$</p>
 </div>
 <h2>Somme et produit des racines</h2>
 <div class="propriete" recto="somme et produit">
@@ -341,7 +497,7 @@
 </div>
 <div class="demonstration">
     <p>Considérons une fonction polynôme $f$ de la forme $f(x)=ax^2+bx+c$ avec $a\neq 0.$</p>
-    <p>Supposons que $f$ admet deux racines distinctes $x_1$ et $x_2.$</p>
+    <p>Supposons que $f(x)$ admet deux racines distinctes $x_1$ et $x_2.$</p>
     <p>On en déduit la forme factorisée de $f$&nbsp;:
         $$f(x)=a(x-x_1)(x-x_2).$$</p>
     <p>En développant on obtient&nbsp;:
@@ -411,21 +567,21 @@
     <p>On obtient la forme canonique&nbsp;:
         $$f(x)=a\left(x-\left(-\dfrac{b}{2a}\right)\right)^2-\dfrac{\Delta}{4a}.$$</p>
 </div>
-<h2>Discriminant d'une fonction polynôme</h2>
+<h2>Discriminant d'un polynôme</h2>
 <div class="definition" recto="discriminant">
     <p>Soit $f$ une fonction trinôme de la forme
         $$f(x)=ax^2+bx+c$$
         où $a\neq 0.$</p>
-    <p>On appelle discriminant de $f$ le nombre $\Delta=b^2-4ac.$</p>
+    <p>On appelle discriminant de $f(x)$ le nombre $\Delta=b^2-4ac.$</p>
 </div>
 <div class="propriete">
     <p>Soit $f$ une fonction trinôme de la forme
         $$f(x)=ax^2+bx+c$$
         où $a\neq 0.$</p>
     <ul>
-        <li>Si $\Delta < 0$, alors $f$ n'admet pas de racine (sous-entendu pas de racine dans $\mathbb{R}$).</li>
-        <li>Si $\Delta=0$, alors $f$ admet une seule racine (appelée racine double).</li>
-        <li>Si $\Delta>0$, alors $f$ admet deux racines distinctes.</li>
+        <li>Si $\Delta < 0$, alors $f(x)$ n'admet pas de racine (sous-entendu pas de racine dans $\mathbb{R}$).</li>
+        <li>Si $\Delta=0$, alors $f(x)$ admet une seule racine (appelée aussi racine double).</li>
+        <li>Si $\Delta>0$, alors $f(x)$ admet deux racines distinctes.</li>
     </ul>
 </div>
 <div class="demonstration">
@@ -435,7 +591,7 @@
     <ul>
         <li>Si $\Delta < 0$, alors $-\dfrac{\Delta}{4a^2}>0$ puis
                 $$\left(x+\dfrac{b}{2a}\right)^2-\dfrac{\Delta}{4a^2}>0.$$
-                Par conséquent $f$ n'admet pas de racine dans $\mathbb{R}.$</li>
+                Par conséquent $f(x)$ n'admet pas de racine dans $\mathbb{R}.$</li>
         <li>Si $\Delta=0$, alors $-\dfrac{\Delta}{4a}=0.$
             On en déduit&nbsp;: $$x+\dfrac{b}{2a}=0.$$ qui équivaut à $$x=-\dfrac{b}{2a}.$$
             L'équation $a\left(x+\dfrac{b}{2a}\right)^2-\dfrac{\Delta}{4a}=0$ admet donc une seule solution dans
@@ -447,21 +603,20 @@
                 $$\left[\left(x+\dfrac{b}{2a}\right)-\dfrac{\sqrt{\Delta}}{2a}\right]\left[\left(x+\dfrac{b}{2a}\right)+\dfrac{\sqrt{\Delta}}{2a}\right]=0.$$
                 Or un produit est nul si et seulement si l'un de ses facteurs est nul. Donc
                 $$\left(x+\dfrac{b}{2a}\right)-\dfrac{\sqrt{\Delta}}{2a}=0$$ ou
-                $$\left(x+\dfrac{b}{2a}\right)+\dfrac{\sqrt{\Delta}}{2a}=0.$$ </ul>
+                $$\left(x+\dfrac{b}{2a}\right)+\dfrac{\sqrt{\Delta}}{2a}=0.$$</ul>
 </div>
 <div class="propriete">
     <p>Soit $f$ une fonction trinôme de la forme
         $$f(x)=ax^2+bx+c$$
         où $a\neq 0.$</p>
-    <p>Si $\Delta=0$, alors la racine double de $f$ est&nbsp;:
+    <p>Si $\Delta=0$, alors la racine double de $f(x)$ est&nbsp;:
         $$x_0=-\dfrac{b}{2a}.$$
-    <p>Si $\Delta>0$, alors les racines de $f$ sont&nbsp;:
+    <p>Si $\Delta>0$, alors les racines de $f(x)$ sont&nbsp;:
         $$x_1=\dfrac{-b-\sqrt{\Delta}}{2a}\quad \text{ et }\quad x_2=\dfrac{-b+\sqrt{\Delta}}{2a}.$$
     </p>
 </div>
-<div class="remarque">
-    <p>Déterminer les solutions d'une équation de la forme $ax^2+bx+c=0$ revient à déterminer les racines de la fonction
-        trinôme $f$ définie par $f(x)=ax^2+bx+c.$</p>
+<div class="methode">
+    <p>Déterminer les solutions d'une équation de la forme $ax^2+bx+c=0$ revient à déterminer les racines du trinôme $f(x)=ax^2+bx+c.$ Il suffit donc de calculer le discriminant du polynôme puis de déterminer les racines si elles existent. Les racines obtenues seront les solutions de l'équation.</p>
 </div>
     </main>
     <footer>
