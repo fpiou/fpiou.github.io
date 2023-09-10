@@ -8,6 +8,21 @@
       }
     body {
         column-count: 1;
-        font-size: 20pt;
+        font-size: 20pt !important;
+        width:100%;
+    }
+    p,
+    li,
+    ol,
+    ul {
+        margin: 1em;
+    }
+
+    /* Pour gagner de l'espace les formules éléments de la class .katex-display contenus dans des éléments p sont en inline-block*/
+    p span.katex-display,
+    li span.katex-display
+    {
+        display: block;
+        margin: 1em;
     }
 }
