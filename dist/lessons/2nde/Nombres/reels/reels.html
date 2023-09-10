@@ -99,34 +99,7 @@
     </ul>
 </nav>
     <main>
-        <!-- Début exception -->
-<!-- Scripts pour les figures JSXGraph -->
-<link rel="stylesheet" type="text/css" href="https://jsxgraph.org/distrib/jsxgraph.css" />
-<script type="text/javascript" src="https://jsxgraph.org/distrib/jsxgraphcore.js"></script>
-
-<!-- Le Katex sera rendu pour les figures JSXGraph -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        //
-        // Partie concernant les formules Katex
-        //
-        renderMathInElement(document.body, {
-            // customised options
-            // • auto-render specific keys, e.g.:
-            delimiters: [
-                { left: '$$', right: '$$', display: true },
-                { left: '$', right: '$', display: false },
-                { left: '\\(', right: '\\)', display: false },
-                { left: '\\[', right: '\\]', display: true }
-            ],
-            // • rendering keys, e.g.:
-            throwOnError: false
-        });
-    });
-</script>
-<!-- Fin exception -->
-
-<h1>Manipuler les nombres réels</h1>
+        <h1>Manipuler les nombres réels</h1>
 <details>
     <summary>Sommaire</summary>
     <nav id="tableOfContents">
@@ -138,22 +111,18 @@
         On dit qu'un nombre est <strong>entier</strong> (ou entier relatif) si sa partie décimale est nulle.<br>
         Un entier est un nombre qui peut s'écrire sans virgule ni décimale et qui possède un signe positif ou négatif.<br>
     </p>
-</div>
-<div class="remarque">
-    <p>On note $\mathbb{Z}$ l'ensemble des entiers.
-    $$\mathbb{Z}=\{\ldots~{;}~-3~{;}~-2~{;}~-1~{;}~0~{;}~1~{;}~2~{;}~3~{;}\ldots\}$$
-    $0$ est un entier à la fois positif et négatif.</p>
+    <p>On note $\mathbb{Z}$ l'ensemble des entiers :
+        $$\mathbb{Z}=\{\ldots~{;}~-3~{;}~-2~{;}~-1~{;}~0~{;}~1~{;}~2~{;}~3~{;}\ldots\}.$$
+        $0$ est un entier à la fois positif et négatif.</p>
 </div>
 <div class="definition">
     <p>
         On dit qu'un entier est un <strong>entier naturel</strong> s'il est positif ou nul.<br>
     </p>
-</div>
-<div class="remarque">
     <p>On note $\mathbb{N}$ l'ensemble des entiers naturels :
-        $$\mathbb{N}=\{0~{;}~1~{;}~2~{;}~3~{;}\ldots\}$$
-        L'ensemble $\mathbb{N}^*$ est l'ensemble des entiers naturels non nuls.
-        $$\mathbb{N}^*=\mathbb{N}\backslash \{0\}$$
+        $$\mathbb{N}=\{0~{;}~1~{;}~2~{;}~3~{;}\ldots\}.$$
+        L'ensemble $\mathbb{N}^*$ est l'ensemble des entiers naturels non nuls :
+        $$\mathbb{N}^*=\mathbb{N}\backslash \{0\}~;$$
         $$\mathbb{N}^*=\{1~{;}~2~{;}~3~{;}\ldots\}$$</p>
 </div>
 <h2>Les décimaux et les rationnels</h2>
@@ -161,16 +130,16 @@
     <p>
         Un nombre est dit <strong>décimal</strong> s'il peut s'écrire sous la forme d'un quotient d'un entier relatif par une puissance de $10.$<br>
     </p>
+    <p>On note $\mathbb{D}$ l'ensemble des décimaux : 
+        $$\mathbb{D}=\left\{\dfrac{a}{10^n}\text{ avec }a\in\mathbb{Z}\text{ et }n\in\mathbb{N}\right\}.$$</p>
 </div>
 <div class="remarque">
-    <p>Un décimal est un nombre qui possède une partie décimale finie.
-        Il peut être positif ou négatif.<br>
-        On note $\mathbb{D}$ l'ensemble des décimaux.
-        $$\mathbb{D}=\left\{\dfrac{a}{10^n}\text{ avec }a\in\mathbb{Z}\text{ et }n\in\mathbb{N}\right\}$$</p>
+    <p>Un décimal est un nombre qui possède un nombre fini de chiffres non nuls dans son écriture décimale.<br>
+    Il peut être positif ou négatif</p>
 </div>
 <div class="methode">
     <p>
-        Pour montrer qu'un nombre s'écrivant sous la forme $$\dfrac{n}{2^p\times 5^q}$$ est décimal, il suffit de multiplier le numérateur et le dénominateur par les mêmes puissances de $2$ ou de $5$ pour obtenir un dénominateur qui peut s'écrire sous la forme d'une puissance de $10$.
+        Pour montrer qu'un nombre s'écrivant sous la forme $$\dfrac{n}{2^p\times 5^q}$$ est décimal, il suffit de multiplier numérateur et dénominateur par des puissances de $2$ ou de $5$ pour compléter le dénominateur en un produit de puissances de $2$ et de $5$ de même exposant.
     </p>
 </div>
 <div class="exemple">
