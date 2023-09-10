@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>2nd-exercices_01</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+      integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
+      crossorigin="anonymous"
+    />
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+      integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print2colonnes.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../main.bundle.js"></script><script defer src="../../trinomes.bundle.js"></script><script defer src="../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <header>
+      <h1>Exercices</h1>
+    </header>
+    <main><div class='exercice'>
+<div class="enonce">
+<p>Calculer $A$ et $B$.</p>
+<ul class="responsive-list" style="list-style-type: none">
+<li>$$A=\dfrac{7}{4}-\dfrac{1}{5}\left(\dfrac{3}{2}+\dfrac{9}{8}\right)$$</li>
+<li>$$B=\dfrac{5-\dfrac{2}{9}}{\dfrac{5}{6}-\dfrac{7}{9}}$$</li>
+</ul>
+</div>
+<div class="solution">
+<ul>
+<li>
+<p>$A=\dfrac{7}{4}-\dfrac{1}{5}\left(\dfrac{3}{2}+\dfrac{9}{8}\right)$</p>
+<p>Les calculs entre parenthèses sont prioritaires.</p>
+<p>
+          $A=\dfrac{7}{4}-\dfrac{1}{5}\left(\dfrac{3\times 4}{2\times
+          4}+\dfrac{9}{8}\right)$
+        </p>
+<p>On réduire au même dénominateur pour additionner.</p>
+<p>$A=\dfrac{7}{4}-\dfrac{1}{5}\left(\dfrac{12}{8}+\dfrac{9}{8}\right)$</p>
+<p>$A=\dfrac{7}{4}-\dfrac{1}{5}\times \dfrac{21}{8}$</p>
+<p>La multiplication est prioritaire sur la soustraction.</p>
+<p>$A=\dfrac{7}{4}-\dfrac{21}{40}$</p>
+<p>On réduit au même dénominateur pour soustraire.</p>
+<p>$A=\dfrac{7\times 10}{4\times 10}-\dfrac{21}{40}$</p>
+<p>$A=\dfrac{70}{40}-\dfrac{21}{40}$</p>
+<p>$A=\dfrac{70-21}{40}$</p>
+<p>$A=\dfrac{49}{40}$</p>
+</li>
+<li>
+<p>$B=\dfrac{5-\dfrac{2}{9}}{\dfrac{5}{6}-\dfrac{7}{9}}$</p>
+<p>On réduit au même dénominateur pour soustraire.</p>
+<p>$B=\dfrac{\dfrac{5\times 9}{9}-\dfrac{2}{9}}{\dfrac{5\times 3}{6\times 3}-\dfrac{7\times 2}{9\times 2}}$</p>
+<p>$B=\dfrac{\dfrac{45}{9}-\dfrac{2}{9}}{\dfrac{15}{18}-\dfrac{14}{18}}$</p>
+<p>$B=\dfrac{\dfrac{45-2}{9}}{\dfrac{15-14}{18}}$</p>
+<p>$B=\dfrac{\dfrac{43}{9}}{\dfrac{1}{18}}$</p>
+<p>On inverse la fraction du dénominateur et on multiplie.</p>
+<p>$B=\dfrac{43}{9}\times 18$</p>
+<p>$B=\dfrac{43\times 18}{9}$</p>
+<p>$B=\dfrac{43\times 2\times 9}{9}$</p>
+<p>$B=43\times 2$</p>
+<p>$B=86$</p>
+</li>
+</ul>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>Donner l'écriture de chaque nombre en notation scientifique.</p>
+<ul style="list-style-type: none;">
+<li>$$A=\frac{80\times10^{-5}\times 3\times 10^4}{48\times (10^3)^2}$$</li>
+<li>$$B=\frac{7\times10^{-4}}{2\times10^{-2}}+\frac{9\times10^8}{5\times 10^9}$$</li>
+</ul>
+</div>
+<div class="solution">
+<ul>
+<li>
+<p>$A=\dfrac{80\times10^{-5}\times 3\times 10^4}{48\times (10^3)^2}$</p>
+<p>$A=\dfrac{80\times 3\times 10^{-5+4}}{48\times 10^{3\times 2}}$</p>
+<p>$A=\dfrac{80\times 3\times 10^{-1}}{48\times 10^{6}}$</p>
+<p>$A=\dfrac{80\times 3}{48}\times \dfrac{10^{-1}}{10^{6}}$</p>
+<p>$A=\dfrac{80\times 3}{48}\times 10^{-1-6}$</p>
+<p>$A=\dfrac{80\times 3}{48}\times 10^{-7}$</p>
+<p>$A=\dfrac{2^4\times 5\times 3}{2^4\times 3}\times 10^{-7}$</p>
+<p>$A=5\times 10^{-7}$</p>
+</li>
+<li>
+<p>$B=\dfrac{7\times10^{-4}}{2\times10^{-2}}+\dfrac{9\times10^8}{5\times 10^9}$</p>
+<p>$B=\dfrac{7\times 10^{-4+2}}{2}+\dfrac{9\times 10^{8-9}}{5}$</p>
+<p>$B=\dfrac{7\times 10^{-2}}{2}+\dfrac{9\times 10^{-1}}{5}$</p>
+<p>$B=\dfrac{7}{2}\times 10^{-2}+\dfrac{9}{5}\times 10^{-1}$</p>
+<p>$B=\num{3.5}\times 10^{-2}+\num{1.8}\times 10^{-1}$</p>
+<p>$B=\num{0.035}+\num{0.18}$</p>
+<p>$B=\num{0.215}$</p>
+<p>$B=\num{2.15}\times 10^{-1}$</p>
+</li>
+</ul>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>Simplifier l'écriture des expressions suivantes sous la forme $a\sqrt{b}$ où $a\in\mathbb{Q}$ et $b\in\mathbb{N}$.</p>
+        $$A=\sqrt{27}-\sqrt{48}+\sqrt{300}$$
+        <ul class="responsive-list" style="list-style-type: none;">
+<li>$$B=\sqrt{\dfrac{45}{784}}$$</li>
+<li>$$C=\dfrac{\sqrt{448}}{\sqrt{21}}$$</li>
+</ul>
+</div>
+<div class="solution">
+<ul>
+<li>
+<p>$A=\sqrt{27}-\sqrt{48}+\sqrt{300}$</p>
+<p>En décomposant les radicandes en produit de facteurs premiers, on obtient :</p>
+<p>$A=\sqrt{3^2\times 3}-\sqrt{2^4\times 3}+\sqrt{2^2\times 3\times 5^2}$</p>
+<p>$A=3\sqrt{3}-2^2\sqrt{3}+2\times 5\sqrt{3}$</p>
+<p>$A=3\sqrt{3}-4\sqrt{3}+10\sqrt{3}$</p>
+<p>En factorisant par $\sqrt{3}$, on obtient :</p>
+<p>$A=(3-4+10)\sqrt{3}$</p>
+<p>$A=9\sqrt{3}$</p>
+</li>
+<li>
+<p>$B=\sqrt{\dfrac{45}{784}}$</p>
+<p>On décompose le numérateur et le dénominateur du radicande en produit de facteurs premiers :</p>
+<p>$B=\sqrt{\dfrac{3^2\times 5}{2^4\times 7^2}}$</p>
+<p>$B=\dfrac{\sqrt{3^2\times 5}}{\sqrt{2^4\times 7^2}}$</p>
+<p>$B=\dfrac{3\sqrt{5}}{2^2\times 7}$</p>
+<p>$B=\dfrac{3\sqrt{5}}{4\times 7}$</p>
+<p>$B=\dfrac{3\sqrt{5}}{28}$</p>
+<p>$B=\dfrac{3}{28}\sqrt{5}$</p>
+</li>
+<li>
+<p>$C=\dfrac{\sqrt{448}}{\sqrt{21}}$</p>
+<p>On décompose les radicandes en produit de facteurs premiers :</p>
+<p>$C=\dfrac{\sqrt{2^6\times 7}}{\sqrt{3\times 7}}$</p>
+<p>$C=\dfrac{\sqrt{2^6\times 7}}{\sqrt{3\times 7}}$</p>
+<p>$C=\dfrac{\sqrt{2^6}\times \sqrt{7}}{\sqrt{3}\times \sqrt{7}}$</p>
+<p>$C=\dfrac{2^3\times \sqrt{7}}{\sqrt{3}\times \sqrt{7}}$</p>
+<p>$C=\dfrac{2^3}{\sqrt{3}}$</p>
+<p>$C=\dfrac{8}{\sqrt{3}}$</p>
+<p>On multiple le numérateur et le dénominateur par $\sqrt{3}$ pour ne plsu avoir de radical au dénominateur :</p>
+<p>$C=\dfrac{8\sqrt{3}}{\sqrt{3}\times \sqrt{3}}$</p>
+<p>$C=\dfrac{8\sqrt{3}}{3}$</p>
+<p>$C=\dfrac{8}{3}\sqrt{3}$</p>
+</li>
+</ul>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>
+      Voici une formule de géométrie : $$\mathcal{V}=\frac{\mathcal{B}\times
+      h}{3}.$$
+    </p>
+<ol>
+<li>De quelle formule s'agit-il ?</li>
+<li>
+        Sachant que $\mathcal{V}=12$ et $h=5$, exprimer $\mathcal{B}$ en fonction
+        de $h.$
+      </li>
+</ol>
+</div>
+<div class="solution">
+<ol>
+<li>
+<p>
+          C'est la formule du calcul du volume d'une pyramide ou d'un cône de
+          révolution.
+        </p>
+<ul>
+<li>
+            $\mathcal{V}$ est le volume de la pyramide ou du cône de révolution.
+          </li>
+<li>
+            $\mathcal{B}$ est l'aire de la base de la pyramide ou du cône de
+            révolution.
+          </li>
+<li>$h$ est la hauteur de la pyramide ou du cône de révolution.</li>
+</ul>
+</li>
+<li>
+<p>
+          On a $\mathcal{V}=12$ et $h=5$, d'où $$12=\frac{\mathcal{B}\times
+          5}{3}.$$
+        </p>
+<p>Ou encore $$12=\frac{5\mathcal{B}}{3}.$$</p>
+<p>
+          On multiplie par $3$ de chaque côté de l'égalité : $$12\times
+          3=5\mathcal{B}.$$
+        </p>
+<p>On simplifie : $$36=5\mathcal{B}.$$</p>
+<p>
+          On divise par $5$ de chaque côté de l'égalité :
+          $$\frac{36}{5}=\mathcal{B}.$$
+        </p>
+<p>Donc $$\mathcal{B}=\frac{36}{5}=7+\frac{1}{5}.$$</p>
+</li>
+</ol>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>Voici une formule de géométrie : $$\mathcal{S}=4\pi r^2.$$</p>
+<ol>
+<li>De quelle formule s'agit-il ?</li>
+<li>Exprimer $r$ en fonction de $\mathcal{S}.$</li>
+</ol>
+</div>
+<div class="solution">
+<ol>
+<li>
+<p>C'est la formule du calcul de l'aire d'une sphère de rayon $r$.</p>
+<ul>
+<li>$\mathcal{S}$ est l'aire de la sphère de rayon $r$.</li>
+<li>$r$ est le rayon de la sphère.</li>
+</ul>
+</li>
+<li>
+<p>
+          On a $\mathcal{S}=4\pi r^2$, d'où $$\frac{\mathcal{S}}{4\pi}=r^2.$$
+        </p>
+<p>Ou encore $$\sqrt{\frac{\mathcal{S}}{4\pi}}=r.$$</p>
+<p>
+          Donc
+          $$r=\sqrt{\frac{\mathcal{S}}{4\pi}}=\frac{\sqrt{\mathcal{S}}}{2\sqrt{\pi}}.$$
+        </p>
+</li>
+</ol>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>Voici une formule de géométrie : $$\mathcal{A}=\frac{(a+b)h}{2}.$$</p>
+<ol>
+<li>De quelle formule s'agit-il ?</li>
+<li>
+        Sachant que $\mathcal{h}=3$ et $b=5$, exprimer $a$ en fonction de
+        $\mathcal{A}.$
+      </li>
+</ol>
+</div>
+<div class="solution">
+<ol>
+<li>
+<p>C'est la formule du calcul de l'aire d'un trapèze.</p>
+<ul>
+<li>$\mathcal{A}$ est l'aire du trapèze.</li>
+<li>$a$ et $b$ sont les longueurs des deux bases du trapèze.</li>
+<li>$h$ est la hauteur du trapèze.</li>
+</ul>
+</li>
+<li>
+<p>
+          On a $\mathcal{A}=\frac{(a+b)h}{2}$, d'où
+          $$\mathcal{A}=\frac{(a+5)\times 3}{2}.$$
+        </p>
+<p>Ou encore $$\mathcal{A}=\frac{3a+15}{2}.$$</p>
+<p>
+          On multiplie par $2$ de chaque côté de l'égalité :
+          $$2\mathcal{A}=3a+15.$$
+        </p>
+<p>
+          On soustrait $15$ de chaque côté de l'égalité :
+          $$2\mathcal{A}-15=3a.$$
+        </p>
+<p>
+          On divise par $3$ de chaque côté de l'égalité :
+          $$\frac{2\mathcal{A}-15}{3}=a.$$
+        </p>
+<p>Donc $$a=\frac{2\mathcal{A}-15}{3}.$$</p>
+</li>
+</ol>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>Voici une formule de géométrie : $$\mathcal{S}=2\pi r h + 2\pi r^2.$$</p>
+<ol>
+<li>De quelle formule s'agit-il ?</li>
+<li>Sachant que $r=3$, exprimer $h$ en fonction de $\mathcal{S}$</li>
+</ol>
+</div>
+<div class="solution">
+<ol>
+<li>
+<p>
+          C'est la formule du calcul de l'aire de la surface totale d'un
+          cylindre.
+        </p>
+<ul>
+<li>$\mathcal{S}$ est l'aire de la surface totale du cylindre.</li>
+<li>$r$ est le rayon de la base du cylindre.</li>
+<li>$h$ est la hauteur du cylindre.</li>
+<li>
+            $2\pi r h$ est l'aire du rectangle qui forme la surface latérale du
+            cylindre.
+          </li>
+<li>
+            $2\pi r^2$ est l'aire totale des disques qui forment les deux bases
+            du cylindre.
+          </li>
+</ul>
+</li>
+<li>
+<p>
+          On a $r=3$, d'où $$\mathcal{S}=2\pi \times 3\times h + 2\pi\times
+          3^2.$$
+        </p>
+<p>Ou encore $$\mathcal{S}=6\pi h + 18\pi.$$</p>
+<p>
+          On isole $h$ en soustrayant $18\pi$ de chaque côté de l'égalité :
+          $$\mathcal{S}-18\pi=6\pi h.$$
+        </p>
+<p>
+          On divise par $6\pi$ de chaque côté de l'égalité :
+          $$\frac{\mathcal{S}-18\pi}{6\pi}=h.$$
+        </p>
+<p>Donc $$h=\frac{\mathcal{S}-18\pi}{6\pi}.$$</p>
+<p>Que l'on peut simplifier en : $$h=\frac{\mathcal{S}}{6\pi}-3.$$</p>
+</li>
+</ol>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>
+      Voici une formule de géométrie : $$\mathcal{S}=2(\ell h+\ell p+h p).$$
+    </p>
+<ol>
+<li>De quelle formule s'agit-il ?</li>
+<li>
+        Sachant que $\mathcal{S}=12$ et $p=3$, exprimer $\ell$ en fonction de
+        $h.$
+      </li>
+</ol>
+</div>
+<div class="solution">
+<ol>
+<li>
+<p>
+          C'est la formule du calcul de l'aire de la surface totale d'un pavé
+          droit.
+        </p>
+<ul>
+<li>$\mathcal{S}$ est l'aire de la surface totale du pavé droit.</li>
+<li>$\ell$ est la largeur du pavé droit.</li>
+<li>$h$ est la hauteur du pavé droit.</li>
+<li>$p$ est la profondeur du pavé droit.</li>
+<li>
+            $\ell h$ est l'aire du rectangle qui forme la face avant du pavé
+            droit.
+          </li>
+<li>
+            $\ell p$ est l'aire du rectangle qui forme la face du dessus du pavé
+            droit.
+          </li>
+<li>
+            $h p$ est l'aire du rectangle qui forme la face latérale du pavé
+            droit.
+          </li>
+</ul>
+</li>
+<li>
+<p>
+          On a $\mathcal{S}=12$ et $p=3$, d'où $$12=2(\ell h+\ell\times 3+h
+          \times 3).$$
+        </p>
+<p>Ou encore $$12=2(\ell h+3\ell+3h).$$</p>
+<p>
+          On divise par $2$ de chaque côté de l'égalité : $$\frac{12}{2}=\ell
+          h+3\ell+3h.$$
+        </p>
+<p>On simplifie : $$6=\ell h+3\ell+3h.$$</p>
+<p>
+          On isole $\ell$ en soustrayant $3h$ de chaque côté de l'égalité :
+          $$6-3h=\ell h+3\ell.$$
+        </p>
+<p>On factorise $\ell$ : $$6-3h=\ell(h+3).$$</p>
+<p>
+          On divise par $h+3$ de chaque côté de l'égalité :
+          $$\frac{6-3h}{h+3}=\ell.$$
+        </p>
+<p>Donc $$\ell=\frac{6-3h}{h+3}.$$</p>
+</li>
+</ol>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>
+      Voici une formule de géométrie : $$\mathcal{S}=\pi r\sqrt{r^2+h^2}+\pi
+      r^2.$$
+    </p>
+<ol>
+<li>De quelle formule s'agit-il ?</li>
+<li>Sachant que $r=3$, exprimer $h$ en fonction de $\mathcal{S}.$</li>
+</ol>
+</div>
+<div class="solution">
+<ol>
+<li>
+<p>
+          C'est la formule du calcul de l'aire de la surface totale d'un cône.
+        </p>
+<ul>
+<li>$\mathcal{S}$ est l'aire de la surface totale du cône.</li>
+<li>$r$ est le rayon de la base du cône.</li>
+<li>$h$ est la hauteur du cône.</li>
+<li>
+            $\pi r\sqrt{r^2+h^2}$ est l'aire de la surface latérale du cône.
+          </li>
+<li>
+            $\pi r^2$ est l'aire totale du disque qui forme la base du cône.
+          </li>
+</ul>
+</li>
+<li>
+<p>
+          On a $r=3$, d'où $$\mathcal{S}=\pi\times 3\times \sqrt{3^2+h^2}+\pi
+          \times 3^2.$$
+        </p>
+<p>Ou encore $$\mathcal{S}=3\pi \sqrt{9+h^2}+9\pi.$$</p>
+<p>
+          On isole $\sqrt{9+h^2}$ en soustrayant $9\pi$ de chaque côté de
+          l'égalité : $$\mathcal{S}-9\pi=3\pi \sqrt{9+h^2}.$$
+        </p>
+<p>
+          On divise par $3\pi$ de chaque côté de l'égalité :
+          $$\frac{\mathcal{S}-9\pi}{3\pi}=\sqrt{9+h^2}.$$
+        </p>
+<p>
+          On élève au carré de chaque côté de l'égalité :
+          $$\left(\frac{\mathcal{S}-9\pi}{3\pi}\right)^2=9+h^2.$$
+        </p>
+<p>On simplifie : $$\frac{(\mathcal{S}-9\pi)^2}{9\pi^2}=9+h^2.$$</p>
+<p>
+          On isole $h^2$ en soustrayant $9$ de chaque côté de l'égalité :
+          $$\frac{(\mathcal{S}-9\pi)^2}{9\pi^2}-9=h^2.$$
+        </p>
+<p>
+          On prend la racine carrée de chaque côté de l'égalité :
+          $$\sqrt{\frac{(\mathcal{S}-9\pi)^2}{9\pi^2}-9}=h.$$
+        </p>
+<p>
+          On a donc $$h=\sqrt{\frac{(\mathcal{S}-9\pi)^2}{9\pi^2}-9}.$$
+        </p>
+</li>
+</ol>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>Montrer que $\sqrt{11-6\sqrt{2}}=3-\sqrt{2}.$</p>
+</div>
+<div class="solution">
+<p>On pose $A=\sqrt{11-6\sqrt{2}}$.</p>
+<p>$A^2=11-6\sqrt{2}$</p>
+<p>On pose $B=3-\sqrt{2}.$</p>
+<p>$B^2=(3-\sqrt{2})^2$</p>
+<p>$B^2=9-6\sqrt{2}+2$</p>
+<p>$B^2=11-6\sqrt{2}$</p>
+<p>$B^2=A^2$</p>
+<p>$B=A$ car $A$ et $B$ sont positifs.</p>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<ol>
+<li>Développer puis réduire $$A=(x-7)(x+9).$$</li>
+<li>Montrer que $$A=(x+1)^2-64.$$</li>
+<li>
+        Calculer $A$ :
+        <ul class="responsive-list">
+<li>pour $x=-9~;$</li>
+<li>pour $x=-1~;$</li>
+<li>pour $x=0$.</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="solution">
+<ol>
+<li>
+<p>
+          On développe en utilisant la double-distributivité : $$A=x\times
+          x+x\times 9+(-7)\times x+(-7)\times 9.$$
+        </p>
+<p>On réduit les produits : $$A=x^2+9x-7x-63.$$</p>
+<p>On réduit les termes semblables : $$A=x^2+2x-63.$$</p>
+</li>
+<li>
+<p>On développe l'expression en utilisant une identité remarquable :</p>
+        $$\begin{align*} (x+1)^2-64 &amp;= (x^2+2\times x \times 1+1^2)-64\\ &amp;=
+        x^2+2x+1-64\\ &amp;= x^2+2x-63. \end{align*} $$
+        <p>Donc</p>
+        $$A=(x+1)^2-64.$$
+      </li>
+<li>
+<ul>
+<li>
+<p>Pour $x=-9$, on utilise la première expression de $A$.</p>
+<p>En effet, il suffit de voir que $x=-9$ annule $x+9.$</p>
+            $$ \begin{align*} A &amp;= (-9-7)(-9+9)\\ &amp;= (-9-7)\times 0\\ &amp;= 0.
+            \end{align*} $$
+            <p>Donc $A=0$ pour $x=-9.$</p>
+</li>
+<li>
+<p>Pour $x=-1$, on utilise la deuxième expression de $A$.</p>
+<p>En effet, il suffit de voir que $x=-1$ annule $x+1.$</p>
+            $$ \begin{align*} A &amp;= (-1+1)^2-64\\ &amp;= 0^2-64\\ &amp;= -64.
+            \end{align*} $$
+            <p>Donc $A=-64$ pour $x=-1.$</p>
+</li>
+<li>
+<p>
+              Pour $x=0$, on utilise l'expression développée réduite de $A$
+              trouvée à la question 1.
+            </p>
+            $$ \begin{align*} A &amp;= 0^2+2\times 0-63\\ &amp;= -63. \end{align*} $$
+            <p>Donc $A=-63$ pour $x=0.$</p>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<ol>
+<li>Développer puis réduire $$A=(x+2)^2+(x-3)^2.$$</li>
+<li>Montrer que $$A=2\left(x-\frac{1}{2}\right)^2+\frac{25}{2}.$$</li>
+<li>
+          Calculer $A$ :
+          <ul class="responsive-list">
+<li>pour $x=-2~;$</li>
+<li>pour $x=\frac{1}{2}~;$</li>
+<li>pour $x=0$.</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="solution">
+<ol>
+<li>
+<p>
+            On développe en utilisant des identités remarquables : $$A=x^2+2\times x
+            \times 2+2^2+x^2-2\times x \times 3+3^2.$$
+          </p>
+<p>On réduit les produits : $$A=x^2+4x+4+x^2-6x+9.$$</p>
+<p>On réduit les termes semblables : $$A=2x^2-2x+13.$$</p>
+</li>
+<li>
+<p>On développe l'expression en utilisant une identité remarquable :</p>
+          $$\begin{align*} 2\left(x-\frac{1}{2}\right)^2+\frac{25}{2} &amp;=
+          2\left(x^2+2\times x \times
+          \frac{1}{2}+\left(\frac{1}{2}\right)^2\right)+\frac{25}{2}\\ &amp;=
+          2\left(x^2+x+\frac{1}{4}\right)+\frac{25}{2}\\ &amp;=
+          2x^2+2x+\frac{1}{2}+\frac{25}{2}\\ &amp;= 2x^2-2x+13. \end{align*} $$
+          <p>Donc</p>
+          $$A=2\left(x-\frac{1}{2}\right)^2+\frac{25}{2}.$$
+        </li>
+<li>
+<ul>
+<li>
+<p>Pour $x=-2$, on utilise la première expression de $A$.</p>
+<p>En effet, il suffit de voir que $x=-2$ annule $x+2.$</p>
+              $$ \begin{align*} A &amp;= (-2+2)^2+(-2-3)^2\\ &amp;= 0^2+(-5)^2\\ &amp;= 25.
+              \end{align*} $$
+              <p>Donc $A=25$ pour $x=-2.$</p>
+</li>
+<li>
+<p>
+                Pour $x=\frac{1}{2}$, on utilise la deuxième expression de $A$.
+              </p>
+<p>
+                En effet, il suffit de voir que $x=\frac{1}{2}$ annule
+                $x-\frac{1}{2}.$
+              </p>
+              $$ \begin{align*} A &amp;=
+              2\left(\frac{1}{2}-\frac{1}{2}\right)^2+\frac{25}{2}\\ &amp;= 2\times
+              0^2+\frac{25}{2}\\ &amp;= \frac{25}{2}. \end{align*} $$
+              <p>Donc $A=\frac{25}{2}$ pour $x=\frac{1}{2}.$</p>
+</li>
+<li>
+<p>
+                Pour $x=0$, on utilise l'expression développée réduite de $A$
+                trouvée à la question 1.
+              </p>
+              $$ \begin{align*} A &amp;= 2\times 0^2-2\times 0+13\\ &amp;= 13.
+              \end{align*} $$
+              <p>Donc $A=13$ pour $x=0.$</p>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<ol>
+<li>Développer puis réduire $$A=(2x+3)(4x-5).$$</li>
+<li>Montrer que $$A=8\left(x+\frac{1}{8}\right)^2-\frac{121}{8}.$$</li>
+<li>
+        Calculer $A$ :
+        <ul class="responsive-list">
+<li>pour $x=\frac{5}{4}~;$</li>
+<li>pour $x=-\frac{1}{8}~;$</li>
+<li>pour $x=1$.</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="solution">
+<ol>
+<li>
+<p>
+          On développe en utilisant la double-distributivité : $$A=2x\times
+          4x+2x\times (-5)+3\times 4x+3\times (-5).$$
+        </p>
+<p>On réduit les produits : $$A=8x^2-10x+12x-15.$$</p>
+<p>On réduit les termes semblables : $$A=8x^2+2x-15.$$</p>
+</li>
+<li>
+<p>On développe l'expression en utilisant une identité remarquable :</p>
+        $$\begin{align*} 8\left(x+\frac{1}{8}\right)^2-\frac{121}{8} &amp;=
+        8\left(x^2+2\times x \times
+        \frac{1}{8}+\left(\frac{1}{8}\right)^2\right)-\frac{121}{8}\\ &amp;=
+        8\left(x^2+\frac{1}{4}+\frac{1}{64}\right)-\frac{121}{8}\\ &amp;=
+        8x^2+2+\frac{1}{8}-\frac{121}{8}\\ &amp;= 8x^2+2x-15. \end{align*} $$
+        <p>Donc</p>
+        $$A=8\left(x+\frac{1}{8}\right)^2-\frac{121}{8}.$$
+      </li>
+<li>
+<ul>
+<li>
+<p>
+              Pour $x=\frac{5}{4}$, on utilise la première expression de $A$.
+            </p>
+<p>
+              En effet, il suffit de voir que $x=\frac{5}{4}$ annule $4x-5.$
+            </p>
+            $$ \begin{align*} A &amp;= (2\times \frac{5}{4}+3)(4\times
+            \frac{5}{4}-5)\\ &amp;= (2\times \frac{5}{4}+3)(5-5)\\ &amp;= (2\times
+            \frac{5}{4}+3)\times 0\\ &amp;= 0. \end{align*} $$
+            <p>Donc $A=0$ pour $x=\frac{5}{4}.$</p>
+</li>
+<li>
+<p>
+              Pour $x=-\frac{1}{8}$, on utilise la deuxième expression de $A$.
+            </p>
+<p>
+              En effet, il suffit de voir que $x=-\frac{1}{8}$ annule
+              $x+\frac{1}{8}.$
+            </p>
+            $$ \begin{align*} A &amp;=
+            8\left(-\frac{1}{8}+\frac{1}{8}\right)^2-\frac{121}{8}\\ &amp;= 8\times
+            0^2-\frac{121}{8}\\ &amp;= -\frac{121}{8}. \end{align*} $$
+            <p>Donc $A=-\frac{121}{8}$ pour $x=-\frac{1}{8}.$</p>
+</li>
+<li>
+<p>
+              Pour $x=1$, on utilise l'expression développée réduite de $A$
+              trouvée à la question 1.
+            </p>
+            $$ \begin{align*} A &amp;= 8\times 1^2+2\times 1-15\\ &amp;= 8+2-15\\ &amp;= -5.
+            \end{align*} $$
+            <p>Donc $A=-5$ pour $x=1.$</p>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>Résoudre l'équation suivante : $$7(x+3)=9x-5.$$</p>
+</div>
+<div class="solution">
+<p>On commence par développer le membre de gauche.</p>
+    $$\begin{align*} 7(x+3)&amp;=9x-5\\ 7x+21&amp;=9x-5 \end{align*}$$
+    <p>On regroupe les termes en $x$ dans le membre de gauche.</p>
+    $$\begin{align*} 7x+21&amp;=9x-5\\ 7x-9x&amp;=-5-21\\ -2x&amp;=-26 \end{align*}$$
+    <p>On divise par $-2$.</p>
+    $$\begin{align*} -2x&amp;=-26\\ \frac{-2x}{-2}&amp;=\frac{-26}{-2}\\ x&amp;=13
+    \end{align*}$$
+    <p>On vérifie que $x=13$ est bien solution de l'équation.</p>
+<p>D'une part, $$7(x+3)=7(13+3)=7\times 16=112.$$</p>
+<p>D'autre part, $$9x-5=9\times 13-5=117-5=112.$$</p>
+<p>On a bien $7(x+3)=9x-5$ pour $x=13$.</p>
+<p>Donc $x=13$ est bien solution de l'équation.</p>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>Résoudre l'équation suivante : $$(4x+3)(7x-5)=0.$$</p>
+</div>
+<div class="solution">
+<p>On reconnait une équation produit-nul.</p>
+<p>Or un produit est nul si et seulement si l'un des facteurs est nul.</p>
+<p>Donc $(4x+3)(7x-5)=0$ si et seulement si $4x+3=0$ ou $7x-5=0$.</p>
+<p>On résout chacune de ces équations.</p>
+    $$\begin{align*} 4x+3&amp;=0&amp;&amp;\text{ ou }&amp;7x-5&amp;=0\\ 4x&amp;=-3&amp;&amp;\text{ ou
+    }&amp;&amp;7x&amp;=5\\ x&amp;=-\frac{3}{4}&amp;&amp;&amp;x&amp;=\frac{5}{7} \end{align*}$$
+    <p>
+      Donc les solutions de l'équation sont $-\frac{3}{4}$ et $\frac{5}{7}$.
+    </p>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>Résoudre l'équation suivante : $$\frac{7x+3}{4x-5}=0.$$</p>
+</div>
+<div class="solution">
+<p>On reconnait une équation quotient-nul.</p>
+<p>Or un quotient est nul si et seulement si le numérateur est nul et le
+      dénominateur non nul.</p>
+<p>Donc $\frac{7x+3}{4x-5}=0$ si et seulement si $7x+3=0$ et $4x-5\neq
+      0$.</p>
+<p>On détermine les valeurs interdites.</p>
+        $$\begin{align*} 4x-5&amp;=0\\ 4x&amp;=5\\ x&amp;=\frac{5}{4} \end{align*}$$
+        <p>Donc $x=\frac{5}{4}$ est valeur interdite.</p>
+<p>On résout l'équation sans le dénominateur.</p>
+        $$\begin{align*} 7x+3&amp;=0\\ 7x&amp;=-3\\ x&amp;=-\frac{3}{7} \end{align*}$$
+        <p>$-\frac{3}{7}$ n'est pas valeur interdite.</p>
+<p>Donc les solutions de l'équation sont $-\frac{3}{7}$.</p>
+</div>
+</div>
+</main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>
