@@ -143,7 +143,7 @@
     <p>Les racines d'un polynôme sont les solutions de l'équation $f(x)=0$ donc ce sont aussi les abscisses des points d'intersection de la courbe de la fonction $f$ avec l'axe des abscisses.</p>
 </div>
 <div class="exemple">
-    <p>Considérons la fonction $f$ définie par $$f(x)=\num{0.5}x^2-\num{0.5}x-6.$$</p>
+    <p>Considérons la fonction $f$ définie par $$f(x)=\num{0.5}x^2-\num{0.5}x-3.$$</p>
     <div id="figure1" class="figure">
         <svg
           id="figure1"
@@ -216,16 +216,20 @@
 </div>
 <div class="exemple">
     <p>La fonction trinôme $f$ définie par $$f(x)=2x^2+3x-5$$ peut s'écrire sous la forme factorisée
-        $$f(x)=2(x-1)\left(x+\num{2.5}\right).$$
-        En effet, en développant on obtient&nbsp;:</p>
-        $$\begin{align*}
-        2(x-1)\left(x+\num{2.5}\right)&=2\left(x^2+\num{2.5}x-x-\num{2.5}\right)\\
-        &=2(x^2+\num{1.5}x-\num{2.5})\\
-        &=2x^2+3x-5\\
-        &=f(x).
-        \end{align*}$$
-        <p>De plus $$f(x)=2(x-1)\left(x-(-\num{2.5})\right)$$ donc $1$ et $-\num{2.5}$ sont les racines de $f(x).$</p>
+        $$f(x)=2(x-1)\left(x+\num{2.5}\right),$$
+        ou encore
+        $$f(x)=2(x-1)\left(x-(-\num{2.5})\right).$$ Donc $1$ et $-\num{2.5}$ sont les racines de $f(x).$</p>
 </div>
+<div class="exemple">
+    <p>Considérons la fonction $f$ définie par $$f(x)=(2x-6)(5x+10).$$ Elle n'est pas sous la forme $a(x-x_1)(x-x_2)$. Pour déterminer les racines, il faut résoudre l'équation produit-nul suivante : $$(2x-6)(5x+10)=0.$$</p>
+    $$\begin{align*}
+      2x-6&=0&\text{ ou }&&5x+10&=0\\
+      2x&=6&\text{ ou }&&5x&=-10\\
+      x&=\dfrac{6}{2}&\text{ ou }&&x&=\dfrac{-10}{5}\\
+      x&=3&\text{ ou }&&x&=-2
+    \end{align*}$$
+    <p>Les racines de $f(x)$ sont $3$ et $-2.$</p>
+  </div>
 <h2>Signe d'une fonction polynôme factorisée</h2>
 <div class="propriete">
     <p>Soit $f$ une fonction trinôme sous forme factorisée
@@ -355,6 +359,13 @@
                             </tr>
                         </table>
             </ul>
+</div>
+<div class="remarque">
+    <p>On peut utiliser le moyen mnémotechnique suivant&nbsp;:</p>
+    <ul>
+        <li>Si \( a > 0 \), alors la courbe de la fonction est souriante&nbsp;: $$a > 0 \Rightarrow \overset{.\,.}{\smile}$$</li>
+        <li>Si \( a < 0 \), alors la courbe de la fonction est triste&nbsp;: $$a < 0 \Rightarrow \overset{.\,.}{\frown}$$</li>
+    </ul>
 </div>
 <div class="exemple">
     <p>Considérons la fonction $g$ définie par&nbsp;: $$g(x)=2(1-x)(x+\num{2.5}).$$
