@@ -37027,7 +37027,7 @@ var convertirKatexEnMathML = function () {
     }],
     // • rendering keys, e.g.:
     throwOnError: false,
-    ignoredTags: ["svg"],
+    //ignoredTags: ["svg"],
     output: "html" // Compatibilité avec Apple notamment
   });
 };
@@ -37064,13 +37064,54 @@ var ajouterSommaire = function () {
   }
 };
 var openAvantPrint = function () {
+  var clonedNodes = [];
   window.onbeforeprint = function () {
+    // Ouvrir tous les éléments <details>
     const detailsElements = document.querySelectorAll("details");
     detailsElements.forEach(details => {
       details.setAttribute("open", "");
     });
+
+    // // Demander à l'utilisateur combien d'exemplaires il souhaite
+    // //var numberOfCopies = prompt("Combien d'exemplaires souhaitez-vous imprimer ?", "1");
+    // var numberOfCopies = 3;
+    // // Vérifiez si la valeur saisie est un nombre valide
+    // if (isNaN(numberOfCopies) || numberOfCopies <= 0) {
+    //   alert("Veuillez entrer un nombre valide d'exemplaires.");
+    //   return;
+    // }
+
+    // // Dupliquer le contenu du body en fonction du nombre d'exemplaires spécifié
+    // for (let i = 0; i < numberOfCopies - 1; i++) {
+    //   var bodyContent = Array.from(document.body.childNodes);
+    //   bodyContent.forEach(node => {
+    //     var clone = node.cloneNode(true);
+
+    //     // Insérer un div pour forcer un saut de page avant le clone
+    //     var breakElement = document.createElement("div");
+    //     breakElement.classList.add("page-break");
+    //     document.body.appendChild(breakElement);
+
+    //     document.body.appendChild(clone);
+    //     clonedNodes.push(clone); // Stocker une référence aux noeuds clonés pour les supprimer plus tard
+    //   });
+    // }
+  };
+
+  window.onafterprint = function () {
+    // Supprimer les noeuds clonés après l'impression
+    clonedNodes.forEach(node => {
+      document.body.removeChild(node);
+    });
+    // Supprimer les div de saut de page
+    var breakElements = document.querySelectorAll(".page-break");
+    breakElements.forEach(breakElement => {
+      //document.body.removeChild(breakElement);
+    });
+    clonedNodes = []; // Vider la liste des noeuds clonés
   };
 };
+
 var adapterPositionDropdown = function (event) {
   var dropdownContent = event.currentTarget.querySelector(".dropdown-content");
 
@@ -39800,7 +39841,7 @@ function printQuiz(nextQuestions) {
   let solution = "";
   for (let i = 0; i < nextQuestions.length; i++) {
     quiz += "\n    <div class=\"question\">\n<strong>Question ".concat(i + 1, " : </strong>").concat(nextQuestions[i].question, "\n</div>\n<form class=\"quiz-choices\">\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[0], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[1], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[2], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[3], "</label>\n    </div>\n</form>\n");
-    solution += "\n<strong>Question ".concat(i + 1, " : </strong>").concat(nextQuestions[i].answers[nextQuestions[i].correctAnswer], "\n");
+    solution += "\n<div class=\"solution-quiz\">\n<strong>Question ".concat(i + 1, " : </strong>").concat(nextQuestions[i].answers[nextQuestions[i].correctAnswer], "\n</div>\n    ");
   }
   // On créé un élément div pour contenir le quiz
   const quizElement = document.createElement("div");
@@ -39818,7 +39859,7 @@ function printQuiz(nextQuestions) {
   // quizElement.style.display = "none";
   // On ajoute l'élément div au body
   // On ajoute les solutions à l'élément div
-  quizElement.innerHTML += "\n<div class=\"titrePrintQuiz-date\">\n  <div class=\"titrePrintQuiz\">Quiz - Solutions</div>\n  <div class=\"date\">".concat(new Date().toLocaleDateString(), "</div>\n</div>\n  ") + solution;
+  quizElement.innerHTML += "\n<div class=\"titrePrintQuiz-date solution-quiz\">\n  <div class=\"titrePrintQuiz\">Quiz - Solutions</div>\n  <div class=\"date\">".concat(new Date().toLocaleDateString(), "</div>\n</div>\n  ") + solution;
   document.body.appendChild(quizElement);
   mettreEnFormeQuiz();
 }
