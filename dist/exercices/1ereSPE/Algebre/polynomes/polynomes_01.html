@@ -116,8 +116,7 @@
     <header>
       <h1>Exercices</h1>
     </header>
-    <main><!-- exercice1-content.html -->
-<div class="exercice">
+    <main><div class="exercice">
     <div class="enonce">
         <ol>
             <li>Soit $f$ une fonction polynôme du second degré définie sur $\mathbb{R}$ de la façon suivante&nbsp;:
@@ -436,7 +435,87 @@
                     $$S=\left]-\frac{4}{3};-1\right[$$
     </div>
 </div>
-</div></main>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>Soit \( f \) la fonction définie sur \( \mathbb{R} \) par&nbsp;:</p>
+        \[
+        f(x) = (5x-2)(x+6) - (x+6)(3x+3)
+        \]
+        Résoudre l'inéquation \( f(x) \geq 0 \)
+        <div class="solution">
+            <p>Commençons par factoriser \( f(x) \)</p>
+            \[
+            \begin{align*}
+            f(x) &= (5x-2)(x+6) - (x+6)(3x+3) \\
+            &= (x+6)\left[(5x-2) - (3x+3)\right] \\
+            &= (x+6)(2x-5)
+            \end{align*}
+            \]
+            <p>Déterminons les racines de \( f(x) \).</p>
+            <p>Autrement dit, déterminons les solutions de l'équation&nbsp;:</p>
+            \[
+            (x+6)(2x-5) = 0
+            \]
+            <p>C'est une équation produit-nul.</p>
+            <p>Or un produit est nul si et seulement si l'un de ses facteurs est nul.</p>
+            \[
+            \begin{align*}
+            x+6 &= 0 &\text{ ou }&& 2x-5 &= 0\\
+            x &= -6     &&&       2x &= 5 \\
+                       &&&       x &= \frac{5}{2}
+            \end{align*}
+            \]
+            <table class="tableausigne">
+                <tr>
+                    <td>\( x \)</td>
+                    <td>\( -\infty \)</td>
+                    <td></td>
+                    <td>\( -6 \)</td>
+                    <td></td>
+                    <td>\( \frac{5}{2} \)</td>
+                    <td></td>
+                    <td>\( +\infty \)</td>
+                </tr>
+                <tr>
+                    <td>\( x+6 \)</td>
+                    <td></td>
+                    <td>\( - \)</td>
+                    <td>\( 0 \)</td>
+                    <td>\( + \)</td>
+                    <td></td>
+                    <td>\( + \)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>\( 2x-5 \)</td>
+                    <td></td>
+                    <td>\( - \)</td>
+                    <td></td>
+                    <td>\( - \)</td>
+                    <td>\( 0 \)</td>
+                    <td>\( + \)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>\( f(x) \)</td>
+                    <td></td>
+                    <td>\( + \)</td>
+                    <td>\( 0 \)</td>
+                    <td>\( - \)</td>
+                    <td>\( 0 \)</td>
+                    <td>\( + \)</td>
+                    <td></td>
+                </tr>
+            </table>
+            <p>L'ensemble des solutions de \( f(x) \geq 0 \) est&nbsp;:</p>
+            \[
+            S = \left] -6~;~+\infty \right] \cup \left[ \frac{5}{2}~;~+\infty \right[
+            \]
+        </div>
+    </div>
+</div>
+</main>
     <footer>
       Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
       Henry Bergson à Angers.<br />
