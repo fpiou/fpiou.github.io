@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Polynomes_10</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+      integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
+      crossorigin="anonymous"
+    />
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+      integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print2colonnes.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <header>
+      <h1>Exercices</h1>
+    </header>
+    <main><div class="exercice">
+    <div class="enonce">
+        <p>La somme des carrés de trois entiers naturels consécutifs est égale à 434.<br>
+            Déterminer ces trois entiers naturels. 
+            </p>
+        <div class="solution">
+            <p>Notons $x$ le plus petit des trois nombres.</p>
+            <p>Le deuxième nombre est $$x+1$$ et le troisième est $$x+2.$$</p>
+            <p>On peut traduire l'énoncé par l'équation suivante : $$x^2+(x+1)^2+(x+2)^2=434.$$</p>
+            <p>En développant, on obtient $$3x^2+6x+5=434.$$</p>
+            <p>En soustrayant 434 des deux côtés, on obtient $$3x^2+6x-429=0.$$</p>
+            <p>On peut simplifier par $3$ l'équation, ce qui donne : $$x^2+2x-143=0.$$</p>
+            <p>On calcule le discriminant $$\Delta=2^2-4\times 1\times (-143)=576.$$</p>
+            <p>On décompose le discriminant en produit de facteurs premiers : $$\Delta=2^6\times 3^2.$$</p>
+            <p>On calcule la racine carrée de $\Delta$ : $$\sqrt{\Delta}=24.$$</p>
+            <p>On en déduit que les solutions de l'équation sont : $$x_1=\frac{-2+24}{2}=11$$ et $$x_2=\frac{-2-24}{2}=-13.$$</p>
+            <p>Comme $x$ est un entier naturel, on en déduit que $x=11$.</p>
+            <p>Les trois entiers naturels consécutifs sont donc $11$, $12$ et $13$.</p>
+        </div>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>La somme d'un nombre entier et de son carré vaut $272.$<br>
+        Déterminer les valeurs possibles de cet entier.</p>
+    </div>
+    <div class="solution">
+        <p>On cherche un entier $x$ tel que $$x+x^2=272.$$</p>
+        <p>On résout l'équation $$x+x^2=272.$$</p>
+        <p>On obtient $$x=16.$$ ou bien $$x=-17.$$</p>
+        <p>Les deux entiers possibles sont donc : </p>
+        <p>$16$ et $-17$.</p>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>Le produit de deux nombres entiers consécutifs est $1056.$<br>
+        Quelles sont les valeurs possibles de ces deux nombres ?
+        </p>
+    </div>
+    <div class="solution">
+        <p>On cherche un entier $x$ tel que $$x(x+1)=1056.$$</p>
+        <p>On développe le membre de gauche :</p>
+        <p>$$x(x+1)=x^2+x.$$</p>
+        <p>On résout l'équation $$x+x^2=1056.$$</p>
+        <p>On obtient $$x=32.$$ ou bien $$x=-33.$$</p>
+        <p>Les deux nombres entiers consécutifs sont donc : </p>
+        <p>$32$ et $33$</p>
+        <p>ou</p>
+        <p>$-33$ et $-32.$</p>
+    </div>
+</div>
+</main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>
