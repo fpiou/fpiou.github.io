@@ -39557,11 +39557,13 @@ function getCorrection(response) {
     }
     // La réponse correcte en cas d'erreur
     if (i == correctAnswerId && i != response) {
-      radios[i].style.background = "rgba(255, 0, 0,0.5)";
+      // radios[i].style.background = "rgba(255, 0, 0,0.5)";
+      radios[i].style.background = "rgba(0, 200, 0, 0.7)";
     }
     // La réponse sélectionnée en cas d'erreur
     if (i == response && response != correctAnswerId) {
-      radios[i].style.background = "rgb(128, 128, 128,0.2)";
+      // radios[i].style.background = "rgb(128, 128, 128,0.2)";
+      radios[i].style.background = "rgba(255, 0, 0,0.5)";
     }
   }
 }
