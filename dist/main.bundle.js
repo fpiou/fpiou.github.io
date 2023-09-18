@@ -36921,7 +36921,7 @@ var insererEntetesBlocsExercices = function () {
   }
 };
 var wrapElementsInReveal = function (parent) {
-  var elements = parent.querySelectorAll("p, .katex-display, table, .figure");
+  var elements = parent.querySelectorAll("p, .katex-display, table, .figure, li");
   for (var i = 0; i < elements.length; i++) {
     elements[i].classList.add("reveal");
     elements[i].addEventListener("click", function () {
@@ -37064,7 +37064,6 @@ var ajouterSommaire = function () {
   }
 };
 var openAvantPrint = function () {
-  var clonedNodes = [];
   window.onbeforeprint = function () {
     // Ouvrir tous les éléments <details>
     const detailsElements = document.querySelectorAll("details");
@@ -37072,16 +37071,17 @@ var openAvantPrint = function () {
       details.setAttribute("open", "");
     });
 
+    // var clonedNodes = [];
     // // Demander à l'utilisateur combien d'exemplaires il souhaite
     // //var numberOfCopies = prompt("Combien d'exemplaires souhaitez-vous imprimer ?", "1");
-    // var numberOfCopies = 3;
+    // var numberOfCopies = 2;
     // // Vérifiez si la valeur saisie est un nombre valide
     // if (isNaN(numberOfCopies) || numberOfCopies <= 0) {
     //   alert("Veuillez entrer un nombre valide d'exemplaires.");
     //   return;
     // }
 
-    // // Dupliquer le contenu du body en fonction du nombre d'exemplaires spécifié
+    // Dupliquer le contenu du body en fonction du nombre d'exemplaires spécifié
     // for (let i = 0; i < numberOfCopies - 1; i++) {
     //   var bodyContent = Array.from(document.body.childNodes);
     //   bodyContent.forEach(node => {
@@ -37100,18 +37100,17 @@ var openAvantPrint = function () {
 
   window.onafterprint = function () {
     // Supprimer les noeuds clonés après l'impression
-    clonedNodes.forEach(node => {
-      document.body.removeChild(node);
-    });
+    // clonedNodes.forEach(node => {
+    //   document.body.removeChild(node);
+    // });
     // Supprimer les div de saut de page
-    var breakElements = document.querySelectorAll(".page-break");
-    breakElements.forEach(breakElement => {
-      //document.body.removeChild(breakElement);
-    });
-    clonedNodes = []; // Vider la liste des noeuds clonés
+    // var breakElements = document.querySelectorAll(".page-break");
+    // breakElements.forEach(breakElement => {
+    //   document.body.removeChild(breakElement);
+    // });
+    // clonedNodes = []; // Vider la liste des noeuds clonés
   };
 };
-
 var adapterPositionDropdown = function (event) {
   var dropdownContent = event.currentTarget.querySelector(".dropdown-content");
 
