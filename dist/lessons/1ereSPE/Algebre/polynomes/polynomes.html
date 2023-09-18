@@ -545,6 +545,64 @@
     où $\alpha$ et $\beta$ sont deux nombres réels.</p>
     </p>
 </div>
+<div class="remarque">
+    <p>$(\alpha~;~\beta)$ correspond aux coordonnées du sommet de la parabole.</p>
+    <div id="figure1" class="figure">
+        <svg
+          id="figure1"
+          viewBox="0 0 160 140"
+          xmlns="http://www.w3.org/2000/svg"
+          class="quadrillage"
+        >
+        <g name="repere1" class="repere" xmin="-2" ymin="-1" xmax="6" ymax ="6" xorigine="0" yorigine="0"></g>
+        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="transparent"></g>
+        <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
+        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="transparent"></g>
+        <g class="label" linkto="J" x="-7" y="-5" style="font-size:0.5rem;">1</g>
+        
+        <g name="c1" class="courbeRepresentative" expression="-0.5(x+1)(x-5)" linkto="repere1" xmin="-2" xmax="7" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+
+        <g name="S" class="point labeled" repere="repere1" x="2" y="4.5" stroke="blue"></g>
+        <g class="label" linkto="S" x="0" y="-12.5" style="width:3rem;font-size:0.5rem;">S(\alpha~;~\beta)</g>
+        <g name="Sx" class="point labeled" repere="repere1" x="2" y="0" stroke="transparent"></g>
+        <g class="label" linkto="Sx" x="-2.5" y="0" style="font-size:0.5rem;color:blue;">\alpha</g>
+        <g name="SSx" class="segment" repere="repere1" linkto="S Sx" style="stroke-dasharray: 1, 1; stroke: blue; stroke-width: 1;"></g>
+        <g name="Sy" class="point labeled" repere="repere1" x="0" y="4.5" stroke="transparent"></g>
+        <g class="label" linkto="Sy" x="-5" y="-5" style="font-size:0.5rem;color:blue;">\beta</g>
+        <g name="SSy" class="segment" repere="repere1" linkto="S Sy" style="stroke-dasharray: 1, 1; stroke: blue; stroke-width: 1"></g>
+    </svg>
+    </div>
+</div>
+<div class="methode">
+    <p>Considérons le polynôme $f(x)=4x^2+3x-7$.</p>
+    <p>Lorsqu'on développe $(x-\alpha)^2$, on obtient :
+        $$(x-\alpha)^2=x^2-2\alpha x+\alpha^2$$
+    </p>
+    <p>Pour déterminer la forme canonique de ce polynôme, il suffit :</p>
+    <ul>
+        <li>De factoriser par $a$ les deux premiers termes&nbsp;:
+        $$f(x)=4\left(x^2+\dfrac{3}{4}x\right)-7$$</li>
+        <li>De mettre en évidence le double produit $-2\alpha x$ dans la parenthèse&nbsp;:
+        $$f(x)=4\left[x^2-2\times\left(-\dfrac{3}{8}\right)x\right]-7$$</li>
+        <li>De compléter le carré en ajoutant $\alpha^2-\alpha^2$ à l'intérieur de la parenthèse&nbsp;:
+        $$f(x)=4\left[x^2-2\times\left(-\dfrac{3}{8}\right)x+\left(-\dfrac{3}{8}\right)^2-\left(-\dfrac{3}{8}\right)^2\right]-7$$</li>
+        <li>On peut maintenant factoriser le trinôme dans la parenthèse&nbsp;:
+        $$f(x)=4\left[\left[x-\left(-\dfrac{3}{8}\right)\right]^2-\left(-\dfrac{3}{8}\right)^2\right]-7$$</li>
+        <li>On sort $-\alpha^2$ de la parenthèse en distribuant le $4$&nbsp;:
+        $$f(x)=4\left[x-\left(-\dfrac{3}{8}\right)\right]^2-4\times\left(-\dfrac{3}{8}\right)^2-7$$</li>
+        <li>On simplifie&nbsp;:
+        $$f(x)=4\left[x-\left(-\dfrac{3}{8}\right)\right]^2-\dfrac{9}{16}-7$$</li>
+        <li>On calcule $-\dfrac{9}{16}-7=-\dfrac{9}{16}-\dfrac{112}{16}=-\dfrac{121}{16}$&nbsp;:
+        $$f(x)=4\left[x-\left(-\dfrac{3}{8}\right)\right]^2-\dfrac{121}{16}.$$</li>
+    </ul>
+    <p>On en déduit que la forme canonique de $f$ est&nbsp;:
+        $$f(x)=4\left(x+\dfrac{3}{8}\right)^2-\dfrac{121}{16}.$$</p>
+    <p>Avec $\alpha = -\dfrac{3}{8}$ et $\beta = -\dfrac{121}{16}$.</p>
+</div>
 <div class="propriete">
     <p>Soit $f$ une fonction trinôme de la forme
         $$f(x)=ax^2+bx+c$$
