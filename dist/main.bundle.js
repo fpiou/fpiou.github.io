@@ -37167,6 +37167,27 @@ var dropdownMenusBandeau = function () {
     });
   });
 };
+var taillePolice = function () {
+  let bodyElement = document.body;
+  let tailleInitiale = window.getComputedStyle(bodyElement).fontSize;
+  let tailleActuelle = parseFloat(tailleInitiale);
+  window.diminuerTaille = function () {
+    tailleActuelle -= 2; // Diminue la taille de 2px
+    bodyElement.style.fontSize = tailleActuelle + "px";
+  };
+  window.augmenterTaille = function () {
+    tailleActuelle += 2; // Augmente la taille de 2px
+    bodyElement.style.fontSize = tailleActuelle + "px";
+  };
+};
+var colonnes = function () {
+  window.unecolonne = function () {
+    document.body.classList.remove("deuxcolonnes");
+  };
+  window.deuxcolonnes = function () {
+    document.body.classList.add("deuxcolonnes");
+  };
+};
 document.addEventListener("DOMContentLoaded", function () {
   insererEntetesBlocsLesson();
   insererEntetesBlocsExercices();
@@ -37181,6 +37202,8 @@ document.addEventListener("DOMContentLoaded", function () {
   ajouterSommaire();
   dropdownMenusBandeau();
   openAvantPrint();
+  taillePolice();
+  colonnes();
 });
 
 /***/ }),

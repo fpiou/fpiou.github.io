@@ -238,3 +238,20 @@ summary {
 /* Footer en réflexion */
 footer {
   display:none;
+}
+
+.page-break {
+  display: block;
+  clear: both;
+  page-break-after: always;
+  content: "";
+  visibility: hidden;
+  height: 0;
+}
+
+.deuxcolonnes {
+  column-count: 2;
+  column-rule: 1px solid black;
+  width: 100vw;
+  max-width: 100vw;
+}

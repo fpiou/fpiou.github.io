@@ -1,7 +1,4 @@
 @media print {
-  body {
-    font-size: 10pt;
-  }
   /* Gain d'espace */
   p,
   li,
@@ -29,6 +26,7 @@
   button,
   nav,
   .introduction-quiz,
+  /*.solution-quiz,*/
   #score {
     display: none !important;
   }
@@ -103,6 +101,13 @@
   }
 
   svg {
-    width: 50%;
+    width: 100%;
+  }
+
+  .solution-quiz {
+    display: inline-block;
+  }
+  .titrePrintQuiz-date {
+    display: block;
   }
 }
