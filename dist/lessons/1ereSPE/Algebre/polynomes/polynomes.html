@@ -581,30 +581,94 @@
     </div>
 </div>
 <div class="methode">
-    <p>Considérons le polynôme $f(x)=4x^2+3x-7$.</p>
     <p>Lorsqu'on développe $(x-\alpha)^2$, on obtient :
         $$(x-\alpha)^2=x^2-2\alpha x+\alpha^2$$
     </p>
     <p>Pour déterminer la forme canonique de ce polynôme, il suffit :</p>
     <ul>
-        <li>De factoriser par $a$ les deux premiers termes&nbsp;:
-        $$f(x)=4\left(x^2+\dfrac{3}{4}x\right)-7$$</li>
-        <li>De mettre en évidence le double produit $-2\alpha x$ dans la parenthèse&nbsp;:
-        $$f(x)=4\left[x^2-2\times\left(-\dfrac{3}{8}\right)x\right]-7$$</li>
-        <li>De compléter le carré en ajoutant $\alpha^2-\alpha^2$ à l'intérieur de la parenthèse&nbsp;:
-        $$f(x)=4\left[x^2-2\times\left(-\dfrac{3}{8}\right)x+\left(-\dfrac{3}{8}\right)^2-\left(-\dfrac{3}{8}\right)^2\right]-7$$</li>
-        <li>On peut maintenant factoriser le trinôme dans la parenthèse&nbsp;:
-        $$f(x)=4\left[\left[x-\left(-\dfrac{3}{8}\right)\right]^2-\left(-\dfrac{3}{8}\right)^2\right]-7$$</li>
-        <li>On sort $-\alpha^2$ de la parenthèse en distribuant le $4$&nbsp;:
-        $$f(x)=4\left[x-\left(-\dfrac{3}{8}\right)\right]^2-4\times\left(-\dfrac{3}{8}\right)^2-7$$</li>
-        <li>On simplifie&nbsp;:
-        $$f(x)=4\left[x-\left(-\dfrac{3}{8}\right)\right]^2-\dfrac{9}{16}-7$$</li>
-        <li>On calcule $-\dfrac{9}{16}-7=-\dfrac{9}{16}-\dfrac{112}{16}=-\dfrac{121}{16}$&nbsp;:
-        $$f(x)=4\left[x-\left(-\dfrac{3}{8}\right)\right]^2-\dfrac{121}{16}.$$</li>
+       <li>De factoriser par $a$ les deux premiers termes : $ax^2+bx.$</li> 
+       <li>D'écrire le contenu à l'intérieur des parenthèses sous la forme $x^2-2\alpha x$.</li>
+        <li>De compléter le carré en ajoutant $\alpha^2-\alpha^2$ à l'intérieur de la parenthèse.</li>
+        <li>De factoriser le trinôme dans la parenthèse.</li>
+        <li>De sortir $-\alpha^2$ de la parenthèse en distribuant le $a$.</li>
+        <li>De simplifier.</li>
     </ul>
+</div>
+<div class="exemple">
+    <p>Considérons le polynôme $f(x)=4x^2+3x-7$.</p>
+    <p>Factorisons par $4$ les deux premiers termes&nbsp;:
+        $$f(x)=4\left(x^2+\dfrac{3}{4}x\right)-7$$<p>
+    <p>Ecrivons le contenu de la parenthèse sous la forme $x^2-2\alpha x$&nbsp;:
+        $$f(x)=4\left[x^2-2\times\left(-\dfrac{3}{8}\right)x\right]-7$$<p>
+    <p>Nous avons mis en évidence que $\alpha=-\dfrac{3}{8}.$</p>
+    <p>Complétons le carré en ajoutant $\alpha^2-\alpha^2$ à l'intérieur de la parenthèse&nbsp;:
+        $$f(x)=4\left[x^2-2\times\left(-\frac{3}{8}\right)x+\left(-\frac{3}{8}\right)^2-\left(-\frac{3}{8}\right)^2 \right]-7$$<p>
+    <p>On peut maintenant factoriser le trinôme dans la parenthèse&nbsp;:
+        $$f(x)=4\left[\left[x-\left(-\dfrac{3}{8}\right)\right]^2-\left(-\dfrac{3}{8}\right)^2\right]-7$$<p>
+    <p>On sort $-\alpha^2$ de la parenthèse en distribuant le $4$&nbsp;:
+        $$f(x)=4\left[x-\left(-\dfrac{3}{8}\right)\right]^2-4\times\left(-\dfrac{3}{8}\right)^2-7$$<p>
+    <p>On simplifie&nbsp;:
+        $$f(x)=4\left[x-\left(-\dfrac{3}{8}\right)\right]^2-\dfrac{9}{16}-7$$<p>
+    <p>On calcule $-\dfrac{9}{16}-7=-\dfrac{9}{16}-\dfrac{112}{16}=-\dfrac{121}{16}$&nbsp;:
+        $$f(x)=4\left[x-\left(-\dfrac{3}{8}\right)\right]^2-\dfrac{121}{16}.$$<p>
     <p>On en déduit que la forme canonique de $f$ est&nbsp;:
         $$f(x)=4\left(x+\dfrac{3}{8}\right)^2-\dfrac{121}{16}.$$</p>
     <p>Avec $\alpha = -\dfrac{3}{8}$ et $\beta = -\dfrac{121}{16}$.</p>
+</div>
+<div class="propriete">
+    <ul>
+        <li>Si dans sa forme canonique, $a$ et $\beta$ sont non nuls et de même signe, alors le polynôme ne possède pas de racine.</li>
+        <li>Si dans sa forme canonique, $a\neq 0$ et $\beta=0$, alors le polynôme possède une seule racine.</li>
+        <li>Si dans sa forme canonique, $a$ et $\beta$ sont non nuls et de signes contraires, alors le polynôme possède deux racines.</li>
+    </ul>
+</div>
+<div class="demonstration">
+    <p>Considérons $a$ non nul.</p>
+    <p>$a(x-\alpha)^2+\beta=0$ est équivalent à $$(x-\alpha)^2=-\dfrac{\beta}{a}.$$</p>
+    <p>Si $\beta$ et $a$ sont de même signe, alors $-\dfrac{\beta}{a}$ est négatif et l'équation n'a pas de solution.</p>
+    <p>Si $\beta=0$, alors $-\dfrac{\beta}{a}=0$ et l'équation $(x-\alpha)^2=0$ a une seule solution&nbsp;: $\alpha$.</p>
+    <p>Remarquons que $a(x-\alpha)^2+\beta=0$ est aussi équivalent à $$(x-\alpha)^2-\left(-\dfrac{\beta}{a}\right)=0$$</p>
+    <p>Si $\beta$ et $a$ sont de signes contraires, alors $-\dfrac{\beta}{a}$ est positif et on peut factoriser à l'aide de la troisième identité remarquable :
+        $$(x-\alpha)^2-\left(-\dfrac{\beta}{a}\right)=\left(x-\alpha-\sqrt{-\dfrac{\beta}{a}}\right)\left(x-\alpha+\sqrt{-\dfrac{\beta}{a}}\right).$$</p>
+    <p>On en déduit que l'équation a deux solutions&nbsp;: $\alpha-\sqrt{-\dfrac{\beta}{a}}$ et $\alpha+\sqrt{-\dfrac{\beta}{a}}$.</p>
+    </div>
+<div class="exemple">
+    <p>Considérons le polynôme $f(x)=x^2-2x+1$.</p>
+    <p>On a $f(x)=(x-1)^2$.</p>
+    <p>On en déduit que la forme canonique de $f$ est&nbsp;:
+        $$f(x)=(x-1)^2.$$</p>
+    <p>Avec $\alpha = 1$ et $\beta = 0$.</p>
+    <p>On a $\beta=0$ et $a=1$.</p>
+    <p>On en déduit que $f$ possède une seule racine&nbsp;: $1$.</p>
+</div>
+<div class="exemple">
+    <p>Considérons le polynôme $g(x)=2x^2+4x-6$.</p>
+    <p>On a $$\begin{align*}
+        g(x)&=2\left(x^2+2x\right)-6\\
+        &=2\left[x^2+2x+1-1\right]-6\\
+        &=2\left[\left(x+1\right)^2-1\right]-6\\
+        &=2\left(x+1\right)^2-2-6\\
+        &=2\left(x+1\right)^2-8.
+    \end{align*}$$</p>
+    <p>On en déduit que la forme canonique de $g$ est&nbsp;:
+        $$g(x)=2\left(x+1\right)^2-8.$$</p>
+    <p>$g(x)=0$ est équivalent à $$2\left(x+1\right)^2-8=0.$$</p>
+    <p>Ou encore : $$\left(x+1\right)^2-4=0.$$</p>
+    <p>On factorise le membre de gauche à l'aide de la troisième identité remarquable&nbsp;:
+        $$\left(x+1\right)^2-4=\left(x+1-2\right)\left(x+1+2\right).$$</p>
+    <p>L'équation $g(x)=0$ est donc équivalente à $$(x-1)(x+3)=0.$$</p>
+    <p>On en déduit que l'équation a deux solutions&nbsp;: $-3$ et $1$.</p>
+</div>
+<div class="exemple">
+    <p>Considérons le polynôme $h(x)=3x^2-6x+13$.</p>
+    <p>On a $$\begin{align*}
+        h(x)&=3\left(x^2-2x\right)+13\\
+        &=3\left[x^2-2x+1-1\right]+13\\
+        &=3\left[\left(x-1\right)^2-1\right]+13\\
+        &=3\left(x-1\right)^2-3+13\\
+        &=3\left(x-1\right)^2+10.
+    \end{align*}$$</p>
+    <p>Dans sa forme canonique, comme $a=3$ et $\beta=10$ sont non nuls et de même signe, $h$ ne possède pas de racine.</p>
 </div>
 <div class="propriete">
     <p>Soit $f$ une fonction trinôme de la forme
