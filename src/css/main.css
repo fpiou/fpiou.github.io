@@ -241,12 +241,7 @@ footer {
 }
 
 .page-break {
-  display: block;
-  clear: both;
   page-break-after: always;
-  content: "";
-  visibility: hidden;
-  height: 0;
 }
 
 .deuxcolonnes {

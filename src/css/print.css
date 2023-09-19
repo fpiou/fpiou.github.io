@@ -103,11 +103,10 @@
   svg {
     width: 100%;
   }
-
-  .solution-quiz {
-    display: inline-block;
-  }
   .titrePrintQuiz-date {
     display: block;
+  }
+  .solution-quiz {
+    display: inline-block;
   }
 }
