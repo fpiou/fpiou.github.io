@@ -39871,6 +39871,8 @@ function printQuiz(nextQuestions) {
   const quizElement = document.createElement("div");
   // On lui donne un identifiant pour le css
   quizElement.id = "printquiz";
+  // Ajouter la class page-break pour l'impression
+  quizElement.classList.add("page-break");
   // On ajoute une entete avec un titre, la date, un espace pour le nom, le prénom et la classe
   var entete = document.createElement("div");
   entete.id = "enteteQuiz";
