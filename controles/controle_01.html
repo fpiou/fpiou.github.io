@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Polynomes_01</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+      integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
+      crossorigin="anonymous"
+    />
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+      integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+
+    <link rel="stylesheet" href="/src/css/main.css" />
+
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+
+    <link rel="stylesheet" href="/src/css/print.css" />
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+    <script defer src="/dist/main.bundle.js"></script>
+  </head>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    th,
+    td {
+      width: 20%; /* 100% divisé par 5 colonnes */
+      text-align: center;
+      border: 1px solid black;
+      padding: 8px;
+    }
+  </style>
+  <body>
+    <button onclick="diminuerTaille()">Diminuer la taille</button>
+    <button onclick="augmenterTaille()">Augmenter la taille</button>
+    <button onclick="unecolonne()">1 colonne</button>
+    <button onclick="deuxcolonnes()">2 colonnes</button>
+    <button onclick="window.print()">Imprimer</button>
+    <div class="nom-prenom-classe">
+      <div id="nom">Nom :</div>
+      <div id="prenom">Prénom :</div>
+      <div id="classe">Classe :</div>
+    </div>
+    <h2>Contrôle n°1</h2>
+    <div class="exercice">
+      <div class="enonce">
+        <table>
+          <thead>
+            <tr>
+              <th>Animaux d'élevage</th>
+              <th>Régime alimentaire</th>
+              <th>Type d'habitat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vache</td>
+              <td>Herbivore</td>
+              <td>Pâturage</td>
+            </tr>
+            <tr>
+              <td>Mouton</td>
+              <td>Herbivore</td>
+              <td>Pâturage</td>
+            </tr>
+            <tr>
+              <td>Poule</td>
+              <td>Omnivore</td>
+              <td>Enclos</td>
+            </tr>
+            <tr>
+              <td>Chèvre</td>
+              <td>Herbivore</td>
+              <td>Pâturage</td>
+            </tr>
+            <tr>
+              <td>Cochon</td>
+              <td>Omnivore</td>
+              <td>Enclos</td>
+            </tr>
+            <tr>
+              <td>Dinde</td>
+              <td>Omnivore</td>
+              <td>Enclos</td>
+            </tr>
+            <tr>
+              <td>Canard</td>
+              <td>Omnivore</td>
+              <td>Mare</td>
+            </tr>
+            <tr>
+              <td>Lapin</td>
+              <td>Herbivore</td>
+              <td>Enclos</td>
+            </tr>
+            <tr>
+              <td>Cheval</td>
+              <td>Herbivore</td>
+              <td>Pâturage</td>
+            </tr>
+            <tr>
+              <td>Âne</td>
+              <td>Herbivore</td>
+              <td>Pâturage</td>
+            </tr>
+            <tr>
+              <td>Oie</td>
+              <td>Herbivore</td>
+              <td>Mare</td>
+            </tr>
+            <tr>
+              <td>Pigeon</td>
+              <td>Granivore</td>
+              <td>Enclos</td>
+            </tr>
+            <tr>
+              <td>Caille</td>
+              <td>Omnivore</td>
+              <td>Enclos</td>
+            </tr>
+            <tr>
+              <td>Faisan</td>
+              <td>Omnivore</td>
+              <td>Enclos</td>
+            </tr>
+            <tr>
+              <td>Autruche</td>
+              <td>Omnivore</td>
+              <td>Pâturage</td>
+            </tr>
+            <tr>
+              <td>Bison</td>
+              <td>Herbivore</td>
+              <td>Pâturage</td>
+            </tr>
+            <tr>
+              <td>Cerf</td>
+              <td>Herbivore</td>
+              <td>Pâturage</td>
+            </tr>
+            <tr>
+              <td>Sanglier</td>
+              <td>Omnivore</td>
+              <td>Pâturage</td>
+            </tr>
+            <tr>
+              <td>Paon</td>
+              <td>Omnivore</td>
+              <td>Enclos</td>
+            </tr>
+            <tr>
+              <td>Alpaga</td>
+              <td>Herbivore</td>
+              <td>Pâturage</td>
+            </tr>
+            <tr>
+              <td>Lama</td>
+              <td>Herbivore</td>
+              <td>Pâturage</td>
+            </tr>
+            <tr>
+              <td>Chameau</td>
+              <td>Herbivore</td>
+              <td>Pâturage</td>
+            </tr>
+            <tr>
+              <td>Dromadaire</td>
+              <td>Herbivore</td>
+              <td>Pâturage</td>
+            </tr>
+            <tr>
+              <td>Yack</td>
+              <td>Herbivore</td>
+              <td>Pâturage</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Dresser un tableau croisé d'effectif, avec en colonnes le type
+          d'alimentation et en lignes le type d'habitat.
+        </p>
+      </div>
+    </div>
+    <div class="exercice">
+      <div class="enonce">
+        <p>600 salariés travaillent dans une entreprise.</p>
+        <ul>
+          <li>Il y a 200 cadres.</li>
+          <li>Il y a 110 Employé-Femme sur les 240 femmes de l'entreprise.</li>
+          <li>
+            Il y a 120 Cadre-Homme, et dans la catégorie Technicien-Homme il y
+            en a 30 de plus.
+          </li>
+        </ul>
+        Il y a en tout 3 catégories : Cadre, Employé, Technicien.
+        <ol>
+          <li>
+            Dresser un tableau croisé d'effectif, avec en lignes le sexe et en
+            colonnes la catégorie professionnelle.
+          </li>
+          <li>Quelle est le pourcentage de femmes dans l'entreprise ?</li>
+        </ol>
+      </div>
+    </div>
+    <div class="exercice">
+      <div class="enonce">
+        <p>On a mesuré dans un cabinet médical le nombre de visites dans l'année en fonction de l'âge du patient et on a obtenu le graphique suivant :</p>
+        <img src="./graphique1.png" />
+        <p>
+          <a href="./donnees_exercice3.ods" download>Télécharger le fichier</a>
+          et obtenir le graphique (la forme des points est au choix).
+        </p>
+      </div>
+      <div class="exercice">
+        <div class="enonce">
+          <p>
+            <a href="./nat2021.ods" download>Télécharger le fichier</a> et
+            obtenir un tableau croisé avec en lignes les années, en colonnes le
+            sexe, et en champs de données la somme du nombre d'enfants.
+          </p>
+          <p>Description des colonnes&nbsp;:</p>
+          <ul>
+            <li>sexe : Indique le sexe de l'enfant.</li>
+            <li>preusuel : Indique le prénom donné à l'enfant.</li>
+            <li>annais : Indique l'année de naissance de l'enfant.</li>
+            <li>
+              nombre : Indique le nombre d'enfants nés avec ce prénom et cette
+              année.
+            </li>
+          </ul>
+        </div>
+        <p>
+          Vérifier que le pourcentage de filles en 2014 est d'environ 43,9%.
+        </p>
+      </div>
+    </div>
+    <div class="exercice">
+      <div class="enonce">
+        <p>
+          On étudie la croissance d'une plante en fonction de la quantité d'eau
+          utilisée par semaine.
+        </p>
+        <p>Construire un nuage de points avec les données suivantes :</p>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Quantité d'eau (mL par semaine)</th>
+            <th>Croissance (cm par semaine)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0</td>
+            <td>0.5</td>
+          </tr>
+          <tr>
+            <td>50</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>100</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <td>150</td>
+            <td>3.5</td>
+          </tr>
+          <tr>
+            <td>200</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>250</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>300</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>350</td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>On choisira la quantité d'eau en abscisse et la taille en ordonnée.</p>
+      <p>À partir de quelle quantité d'eau, la plante est-elle en saturation d'eau ?</p>
+    </div>
+  </body>
+</html>
