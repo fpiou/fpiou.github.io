@@ -89,6 +89,11 @@
   </head>
 
   <body>
+    <button onclick="diminuerTaille()">Diminuer la taille</button>
+<button onclick="augmenterTaille()">Augmenter la taille</button>
+<button onclick="unecolonne()">1 colonne</button>
+<button onclick="deuxcolonnes()">2 colonnes</button>
+<button onclick="window.print()">Imprimer</button>
     <h2 id="hpattern1">Pattern 1 (2nd) : $n$</h2>
     <div id="pattern1" class="figure">
       <svg
@@ -315,87 +320,6 @@
           carre;70;-10;fill:red,fill-opacity:0.2
           carre;70;-20;fill:red,fill-opacity:0.2
         </g>
-        <!-- Fin de la figure -->
-      </svg>
-    </div>
-    <h2>Pattern 5 (1re): $\dfrac{n(n+1)}{2}$</h2>
-    <div id="pattern5" class="figure">
-      <svg
-        id="pattern5"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 100 50"
-        class="quadrillage"
-      >
-        <!-- Début de la figure -->
-        <!-- Point libre -->
-        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
-        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
-        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
-        <g name="p" class="pattern" linkto="O u">
-          carre;0;0;fill:red,fill-opacity:0.2
-          carre;20;0;fill:red,fill-opacity:0.2
-          carre;20;-10;fill:red,fill-opacity:0.2
-          carre;30;0;fill:red,fill-opacity:0.2
-          carre;50;0;fill:red,fill-opacity:0.2
-          carre;50;-10;fill:red,fill-opacity:0.2
-          carre;50;-20;fill:red,fill-opacity:0.2
-          carre;60;0;fill:red,fill-opacity:0.2
-          carre;60;-10;fill:red,fill-opacity:0.2
-          carre;70;0;fill:red,fill-opacity:0.2
-        </g>
-        <!-- Fin de la figure -->
-      </svg>
-    </div>
-    $${\color{green}\dfrac{n^2}{2}}+{\color{red}\dfrac{n}{2}}$$
-    <div id="pattern5Solution" class="figure">
-      <svg
-        id="pattern5Solution"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 100 50"
-        class="quadrillage"
-      >
-        <!-- Début de la figure -->
-        <!-- Point libre -->
-        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
-        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
-        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
-        <g name="p" class="pattern" linkto="O u">
-          carre;0;0;fill:red,fill-opacity:0.2
-          carre;20;0;fill:red,fill-opacity:0.2
-          carre;20;-10;fill:red,fill-opacity:0.2
-          carre;30;0;fill:red,fill-opacity:0.2
-          carre;50;0;fill:red,fill-opacity:0.2
-          carre;50;-10;fill:red,fill-opacity:0.2
-          carre;50;-20;fill:red,fill-opacity:0.2
-          carre;60;0;fill:red,fill-opacity:0.2
-          carre;60;-10;fill:red,fill-opacity:0.2
-          carre;70;0;fill:red,fill-opacity:0.2
-        </g>
-        <g name="B" class="point" x="10" y="30" visibility="hidden"></g>
-        <g
-          name="t1"
-          class="polygone"
-          linkto="O A B"
-          style="fill: green; fill-opacity: 0.7"
-        ></g>
-        <g name="O1" class="point" x="30" y="40" visibility="hidden"></g>
-        <g name="A1" class="point" x="50" y="40" visibility="hidden"></g>
-        <g name="B1" class="point" x="30" y="20" visibility="hidden"></g>
-        <g
-          name="t2"
-          class="polygone"
-          linkto="O1 A1 B1"
-          style="fill: green; fill-opacity: 0.7"
-        ></g>
-        <g name="O2" class="point" x="60" y="40" visibility="hidden"></g>
-        <g name="A2" class="point" x="90" y="40" visibility="hidden"></g>
-        <g name="B2" class="point" x="60" y="10" visibility="hidden"></g>
-        <g
-          name="t3"
-          class="polygone"
-          linkto="O2 A2 B2"
-          style="fill: green; fill-opacity: 0.7"
-        ></g>
         <!-- Fin de la figure -->
       </svg>
     </div>

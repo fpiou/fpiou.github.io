@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Geometrieplane</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+      integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
+      crossorigin="anonymous"
+    />
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+      integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+
+    <link rel="stylesheet" href="/src/css/main.css" />
+
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+
+    <link rel="stylesheet" href="/src/css/print2colonnes.css" />
+
+    <link rel="stylesheet" href="/src/css/figures.css" />
+
+    <link rel="stylesheet" href="/src/css/print.css" />
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+    <script defer src="/dist/main.bundle.js"></script>
+    <script defer src="/dist/trinomes.bundle.js"></script>
+    <script defer src="/dist/geometrie.bundle.js"></script>
+  </head>
+
+  <body>
+    <button onclick="diminuerTaille()">Diminuer la taille</button>
+    <button onclick="augmenterTaille()">Augmenter la taille</button>
+    <button onclick="unecolonne()">1 colonne</button>
+    <button onclick="deuxcolonnes()">2 colonnes</button>
+    <button onclick="window.print()">Imprimer</button>
+    <h1>Suites numériques </h1>
+    <h2 id="hpattern1">Pattern 1</h2>
+    <div id="pattern1" class="figure">
+      <svg
+        id="pattern1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 30"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="20" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="20" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;20;0;fill:red,fill-opacity:0.2
+          carre;30;0;fill:red,fill-opacity:0.2
+          carre;50;0;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;70;0;fill:red,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    <h2 id="hpattern2">Pattern 2</h2>
+    <div id="pattern2" class="figure">
+      <svg
+        id="pattern2"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 40"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="20" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="20" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;20;0;fill:red,fill-opacity:0.2
+          carre;30;0;fill:red,fill-opacity:0.2
+          carre;50;0;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;70;0;fill:red,fill-opacity:0.2
+          carre;0;10;fill:red,fill-opacity:0.2
+          carre;20;10;fill:red,fill-opacity:0.2
+          carre;30;10;fill:red,fill-opacity:0.2
+          carre;50;10;fill:red,fill-opacity:0.2
+          carre;60;10;fill:red,fill-opacity:0.2
+          carre;70;10;fill:red,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    <h2>Pattern 3</h2>
+    <div id="pattern3" class="figure">
+      <svg
+        id="pattern3"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 50"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;20;0;fill:red,fill-opacity:0.2
+          carre;20;-10;fill:red,fill-opacity:0.2
+          carre;30;0;fill:red,fill-opacity:0.2
+          carre;50;0;fill:red,fill-opacity:0.2
+          carre;50;-10;fill:red,fill-opacity:0.2
+          carre;50;-20;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;70;0;fill:red,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    <h2>Pattern 4</h2>
+    <div id="pattern4" class="figure">
+      <svg
+        id="pattern4"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 50"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;20;0;fill:red,fill-opacity:0.2
+          carre;20;-10;fill:red,fill-opacity:0.2
+          carre;30;0;fill:red,fill-opacity:0.2
+          carre;30;-10;fill:red,fill-opacity:0.2
+          carre;50;0;fill:red,fill-opacity:0.2
+          carre;50;-10;fill:red,fill-opacity:0.2
+          carre;50;-20;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;60;-10;fill:red,fill-opacity:0.2
+          carre;60;-20;fill:red,fill-opacity:0.2
+          carre;70;0;fill:red,fill-opacity:0.2
+          carre;70;-10;fill:red,fill-opacity:0.2
+          carre;70;-20;fill:red,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    <div style="page-break-after: always;"></div>
+    <h2>Pattern 5</h2>
+    <div id="pattern5" class="figure">
+      <svg
+        id="pattern5"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 50"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;20;0;fill:red,fill-opacity:0.2
+          carre;20;-10;fill:red,fill-opacity:0.2
+          carre;30;0;fill:red,fill-opacity:0.2
+          carre;50;0;fill:red,fill-opacity:0.2
+          carre;50;-10;fill:red,fill-opacity:0.2
+          carre;50;-20;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;60;-10;fill:red,fill-opacity:0.2
+          carre;70;0;fill:red,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    <h2 id="hpattern6">Pattern 6</h2>
+    <div id="pattern6" class="figure">
+      <svg
+        id="pattern6"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="-10 -10 190 90"
+        class="quadrillage"
+      >
+        <!-- Début de la figure -->
+        <!-- Point libre -->
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;-10;10;fill:red,fill-opacity:0.2
+          carre;10;-10;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;50;10;fill:red,fill-opacity:0.2
+          carre;40;20;fill:red,fill-opacity:0.2
+          carre;70;-10;fill:red,fill-opacity:0.2
+          carre;80;-10;fill:red,fill-opacity:0.2
+          carre;70;-20;fill:red,fill-opacity:0.2
+          carre;130;0;fill:red,fill-opacity:0.2
+          carre;120;10;fill:red,fill-opacity:0.2
+          carre;110;20;fill:red,fill-opacity:0.2
+          carre;100;30;fill:red,fill-opacity:0.2
+          carre;140;-10;fill:red,fill-opacity:0.2
+          carre;150;-10;fill:red,fill-opacity:0.2
+          carre;160;-10;fill:red,fill-opacity:0.2
+          carre;140;-20;fill:red,fill-opacity:0.2
+          carre;140;-30;fill:red,fill-opacity:0.2
+        </g>
+        <!-- Fin de la figure -->
+      </svg>
+    </div>
+    <h2 id="hpattern7">Pattern 7</h2>
+    <div id="pattern7" class="figure">
+      <svg
+        id="pattern7"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 50"
+        class="quadrillage"
+      >
+        <g name="O" class="point" x="10" y="40" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="40" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;10;0;fill:red,fill-opacity:0.2
+          carre;40;0;fill:red,fill-opacity:0.2
+          carre;50;0;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;40;-10;fill:red,fill-opacity:0.2
+          carre;50;-10;fill:red,fill-opacity:0.2
+          carre;60;-10;fill:red,fill-opacity:0.2
+          carre;90;0;fill:red,fill-opacity:0.2
+          carre;100;0;fill:red,fill-opacity:0.2
+          carre;110;0;fill:red,fill-opacity:0.2
+          carre;120;0;fill:red,fill-opacity:0.2
+          carre;90;-10;fill:red,fill-opacity:0.2
+          carre;100;-10;fill:red,fill-opacity:0.2
+          carre;110;-10;fill:red,fill-opacity:0.2
+          carre;120;-10;fill:red,fill-opacity:0.2
+          carre;90;-20;fill:red,fill-opacity:0.2
+          carre;100;-20;fill:red,fill-opacity:0.2
+          carre;110;-20;fill:red,fill-opacity:0.2
+          carre;120;-20;fill:red,fill-opacity:0.2
+        </g>
+      </svg>
+    </div>
+    <h2 id="hpattern8">Pattern 8</h2>
+    <div id="pattern8" class="figure">
+      <svg
+        id="pattern8"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="-10 -10 210 90"
+        class="quadrillage"
+      >
+      <g name="O" class="point" x="10" y="50" visibility="hidden"></g>
+        <g name="A" class="point" x="20" y="50" visibility="hidden"></g>
+        <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+        <g name="p" class="pattern" linkto="O u">
+          carre;0;0;fill:red,fill-opacity:0.2
+          carre;-10;-10;fill:red,fill-opacity:0.2
+          carre;-10;-20;fill:red,fill-opacity:0.2
+          carre;10;-10;fill:red,fill-opacity:0.2
+
+          carre;50;0;fill:red,fill-opacity:0.2
+          carre;60;0;fill:red,fill-opacity:0.2
+          carre;40;10;fill:red,fill-opacity:0.2
+          carre;40;-10;fill:red,fill-opacity:0.2
+          carre;40;-20;fill:red,fill-opacity:0.2
+          carre;40;-30;fill:red,fill-opacity:0.2
+          carre;70;-10;fill:red,fill-opacity:0.2
+          carre;80;-10;fill:red,fill-opacity:0.2
+          carre;70;-20;fill:red,fill-opacity:0.2
+          carre;80;-20;fill:red,fill-opacity:0.2
+
+          carre;120;0;fill:red,fill-opacity:0.2
+          carre;130;0;fill:red,fill-opacity:0.2
+          carre;140;0;fill:red,fill-opacity:0.2
+          carre;110;10;fill:red,fill-opacity:0.2
+          carre;100;20;fill:red,fill-opacity:0.2
+          carre;110;-10;fill:red,fill-opacity:0.2
+          carre;110;-20;fill:red,fill-opacity:0.2
+          carre;110;-30;fill:red,fill-opacity:0.2
+          carre;110;-40;fill:red,fill-opacity:0.2
+          carre;150;-10;fill:red,fill-opacity:0.2
+          carre;160;-10;fill:red,fill-opacity:0.2
+          carre;170;-10;fill:red,fill-opacity:0.2
+          carre;150;-20;fill:red,fill-opacity:0.2
+          carre;160;-20;fill:red,fill-opacity:0.2
+          carre;170;-20;fill:red,fill-opacity:0.2
+          carre;150;-30;fill:red,fill-opacity:0.2
+          carre;160;-30;fill:red,fill-opacity:0.2
+          carre;170;-30;fill:red,fill-opacity:0.2
+        </g>
+      </svg>
+    </div>
+    <h2 id="hpattern9">Pattern 9</h2>
+    <div id="pattern9" class="figure">
+      <svg
+        id="pattern9"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 70"
+        class="quadrillage"
+      >
+      <g name="O" class="point" x="10" y="60" visibility="hidden"></g>
+      <g name="A" class="point" x="20" y="60" visibility="hidden"></g>
+      <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+      <g name="p" class="pattern" linkto="O u">
+        carre;0;0;fill:red,fill-opacity:0.2
+        carre;10;0;fill:red,fill-opacity:0.2
+        carre;20;0;fill:red,fill-opacity:0.2
+        carre;0;-10;fill:red,fill-opacity:0.2
+        carre;10;-10;fill:red,fill-opacity:0.2
+        carre;20;-10;fill:red,fill-opacity:0.2
+        carre;0;-20;fill:red,fill-opacity:0.2
+        carre;10;-20;fill:red,fill-opacity:0.2
+        carre;20;-20;fill:red,fill-opacity:0.2
+        carre;10;-30;fill:red,fill-opacity:0.2
+
+        carre;50;0;fill:red,fill-opacity:0.2
+        carre;60;0;fill:red,fill-opacity:0.2
+        carre;70;0;fill:red,fill-opacity:0.2
+        carre;80;0;fill:red,fill-opacity:0.2
+        carre;50;-10;fill:red,fill-opacity:0.2
+        carre;60;-10;fill:red,fill-opacity:0.2
+        carre;70;-10;fill:red,fill-opacity:0.2
+        carre;80;-10;fill:red,fill-opacity:0.2
+        carre;50;-20;fill:red,fill-opacity:0.2
+        carre;60;-20;fill:red,fill-opacity:0.2
+        carre;70;-20;fill:red,fill-opacity:0.2
+        carre;80;-20;fill:red,fill-opacity:0.2
+        carre;60;-30;fill:red,fill-opacity:0.2
+        carre;70;-30;fill:red,fill-opacity:0.2
+        carre;60;-40;fill:red,fill-opacity:0.2
+
+        carre;110;0;fill:red,fill-opacity:0.2
+        carre;120;0;fill:red,fill-opacity:0.2
+        carre;130;0;fill:red,fill-opacity:0.2
+        carre;140;0;fill:red,fill-opacity:0.2
+        carre;150;0;fill:red,fill-opacity:0.2
+        carre;110;-10;fill:red,fill-opacity:0.2
+        carre;120;-10;fill:red,fill-opacity:0.2
+        carre;130;-10;fill:red,fill-opacity:0.2
+        carre;140;-10;fill:red,fill-opacity:0.2
+        carre;150;-10;fill:red,fill-opacity:0.2
+        carre;110;-20;fill:red,fill-opacity:0.2
+        carre;120;-20;fill:red,fill-opacity:0.2
+        carre;130;-20;fill:red,fill-opacity:0.2
+        carre;140;-20;fill:red,fill-opacity:0.2
+        carre;150;-20;fill:red,fill-opacity:0.2
+        carre;120;-30;fill:red,fill-opacity:0.2
+        carre;130;-30;fill:red,fill-opacity:0.2
+        carre;140;-30;fill:red,fill-opacity:0.2
+        carre;120;-40;fill:red,fill-opacity:0.2
+        carre;130;-40;fill:red,fill-opacity:0.2
+      </g>
+      </svg>
+    </div>
+    <h2 id="hpattern9">Pattern 10</h2>
+    <div id="pattern9" class="figure">
+      <svg
+        id="pattern9"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 70"
+        class="quadrillage"
+      >
+      <g name="O" class="point" x="10" y="60" visibility="hidden"></g>
+      <g name="A" class="point" x="20" y="60" visibility="hidden"></g>
+      <g name="u" class="vecteur" linkto="O A" visibility="hidden"></g>
+      <g name="p" class="pattern" linkto="O u">
+        carre;0;0;fill:red,fill-opacity:0.2
+        carre;10;0;fill:red,fill-opacity:0.2
+        carre;40;0;fill:red,fill-opacity:0.2
+        carre;50;0;fill:red,fill-opacity:0.2
+        carre;40;-10;fill:red,fill-opacity:0.2
+        carre;50;-10;fill:red,fill-opacity:0.2
+        carre;80;0;fill:red,fill-opacity:0.2
+        carre;90;0;fill:red,fill-opacity:0.2
+        carre;100;0;fill:red,fill-opacity:0.2
+        carre;110;0;fill:red,fill-opacity:0.2
+        carre;80;-10;fill:red,fill-opacity:0.2
+        carre;90;-10;fill:red,fill-opacity:0.2
+        carre;100;-10;fill:red,fill-opacity:0.2
+        carre;110;-10;fill:red,fill-opacity:0.2
+        carre;140;0;fill:red,fill-opacity:0.2
+        carre;150;0;fill:red,fill-opacity:0.2
+        carre;160;0;fill:red,fill-opacity:0.2
+        carre;170;0;fill:red,fill-opacity:0.2
+        carre;140;-10;fill:red,fill-opacity:0.2
+        carre;150;-10;fill:red,fill-opacity:0.2
+        carre;160;-10;fill:red,fill-opacity:0.2
+        carre;170;-10;fill:red,fill-opacity:0.2
+        carre;140;-20;fill:red,fill-opacity:0.2
+        carre;150;-20;fill:red,fill-opacity:0.2
+        carre;160;-20;fill:red,fill-opacity:0.2
+        carre;170;-20;fill:red,fill-opacity:0.2
+        carre;140;-30;fill:red,fill-opacity:0.2
+        carre;150;-30;fill:red,fill-opacity:0.2
+        carre;160;-30;fill:red,fill-opacity:0.2
+        carre;170;-30;fill:red,fill-opacity:0.2
+      </g>
+      </svg>
+    </div>
+    <h2 id="hpattern12">Pattern 12</h2>
+    <p>$u_1=1$ $u_2=3$ $u_3=5$ $u_4=7$ $u_5=9$ $u_6=11$</p>
+    <h2 id="hpattern13">Pattern 13</h2>
+    <p>$u_1=0$ $u_2=2$ $u_3=4$ $u_4=6$ $u_5=8$ $u_6=10$</p>
+    <h2 id="hpattern13">Pattern 14</h2>
+    <p>$u_1=3$ $u_2=6$ $u_3=9$ $u_4=12$ $u_5=15$ $u_6=18$</p>
+    <h2 id="hpattern13">Pattern 15</h2>
+    <p>$u_1=0$ $u_2=1$ $u_3=4$ $u_4=9$ $u_5=16$ $u_6=25$</p>
+  </body>
+</html>
