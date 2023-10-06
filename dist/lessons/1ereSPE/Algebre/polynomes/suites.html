@@ -20,15 +20,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
-        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
-
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
-        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
-        crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+        crossorigin="anonymous"
+      />
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+        integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"
+      ></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
 
@@ -107,6 +116,7 @@
   <summary>Sommaire</summary>
   <nav id="tableOfContents"></nav>
 </details>
+
 <h2>Généralités</h2>
 <div class="definition">
   <p>
@@ -261,7 +271,7 @@
 <div class="definition">
   <p>
     Une suite sera notée $u$ ou $(u_n)$, ou $(u_n)_{n \in \mathbb{N}}$ ou
-    encore, si on souhaite indiquer qu'elle commence à l'indice $1$ : $(u_n)_{n\in\mathbb{N}}$ ou plus simplement $(u_n)_{n\geqslant 1}$.
+    encore, si on souhaite indiquer qu'elle commence à l'indice $1$ : $(u_n)_{n\in\mathbb{N}^*}$ ou plus simplement $(u_n)_{n\geqslant 1}$.
   </p>
 </div>
 <div class="remarque">
@@ -288,7 +298,7 @@
   <ul>
     <li>On peut donner une liste de termes de la suite.</li>
     <li>On peut donner une expression explicite du terme général de la suite.</li>
-    <li>On peut donner une relation de récurrence.</li>
+    <li>On peut donner une relation de récurrence entre les termes.</li>
   </ul>
 </div>
 <div class="exemple">
@@ -383,7 +393,28 @@
   <p>La suite des multiples de $5$ définie par $u_n=5n$ tend vers $+\infty$ car on peut toujours trouver un multiple de $5$ plus grand que n'importe quel nombre.</p>
   <p>La suite du nombre de chiffre $0$ dans l'écriture décimale des entiers naturels n'admet pas de limite infinie. En effet, on peut toujours trouver un nombre ayant plus de $0$ dans son écriture décimale que n'importe quel nombre de $0$ mais les termes qui le suivent peuvent posséder le même nombre de zéro dans leur écriture, plus de zéro, ou moins de zéro !</p>
 </div>
-
+<h2>Terme général de suites de référence</h2>
+<div class="exemples">
+  <p>Certaines suites sont très utiles et il est important de les connaître.</p>
+  <ul>
+    <li>Pour $\n\qeqslant 0$, $u_n=n$ : suite des entiers naturels.</li>
+    <li>Pour $\n\qeqslant 0$, $u_n=n^2$ : suite des carrés parfaits.</li>
+    <li>Pour $\n\qeqslant 0$, $u_n=2^n$ : suite des puissances de $2$.</li>
+    <li>Pour $\n\qeqslant 0$, $u_n=2n+1$ : suite des nombres impairs.</li>
+    <li>Pour $\n\qeqslant 0$, $u_n=2n$ : suite des nombres pairs.</li>
+    <li>Pour $\n\qeqslant 0$, $u_n=\dfrac{1}{n+1}$ : suite des inverses des entiers naturels non nuls.</li>
+    <li>Pour $\n\qeqslant 0$, $u_n=7n$ : suite des multiples de $7$ (on peut remplacer $7$ par n'importe quel entier).</li>
+  </ul>
+</div>
+<div class="remarque">
+  <p>On peut également considérer des suites de référence qui ne commencent pas à l'indice $0$.</p>
+  <ul>
+    <li>Pour $\n\qeqslant 1$, $u_n=n-1$ : suite des entiers naturels.</li>
+    <li>Pour $\n\qeqslant 1$, $u_n=2n-1$ : suite des nombres impairs.</li>
+    <li>Pour $\n\qeqslant 1$, $u_n=\dfrac{1}{n}$ : suite des inverses des entiers naturels non nuls.</li>
+  </ul>
+  <p>Selon le contexte, on peut considérer que la suite commence à l'indice $0$ ou à l'indice $1$.</p>
+</div>
 <h2>Suite arithmétique</h2>
 <div class="definition">
   <p>
