@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Suites_03</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+<button onclick="diminuerTaille()">Diminuer la taille</button>
+<button onclick="augmenterTaille()">Augmenter la taille</button>
+<button onclick="unecolonne()">1 colonne</button>
+<button onclick="deuxcolonnes()">2 colonnes</button>
+<button onclick="window.print()">Imprimer</button>
+    <header>
+      <h1>Exercices</h1>
+    </header>
+    <main><div class="exercice">
+  <div class="enonce">
+      <p>On considère la droite $d$ d'équation : $$y=\dfrac{3}{4}x+\dfrac{1}{2}.$$ et la suite $(w_n)_{n\in\mathbb{N}}$ définie de la manière suivante : le terme d'indice $n$ est l'ordonnée du point d'abscisse $n$ appartenant à la droite $d.$</p>
+      <ol>
+        <li>Représenter les premiers termes de la suite sur le graphique ci-dessous.
+            <div id="figure1" class="figure">
+                <svg
+                  id="figure1"
+                  viewBox="0 0 120 110"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="quadrillage"
+                >
+                  <!-- On définit le repère -->
+                  <g name="repere1" class="repere" xmin="-1" ymin="-0.5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                  <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                  <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                  <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                  <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                  <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                  <g class="label" linkto="I" x="-3" y="0" style="font-size:0.6rem;">1</g>
+                  <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                  <g class="label" linkto="J" x="-8" y="-6" style="font-size:0.6rem;">1</g>
+                  <g name="c1" class="courbeRepresentative" expression="3x/4+1/2"  pas="0.01" xmin="-1" xmax="5" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                </svg>
+              </div>
+        </li>
+        <li>Calculer le 5e terme de la suite puis contrôler le résultat à l'aide du graphique.</li>
+        <li>Calculer le 10e terme de la suite.</li>
+        <li>Déterminer le rang du terme de la suite dont la valeur est $41.$</li>
+      </ol>
+  </div>
+  <div class="solution">
+    <ol>
+      <li>
+        <div id="figure1" class="figure">
+          <svg
+            id="figure1"
+            viewBox="0 0 120 110"
+            xmlns="http://www.w3.org/2000/svg"
+            class="quadrillage"
+          >
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-1" ymin="-0.5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.6rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-8" y="-6" style="font-size:0.6rem;">1</g>
+            <g name="c1" class="courbeRepresentative" expression="3x/4+1/2"  pas="0.01" xmin="-1" xmax="5" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+            <g name="w0" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none"></g>
+            <g class="label" linkto="w0" x="-15" y="-6" style="font-size:0.6rem;color:blue;">w_0</g>
+            <g name="w1" class="point labeled" repere="repere1" x="0" y="1.25" stroke="none"></g>
+            <g class="label" linkto="w1" x="-15" y="-6" style="font-size:0.6rem;color:blue;">w_1</g>
+            <g name="w2" class="point labeled" repere="repere1" x="0" y="2" stroke="none"></g>
+            <g class="label" linkto="w2" x="-15" y="-6" style="font-size:0.6rem;color:blue;">w_2</g>
+            <g name="w3" class="point labeled" repere="repere1" x="0" y="2.75" stroke="none"></g>
+            <g class="label" linkto="w3" x="-15" y="-6" style="font-size:0.6rem;color:blue;">w_3</g>
+            <g name="w4" class="point labeled" repere="repere1" x="0" y="3.5" stroke="none"></g>
+            <g class="label" linkto="w4" x="-15" y="-6" style="font-size:0.6rem;color:blue;">w_4</g>
+            <g name="A0" class="point" repere="repere1" x="0" y="0.5" stroke="none"></g>
+            <g name="A1" class="point" repere="repere1" x="1" y="1.25" stroke="none"></g>
+            <g name="A2" class="point" repere="repere1" x="2" y="2" stroke="none"></g>
+            <g name="A3" class="point" repere="repere1" x="3" y="2.75" stroke="none"></g>
+            <g name="A4" class="point" repere="repere1" x="4" y="3.5" stroke="none"></g>
+            <g name="A0x" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+            <g name="A1x" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g name="A2x" class="point" repere="repere1" x="2" y="0" stroke="none"></g>
+            <g name="A3x" class="point" repere="repere1" x="3" y="0" stroke="none"></g>
+            <g name="A4x" class="point" repere="repere1" x="4" y="0" stroke="none"></g>
+            <g name="w1y" class="segment" linkto="w1 A1" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w2y" class="segment" linkto="w2 A2" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w3y" class="segment" linkto="w3 A3" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w4y" class="segment" linkto="w4 A4" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w0x" class="segment" linkto="A0 A0x" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w1x" class="segment" linkto="A1 A1x" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w2x" class="segment" linkto="A2 A2x" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w3x" class="segment" linkto="A3 A3x" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w4x" class="segment" linkto="A4 A4x" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+          </svg>
+        </div>
+      </li>
+      <li>
+        <p>Le 5e terme de la suite est donc :
+        $$\begin{align*}
+        w_4&=\dfrac{3}{4}\times 4+\dfrac{1}{2}\\
+        &=3+\dfrac{1}{2}\\
+        &=\num{3.5}
+        \end{align*}$$</p>
+      </li>
+      <li>
+        <p>Le 10e terme de la suite est donc :
+        $$\begin{align*}
+        w_{9}&=\dfrac{3}{4}\times 9+\dfrac{1}{2}\\
+        &=\dfrac{27}{4}+\dfrac{2}{4}\\
+        &=\dfrac{29}{4}\\&
+        =7+\dfrac{1}{4}\\
+        &=\num{7.25}\\
+        \end{align*}$$</p>
+      </li>
+      <li>
+        <p>On cherche $n$ tel que $$u_n=41$$</p>
+        <p>Pour cela nous pouvons résoudre l'équation :
+        $$\dfrac{3}{4}n+\dfrac{1}{2}=41$$</p>
+        <p>$$\begin{align*}
+        \dfrac{3}{4}n+\dfrac{1}{2}&=41\\
+        \dfrac{3}{4}n+\dfrac{2}{4}&=41\\
+        \dfrac{3n+2}{4}&=41\\
+        3n+2&=41\times 4\\
+        3n+2&=164\\
+        3n&=164-2\\
+        3n&=162\\
+        n&=\dfrac{162}{3}\\
+        n&=54
+        \end{align*}$$</p>
+        <p>La suite commence à $n=0$ donc le rang du terme de la suite dont la valeur est $41$ est $$54+1=55.$$</p>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<div class="exercice">
+  <div class="enonce">
+      <p>On considère la courbe représentative de la fonction $f$ définie sur $[0~;~+\infty[$ par $$f(x)=-\dfrac{1}{2}x^2+2x+2.$$ et la suite $(w_n)_{n\in\mathbb{N}}$ définie de la manière suivante : le terme d'indice $n$ est l'ordonnée du point d'abscisse $n$ appartenant à la courbe $\mathcal{C}.$</p>
+      <ol>
+        <li>Représenter les premiers termes de la suite sur le graphique ci-dessous.
+            <div id="figure1" class="figure">
+                <svg
+                  id="figure1"
+                  viewBox="0 0 120 110"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="quadrillage"
+                >
+                  <!-- On définit le repère -->
+                  <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="5" ymax ="4.5" xorigine="0" yorigine="0"></g>
+                  <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                  <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                  <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                  <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                  <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                  <g class="label" linkto="I" x="-3" y="0" style="font-size:0.6rem;">1</g>
+                  <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                  <g class="label" linkto="J" x="-8" y="-6" style="font-size:0.6rem;">1</g>
+                  <g name="c1" class="courbeRepresentative" expression="-x^2/2+2x+2"  pas="0.01" xmin="0" xmax="5" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                </svg>
+              </div>
+        </li>
+        <li>Calculer le 4e terme de la suite puis contrôler le résultat à l'aide du graphique.</li>
+        <li>Calculer le 10e terme de la suite.</li>
+        <li>Déterminer le rang du terme de la suite dont la valeur est $-46.$</li>
+      </ol>
+  </div>
+  <div class="solution">
+    <ol>
+      <li>
+        <div id="figure1" class="figure">
+          <svg
+            id="figure1"
+            viewBox="0 0 140 110"
+            xmlns="http://www.w3.org/2000/svg"
+            class="quadrillage"
+          >
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-2" ymin="-1" xmax="5" ymax ="4.5" xorigine="0" yorigine="0"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.6rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-8" y="-6" style="font-size:0.6rem;">1</g>
+            <g name="c1" class="courbeRepresentative" expression="-x^2/2+2x+2"  pas="0.01" xmin="-1" xmax="5" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+            <g name="w0" class="point labeled" repere="repere1" x="0" y="2" stroke="none"></g>
+            <g class="label" linkto="w0" x="-30" y="-6" style="font-size:0.6rem;color:blue;">w_0</g>
+            <g name="w1" class="point labeled" repere="repere1" x="0" y="3.5" stroke="none"></g>
+            <g class="label" linkto="w1" x="-30" y="-6" style="font-size:0.6rem;color:blue;">w_1</g>
+            <g name="w2" class="point labeled" repere="repere1" x="0" y="4" stroke="none"></g>
+            <g class="label" linkto="w2" x="-15" y="-6" style="font-size:0.6rem;color:blue;">w_2</g>
+            <g name="w3" class="point labeled" repere="repere1" x="0" y="3.5" stroke="none"></g>
+            <g class="label" linkto="w3" x="-15" y="-6" style="font-size:0.6rem;color:blue;">w_3</g>
+            <g name="w4" class="point labeled" repere="repere1" x="0" y="2" stroke="none"></g>
+            <g class="label" linkto="w4" x="-15" y="-6" style="font-size:0.6rem;color:blue;">w_4</g>
+            <g name="w5" class="point labeled" repere="repere1" x="0" y="-0.5" stroke="none"></g>
+            <g class="label" linkto="w5" x="-15" y="-6" style="font-size:0.6rem;color:blue;">w_5</g>
+            <g name="A0" class="point" repere="repere1" x="0" y="2" stroke="none"></g>
+            <g name="A1" class="point" repere="repere1" x="1" y="3.5" stroke="none"></g>
+            <g name="A2" class="point" repere="repere1" x="2" y="4" stroke="none"></g>
+            <g name="A3" class="point" repere="repere1" x="3" y="3.5" stroke="none"></g>
+            <g name="A4" class="point" repere="repere1" x="4" y="2" stroke="none"></g>
+            <g name="A5" class="point" repere="repere1" x="5" y="-0.5" stroke="none"></g>
+            <g name="A0x" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+            <g name="A1x" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g name="A2x" class="point" repere="repere1" x="2" y="0" stroke="none"></g>
+            <g name="A3x" class="point" repere="repere1" x="3" y="0" stroke="none"></g>
+            <g name="A4x" class="point" repere="repere1" x="4" y="0" stroke="none"></g>
+            <g name="A5x" class="point" repere="repere1" x="5" y="0" stroke="none"></g>
+            <g name="w1y" class="segment" linkto="w1 A1" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w2y" class="segment" linkto="w2 A2" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w3y" class="segment" linkto="w3 A3" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w4y" class="segment" linkto="w4 A4" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w5y" class="segment" linkto="w5 A5" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w0x" class="segment" linkto="A0 A0x" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w1x" class="segment" linkto="A1 A1x" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w2x" class="segment" linkto="A2 A2x" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w3x" class="segment" linkto="A3 A3x" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w4x" class="segment" linkto="A4 A4x" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+            <g name="w5x" class="segment" linkto="A5 A5x" stroke="blue" stroke-width="0.5" stroke-dasharray="2"></g>
+          </svg>
+        </div>
+      </li>
+      <li>
+        <p>Le 4e terme de la suite est donc :
+        $$\begin{align*}
+        w_3&=-\dfrac{1}{2}\times 3^2+2\times 3+2\\
+        &=-\dfrac{9}{2}+6+2\\
+        &=-\dfrac{9}{2}+8\\
+        &=-\dfrac{9}{2}+\dfrac{16}{2}\\
+        &=\dfrac{7}{2}\\
+        &=3+\dfrac{1}{2}\\
+        &=\num{3.5}
+        \end{align*}$$</p>
+      </li>
+      <li>
+        <p>Le 10e terme de la suite est donc :
+        $$\begin{align*}
+        w_9&=-\dfrac{1}{2}\times 9^2+2\times 9+2\\
+        &=-\dfrac{81}{2}+18+2\\
+        &=-\dfrac{81}{2}+20\\
+        &=-\dfrac{81}{2}+\dfrac{40}{2}\\
+        &=-\dfrac{41}{2}\\
+        &=-20-\dfrac{1}{2}\\
+        &=-\num{20.5}
+        \end{align*}$$</p>
+      </li>
+      <li>
+        <p>On cherche $n$ tel que $$w_n=-46$$</p>
+        <p>Pour cela nous pouvons résoudre l'équation :
+        $$-\dfrac{1}{2}n^2+2n+2=-46$$</p>
+        <p>Commençons par regrouper les termes dans le membre de gauche :</p>
+        <p>$$\begin{align*}
+        -\dfrac{1}{2}n^2+2n+2+46&=-46+46\\
+        -\dfrac{1}{2}n^2+2n+48&=0\\
+        \end{align*}$$</p>
+        <p>En multipliant par $-2$, il n'y a plus de fraction et le terme de degré 2 a son coefficient positif.</p>
+        <p>$$\begin{align*}
+          n^2-4n-96&=0\\
+          \end{align*}$$</p>
+        <p>On résout maintenant l'équation du second degré obtenue en calculant le discriminant :</p>
+        <p>$$\begin{align*}
+        \Delta&=4^2-4\times 1\times (-96)\\
+        &=16+384\\
+        &=400\\
+        &=20^2
+        \end{align*}$$</p>
+        <p>$\Delta>0$ donc l'équation admet deux solutions réelles.
+        $$\begin{align*}
+        n_1&=\dfrac{4+20}{2}\\
+        &=\dfrac{24}{2}\\
+        &=12\\
+        n_2&=\dfrac{4-20}{2}\\
+        &=\dfrac{-16}{2}\\
+        &=-8
+        \end{align*}$$</p>
+        <p>On a donc $n_1=12$ et $n_2=-8$.</p>
+        <p>L'indice est un nombre positif donc on retient seulement la solution $n=12$.</p>
+        <p>Le premier terme de la suite est $w_0$ donc le terme d'indice $12$ est le terme de rang $$12+1=13.$$</p>
+      </li>
+    </ol>
+  </div>
+</div></main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>
