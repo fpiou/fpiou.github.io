@@ -36921,7 +36921,7 @@ var insererEntetesBlocsExercices = function () {
   }
 };
 var wrapElementsInReveal = function (parent) {
-  var elements = parent.querySelectorAll("p, .katex-display, table, .figure, li");
+  var elements = parent.querySelectorAll("p, .katex-display, table, .figure");
   for (var i = 0; i < elements.length; i++) {
     elements[i].classList.add("reveal");
     elements[i].addEventListener("click", function () {
@@ -36961,7 +36961,6 @@ function formatSIForLatex(value, unit) {
 
   // Remplacer \cubic\text{cm} par \text{cm}^3 et similaires
   unit = unit.replace(/\\cubic\\text\{(\w+)\}/g, "\\text{$1}^3");
-  console.log(unit);
   // Ajoutez d'autres remplacements d'unités si nécessaire
 
   return formatNumberForLatex(value) + "\\," + unit;
@@ -37029,6 +37028,9 @@ var convertirKatexEnMathML = function () {
     throwOnError: false,
     //ignoredTags: ["svg"],
     output: "html" // Compatibilité avec Apple notamment
+    // Avec "html" la commande \widehat{} ne fonctionne pas
+    // En mode par défaut, la commande \widehat{} ne fonctionne pas non plus
+    // En mode mathml, la commande \mathbb{} ne fonctionne pas
   });
 };
 
