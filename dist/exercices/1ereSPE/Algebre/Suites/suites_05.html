@@ -160,6 +160,45 @@
         <p>La suite n'est donc pas monotone puisqu'elle n'est croissante que pour les entiers naturels inférieurs ou égaux à $3$.</p></li>
     </ol>
   </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    <p>On considère une suite $(u_n)$ telle que pour tout entier naturel $n~:$ $$u_n=n^2+n-6.$$</p>
+    <ol>
+      <li>Calculer les quatre premiers termes.</li>
+      <li>La suite semble-t-elle monotone ? Expliquer.</li>
+      <li>Exprimer $u_{n-1}$ en fonction de $n$ (forme développée-réduite).</li>
+      <li>Exprimer $u_{n}-u_{n-1}$ en fonction de $n$ (forme développée-réduite).</li>
+      <li>En déduire le sens de variation de la suite.</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol>
+      <li><p>Les quatre premiers termes sont $u_0$, $u_1$, $u_2$ et $u_3$.</p>
+        <p>$u_0=0^2+0-6=-6$</p>
+        <p>$u_1=1^2+1-6=1-6=-5$</p>
+        <p>$u_2=2^2+2-6=4+2-6=0$</p>
+        <p>$u_3=3^2+3-6=9+3-6=6$</p>
+      </li>
+      <li><p>La suite semble croissante car $u_0 < u_1 < u_2 < u_3$.</p></li>
+      <li>$$\begin{align*}
+        u_{n-1} &= (n-1)^2+(n-1)-6\\
+        &= n^2-2n+1+n-1-6\\
+        &= n^2-n-6
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+        u_{n}-u_{n-1} &= (n^2+n-6)-(n^2-n-6)\\
+        &= n^2+n-6-n^2+n+6\\
+        &= 2n
+      \end{align*}$$</li>
+      <li><p>Résolvons l'inéquation $2n \geqslant 0$.
+        $$\begin{align*}
+          2n &\geqslant 0\\
+          n &\geqslant \frac{0}{2}\\
+          n &\geqslant 0
+        \end{align*}$$</p>
+        <p>Comme $u_n \geqslant u_{n-1}$ pour tout entier naturel $n$ supérieur ou égal à $1$, la suite est donc croissante.</p></li>
+    </ol>
 </div></main>
     <footer>
       Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
