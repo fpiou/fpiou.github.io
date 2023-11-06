@@ -55,3 +55,8 @@
 .introduction-quiz {
   display:"none";
 }
+
+#method {
+  padding: 1em;
+  align-content: center;
+  background-color: lightblue;
