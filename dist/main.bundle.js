@@ -39591,6 +39591,8 @@ function getCorrection(response) {
       radios[i].style.background = "rgba(255, 0, 0,0.5)";
     }
   }
+  // Montrer la méthode
+  document.querySelector("#method").style.display = "block";
 }
 function getAnswer() {
   var radios = document.getElementsByName("choix");
@@ -39644,6 +39646,8 @@ function tourSuivant() {
     // On récupère la question et la réponse
     const questionText = question[2];
     let answer = question[3];
+    // On récupère la méthode
+    const method = question[4];
     // Si answer ne contient pas de balise <div> avec la classe "choice"
     if (!answer.includes('<div class="choice">')) {
       // On choisit au hasard 3 réponses possibles du même groupe
@@ -39661,7 +39665,8 @@ function tourSuivant() {
       nextQuestions.push({
         question: questionText,
         answers: shuffledAnswers,
-        correctAnswer: correctAnswer
+        correctAnswer: correctAnswer,
+        method: method
       });
     } else {
       // On récupère les réponses possibles dans les balises <div> avec la classe "choice"
@@ -39678,7 +39683,8 @@ function tourSuivant() {
       nextQuestions.push({
         question: questionText,
         answers: shuffledAnswers,
-        correctAnswer: correctAnswer
+        correctAnswer: correctAnswer,
+        method: method
       });
     }
   });
@@ -39689,12 +39695,15 @@ function tourSuivant() {
   // On ajoute le div pour l'impression du quiz
   printQuiz(nextQuestions);
 }
-function remplirFormulaire(questionText, answersArray) {
+function remplirFormulaire(questionText, answersArray, method) {
   // Accéder à l'élément DOM pour la question et mettre à jour le texte
   const questionElement = document.querySelector("#question");
   // Mettre à jour le contenu de questionElement
   questionElement.innerHTML = questionText;
-
+  // Accéder à l'élément DOM pour la méthode et mettre à jour le texte
+  const methodElement = document.querySelector("#method");
+  // Mettre à jour le contenu de methodElement
+  methodElement.innerHTML = method;
   // Accéder aux éléments DOM pour les choix de réponse et mettre à jour leurs labels
   const choiceElements = document.querySelectorAll(".choix label");
   answersArray.forEach((answer, index) => {
@@ -39777,6 +39786,7 @@ function ajouterEcouteursQuiz() {
       document.querySelector("#question").innerHTML = "";
       document.querySelectorAll(".label").innerHTML = "";
       document.querySelector("#formulaire").style.display = "none";
+      document.querySelector("#method").style.display = "none";
       // On supprime le printquiz s'il existe
       if (document.getElementById("printquiz")) {
         document.getElementById("printquiz").remove();
@@ -39810,9 +39820,10 @@ function ajouterEcouteursQuiz() {
         // On prépare la question suivante
         var {
           questionText,
-          answersArray
+          answersArray,
+          method
         } = nextQuestion(nextQuestions);
-        initialiserAffichageQuiz(questionText, answersArray);
+        initialiserAffichageQuiz(questionText, answersArray, method);
       }
     }
   });
@@ -39830,8 +39841,8 @@ function mettreEnFormeQuiz() {
   (0,_index_js__WEBPACK_IMPORTED_MODULE_1__.convertirKatexEnMathML)();
   (0,_interactif2_js__WEBPACK_IMPORTED_MODULE_2__.createFigures)();
 }
-function initialiserAffichageQuiz(question, shuffledAnswers) {
-  remplirFormulaire(question, shuffledAnswers);
+function initialiserAffichageQuiz(question, shuffledAnswers, method) {
+  remplirFormulaire(question, shuffledAnswers, method);
   setValider("Répondre");
   hideValider();
   disableRadios();
@@ -39849,13 +39860,16 @@ function nextQuestion(nextQuestions) {
   // On récupère la question et les réponses
   const questionText = nextQuestions[0].question;
   const answersArray = nextQuestions[0].answers;
+  // On récupère la méthode
+  const method = nextQuestions[0].method;
   // Avant de supprimer la question et les réponses du tableau, on récupère l'indice de la bonne réponse
   correctAnswerId = nextQuestions[0].correctAnswer;
   // On supprime la question et les réponses du tableau
   nextQuestions.shift();
   return {
     questionText,
-    answersArray
+    answersArray,
+    method
   };
 }
 function printQuiz(nextQuestions) {
