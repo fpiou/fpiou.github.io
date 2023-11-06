@@ -39703,7 +39703,11 @@ function remplirFormulaire(questionText, answersArray, method) {
   // Accéder à l'élément DOM pour la méthode et mettre à jour le texte
   const methodElement = document.querySelector("#method");
   // Mettre à jour le contenu de methodElement
-  methodElement.innerHTML = method;
+  if (method != undefined) {
+    methodElement.innerHTML = method;
+  } else {
+    methodElement.innerHTML = "";
+  }
   // Accéder aux éléments DOM pour les choix de réponse et mettre à jour leurs labels
   const choiceElements = document.querySelectorAll(".choix label");
   answersArray.forEach((answer, index) => {
