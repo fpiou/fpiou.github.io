@@ -24,22 +24,21 @@
       rel="stylesheet"
     />
 
-    <link
+        <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
-      integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
       crossorigin="anonymous"
     />
-
     <script
       defer
-      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
-      integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
       crossorigin="anonymous"
     ></script>
     <script
       defer
-      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
       integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
       crossorigin="anonymous"
     ></script>
@@ -216,25 +215,33 @@
         </div>
     </div>
     <div class="solution">
-        <ol>
-            <li>$ADCB$ est un parallélogramme donc ${\overrightarrow{AD}=\overrightarrow{BC}.}$</li>
-            <li>
-                <p>$E$ est le symétrique de $C$ par rapport à $A$.</p>
-                <p>Donc $A$ est le milieu de $[CE].$</p>
-                <p>$F$ est le symétrique de $B$ par rapport à $A$.</p>
-                <p>Donc $A$ est le milieu de $[BF].$</p>
-                <p>D'où $BCFE$ est un parallélogramme.</p>
-                <p>Donc ${\overrightarrow{BC}=\overrightarrow{EF}.}$</p>
+        <ul>
+            <li><p>On se propose tout d'abord de démontrer que $DCAF$ est un parallélogramme.</p>
+                <ul>
+                    <li><p>$ADCB$ est un parallélogramme donc $${\overrightarrow{CD}=\overrightarrow{BA}}$$</p></li>
+                    <li><p>$F$ est le symétrique de $B$ par rapport à $A$ donc $${\overrightarrow{BA}=\overrightarrow{AF}}$$</p></li>
+                    <li><p>D'où $${\overrightarrow{CD}=\overrightarrow{AF}}$$</p></li>
+                    <li><p>Donc $DCAF$ est un parallélogramme.</p></li>
+                </ul>
             </li>
-            <li><p>D'où ${\overrightarrow{AD}=\overrightarrow{EF}.}$</p></li>
-            <li><p>Donc $DAEF$ est un parallélogramme.</p></li>
-            <li>
-                <p>$ADC$ est isocèle en $A$ donc $AD=AC.$</p>
-                <p>$E$ est le symétrique de $C$ par rapport à $A$ donc $AC=AE.$</p>
-                <p>D'où $AD=AE.$</p>
+            <li><p>On se propose maintenant de démontrer que $DAEF$ est un parallélogramme.</p>
+                <ul>
+                    <li><p>$DCAF$ est un parallélogramme donc $${\overrightarrow{CA}=\overrightarrow{DF}}$$</p></li>
+                    <li><p>$E$ est le symétrique de $C$ par rapport à $A$ donc $${\overrightarrow{CA}=\overrightarrow{AE}}$$</p></li>
+                    <li><p>D'où $${\overrightarrow{DF}=\overrightarrow{AE}}$$</p></li>
+                    <li><p>Donc $DAEF$ est un parallélogramme.</p></li>
+                </ul>
             </li>
-            <li><p>Donc $DAEF$ est un losange.</p></li>
-        </ol>
+            <li><p>On se propose de démontrer pour finir que $DAEF$ est un losange</p></li>
+            <ul>
+                <li><p>$DAE$ est un triangle isocèle en $A$ donc $$DA=AC$$</p></li>
+                <li><p>$E$ est le symétrique de $C$ par rapport à $A$ donc $$AC=AE$$</p></li>
+                <li><p>D'où $$DA=AE$$</p></li>
+                <li><p>On sait de plus que $DAEF$ est un parallélogramme</p></li>
+                <li><p>Or si un parallélogramme possède deux côtés consécutifs de même longueur, alors c'est un losange</p></li>
+                <li><p>Donc $DAEF$ est un losange.</p></li>
+            </ul>
+        </ul>
     </div>
 </div>
 <div class="exercice">
@@ -259,8 +266,8 @@
         </div>
     </div>
     <div class="solution">
-        <ol>
-            <li>
+        <ul>
+            <li><p>On se propose tout d'abord de démontrer que $EBDF$ est un parallelogramme.</p>
                 <ul>
                     <li><p>$ACDF$ est un parallelogramme donc ${\overrightarrow{AC}=\overrightarrow{FD}.}$</p></li>
                     <li><p>$AEBC$ est un parallelogramme donc ${\overrightarrow{AC}=\overrightarrow{EB}.}$</p></li>
@@ -268,7 +275,7 @@
                     <li><p>Donc $EBDF$ est un parallelogramme.</p></li>
                 </ul>
             </li>
-            <li>
+            <li><p>On se propose maintenant de démontrer que $A$ est le milieu de $[FB].$</p>
                 <ul>
                     <li><p>$ABCD$ est un rectangle donc $\overrightarrow{AB}=\overrightarrow{DC}.$</p></li>
                     <li><p>$ACDF$ est un parallelogramme donc ${\overrightarrow{FA}=\overrightarrow{DC}.}$</p></li>
@@ -276,12 +283,13 @@
                     <li><p>Donc $A$ est le milieu de $[FB].$</p></li>
                 </ul>
             </li>
-        </ol>
-
+            <li><p>Comme $EBDF$ est un parallelogramme et que $A$ est le milieu de $[FB],$ alors $A$ est le milieu de $[ED].$</p></li>
+            <li><p>Donc $EBDF$ est un parallelogramme de centre $A.$</p></li>
+        </ul>
     </div>
     <div class="solution">
-        <ol>
-            <li>
+        <ul>
+            <li><p>On se propose tout d'abord de démontrer que $A$ est le milieu de $[FB].$</p>
                 <ul>
                     <li><p>$ACDF$ est un parallélogramme donc $\overrightarrow{DC}=\overrightarrow{FA}.$</p></li>
                     <li><p>$ABCD$ est un rectangle donc $\overrightarrow{AB}=\overrightarrow{DC.}$</p></li>
@@ -289,9 +297,9 @@
                     <li><p>Donc $A$ est le milieu de $[FB].$</p></li>
                 </ul>
             </li>
-            <li>
+            <li><p>On se propose maintenant de démontrer que $A$ est le milieu de $[DE].$</p>
                 <ul>
-                    <li><p>$ABCD$ est un parallélogramme donc $\overrightarrow{DA}=\overrightarrow{CB.}$</p></li>
+                    <li><p>$ABCD$ est un rectangle donc $\overrightarrow{DA}=\overrightarrow{CB.}$</p></li>
                     <li><p>$AEBC$ est un parallélogramme donc $\overrightarrow{CB}=\overrightarrow{AE.}$</p></li>
                     <li><p>D'où $\overrightarrow{DA}=\overrightarrow{AE}.$</p></li>
                     <li><p>Donc $A$ est le milieu de $[DE].$</p></li>
@@ -299,7 +307,7 @@
             </li>
             <li><p>Par conséquent, les diagonales de $EBDF$ se coupent en leur milieu.</p></li>
             <li><p>Donc $EBDF$ est un parallélogramme de centre $A.$</p></li>
-        </ol>
+        </ul>
     </div>
 </div></main>
     <footer>
