@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Derivation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+        rel="stylesheet">
+
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+        crossorigin="anonymous"
+      />
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+        integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"
+      ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+        <link rel="stylesheet" href="/src/css/main.css">
+    
+        <link rel="stylesheet" href="/src/css/prettyLesson.css">
+    
+        <link rel="stylesheet" href="/src/css/print.css">
+    
+
+    <!--Scripts personnalisés-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+<script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+<body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+<button onclick="diminuerTaille()">Diminuer la taille</button>
+<button onclick="augmenterTaille()">Augmenter la taille</button>
+<button onclick="unecolonne()">1 colonne</button>
+<button onclick="deuxcolonnes()">2 colonnes</button>
+<button onclick="window.print()">Imprimer</button>
+    <main>
+        <h1>Dérivation</h1>
+<details id="sommaire">
+  <summary>Sommaire</summary>
+  <nav id="tableOfContents"></nav>
+</details>
+
+<h2>Taux de variation</h2>
+<div class="definition">
+    <p>Soit $f$ une fonction définie sur un intervalle $I$ et $a$ et $b$ deux réels distincts de $I$.</p>
+    <p>On appelle <strong>taux de variation</strong> de $f$ entre $a$ et $b$ le nombre réel $$\frac{f(b)-f(a)}{b-a}.$$</p>
+</div>
+<div class="exemple">
+    <p>Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=x^2$.</p>
+    <p>Calculons le taux de variation de $f$ entre $-1$ et $3$.</p>
+    $$\begin{align*}
+    \frac{f(3)-f(-1)}{3-(-1)}&=\frac{3^2-(-1)^2}{3-(-1)}\\
+    &=\frac{9-1}{3+1}\\
+    &=\frac{8}{4}\\
+    &=2.
+    \end{align*}$$
+    </p>
+</div>
+<div class="remarque">
+    <p>Le taux de variation de $f$ entre $a$ et $b$ est la pente de la droite $(AB)$ où $A(a;f(a))$ et $B(b;f(b))$.</p>
+    <p>Avec $b=a+h$ et $h\neq 0$, ce quotient peut aussi s'écrire $$\frac{f(b)-f(a)}{b-a}=\frac{f(a+h)-f(a)}{h}.$$</p>
+</div>
+<h2>Nombre dérivé</h2>
+<div class="definition">
+    <p>Soit $f$ une fonction définie sur un intervalle $I$ et $a$ un réel de $I$.</p>
+    <p>On appelle <strong>nombre dérivé</strong> de $f$ en $a$ le nombre réel $$f'(a)=\lim\limits_{h\to 0}\frac{f(a+h)-f(a)}{h}.$$</p>
+</div>
+<div class="exemple">
+    <p>Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=x^2$.</p>
+    <p>Calculons le nombre dérivé de $f$ en $2$.</p>
+    $$\begin{align*}
+    f'(2)&=\lim\limits_{h\to 0}\frac{f(2+h)-f(2)}{h}\\
+    &=\lim\limits_{h\to 0}\frac{(2+h)^2-2^2}{h}\\
+    &=\lim\limits_{h\to 0}\frac{4+4h+h^2-4}{h}\\
+    &=\lim\limits_{h\to 0}\frac{4h+h^2}{h}\\
+    &=\lim\limits_{h\to 0}\frac{h(4+h)}{h}\\
+    &=\lim\limits_{h\to 0}4+h\\
+    &=4.
+    \end{align*}$$
+</div>
+<h2>Tangente à une courbe</h2>
+<div class="definition">
+    <p>Soit $f$ une fonction définie sur un intervalle $I$ et $a$ un réel de $I$.</p>
+    <p>La <strong>tangente</strong> à la courbe représentative de $f$ au point d'abscisse $a$ est la droite passant par le point $A(a;f(a))$ et de coefficient directeur $f'(a)$.</p>
+</div>
+<div class="remarque">
+    <p>Si on se rapproche de plus en plus de la courbe représentative de $f$ au point d'abscisse $a$, la tangente à la courbe en ce point est la droite qui se rapproche de plus en plus de la courbe.</p>
+</div>
+<div class="propriete">
+    <p>Soit $f$ une fonction définie sur un intervalle $I$ et $a$ un réel de $I$.</p>
+    <p>Notons $T$ la tangente à la courbe représentative de $f$ au point d'abscisse $a$.</p>
+    <p>Alors l'équation de $T$ est $$y=f'(a)(x-a)+f(a).$$</p>
+</div>
+
+    </main>
+    <footer>
+        Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
+        Licence CC BY-NC-SA.
+    </footer>
+</body>
+
+</html>

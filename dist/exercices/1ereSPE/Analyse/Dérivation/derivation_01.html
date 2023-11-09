@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Derivation_01</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+<button onclick="diminuerTaille()">Diminuer la taille</button>
+<button onclick="augmenterTaille()">Augmenter la taille</button>
+<button onclick="unecolonne()">1 colonne</button>
+<button onclick="deuxcolonnes()">2 colonnes</button>
+<button onclick="window.print()">Imprimer</button>
+    <header>
+      <h1>Exercices</h1>
+    </header>
+    <main><div class="exercice">
+    <div class="enonce">
+        <p>On considère la fonction $f$ définie par $f(x)=3x$.</p>
+        <ol>
+            <li>Calculer le taux de variation de la fonction $f$ entre $2$ et $7.$</li>
+            <li>Exprimer le taux de variation de la fonction $f$ entre $2$ et $2+h$ en fonction de $h.$</li>
+            <li>Retrouver le taux de variation de la fonction $f$ entre $2$ et $7$ à l'aide de la question précédente.</li>
+            <li>Quel est le taux de variation de la fonction $f$ entre $2$ et $4~?$</li>
+            <li>Déterminer le nombre dérivé de la fonction $f$ en $2$ à l'aide du taux de variation.</li>
+            <li>Donner une interprétation graphique du nombre dérivé obtenu.</li>
+        </ol>
+    </div>
+    <div class="solution">
+      <ol>
+        <li>
+          <p>Le taux de variation de la fonction $f$ entre $2$ et $7$ est :
+          $$\begin{align*}
+          \frac{f(7)-f(2)}{7-2}&=\frac{3\times 7-3\times 2}{5}\\
+          &=\frac{21-6}{5}\\
+          &=\frac{15}{5}\\
+          &=3
+          \end{align*}$$</p>
+        </li>
+        <li>
+          <p>Le taux de variation de la fonction $f$ entre $2$ et $2+h$ pour $h$ non-nul est :
+          $$\begin{align*}
+          \frac{f(2+h)-f(2)}{h}&=\frac{3(2+h)-3\times 2}{h}\\
+          &=\frac{6+3h-6}{h}\\
+          &=\frac{3h}{h}\\
+          &=3
+          \end{align*}$$</p>
+        </li>
+        <li>
+          <p>Le taux de variation de la fonction $f$ entre $2$ et $7$ est $\dfrac{f(2+h)-f(2)}{h}=3$ pour $h=5.$</p>
+        </li>
+        <li>
+          <p>Le taux de variation de la fonction $f$ entre $2$ et $4$ est $\dfrac{f(2+h)-f(2)}{h}=3$ pour $h=2.$</p>
+        </li>
+        <li>
+          <p>Le nombre dérivé de la fonction $f$ en $2$ est la limite du taux de variation de la fonction $f$ entre $2$ et $2+h$ quand $h$ tend vers $0.$</p>
+          <p>Or ce nombre dérivé est constant et égal à $3.$</p>
+          <p>On en déduit que le nombre dérivé de la fonction $f$ en $2$ est $3.$</p>
+        </li>
+        <li>
+          <p>Le nombre dérivé de la fonction $f$ en $2$ est le coefficient directeur de la droite localement associée à la fonction $f$ au point d'abscisse $2.$</p>
+          <p>Comme $f$ est une fonction affine, cette droite est la droite d'équation $y=3x.$</p>
+          <p>On en déduit que le nombre dérivé de la fonction $f$ en $2$ est le coefficient directeur de la droite d'équation $y=3x.$</p>
+        </li>
+      </ol>
+    </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+      <p>On considère la fonction $f$ définie par $f(x)=\dfrac{x^2}{4}$.</p>
+      <ol>
+          <li>Calculer le taux de variation de la fonction $f$ entre $3$ et $5.$</li>
+          <li>Exprimer le taux de variation de la fonction $f$ entre $3$ et $3+h$ en fonction de $h.$</li>
+          <li>Retrouver le taux de variation de la fonction $f$ entre $3$ et $5$ à l'aide de la question précédente.</li>
+          <li>Quel est le taux de variation de la fonction $f$ entre $3$ et $4~?$</li>
+          <li>Déterminer le nombre dérivé de la fonction $f$ en $3$ à l'aide du taux de variation.</li>
+          <li>Donner une interprétation graphique du nombre dérivé obtenu.</li>
+          <li>Tracer sur le graphique suivant la tangente à la courbe de la fonction $f$ au point d'abscisse $3.$
+            <div id="figure1" class="figure">
+              <svg
+                id="figure1"
+                viewBox="0 0 200 160"
+                xmlns="http://www.w3.org/2000/svg"
+                class="quadrillage"
+              >
+                <!-- On définit le repère -->
+                <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="5" ymax ="7" xorigine="0" yorigine="0"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="c1" class="courbeRepresentative" expression="x^2/4"  pas="0.01" xmin="-5" xmax="5" linkto="repere1" fill="transparent" stroke="red" stroke-width="1"></g>
+              </svg>
+            </div>
+          </li>
+          <li>Déterminer une équation de la tangente à la courbe de la fonction $f$ au point d'abscisse $3.$</li>
+          <li>Notons $g$ la fonction affine dont la tangente à la courbe de la fonction $f$ au point d'abscisse $3$ est la représentation graphique.<br>
+            Démontrer que $4(f(x)-g(x))=x^2-6x+9.$
+          </li>
+          <li>Déduire de la question précédente la position relative de la courbe représentative de la fonction $f$ par rapport à sa tangente au point d'abscisse $3.$</li>
+      </ol>
+  </div>
+  <div class="solution">
+    <ol>
+      <li>
+        <p>Le taux de variation de la fonction $f$ entre $3$ et $5$ est :
+        $$\begin{align*}
+        \frac{f(5)-f(3)}{5-3}&=\frac{\frac{5^2}{4}-\frac{3^2}{4}}{5-3}\\
+        &=\frac{\frac{25}{4}-\frac{9}{4}}{2}\\
+        &=\frac{\frac{16}{4}}{2}\\
+        &=\frac{16}{8}\\
+        &=2
+        \end{align*}$$</p>
+      </li>
+      <li>
+        <p>Le taux de variation de la fonction $f$ entre $3$ et $3+h$ pour $h$ non-nul est :
+        $$\begin{align*}
+        \dfrac{f(3+h)-f(3)}{h}&=\dfrac{\dfrac{(3+h)^2}{4}-\dfrac{3^2}{4}}{h}\\
+        &=\dfrac{\dfrac{9+6h+h^2}{4}-\dfrac{9}{4}}{h}\\
+        &=\dfrac{\dfrac{9}{4}+\dfrac{6h}{4}+\dfrac{h^2}{4}-\dfrac{9}{4}}{h}\\
+        &=\dfrac{\dfrac{6h}{4}+\dfrac{h^2}{4}}{h}\\
+        &=\dfrac{3}{2}+\dfrac{h}{4}
+        \end{align*}$$</p>
+      </li>
+      <li>
+        <p>Le taux de variation de la fonction $f$ entre $3$ et $5$ est $\dfrac{f(3+h)-f(3)}{h}=\dfrac{3}{2}+\dfrac{h}{4}$ pour $h=2.$</p>
+        <p>Donc, $\dfrac{f(3+h)-f(3)}{h}=\dfrac{3}{2}+\dfrac{2}{4}=2.$</p>
+      </li>
+      <li>
+        <p>Le taux de variation de la fonction $f$ entre $3$ et $4$ est $\dfrac{f(3+h)-f(3)}{h}=\dfrac{3}{2}+\dfrac{h}{4}$ pour $h=1.$</p>
+        <p>Donc, $\dfrac{f(3+h)-f(3)}{h}=\dfrac{3}{2}+\dfrac{1}{4}=\dfrac{7}{4}.$</p>
+      </li>
+      <li>
+        <p>Le nombre dérivé de la fonction $f$ en $3$ est la limite du taux de variation de la fonction $f$ entre $3$ et $3+h$ quand $h$ tend vers $0.$</p>
+        <p>En prenant la limite de $\dfrac{3}{2}+\dfrac{h}{4}$ quand $h$ tend vers $0$, on obtient $\dfrac{3}{2}.$</p>
+        <p>On en déduit que le nombre dérivé de la fonction $f$ en $3$ est $\dfrac{3}{2}.$</p>
+        <p>Autrement dit, $f'(3)=\dfrac{3}{2}.$</p>
+      </li>
+      <li>
+        <p>Le nombre dérivé de la fonction $f$ en $3$ est le coefficient directeur de la droite que l'on peut localement assimiler à la fonction $f$ en $3$.</p>
+      </li>
+      <li>
+        <div id="figure1" class="figure">
+          <svg
+            id="figure1"
+            viewBox="0 0 200 160"
+            xmlns="http://www.w3.org/2000/svg"
+            class="quadrillage"
+          >
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="5" ymax ="7" xorigine="0" yorigine="0"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="c1" class="courbeRepresentative" expression="x^2/4"  pas="0.01" xmin="-5" xmax="5" linkto="repere1" fill="transparent" stroke="red" stroke-width="1"></g>
+            <g name="d1" class="courbeRepresentative" expression="3/2(x-3)+9/4"  pas="0.01" xmin="-5" xmax="5" linkto="repere1" fill="transparent" stroke="green" stroke-width="1"></g>
+          </svg>
+        </div>
+      </li>
+      <li>
+        <p>La tangente à la courbe de la fonction $f$ au point d'abscisse $3$ est la droite d'équation $y=f'(3)(x-3)+f(3).$</p>
+        <p>Or $f'(3)=\dfrac{3}{2}$ et $f(3)=\frac{3^2}{4}=\frac{9}{4}.$</p>
+        <p>Donc une équation de la tangente à la courbe de la fonction $f$ au point d'abscisse $3$ est $y=\dfrac{3}{2}(x-3)+\dfrac{9}{4}.$</p>
+      </li>
+      <li>
+        <p>On a $$\begin{align*}
+          4(f(x)-g(x))&=4\left(\dfrac{x^2}{4}-\dfrac{3}{2}(x-3)-\dfrac{9}{4}\right)\\
+          &=4\times\dfrac{x^2}{4}-4\times\dfrac{3}{2}(x-3)-4\times\dfrac{9}{4}\\
+          &=x^2-6(x-3)-9\\
+          &=x^2-6x+18-9\\
+          &=x^2-6x+9
+        \end{align*}$$</p>
+      </li>
+      <li>
+        <p>On a $4(f(x)-g(x))=x^2-6x+9.$</p>
+        <p>On reconnait une identité remarquable : $x^2-6x+9=(x-3)^2.$</p>
+        <p>D'où $f(x)-g(x)=\dfrac{(x-3)^2}{4}.$</p>
+        <p>Or $(x-3)^2\geqslant 0$ pour tout $x\in\mathbb{R}.$</p>
+        <p>On en déduit que $f(x)-g(x)\geqslant 0$ pour tout $x\in\mathbb{R}.$</p>
+        <p>Autrement dit, $f(x)\geqslant g(x)$ pour tout $x\in\mathbb{R}.$</p>
+        <p>Donc la courbe représentative de la fonction $f$ est au-dessus de sa tangente au point d'abscisse $3.$</p>
+      </li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+      <p>On considère la fonction $f$ définie sur $\mathbb{R}^*$ par $f(x)=\dfrac{5}{x}$.</p>
+      <ol>
+          <li>Calculer le taux de variation de la fonction $f$ entre $1$ et $4.$</li>
+          <li>Exprimer le taux de variation de la fonction $f$ entre $1$ et $1+h$ en fonction de $h.$</li>
+          <li>Retrouver le taux de variation de la fonction $f$ entre $1$ et $4$ à l'aide de la question précédente.</li>
+          <li>Quel est le taux de variation de la fonction $f$ entre $1$ et $\num{0.5}~?$</li>
+          <li>Déterminer le nombre dérivé de la fonction $f$ en $1$ à l'aide du taux de variation.</li>
+          <li>Donner une interprétation graphique du nombre dérivé obtenu.</li>
+          <li>Tracer sur le graphique suivant la tangente à la courbe de la fonction $f$ au point d'abscisse $1.$
+            <div id="figure1" class="figure">
+              <svg
+                id="figure1"
+                viewBox="0 0 200 180"
+                xmlns="http://www.w3.org/2000/svg"
+                class="quadrillage"
+              >
+                <!-- On définit le repère -->
+                <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="9" ymax ="8" xorigine="0" yorigine="0"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="c1" class="courbeRepresentative" expression="5/x"  pas="0.01" xmin="0.01" xmax="9" linkto="repere1" fill="transparent" stroke="red" stroke-width="1"></g>
+              </svg>
+            </div>
+          </li>
+          <li>Déterminer une équation de la tangente à la courbe de la fonction $f$ au point d'abscisse $1.$</li>
+          <li>Notons $g$ la fonction affine dont la tangente à la courbe de la fonction $f$ au point d'abscisse $1$ est la représentation graphique.<br>
+            Démontrer que $\dfrac{f(x)-g(x)}{5}=\dfrac{x^2-2x+1}{x}$ pour $x > 0.$
+          </li>
+          <li>Déduire de la question précédente la position relative de la courbe représentative de la fonction $f$ par rapport à sa tangente au point d'abscisse $1.$</li>
+      </ol>
+  </div>
+  <div class="solution">
+    <ol>
+      <li>
+        <p>Le taux de variation de la fonction $f$ entre $1$ et $4$ est :
+        $$\begin{align*}
+        \frac{f(4)-f(1)}{4-1}&=\frac{\frac{5}{4}-\frac{5}{1}}{4-1}\\
+        &=\frac{\frac{5}{4}-5}{3}\\
+        &=\frac{\frac{5}{4}-\frac{20}{4}}{3}\\
+        &=\frac{-\frac{15}{4}}{3}\\
+        &=-\frac{15}{12}\\
+        &=-\frac{5}{4}
+        \end{align*}$$</p>
+      </li>
+      <li>
+        <p>Le taux de variation de la fonction $f$ entre $1$ et $1+h$ pour $h$ non-nul est :
+        $$\begin{align*}
+        \dfrac{f(1+h)-f(1)}{h}&=\dfrac{\dfrac{5}{1+h}-\dfrac{5}{1}}{h}\\
+        &=\dfrac{\dfrac{5}{1+h}-5}{h}\\
+        &=\dfrac{\dfrac{5}{1+h}-\dfrac{5(1+h)}{1+h}}{h}\\
+        &=\dfrac{\dfrac{5}{1+h}-\dfrac{5+5h}{1+h}}{h}\\
+        &=\dfrac{\dfrac{5-(5+5h)}{1+h}}{h}\\
+        &=\dfrac{\dfrac{-5h}{1+h}}{h}\\
+        &=\dfrac{-5}{1+h}
+        \end{align*}$$</p>
+      </li>
+      <li>
+        <p>Le taux de variation de la fonction $f$ entre $1$ et $4$ est $\dfrac{f(1+h)-f(1)}{h}=\dfrac{-5}{1+h}$ pour $h=3.$</p>
+        <p>Donc, $\dfrac{f(1+h)-f(1)}{h}=\dfrac{-5}{1+3}=-\frac{5}{4}.$</p>
+      </li>
+      <li>
+        <p>Le taux de variation de la fonction $f$ entre $1$ et $\num{0.5}$ est $\dfrac{f(1+h)-f(1)}{h}=\dfrac{-5}{1+h}$ pour $h=-\num{0.5}.$</p>
+        <p>Donc, $\dfrac{f(1+h)-f(1)}{h}=\dfrac{-5}{1-\num{0.5}}=-\frac{5}{0.5}=-10.$</p>
+      </li>
+      <li>
+        <p>Le nombre dérivé de la fonction $f$ en $1$ est la limite du taux de variation de la fonction $f$ entre $1$ et $1+h$ quand $h$ tend vers $0.$</p>
+        <p>En prenant la limite de $\dfrac{-5}{1+h}$ quand $h$ tend vers $0$, on obtient $-5.$</p>
+        <p>On en déduit que le nombre dérivé de la fonction $f$ en $1$ est $-5.$</p>
+        <p>Autrement dit, $f'(1)=-5.$</p>
+      </li>
+      <li>
+        <p>Le nombre dérivé de la fonction $f$ en $1$ est le coefficient directeur de la droite que l'on peut localement assimiler à la fonction $f$ en $1$.</p>
+      </li>
+      <li>
+        <div id="figure1" class="figure">
+          <svg
+            id="figure1"
+            viewBox="0 0 200 180"
+            xmlns="http://www.w3.org/2000/svg"
+            class="quadrillage"
+          >
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="9" ymax ="8" xorigine="0" yorigine="0"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="c1" class="courbeRepresentative" expression="5/x"  pas="0.01" xmin="0.01" xmax="9" linkto="repere1" fill="transparent" stroke="red" stroke-width="1"></g>
+            <g name="d1" class="courbeRepresentative" expression="-5(x-1)+5"  pas="0.01" xmin="-5" xmax="9" linkto="repere1" fill="transparent" stroke="green" stroke-width="1"></g>
+          </svg>
+        </div>
+      </li>
+      <li>
+        <p>La tangente à la courbe de la fonction $f$ au point d'abscisse $1$ est la droite d'équation $y=f'(1)(x-1)+f(1).$</p>
+        <p>Or $f'(1)=-5$ et $f(1)=\frac{5}{1}=5.$</p>
+        <p>Donc une équation de la tangente à la courbe de la fonction $f$ au point d'abscisse $1$ est $y=-5(x-1)+5.$</p>
+      </li>
+      <li>
+        <p>On a $$\begin{align*}
+          \dfrac{f(x)-g(x)}{5}&=\dfrac{\dfrac{5}{x}-\left(-5(x-1)+5\right)}{5}\\
+          &=\dfrac{\dfrac{5}{x}+5x-5-5}{5}\\
+          &=\dfrac{1}{x}+x-2\\
+          &=\dfrac{1}{x}+\dfrac{x^2}{x}-\dfrac{2x}{x}\\
+          &=\dfrac{1+x^2-2x}{x}\\
+          &=\dfrac{x^2-2x+1}{x}
+        \end{align*}$$</p>
+      </li>
+      <li>
+        <p>On a $\dfrac{f(x)-g(x)}{5}=\dfrac{x^2-2x+1}{x}$ pour $x > 0.$</p>
+        <p>On reconnait une identité remarquable : $x^2-2x+1=(x-1)^2.$</p>
+        <p>D'où $f(x)-g(x)=5\times \dfrac{(x-1)^2}{x}.$</p>
+        <p>Or $(x-1)^2\geqslant 0$ pour tout $x > 0$</p>
+        <p>On en déduit que $f(x)-g(x)\geqslant 0$ pour tout $x>0.$</p>
+        <p>Autrement dit, $f(x)\geqslant g(x)$ pour tout $x>0.$</p>
+        <p>Donc la courbe représentative de la fonction $f$ est au-dessus de sa tangente au point d'abscisse $1.$</p>
+      </li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+      <p>On considère la fonction $f$ définie sur $\mathbb{R}^+$ par $f(x)=\sqrt{x}$.</p>
+      <ol>
+          <li>Calculer le taux de variation de la fonction $f$ entre $1$ et $4.$</li>
+          <li>Montrer que le taux de variation de la fonction $f$ entre $1$ et $1+h$ en fonction de $h$ est $\dfrac{1}{\sqrt{1+h}+1}.$</li>
+          <li>Retrouver le taux de variation de la fonction $f$ entre $1$ et $4$ à l'aide de la question précédente.</li>
+          <li>Quel est le taux de variation de la fonction $f$ entre $1$ et $\num{1.21}~?$</li>
+          <li>Déterminer le nombre dérivé de la fonction $f$ en $1$ à l'aide du taux de variation.</li>
+          <li>Donner une interprétation graphique du nombre dérivé obtenu.</li>
+          <li>Tracer sur le graphique suivant la tangente à la courbe de la fonction $f$ au point d'abscisse $1.$
+            <div id="figure1" class="figure">
+              <svg
+                id="figure1"
+                viewBox="0 0 120 120"
+                xmlns="http://www.w3.org/2000/svg"
+                class="quadrillage"
+              >
+                <!-- On définit le repère -->
+                <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="c1" class="courbeRepresentative" expression="sqrt(x)"  pas="0.01" xmin="0" xmax="5" linkto="repere1" fill="transparent" stroke="red" stroke-width="1"></g>
+              </svg>
+            </div>
+          </li>
+          <li>Déterminer une équation de la tangente à la courbe de la fonction $f$ au point d'abscisse $1.$</li>
+          <li>Notons $g$ la fonction affine dont la tangente à la courbe de la fonction $f$ au point d'abscisse $1$ est la représentation graphique.<br>
+            Démontrer que $-2(f(x)-g(x))=x-2\sqrt{x}+1.$
+          </li>
+          <li>Déduire de la question précédente la position relative de la courbe représentative de la fonction $f$ par rapport à sa tangente au point d'abscisse $1.$</li>
+      </ol>
+  </div>
+  <div class="solution">
+    <ol>
+      <li>
+        <p>Le taux de variation de la fonction $f$ entre $1$ et $4$ est :
+        $$\begin{align*}
+        \frac{f(4)-f(1)}{4-1}&=\frac{\sqrt{4}-\sqrt{1}}{4-1}\\
+        &=\frac{2-1}{3}\\
+        &=\frac{1}{3}
+        \end{align*}$$</p>
+      </li>
+      <li>
+        <p>Le taux de variation de la fonction $f$ entre $1$ et $1+h$ pour $h$ non-nul est :
+        $$\begin{align*}
+        \dfrac{f(1+h)-f(1)}{h}&=\dfrac{\sqrt{1+h}-\sqrt{1}}{h}\\
+        &=\dfrac{\sqrt{1+h}-1}{h}\\
+        &=\dfrac{\sqrt{1+h}-1}{h}\times\dfrac{\sqrt{1+h}+1}{\sqrt{1+h}+1}\\
+        &=\dfrac{1+h-1}{h(\sqrt{1+h}+1)}\\
+        &=\dfrac{h}{h(\sqrt{1+h}+1)}\\
+        &=\dfrac{1}{\sqrt{1+h}+1}
+        \end{align*}$$</p>
+      </li>
+      <li>
+        <p>Le taux de variation de la fonction $f$ entre $1$ et $4$ est $\dfrac{f(1+h)-f(1)}{h}=\dfrac{1}{\sqrt{1+h}+1}$ pour $h=3.$</p>
+        <p>Donc,
+          $$\begin{align*}
+          \dfrac{f(1+h)-f(1)}{h}&=\dfrac{1}{\sqrt{1+h}+1}\\
+          &=\dfrac{1}{\sqrt{1+3}+1}\\
+          &=\dfrac{1}{\sqrt{4}+1}\\
+          &=\dfrac{1}{2+1}\\
+          &=\dfrac{1}{3}
+          \end{align*}$$
+        </p>
+      </li>
+      <li>
+        <p>Le taux de variation de la fonction $f$ entre $1$ et $\num{1.21}$ est $\dfrac{f(1+h)-f(1)}{h}=\dfrac{1}{\sqrt{1+h}+1}$ pour $h=\num{0.21}.$</p>
+        <p>Donc,
+          $$\begin{align*}
+          \dfrac{f(1+h)-f(1)}{h}&=\dfrac{1}{\sqrt{1+h}+1}\\
+          &=\dfrac{1}{\sqrt{1+\num{0.21}}+1}\\
+          &=\dfrac{1}{\sqrt{\num{1.21}}+1}\\
+          &=\dfrac{1}{\num{1.1}+1}\\
+          &=\dfrac{1}{\num{2.1}}\\
+          &=\dfrac{10}{21}
+          \end{align*}$$
+        </p>
+      </li>
+      <li>
+        <p>Le nombre dérivé de la fonction $f$ en $1$ est la limite du taux de variation de la fonction $f$ entre $1$ et $1+h$ quand $h$ tend vers $0.$</p>
+        <p>En prenant la limite de $\dfrac{1}{\sqrt{1+h}+1}$ quand $h$ tend vers $0$, on obtient $\dfrac{1}{2}.$</p>
+        <p>On en déduit que le nombre dérivé de la fonction $f$ en $1$ est $\dfrac{1}{2}.$</p>
+        <p>Autrement dit, $f'(1)=\dfrac{1}{2}.$</p>
+      </li>
+      <li>
+        <p>Le nombre dérivé de la fonction $f$ en $1$ est le coefficient directeur de la droite que l'on peut localement assimiler à la fonction $f$ en $1$.</p>
+      </li>
+      <li>
+        <div id="figure1" class="figure">
+          <svg
+            id="figure1"
+            viewBox="0 0 120 120"
+            xmlns="http://www.w3.org/2000/svg"
+            class="quadrillage"
+          >
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="c1" class="courbeRepresentative" expression="sqrt(x)"  pas="0.01" xmin="0" xmax="5" linkto="repere1" fill="transparent" stroke="red" stroke-width="1"></g>
+            <g name="d1" class="courbeRepresentative" expression="1/2(x-1)+1"  pas="0.01" xmin="-1" xmax="5" linkto="repere1" fill="transparent" stroke="green" stroke-width="1"></g>
+          </svg>
+        </div>
+      </li>
+      <li>
+        <p>La tangente à la courbe de la fonction $f$ au point d'abscisse $1$ est la droite d'équation $y=f'(1)(x-1)+f(1).$</p>
+        <p>Or $f'(1)=\dfrac{1}{2}$ et $f(1)=\sqrt{1}=1.$</p>
+        <p>Donc une équation de la tangente à la courbe de la fonction $f$ au point d'abscisse $1$ est $y=\dfrac{1}{2}(x-1)+1.$</p>
+      </li>
+      <li>
+        <p>On a $$\begin{align*}
+          -2(f(x)-g(x))&=-2\left(\sqrt{x}-\left(\dfrac{1}{2}(x-1)+1\right)\right)\\
+          &=-2\left(\sqrt{x}-\dfrac{1}{2}(x-1)-1\right)\\
+          &=-2\sqrt{x}+x-1+2\\
+          &=x-2\sqrt{x}+1
+        \end{align*}$$</p>
+      </li>
+      <li>
+        <p>On a $-2(f(x)-g(x))=x-2\sqrt{x}+1.$</p>
+        <p>On reconnait une identité remarquable : $x-2\sqrt{x}+1=(\sqrt{x}-1)^2.$</p>
+        <p>D'où $f(x)-g(x)=-2\times \dfrac{(\sqrt{x}-1)^2}{2}.$</p>
+        <p>Or $(\sqrt{x}-1)^2\geqslant 0$ pour tout $x\geqslant 0$</p>
+        <p>On en déduit que $f(x)-g(x)\leqslant 0$ pour tout $x\geqslant 0.$</p>
+        <p>Autrement dit, $f(x)\leqslant g(x)$ pour tout $x\geqslant 0.$</p>
+        <p>Donc la courbe représentative de la fonction $f$ est en-dessous de sa tangente au point d'abscisse $1.$</p>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+      <p>On considère la fonction $f$ définie par $f(x)=x^3$.</p>
+      <ol>
+          <li>Calculer le taux de variation de la fonction $f$ entre $-\dfrac{3}{2}$ et $-1.$</li>
+          <li><p>Montrer que le taux de variation de la fonction $f$ entre $-1$ et $-1+h$ en fonction de $h$ est $h^2-3h+3.$</p>
+              <p>Indication : On pourra utiliser l'identité remarquable $a^3-b^3=(a-b)(a^2+ab+b^2).$</p>
+          </li>
+          <li>Retrouver le taux de variation de la fonction $f$ entre $-1$ et $-\dfrac{3}{2}$ à l'aide de la question précédente.</li>
+          <li>Quel est le taux de variation de la fonction $f$ entre $-1$ et $-\dfrac{1}{2}~?$</li>
+          <li>Déterminer le nombre dérivé de la fonction $f$ en $-1$ à l'aide du taux de variation.</li>
+          <li>Donner une interprétation graphique du nombre dérivé obtenu.</li>
+          <li>Tracer sur le graphique suivant la tangente à la courbe de la fonction $f$ au point d'abscisse $-1.$
+            <div id="figure1" class="figure">
+              <svg
+                id="figure1"
+                viewBox="0 0 200 200"
+                xmlns="http://www.w3.org/2000/svg"
+                class="quadrillage"
+              >
+                <!-- On définit le repère -->
+                <g name="repere1" class="repere" xmin="-2" ymin="-2" xmax="2" ymax ="2" xorigine="0" yorigine="0"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="c1" class="courbeRepresentative" expression="x^3"  pas="0.01" xmin="-2" xmax="2" linkto="repere1" fill="transparent" stroke="red" stroke-width="1"></g>
+              </svg>
+            </div>
+          </li>
+          <li>Déterminer une équation de la tangente à la courbe de la fonction $f$ au point d'abscisse $-1.$</li>
+          <li>Notons $g$ la fonction affine dont la tangente à la courbe de la fonction $f$ au point d'abscisse $-1$ est la représentation graphique.<br>
+            Démontrer que $f(x)-g(x)=(x+1)(x^2-x-2).$
+          </li>
+          <li>En observant que pour $x < 0$, $x-2 < -2$ et en factorisant $x^2-x-2$, déduire de la question précédente la position relative de la courbe représentative de la fonction $f$ par rapport à sa tangente au point d'abscisse $-1.$</li>
+      </ol>
+  </div>
+  <div class="solution">
+    <ol>
+      <li>
+        <p>Le taux de variation de la fonction $f$ entre $-\dfrac{3}{2}$ et $-1$ est :
+        $$\begin{align*}
+        \frac{f(-1)-f(-\frac{3}{2})}{-1-(-\frac{3}{2})}&=\frac{(-1)^3-(-\frac{3}{2})^3}{-1-(-\frac{3}{2})}\\
+        &=\frac{-1+\frac{27}{8}}{-1+\frac{3}{2}}\\
+        &=\frac{-\frac{8}{8}+\frac{27}{8}}{-\frac{8}{8}+\frac{12}{8}}\\
+        &=\frac{\frac{19}{8}}{\frac{4}{8}}\\
+        &=\frac{19}{4}
+        \end{align*}$$</p>
+      </li>
+      <li>
+        <p>Le taux de variation de la fonction $f$ entre $-1$ et $-1+h$ pour $h$ non-nul est :
+        $$\begin{align*}
+        \dfrac{f(-1+h)-f(-1)}{h}&=\dfrac{(-1+h)^3-(-1)^3}{h}\\
+        &=\dfrac{(-1+h-(-1))((-1+h)^2+(-1+h)(-1)+(-1)^2)}{h}\\
+        &=\dfrac{h(h^2-2h+1+h+1+1)}{h}\\
+        &=\dfrac{h(h^2-3h+3)}{h}\\
+        &=h^2-3h+3
+        \end{align*}$$</p>
+      </li>
+      <li>
+        <p>Le taux de variation de la fonction $f$ entre $-1$ et $-\dfrac{3}{2}$ est $h^2-3h+3$ pour $h=-\frac{1}{2}.$</p>
+        <p>Donc,
+          $$\begin{align*}
+          \dfrac{f(-1+h)-f(-1)}{h}&=h^2-3h+3\\
+          &=\left(-\frac{1}{2}\right)^2-3\left(-\frac{1}{2}\right)+3\\
+          &=\frac{1}{4}+\frac{3}{2}+3\\
+          &=\frac{1}{4}+\frac{6}{4}+3\\
+          &=\frac{7}{4}+3\\
+          &=\frac{7}{4}+\frac{12}{4}\\
+          &=\frac{19}{4}
+          \end{align*}$$
+        </p>
+      </li>
+      <li>
+        <p>Le taux de variation de la fonction $f$ entre $-1$ et $-\dfrac{1}{2}$ est $h^2-3h+3$ pour $h=\frac{1}{2}.$</p>
+        <p>Donc,
+          $$\begin{align*}
+          \dfrac{f(-1+h)-f(-1)}{h}&=h^2-3h+3\\
+          &=\left(\frac{1}{2}\right)^2-3\left(\frac{1}{2}\right)+3\\
+          &=\frac{1}{4}-\frac{3}{2}+3\\
+          &=\frac{1}{4}-\frac{6}{4}+\frac{12}{4}\\
+          &=\frac{7}{4}
+          \end{align*}$$
+        </p>
+      </li>
+      <li>
+        <p>Le nombre dérivé de la fonction $f$ en $-1$ est la limite du taux de variation de la fonction $f$ entre $-1$ et $-1+h$ quand $h$ tend vers $0.$</p>
+        <p>En prenant la limite de $h^2-3h+3$ quand $h$ tend vers $0$, on obtient $3.$</p>
+        <p>On en déduit que le nombre dérivé de la fonction $f$ en $-1$ est $3.$</p>
+        <p>Autrement dit, $f'(-1)=3.$</p>
+      </li>
+      <li>
+        <p>Le nombre dérivé de la fonction $f$ en $-1$ est le coefficient directeur de la droite que l'on peut localement assimiler à la fonction $f$ en $-1$.</p>
+      </li>
+      <li>
+        <div id="figure1" class="figure">
+          <svg
+            id="figure1"
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+            class="quadrillage"
+          >
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-2" ymin="-2" xmax="2" ymax ="2" xorigine="0" yorigine="0"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="c1" class="courbeRepresentative" expression="x^3"  pas="0.01" xmin="-2" xmax="2" linkto="repere1" fill="transparent" stroke="red" stroke-width="1"></g>
+            <g name="d1" class="courbeRepresentative" expression="3(x+1)-1"  pas="0.01" xmin="-2" xmax="2" linkto="repere1" fill="transparent" stroke="green" stroke-width="1"></g>
+          </svg>
+        </div>
+      </li>
+      <li>
+        <p>La tangente à la courbe de la fonction $f$ au point d'abscisse $-1$ est la droite d'équation $y=f'(-1)(x+1)+f(-1).$</p>
+        <p>Or $f'(-1)=3$ et $f(-1)=(-1)^3=-1.$</p>
+        <p>Donc une équation de la tangente à la courbe de la fonction $f$ au point d'abscisse $-1$ est $y=3(x+1)-1.$</p>
+      </li>
+      <li>
+        <p>On a d'une part : $$\begin{align*}
+          f(x)-g(x)&=x^3-(3(x+1)-1)\\
+          &=x^3-3(x+1)+1\\
+          &=x^3-3x-3+1\\
+          &=x^3-3x-2
+        \end{align*}$$</p>
+        <p>D'autre part :
+          $$\begin{align*}
+          (x+1)(x^2-x-2)&=x^3-x^2-2x+x^2-x-2\\
+          &=x^3-3x-2
+          \end{align*}$$
+        </p>
+        <p>Donc $f(x)-g(x)=(x+1)(x^2-x-2).$</p>
+      </li>
+      <li>
+        <p>On a $f(x)-g(x)=(x+1)(x^2-x-2).$</p>
+        <p>Déterminons les racines du polynôme $x^2-x-2.$</p>
+        <p>On a $\Delta=(-1)^2-4\times 1\times (-2)=1+8=9.$</p>
+        <p>Donc $\sqrt{\Delta}=\sqrt{9}=3.$</p>
+        <p>On a $x_1=\dfrac{-(-1)-3}{2\times 1}=\dfrac{-2}{2}=-1$ et $x_2=\dfrac{-(-1)+3}{2\times 1}=\dfrac{4}{2}=2.$</p>
+        <p>Donc $x^2-x-2=(x+1)(x-2).$</p>
+        <p>On en déduit que $f(x)-g(x)=(x+1)(x+1)(x-2)=(x+1)^2(x-2).$</p>
+        <p>Or pour $x < 0$, $x-2 < -2$</p>
+        <p>Donc $f(x)-g(x) < 0$ pour $x < 0.$</p>
+        <p>Autrement dit, $f(x) < g(x)$ pour $x < 0.$</p>
+        <p>Donc la courbe représentative de la fonction $f$ est en-dessous de sa tangente au point d'abscisse $-1.$</p>
+    </ol>
+  </div>
+</div>
+
+</main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>
