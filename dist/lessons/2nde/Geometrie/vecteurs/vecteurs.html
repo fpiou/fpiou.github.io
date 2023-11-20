@@ -20,15 +20,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
-        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
-
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
-        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
-        crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+        crossorigin="anonymous"
+      />
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+        integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"
+      ></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
 
@@ -111,8 +120,7 @@
 </details>
 <h2>Translation de vecteur $\overrightarrow{AB}$</h2>
 <div class="definition">
-    <p>Soit $A$ et $B$ deux points du plan. On appelle <span class="important">translation qui transforme $A$ en
-            $B$</span> la translation qui à tout point $M$ du plan associe le point $M'$ tel que les segments
+    <p>Soit $A$ et $B$ deux points du plan. On appelle <span class="important">translation de vecteur $\overrightarrow{AB}$</span> la translation qui à tout point $M$ du plan associe le point $M'$ tel que les segments
         $[AM']$ et $[BM]$ ont le même milieu.</p>
     <div id="figure1" class="figure">
         <svg id="figure1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
@@ -130,11 +138,10 @@
     </div>
 </div>
 <div class="propriete">
-    <p>Considérons la translation qui transforme $A$ en $B$ et $M$ en $M'$.</p>
+    <p>Considérons la translation de vecteur $\overrightarrow{AB}$ qui transforme $M$ en $M'$.</p>
     <ul>
-        <li>Si $A$ et $B$ sont confondus, alors la translation qui transforme $A$ en $B$ est la translation qui
-            laisse
-            tous les points du plan fixes.</li>
+        <li>Si $A$ et $B$ sont confondus, alors la translation de vecteur $\overrightarrow{AB}$ est la translation qui
+            laisse tous les points du plan fixes ($M=M'$).</li>
         <li>Si $A$, $B$ et $M$ sont non alignés, alors $AMM'B$ est un parallélogramme.</li>
         <div id="figure2" class="figure">
             <svg id="figure2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
@@ -153,7 +160,7 @@
                 <!-- Fin de la figure -->
         </svg>
         </div>
-        <li>Si $A$, $B$ et $M$ sont alignés, alors $AMM'B$ est un parallélogramme aplati.</li>
+        <li>Si $A$, $B$ et $M$ sont alignés, alors $AMM'B$ est un parallélogramme &laquo; aplati &raquo;.</li>
         <div id="figure3" class="figure">
             <svg id="figure3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
                 <!-- Début de la figure -->
@@ -402,6 +409,31 @@
         <li>${k(\overrightarrow{u}+\overrightarrow{v})=k\overrightarrow{u}+k\overrightarrow{v}}.$</li>
     </ul>
 </div>
+<div class="propriete">
+    <p>$A$, $B$ et $I$ sont trois points du plan.</p>
+    <p>Voici deux théorèmes qui caractérisent le milieu d'un segment :</p>
+    <ul>
+        <li>$I$ est le milieu de $[AB]$ si et seulement si ${\overrightarrow{AI}=\dfrac{1}{2}\overrightarrow{AB}}.$</li>
+        <li>$I$ est le milieu de $[AB]$ si et seulement si ${\overrightarrow{AB}=2\overrightarrow{AI}}.$</li>
+    </ul>
+</div>
+<h2>Vecteurs colinéaires</h2>
+<div class="definition">
+    <p>On dit que deux vecteurs non nuls sont colinéaires s'ils ont la même direction.</p>
+</div>
+<div class="propriete">
+    <p>Soient $\overrightarrow{u}$ et $\overrightarrow{v}$ deux vecteurs. On a :</p>
+    <p>$\overrightarrow{u} et $\overrightarrow{v}$ sont colinéaires si et seulement si il existe un nombre réel $k$ tel que $\overrightarrow{u}=k\overrightarrow{v}$ ou $\overrightarrow{v}=k\overrightarrow{u}.$</p>
+</div>
+<div class="propriete">
+    <p>Soient $A$, $B$, $C$ et $D$ quatre points distincts du plan. On a :</p>
+    <p>$\overrightarrow{AB}$ et $\overrightarrow{CD}$ sont colinéaires si et seulement si les droites $(AB)$ et $(CD)$ sont parallèles.</p>
+</div>
+<div class="propriete">
+    <p>Soient $A$, $B$ et $C$ trois points distincts du plan. On a :</p>
+    <p>$\overrightarrow{AB}$ et $\overrightarrow{AC}$ sont colinéaires si et seulement si $A$, $B$ et $C$ sont alignés.</p>
+</div>
+
     </main>
     <footer>
         Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
