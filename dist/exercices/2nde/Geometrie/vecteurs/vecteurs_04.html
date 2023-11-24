@@ -24,22 +24,21 @@
       rel="stylesheet"
     />
 
-    <link
+        <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
-      integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
       crossorigin="anonymous"
     />
-
     <script
       defer
-      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
-      integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
       crossorigin="anonymous"
     ></script>
     <script
       defer
-      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
       integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
       crossorigin="anonymous"
     ></script>
@@ -420,7 +419,7 @@
         "2\\overrightarrow{h}",
         "-2\\overrightarrow{h}",
       ];
-      var enonce1 = `Placer le point $P$ tel que $$ {AP=${kp.latex[0]}+${kh.latex[0]}.}$$`;
+      var enonce1 = `Placer le point $P$ tel que $$ {\\overrightarrow{AP}=${kp.latex[0]}+${kh.latex[0]}.}$$`;
       var enonce1_html = document.getElementById("enonce1_exercice1");
       enonce1_html.innerHTML = enonce1;
       var s1 = kp[0].additionVecteur(kh[0]);
@@ -462,7 +461,7 @@
         `${xmin1} ${ymin1 - 20} ${width1} ${height1 + 40}`
       );
 
-      var enonce2 = `Placer le point $M$ tel que $$ {AM=${kv.latex[0]}+${ku.latex[0]}.}$$`;
+      var enonce2 = `Placer le point $M$ tel que $$ {\\overrightarrow{AM}=${kv.latex[0]}+${ku.latex[0]}.}$$`;
       var enonce2_html = document.getElementById("enonce2_exercice1");
       enonce2_html.innerHTML = enonce2;
       var s2 = kv[0].additionVecteur(ku[0]);
@@ -505,7 +504,7 @@
         `${xmin2} ${ymin2 - 20} ${width2} ${height2 + 40}`
       );
 
-      var enonce3 = `Placer le point $N$ tel que $$ {AN=${kw.latex[0]}+${kt.latex[1]}.}$$`;
+      var enonce3 = `Placer le point $N$ tel que $$ {\\overrightarrow{AN}=${kw.latex[0]}+${kt.latex[1]}.}$$`;
       enonce3 = enonce3.replace("+-", "-");
       var enonce3_html = document.getElementById("enonce3_exercice1");
       enonce3_html.innerHTML = enonce3;
@@ -851,7 +850,7 @@
         "2\\overrightarrow{h}",
         "-2\\overrightarrow{h}",
       ];
-      var enonce1 = `Placer le point $P$ tel que $$ {AP=${kp.latex[3]}+${kh.latex[2]}.}$$`;
+      var enonce1 = `Placer le point $P$ tel que $$ {\\overrightarrow{AP}=${kp.latex[3]}+${kh.latex[2]}.}$$`;
       var enonce1_html = document.getElementById("enonce1_exercice2");
       enonce1_html.innerHTML = enonce1;
       var s1 = kp[3].additionVecteur(kh[2]);
@@ -893,7 +892,7 @@
         `${xmin1} ${ymin1 - 20} ${width1} ${height1 + 40}`
       );
 
-      var enonce2 = `Placer le point $M$ tel que $$ {AM=${kv.latex[3]}+${kt.latex[2]}.}$$`;
+      var enonce2 = `Placer le point $M$ tel que $$ {\\overrightarrow{AM}=${kv.latex[3]}+${kt.latex[2]}.}$$`;
       var enonce2_html = document.getElementById("enonce2_exercice2");
       enonce2_html.innerHTML = enonce2;
       var s2 = kv[3].additionVecteur(kt[2]);
@@ -936,7 +935,7 @@
         `${xmin2} ${ymin2 - 20} ${width2} ${height2 + 40}`
       );
 
-      var enonce3 = `Placer le point $N$ tel que $$ {AN=${ku.latex[3]}+${kw.latex[3]}.}$$`;
+      var enonce3 = `Placer le point $N$ tel que $$ {\\overrightarrow{AN}=${ku.latex[3]}+${kw.latex[3]}.}$$`;
       enonce3 = enonce3.replace("+-", "-");
       var enonce3_html = document.getElementById("enonce3_exercice2");
       enonce3_html.innerHTML = enonce3;

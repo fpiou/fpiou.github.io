@@ -24,22 +24,21 @@
       rel="stylesheet"
     />
 
-    <link
+        <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
-      integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
       crossorigin="anonymous"
     />
-
     <script
       defer
-      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
-      integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
       crossorigin="anonymous"
     ></script>
     <script
       defer
-      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
       integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
       crossorigin="anonymous"
     ></script>
@@ -166,7 +165,7 @@
         <p>$ABCD$ est un parallélogramme. $M$ est le point tel que
             $${\overrightarrow{AM}=\frac{1}{5}\overrightarrow{AB}}.
             $$ $N$ est le point tel que
-            $${\overrightarrow{AN}=\frac{4}{5}\overrightarrow{DC}.}$$
+            $${\overrightarrow{AN}=\frac{4}{5}\overrightarrow{DC}+\overrightarrow{AD}.}$$
             Quelle est la nature du quadrilatère $AMCN~?$</p>
     </div>
     <div class="indice">
@@ -191,7 +190,16 @@
         </div>
     </div>
     <div class="solution">
-        <p>On a $${\overrightarrow{DN}=\frac{4}{5}\overrightarrow{DC}}.$$</p>
+        <p>On a $${\overrightarrow{DN}=\frac{4}{5}\overrightarrow{DC}+\overrightarrow{AN}}.$$</p>
+        <p>D'où :
+            $${\overrightarrow{DN}-\overrightarrow{AN}=\frac{4}{5}\overrightarrow{DC}+\overrightarrow{AN}-\overrightarrow{AN}}.$$
+        </p>
+        <p>Soit :
+            $${\overrightarrow{DN}+\overrightarrow{NA}=\frac{4}{5}\overrightarrow{DC}.}$$
+        </p>
+        <p>Et d'après la relation de Chasles on en déduit :
+            $${\overrightarrow{DA}=\frac{4}{5}\overrightarrow{DC}.}$$
+        </p>
         <p>D'après la relation de Chasles, on en déduit :
             $${\overrightarrow{DC}+\overrightarrow{CN}=\frac{4}{5}\overrightarrow{DC}.}$$
         </p>
