@@ -20,15 +20,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
-        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
-
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
-        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
-        crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+        crossorigin="anonymous"
+      />
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+        integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"
+      ></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
 
@@ -510,272 +519,94 @@
 </div>
 <h2>Encadrement décimal</h2>
 <div class="definition">
-    <p>
-        Pour tout nombre réel $x$, il existe un nombre décimal $d$ et un entier naturel $n$ tel que $d\leqslant x <
-            d+10^{-n}$ : on dit que c'est un <b>encadrement décimal</b> de $x$ à $10^{-n}$ près.
-            <svg id="encadrement" xmlns="http://www.w3.org/2000/svg" viewBox="-60 -40 620 140"
-                style="display:block;margin:auto;width:90%;">
-                <!-- L'axe des abscisses -->
-                <line x1="-40" y1="0" x2="540" y2="0" stroke="black" />
+    <p>Soient $a$, $b$ et $x$ trois nombres réels tels que $$a\leqslant x\leqslant b.$$</p>
+    <ul>
+        <li>$a\leqslant x\leqslant b$ est appelé un <b>encadrement</b> de $x$.</li>
+        <li>On dit que $a$ et $b$ sont les bornes de cet encadrement : $a$ est alors la <b>borne inférieure</b> et $b$ la <b>borne supérieure</b>.</li>
+        <li>$b-a$ est appelé l'<b>amplitude</b> de l'encadrement.</li>
+    </ul>
+    <svg id="encadrement" xmlns="http://www.w3.org/2000/svg" viewBox="-60 -40 620 140"
+        style="display:block;margin:auto;width:90%;">
+        <!-- L'axe des abscisses -->
+        <line x1="-40" y1="0" x2="540" y2="0" stroke="black" />
 
-                <!-- Commençons par créer une première graduation sur notre axe -->
-                <line id="graduation" x1="0" y1="-5" x2="0" y2="5" stroke="black" />
-                <!-- Faisons 11 copies de cette graduation tous les 50px -->
-                <use xlink:href="#graduation" x="50" />
-                <use xlink:href="#graduation" x="100" />
-                <use xlink:href="#graduation" x="150" />
-                <use xlink:href="#graduation" x="200" />
-                <use xlink:href="#graduation" x="250" />
-                <use xlink:href="#graduation" x="300" />
-                <use xlink:href="#graduation" x="350" />
-                <use xlink:href="#graduation" x="400" />
-                <use xlink:href="#graduation" x="450" />
-                <use xlink:href="#graduation" x="500" />
-                <!-- Ajoutons une graduation plus grande pour les extrémités -->
-                <line id="graduation2" x1="0" y1="-10" x2="0" y2="10" stroke="orange" stroke-width="3" />
-                <use xlink:href="#graduation2" x="0" />
-                <use xlink:href="#graduation2" x="500" />
-                <!-- Plaçons quelques valeurs sur l'axe -->
-                <g id="g1" stroke="black" style="font-size: 1em;">
-                    <foreignObject x="-5" y="5" width="70" height="30">
-                        $d$
-                    </foreignObject>
-                    <foreignObject x="480" y="5" width="100" height="30">
-                        $d+10^{-n}$
-                    </foreignObject>
-                    <foreignObject id="etiquette_x" x="125" y="-30" width="70" height="50">
-                        $\large x$
-                    </foreignObject>
-                </g>
-                <!-- 
-                    Plaçons la croix pour x.
-                -->
-                <g id="croix_x" style="stroke:rgb(214, 139, 0);stroke-width:2;" transform="translate(130,0)">
-                    <line x1="-5" y1="-5" x2="5" y2="5" />
-                    <line x1="-5" y1="5" x2="5" y2="-5" />
-                </g>
-                <g id="amplitude">
-                    <!-- Traçons une flèche plus bas pour montrer la distance entre les deux nombres -->
-                    <line x1="0" y1="60" x2="500" y2="60" stroke="black" />
-                    <!-- 
-                        Traçons un petit triangle pour le bout de la flèche avec la commande path en utilisant des déplacements relatifs 
-                    -->
-                    <path id="boutFleche" d="M 500,60 m -10,5 l 10,-5 -10,-5" stroke="black" fill="black" />
-                    <!-- Faisons une copie pour l'autre extrémité en appliquant une symétrie d'axe vertical -->
-                    <use xlink:href="#boutFleche" transform="scale(-1,1) translate(-500,0)" />
-                    <!-- Plaçons sous notre ligne au milieu l'amplitude-->
-                    <foreignObject x="170" y="30" width="160" height="30" style="font-size: 1em;">
-                        $\text{amplitude}=10^{-n}$
-                    </foreignObject>
-                </g>
-            </svg>
-            $10^{-n}$ est appelée l'<b>amplitude</b> de l'encadrement.<br>
-    </p>
-</div>
-<div class="exemple">
-    <p>
-        Considérons le nombre rationnel $\dfrac{1}{243}.$<br>
-        $$\dfrac{1}{243}\approx 0{,}004115226337$$
-        On peut en déduire les informations suivantes :<br>
-    <div class="svgContainer">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 580 140" style="display:block;margin:auto;width:90%;">
-            <!-- L'axe des abscisses -->
-            <line x1="-40" y1="0" x2="540" y2="0" stroke="black" />
-
-            <!-- Commençons par créer une première graduation sur notre axe -->
-            <line id="graduation" x1="0" y1="-5" x2="0" y2="5" stroke="black" />
-            <!-- Faisons 11 copies de cette graduation tous les 50px -->
-            <use xlink:href="#graduation" x="50" />
-            <use xlink:href="#graduation" x="100" />
-            <use xlink:href="#graduation" x="150" />
-            <use xlink:href="#graduation" x="200" />
-            <use xlink:href="#graduation" x="250" />
-            <use xlink:href="#graduation" x="300" />
-            <use xlink:href="#graduation" x="350" />
-            <use xlink:href="#graduation" x="400" />
-            <use xlink:href="#graduation" x="450" />
-            <use xlink:href="#graduation" x="500" />
-
-            <!-- Plaçons quelques valeurs sur l'axe -->
-            <g id="g1" stroke="black">
-                <foreignObject x="-30" y="5" width="70" height="30">
-                    $0{,}00411$
-                </foreignObject>
-                <foreignObject x="470" y="5" width="70" height="30">
-                    $0{,}00412$
-                </foreignObject>
-                <foreignObject x="250" y="-40" width="70" height="50">
-                    $\dfrac{1}{243}$
-                </foreignObject>
-            </g>
-            <!-- 
-                    Plaçons le plus précisément possible le nombre 1/243 sur l'axe.
-                -->
-            <g id="g2" style="stroke:rgb(214, 139, 0);stroke-width:2;">
-                <script>
-                    <!--Calcule la position de 1/243 sachant que l'on commence à 0,00411-->
-                    var x = (1 / 243 - 0.00411) * 100000 * 500;
-                    var y = 0;
-                    var g2 = document.getElementById("g2");
-                    g2.setAttribute("transform", "translate(" + x + " " + y + ")");
-                </script>
-                <line x1="-5" y1="-5" x2="5" y2="5" />
-                <line x1="-5" y1="5" x2="5" y2="-5" />
-            </g>
+        <!-- Commençons par créer une première graduation sur notre axe -->
+        <line id="graduation" x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+        <!-- Faisons 11 copies de cette graduation tous les 50px -->
+        <use xlink:href="#graduation" x="500" />
+        <!-- Ajoutons une graduation plus grande pour les extrémités -->
+        <line id="graduation2" x1="0" y1="-10" x2="0" y2="10" stroke="orange" stroke-width="3" />
+        <use xlink:href="#graduation2" x="0" />
+        <use xlink:href="#graduation2" x="500" />
+        <!-- Plaçons quelques valeurs sur l'axe -->
+        <g id="g1" stroke="black" style="font-size: 1em;">
+            <foreignObject x="-5" y="5" width="70" height="30">
+                $a$
+            </foreignObject>
+            <foreignObject x="500" y="5" width="100" height="30">
+                $b$
+            </foreignObject>
+            <foreignObject id="etiquette_x" x="125" y="-30" width="70" height="50">
+                $\large x$
+            </foreignObject>
+        </g>
+        <!-- 
+            Plaçons la croix pour x.
+        -->
+        <g id="croix_x" style="stroke:rgb(214, 139, 0);stroke-width:2;" transform="translate(130,0)">
+            <line x1="-5" y1="-5" x2="5" y2="5" />
+            <line x1="-5" y1="5" x2="5" y2="-5" />
+        </g>
+        <g id="amplitude">
             <!-- Traçons une flèche plus bas pour montrer la distance entre les deux nombres -->
             <line x1="0" y1="60" x2="500" y2="60" stroke="black" />
             <!-- 
-                    Traçons un petit triangle pour le bout de la flèche avec la commande path en utilisant des déplacements relatifs 
-                -->
+                Traçons un petit triangle pour le bout de la flèche avec la commande path en utilisant des déplacements relatifs 
+            -->
             <path id="boutFleche" d="M 500,60 m -10,5 l 10,-5 -10,-5" stroke="black" fill="black" />
             <!-- Faisons une copie pour l'autre extrémité en appliquant une symétrie d'axe vertical -->
             <use xlink:href="#boutFleche" transform="scale(-1,1) translate(-500,0)" />
-            <!-- Plaçons sous notre ligne au milieu le nombre 0,00001-->
-            <foreignObject x="185" y="65" width="130" height="30">
-                $0{,}00001=10^{-5}$
+            <!-- Plaçons sous notre ligne au milieu l'amplitude-->
+            <foreignObject x="170" y="30" width="160" height="30" style="font-size: 1em;">
+                $\text{amplitude}=b-a$
             </foreignObject>
-        </svg>
-    </div>
-    Donc l'encadrement de $\dfrac{1}{243}$ à $10^{-5}$ près est<br>
-    $$0{,}00411\leqslant \dfrac{1}{243}< 0{,}00412$$ </p>
+        </g>
+    </svg>
+</div>
+<div class="exemple">
+    <p>On a l'encadrement suivant :$$200 < \num{235.6} < 300.$$</p>
+    <ul>
+        <li>$200$ est la borne inférieure de l'encadrement.</li>
+        <li>$300$ est la borne supérieure de l'encadrement.</li>
+        <li>$300-200=100$ est l'amplitude de l'encadrement.</li>
+    </ul> 
 </div>
 <div class="definition">
-    <p>
-        L'<b>arrondi</b> de $x$ à $10^{-n}$ près est le nombre décimal le plus proche de $x$ dans l'encadrement.
-
-        <!-- Je veux placer une copie de la balise svg avec l'identifiant "encadrement"-->
-    <div id="copieEncadrement"></div>
-    <script>
-        var encadrement = document.getElementById('encadrement');
-        var copieEncadrement = document.getElementById('copieEncadrement');
-        var clone = encadrement.cloneNode(true);
-        /* Ajouter $x\approx d\text{ à $10^{-n}$ près}$ à la place de la balise amplitude en utilisant foreignObjecf */
-        var amplitude = clone.getElementById('amplitude');
-        amplitude.innerHTML = '<foreignObject x="110" y="10" width="100" height="30" style="font-size: 0.8em;">$x\\approx d$</foreignObject>';
-        /* Modifier la viewBox de clone*/
-        clone.setAttribute("viewBox", "-60 -30 620 80");
-        copieEncadrement.appendChild(clone);
-    </script>
-
-    <!-- Copie de la balise svg avec l'identifiant "encadrement"-->
-    <div id="copieEncadrement2"></div>
-    <script>
-        var encadrement = document.getElementById('encadrement');
-        var copieEncadrement2 = document.getElementById('copieEncadrement2');
-        var clone = encadrement.cloneNode(true);
-        /* Modifier la position x*/
-        var croix_x = clone.getElementById('croix_x');
-        croix_x.setAttribute("transform", "translate(380,0)");
-        /* Modifier la position des étiquettes*/
-        var etiquette_x = clone.getElementById('etiquette_x');
-        etiquette_x.setAttribute("x", "375");
-        /* Ajouter $x\approx d\text{ à $10^{-n}$ près}$ à la place de la balise amplitude en utilisant foreignObjecf */
-        var amplitude = clone.getElementById('amplitude');
-        amplitude.innerHTML = '<foreignObject x="330" y="10" width="150" height="30" style="font-size: 0.8em;">$x\\approx d + 10^{-n}$</foreignObject>';
-        /* Modifier la viewBox de clone*/
-        clone.setAttribute("viewBox", "-60 -30 620 80");
-        copieEncadrement.appendChild(clone);
-        copieEncadrement2.appendChild(clone);
-    </script>
-    Lorsque $x$ est au milieu de l'encadrement, son arrondi est $d+10^{-n}$ par convention (valeur par excès).
-    <!-- Figure avec $x$ placé au milieu -->
-    <div id="copieEncadrement3"></div>
-    <script>
-        var encadrement = document.getElementById('encadrement');
-        var copieEncadrement2 = document.getElementById('copieEncadrement3');
-        var clone = encadrement.cloneNode(true);
-        /* Modifier la position x*/
-        var croix_x = clone.getElementById('croix_x');
-        croix_x.setAttribute("transform", "translate(250,0)");
-        /* Modifier la position des étiquettes*/
-        var etiquette_x = clone.getElementById('etiquette_x');
-        etiquette_x.setAttribute("x", "250");
-        /* Ajouter $x\approx d\text{ à $10^{-n}$ près}$ à la place de la balise amplitude en utilisant foreignObjecf */
-        var amplitude = clone.getElementById('amplitude');
-        amplitude.innerHTML = '<foreignObject x="205" y="10" width="150" height="30" style="font-size: 0.8em;">$x\\approx d + 10^{-n}$</foreignObject>';
-        /* Modifier la viewBox de clone*/
-        clone.setAttribute("viewBox", "-60 -30 620 80");
-        copieEncadrement.appendChild(clone);
-        copieEncadrement2.appendChild(clone);
-    </script>
-    </p>
+    <p>Un encadrement est dit <b>décimal</b> si ses bornes sont des nombres décimaux.</p>
 </div>
 <div class="exemple">
-    <p>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 580 80"
-            style="display:block;margin:auto;width:90%;margin:1em">
-            <!-- L'axe des abscisses -->
-            <line x1="-40" y1="0" x2="540" y2="0" stroke="black" />
-            <!-- Une ligne en pointillé rouge verticale au milieu pour départager des deux moitié de segment -->
-            <line x1="250" y1="-40" x2="250" y2="40" stroke="red" stroke-dasharray="5,5" />
-            <!-- Commençons par créer une première graduation sur notre axe -->
-            <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
-            <!-- Faisons 11 copies de cette graduation tous les 50px -->
-            <use xlink:href="#graduation" x="50" />
-            <use xlink:href="#graduation" x="100" />
-            <use xlink:href="#graduation" x="150" />
-            <use xlink:href="#graduation" x="200" />
-            <use xlink:href="#graduation" x="250" />
-            <use xlink:href="#graduation" x="300" />
-            <use xlink:href="#graduation" x="350" />
-            <use xlink:href="#graduation" x="400" />
-            <use xlink:href="#graduation" x="450" />
-            <use xlink:href="#graduation" x="500" />
-            <!-- Ajoutons une graduation plus grande pour les extrémités -->
-            <line id="graduation-2" x1="0" y1="-10" x2="0" y2="10" stroke="black" stroke-width="2" />
-            <use xlink:href="#graduation-2" x="0" />
-            <use xlink:href="#graduation-2" x="500" />
-
-            <!-- Plaçons quelques valeurs sur l'axe -->
-            <g stroke="black" style="font-size: 0.6em;">
-                <foreignObject x="-30" y="5" width="70" height="30">
-                    $0{,}00411$
-                </foreignObject>
-                <foreignObject x="470" y="5" width="70" height="30">
-                    $0{,}00412$
-                </foreignObject>
-                <foreignObject x="252" y="-35" width="70" height="50">
-                    $\dfrac{1}{243}$
-                </foreignObject>
-            </g>
-            <!-- 
-                    Plaçons le plus précisément possible le nombre 1/243 sur l'axe.
-                -->
-            <g id="g3" style="stroke:rgb(214, 139, 0);stroke-width:2;">
-                <script>
-                    <!--Calcule la position de 1/243 sachant que l'on commence à 0,00411-->
-                    var x = (1 / 243 - 0.00411) * 100000 * 500;
-                    var y = 0;
-                    var g3 = document.getElementById("g3");
-                    g3.setAttribute("transform", "translate(" + x + " " + y + ")");
-                </script>
-                <line x1="-5" y1="-5" x2="5" y2="5" />
-                <line x1="-5" y1="5" x2="5" y2="-5" />
-            </g>
-        </svg>
-        $\dfrac{1}{243}$ est plus proche de $0{,}00412$ que de $0{,}00411$ donc l'arrondi de $\dfrac{1}{243}$ à $10^{-5}$
-        près est $0{,}00412$.
-        $$\dfrac{1}{243}\approx 0{,}00412$$
-    </p>
+    <p>On a l'encadrement décimal suivant :$$200 < \num{235.6} < 300.$$</p>
+    <p>On a l'encadrement décimal de $\pi$ suivant : $$\num{3.14} < \pi < \num{3.15}.$$ Son amplitude est $\num{0.01}.$</p>
+    <p>On a l'encadrement décimal de $\sqrt{2}$ suivant : $$\num{1.4} < \sqrt{2} < \num{1.5}.$$ Son amplitude est $\num{0.1}.$</p>
+</div>
+<div class="definition">
+    <p>$n$ est un entier naturel non nul.<br>
+        On dit que l'encadrement d'un réel est à $10^n$ près (respectivement $10^{-n}$ près) si son amplitude est $10^{n}$ (respectivement $10^{-n}$).</p>
 </div>
 <div class="exemple">
-    $$\pi\approx 3{,}14159265$$
     <ul>
-        <li>L'arrondi de $\pi$ à $10^{-2}$ près est $3{,}14$.</li>
-        <li>L'arrondi de $\pi$ à $10^{-3}$ près est $3{,}142$.</li>
-        <li>L'arrondi de $\pi$ à $10^{-4}$ près est $3{,}1416$.</li>
-        <li>L'arrondi de $\pi$ à $10^{-5}$ près est $3{,}14159$.</li>
-        <li>L'arrondi de $\pi$ à $10^{-6}$ près est $3{,}141593$.</li>
+        <li>L'encadrement suivant est à $10^2$ près :
+            $$200 < \num{235.6} < 300$$
+        </li>
+        <li>L'encadrement suivant est à $10^{-2}$ près :
+            $$\num{3.14} < \pi < \num{3.15}$$
+        <li>L'encadrement suivant est à $10^{-1}$ près :
+            $$\num{1.4} < \sqrt{2} < \num{1.5}$$
+        </li>
     </ul>
 </div>
 <div class="definition">
-    <p>
-        On dit que les chiffres d'un nombre décimal $x$ lus de la gauche vers la droite sont significatifs si :
-    <ul>
-        <li>ils sont non nuls ;</li>
-        <li>ils sont nuls mais il y a un chiffre non nul à droite.</li>
-    </ul>
-    </p>
+    <p>On appelle <b>chiffres significatifs</b> d'un nombre en écriture décimales les premiers chiffres à partir du premier chiffre non nul.</p>
 </div>
 <div class="exemple">
     <p>
@@ -788,6 +619,44 @@
     </ul>
     </p>
 </div>
+<div class="methode">
+    <p>Pour déterminer un encadrement décimal d'un nombre réel à $10^n$ près (resp. $10^{-n}$ près), il suffit pour la borne inférieure de conserver les chiffres significatifs de son écriture décimale jusqu'à celui de rang $10^n$ (resp. $10^{-n}$) compris puis pour la borne supérieure d'ajouter $10^n$ (resp. $10^{-n}$) au nombre composé par ces chiffres.</p>
+</div>
+<div class="exemple">
+    <p>On veut encadrer $\dfrac{1}{243}$ à $10^{-3}$ près.<br>
+    On a $$\dfrac{1}{243}\approx \num{0.0041152}$$
+    On en déduit l'encadrement décimal suivant : $$\num{0.004} < \dfrac{1}{243} < \num{0.005}.$$</p>
+</div>
+<div class="exemple">
+    <p>On veut encadrer $\sqrt{5}$ à $10^{-2}$ près.<br>
+    On a $$\sqrt{5}\approx \num{2.236068}$$
+    On en déduit l'encadrement décimal suivant : $$\num{2.23} < \sqrt{5} < \num{2.24}.$$</p>
+</div>
+<div class="definition">
+    <p>L'arrondi décimal d'un nombre réel à $10^n$ près (respectivement $10^{-n}$ près) est la borne la plus proche dans un encadrement décimal à $10^n$ près (respectivement $10^{-n}$ près).</p>
+    <p>Par convention, si les deux bornes sont à égale distance du nombre, on arrondit à la borne supérieure.</p>
+</div>
+<div class="exemple">
+    <p>On veut arrondir $\dfrac{1}{243}$ à $10^{-3}$ près.<br>
+    On a $$\dfrac{1}{243}\approx \num{0.0041152}$$
+    On en déduit l'arrondi décimal suivant : $$\dfrac{1}{243}\approx \num{0.004}.$$</p>
+</div>
+<div class="exemple">
+    <p>On veut arrondir $\sqrt{5}$ à $10^{-2}$ près.<br>
+    On a $$\sqrt{5}\approx \num{2.236068}$$
+    On en déduit l'arrondi décimal suivant : $$\sqrt{5}\approx \num{2.24}.$$</p>
+</div>
+<div class="exemple">
+    $$\pi\approx 3{,}14159265$$
+    <ul>
+        <li>L'arrondi de $\pi$ à $10^{-2}$ près est $3{,}14$.</li>
+        <li>L'arrondi de $\pi$ à $10^{-3}$ près est $3{,}142$.</li>
+        <li>L'arrondi de $\pi$ à $10^{-4}$ près est $3{,}1416$.</li>
+        <li>L'arrondi de $\pi$ à $10^{-5}$ près est $3{,}14159$.</li>
+        <li>L'arrondi de $\pi$ à $10^{-6}$ près est $3{,}141593$.</li>
+    </ul>
+</div>
+
 
 <!-- Nouvel exemple de l'utilisation des chiffres significatifs -->
 <div class="exemple">
@@ -847,7 +716,7 @@
 <h2>Intervalles de la droite des réels</h2>
 <div class="definition">
     <p>
-        Soient $a$ et $b$ deux nombres réels tels que $a< b$.<br>
+        Soient $a$ et $b$ deux nombres réels tels que $a < b$.<br>
             <ul>
                 <li>$[a;b]$ est l'ensemble des nombres réels $x$ tels que $a\leqslant x\leqslant b.$</li>
                 <!-- Construire une figure svg qui illustre [a;b]-->
