@@ -138,7 +138,7 @@
 <h2>Nombre dérivé</h2>
 <div class="definition">
     <p>Soit $f$ une fonction définie sur un intervalle $I$ et $a$ un réel de $I$.</p>
-    <p>On appelle <strong>nombre dérivé</strong> de $f$ en $a$ le nombre réel $$f'(a)=\lim\limits_{h\to 0}\frac{f(a+h)-f(a)}{h}.$$</p>
+    <p>On appelle <strong>nombre dérivé</strong> de $f$ en $a$ le nombre réel (s'il existe) $$f'(a)=\lim\limits_{h\to 0}\frac{f(a+h)-f(a)}{h}.$$</p>
 </div>
 <div class="exemple">
     <p>Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=x^2$.</p>
@@ -153,6 +153,10 @@
     &=4.
     \end{align*}$$
 </div>
+<div class="definition">
+    <p>Soit $f$ une fonction définie sur un intervalle $I$ et $a$ un réel de $I$.</p>
+    <p>On dit que $f$ est <strong>dérivable</strong> en $a$ si $f$ possède un nombre dérivé en $a.$</p>
+</div>
 <h2>Tangente à une courbe</h2>
 <div class="definition">
     <p>Soit $f$ une fonction définie sur un intervalle $I$ et $a$ un réel de $I$.</p>
@@ -165,6 +169,214 @@
     <p>Soit $f$ une fonction définie sur un intervalle $I$ et $a$ un réel de $I$.</p>
     <p>Notons $T$ la tangente à la courbe représentative de $f$ au point d'abscisse $a$.</p>
     <p>Alors l'équation de $T$ est $$y=f'(a)(x-a)+f(a).$$</p>
+</div>
+<div class="exemple">
+    <p>Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=x^2$.</p>
+    <p>Calculons l'équation de la tangente à la courbe représentative de $f$ au point d'abscisse $2$.</p>
+    <p>Notons $T$ la tangente à la courbe représentative de $f$ au point d'abscisse $2$.</p>
+    <p>Alors l'équation de $T$ est $$y=f'(2)(x-2)+f(2).$$</p>
+    <p>Or, $f'(2)=4$ et $f(2)=4$.</p>
+    <p>Donc, l'équation de $T$ est $$y=4(x-2)+4.$$</p>
+    <p>Donc, l'équation de $T$ est $$y=4x-4.$$</p>
+</div>
+<h2>Fonction dérivée</h2>
+<div class="definition">
+    <p>On dit que $f$ est dérivable sur $I$ si $f$ est dérivable pour tout réel $a$ de $I.$</p>
+    <p>On appelle <strong>fonction dérivée de $f$</strong> ou plus simplement <strong>dérivée de $f$</strong> et on note $f'$ la fonction qui a tout $x$ de $I$ associe $f'(x).$</p>
+</div>
+<div class="propriete">
+    <p>Dérivées de fonctions usuelles :</p>
+    <style>
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+      
+        th, td {
+          border: 1px solid black;
+          text-align: center;
+          padding: 8px;
+        }
+      </style>
+    <table>
+        <thead>
+            <tr>
+                <th>Fonction</th>
+                <th>$f(x)$</th>
+                <th>Dérivable sur ...</th>
+                <th>$f'(x)$</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>constante</td>
+                <td>$f(x)=p$</td>
+                <td>$\mathbb{R}$</td>
+                <td>$f'(x)=0$</td>
+            </tr>
+            <tr>
+                <td>identité</td>
+                <td>$f(x)=x$</td>
+                <td>$\mathbb{R}$</td>
+                <td>$f'(x)=1$</td>
+            </tr>
+            <tr>
+                <td>affine</td>
+                <td>$f(x)=mx+p$</td>
+                <td>$\mathbb{R}$</td>
+                <td>$f'(x)=m$</td>
+            </tr>
+            <tr>
+                <td>carrée</td>
+                <td>$f(x)=x^2$</td>
+                <td>$\mathbb{R}$</td>
+                <td>$f'(x)=2x$</td>
+            </tr>
+            <tr>
+                <td>cube</td>
+                <td>$f(x)=x^3$</td>
+                <td>$\mathbb{R}$</td>
+                <td>$f'(x)=3x^2$</td>
+            </tr>
+            <tr>
+                <td>inverse</td>
+                <td>$f(x)=\dfrac{1}{x}$</td>
+                <td>$\mathbb{R}^*$</td>
+                <td>$f'(x)=-\dfrac{1}{x^2}$</td>
+            </tr>
+            <tr>
+                <td>racine carrée</td>
+                <td>$f(x)=\sqrt{x}$</td>
+                <td>$]0;+\infty[$</td>
+                <td>$f'(x)=\dfrac{1}{2\sqrt{x}}$</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="demonstration">
+    <p>Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=mx+p$ où $m$ et $p$ sont des réels.</p>
+    <p>Soit $a$ un nombre réel.</p>
+    <p>Calculons le taux de variation de $f$ entre $a$ et $a+h$.</p>
+    $$\begin{align*}
+    \frac{f(a+h)-f(a)}{h}&=\frac{m(a+h)+p-(ma+p)}{h}\\
+    &=\frac{ma+3h+p-3m-p}{h}\\
+    &=\frac{mh}{h}\\
+    &=m.
+    \end{align*}$$
+    <p>Donc, $f$ est dérivable sur $\mathbb{R}$ et $f'(x)=m$.</p>
+    <p>Remarquons qu'ici $f$ est une fonction affine et que sa fonction dérivée est constante et égale au coefficient directeur de la fonction.</p>
+</div>
+<div class="demonstration">
+    <p>Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=x^2.$</p>
+    <p>Soit $a$ un nombre réel.</p>
+    <p>Calculons le taux de variation de $f$ entre $a$ et $a+h$.</p>
+    $$\begin{align*}
+    \frac{f(a+h)-f(a)}{h}&=\frac{(a+h)^2-a^2}{h}\\
+    &=\frac{a^2+2ah+h^2-a^2}{h}\\
+    &=\frac{2ah+h^2}{h}\\
+    &=\frac{h(2a+h)}{h}\\
+    &=2a+h.
+    \end{align*}$$
+    <p>Donc, $f$ est dérivable sur $\mathbb{R}$ et $f'(x)=2x$.</p>
+    <p>Remarquons qu'ici $f$ est une fonction polynôme du second degré et que sa fonction dérivée est une fonction polynôme du premier degré.</p>
+</div>
+<div class="demonstration">
+    <p>Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=x^3</p>
+    <p>Soit $a$ un nombre réel.</p>
+    <p>Calculons le taux de variation de $f$ entre $a$ et $a+h$.</p>
+    $$\begin{align*}
+    \frac{f(a+h)-f(a)}{h}&=\frac{(a+h)^3-a^3}{h}\\
+    &=\frac{a^3+3a^2h+3ah^2+h^3-a^3}{h}\\
+    &=\frac{3a^2h+3ah^2+h^3}{h}\\
+    &=\frac{h(3a^2+3ah+h^2)}{h}\\
+    &=3a^2+3ah+h^2.
+    \end{align*}$$
+    <p>Donc, $f$ est dérivable sur $\mathbb{R}$ et $f'(x)=3x^2$.</p>
+    <p>Remarquons qu'ici $f$ est une fonction polynôme du troisième degré et que sa fonction dérivée est une fonction polynôme du second degré.</p>
+</div>
+<div class="demonstration">
+    <p>Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=\dfrac{1}{x}.$</p>
+    <p>Soit $a$ un nombre réel.</p>
+    <p>Calculons le taux de variation de $f$ entre $a$ et $a+h$.</p>
+    $$\begin{align*}
+    \frac{f(a+h)-f(a)}{h}&=\frac{\dfrac{1}{a+h}-\dfrac{1}{a}}{h}\\
+    &=\frac{\dfrac{a-(a+h)}{a(a+h)}}{h}\\
+    &=\frac{\dfrac{a-a-h}{a(a+h)}}{h}\\
+    &=\frac{\dfrac{-h}{a(a+h)}}{h}\\
+    &=\frac{-h}{a(a+h)h}\\
+    &=\frac{-1}{a(a+h)}.
+    \end{align*}$$
+    <p>Donc, $f$ est dérivable sur $\mathbb{R}$ et $f'(x)=-\dfrac{1}{x^2}$.</p>
+    <p>Remarquons qu'ici $f$ est une fonction rationnelle et que sa fonction dérivée est une fonction rationnelle.</p>
+</div>
+<div class="demonstration">
+    <p>Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=\sqrt{x}.$</p>
+    <p>Soit $a$ un nombre réel.</p>
+    <p>Calculons le taux de variation de $f$ entre $a$ et $a+h$.</p>
+    $$\begin{align*}
+    \frac{f(a+h)-f(a)}{h}&=\frac{\sqrt{a+h}-\sqrt{a}}{h}\\
+    &=\frac{\sqrt{a+h}-\sqrt{a}}{h}\times\frac{\sqrt{a+h}+\sqrt{a}}{\sqrt{a+h}+\sqrt{a}}\\
+    &=\frac{a+h-a}{h(\sqrt{a+h}+\sqrt{a})}\\
+    &=\frac{h}{h(\sqrt{a+h}+\sqrt{a})}\\
+    &=\frac{1}{\sqrt{a+h}+\sqrt{a}}.
+    \end{align*}$$
+    <p>Remarquons que $f$ n'est pas dérivable en $0.$ car $$\lim\limits_{h\to 0, h>0}\frac{1}{\sqrt{0+h}+\sqrt{0}}=+\infty.$$</p>
+    <p>Donc $f$ est dérivable sur $]0;+\infty[$ et $f'(x)=\dfrac{1}{2\sqrt{x}}.$</p>
+</div>
+<div class="demonstration">
+    <p>Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=|x|$.</p>
+    <p>Sur $]-\infty;0[$, $f(x)=-x$ et sur $]0;+\infty[$, $f(x)=x.$</p>
+    <p>Donc, $f$ est dérivable sur $]-\infty;0[$ et $f'(x)=-1$ et $f$ est dérivable sur $]0;+\infty[$ et $f'(x)=1.$</p>
+    <p>Calculons le taux de variation de $f$ entre $0$ et $0+h$.</p>
+    $$\begin{align*}
+    \frac{f(0+h)-f(0)}{h}&=\frac{|0+h|-|0|}{h}\\
+    &=\frac{|h|-0}{h}\\
+    &=\frac{|h|}{h}.
+    \end{align*}$$
+    <p>Remarquons que $f$ n'est pas dérivable en $0.$ car $$\lim\limits_{h\to 0, h>0}\frac{|h|}{h}=1\neq -1=\lim\limits_{h\to 0, h < 0}\frac{|h|}{h}.$$</p>
+</div>
+<h2>Opérations sur les fonctions dérivables</h2>
+<div class="propriete">
+    <p>Soit $u$ et $v$ deux fonctions dérivables sur un intervalle $I$.</p>
+    <p>Alors $u+v$ est dérivable sur $I$ et $(u+v)'=u'+v'.$</p>
+</div>
+<div class="demonstration">
+    <p>Soit $u$ et $v$ deux fonctions dérivables sur un intervalle $I$.</p>
+    <p>Soit $a$ un nombre réel de $I$.</p>
+    <p>Calculons le taux de variation de $u+v$ entre $a$ et $a+h$.</p>
+    $$\begin{align*}
+    \frac{(u+v)(a+h)-(u+v)(a)}{h}&=\frac{u(a+h)+v(a+h)-u(a)-v(a)}{h}\\
+    &=\frac{u(a+h)-u(a)}{h}+\frac{v(a+h)-v(a)}{h}\\
+    &=u'(a)+v'(a).
+    \end{align*}$$
+    <p>Donc, $u+v$ est dérivable sur $I$ et $(u+v)'=u'+v'.$</p>
+</div>
+<div class="exemple">
+    <p>Soit $u$ la fonction définie sur $\mathbb{R}$ par $u(x)=x^2$ et $v$ la fonction définie sur $\mathbb{R}$ par $v(x)=x^3.$</p>
+    <p>Calculons la dérivée de $u+v.$</p>
+    <p>On a $u'(x)=2x$ et $v'(x)=3x^2.$</p>
+    <p>Donc, $(u+v)'(x)=u'(x)+v'(x)=2x+3x^2.$</p>
+</div>
+<div class="propriete">
+    <p>Soit $u$ une fonction dérivable sur un intervalle $I$ et $k$ un réel.</p>
+    <p>Alors $ku$ est dérivable sur $I$ et $(ku)'=ku'.$</p>
+</div>
+<div class="demonstration">
+    <p>Soit $u$ une fonction dérivable sur un intervalle $I$ et $k$ un réel.</p>
+    <p>Soit $a$ un nombre réel de $I$.</p>
+    <p>Calculons le taux de variation de $ku$ entre $a$ et $a+h$.</p>
+    $$\begin{align*}
+    \frac{(ku)(a+h)-(ku)(a)}{h}&=\frac{ku(a+h)-ku(a)}{h}\\
+    &=k\frac{u(a+h)-u(a)}{h}\\
+    &=ku'(a).
+    \end{align*}$$
+    <p>Donc, $ku$ est dérivable sur $I$ et $(ku)'=ku'.$</p>
+</div>
+<div class="exemple">
+    <p>Soit $u$ la fonction définie sur $\mathbb{R}$ par $u(x)=x^2.$</p>
+    <p>Calculons la dérivée de $3u.$</p>
+    <p>On a $u'(x)=2x.$</p>
+    <p>Donc, $(3u)'(x)=3u'(x)=3\times 2x=6x.$</p>
 </div>
 
     </main>

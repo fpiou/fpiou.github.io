@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Derivation_02</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+<button onclick="diminuerTaille()">Diminuer la taille</button>
+<button onclick="augmenterTaille()">Augmenter la taille</button>
+<button onclick="unecolonne()">1 colonne</button>
+<button onclick="deuxcolonnes()">2 colonnes</button>
+<button onclick="window.print()">Imprimer</button>
+    <header>
+      <h1>Exercices</h1>
+    </header>
+    <main><div class="exercice">
+  <div class="enonce">
+    <p>On considère la fonction $f$ définie sur $\mathbb{R}$ par $f(x)=2x^2.$</p>
+    <div id="figure1" class="figure">
+      <svg
+        id="figure1"
+        viewBox="0 0 400 220"
+        xmlns="http://www.w3.org/2000/svg"
+        class="quadrillage"
+      >
+        <!-- On définit le repère -->
+        <g name="repere1" class="repere" xmin="-2" ymin="-1" xmax="2" ymax ="10" xorigine="0" yorigine="0"></g>
+        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="5" stroke="black" stroke-width="0.5"></g>
+        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+        <g class="label" linkto="I" x="-3" y="0" style="font-size:0.5rem;">1</g>
+        <g name="J" class="point labeled" repere="repere1" x="0" y="5" stroke="none"></g>
+        <g class="label" linkto="J" x="-7" y="-5" style="font-size:0.5rem;">5</g>
+        <g name="d1" class="courbeRepresentative" expression="4(x-1)+2"  pas="0.01" xmin="0.25" xmax="1.75" linkto="repere1" fill="transparent" stroke="green" stroke-width="0.5"></g>
+      </svg>
+    </div>
+    <ol>
+      <li>Etudier la parité de la fonction $f.$ Quelle propriété de sa courbe peut-on en déduire ?</li>
+      <li>Sur quel domaine de définition la fonction $f$ est-elle dérivable ?</li>
+      <li>Quelle est l'expression de la fonction dérivée de $f$ sur ce domaine ?</li>
+      <li>Une tangente $T$ à la courbe de la fonction $f$ est tracée, déterminer graphiquement sa pente (attention aux unités graphiques).</li>
+      <li>Déterminer les coordonnées du point de la courbe où celle-ci admet la tangente déjà tracée.</li>
+      <li>Déterminer l'équation réduite de la tangente $T.$</li>
+      <li>Déterminer la position relative de la courbe par rapport à cette tangente.</li>
+      <li>Si $a$ est l'abscisse d'un point de la courbe où celle-ci admet une tangente, que peut-on en déduire sur la pente de la tangente à cette courbe au point d'abscisse $-a~?$ Justifier.</li>
+      <li>Déterminer les coordonnées du ou des points de la courbe où celle-ci  admet une tangente parallèle à la droite d'équation $y=-6x+2.$</li>
+      <li>Déterminer l'équation réduite de cette tangente.</li>
+      <li>Déterminer la position relative de la courbe par rapport à cette tangente.</li>
+      <li>Déterminer les coordonnées du ou des points de la courbe où celle-ci  admet une tangente horizontale.</li>
+      <li>En admettant que la courbe est au-dessus de ses tangentes, tracer d'autres tangentes à la courbe de la fonction $f$ puis tracer la courbe de la fonction $f$ sur $[-2~{;}~2]$</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol>
+      <li><p>Pour tout réel $x$ on a $f(-x)=2(-x)^2=2x^2=f(x)$ donc la fonction $f$ est paire.<br>Par conséquent sa courbe est symétrique par rapport à l'axe des abscisses.</p></li>
+      <li><p>La fonction $f$ est dérivable sur $\mathbb{R}.$</p></li>
+      <li><p>La fonction dérivée de $f$ est définie sur $\mathbb{R}$ par $f'(x)=2\times 2x=4x.$</p></li>
+      <li><p>La tangente semble passer par les points de coordonnées $A\left(\dfrac{1}{2}~;~0\right)$ et $B(1~;~2)$ donc sa pente est 
+        $$\begin{align*}
+        \dfrac{y_B-y_A}{x_B_x_A}&=\dfrac{2-0}{1-\dfrac{1}{2}}\\
+        &=\dfrac{2}{\dfrac{1}{2}}\\
+        &=2\times 2\\
+        &=4
+        \end{align*}
+        $$</p></li>
+      <li><p>Notons $a$ l'abscisse du point où la courbe admet la tangente déjà tracée. Nous devons avoir $f'(a)=4$ soit $4a=4$ et enfin $a=1.$<br> Il n'y a donc qu'un seul point de la courbe qui vérifie cette condition. Calculons maintenant l'ordonnée de ce point.</p>
+      $$
+        \begin{align*}
+        f(1)&=2\times 1^2\\
+        &=2\times 1\\
+        &=2.
+        \end{align*}
+      $$
+        <p>Donc la courbe de la fonction $f$ admet la tangente déjà tracée au point de coordonnées $(1~;~2).$</p>
+      <li><p>La pente de la tangente $T$ est $4$ et elle passe par le point $A(1~;~2)$, on en déduit son équation réduite :<br>
+        $$\begin{align*}
+        y&=4(x-1)+2\\
+        y&=4x-4+2\\
+        y&=4x-2.
+        \end{align*}
+        $$</p></li>
+      <li><p>Etudions le signe de la différence $f(x)-(4x-2)$ pour tout réel $x.$</p>
+        $$\begin{align*}
+        2x^2-(4x-2)&=2x^2-4x+2\\
+        &=2(x^2-2x+1)\\
+        &=2(x-1)^2.
+        \end{align*}
+        $$
+        <p>Le carré d'un nombre réel est toujours positif ou nul donc $2(x-1)^2\geqslant 0$ pour tout réel $x.$<br>
+        D'où $f(x)-(4x-2)\geqslant 0$ pour tout réel $x$, ou encore $f(x)\geqslant 4x-2.$<br>
+        Donc la courbe de la fonction $f$ est au-dessus de la tangente $T.$</p>
+      <li><p>On a $f'(-a)=4(-a)=-4a=-4f'(a)$ donc la pente de la tangente à la courbe de la fonction $f$ au point d'abscisse $-a$ est l'opposée de la pente de la tangente à la courbe de la fonction $f$ au point d'abscisse $a.$</p></li>
+      <li><p>Une tangente parallèle à la droite d'équation $y=-6x+2$ est une droite de pente $-6.$ Notons $b$ l'abscisse du point où la courbe admet une tangente parallèle à cette droite. Nous devons avoir $f'(b)=-6$ soit $4b=-6$ et enfin $b=-\dfrac{3}{2}.$<br> Il n'y a donc qu'un seul point de la courbe qui vérifie cette condition. Calculons maintenant l'ordonnée de ce point.</p>
+      $$
+        \begin{align*}
+        f\left(-\dfrac{3}{2}\right)&=2\left(-\dfrac{3}{2}\right)^2\\
+        &=2\times \dfrac{9}{4}\\
+        &=\dfrac{9}{2}.
+        \end{align*}
+      $$
+        <p>Donc la courbe de la fonction $f$ admet une tangente parallèle à la droite d'équation $y=-6x+2$ au point de coordonnées $\left(-\dfrac{3}{2}~;~\dfrac{9}{2}\right).$</p>
+      </li>
+      <li><p>La pente de la tangente $T$ est $-6$ et elle passe par le point $A\left(-\dfrac{3}{2}~;~\dfrac{9}{2}\right)$, on en déduit son équation réduite :<br>
+        $$\begin{align*}
+        y&=-6\left(x+\dfrac{3}{2}\right)+\dfrac{9}{2}\\
+        y&=-6x-9+\dfrac{9}{2}\\
+        y&=-6x-\dfrac{9}{2}.
+        \end{align*}
+        $$</p></li>
+      <li><p>Etudions le signe de la différence $f(x)-\left(-6x-\dfrac{9}{2}\right)$ pour tout réel $x.$</p>
+        $$\begin{align*}
+        2x^2-\left(-6x-\dfrac{9}{2}\right)&=2x^2+6x+\dfrac{9}{2}\\
+        &=2\left(x^2+3x+\dfrac{9}{4}\right)\\
+        &=2\left(x+\dfrac{3}{2}\right)^2.
+        \end{align*}
+        $$
+        <p>Le carré d'un nombre réel est toujours positif ou nul donc $2\left(x+\dfrac{3}{2}\right)^2+\dfrac{9}{2}\geqslant 0$ pour tout réel $x.$<br>
+        Donc pour tout réel $x$ on a $f(x)-\left(-6x-\dfrac{9}{2}\right)\geqslant 0$ ou encore $f(x)\geqslant -6x-\dfrac{9}{2}.$<br>
+        Donc la courbe de la fonction $f$ est au-dessus de la tangente $T.$</p>
+      <li><p>Une tangente horizontale est une droite de pente nulle soit $f'(b)=0$ ou encore $4b=0$ donc $b=0.$ Donc la courbe de la fonction $f$ admet une tangente horizontale au point de coordonnées $(0~;~0).$</p></li>
+      <li><p>La courbe est au-dessus de ses tangentes :</p>
+      <div id="figure1" class="figure">
+        <svg
+          id="figure1"
+          viewBox="0 0 400 220"
+          xmlns="http://www.w3.org/2000/svg"
+          class="quadrillage"
+        >
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-2" ymin="-1" xmax="2" ymax ="10" xorigine="0" yorigine="0"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="5" stroke="black" stroke-width="0.5"></g>
+          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+          <g class="label" linkto="I" x="-3" y="0" style="font-size:0.5rem;">1</g>
+          <g name="J" class="point labeled" repere="repere1" x="0" y="5" stroke="none"></g>
+          <g class="label" linkto="J" x="-7" y="-5" style="font-size:0.5rem;">5</g>
+          <g name="c1" class="courbeRepresentative" expression="2x^2"  pas="0.01" xmin="-5" xmax="5" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+          <g name="d1" class="courbeRepresentative" expression="4(x-1)+2"  pas="0.01" xmin="0.25" xmax="1.75" linkto="repere1" fill="transparent" stroke="green" stroke-width="0.5"></g>
+          <g name="d2" class="courbeRepresentative" expression="-4(x+1)+2"  pas="0.01" xmin="-1.75" xmax="-0.25" linkto="repere1" fill="transparent" stroke="green" stroke-width="0.5"></g>
+          <g name="d3" class="courbeRepresentative" expression="-6(x+1.5)+4.5"  pas="0.01" xmin="-2.5" xmax="-0.5" linkto="repere1" fill="transparent" stroke="green" stroke-width="0.5"></g>
+          <g name="A" class="point" repere="repere1" x="1" y="2" stroke="green"></g>
+          <g name="B" class="point" repere="repere1" x="-1" y="2" stroke="green"></g>
+          <g name="C" class="point" repere="repere1" x="-1.5" y="4.5" stroke="green"></g>
+          <g name="D" class="point" repere="repere1" x="0" y="0" stroke="green"></g>
+        </svg>
+      </div>
+      </li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    <p>On considère la fonction $f$ définie sur $\mathbb{R}$ par $f(x)=7x^3.$</p>
+    <ol>
+      <li>Etudier la parité de la fonction $f.$ Quelle propriété de sa courbe peut-on en déduire ?</li>
+      <li>Sur quel domaine de définition la fonction $f$ est-elle dérivable ?</li>
+      <li>Quelle est l'expression de la fonction dérivée de $f$ sur ce domaine ?</li>
+      <li>On considère la droite $d$ d'équation $y=189x+476.$<br>
+        Déterminer le point $A$ d'abscisse positif de la courbe où celle-ci admet une tangente parallèle à la droite $d.$</li>
+      <li>Déterminer l'équation réduite de cette tangente.</li>
+      <li>Notons $g$ la fonction associée à la tangente. Montrer que $f(x)-g(x)=7(x+6)(x-3)^2.$</li>
+      <li>Sur un intervalle centré en $x_A$ (abscisse du point $A$), et d'amplitude $1$, déterminer la position relative de la courbe par rapport à cette tangente.</li>
+      <li>Déterminer les coordonnées du point de la courbe où celle-ci admet une tangente horizontale.</li>
+      <li>Déterminer la position relative de la courbe par rapport à cette tangente.</li>
+      <li>Montrer à l'aide d'un schéma la position relative de la courbe par rapport à ses tangentes.</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol>
+      <li><p>Pour tout réel $x$ on a $f(-x)=7(-x)^3=7(-x^3)=-7x^3=-f(x)$ donc la fonction $f$ est impaire.<br>Par conséquent sa courbe est symétrique par rapport à l'origine du repère.</p></li>
+      <li><p>La fonction $f$ est dérivable sur $\mathbb{R}.$</p></li>
+      <li><p>La fonction dérivée de $f$ est définie sur $\mathbb{R}$ par $f'(x)=7\times 3x^2=21x^2.$</p></li>
+      <li><p>Une tangente parallèle à la droite $d$ est une droite de pente $189.$</p>
+        <p> Notons $a$ l'abscisse du point où la courbe admet une tangente parallèle à cette droite.</p>
+        <p>$a$ est l'abscisse du point de la courbe où elle admet une tangente de pente $189$ si et seulement si le nombre dérivé de la fonction $f$ en $a$ est 189.</p>
+        <p>Or $f'(a)=189$ si et seulement si $21a^2=189$ ce qui est équivalent à $a^2=9.$</p>
+        <p>Comme $a$ est choisi positif, on a $a=3.$</p>
+        <p>Il n'y a donc qu'un seul point de la courbe qui vérifie cette condition.</p>
+        <p>Calculons maintenant l'ordonnée de ce point.</p>
+      $$
+        \begin{align*}
+        f(3)&=7\times 3^3\\
+        &=7\times 27\\
+        &=189.
+        \end{align*}
+      $$
+        <p>Donc la courbe de la fonction $f$ admet une tangente parallèle à la droite d'équation $y=189x+76$ au point de coordonnées $(3~;~189).$</p>
+      </li>
+      <li><p>La pente de la tangente $T$ est $189$ et elle passe par le point $A(3~;~189)$, on en déduit son équation réduite :<br>
+        $$\begin{align*}
+        y&=189(x-3)+189\\
+        y&=189x-567+189\\
+        y&=189x-378.
+        \end{align*}
+        $$</p></li>
+      <li><p>Développons l'expression $7(x+6)(x-3)^2$ :</p>
+        $$\begin{align*}
+        7(x+6)(x-3)^2&=7(x+6)(x^2-6x+9)\\
+        &=7(x^3-6x^2+9x+6x^2-36x+54)\\
+        &=7(x^3-27x+54)\\
+        &=7x^3-189x+378.
+        \end{align*}
+        $$
+        <p>Par ailleurs :</p>
+        $$\begin{align*}
+        f(x)-g(x)&=7x^3-(189x-378)\\
+        &=7x^3-189x+378
+        \end{align*}
+        $$
+        <p>On en déduit donc que pour tout réel $x$ :
+          $$f(x)-g(x)=7(x+6)(x-3)^2$$</p>
+      </li>
+      <li>
+        <p>L'intervalle centré en $x_A$ (abscisse du point $A$), et d'amplitude $1$ est $[3-1~;~3+1]=[2~;~4].$</p>
+        <p>On se propose de montrer que sur cet intervalle la courbe de la fonction $f$ est au-dessus de la tangente $T.$</p>
+        <p>Etudions pour cela le signe de la différence $f(x)-g(x)$ sur cet intervalle.</p>
+        <p>On a $f(x)-g(x)=7(x+6)(x-3)^2$ pour tout réel $x.$</p>
+        <p>Le facteur $7$ est positif</p>
+        <p>Le facteur $(x+6)$ est positif pour $x\geqslant -6.$</p>
+        <p>Il est également positif et pour tout réel $x\in[2~;~4].$</p>
+        <p>Le facteur $(x-3)^2$ est positif ou nul pour tout réel $x.$</p>
+        <p>Donc pour tout réel $x\in[2~;~4]$ on a $f(x)-g(x)\geqslant 0$</p>
+        <p>D'où $f(x)\geqslant g(x)$ sur $[2~;~4].$</p>
+        <p>Donc la courbe de la fonction $f$ est au-dessus de la tangente $T$ sur l'intervalle $[2~;~4].$</p>
+      </li>
+      <li><p>Une tangente horizontale à une courbe est une droite de pente nulle</p>
+        <p>Donc la courbe de la fonction $f$ admet une tangente horizontale si et seulement si la fonction $f$ admet un nombre dérivé nul en un point.</p>
+        <p>Or $f'(b)=0$ si et seulement si $21b^2=0$ ce qui est équivalent à $b^2=0$ et donc à $b=0.$</p>
+        <p>Il n'y a donc qu'un seul point de la courbe qui vérifie cette condition.</p>
+        <p>Calculons maintenant l'ordonnée de ce point.</p>
+      $$
+        \begin{align*}
+        f(0)&=7\times 0^3\\
+        &=7\times 0\\
+        &=0.
+        \end{align*}
+      $$
+        <p>Donc la courbe de la fonction $f$ admet une tangente horizontale au point de coordonnées $(0~;~0).$</p>
+      <li><p>L'équation de la tangente à la courbe en $0$ est $y=0$.</p>
+        <p>Donc étudier la position relative de la courbe par rapport à cette tangente revient à étudier le signe de la différence $f(x)-0=f(x)$ pour tout réel $x.$</p>
+        <p>Or pour $x\leqslant 0$ on a $7x^3\leqslant 0$ car l'exposant $3$ est impair, et pour $x\geqslant 0$ on a $7x^3\geqslant 0$ donc pour tout réel $x.$</p>
+        <p>La tangente traverse donc la courbe de la fonction $f$ au point d'abscisse $0.$</p>
+        <p>Autrement dit la courbe de la fonction $f$ est en-dessous de sa tangente avant l'origine et au-dessus après.</p>
+      </li>
+      <li><p>La courbe est au-dessus de ses tangentes :</p>
+        <div id="figure1" class="figure">
+          <svg
+            id="figure1"
+            viewBox="0 0 300 300"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-5" ymin="-400" xmax="5" ymax ="400" xorigine="0" yorigine="0"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="50" stroke="black" stroke-width="0.5"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.5rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="50" stroke="none"></g>
+            <g class="label" linkto="J" x="-15" y="-5" style="font-size:0.5rem;">50</g>
+            <g name="c1" class="courbeRepresentative" expression="7x^3"  pas="0.01" xmin="-5" xmax="5" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+            <g name="d1" class="courbeRepresentative" expression="189x-378"  pas="0.01" xmin="2" xmax="4" linkto="repere1" fill="transparent" stroke="green" stroke-width="0.5"></g>
+            <g name="d2" class="courbeRepresentative" expression="0"  pas="0.01" xmin="-1.5" xmax="1.5" linkto="repere1" fill="transparent" stroke="green" stroke-width="1.5"></g>
+            <g name="d3" class="courbeRepresentative" expression="189(x+3)-189"  pas="0.01" xmin="-4" xmax="-2" linkto="repere1" fill="transparent" stroke="green" stroke-width="0.5"></g>
+          </svg>
+        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+</main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>
