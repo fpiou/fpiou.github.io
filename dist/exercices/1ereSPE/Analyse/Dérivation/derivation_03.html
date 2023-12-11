@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Derivation_03</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+<button onclick="diminuerTaille()">Diminuer la taille</button>
+<button onclick="augmenterTaille()">Augmenter la taille</button>
+<button onclick="unecolonne()">1 colonne</button>
+<button onclick="deuxcolonnes()">2 colonnes</button>
+<button onclick="window.print()">Imprimer</button>
+    <header>
+      <h1>Exercices</h1>
+    </header>
+    <main><div class="exercice">
+    <div class="enonce">
+      <p>Dans chaque cas, indiquer le domaine de définition, le domaine de dérivation, puis en utilisant la formule de la dérivée d'un produit, déterminer la dérivée. Vérifier avec la dérivée d'une fonction de référence.</p>
+      <ol>
+        <li>$f:x\longmapsto x\times x$</li>
+        <li>$f:x\longmapsto x^2\times x$</li>
+        <li>$f:x\longmapsto x\times \dfrac{1}{x}$</li>
+        <li>$f:x\longmapsto x^2\times \dfrac{1}{x}$</li>
+        <li>$f:x\longmapsto \sqrt{x}\times \sqrt{x}$</li>
+      </ol>
+    </div>
+    <div class="solution">
+        <ol>
+            <li><p>$f$ est définie et dérivable sur $\mathbb{R}$ comme produit de fonctions définies et dérivables sur $\mathbb{R}$.</p>
+                <p>Notons $u(x)=x$ et $v(x)=x$</p>
+                <p>Alors $u'(x)=1$ et $v'(x)=1$</p>
+                $$
+                    \begin{align*}
+                        f'(x)&=u'(x)\times v(x)+u(x)\times v'(x)\\
+                        &=1\times x+x\times 1\\
+                        &=2x
+                    \end{align*}
+                $$
+                <p>Or $f(x)=x^2$, et sa dérivée est bien $f'(x)=2x$.</p>
+            </li>
+            <li>
+                <p>$f$ est définie et dérivable sur $\mathbb{R}$ comme produit de fonctions définies et dérivables sur $\mathbb{R}$.</p>
+                <p>Notons $u(x)=x^2$ et $v(x)=x$</p>
+                <p>Alors $u'(x)=2x$ et $v'(x)=1$</p>
+                $$
+                    \begin{align*}
+                        f'(x)&=u'(x)\times v(x)+u(x)\times v'(x)\\
+                        &=2x\times x^2+x^2\times 1\\
+                        &=3x^2
+                    \end{align*}
+                $$
+                <p>Or $f(x)=x^3$, et sa dérivée est bien $f'(x)=3x^2$.</p>
+            </li>
+            <li>
+                <p>$f$ est définie et dérivable sur $\mathbb{R}^*$ comme produit de fonctions définies et dérivables sur $\mathbb{R}^*$.</p>
+                <p>Notons $u(x)=x$ et $v(x)=\dfrac{1}{x}$</p>
+                <p>Alors $u'(x)=1$ et $v'(x)=-\dfrac{1}{x^2}$</p>
+                $$
+                    \begin{align*}
+                        f'(x)&=u'(x)\times v(x)+u(x)\times v'(x)\\
+                        &=1\times \dfrac{1}{x}+x\times \left(-\dfrac{1}{x^2}\right)\\
+                        &=\dfrac{1}{x}-\dfrac{1}{x}\\
+                        &=0
+                    \end{align*}
+                $$
+                <p>Or $f(x)=1$, et sa dérivée est bien $f'(x)=0$.</p>
+            </li>
+            <li>
+                <p>$f$ est définie et dérivable sur $\mathbb{R}^*$ comme produit de fonctions définies et dérivables sur $\mathbb{R}^*$.</p>
+                <p>Notons $u(x)=x^2$ et $v(x)=\dfrac{1}{x}$</p>
+                <p>Alors $u'(x)=2x$ et $v'(x)=-\dfrac{1}{x^2}$</p>
+                $$
+                    \begin{align*}
+                        f'(x)&=u'(x)\times v(x)+u(x)\times v'(x)\\
+                        &=2x\times \dfrac{1}{x}+x^2\times \left(-\dfrac{1}{x^2}\right)\\
+                        &=2-1\\
+                        &=1
+                    \end{align*}
+                $$
+                <p>Or $f(x)=x$, et sa dérivée est bien $f'(x)=1$.</p>
+            </li>
+            <li>
+                <p>$f$ est définie sur $[0;+\infty[$ et dérivable sur $]0;+\infty[$ comme produit de fonctions définies sur $[0;+\infty[$ et dérivable sur $]0;+\infty[$</p>
+                <p>Notons $u(x)=\sqrt{x}$ et $v(x)=\sqrt{x}$</p>
+                <p>Alors $u'(x)=\dfrac{1}{2\sqrt{x}}$ et $v'(x)=\dfrac{1}{2\sqrt{x}}$</p>
+                $$
+                    \begin{align*}
+                        f'(x)&=u'(x)\times v(x)+u(x)\times v'(x)\\
+                        &=\dfrac{1}{2\sqrt{x}}\times \sqrt{x}+\sqrt{x}\times \dfrac{1}{2\sqrt{x}}\\
+                        &=\dfrac{1}{2}+\dfrac{1}{2}\\
+                        &=1
+                    \end{align*}
+                $$
+                <p>Or $f(x)=x$, et sa dérivée est bien $f'(x)=1$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>Montrer à l'aide des fonctions de référence et de la dérivée du produit de fonctions que ces deux fonctions ont la même dérivée.</p>
+        <ol>
+            <li>$f:x\longmapsto x^2\times x^2$</li>
+            <li>$g:x\longmapsto x^3\times x$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol>
+            <li>
+                <p>$f$ est définie et dérivable sur $\mathbb{R}$ comme produit de fonctions définies et dérivables sur $\mathbb{R}$.</p>
+                <p>Notons $u(x)=x^2$ et $v(x)=x^2$</p>
+                <p>Alors $u'(x)=2x$ et $v'(x)=2x$</p>
+                $$
+                    \begin{align*}
+                        f'(x)&=u'(x)\times v(x)+u(x)\times v'(x)\\
+                        &=2x\times x^2+x^2\times 2x\\
+                        &=4x^3
+                    \end{align*}
+                $$
+            </li>
+            <li>
+                <p>$g$ est définie et dérivable sur $\mathbb{R}$ comme produit de fonctions définies et dérivables sur $\mathbb{R}$.</p>
+                <p>Notons $u(x)=x^3$ et $v(x)=x$</p>
+                <p>Alors $u'(x)=3x^2$ et $v'(x)=1$</p>
+                $$
+                    \begin{align*}
+                        g'(x)&=u'(x)\times v(x)+u(x)\times v'(x)\\
+                        &=3x^2\times x+x^3\times 1\\
+                        &=4x^3
+                    \end{align*}
+                $$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <ol>
+            <li>Déterminer la dérivée de la fonction $f:x\longmapsto \dfrac{1}{x^2}$ en utilisant la dérivée d'un produit.</li>
+            <li>En déduire la dérivée de la fonction $g:x\longmapsto \dfrac{1}{x^3}.$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <li><p>$f$ est définie et dérivable sur $\mathbb{R}^*$ comme produit de fonctions définies et dérivables sur $\mathbb{R}^*$.</p>
+            <p>Notons $u(x)=\dfrac{1}{x}$ et $v(x)=\dfrac{1}{x}$</p>
+            <p>Alors $u'(x)=-\dfrac{1}{x^2}$ et $v'(x)=-\dfrac{1}{x^2}$</p>
+            $$
+                \begin{align*}
+                    f'(x)&=u'(x)\times v(x)+u(x)\times v'(x)\\
+                    &=-\dfrac{1}{x^2}\times \dfrac{1}{x}+\dfrac{1}{x}\times \left(-\dfrac{1}{x^2}\right)\\
+                    &=-\dfrac{1}{x^3}-\dfrac{1}{x^3}\\
+                    &=-\dfrac{2}{x^3}
+                \end{align*}
+            $$      
+        </li>
+        <li>$g$ est définie et dérivable sur $\mathbb{R}^*$ comme produit de fonctions définies et dérivables sur $\mathbb{R}^*$.</p>
+            <p>Notons $u(x)=\dfrac{1}{x^2}$ et $v(x)=\dfrac{1}{x}$</p>
+            <p>Alors $u'(x)=-\dfrac{2}{x^3}$ et $v'(x)=-\dfrac{1}{x^2}$</p>
+            $$
+                \begin{align*}
+                    g'(x)&=u'(x)\times v(x)+u(x)\times v'(x)\\
+                    &=-\dfrac{2}{x^3}\times \dfrac{1}{x}+\dfrac{1}{x^2}\times \left(-\dfrac{1}{x^2}\right)\\
+                    &=-\dfrac{2}{x^4}-\dfrac{1}{x^4}\\
+                    &=-\dfrac{3}{x^4}
+                \end{align*}
+            $$
+        </li>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>Déterminer la dérivée des fonctions suivantes.</p>
+        <ol>
+            <li>$f:x\longmapsto \sqrt{2x}$</li>
+            <li>$g:x\longmapsto \sqrt{x^3}$</li>
+            <li>$h:x\longmapsto \sqrt{x^5}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol>
+            <li><p>$f$ est définie sur $[0;+\infty[$ et $f(x)=\sqrt{2}\sqrt{x}$.</p>
+                <p>$f$ est dérivable sur $]0;+\infty[$ comme produit d'une constante par une fonction dérivable sur $]0;+\infty[$.</p>
+                $$
+                    \begin{align*}
+                        f'(x)&=\sqrt{2}\times \dfrac{1}{2\sqrt{x}}\\
+                        &=\dfrac{\sqrt{2}}{2\sqrt{x}}
+                    \end{align*}
+                $$
+            </li>
+            <li><p>$g$ est définie sur $[0;+\infty[$ et $$
+                \begin{align*}
+                    g(x)&=\sqrt{x^2\times x}\\
+                    &=\sqrt{x^2}\sqrt{x}&\text{car $x\geqslant 0$}\\
+                    &=x\sqrt{x}&\text{car $x\geqslant 0$}
+                    g(x)&=x\sqrt{x}
+                \end{align*}
+                $$</p>
+                <p>$g$ est dérivable sur $]0;+\infty[$ comme produit de fonctions dérivables sur $]0;+\infty[$.</p>
+                <p>Notons $u(x)=x$ et $v(x)=\sqrt{x}$</p>
+                <p>Alors $u'(x)=1$ et $v'(x)=\dfrac{1}{2\sqrt{x}}$</p>
+                $$
+                    \begin{align*}
+                        g'(x)&=u'(x)\times v(x)+u(x)\times v'(x)\\
+                        &=1\times \sqrt{x}+x\times \dfrac{1}{2\sqrt{x}}\\
+                        &=\sqrt{x}+\dfrac{x}{2\sqrt{x}}\\
+                        &=\sqrt{x}+\dfrac{\sqrt{x}}{2}\\
+                        &=\dfrac{3\sqrt{x}}{2}
+                    \end{align*}
+                $$
+            </li>
+            <li><p>$h$ est définie sur $[0;+\infty[$ et $$
+                \begin{align*}
+                    h(x)&=\sqrt{x^4\times x}\\
+                    &=\sqrt{x^4}\sqrt{x}&\text{car $x\geqslant 0$}\\
+                    &=x^2\sqrt{x}
+                    h(x)&=x^2\sqrt{x}
+                \end{align*}
+                $$</p>
+                <p>$h$ est dérivable sur $]0;+\infty[$ comme produit de fonctions dérivables sur $]0;+\infty[$.</p>
+                <p>Notons $u(x)=x^2$ et $v(x)=\sqrt{x}$</p>
+                <p>Alors $u'(x)=2x$ et $v'(x)=\dfrac{1}{2\sqrt{x}}$</p>
+                $$
+                    \begin{align*}
+                        h'(x)&=u'(x)\times v(x)+u(x)\times v'(x)\\
+                        &=2x\times \sqrt{x}+x^2\times \dfrac{1}{2\sqrt{x}}\\
+                        &=2x\sqrt{x}+\dfrac{x^2}{2\sqrt{x}}\\
+                        &=2x\sqrt{x}+\dfrac{x\sqrt{x}}{2}\\
+                        &=\dfrac{5x\sqrt{x}}{2}
+                    \end{align*}
+                $$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>Déterminer la dérivée des fonctions suivantes.</p>
+        <ol>
+            <li>$f:x\longmapsto \dfrac{x^2}{\sqrt{x}}$</li>
+            <li>$g:x\longmapsto \dfrac{x^3}{\sqrt{x}}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol>
+            <li><p>$f$ est définie sur $]0;+\infty[$ et $$
+                \begin{align*}
+                    f(x)&=\dfrac{x^2}{\sqrt{x}}\\
+                    &=x\times \dfrac{x}{\sqrt{x}}\\
+                    &=x\times \sqrt{x}&\text{car $x>0$}
+                \end{align*}
+                $$</p>
+                <p>$f$ est dérivable sur $]0;+\infty[$ comme produit de fonctions dérivables sur $]0;+\infty[$.</p>
+                <p>Notons $u(x)=x$ et $v(x)=\sqrt{x}$</p>
+                <p>Alors $u'(x)=1$ et $v'(x)=\dfrac{1}{2\sqrt{x}}$</p>
+                $$
+                    \begin{align*}
+                        f'(x)&=u'(x)\times v(x)+u(x)\times v'(x)\\
+                        &=1\times \sqrt{x}+x\times \dfrac{1}{2\sqrt{x}}\\
+                        &=\sqrt{x}+\dfrac{x}{2\sqrt{x}}\\
+                        &=\sqrt{x}+\dfrac{\sqrt{x}}{2}\\
+                        &=\dfrac{3\sqrt{x}}{2}
+                    \end{align*}
+                $$
+            </li>
+            <li><p>$g$ est définie sur $]0;+\infty[$ et $$
+                \begin{align*}
+                    g(x)&=\dfrac{x^3}{\sqrt{x}}\\
+                    &=x^2\times \dfrac{x}{\sqrt{x}}\\
+                    &=x^2\times \sqrt{x}&\text{car $x>0$}
+                \end{align*}
+                $$</p>
+                <p>$g$ est dérivable sur $]0;+\infty[$ comme produit de fonctions dérivables sur $]0;+\infty[$.</p>
+                <p>Notons $u(x)=x^2$ et $v(x)=\sqrt{x}$</p>
+                <p>Alors $u'(x)=2x$ et $v'(x)=\dfrac{1}{2\sqrt{x}}$</p>
+                $$
+                    \begin{align*}
+                        g'(x)&=u'(x)\times v(x)+u(x)\times v'(x)\\
+                        &=2x\times \sqrt{x}+x^2\times \dfrac{1}{2\sqrt{x}}\\
+                        &=2x\sqrt{x}+\dfrac{x^2}{2\sqrt{x}}\\
+                        &=2x\sqrt{x}+\dfrac{x\sqrt{x}}{2}\\
+                        &=\dfrac{5x\sqrt{x}}{2}
+                    \end{align*}
+                $$
+            </li>
+        </ol>
+    </div>
+</div>
+</main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>
