@@ -47,8 +47,6 @@
     
         <link rel="stylesheet" href="/src/css/prettyLesson.css">
     
-        <link rel="stylesheet" href="/src/css/figures.css">
-    
         <link rel="stylesheet" href="/src/css/print.css">
     
 
@@ -1440,6 +1438,20 @@
         $$[-1;5]\cap[0;2]=[0;2].$$
     </ul>
 </div>
+<h2>Distance entre deux réels</h2>
+<div class="definition">
+    <p>$a$ et $b$ désignent deux nombres réels sur la droite des réels.</p>
+    <ul>
+        <li>Si $a\leqslant a$, alors la distance entre $a$ et $b$ est $b-a$.</li>
+        <li>Si $a\geqslant b$, alors la distance entre $a$ et $b$ est $a-b$.</li>
+    </ul>
+</div>
+<div class="exemple">
+    <ul>
+        <li>La distance entre $-6$ et $10$ est $16$ car $10-(-6)=10+6=16.$</li>
+        <li>La distance entre $-6$ et $-10$ est $4$ car $-6-(-10)=-6+10=4.$</li>
+    </ul>
+</div>
 <div class="propriete">
     <p>L'abscisse du milieu de l'intervalle $[a;b]$ est $\dfrac{a+b}{2}$.</p>
     <!-- Construire une figure svg qui illustre que (a+b)/2 est le milieu de [a;b]-->
@@ -1486,75 +1498,59 @@
         $$
     </p>
 </div>
-<h2>Distance et valeur absolue</h2>
+<h2>Valeur absolue</h2>
 <div class="definition">
     <p>
-        La <strong>valeur absolue</strong> d'un nombre réel $x$ est le nombre noté $\vert x\vert$ qui vérifie :
-    <ul>
-        <li>si $x\geqslant 0$, alors $\vert x\vert=x;$</li>
-        <li>si $x < 0$, alors $\vert x\vert=-x.$</li>
-    </ul>
+        La <strong>valeur absolue</strong> d'un nombre réel $x$ est sa distance à zéro. On la note $\vert x\vert$ et on prononce « valeur absolue de $x$ ».
     </p>
+</div>
+<div class="exemple">
+    <p>$\vert 4\vert=\vert -4\vert=4$ car $4$ et $-4$ sont à la même distance de $0$.</p>
+</div>
+<div class="propriete">
+    <p>
+        La valeur absolue d'un nombre réel et la valeur absolue de son opposé sont égales :
+        $$\vert x\vert=\vert -x\vert$$
+    </p>
+</div>
+<div class="propriete">
+    <p>$x$ désigne un nombre réel.</p>
+    <ul>
+        <li>Si $x\geqslant 0$, alors $\vert x\vert=x.$</li>
+        <li>Si $x\leqslant 0$, alors $\vert x\vert=-x.$</li>
+    </ul>
 </div>
 <div class="exemple">
     <p>
     <ul>
-        <li>$\vert 3\vert=3$</li>
-        <li>$\vert -7\vert=-(-7)=7$</li>
+        <li>Si $x=4$, alors $\vert x\vert=4.$</li>
+        <li>Si $x=-4$, alors $\vert x\vert=-(-4)=4.$</li>
     </ul>
     </p>
 </div>
 <div class="propriete">
-    <p>
-        La valeur absolue d'un nombre réel et la valeur absolue de son opposé sont égales.
-        $$\vert x\vert=\vert -x\vert\quad\text{ avec $x$ réel.}$$
-    </p>
+    <p>Si $a$ et $b$ sont deux nombres réels, alors $$\vert a-b\vert=\vert b-a\vert.$$</p>
+    <p>Par conséquent, la distance entre $a$ et $b$ est $\vert a-b\vert$ ou encore $\vert b-a\vert$.</p>
 </div>
 <div class="exemple">
     <p>
     <ul>
-        <li>$\vert 3\vert=\vert -3\vert=3$</li>
-        <li>$\vert -7\vert=\vert -(-7)\vert=7$</li>
-    </ul>
-    </p>
-</div>
-<div class="definition">
-    <p>
-        La <strong>distance</strong> entre deux nombres réels $a$ et $b$ est notée $\vert a-b\vert$.
-    <ul>
-        <li>Si $a\leqslant b$, alors $\vert a-b\vert=b-a.$</li>
-        <li>Si $a\geqslant b$, alors $\vert a-b\vert=a-b.$</li>
-    </ul>
-    </p>
-</div>
-<div class="exemple">
-    <p>
-    <ul>
-        <li>La distance de $3$ à $5$ est $2$, ce qu'on peut écrire $\vert 3-5\vert=2.$</li>
-        <li>La distance de $-3$ à $5$ est $8$, ce qu'on peut écrire $\vert -3-5\vert=8.$<br>
-            En effet, $-3\leqslant 5$ donc $\vert -3-5\vert=5-(-3)=8$.</li>
+        <li>La distance entre $3$ et $5$ est $\vert 3-5\vert.$
+            $$
+            \begin{align*}
+            \vert 3-5\vert&=\vert -2\vert\\
+            &=2
+            \end{align*}
+            $$
         </li>
-    </ul>
-    </p>
-</div>
-<div class="remarque">
-    <ul>
-        <li>Si $x$ désigne un nombre réel, alors $\vert x\vert$ est donc la distance de $x$ à $0.$
-            $$\vert x\vert=\vert x-0\vert$$</li>
-    </ul>
-</div>
-<div class="propriete">
-    <p>
-        $a$ et $b$ sont deux nombres réels.
-        La distance entre $a$ et $b$ est égale à la distance entre $b$ et $a$.
-        $$\vert a-b\vert=\vert b-a\vert$$
-    </p>
-</div>
-<div class="exemple">
-    <p>
-    <ul>
-        <li>$\vert 3-5\vert=\vert 5-3\vert=2$</li>
-        <li>$\vert -3-5\vert=\vert 5-(-3)\vert=8$</li>
+        <li>La distance entre $-3$ et $5$ est $\vert -3-5\vert.$
+            $$
+            \begin{align*}
+            \vert -3-5\vert&=\vert -8\vert\\
+            &=8
+            \end{align*}
+            $$
+        </li>
     </ul>
     </p>
 </div>
@@ -1629,60 +1625,9 @@
         $[a-r;a+r]$ est l'ensemble des réels $x$ tel que $\vert x-a\vert\leqslant r$.
     </p>
 </div>
-<div class="exemple">
-    <p>
-    <ul>
-        <li>L'ensemble des nombres réels dont la distance à $3$ est inférieure ou égale à $2$ peut s'écrire
-            $$\{x\in \mathbb{R}\text{ tel que }\vert x-3\vert\leqslant 2\}=[3-2;3+2]$$
-            Comme $3-2=1$ et $3+2=5$, on peut aussi écrire
-            $$\{x\in \mathbb{R}\text{ tel que }\vert x-3\vert\leqslant 2\}=[1;5]$$
-            Comme $[1;5]=\{x\in \mathbb{R}\text{ tel que }1\leqslant x\leqslant 5\}$, on peut aussi écrire
-            $$\{x\in \mathbb{R}\text{ tel que }\vert x-3\vert\leqslant 2\}=[1;5]=\{x\in \mathbb{R}\text{ tel que
-            }1\leqslant x\leqslant 5\}$$
-        </li>
-        <li>L'ensemble des nombres réels dont la distance à $-3$ est inférieure ou égale à $2$ peut s'écrire
-            $$\{x\in \mathbb{R}\text{ tel que }\vert x-(-3)\vert\leqslant 2\}=[-3-2;-3+2]$$
-            Comme $-3-2=-5$ et $-3+2=-1$, on peut aussi écrire
-            $$\{x\in \mathbb{R}\text{ tel que }\vert x-(-3)\vert\leqslant 2\}=[-5;-1]$$
-            Comme $[-5;-1]=\{x\in \mathbb{R}\text{ tel que }-5\leqslant x\leqslant -1\}$, on peut aussi écrire
-            $$\{x\in \mathbb{R}\text{ tel que }\vert x-(-3)\vert\leqslant 2\}=[-5;-1]=\{x\in \mathbb{R}\text{ tel que
-            }-5\leqslant x\leqslant -1\}$$
-        </li>
-    </ul>
-    </p>
-</div>
-<div class="remarque">
-    <p>Sur une droite graduée, la distance entre deux points $A$ et $B$ où $x_A$ et $x_B$ sont deux nombres réels désignants les abscisses respectives de $A$ et $B$ est $\vert x_A-x_B\vert=\vert x_B-x_A\vert$.
-        $$AB=\vert x_B-x_A\vert=\vert x_A-x_B\vert=BA$$
-    </p>
-    <div id="figure1" class="figure">
-        <svg id="figure1" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -20 140 40">
-            <!-- Début de la figure -->
-            <g name="A" class="point labeled" x="20" y="0" style="font-size:0.7rem;"></g>
-            <g class="label" x="-2.5" y="-15" linkto="A">A</g>
-            <g name="B" class="point labeled" x="100" y="0" style="font-size:0.7rem;"></g>
-            <g class="label" x="-2.5" y="-15" linkto="B">B</g>
-            <g name="d" class="droite" linkto="A B"></g>
-            <g name="xA" class="point translation labeled" linkto="A A A" data="0" style="font-size:0.5rem;stroke:transparent;"></g>
-            <g class="label" x="-5" y="0" linkto="xA">x_A</g>
-            <g name="xB" class="point translation labeled" linkto="B B B" data="0" style="font-size:0.5rem;stroke:transparent;"></g>
-            <g class="label" x="-5" y="0" linkto="xB">x_B</g>
-            <g name="M" class="point" x="-10" y="0" visibility="hidden"></g>
-            <g name="N" class="point" x="140" y="0" visibility="hidden"></g>
-            <g name="graduation1" class="graduation" linkto="M N" parametres="n:12"></g>
-            <!-- Fin de la figure -->
-        </svg>
-    </div>
-</div>
-<div class="propriete">
-    <p>
-        $p$ et $q$ désignent deux nombres réels tels que $p\leqslant q$.<br>
-        Le milieu d'un intervalle d'extrémité $p$ et $q$ est $\dfrac{p+q}{2}$ et la distance entre $p$ et $q$ est $\vert p-q\vert$.
-    </p>
-</div>
 <div class="methode">
     <p>
-        Pour traduire une inégalité avec la valeur absolue, on peut suivre les étapes suivantes.</br>
+        Pour traduire un encadrement avec la valeur absolue, on peut suivre les étapes suivantes.</br>
         $p$ et $q$ désignent deux nombres réels tels que $p\leqslant q$.
         Supposons que $p \leqslant x \leqslant q$. Nous souhaitons déterminer les nombres réels $a$ et $r$ tels que $\vert x-a\vert\leqslant r$.
     </p>
@@ -1717,6 +1662,32 @@
         </li>
     </ul>
     </p>
+</div>
+<div class="propriete">
+    <p>$a$ désigne un réel et $r$ désigne un réel positif.</p>
+    <ul>
+        <li>L'ensemble des nombres réels $x$ tels que $\vert x-a\vert\leqslant r$ est l'intervalle $[a-r;a+r]$.</li>
+        <li>L'ensemble des nombres réels $x$ tels que $\vert x-a\vert < r$ est l'intervalle $]a-r;a+r[$.</li>
+    </ul>
+</div>
+<div class="exemple">
+    <ul>
+        <li>L'ensemble des nombres réels $x$ tels que $\vert x-3\vert\leqslant 2$ est l'intervalle $[1;5]$.</li>
+        <li>L'ensemble des nombres réels $x$ tels que $\vert x-3\vert < 7$ est l'intervalle $]-4;10[$.</li>
+    </ul>
+</div>
+<div class="propriete">
+    <p>$a$ désigne un réel et $r$ désigne un réel positif.</p>
+    <ul>
+        <li>L'ensemble des nombres réels $x$ tels que $\vert x-a\vert\geqslant r$ est la réunion des intervalles $]-\infty;a-r]$ et $[a+r;+\infty[$ : $]-\infty;a-r]\cup[a+r;+\infty[$.</li>
+        <li>L'ensemble des nombres réels $x$ tels que $\vert x-a\vert > r$ est la réunion des intervalles $]-\infty;a-r[$ et $]a+r;+\infty[$ : $]-\infty;a-r[\cup]a+r;+\infty[$.</li>
+    </ul>
+</div>
+<div class="exemple">
+    <ul>
+        <li>L'ensemble des nombres réels $x$ tels que $\vert x-3\vert\geqslant 2$ est la réunion des intervalles $]-\infty;1]$ et $[5;+\infty[$ : $]-\infty;1]\cup[5;+\infty[$.</li>
+        <li>L'ensemble des nombres réels $x$ tels que $\vert x-3\vert > 7$ est la réunion des intervalles $]-\infty;-4[$ et $]10;+\infty[$ : $]-\infty;-4[\cup]10;+\infty[$.</li>
+    </ul>
 </div>
     </main>
     <footer>
