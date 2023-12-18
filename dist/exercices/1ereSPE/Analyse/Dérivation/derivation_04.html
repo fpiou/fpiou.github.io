@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Derivation_04</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+<button onclick="diminuerTaille()">Diminuer la taille</button>
+<button onclick="augmenterTaille()">Augmenter la taille</button>
+<button onclick="unecolonne()">1 colonne</button>
+<button onclick="deuxcolonnes()">2 colonnes</button>
+<button onclick="window.print()">Imprimer</button>
+    <header>
+      <h1>Exercices</h1>
+    </header>
+    <main><div class="exercice">
+    <div class="enonce">
+        <p>Déterminer la dérivée des fonctions suivantes en utilisant la dérivée du carré d'une fonction </p>
+        <ol>
+            <li>$f:x\longmapsto \left(\sqrt{x}\right)^2$</li>
+            <li>$g:x\longmapsto \left(\dfrac{1}{x}\right)^2$</li>
+            <li>$h:x\longmapsto \left(4x^2+5x-1\right)^2$</li>
+    </div>
+    <div class="solution">
+        <ol>
+            <li><p>Notons $u(x)=\sqrt{x}$. On a $f(x)=u^2(x)$ donc $f$ est définie sur $[0;+\infty[$ et dérivable sur $]0;+\infty[$ comme carré d'une fonction dérivable sur $]0;+\infty[$.</p>
+                <p>On a $u'(x)=\dfrac{1}{2\sqrt{x}}$</p>
+                $$
+                    \begin{align*}
+                        f'(x)&=2u(x)\times u'(x)\\
+                        &=2\sqrt{x}\times \dfrac{1}{2\sqrt{x}}\\
+                        &=1
+                    \end{align*}
+                $$
+            </li>
+            <li><p>Notons $u(x)=\dfrac{1}{x}$. On a $g(x)=u^2(x)$ donc $g$ est définie sur $]0;+\infty[$ et dérivable sur $]0;+\infty[$ comme carré d'une fonction dérivable sur $]0;+\infty[$.</p>
+                <p>On a $u'(x)=-\dfrac{1}{x^2}$</p>
+                $$
+                    \begin{align*}
+                        g'(x)&=2u(x)\times u'(x)\\
+                        &=2\times \dfrac{1}{x}\times \left(-\dfrac{1}{x^2}\right)\\
+                        &=-\dfrac{2}{x^3}
+                    \end{align*}
+                $$
+            </li>
+            <li><p>Notons $u(x)=4x^2+5x-1$. On a $h(x)=u^2(x)$ donc $h$ est définie sur $\mathbb{R}$ et dérivable sur $\mathbb{R}$ comme carré d'une fonction dérivable sur $\mathbb{R}$.</p>
+                <p>On a $u'(x)=8x+5$</p>
+                $$
+                    \begin{align*}
+                        h'(x)&=2u(x)\times u'(x)\\
+                        &=2\left(4x^2+5x-1\right)\times \left(8x+5\right)
+                    \end{align*}
+                $$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>Déterminer la dérivée des fonctions suivantes en utilisant la dérivée de l'inverse d'une fonction </p>
+        <ol>
+            <li>$f:x\longmapsto \dfrac{1}{x+1}$</li>
+            <li>$g:x\longmapsto \dfrac{1}{x-1}$</li>
+            <li>$h:x\longmapsto \dfrac{1}{x^2+1}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol>
+            <li><p>Notons $u(x)=x+1$. On a $u$ est définie, non nulle et dérivable sur $\mathbb{R}$ privé de $-1.$ $f(x)=u^2(x)$ donc $f$ est définie et dérivable sur $\mathbb{R}$ privé de $-1.$</p>
+                <p>On a $u'(x)=1$</p>
+                $$
+                    \begin{align*}
+                        f'(x)&=-\dfrac{u'(x)}{u^2(x)}\\
+                        &=\dfrac{-1}{(x+1)^2}
+                    \end{align*}
+                $$
+            </li>
+            <li><p>Notons $u(x)=x-1$. On a $u$ est définie, non nulle et dérivable sur $\mathbb{R}$ privé de $1.$ $g(x)=u^2(x)$ donc $g$ est définie et dérivable sur $\mathbb{R}$ privé de $1.$</p>
+                <p>On a $u'(x)=1$</p>
+                $$
+                    \begin{align*}
+                        g'(x)&=-\dfrac{u'(x)}{u^2(x)}\\
+                        &=\dfrac{-1}{(x-1)^2}
+                    \end{align*}
+                $$
+            </li>
+            <li><p>Notons $u(x)=x^2+1$. On a $u(x)\geqslant 0$ donc $u$ est définie, non nulle et dérivable sur $\mathbb{R}.$ $h(x)=u^2(x)$ donc $h$ est définie et dérivable sur $\mathbb{R}.$</p>
+                <p>On a $u'(x)=2x$</p>
+                $$
+                    \begin{align*}
+                        h'(x)&=-\dfrac{u'(x)}{u^2(x)}\\
+                        &=\dfrac{-2x}{(x^2+1)^2}
+                    \end{align*}
+                $$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>On considère la fonction $f:x\longmapsto 
+            \dfrac{1}{x^2-7x+6}$. Notons $u(x)=x^2-7x+6$.</p>
+            <ol>
+                <li>Déterminer les racines de $u(x).$</li>
+                <li>En déduire les valeurs de $x$ pour lesquelles $f$ est dérivable.</li>
+                <li>Déterminer la dérivée de $f$ en utilisant la formule de la dérivée de l'inverse.</li>
+            </ol>
+    </div>
+    <div class="solution">
+        <ol>
+            <li><p>$1$ est une racine évidente de $u(x)$ car $$u(1)=1-7+6=0.$$</p>
+            <p>Si $x_1$ et $x_2$ sont les racines de $u(x)$, alors $$x_1\times x_2=6.$$</p>
+            <p>Or $x_1=1$ donc $x_2=6.$</p>
+            <p>Les racines de $u(x)$ sont donc $1$ et $6.$</p>
+            </li>
+            <li><p>$f$ est définie et dérivable sur $\mathbb{R}$ privé de $1$ et $6$ comme inverse d'une fonction définie dérivable et non nulle sur $\mathbb{R}$ privé de $1$ et $6.$</p></li>
+            <li><p>On a $u'(x)=2x-7$</p>
+                $$
+                    \begin{align*}
+                        f'(x)&=-\dfrac{u'(x)}{u^2(x)}\\
+                        &=\dfrac{2x-7}{(x^2-7x+6)^2}
+                    \end{align*}
+                $$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>Pour chaque fonction $f$ suivante définie et dérivable sur $]0;+\infty[$, déterminer la dérivée $f'$ en utilisant une méthode différente.</p>
+        <ul>
+            <li>$f:x\longmapsto \sqrt{x}\times\dfrac{1}{x}$ (produit de fonctions $u$ et $v$)</li>
+            <li>$g:x\longmapsto \dfrac{1}{\sqrt{x}}$ (inverse d'une fonction $w$)</li>
+        </ul>
+        <p>Les fonctions sont égales, montrer que les dérivées obtenues le sont également.</p>
+    </div>
+    <div class="solution">
+        <ul>
+            <li><p>On a $f(x)=\sqrt{x}\times \dfrac{1}{x}$ donc $f$ est définie sur $]0;+\infty[$ et dérivable sur $]0;+\infty[$ comme produit de fonctions dérivables sur $]0;+\infty[$.</p>
+                <p>On a $f(x)=u(x)\times v(x)$ avec $u(x)=\sqrt{x}$ et $v(x)=\dfrac{1}{x}.$</p>
+                <p>On a $u'(x)=\dfrac{1}{2\sqrt{x}}$ et $v'(x)=-\dfrac{1}{x^2}.$</p>
+                <p>On a donc $f'(x)=u'(x)\times v(x)+u(x)\times v'(x)$</p>
+                $$
+                    \begin{align*}
+                        f'(x)&=\dfrac{1}{2\sqrt{x}}\times \dfrac{1}{x}+\sqrt{x}\times \left(-\dfrac{1}{x^2}\right)\\
+                        &=\dfrac{1}{2x\sqrt{x}}-\dfrac{\sqrt{x}}{x^2}\\
+                        &=\dfrac{1}{2x\sqrt{x}}-\dfrac{1}{x\sqrt{x}}\\
+                        &=\dfrac{1}{2x\sqrt{x}}-\dfrac{2}{2x\sqrt{x}}\\
+                        &=-\dfrac{1}{2x\sqrt{x}}
+                    \end{align*}
+                $$</li>
+            <li><p>On a $g(x)=\dfrac{1}{\sqrt{x}}$ donc $g$ est définie sur $]0;+\infty[$ et dérivable sur $]0;+\infty[$ comme inverse d'une fonction dérivable et non nulle sur $]0;+\infty[$.</p>
+                <p>On a $g(x)=\dfrac{1}{w(x)}$ avec $w(x)=\sqrt{x}.$</p>
+                <p>On a $w'(x)=\dfrac{1}{2\sqrt{x}}$</p>
+                <p>On a donc $g'(x)=-\dfrac{w'(x)}{w^2(x)}$</p>
+                $$
+                    \begin{align*}
+                        g'(x)&=-\dfrac{w'(x)}{w^2(x)}\\
+                        &=-\dfrac{\dfrac{1}{2\sqrt{x}}}{\left(\sqrt{x}\right)^2}\\
+                        &=-\dfrac{\dfrac{1}{2\sqrt{x}}}{x}\\
+                        &=-\dfrac{1}{2x\sqrt{x}}
+                    \end{align*}
+                $$
+            </li>
+        </ul>
+    </div>
+</div></main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Derivation_05</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+<button onclick="diminuerTaille()">Diminuer la taille</button>
+<button onclick="augmenterTaille()">Augmenter la taille</button>
+<button onclick="unecolonne()">1 colonne</button>
+<button onclick="deuxcolonnes()">2 colonnes</button>
+<button onclick="window.print()">Imprimer</button>
+    <header>
+      <h1>Exercices</h1>
+    </header>
+    <main><div class="exercice">
+    <div class="enonce">
+        <p>Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=2x^2+2x-12.$</p>
+        <ol>
+            <li>Déterminer $f'(x).$</li>
+            <li>Déterminer l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $-\dfrac{1}{2}.$</li>
+            <li>Déterminer la position relative de la courbe représentative de $f$ et de sa tangente en $-\dfrac{1}{2}.$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol>
+            <li><p>$f'(x)=4x+2.$</p></li>
+            <li><p>Calculons $f'\left(-\dfrac{1}{2}\right)$</p>
+                $$
+                \begin{align*}
+                    f'\left(-\dfrac{1}{2}\right)&=4\times\left(-\dfrac{1}{2}\right)+2\\
+                    &=2-2\\
+                    &=0
+                \end{align*}
+                $$
+                <p>Calculons $f\left(-\dfrac{1}{2}\right)$</p>
+                $$
+                \begin{align*}
+                    f\left(-\dfrac{1}{2}\right)&=2\times\left(-\dfrac{1}{2}\right)^2+2\times\left(-\dfrac{1}{2}\right)-12\\
+                    &=\dfrac{1}{2}-1-12\\
+                    &=-\dfrac{23}{2}
+                \end{align*}
+                $$
+                <p>L'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $-\dfrac{1}{2}$ est donc $y=-\dfrac{23}{2}.$</p>
+            <li><p>On a $f'\left(-\dfrac{1}{2}\right)=0$ et $f\left(-\dfrac{1}{2}\right)=-\dfrac{23}{2}.$</p>
+                <p>Etudions le signe de $f(x)-\left(-\dfrac{23}{2}\right).$</p>
+                $$
+                \begin{align*}
+                    f(x)-\left(-\dfrac{23}{2}\right)&=2x^2+2x-12+\dfrac{23}{2}\\
+                    &=2x^2+2x-\dfrac{1}{2}\\
+                    &=2\left(x^2+x-\dfrac{1}{4}\right)\\
+                    &=2\left(x+\dfrac{1}{2}\right)^2
+                \end{align*}
+                $$
+                <p>On a donc $f(x)-\left(-\dfrac{23}{2}\right)\geqslant 0$ pour tout $x\in\mathbb{R}.$</p>
+                <p>La courbe représentative de $f$ est donc au-dessus de sa tangente en $-\dfrac{1}{2}.$</p>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>On considère la fonction $f:x\longmapsto x^2+7x-3+\dfrac{1}{x}$ définie et dérivable sur $\mathbb{R}^*$.</p>
+        <ol>
+            <li>Calculer $f'(x)$.</li>
+            <li>Déterminer l'équation réduite $y=mx+p$ de la tangente à la courbe représentative de $f$ au point d'abscisse $\dfrac{1}{2}.$</li>
+            <li>Montrer que $f(x)-(mx+p)=\dfrac{(x+4)(2x-1)^2}{4x}.$</li>
+            <li>Etablir un tableau de signe de $f(x)-(mx+p).$</li>
+            <li>En déduire la position relative de la courbe représentative de $f$ et de sa tangente en $\dfrac{1}{2}$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol>
+            <li><p>$f'(x)=2x+7-\dfrac{1}{x^2}.$</p></li>
+            <li><p>Calculons $f'\left(\dfrac{1}{2}\right)$</p>
+                $$
+                \begin{align*}
+                    f'\left(\dfrac{1}{2}\right)&=2\times\dfrac{1}{2}+7-\dfrac{1}{\left(\dfrac{1}{2}\right)^2}\\
+                    &=1+7-4\\
+                    &=4
+                \end{align*}
+                $$
+                <p>Calculons $f\left(\dfrac{1}{2}\right)$</p>
+                $$
+                \begin{align*}
+                    f\left(\dfrac{1}{2}\right)&=\left(\dfrac{1}{2}\right)^2+7\times\dfrac{1}{2}-3+\dfrac{1}{\dfrac{1}{2}}\\
+                    &=\dfrac{1}{4}+\dfrac{7}{2}-3+2\\
+                    &=\dfrac{1}{4}+\dfrac{14}{4}-\dfrac{12}{4}+\dfrac{8}{4}\\
+                    &=\dfrac{11}{4}
+                \end{align*}
+                $$
+                <p>Déterminons l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $\dfrac{1}{2}$ :
+                    $$
+                    \begin{align*}
+                        y&=f'\left(\dfrac{1}{2}\right)\left(x-\dfrac{1}{2}\right)+f\left(\dfrac{1}{2}\right)\\
+                        &=4\left(x-\dfrac{1}{2}\right)+\dfrac{11}{4}\\
+                        &=4x-2+\dfrac{11}{4}\\
+                        &=4x+\dfrac{3}{4}
+                    \end{align*}
+                    $$
+            <li><p>D'une part :</p>
+                $$
+                \begin{align*}
+                    f(x)-(mx+p)&=x^2+7x-3+\dfrac{1}{x}-(4x+\dfrac{3}{4})\\
+                    &=x^2+7x-3+\dfrac{1}{x}-4x-\dfrac{3}{4}\\
+                    &=x^2+3x-\dfrac{15}{4}+\dfrac{1}{x}\\
+                    &=\dfrac{4x^3+12x^2-15x+4}{4x}
+                \end{align*}
+                $$
+                <p>D'autre part :</p>
+                $$
+                \begin{align*}
+                    (x+4)(2x-1)^2&=(x+4)(4x^2-4x+1)\\
+                    &=4x^3+12x^2-15x+4
+                \end{align*}
+                $$
+                <p>On a donc $f(x)-(mx+p)=\dfrac{(x+4)(2x-1)^2}{4x}.$</p>
+            </li>
+            <li><p>Pour $x>0$, on a $x+4>0$ et $(2x-1)^2\geqslant 0$  et $4x>0.$</p>
+                <p>Donc $f(x)-(mx+p)\geqslant 0$ pour $x>0.$</p>
+            </li>
+            <li>
+                <p>Par conséquent la courbe représentative de $f$ est au-dessus de sa tangente en $\dfrac{1}{2}.$</p>
+          </li>
+        </ol>
+    </div>
+</div></main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>
