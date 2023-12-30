@@ -113,8 +113,7 @@
     display: block;
   }
   .solution-quiz {
-    display:none;
-    /* display: inline-block; */
+    display: inline-block;
   }
   .deuxcolonnes {
     column-count: 2;
