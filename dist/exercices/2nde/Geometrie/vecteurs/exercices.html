@@ -115,9 +115,345 @@
         </li> -->
     </ul>
 </nav>
-    <header>
-      <h1>Exercices</h1>
-    </header>
+<button onclick="diminuerTaille()">Diminuer la taille</button>
+<button onclick="augmenterTaille()">Augmenter la taille</button>
+<button onclick="unecolonne()">1 colonne</button>
+<button onclick="deuxcolonnes()">2 colonnes</button>
+<button onclick="window.print()">Imprimer</button>
+      <h1>Exercices de géométrie plane</h1>
+      <div class="exercice">
+        <div class="enonce">
+          <p>
+            Soient $[Ox)$ et $[Oy)$ deux demi-droites d'origine un point $O$ du plan
+            et soit $A$ un point distinct de $O$ et équidistant de ces deux
+            demi-droites.<br />
+            Démontrer que $(OA)$ est la bissectrice de l'angle $\widehat{xOy}$.
+          </p>
+        </div>
+        <div class="indice">
+          <div id="figure1" class="figure">
+            <svg
+              id="figure1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 -20 200 110"
+            >
+              <!-- Début de la figure -->
+              <!-- Points -->
+              <g name="O" class="point labeled" x="30" y="60"></g>
+              <g
+                class="label"
+                linkto="O"
+                y="-10"
+                x="-10"
+                style="font-size: 0.8em; color: red"
+              >
+                O
+              </g>
+              <g name="x" class="point" x="80" y="60" style="stroke: transparent"></g>
+              <g name="y" class="point" x="70" y="30" style="stroke: transparent"></g>
+              <g name="z" class="point" x="75" y="45" style="stroke: transparent"></g>
+              <!-- Demùi-droites -->
+              <!-- Demi-droite -->
+              <g name="Ox" class="demidroite" linkto="O x" style="stroke: green"></g>
+              <g name="Oy" class="demidroite" linkto="O y" style="stroke: green"></g>
+              <g
+                name="Oz"
+                class="demidroite"
+                linkto="O z"
+                style="
+                  stroke: blue;
+                  stroke-width: 2;
+                  stroke-dasharray: 5 5;
+                  stroke-opacity: 0.1;
+                "
+              ></g>
+              <!-- A est le point image de O par l'homothétie de centre O et de rapport 2 -->
+              <g
+                name="A"
+                class="point labeled translation draggable"
+                linkto="O z O"
+                data="2"
+              ></g>
+              <g
+                class="label"
+                linkto="A"
+                y="-10"
+                x="5"
+                style="font-size: 0.8em; color: red"
+              >
+                A
+              </g>
+              <!-- M est le projeté orthogonal de A sur Ox -->
+              <g
+                name="M"
+                class="point labeled dilatation"
+                linkto="O x A"
+                data="90 0"
+              ></g>
+              <g class="label" linkto="M" style="font-size: 0.8em; color: green">M</g>
+              <!-- N est le projeté orthogonal de A sur Oy -->
+              <g
+                name="N"
+                class="point labeled dilatation"
+                linkto="O y A"
+                data="90 0"
+              ></g>
+              <g
+                class="label"
+                linkto="N"
+                x="-10"
+                y="-15"
+                style="font-size: 0.8em; color: green"
+              >
+                N
+              </g>
+              <!-- on trace les distance aux droites AM et AN-->
+              <g name="AM" class="segment" linkto="A M"></g>
+              <g name="AN" class="segment" linkto="A N"></g>
+              <!-- Tracer les deux triangles OAM et OAN-->
+              <g
+                name="OAM"
+                class="polygone"
+                linkto="O A M"
+                fill="red"
+                fill-opacity="0.1"
+              ></g>
+              <g
+                name="OAN"
+                class="polygone"
+                linkto="O A N"
+                fill="red"
+                fill-opacity="0.1"
+              ></g>
+              <!-- Fin de la figure -->
+            </svg>
+          </div>
+          <p>On pourra suivre le plan de démonstration suivant :</p>
+          <ol>
+            <li>
+              Considérer les points $M$ et $N$ respectivement projetés orthogonaux de
+              $A$ sur les droites $(Ox)$ et $(Oy)$
+            </li>
+            <li>Montrer que $OM^2=ON^2$</li>
+            <li>En déduire que les triangles $OMN$ et $ONA$ sont égaux</li>
+            <li>
+              En déduire que $(OA)$ est la bissectrice de l'angle $\widehat{xOy}$
+            </li>
+          </ol>
+        </div>
+        <div class="solution">
+          <p>
+            Notons $M$ le projeté orthogonal de $A$ sur la droite $(Ox)$ et $N$ le
+            projeté orthogonal de $A$ sur la droite $(Oy)$.
+          </p>
+          <p>$OAM$ et $OAN$ sont des triangles rectangles en $M$ et $N$.</p>
+          <p>
+            D'après le théorème de Pythagore, on a $OA^2=OM^2+AM^2$ et
+            $OA^2=ON^2+AN^2$.
+          </p>
+          <p>D'où $OM^2+AM^2=ON^2+AN^2$.</p>
+          <p>
+            Or $AM$ est la distance de $A$ à la droite $(Ox)$ et $AN$ est la distance
+            de $A$ à la droite $(Oy)$.
+          </p>
+          <p>Donc $AM=AN$.</p>
+          <p>
+            Par conséquent $OM^2=ON^2$ et comme $OM$ et $ON$ sont des longueurs, on a
+            $OM=ON$.
+          </p>
+          <p>
+            Ainsi les triangles $OMN$ et $ONA$ possèdent deux côtés de même longueur
+            et un angle de même mesure compris entre ces deux côtés.
+          </p>
+          <p>Donc ces deux triangles sont égaux.</p>
+          <p>
+            En particulier, les angles $\widehat{MOA}$ et $\widehat{NOA}$ sont de même
+            mesure.
+          </p>
+          <p>Donc $(OA)$ est la bissectrice de l'angle $\widehat{xOy}$.</p>
+        </div>
+      </div>
+      <div class="exercice">
+        <div class="enonce">
+          <p>Pour cet exercice on admettra que $sin(30\degree)=cos(60\degree)=\dfrac{1}{2}$ et $sin(60\degree)=cos(30\degree)=\dfrac{\sqrt{3}}{2}$</p>
+          <p>
+            $ABC$ est un triangle tel que $AB=\SI{8}{\cm}$, $AC=\SI{11}{\cm}$ et
+            $\widehat{BAC}=30\degree$. Le point $H$ est le projeté orthogonal de $B$ sur
+            $(AC)$.
+          </p>
+          <ol>
+            <li>Calculer $BH$.</li>
+            <li>Calculer l'aire du triangle $ABC$.</li>
+            <li>Calculer la distance du point $C$ à la droite $(AB)$.</li>
+            <li>
+              Calculer la distance arrondie au millimètre près, du point $C$ à la
+              droite $(BH)$.
+            </li>
+          </ol>
+        </div>
+        <div class="indice">
+          <p>On pourra suivre le plan de démonstration suivant :</p>
+          <ol>
+            <li>Calculer $BH$ à l'aide de la trigonométrie.</li>
+            <li></li>
+            <li>
+              Considérer le projeté orthogonal $H_1$ de $C$ sur la droite $(AB)$.
+            </li>
+            <li>Calculer $AH$ à l'aide de la trigonométrie.</li>
+          </ol>
+          <div id="figure2">
+            <div id="figure2" class="figure">
+              <svg
+                id="figure1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -10 170 100"
+              >
+                <!-- Début de la figure -->
+                <!-- Points -->
+                <g name="A" class="point labeled" x="30" y="60"></g>
+                <g
+                  class="label"
+                  linkto="A"
+                  x="-10"
+                  y="-10"
+                  style="font-size: 0.8em; color: red"
+                >
+                  A
+                </g>
+                <g name="C" class="point labeled" x="140" y="60"></g>
+                <g
+                  class="label"
+                  linkto="C"
+                  x="5"
+                  y="-10"
+                  style="font-size: 0.8em; color: red"
+                >
+                  C
+                </g>
+                <g name="B" class="point labeled" x="99.28" y="20"></g>
+                <g
+                  class="label"
+                  linkto="B"
+                  x="-5"
+                  y="-15"
+                  style="font-size: 0.8em; color: red"
+                >
+                  B
+                </g>
+                <g name="H" class="point labeled" x="99.28" y="60"></g>
+                <g
+                  class="label"
+                  linkto="H"
+                  x="-5"
+                  y="0"
+                  style="font-size: 0.8em; color: red"
+                >
+                  H
+                </g>
+                <!-- Tracer les trois segments -->
+                <g name="AB" class="segment" linkto="A B"></g>
+                <g name="AC" class="segment" linkto="A C"></g>
+                <g name="BC" class="segment" linkto="B C"></g>
+                <g name="BH" class="segment" linkto="B H" style="stroke: green"></g>
+                <!-- H_1 -->
+                <g
+                  name="H_1"
+                  class="point labeled dilatation"
+                  linkto="A B C"
+                  data="90 0"
+                ></g>
+                <g
+                  class="label"
+                  linkto="H_1"
+                  x="5"
+                  y="-10"
+                  style="font-size: 0.8em; color: green"
+                >
+                  H_1
+                </g>
+                <!-- TRacer en pointillés les segments hors du triangle-->
+                  <g
+                      name="BH_1"
+                      class="segment"
+                      linkto="B H_1"
+                      style="
+                      stroke: blue;
+                      stroke-width: 2;
+                      stroke-dasharray: 5 5;
+                      stroke-opacity: 0.5;
+                      "
+                  ></g>
+                  <g
+                      name="CH_1"
+                      class="segment"
+                      linkto="C H_1"
+                      style="
+                      stroke: blue;
+                      stroke-width: 2;
+                      stroke-dasharray: 5 5;
+                      stroke-opacity: 0.5;
+                      "
+                  ></g>
+                  <!-- Triangle ABC-->
+                  <g
+                      name="ABC"
+                      class="polygone"
+                      linkto="A B C"
+                      fill="red"
+                      fill-opacity="0.1"
+                  ></g>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="solution">
+          <ol>
+            <li>
+              <p>Le triangle $ABH$ est rectangle en $H$.</p>
+              <p>$\sin(\widehat{BAH})=\dfrac{BH}{AB}$</p>
+              <p>$\sin(30\degree)=\frac{BH}{8}$</p>
+              <p>$\dfrac{1}{2}=\dfrac{BH}{8}$</p>
+              <p>$BH=8\times \dfrac{1}{2}$</p>
+              <p>$BH=\SI{4}{\cm}$</p>
+            </li>
+            <li>
+              <p>$\mathcal{A}_{ABC}=\dfrac{AC\times BH}{2}$</p>
+              <p>$\mathcal{A}_{ABC}=\dfrac{11\times 4}{2}$</p>
+              <p>$\mathcal{A}_{ABC}=\SI{22}{\square\cm}$</p>
+            </li>
+            <li>
+              <p>Notons $H_1$ le projeté orthogonal de $C$ sur la droite $(AB)$.</p>
+              <p>Exprimons l'aire du triangle $ABC$ d'une manière différente.</p>
+              <p>$\mathcal{A}_{ABC}=\dfrac{AB\times CH_1}{2}$</p>
+              <p>$\mathcal{A}_{ABC}=\dfrac{8\times CH_1}{2}$</p>
+              <p>$\mathcal{A}_{ABC}=4\times CH_1$</p>
+              <p>$CH_1=\dfrac{\mathcal{A}_{ABC}}{4}$</p>
+              <p>$CH_1=\dfrac{22}{4}$</p>
+              <p>$CH_1=\SI{5.5}{\cm}$</p>
+              <p>
+                Donc la distance du point $C$ à la droite $(AB)$ est $\SI{5.5}{\cm}$
+              </p>
+            </li>
+            <li>
+              <p>$H$ est le projeté orthogonal de $C$ sur la droite $(BH)$.</p>
+              <p>Donc la distance du point $C$ à la droite $(BH)$ est $CH$.</p>
+              <p>Calculons $AH$.</p>
+              <p>$\cos(\widehat{BAH})=\dfrac{AH}{AB}$</p>
+              <p>$\cos(30\degree)=\dfrac{AH}{8}$</p>
+              <p>$\dfrac{\sqrt{3}}{2}=\dfrac{AH}{8}$</p>
+              <p>$AH=\dfrac{\sqrt{3}}{2}\times 8$</p>
+              <p>$AH=4\sqrt{3}$</p>
+              <p>Or $CH=AC-AH$</p>
+              <p>D'où $CH=11-4\sqrt{3}$</p>
+              <p>
+                Donc la distance du point $C$ à la droite $(BH)$ est $11-4\sqrt{3}$ en
+                centimètres qui est environ égal à $\SI{4.1}{\cm}$.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <h1>Exercices sur les vecteurs</h1>
     <main><div class='exercice'>
 <div class="enonce">
         Tracer une figure dans laquelle $ABCD$ et $ABEF$ sont des parallélogrammes. Que peut-on en déduire sur la nature

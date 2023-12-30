@@ -103,10 +103,10 @@
         </li> -->
     </ul>
 </nav>
-<button onclick="diminuerTaille()">Diminuer la taille</button>
-<button onclick="augmenterTaille()">Augmenter la taille</button>
-<button onclick="unecolonne()">1 colonne</button>
-<button onclick="deuxcolonnes()">2 colonnes</button>
+<button onclick="diminuerTaille()">Taille -1</button>
+<button onclick="augmenterTaille()">Taille +1</button>
+<button onclick="colonne()">Colonnes</button>
+<button onclick="quadrillage()">Quadrillage</button>
 <button onclick="window.print()">Imprimer</button>
     <main>
         <h1>Manipuler les nombres réels</h1>
@@ -572,7 +572,7 @@
     </svg>
 </div>
 <div class="exemple">
-    <p>On a l'encadrement suivant :$$200 < \num{235.6} < 300.$$</p>
+    <p>On a l'encadrement suivant :$$200\lt \num{235.6}\lt 300.$$</p>
     <ul>
         <li>$200$ est la borne inférieure de l'encadrement.</li>
         <li>$300$ est la borne supérieure de l'encadrement.</li>
@@ -583,9 +583,9 @@
     <p>Un encadrement est dit <b>décimal</b> si ses bornes sont des nombres décimaux.</p>
 </div>
 <div class="exemple">
-    <p>On a l'encadrement décimal suivant :$$200 < \num{235.6} < 300.$$</p>
-    <p>On a l'encadrement décimal de $\pi$ suivant : $$\num{3.14} < \pi < \num{3.15}.$$ Son amplitude est $\num{0.01}.$</p>
-    <p>On a l'encadrement décimal de $\sqrt{2}$ suivant : $$\num{1.4} < \sqrt{2} < \num{1.5}.$$ Son amplitude est $\num{0.1}.$</p>
+    <p>On a l'encadrement décimal suivant :$$200\lt \num{235.6}\lt 300.$$</p>
+    <p>On a l'encadrement décimal de $\pi$ suivant : $$\num{3.14}\lt \pi\lt \num{3.15}.$$ Son amplitude est $\num{0.01}.$</p>
+    <p>On a l'encadrement décimal de $\sqrt{2}$ suivant : $$\num{1.4}\lt \sqrt{2}\lt \num{1.5}.$$ Son amplitude est $\num{0.1}.$</p>
 </div>
 <div class="definition">
     <p>$n$ est un entier naturel non nul.<br>
@@ -594,12 +594,12 @@
 <div class="exemple">
     <ul>
         <li>L'encadrement suivant est à $10^2$ près :
-            $$200 < \num{235.6} < 300$$
+            $$200\lt \num{235.6}\lt 300$$
         </li>
         <li>L'encadrement suivant est à $10^{-2}$ près :
-            $$\num{3.14} < \pi < \num{3.15}$$
+            $$\num{3.14}\lt \pi\lt \num{3.15}$$
         <li>L'encadrement suivant est à $10^{-1}$ près :
-            $$\num{1.4} < \sqrt{2} < \num{1.5}$$
+            $$\num{1.4}\lt \sqrt{2}\lt \num{1.5}$$
         </li>
     </ul>
 </div>
@@ -623,12 +623,12 @@
 <div class="exemple">
     <p>On veut encadrer $\dfrac{1}{243}$ à $10^{-3}$ près.<br>
     On a $$\dfrac{1}{243}\approx \num{0.0041152}$$
-    On en déduit l'encadrement décimal suivant : $$\num{0.004} < \dfrac{1}{243} < \num{0.005}.$$</p>
+    On en déduit l'encadrement décimal suivant : $$\num{0.004}\lt \dfrac{1}{243}\lt \num{0.005}.$$</p>
 </div>
 <div class="exemple">
     <p>On veut encadrer $\sqrt{5}$ à $10^{-2}$ près.<br>
     On a $$\sqrt{5}\approx \num{2.236068}$$
-    On en déduit l'encadrement décimal suivant : $$\num{2.23} < \sqrt{5} < \num{2.24}.$$</p>
+    On en déduit l'encadrement décimal suivant : $$\num{2.23}\lt \sqrt{5}\lt \num{2.24}.$$</p>
 </div>
 <div class="definition">
     <p>L'arrondi décimal d'un nombre réel à $10^n$ près (respectivement $10^{-n}$ près) est la borne la plus proche dans un encadrement décimal à $10^n$ près (respectivement $10^{-n}$ près).</p>
@@ -714,7 +714,7 @@
 <h2>Intervalles de la droite des réels</h2>
 <div class="definition">
     <p>
-        Soient $a$ et $b$ deux nombres réels tels que $a < b$.<br>
+        Soient $a$ et $b$ deux nombres réels tels que $a\lt b$.<br>
             <ul>
                 <li>$[a;b]$ est l'ensemble des nombres réels $x$ tels que $a\leqslant x\leqslant b.$</li>
                 <!-- Construire une figure svg qui illustre [a;b]-->
@@ -1656,13 +1656,13 @@
             </ul>
             On a ainsi, $\vert x-2\vert\leqslant 5$.
         </li>
-        <li>Soit $x$ un nombre réel tel que $-8 < x < -2$. Traduisons cette inégalité à l'aide de la valeur absolue.<br>
-            On souhaite déterminer les nombres réels $a$ et $r$ tels que $\vert x-a\vert < r$.
+        <li>Soit $x$ un nombre réel tel que $-8\lt x\lt -2$. Traduisons cette inégalité à l'aide de la valeur absolue.<br>
+            On souhaite déterminer les nombres réels $a$ et $r$ tels que $\vert x-a\vert\lt r$.
             <ul>
                 <li>$a$ est le milieu de l'intervalle $]-8;-2[$. Donc $a=\dfrac{-8+(-2)}{2}=-5$.</li>
                 <li>$r$ est la moitié de la distance entre $-8$ et $-2$. Donc $r=\dfrac{-2-(-8)}{2}=\dfrac{-2+8}{2}=3$.</li>
             </ul>
-            On a ainsi, $\vert x-(-5)\vert < 3$ ou encore $\vert x+5\vert < 3$.
+            On a ainsi, $\vert x-(-5)\vert\lt 3$ ou encore $\vert x+5\vert\lt 3$.
         </li>
     </ul>
     </p>
@@ -1671,13 +1671,13 @@
     <p>$a$ désigne un réel et $r$ désigne un réel positif.</p>
     <ul>
         <li>L'ensemble des nombres réels $x$ tels que $\vert x-a\vert\leqslant r$ est l'intervalle $[a-r;a+r]$.</li>
-        <li>L'ensemble des nombres réels $x$ tels que $\vert x-a\vert < r$ est l'intervalle $]a-r;a+r[$.</li>
+        <li>L'ensemble des nombres réels $x$ tels que $\vert x-a\vert\lt r$ est l'intervalle $]a-r;a+r[$.</li>
     </ul>
 </div>
 <div class="exemple">
     <ul>
         <li>L'ensemble des nombres réels $x$ tels que $\vert x-3\vert\leqslant 2$ est l'intervalle $[1;5]$.</li>
-        <li>L'ensemble des nombres réels $x$ tels que $\vert x-3\vert < 7$ est l'intervalle $]-4;10[$.</li>
+        <li>L'ensemble des nombres réels $x$ tels que $\vert x-3\vert \lt 7$ est l'intervalle $]-4;10[$.</li>
     </ul>
 </div>
 <div class="propriete">
@@ -1693,6 +1693,55 @@
         <li>L'ensemble des nombres réels $x$ tels que $\vert x-3\vert > 7$ est la réunion des intervalles $]-\infty;-4[$ et $]10;+\infty[$ : $]-\infty;-4[\cup]10;+\infty[$.</li>
     </ul>
 </div>
+<h2>Carte mentale pour apprendre</h2>
+<!--Insérer la figure intervalles.svg-->
+<figure>
+    <img src="./intervalles.svg" alt="Illustration des intervalles" style="width:100%;"/>
+</figure>
+<div class="exemple">
+    <ol>
+        <li><b>Intervalle</b><br>
+            $I=[a~{;}~b]$, $J=]c~{;}~d[$, $K=]b~{;}~+\infty[$ et $L=]-\infty~{;}~c]$.</li>
+        <li><b>Encadrement</b><br>
+            <ul>
+                <li>$I$ est l'ensemble des nombres réels $x$ tels que $a\leqslant x\leqslant b$.</li>
+                <li>$J$ est l'ensemble des nombres réels $x$ tels que $c\lt x\lt d$.</li>
+                <li>$K$ est l'ensemble des nombres réels $x$ tels que $b\lt x$.</li>
+                <li>$L$ est l'ensemble des nombres réels $x$ tels que $x\leqslant c$.</li>
+            </ul>
+        </li>
+        <li><b>Amplitude - Milieu</b><br>
+            <ul>
+                <li>L'amplitude de $I$ est $b-a$.</li>
+                <li>L'amplitude de $J$ est $d-c$.</li>
+                <li>Le milieu de $I$ est $\dfrac{a+b}{2}$.</li>
+                <li>Le milieu de $J$ est $\dfrac{c+d}{2}$.</li>
+            </ul>
+        </li>
+        <li><b>Valeur absolue</b><br>
+            <ul>
+                <li>$I$ est l'ensemble des nombres réels $x$ tels que $\left\vert x-\dfrac{a+b}{2}\right\vert\leqslant\dfrac{b-a}{2}$.</li>
+                <li>$J$ est l'ensemble des nombres réels $x$ tels que $\left\vert x-\dfrac{c+d}{2}\right\vert\lt\dfrac{d-c}{2}$.</li>
+            </ul>
+        </li>
+        <li><b>Complémentaire</b><br>
+            <ul>
+                <li>Le complémentaire de $I$ est $]-\infty;a[\cup]b;+\infty[$.</li>
+                <li>Le complémentaire de $J$ est $]-\infty;c]\cup[d;+\infty[$.</li>
+                <li>Le complémentaire de $K$ est $]-\infty;b[$.</li>
+                <li>Le complémentaire de $L$ est $[c;+\infty[$.</li>
+            </ul>
+        </li>
+        <li><b>Intersection - Réunion</b><br>
+            <ul>
+                <li>$I\cap J=]c~{;}~b]$.</li>
+                <li>$I\cup J=[a~{;}~d[$.</li>
+                <li>$K\cap I=\emptyset$.</li>
+            </ul>
+        </li>
+    </ol>
+</div>
+
     </main>
     <footer>
         Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>

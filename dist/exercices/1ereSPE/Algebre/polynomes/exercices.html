@@ -24,22 +24,21 @@
       rel="stylesheet"
     />
 
-    <link
+        <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
-      integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
       crossorigin="anonymous"
     />
-
     <script
       defer
-      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
-      integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
       crossorigin="anonymous"
     ></script>
     <script
       defer
-      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
       integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
       crossorigin="anonymous"
     ></script>
@@ -51,8 +50,6 @@
     <link rel="stylesheet" href="/src/css/main.css" />
     
     <link rel="stylesheet" href="/src/css/prettyExercice.css" />
-    
-    <link rel="stylesheet" href="/src/css/print2colonnes.css" />
     
     <link rel="stylesheet" href="/src/css/print.css" />
     
@@ -93,7 +90,7 @@
             <a href="#">Quizs</a>
             <div class="dropdown-content">
                 <a href="/quizs_2nde.html">Seconde générale</a>
-                <a href="/quizs_1ereGenerale.html">Première générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
                 <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
             </div>
         </li>
@@ -113,6 +110,11 @@
         </li> -->
     </ul>
 </nav>
+<button onclick="diminuerTaille()">Taille -1</button>
+<button onclick="augmenterTaille()">Taille +1</button>
+<button onclick="colonne()">Colonnes</button>
+<button onclick="quadrillage()">Quadrillage</button>
+<button onclick="window.print()">Imprimer</button>
     <header>
       <h1>Exercices</h1>
     </header>
@@ -438,25 +440,105 @@
 </div>
 <div class='exercice'>
 <div class="enonce">
+<p>Soit \( f \) la fonction définie sur \( \mathbb{R} \) par :</p>
+        \[
+        f(x) = (5x-2)(x+6) - (x+6)(3x+3)
+        \]
+        Résoudre l'inéquation \( f(x) \geq 0 \)
+        <div class="solution">
+<p>Commençons par factoriser \( f(x) \)</p>
+            \[
+            \begin{align*}
+            f(x) &amp;= (5x-2)(x+6) - (x+6)(3x+3) \\
+            &amp;= (x+6)\left[(5x-2) - (3x+3)\right] \\
+            &amp;= (x+6)(2x-5)
+            \end{align*}
+            \]
+            <p>Déterminons les racines de \( f(x) \).</p>
+<p>Autrement dit, déterminons les solutions de l'équation :</p>
+            \[
+            (x+6)(2x-5) = 0
+            \]
+            <p>C'est une équation produit-nul.</p>
+<p>Or un produit est nul si et seulement si l'un de ses facteurs est nul.</p>
+            \[
+            \begin{align*}
+            x+6 &amp;= 0 &amp;\text{ ou }&amp;&amp; 2x-5 &amp;= 0\\
+            x &amp;= -6     &amp;&amp;&amp;       2x &amp;= 5 \\
+                       &amp;&amp;&amp;       x &amp;= \frac{5}{2}
+            \end{align*}
+            \]
+            <table class="tableausigne">
+<tr>
+<td>\( x \)</td>
+<td>\( -\infty \)</td>
+<td></td>
+<td>\( -6 \)</td>
+<td></td>
+<td>\( \frac{5}{2} \)</td>
+<td></td>
+<td>\( +\infty \)</td>
+</tr>
+<tr>
+<td>\( x+6 \)</td>
+<td></td>
+<td>\( - \)</td>
+<td>\( 0 \)</td>
+<td>\( + \)</td>
+<td></td>
+<td>\( + \)</td>
+<td></td>
+</tr>
+<tr>
+<td>\( 2x-5 \)</td>
+<td></td>
+<td>\( - \)</td>
+<td></td>
+<td>\( - \)</td>
+<td>\( 0 \)</td>
+<td>\( + \)</td>
+<td></td>
+</tr>
+<tr>
+<td>\( f(x) \)</td>
+<td></td>
+<td>\( + \)</td>
+<td>\( 0 \)</td>
+<td>\( - \)</td>
+<td>\( 0 \)</td>
+<td>\( + \)</td>
+<td></td>
+</tr>
+</table>
+<p>L'ensemble des solutions de \( f(x) \geq 0 \) est :</p>
+            \[
+            S = \left] -6~;~+\infty \right] \cup \left[ \frac{5}{2}~;~+\infty \right[
+            \]
+        </div>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
 <p>On considère une fonction $f$ définie sur $\mathbb{R}$ par :</p>
     $$f(x)=x^2-2x+c.$$
     <p>où $c$ est un nombre réel.</p>
 <p>
-      Sachant que $f$ possède deux solutions : $x_1=-3$ et $x_2$, calculer
+      Sachant que $f(x)$ possède deux racines : $x_1=-3$ et $x_2$, calculer $c$ et
       $x_2.$
     </p>
 </div>
 <div class="solution">
 <div class="enonce">
-<p>On a $f(-3)=0$ donc $(-3)^2-2\times(-3)+c=0.$</p>
-<p>Donc $9+6+c=0$</p>
-<p>Donc $c=-15$</p>
-<p>D'après le cours</p>
-      $$x_1\times x_2=\frac{c}{a}$$
-      <p>Soit</p>
-      $$x_1\times x_2=\frac{-15}{1}=-15$$
-      <p>Or $x_1=-3$ donc $-3\times x_2=-15$</p>
-<p>Donc $x_2=\frac{-15}{-3}=5.$</p>
+<p>On a $f(-3)=0$ d'où $$(-3)^2-2\times(-3)+c=0.$$</p>
+<p>Puis $$9+6+c=0$$</p>
+<p>On détermine $c$ : $$c=-15$$</p>
+<p>D'après le cours : 
+      $$x_1\times x_2=\frac{c}{a}$$</p>
+<p>En remplaçant par les valeurs connues on obtient :
+      $$x_1\times x_2=\frac{-15}{1}=-15$$</p>
+<p>Or $x_1=-3$ d'où $$-3\times x_2=-15.$$</p>
+<p>Ainsi $$x_2=\frac{-15}{-3}$$</p>
+<p>Donc $$x_2=5.$$</p>
 </div>
 </div>
 </div>
@@ -466,20 +548,21 @@
     $$f(x)=x^2+7x+c.$$
     <p>où $c$ est un nombre réel.</p>
 <p>
-      Sachant que $f$ possède deux solutions : $5$ et $x_2$, calculer
+      Sachant que $f(x)$ possède deux racines : $5$ et $x_2$, calculer $c$ et
       $x_2$.
     </p>
 </div>
 <div class="solution">
-<p>On a $f(5)=0$ donc $5^2+7\times 5+c=0.$</p>
-<p>Donc $25+35+c=0$</p>
-<p>Donc $c=-60$</p>
-<p>D'après le cours</p>
-    $$x_1\times x_2=\frac{c}{a}$$
-    <p>Soit</p>
-    $$x_1\times x_2=\frac{-60}{1}=-60$$
-    <p>Or $x_1=5$ donc $5\times x_2=-60$</p>
-<p>Donc $x_2=\frac{-60}{5}=-12.$</p>
+<p>On a $f(5)=0$ d'où $$5^2+7\times 5+c=0.$$</p>
+<p>Puis $$25+35+c=0.$$</p>
+<p>On détermine $c$ : $$c=-60.$$</p>
+<p>D'après le cours
+    $$x_1\times x_2=\frac{c}{a}$$</p>
+<p>En remplaçant par les valeurs connues, on obtient :
+    $$x_1\times x_2=\frac{-60}{1}=-60$$ </p>
+<p>Or $x_1=5$ d'où $$5\times x_2=-60.$$</p>
+<p>Ainsi $$x_2=\frac{-60}{5}$$</p>
+<p>Donc $$x_2=-12.$$</p>
 </div>
 </div>
 <div class='exercice'>
@@ -488,20 +571,21 @@
     $$f(x)=3x^2-8x+c.$$
     <p>où $c$ est un nombre réel.</p>
 <p>
-      Sachant que $f$ possède deux solutions : $x_1=2$ et $x_2$, calculer
+      Sachant que $f(x)$ possède deux racines : $x_1=2$ et $x_2$, calculer $c$ et
       $x_2$.
     </p>
 </div>
 <div class="solution">
-<p>On a $f(2)=0$ donc $3\times 2^2-8\times 2+c=0.$</p>
-<p>Donc $12-16+c=0$</p>
-<p>Donc $c=4$</p>
-<p>D'après le cours</p>
-    $$x_1\times x_2=\frac{c}{a}$$
-    <p>Soit</p>
-    $$x_1\times x_2=\frac{4}{3}$$
-    <p>Or $x_1=2$ donc $2\times x_2=\frac{4}{3}$</p>
-<p>Donc $x_2=\frac{4}{3\times 2}=\frac{2}{3}.$</p>
+<p>On a $f(2)=0$ d'où $$3\times 2^2-8\times 2+c=0.$$</p>
+<p>Puis $$12-16+c=0.$$</p>
+<p>On détermine $c$ : $$c=4.$$</p>
+<p>D'après le cours
+    $$x_1\times x_2=\frac{c}{a}$$</p>
+<p>En remplaçant par les valeurs connues, on obtient :
+    $$x_1\times x_2=\frac{4}{3}$$</p>
+<p>Or $x_1=2$ d'où $$2\times x_2=\frac{4}{3}.$$</p>
+<p>Ainsi $$x_2=\frac{4}{3\times 2}$$</p>
+<p>Donc $$x_2=\frac{2}{3}.$$</p>
 </div>
 </div>
 <div class='exercice'>
@@ -509,7 +593,21 @@
 <p>On considère une fonction $f$ définie sur $\mathbb{R}$ par :</p>
         $$f(x)=x^2+bx-2.$$
         <p>où $b$ est un nombre réel.</p>
-<p>Sachant que $f$ possède deux solutions : $x_1=-3$ et $x_2$, calculer $x_2$.</p>
+<p>Sachant que $f(x)$ possède deux racines : $x_1=-3$ et $x_2$, calculer $b$ et $x_2$.</p>
+</div>
+<div class="solution">
+<div class="enonce">
+<p>On a $f(-3)=0$ d'où $$(-3)^2+b\times (-3)-2=0.$$</p>
+<p>Après simplification : $$9-3b-2=0$$</p>
+<p>On détermine $b$ : $$7=3b$$ $$b=\frac{7}{3}$$</p>
+<p>D'après le cours :
+            $$x_1+ x_2=-\frac{b}{a}$$ </p>
+<p>On remplace par les valeurs connues :
+            $$x_1+ x_2=-\frac{7}{3}$$ </p>
+<p>Or $x_1=-3$ d'où $$-3+ x_2=-\frac{7}{3}.$$</p>
+<p>Et enfin on détermine $x_2$ : $$x_2=-\frac{7}{3}+3$$
+            $$x_2=\frac{2}{3}.$$</p>
+</div>
 </div>
 </div>
 <div class='exercice'>
@@ -517,7 +615,7 @@
 <p>On considère une fonction $f$ définie sur $\mathbb{R}$ par :</p>
         $$f(x)=x^2+bx+8.$$
         <p>où $b$ est un nombre réel.</p>
-<p>Sachant que $f$ possède deux solutions : $5$ et $x_2$, calculer $x_2$.</p>
+<p>Sachant que $f(x)$ possède deux racines : $5$ et $x_2$, calculer $b$ et $x_2$.</p>
 </div>
 <div class="solution">
 <p>On a $f(5)=0$ donc $5^2+b\times 5+8=0.$</p>
@@ -533,21 +631,69 @@
 </div>
 </div>
 <div class='exercice'>
+<div class="enonce">
 <p>On considère une fonction $f$ définie sur $\mathbb{R}$ par :</p>
-    $$f(x)=3x^2+bx-8.$$
-    <p>où $b$ est un nombre réel.</p>
-<p>Sachant que $f$ possède deux solutions : $x_1=2$ et $x_2$, calculer $x_2$.</p>
+        $$f(x)=3x^2+bx-8.$$
+        <p>où $b$ est un nombre réel.</p>
+<p>Sachant que $f(x)$ possède deux racines : $x_1=2$ et $x_2$, calculer $b$ et $x_2$.</p>
+</div>
+<div class="solution">
+<p>On a $f(2)=0$ donc $3\times 2^2+b\times 2-8=0.$</p>
+<p>Donc $12+2b-8=0$</p>
+<p>Donc $4=2b$</p>
+<p>Donc $b=2$</p>
+<p>D'après le cours</p>
+        $$x_1+ x_2=-\frac{b}{a}$$
+        <p>Soit</p>
+        $$x_1+ x_2=-\frac{2}{3}$$
+        <p>Or $x_1=2$ donc $2+ x_2=-\frac{2}{3}$</p>
+<p>Donc $x_2=-\frac{2}{3}-2=-\frac{8}{3}.$</p>
+</div>
 </div>
 <div class='exercice'>
 <div class="enonce">
-<p>$f$ est une fonction polynôme du second degré $f$ s'annulant en $-\frac{1}{3}$ et $6$ et telle que $f(0)=-5.$
+<p>$f$ est une fonction polynôme du second degré s'annulant en $-\frac{1}{3}$ et $6$ et telle que $f(0)=-5.$
         </p>
 <p>Déterminer le signe de $f(x)$ en fonction de $x.$</p>
 </div>
+<div class="solution">
+<p>$-\frac{1}{3}$ et $6$ sont les racines d'un polynômes du second degré donc :</p>
+        $$f(x)=a\left(x+\frac{1}{3}\right)(x-6)$$
+        <p>Or $f(0)=-5$ donc</p>
+        $$f(0)=a\left(0+\frac{1}{3}\right)(0-6)=-5$$
+        <p>Soit</p>
+        $$a\times \frac{1}{3}\times (-6)=-5$$
+        <p>D'où</p>
+        $$a=\frac{5}{2}.$$
+        <p>Donc</p>
+        $$f(x)=\frac{5}{2}\left(x+\frac{1}{3}\right)(x-6)$$
+        <p>On a donc le tableau de signe suivant :</p>
+<table class="tableausigne">
+<tr>
+<td>$x$</td>
+<td>$-\infty$</td>
+<td></td>
+<td>$-\frac{1}{3}$</td>
+<td></td>
+<td>$6$</td>
+<td></td>
+<td>$+\infty$</td>
+</tr>
+<tr>
+<td>$f(x)$</td>
+<td></td>
+<td>$+$</td>
+<td>$0$</td>
+<td>$-$</td>
+<td>$0$</td>
+<td>$+$</td>
+</tr>
+</table>
+</div>
 </div>
 <div class='exercice'>
 <div class="enonce">
-<p>$f$ est une fonction polynôme du second degré $f$ s'annulant en $4$ et $9$ et telle que $f(6)=10.$</p>
+<p>$f$ est une fonction polynôme du second degré s'annulant en $4$ et $9$ et telle que $f(6)=10.$</p>
 <p>Déterminer le signe de $f(x)$ en fonction de $x.$</p>
 </div>
 <div class="solution">
@@ -588,24 +734,78 @@
 <div class='exercice'>
 <div class="enonce">
 <ol>
-<li>Déterminer la forme canonique de $A(x)=x^2+6x-12$</li>
+<li>Exprimez $A(x)=x^2+6x-12$ sous sa forme canonique.<br/>
+                À partir de cette forme, déterminez si $A(x)$ possède des racines.<br/>
+                Si c'est le cas, trouvez-les.</li>
 <div class="solution">
 <p>$A(x)=x^2+6x-12$</p>
 <p>$A(x)=x^2+2\times 3x-12$</p>
 <p>$A(x)=x^2+2\times 3x+3^2-9-12$</p>
 <p>$A(x)=(x+3)^2-9-12$</p>
 <p>$A(x)=(x+3)^2-21$</p>
+<p>$a=1$ et $\beta=-21$ sont de signes contraires, donc $A(x)$ possède deux racines réelles.</p>
+                $$\begin{align*}
+                (x+3)^2-21&amp;=0\\
+                (x+3)^2-\sqrt{21}^2&amp;=0\\
+                (x+3+\sqrt{21})(x+3-\sqrt{21})&amp;=0\\
+                x+3+\sqrt{21}&amp;=0\text{ ou }x+3-\sqrt{21}=0\\
+                x&amp;=-3-\sqrt{21}\text{ ou }x=-3+\sqrt{21}
+                \end{align*}$$
+                <p>Les racines de $A(x)$ sont $-3-\sqrt{21}$ et $-3+\sqrt{21}$.</p>
 </div>
-<li>Déterminer la forme canonique de $B(x)=3x^2-9x+4$</li>
+<li>Exprimez $B(x)=3x^2-9x+4$ sous sa forme canonique.<br/>
+                À partir de cette forme, déterminez si $B(x)$ possède des racines.<br/>
+                Si c'est le cas, trouvez-les.</li>
 <div class="solution">
-<p>$B(x)=3x^2-12x+4$</p>
-<p>$B(x)=3x^2-3\times 4x+4$</p>
-<p>$B(x)=3(x^2-4x)+4$</p>
-<p>$B(x)=3(x^2-2\times 2x)+4$</p>
-<p>$B(x)=3(x^2-2\times 2x+2^2-4)+4$</p>
-<p>$B(x)=3(x^2-2\times 2x+2^2)-3\times 4+4$</p>
-<p>$B(x)=3(x-2)^2-12+4$</p>
-<p>$B(x)=3(x-2)^2-8$</p>
+<p>$B(x)=3x^2-9x+4$</p>
+<p>$B(x)=3x^2-3\times 3x+4$</p>
+<p>$B(x)=3(x^2-3x)+4$</p>
+<p>$B(x)=3(x^2-2\times \frac{3}{2}x+\left(\frac{3}{2}\right)^2-\frac{9}{4})+4$</p>
+<p>$B(x)=3\left(\left(x-\frac{3}{2}\right)^2-\frac{9}{4}\right)+4$</p>
+<p>$B(x)=3\left(x-\frac{3}{2}\right)^2-3\times \frac{9}{4}+4$</p>
+<p>$B(x)=3\left(x-\frac{3}{2}\right)^2-\frac{27}{4}+4$</p>
+<p>$B(x)=3\left(x-\frac{3}{2}\right)^2-\frac{27}{4}+\frac{16}{4}$</p>
+<p>$B(x)=3\left(x-\frac{3}{2}\right)^2-\frac{11}{4}$</p>
+<p>$a=3$ et $\beta=-\frac{11}{4}$ sont de signes contraires, donc $B(x)$ possède deux racines réelles.</p>
+                $$\begin{align*}
+                3\left(x-\frac{3}{2}\right)^2-\frac{11}{4}&amp;=0\\
+                \left(x-\frac{3}{2}\right)^2-\frac{11}{12}&amp;=0\\
+                \left(x-\frac{3}{2}\right)^2-\sqrt{\frac{11}{12}}^2&amp;=0\\
+                \left(x-\frac{3}{2}\right)^2-\left(\frac{\sqrt{11}}{\sqrt{12}}\right)^2&amp;=0\\
+                \left(x-\frac{3}{2}\right)^2-\left(\frac{\sqrt{11}\times\sqrt{12}}{\sqrt{12}\times\sqrt{12}}\right)^2&amp;=0\\
+                \left(x-\frac{3}{2}\right)^2-\left(\frac{\sqrt{132}}{12}\right)^2&amp;=0\\
+                \left(x-\frac{3}{2}+\frac{\sqrt{132}}{12}\right)\left(x-\frac{3}{2}-\frac{\sqrt{132}}{12}\right)&amp;=0\\
+                x-\frac{3}{2}+\frac{\sqrt{132}}{12}&amp;=0\text{ ou }x-\frac{3}{2}-\frac{\sqrt{132}}{12}=0\\
+                x&amp;=\frac{3}{2}-\frac{\sqrt{132}}{12}\text{ ou }x=\frac{3}{2}+\frac{\sqrt{132}}{12}
+                \end{align*}$$
+                <p>Les racines de $B(x)$ sont $\frac{3}{2}-\frac{\sqrt{33}}{6}$ et $\frac{3}{2}+\frac{\sqrt{33}}{6}$.</p>
+</div>
+<li>Exprimez $C(x)=3x^2-12x+4$ sous sa forme canonique.<br/>
+                À partir de cette forme, déterminez si $B(x)$ possède des racines.<br/>
+                Si c'est le cas, trouvez-les.</li>
+<div class="solution">
+<p>$C(x)=3x^2-12x+4$</p>
+<p>$C(x)=3x^2-3\times 4x+4$</p>
+<p>$C(x)=3(x^2-4x)+4$</p>
+<p>$C(x)=3(x^2-2\times 2x)+4$</p>
+<p>$C(x)=3(x^2-2\times 2x+2^2-4)+4$</p>
+<p>$C(x)=3(x^2-2\times 2x+2^2)-3\times 4+4$</p>
+<p>$C(x)=3(x-2)^2-12+4$</p>
+<p>$C(x)=3(x-2)^2-8$</p>
+<p>$a=3$ et $\beta=-8$ sont de signes contraires, donc $B(x)$ possède deux racines réelles.</p>
+                $$\begin{align*}
+                3(x-2)^2-8&amp;=0\\
+                (x-2)^2-\dfrac{8}{3}&amp;=0\\
+                (x-2)^2-\sqrt{\dfrac{8}{3}}^2&amp;=0\\  
+                (x-2)^2-\left(\dfrac{\sqrt{8}}{\sqrt{3}}\right)^2&amp;=0\\
+                (x-2)^2-\left(\dfrac{\sqrt{8}\times\sqrt{3}}{\sqrt{3}\times\sqrt{3}}\right)^2&amp;=0\\
+                (x-2)^2-\left(\dfrac{\sqrt{24}}{3}\right)^2&amp;=0\\
+                (x-2)^2-\left(\dfrac{2\sqrt{6}}{3}\right)^2&amp;=0\\
+                (x-2+\dfrac{2\sqrt{6}}{3})(x-2-\dfrac{2\sqrt{6}}{3})&amp;=0\\
+                x-2+\dfrac{2\sqrt{6}}{3}&amp;=0\text{ ou }x-2-\dfrac{2\sqrt{6}}{3}=0\\
+                x&amp;=2-\dfrac{2\sqrt{6}}{3}\text{ ou }x=2+\dfrac{2\sqrt{6}}{3}
+                \end{align*}$$
+                <p>Les racines de $C(x)$ sont $2-\dfrac{2\sqrt{6}}{3}$ et $2+\dfrac{2\sqrt{6}}{3}$.</p>
 </div>
 </ol>
 </div>
@@ -613,7 +813,9 @@
 <div class='exercice'>
 <div class="enonce">
 <ol>
-<li>Déterminer la forme canonique de $A(x)=-2x^2-8x-10$</li>
+<li>Exprimez $A(x)=-2x^2-8x-10$ sous sa forme canonique.<br/>
+                À partir de cette forme, déterminez si $A(x)$ possède des racines.<br/>
+                Si c'est le cas, trouvez-les.</li>
 <div class="solution">
 <p>$A(x)=-2x^2-8x-10$</p>
 <p>$A(x)=-2x^2-2\times 4x-10$</p>
@@ -624,8 +826,11 @@
 <p>$A(x)=-2(x+2)^2-2\times (-4)-10$</p>
 <p>$A(x)=-2(x+2)^2+8-10$</p>
 <p>$A(x)=-2(x+2)^2-2$</p>
+<p>$a=-2$ et $\beta=-2$ sont de même signe, donc $A(x)$ ne possède pas de racine réelle.</p>
 </div>
-<li>Déterminer la forme canonique de $B(x)=-x^2+4x+5$</li>
+<li>Exprimez $B(x)=-x^2+4x+5$ sous sa forme canonique.<br/>
+                À partir de cette forme, déterminez si $B(x)$ possède des racines.<br/>
+                Si c'est le cas, trouvez-les.</li>
 <div class="solution">
 <p>$B(x) = -x^2 + 4x + 5$</p>
 <p>$B(x) = -(x^2 - 4x) + 5$</p>
@@ -634,6 +839,17 @@
 <p>$B(x) = -((x - 2)^2 - 4) + 5$</p>
 <p>$B(x) = -(x - 2)^2 + 4 + 5$</p>
 <p>$B(x) = -(x - 2)^2 + 9$</p>
+<p>$a = -1$ et $\beta = 9$ sont de signes contraires, donc $B(x)$ possède deux racines réelles.</p>
+                $$\begin{align*}
+                -(x - 2)^2 + 9 &amp;= 0\\
+                9 - (x - 2)^2 &amp;= 0\\
+                3^2 - (x - 2)^2 &amp;= 0\\
+                (3 + x - 2)(3 - x + 2) &amp;= 0\\
+                (x + 1)(-x + 5) &amp;= 0\\
+                x + 1 &amp;= 0\text{ ou }-x + 5 = 0\\
+                x &amp;= -1\text{ ou }x = 5
+                \end{align*}$$
+                <p>Les racines de $B(x)$ sont $-1$ et $5$.</p>
 </div>
 </ol>
 </div>
@@ -641,7 +857,9 @@
 <div class='exercice'>
 <div class="enonce">
 <ol>
-<li>Déterminer la forme canonique de $A(x)=2x^2-2x+\frac{3}{2}$</li>
+<li>Exprimez $A(x)=2x^2-2x+\frac{3}{2}$ sous sa forme canonique.<br/>
+                À partir de cette forme, déterminez si $B(x)$ possède des racines.<br/>
+                Si c'est le cas, trouvez-les.</li>
 <div class="solution">
 <p>$A(x)=2x^2+2x+\frac{3}{2}$</p>
 <p>$A(x)=2(x^2+x)+\frac{3}{2}$</p>
@@ -650,8 +868,11 @@
 <p>$A(x)=2\left(x+\frac{1}{2}\right)^2-2\times \frac{1}{4}+\frac{3}{2}$</p>
 <p>$A(x)=2\left(x+\frac{1}{2}\right)^2-\frac{1}{2}+\frac{3}{2}$</p>
 <p>$A(x)=2\left(x+\frac{1}{2}\right)^2+1$</p>
+<p>$a=2$ et $\beta=1$ sont de même signe, donc $A(x)$ ne possède pas de racine réelle.</p>
 </div>
-<li>Déterminer la forme canonique de $B(x)=3x^2-2x-\frac{5}{3}$</li>
+<li>Exprimez $B(x)=3x^2-2x-\frac{5}{3}$ sous sa forme canonique.<br/>
+                À partir de cette forme, déterminez si $B(x)$ possède des racines.<br/>
+                Si c'est le cas, trouvez-les.</li>
 <div class="solution">
 <p>$B(x)=3x^2-2x-\frac{5}{3}$</p>
 <p>$B(x)=3\left(x^2-\frac{2}{3}x\right)-\frac{5}{3}$</p>
@@ -660,6 +881,19 @@
 <p>$B(x)=3\left(x-\frac{1}{3}\right)^2-3\times \frac{1}{9}-\frac{5}{3}$</p>
 <p>$B(x)=3\left(x-\frac{1}{3}\right)^2-\frac{1}{3}-\frac{5}{3}$</p>
 <p>$B(x)=3\left(x-\frac{1}{3}\right)^2-2$</p>
+<p>$a=3$ et $\beta=-2$ sont de signes contraires, donc $B(x)$ possède deux racines réelles.</p>
+                $$\begin{align*}
+                3\left(x-\frac{1}{3}\right)^2-2&amp;=0\\
+                \left(x-\frac{1}{3}\right)^2-\frac{2}{3}&amp;=0\\
+                \left(x-\frac{1}{3}\right)^2-\sqrt{\frac{2}{3}}^2&amp;=0\\
+                \left(x-\frac{1}{3}\right)^2-\left(\frac{\sqrt{2}}{\sqrt{3}}\right)^2&amp;=0\\
+                \left(x-\frac{1}{3}\right)^2-\left(\frac{\sqrt{2}\times\sqrt{3}}{\sqrt{3}\times\sqrt{3}}\right)^2&amp;=0\\
+                \left(x-\frac{1}{3}\right)^2-\left(\frac{\sqrt{6}}{3}\right)^2&amp;=0\\
+                \left(x-\frac{1}{3}+\frac{\sqrt{6}}{3}\right)\left(x-\frac{1}{3}-\frac{\sqrt{6}}{3}\right)&amp;=0\\
+                x-\frac{1}{3}+\frac{\sqrt{6}}{3}&amp;=0\text{ ou }x-\frac{1}{3}-\frac{\sqrt{6}}{3}=0\\
+                x&amp;=\frac{1}{3}-\frac{\sqrt{6}}{3}\text{ ou }x=\frac{1}{3}+\frac{\sqrt{6}}{3}
+                \end{align*}$$
+                <p>Les racines de $B(x)$ sont $\frac{1}{3}-\frac{\sqrt{6}}{3}$ et $\frac{1}{3}+\frac{\sqrt{6}}{3}$.</p>
 </div>
 </ol>
 </div>
@@ -842,7 +1076,7 @@
 <p>$2x(x-4)=0$</p>
 <p>Or un produit est nul si et seulement si l'un de ses facteurs est nul.</p>
 <p>Donc $x=0$ ou $x-4=0$</p>
-<p>Les solutions de cette équation sont donc $0$ et $-4$</p>
+<p>Les solutions de cette équation sont donc $0$ et $4$</p>
 </div>
 <li>$-x^2-9=0$</li>
 <div class="indice">
@@ -969,57 +1203,132 @@
 </div>
 <div class='exercice'>
 <div class="enonce">
-<p>Déterminer tous les réels $d$ tels que le polynôme $f$ défini par $f(x)=x^2+2x-7d$ n'ait qu'une seule racine.
+<p>Déterminer tous les réels $d$ tels que le polynôme $f(x)$ défini par $f(x)=x^2+2x-7d$ n'ait qu'une seule racine.
         </p>
-<p>Donner la solution.</p>
+<p>En déduire la racine unique.</p>
 <div class="solution">
-<p>On cherche les réels $d$ tels que le polynôme $f$ défini par $x^2+2x-7d$ n'ait qu'une seule racine.</p>
-<p>On sait que $f$ n'a qu'une seule racine si et seulement si son discriminant est nul.</p>
-<p>Le discriminant de $f$ est $\Delta=2^2-4\times 1\times (-7d)=4+28d$.</p>
+<p>On cherche les réels $d$ tels que le polynôme $f(x)$ défini par $f(x)=x^2+2x-7d$ n'ait qu'une seule racine.</p>
+<p>On sait que $f(x)$ possède une seule racine si et seulement si son discriminant est nul.</p>
+<p>Le discriminant de $f(x)$ est $\Delta=2^2-4\times 1\times (-7d)=4+28d$.</p>
 <p>On cherche donc les réels $d$ tels que $4+28d=0$.</p>
 <p>On a $4+28d=0$ si et seulement si $28d=-4$ si et seulement si $d=-\frac{4}{28}=-\frac{1}{7}$.</p>
-<p>Donc $f$ n'a qu'une seule racine si et seulement si $d=-\frac{1}{7}$.</p>
+<p>Donc $f(x)$ possède une seule racine si et seulement si $d=-\frac{1}{7}$.</p>
 <p>On a alors $f(x)=x^2+2x+\frac{7}{7}=x^2+2x+1=(x+1)^2$.</p>
-<p>Donc $f$ a une seule racine, $-1$.</p>
+<p>Donc $f(x)$ a une seule racine : $-1$.</p>
 </div>
 </div>
 </div>
 <div class='exercice'>
 <div class="enonce">
-<p>Déterminer tous les réels $a$ tels que le polynôme $g$ défini par $g(x)=ax^2+12x+1$ ait une seule racine.</p>
-<p>Donner les solutions.</p>
+<p>Déterminer tous les réels $a$ tels que le polynôme $g(x)$ défini par $g(x)=ax^2+12x+1$ ait une seule racine.</p>
+<p>En déduire la racine unique.</p>
 <div class="solution">
-<p>On cherche les réels $a$ tels que le polynôme $g$ défini par $g(x)=ax^2+12x+1$ ait deux solutions
-                distinctes.</p>
-<p>On sait que $g$ a deux solutions distinctes si et seulement si son discriminant est strictement positif.
-            </p>
+<p>On cherche les réels $a$ tels que le polynôme $g$ défini par $g(x)=ax^2+12x+1$ ait une seule racine.</p>
+<p>On sait que $g(x)$ possède une seule racine si et seulement si son discriminant est nul.</p>
 <p>Le discriminant de $g$ est $\Delta=12^2-4\times a\times 1=144-4a$.</p>
-<p>On cherche donc les réels $a$ tels que $144-4a&gt;0$.</p>
-<p>On a $144-4a&gt;0$ si et seulement si $-4a&gt;-144$ si et seulement si $a&lt;36$.&lt; /p&gt;
-                    <p>Donc $g$ a deux solutions distinctes si et seulement si $a&lt;36$.&lt; /p&gt;
-                            <p>On a alors $g(x)=ax^2+12x+1$.</p>
-<p>Donc $g$ a deux solutions distinctes si et seulement si $a&lt; 36$.</p>
-</p></p></div>
+<p>On cherche donc les réels $a$ tels que $144-4a=0$.</p>
+<p>On a $144-4a=0$ si et seulement si $4a=144$ si et seulement si $a=\frac{144}{4}=36$.</p>
+<p>Donc $g(x)$ a une seule racine si et seulement si $a=36$.</p>
+<p>Si $a=36$, on a $g(x)=36x^2+12x+1=(6x)^2+2\times 6x\times 1+1^2=(6x+1)^2$.</p>
+<p>Donc $g(x)$ a une seule racine, $-\frac{1}{6}$.</p>
+</div>
 </div>
 </div>
 <div class='exercice'>
 <div class="enonce">
-<p>Déterminer tous les réels $b$ tels que le polynôme $h$ défini par $h(x)=3x^2+bx+3$ ait une seule racine.</p>
-<p>Donner les solutions.</p>
+<p>Déterminer tous les réels $b$ tels que le polynôme $h(x)$ défini par $h(x)=3x^2+bx+3$ ait une seule racine.</p>
+<p>En déduire la racine unique.</p>
 <div class="solution">
 <p>On cherche les réels $b$ tels que le polynôme $h$ défini par $h(x)=3x^2+bx+3$ ait une seule racine.</p>
-<p>On sait que $h$ possède une seule racine si et seulement si son discriminant est nul.</p>
-<p>Le discriminant de $h$ est $\Delta=b^2-4\times 3\times 3=b^2-36$.</p>
+<p>On sait que $h(x)$ possède une seule racine si et seulement si son discriminant est nul.</p>
+<p>Le discriminant de $h(x)$ est $\Delta=b^2-4\times 3\times 3=b^2-36$.</p>
 <p>On cherche donc les réels $b$ tels que $b^2-36=0$.</p>
 <p>On reconnaît une identité remarquable : $b^2-36=(b-6)(b+6)$.</p>
 <p>D'où $\Delta=0$ si et seulement si $b=6$ ou $b=-6$.</p>
-<p>Donc $h$ a une seule racine si et seulement si $b=6$ ou $b=-6$.</p>
+<p>Donc $h(x)$ possède une seule racine si et seulement si $b=6$ ou $b=-6$.</p>
 <p>Si $b=6$, on a $h(x)=3x^2+6x+3=3(x^2+2x+1)=3(x+1)^2$.</p>
 <p>Donc $h$ a une seule racine, $-1$.</p>
 <p>Si $b=-6$, on a $h(x)=3x^2-6x+3=3(x^2-2x+1)=3(x-1)^2$.</p>
-<p>Donc $h$ a une seule racine, $1$.</p>
+<p>Donc $h(x)$ a une seule racine, $1$.</p>
 </div>
 </div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>La somme des carrés de trois entiers naturels consécutifs est égale à 434.<br/>
+            Déterminer ces trois entiers naturels. 
+            </p>
+<div class="solution">
+<p>Notons $x$ le plus petit des trois nombres.</p>
+<p>Le deuxième nombre est $$x+1$$ et le troisième est $$x+2.$$</p>
+<p>On peut traduire l'énoncé par l'équation suivante : $$x^2+(x+1)^2+(x+2)^2=434.$$</p>
+<p>En développant, on obtient $$3x^2+6x+5=434.$$</p>
+<p>En soustrayant 434 des deux côtés, on obtient $$3x^2+6x-429=0.$$</p>
+<p>On peut simplifier par $3$ l'équation, ce qui donne : $$x^2+2x-143=0.$$</p>
+<p>On calcule le discriminant $$\Delta=2^2-4\times 1\times (-143)=576.$$</p>
+<p>On décompose le discriminant en produit de facteurs premiers : $$\Delta=2^6\times 3^2.$$</p>
+<p>On calcule la racine carrée de $\Delta$ : $$\sqrt{\Delta}=24.$$</p>
+<p>On en déduit que les solutions de l'équation sont : $$x_1=\frac{-2+24}{2}=11$$ et $$x_2=\frac{-2-24}{2}=-13.$$</p>
+<p>Comme $x$ est un entier naturel, on en déduit que $x=11$.</p>
+<p>Les trois entiers naturels consécutifs sont donc $11$, $12$ et $13$.</p>
+</div>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>La somme d'un nombre entier et de son carré vaut $272.$<br/>
+        Déterminer les valeurs possibles de cet entier.</p>
+</div>
+<div class="solution">
+<p>On cherche un entier $x$ tel que $$x+x^2=272.$$</p>
+<p>On résout l'équation $$x+x^2=272.$$</p>
+<p>On obtient $$x=16.$$ ou bien $$x=-17.$$</p>
+<p>Les deux entiers possibles sont donc : </p>
+<p>$16$ et $-17$.</p>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>Le produit de deux nombres entiers consécutifs est $1056.$<br/>
+        Quelles sont les valeurs possibles de ces deux nombres ?
+        </p>
+</div>
+<div class="solution">
+<p>On cherche un entier $x$ tel que $$x(x+1)=1056.$$</p>
+<p>On développe le membre de gauche :</p>
+<p>$$x(x+1)=x^2+x.$$</p>
+<p>On résout l'équation $$x+x^2=1056.$$</p>
+<p>On obtient $$x=32.$$ ou bien $$x=-33.$$</p>
+<p>Les deux nombres entiers consécutifs sont donc : </p>
+<p>$32$ et $33$</p>
+<p>ou</p>
+<p>$-33$ et $-32.$</p>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>Le drapeau de la suède est un rectangle traversé de deux bandes de même largeur et perpendiculaires l'une à l'autre. Supposons que le ratio hauteur largeur est 6:8 et que le drapeau possède une largeur de $\SI{4}{\m}.$ Supposons également que l'aire de la croix jaune est égale à la partie bleue restante. Déterminer la largeur de la bande.<br/>
+</p>
+<div class="solution">
+            à venir
+        </div>
+</div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>On se place dans un repère orthonormé avec $A(0~;~2)$ et $B(3~;~-2).$ $AMBN$ est un rectangle tel que $M$ est sur l'axe des abscisses. Déterminer les coordonnées possibles du point $M$.</p>
+</div>
+<div class="solution">
+        à venir
+    </div>
+</div>
+<div class='exercice'>
+<div class="enonce">
+<p>On se place dans un repère orthonormé. $\mathcal{C}$ est la courbe représentative de la fonction $x \rightarrow \dfrac{1}{x}$ sur $]0~;~+\infty[.$ On considère le point $I\left(\dfrac{7}{3}~;~\dfrac{7}{8}\right)$ et deux points $A$ et $B$ de la courbe $\mathcal{C}$ tels que $I$ soit le milieu du segment $[AB].$ Déterminer les coordonnées possibles de $A$ et $B.$</p>
+</div>
+<div class="solution">
+        à venir
+    </div>
 </div>
 </main>
     <footer>

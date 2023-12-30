@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Suites_08</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+<button onclick="diminuerTaille()">Taille -1</button>
+<button onclick="augmenterTaille()">Taille +1</button>
+<button onclick="colonne()">Colonnes</button>
+<button onclick="quadrillage()">Quadrillage</button>
+<button onclick="window.print()">Imprimer</button>
+    <header>
+      <h1>Exercices</h1>
+    </header>
+    <main><link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+
+<div class="exercice">
+  <div class="enonce">
+    <p>On considère le script suivant:</p>
+    <pre style="font-size: small;" class="line-numbers"><code class="language-python">def generer_liste_suivante(liste_originale):
+  liste_resultante=[]
+  for k in range(len(liste_originale)-1):
+      liste_resultante=liste_resultante+[liste_originale[k]]
+      somme_elements_consecutifs=sum([liste_originale[k],liste_originale[k+1]])
+      liste_resultante=liste_resultante+[somme_elements_consecutifs]
+  liste_resultante=liste_resultante+[liste_originale[len(liste_originale)-1]]
+  return liste_resultante
+
+def generer_liste_rang(n,liste_rang_n]):
+  if (n>1):
+      for k in range(n-1):
+          liste_rang_n = generer_liste_suivante(liste_rang_n)
+  return liste_rang_n
+
+print(generer_liste_rang(1,[1,1]))
+print(generer_liste_rang(2,[1,1]))
+print(generer_liste_rang(3,[1,1]))
+print(generer_liste_rang(4,[1,1]))
+print(generer_liste_rang(5,[1,1]))</code></pre>
+    <p>Voici ce qu'il produit en sortie:</p>
+    <pre style="background-color: lightgray;font-size: small;"><code>
+      [1, 1]
+      [1, 2, 1]
+      [1, 3, 2, 3, 1]
+      [1, 4, 3, 5, 2, 5, 3, 4, 1]
+      [1, 5, 4, 7, 3, 8, 5, 7, 2, 7, 5, 8, 3, 7, 4, 5, 1]
+    </code></pre>
+    <p>On considère les suites $(a_n)_{n\in\mathbb{N}}$, $(u_n)_{n\in\mathbb{N}}$ et $(s_n)_{n\in\mathbb{N}}$ définies de la manière suivante :</p>
+    <ul>
+      <li>Pour tout $n\in\mathbb{N}$, $a_n=2^{n-1}+1$.</li>
+      <li>$u_0=\dfrac{2}{3}$ et pour tout $n\in\mathbb{N}$, $u_{n+1}=3u_n-1$.</li>
+      <li>Pour tout $n\in\mathbb{N}$, $s_n=2u_{n+1}$.</li>
+    </ul>
+    <p>Répondre aux questions suivantes en expliquant dans le détail ce qu'a été votre démarche :</p>
+    <ol>
+      <li>Que représente la suite $a_n$ pour le script ?</li>
+      <li>Que représente la suite $s_n$ pour le script ?</li>
+      <li>On remplace <code>[1,1]</code> par <code>[2,2]</code> dans le script, redéfinir les suites pour qu'elles correspondent au nouveau programme.</li>
+      <li>Même consigne avec <code>[1,2]</code>.</li>
+      <li>Inventer trois fonctions python <code>a(n)</code>, <code>u(n)</code> et <code>s(n)</code> qui donnent respectivement  $a_n$, $u_n$ et $s_n$ à n'importe quel rang.</li>
+      <li>Inventer deux fonctions python <code>a_liste(n,liste_originale)</code> et <code>liste_s(n,liste_originale)</code> qui étendent les fonctions à n'importe quelle liste liste_originale.</li>
+    </ol>
+  </div>
+</div></main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>

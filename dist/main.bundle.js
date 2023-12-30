@@ -37174,20 +37174,32 @@ var taillePolice = function () {
   let tailleInitiale = window.getComputedStyle(bodyElement).fontSize;
   let tailleActuelle = parseFloat(tailleInitiale);
   window.diminuerTaille = function () {
-    tailleActuelle -= 2; // Diminue la taille de 2px
+    tailleActuelle -= 1; // Diminue la taille de 1px
     bodyElement.style.fontSize = tailleActuelle + "px";
   };
   window.augmenterTaille = function () {
-    tailleActuelle += 2; // Augmente la taille de 2px
+    tailleActuelle += 1; // Augmente la taille de 1px
     bodyElement.style.fontSize = tailleActuelle + "px";
   };
 };
 var colonnes = function () {
-  window.unecolonne = function () {
-    document.body.classList.remove("deuxcolonnes");
+  window.colonne = function () {
+    if (document.body.classList.contains("deuxcolonnes")) {
+      document.body.classList.remove("deuxcolonnes");
+    } else {
+      document.body.classList.add("deuxcolonnes");
+    }
   };
-  window.deuxcolonnes = function () {
-    document.body.classList.add("deuxcolonnes");
+};
+var quadrillage = function () {
+  window.quadrillage = function () {
+    // SI le quadrillage est activé, on le désactive
+    // SINON on l'active
+    if (document.body.classList.contains("quadrillage")) {
+      document.body.classList.remove("quadrillage");
+    } else {
+      document.body.classList.add("quadrillage");
+    }
   };
 };
 document.addEventListener("DOMContentLoaded", function () {
@@ -37206,6 +37218,7 @@ document.addEventListener("DOMContentLoaded", function () {
   openAvantPrint();
   taillePolice();
   colonnes();
+  quadrillage();
 });
 
 /***/ }),
@@ -37513,7 +37526,7 @@ var constructCrossPoint = function (point) {
   } else {
     path.setAttribute("d", "M-2,-2 L2,2 M-2,2 L2,-2");
   }
-  //path.setAttribute("fill", "transparent");
+  path.setAttribute("fill", "none");
   if (point.getAttribute("stroke") == null) {
     path.setAttribute("stroke", "black");
   }
@@ -37522,6 +37535,10 @@ var constructCrossPoint = function (point) {
   // Récupérer le style du point
   var style = point.getAttribute("style");
   path.setAttribute("style", style);
+  // Vers de nouvelles prises en charge des paramètres
+  if (point.getAttribute("scale") != null) {
+    path.setAttribute("transform", "scale(" + point.getAttribute("scale") + ")");
+  }
   point.appendChild(path);
 };
 var automaticHideCrossPoint = function (point) {
@@ -38909,7 +38926,9 @@ var createCourbeRepresentative = function (courbeRepresentative) {
   var pas = parseFloat(courbeRepresentative.getAttribute("pas"));
   var expression = courbeRepresentative.getAttribute("expression");
   var points = [];
-  for (let x = xmin; x <= xmax; x += pas) {
+  let n = (xmax - xmin) / pas; // Calcule le nombre total d'itérations
+  for (let i = 0; i <= n; i++) {
+    let x = xmin + i * pas;
     let y = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(expression, {
       x: x
     });
@@ -39710,15 +39729,14 @@ function remplirFormulaire(questionText, answersArray, method) {
   }
   // Accéder aux éléments DOM pour les choix de réponse et mettre à jour leurs labels
   const choiceElements = document.querySelectorAll(".choix label");
+  // Ne pas afficher les choix de réponse
+  choiceElements.forEach(choice => {
+    choice.parentElement.style.display = "none";
+  });
+  // Remplir et afficher les choix de réponse
   answersArray.forEach((answer, index) => {
     choiceElements[index].innerHTML = answer;
-    if (answer == "") {
-      //Le bouton radio dans lequel est contenu le label est désactivé est caché
-      choiceElements[index].parentElement.style.display = "none";
-    } else {
-      //Le bouton radio dans lequel est contenu le label est activé et affiché
-      choiceElements[index].parentElement.style.display = "block";
-    }
+    choiceElements[index].parentElement.style.display = "block";
   });
 }
 function questionsDifferentes() {
@@ -39845,7 +39863,15 @@ function mettreEnFormeQuiz() {
   (0,_index_js__WEBPACK_IMPORTED_MODULE_1__.convertirKatexEnMathML)();
   (0,_interactif2_js__WEBPACK_IMPORTED_MODULE_2__.createFigures)();
 }
+function viderFormulaire() {
+  document.getElementById("question").innerHTML = "";
+  document.querySelectorAll("label").forEach(label => {
+    label.innerHTML = "";
+  });
+  document.querySelector("#method").style.display = "none";
+}
 function initialiserAffichageQuiz(question, shuffledAnswers, method) {
+  viderFormulaire();
   remplirFormulaire(question, shuffledAnswers, method);
   setValider("Répondre");
   hideValider();
