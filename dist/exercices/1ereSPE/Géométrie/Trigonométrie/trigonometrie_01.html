@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Suites_06</title>
+    <title>Trigonometrie_01</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="viewport"
@@ -115,86 +115,51 @@
 <button onclick="colonne()">Colonnes</button>
 <button onclick="quadrillage()">Quadrillage</button>
 <button onclick="window.print()">Imprimer</button>
-    <main><div class="exercice">
-  <div class="enonce">
-    <p>On considère une suite $(u_n)_{n\in\mathbb{N}^*}$ telle que pour tout entier naturel $n\geqslant 1 :$ $$u_n=\dfrac{3^n}{2^n}.$$</p>
-    <ol>
-      <li>Calculer les quatre premiers termes.</li>
-      <li>Montrer que la suite est strictement positive.</li>
-      <li>La suite semble-t-elle monotone ? Expliquer.</li>
-      <li>Exprimer $\dfrac{u_{n}}{u_{n-1}}$ en fonction de $n$.</li>
-      <li>En déduire le sens de variation de la suite.</li>
-    </ol>
-  </div>
-  <div class="solution">
-    <ol>
-      <li><p>Les quatre premiers termes sont $u_1$, $u_2$, $u_3$ et $u_4$.</p>
-        <p>$u_1=\dfrac{3^1}{2^1}=\dfrac{3}{2}$</p>
-        <p>$u_2=\dfrac{3^2}{2^2}=\dfrac{9}{4}$</p>
-        <p>$u_3=\dfrac{3^3}{2^3}=\dfrac{27}{8}$</p>
-        <p>$u_4=\dfrac{3^4}{2^4}=\dfrac{81}{16}$</p>
-      </li>
-      <li><p>Pour tout $n\geqslant 1$, on a : $3^n>0$ et $2^n>0$, et donc $u_n=\dfrac{3^n}{2^n}>0$.</p></li>
-      <li><p>On a : $u_1=\dfrac{24}{16}$, $u_2=\dfrac{36}{16}$, $u_3=\dfrac{54}{16}$ et $u_4=\dfrac{81}{16}$.</p>
-        <p>La suite semble croissante car $u_1 < u_2 < u_3 < u_4$.</p></li>
-      <li>Pour $n\geqslant 2$ :$$\begin{align*}
-        \dfrac{u_{n}}{u_{n-1}} &= \dfrac{\dfrac{3^n}{2^n}}{\dfrac{3^{n-1}}{2^{n-1}}}\\
-        &= \dfrac{3^n}{2^n}\times \dfrac{2^{n-1}}{3^{n-1}}\\
-        &= \dfrac{3^n \times 2^{n-1}}{2^n \times 3^{n-1}}\\
-        &= \dfrac{3\times 3^{n-1} \times 2^{n-1}}{2 \times 2^{n-1} \times 3^{n-1}}\\
-        &= \dfrac{3}{2}
-      \end{align*}$$</li>
-      <li><p>On a $\dfrac{3}{2}>1$.</p>
-      <p>On en déduit que pour $n\geqslant 2$, $\dfrac{u_{n}}{u_{n-1}} > 1$ et donc la suite est croissante.</p>
-      </li>
-    </ol>
-    </div>
-</div>
-<div class="exercice">
-  <div class="enonce">
-      <p>On considère une suite $(u_n)_{n\in\mathbb{N}^*}$ telle que pour tout entier naturel $n\geqslant 1 :$ $$u_n=\dfrac{n}{2^n}.$$</p>
-      <ol>
-        <li>Calculer les quatre premiers termes.</li>
-        <li>Montrer que la suite est strictement positive.</li>
-        <li>La suite semble-t-elle monotone ? Expliquer.</li>
-        <li>Exprimer $\dfrac{u_{n}}{u_{n-1}}$ en fonction de $n$.</li>
-        <li>En déduire le sens de variation de la suite en étduiant le signe de $\dfrac{u_{n}}{u_{n-1}}-1$.</li>
-        <li>Retrouver le sens de variation de la suite $(u_n)$ en étudiant le signe de $u_{n}-u_{n-1}.$</li>
-      </ol>
-  </div>
-  <div class="solution">
-    <ol>
-      <li><p>Les quatre premiers termes sont $u_1$, $u_2$, $u_3$ et $u_4$.</p>
-        <p>$u_1=\dfrac{1}{2^1}=\dfrac{1}{2}$</p>
-        <p>$u_2=\dfrac{2}{2^2}=\dfrac{2}{4}=\dfrac{1}{2}$</p>
-        <p>$u_3=\dfrac{3}{2^3}=\dfrac{3}{8}$</p>
-        <p>$u_4=\dfrac{4}{2^4}=\dfrac{4}{16}=\dfrac{1}{4}$</p>
-      </li>
-      <li><p>Pour tout $n\geqslant 1$, on a : $n>0$ et $2^n>0$, et donc $u_n=\dfrac{n}{2^n}>0$.</p></li>
-      <li><p>On a : $u_1=\dfrac{4}{8}$, $u_2=\dfrac{4}{8}$, $u_3=\dfrac{3}{8}$ et $u_4=\dfrac{2}{8}$.</p>
-        <p>La suite semble décroissante car $u_1 \geqslant u_2 > u_3 > u_4$.</p></li>
-      <li>Pour $n\geqslant 2$ :$$\begin{align*}
-        \dfrac{u_{n}}{u_{n-1}} &= \dfrac{\dfrac{n}{2^n}}{\dfrac{n-1}{2^{n-1}}}\\
-        &= \dfrac{n}{2^n}\times \dfrac{2^{n-1}}{n-1}\\
-        &= \dfrac{n \times 2^{n-1}}{2^n \times (n-1)}\\
-        &= \dfrac{n \times 2^{n-1}}{2 \times 2^{n-1} \times (n-1)}\\
-        &= \dfrac{n}{2(n-1)}
-      \end{align*}$$</li>
-      <li><p>Pour $n\geqslant 2$, comparons $\dfrac{n}{2(n-1)}-1$
-        $$\begin{align*}
-        \dfrac{n}{2(n-1)}-1&=\dfrac{n}{2(n-1)}-\dfrac{2(n-1)}{2(n-1)}\\
-        &=\dfrac{n-2(n-1)}{2(n-1)}\\
-        &=\dfrac{-n+1}{2(n-1)}\\
-        &=-\dfrac{n-1}{2(n-1)}\\
-        &=-\dfrac{1}{2}&\text{car $n\geqslant 2$}
-      \end{align*}$$</p>
-      <p>On en déduit que pour $n\geqslant 2$, $\dfrac{n}{2(n-1)}-1 < 0$ et donc $\dfrac{u_{n}}{u_{n-1}} < 1$.</p>
-      <p>Comme $u_n > 0$ pour tout entier naturel $n$ supérieur ou égal à $1$, la suite est donc décroissante.</p>
-      </li>
-    </ol>
-  </div>
-</div>
-</main>
+    <main><h3>Objectif</h3>
+<p>L'objectif de ce guide est de <strong>convertir des angles exprimés en degrés en angles exprimés en radians</strong>, en exploitant des cas de simplification possible.</p>
+<h3>Méthode de conversion de base</h3>
+<p>Pour convertir un angle de degrés en radians, multipliez l'angle par $\dfrac{\pi}{180}$ :</p>
+$$\text{Angle en degrés} \times \dfrac{\pi}{180} = \text{Angle en radians}$$  
+<h3>Analyse des unités</h3>
+<p>Il est crucial d'analyser les unités pour éviter les erreurs. Prenons l'exemple de $\ang{172}$ :</p>
+$$\ang{172} \times \dfrac{\pi~\text{rad}}{\ang{180}} = \dfrac{\ang{172}}{\ang{180}} \times \pi~\text{rad}$$
+<p>Cela nous amène à une fraction sans unité, résultant en un angle en radians.</p>
+<h3>Simplification de la fraction</h3>
+<p>La simplification est possible en analysant les diviseurs de 180 :</p>
+<ul>
+  <li>Diviseurs de 180 : 1, 2, 3, 4, 5, 6, 9, 10, 12, 15, 18, 20, 30, 36, 45, 60, 90, 180.</li>
+  <li>Décomposition en facteurs premiers de 180 : $180 = 2^2 \times 3^2 \times 5$.</li>
+</ul>
+<p>Utilisez les critères de divisibilité pour déterminer si le numérateur est divisible par 2, 3, 5, 9 ou 10.</p>
+<h3>Exemple de simplification</h3>
+Remarque importante : nous prendrons l'habitude de ne pas écrire le symbole radian qui sera sous-entendu.
+<p>Reprenons l'exemple de $\ang{172}$ :</p>
+$$\begin{align*}
+  \ang{172} \times \dfrac{\pi}{\ang{180}} &= \dfrac{172\pi}{180}\\
+  &= \dfrac{2 \times 86\pi}{2 \times 90} \\
+  &= \dfrac{2 \times 43\pi}{2 \times 45} \\
+  &= \dfrac{43\pi}{45}
+\end{align*}$$
+<p>Ceci représente la simplification maximale par une puissance de 2. Nous avons en effet simplifié deux fois par 2 c'est-à-dire par 4. Par ailleurs, aucune simplification supplémentaire n'est possible car 43 n'est divisible ni par 3, ni par 5.</p>
+<h3>Questions clés pour la simplification</h3>
+<p>Pour simplifier, posez-vous les questions suivantes :</p>
+<ul>
+  <li>Simplifications évidentes par un diviseur de 180 ?<br> (Ex : $\dfrac{90\pi}{180}=\dfrac{\pi}{2}, \dfrac{60\pi}{180}=\dfrac{\pi}{3}, \dfrac{45\pi}{180}=\dfrac{\pi}{4}.$)</li>
+  <li>Le numérateur est-il divisible par 10 ?<br>
+    Ex : $\dfrac{130\pi}{180}=\dfrac{13\pi}{18}$ et $\dfrac{70\pi}{180}=\dfrac{7\pi}{18}$.
+  </li>
+  <li>Le numérateur est-il divisible par 2 ? par 4 ?<br>
+    Ex : $\dfrac{82\pi}{180}=\dfrac{41\pi}{90}$ et $\dfrac{68\pi}{180}=\dfrac{17\pi}{45}$. 
+  </li>
+  <li>Le numérateur est-il divisible par 3 ? par 9 ?<br>
+    Ex : $\dfrac{57\pi}{180}=\dfrac{19\pi}{60}$ et $\dfrac{63\pi}{180}=\dfrac{7\pi}{20}$.
+  </li>
+  <li>Le numérateur est-il divisible par 5 ?<br>
+    Ex : $\dfrac{55\pi}{180}=\dfrac{11\pi}{36}$ et $\dfrac{65\pi}{180}=\dfrac{13\pi}{36}$.
+  </li>
+</ul>
+<h3>Cas sans simplification</h3>
+<p>Il existe des cas où aucune simplification n'est possible, comme $\dfrac{101\pi}{180}$.</p></main>
     <footer>
       Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
       Henry Bergson à Angers.<br />
