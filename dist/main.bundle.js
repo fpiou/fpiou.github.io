@@ -36978,6 +36978,11 @@ function preprocessLatexText(text) {
       match = match.replace(/\\SI\{(-?[\d.,]+)\}\{(.*?)\}/g, function (_, p1, p2) {
         return formatSIForLatex(p1, p2);
       });
+
+      // Traitement pour \ang{...}
+      match = match.replace(/\\ang\{(-?[\d.,]+)\}/g, function (_, p1) {
+        return formatNumberForLatex(p1) + "\\,\\degree";
+      });
       return match;
     });
   }
@@ -37025,9 +37030,9 @@ var convertirKatexEnMathML = function () {
       display: true
     }],
     // • rendering keys, e.g.:
-    throwOnError: false,
+    throwOnError: false
     //ignoredTags: ["svg"],
-    output: "html" // Compatibilité avec Apple notamment
+    //output: "html", // Compatibilité avec Apple notamment
     // Avec "html" la commande \widehat{} ne fonctionne pas
     // En mode par défaut, la commande \widehat{} ne fonctionne pas non plus
     // En mode mathml, la commande \mathbb{} ne fonctionne pas
@@ -37202,23 +37207,55 @@ var quadrillage = function () {
     }
   };
 };
-document.addEventListener("DOMContentLoaded", function () {
-  insererEntetesBlocsLesson();
-  insererEntetesBlocsExercices();
-  // On teste si on est dans un contexte <meta name="quiz" content="true">
-  if (document.querySelector("meta[name=quiz]") != null) {
-    (0,_quiz_js__WEBPACK_IMPORTED_MODULE_31__.createQuizs)();
-  } else {
-    (0,_interactif2_js__WEBPACK_IMPORTED_MODULE_30__.createFigures)();
+function chargerBacasables() {
+  const bacasables = document.querySelectorAll(".bacasable");
+  const promesses = Array.from(bacasables).map(bacasable => {
+    return new Promise((resolve, reject) => {
+      const src = bacasable.getAttribute("src");
+      if (src) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", src, true);
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            bacasable.innerHTML = xhr.responseText;
+            resolve();
+          } else {
+            reject("Erreur de chargement pour bacASable : " + src);
+          }
+        };
+        xhr.onerror = function () {
+          reject("Erreur réseau pour bacASable : " + src);
+        };
+        xhr.send();
+      } else {
+        resolve();
+      }
+    });
+  });
+  return Promise.all(promesses);
+}
+document.addEventListener("DOMContentLoaded", async function () {
+  try {
+    await chargerBacasables();
+    insererEntetesBlocsLesson();
+    insererEntetesBlocsExercices();
+    // On teste si on est dans un contexte <meta name="quiz" content="true">
+    if (document.querySelector("meta[name=quiz]") != null) {
+      (0,_quiz_js__WEBPACK_IMPORTED_MODULE_31__.createQuizs)();
+    } else {
+      (0,_interactif2_js__WEBPACK_IMPORTED_MODULE_30__.createFigures)();
+    }
+    convertirKatexEnMathML();
+    masquerSolutionsExercices();
+    ajouterSommaire();
+    dropdownMenusBandeau();
+    openAvantPrint();
+    taillePolice();
+    colonnes();
+    quadrillage();
+  } catch (erreur) {
+    console.error(erreur);
   }
-  convertirKatexEnMathML();
-  masquerSolutionsExercices();
-  ajouterSommaire();
-  dropdownMenusBandeau();
-  openAvantPrint();
-  taillePolice();
-  colonnes();
-  quadrillage();
 });
 
 /***/ }),
