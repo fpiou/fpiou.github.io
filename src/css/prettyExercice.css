@@ -27,7 +27,7 @@ details.indice {
   margin: 0.5em 0em 1em 0em;
 }
 
-.titreExercice {
+.titreExercice, .titreQuestion {
   font-weight: bold;
   font-size: 1.2em;
 }

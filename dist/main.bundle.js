@@ -37191,6 +37191,25 @@ var colonnes = function () {
     }
   };
 };
+var plierDeplier = function () {
+  window.deplier = function () {
+    // SI le dépliage est activé, on le désactive
+    // SINON on l'active
+    if (document.body.classList.contains("deplié")) {
+      var details = document.querySelectorAll("details");
+      details.forEach(function (detail) {
+        detail.setAttribute("open", "");
+      });
+      document.body.classList.remove("deplié");
+    } else {
+      var details = document.querySelectorAll("details");
+      details.forEach(function (detail) {
+        detail.removeAttribute("open");
+      });
+      document.body.classList.add("deplié");
+    }
+  };
+};
 var quadrillage = function () {
   window.quadrillage = function () {
     // SI le quadrillage est activé, on le désactive
@@ -37245,6 +37264,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     openAvantPrint();
     taillePolice();
     colonnes();
+    plierDeplier();
     quadrillage();
   } catch (erreur) {
     console.error(erreur);

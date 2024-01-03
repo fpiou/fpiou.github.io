@@ -243,3 +243,27 @@ footer {
 .page-break {
   page-break-after: always;
 }
+
+.alphabetical-list {
+  counter-reset: list-counter;
+  list-style: none;
+  padding: 0;
+}
+.alphabetical-list li {
+  counter-increment: list-counter;
+}
+.alphabetical-list li::before {
+  content: counter(list-counter, lower-alpha) ".";
+  margin-right: 5px; /* Espace après le numéro */
+  font-weight: bold;
+}
+
+.question ol.horizontal-list {
+  padding: 0;
+  display: flex;
+}
+.question ol.horizontal-list li {
+  flex: 1;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
