@@ -247,7 +247,7 @@ var constructLabelPoint = function (point) {
       foreignObject.setAttribute("style", point.getAttribute("style"));
       foreignObject.innerHTML = katex.renderToString(
         point.getAttribute("name"),
-        { output: "mathml" }
+        { output: "htmlAndMathml" }
       );
       foreignObject.style.userSelect = "none";
       point.appendChild(foreignObject);
@@ -301,7 +301,7 @@ var constructLabelPoint = function (point) {
           labelLinkto[index].getAttribute("style")
         );
         foreignObject.innerHTML = katex.renderToString(label.innerHTML, {
-          output: "mathml",
+          output: "htmlAndMathml",
         });
         foreignObject.style.userSelect = "none";
         point.appendChild(foreignObject);
@@ -324,7 +324,7 @@ var constructCrossPoint = function (point) {
   } else {
     path.setAttribute("d", "M-2,-2 L2,2 M-2,2 L2,-2");
   }
-  //path.setAttribute("fill", "transparent");
+  path.setAttribute("fill", "none");
   if (point.getAttribute("stroke") == null) {
     path.setAttribute("stroke", "black");
   }
@@ -333,6 +333,10 @@ var constructCrossPoint = function (point) {
   // Récupérer le style du point
   var style = point.getAttribute("style");
   path.setAttribute("style", style);
+  // Vers de nouvelles prises en charge des paramètres
+  if (point.getAttribute("scale") != null) {
+    path.setAttribute("transform", "scale("+point.getAttribute("scale")+")");
+  }
   point.appendChild(path);
 };
 var automaticHideCrossPoint = function (point) {
@@ -446,12 +450,17 @@ var constructHeadVecteur = function (vecteur) {
   var B = new Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
   var AB = new Segment(A, B);
   var alpha = (AB.angle() / Math.PI) * 180;
+  // Récupérer le paramètre scale du vecteur
+  var scale = 1;
+  if (vecteur.hasAttribute("scale")) {
+    scale = vecteur.getAttribute("scale");
+  }
   var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   path.setAttribute("d", "M-7,-2 L-0,-0 L-7,2");
   // Déterminer les coordonnées relatives de B par rappport à A
   path.setAttribute(
     "transform",
-    "translate(" + B.x + "," + B.y + ") rotate(" + -alpha + ")"
+    "translate(" + B.x + "," + B.y + ") rotate(" + -alpha + ") scale(" + scale + ")" 
   );
   path.setAttribute("fill", "black");
   path.setAttribute("stroke-width", "0.5");
@@ -2129,9 +2138,11 @@ var createCourbeRepresentative = function (courbeRepresentative) {
   var pas = parseFloat(courbeRepresentative.getAttribute("pas"));
   var expression = courbeRepresentative.getAttribute("expression");
   var points = [];
-  for (let x = xmin; x <= xmax; x += pas) {
-    let y = math.evaluate(expression, { x: x });
-    points.push([x, y]);
+  let n = (xmax - xmin) / pas; // Calcule le nombre total d'itérations
+  for (let i = 0; i <= n; i++) {
+      let x = xmin + i * pas;
+      let y = math.evaluate(expression, { x: x });
+      points.push([x, y]);
   }
 
   // Utilisez D3 pour générer un chemin lissé
@@ -2302,8 +2313,10 @@ var getCoordonneesPoint = function (point) {
     .split("translate(")[1]
     .split(")")[0]
     .split(",");
-  var x = parseFloat(data[0]);
-  var y = parseFloat(data[1]);
+  // var x = parseFloat(data[0]);
+  // var y = parseFloat(data[1]);
+  var x = math.evaluate(data[0]).valueOf();
+  var y = math.evaluate(data[1]).valueOf();
   return [x, y];
 };
 var setCoordonneesPoint = function (point, x, y) {
@@ -2476,10 +2489,14 @@ var actualiserHeadVecteur = function (vecteur) {
   var B = new Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
   var AB = new Segment(A, B);
   var alpha = (AB.angle() / Math.PI) * 180;
+  var scale = 1;
+  if (vecteur.hasAttribute("scale")) {
+    scale = parseFloat(vecteur.getAttribute("scale"));
+  }
   var path = vecteur.querySelector("path.headVecteur");
   path.setAttribute(
     "transform",
-    "translate(" + B.x + "," + B.y + ") rotate(" + -alpha + ")"
+    "translate(" + B.x + "," + B.y + ") rotate(" + -alpha + ") scale(" + scale + ")"
   );
 };
 var actualiserSegment = function (segment) {

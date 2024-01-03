@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Trigonometrie</title>
+    <title>Trigonometrie.xml</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -140,8 +140,26 @@
           <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
           <g class="label" linkto="O" x="-6" y="-2" style="font-size:0.5rem;">O</g>
           <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+          <g name="c2" class="courbeRepresentative" expression="sqrt(1.5-x^2)"  pas="0.01" xmin="0.5" xmax="1" linkto="repere1" fill="transparent" stroke="green" stroke-width="0.5"></g>
+          <g name="F1" class="point" repere="repere1" x="0.51" y="sqrt(1.5-0.51^2)" stroke="none" scale="0.5"></g>
+          <g name="F2" class="point" repere="repere1" x="0.5" y="sqrt(1.5-0.5^2)" stroke="none" scale="0.5"></g>
+          <g name="u" class="vecteur" linkto="F1 F2" stroke="green" scale="0.5"></g>
+          <g name="direct" class="point labeled" repere="repere1" x="0.9" y="1.1" stroke="none" scale="0.5"></g>
+          <g class="label" linkto="direct" x="-5" y="-5" style="font-size:0.3rem;color:green">direct</g>
+          <g name="c3" class="courbeRepresentative" expression="-sqrt(1.5-x^2)"  pas="0.01" xmin="-1" xmax="-0.5" linkto="repere1" fill="transparent" stroke="green" stroke-width="0.5"></g>
+          <g name="G1" class="point" repere="repere1" x="-1.01" y="-sqrt(1.5-1.01^2)" stroke="none" scale="0.5"></g>
+          <g name="G2" class="point" repere="repere1" x="-1" y="-sqrt(1.5-1^2)" stroke="none" scale="0.5"></g>
+          <g name="v" class="vecteur" linkto="G2 G1" stroke="green" scale="0.5"></g>
+          <g name="indirect" class="point labeled" repere="repere1" x="-0.8" y="-1.2" stroke="none" scale="0.5"></g>
+          <g class="label" linkto="indirect" x="-5" y="-5" style="font-size:0.3rem;color:green">indirect</g>
         </svg>
       </div>
+      <p>Le cercle trigonométrique est parcouru dans le sens inverse des aiguilles d'une montre. On dit que c'est le sens trigonométrique direct.<br>
+      On a alors :
+      <ul>
+        <li>$\circlearrowleft$ le sens trigonométrique direct,</li>
+        <li>et $\circlearrowright$ le sens trigonométrique indirect.</li>
+      </ul>
 </div>
 <div class="propriete">
     <p>Le cercle trigonométrique a pour périmètre $2\pi$.</p>
@@ -439,32 +457,127 @@
     <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
     <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
     <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
-    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="black" scale="0.5" stroke-width="0.5"></g>
+    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none" scale="0.5" stroke-width="0.5"></g>
     <g class="label" linkto="I" x="-2" y="0" style="font-size:0.3rem;">I</g>
     <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none" scale="0.5" stroke-width="0.5"></g>
     <g class="label" linkto="O" x="-4" y="0" style="font-size:0.3rem;">O</g>
     <g name="s" class="secteur" linkto="O" parametres="departAngle:0,angle:120,r:5" style="fill: green; fill-opacity: 0.5"></g>
-    <g name="M" class="point labeled" repere="repere1" x="-0.5" y="0.866" stroke="black" scale="0.5" stroke-width="0.5"></g>
+    <g name="M" class="point labeled" repere="repere1" x="-0.5" y="0.866" stroke="none" scale="0.5" stroke-width="0.5"></g>
     <g class="label" linkto="M" x="-3" y="-6" style="font-size:0.3rem;">M</g>
     <g name="p1" class="segment" linkto="O M" stroke="black" stroke-width="0.5"></g>
+    <g name="IOM" class="point labeled" repere="repere1" x="0.3" y="0.2" stroke="none" scale="0.5" stroke-width="0.5"></g>
+    <g class="label" linkto="IOM" x="-2" y="-5" style="font-size:0.3rem;">\widehat{IOM}</g>
     </svg>
   </div> 
 </div>
 <div class="definition">
   <p>La mesure de l'angle associé au réel $1$ est appelée le radian.</p>
-  <p>Les angles peuvent donc être mesurés en radians que l'on note $\text{rad}$.</p>
+  <div id="figure1" class="figure">
+    <svg
+      id="figure1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 60 60"
+    >
+    <g name="repere1" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+    <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+    <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none" scale="0.5" stroke-width="0.5"></g>
+    <g class="label" linkto="I" x="-2" y="0" style="font-size:0.3rem;">I</g>
+    <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none" scale="0.5" stroke-width="0.5"></g>
+    <g class="label" linkto="O" x="-4" y="0" style="font-size:0.3rem;">O</g>
+    <g name="s" class="secteur" linkto="O" parametres="departAngle:0,angle:57.3,r:5" style="fill: green; fill-opacity: 0.5"></g>
+    <g name="M" class="point labeled" repere="repere1" x="cos(1)" y="sin(1)" stroke="none" scale="0.5" stroke-width="0.5"></g>
+    <g class="label" linkto="M" x="0" y="-6" style="font-size:0.3rem;">1</g>
+    <g name="p1" class="segment" linkto="O M" stroke="black" stroke-width="0.5"></g>
+    <g name="RAD" class="point labeled" repere="repere1" x="0.3" y="0.2" stroke="none" scale="0.5" stroke-width="0.5"></g>
+    <g class="label" linkto="RAD" x="0" y="-3" style="font-size:0.3rem;">1~\text{rad}</g>
+    </svg>
+  </div> 
+  </div>
 </div>
 <div class="propriete">
+  <p>Les angles peuvent donc être mesurés en radians que l'on note $\text{rad}$.</p>
   <ul>
     <li>Un angle plein mesure $2\pi~\text{rad}.$</li>
+    <div id="figure1" class="figure">
+    <svg
+      id="figure1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 60 60"
+    >
+    <g name="repere1" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+    <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+    <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none" scale="0.5" stroke-width="0.5"></g>
+    <g class="label" linkto="I" x="-2" y="0" style="font-size:0.3rem;">I</g>
+    <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none" scale="0.5" stroke-width="0.5"></g>
+    <g class="label" linkto="O" x="-4" y="0" style="font-size:0.3rem;">O</g>
+    <g name="s" class="secteur" linkto="O" parametres="departAngle:0,angle:359,r:5" style="fill: green; fill-opacity: 0.5"></g>
+    <g name="RAD" class="point labeled" repere="repere1" x="-1" y="-0.3" stroke="none" scale="0.5" stroke-width="0.5"></g>
+    <g class="label" linkto="RAD" x="0" y="-3" style="font-size:0.3rem;">2\pi~\text{rad}</g>
+    </svg>
+  </div>
     <li>Un angle plat mesure $\pi~\text{rad}.$</li>
+    <div id="figure1" class="figure">
+    <svg
+      id="figure1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 60 60"
+    >
+    <g name="repere1" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+    <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+    <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none" scale="0.5" stroke-width="0.5"></g>
+    <g class="label" linkto="I" x="-2" y="0" style="font-size:0.3rem;">I</g>
+    <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none" scale="0.5" stroke-width="0.5"></g>
+    <g class="label" linkto="O" x="-4" y="0" style="font-size:0.3rem;">O</g>
+    <g name="s" class="secteur" linkto="O" parametres="departAngle:0,angle:180,r:5" style="fill: green; fill-opacity: 0.5"></g>
+    <g name="RAD" class="point labeled" repere="repere1" x="-0.5" y="0.5" stroke="none" scale="0.5" stroke-width="0.5"></g>
+    <g class="label" linkto="RAD" x="0" y="-3" style="font-size:0.3rem;">\pi~\text{rad}</g>
+    </svg>
+  </div>
     <li>Un angle droit mesure $\dfrac{\pi}{2}~\text{rad}.$</li>
+    <div id="figure1" class="figure">
+    <svg
+      id="figure1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 60 60"
+    >
+    <g name="repere1" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+    <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+    <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none" scale="0.5" stroke-width="0.5"></g>
+    <g class="label" linkto="I" x="-2" y="0" style="font-size:0.3rem;">I</g>
+    <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none" scale="0.5" stroke-width="0.5"></g>
+    <g class="label" linkto="O" x="-4" y="0" style="font-size:0.3rem;">O</g>
+    <g name="s" class="secteur" linkto="O" parametres="departAngle:0,angle:90,r:5" style="fill: green; fill-opacity: 0.5"></g>
+    <g name="RAD" class="point labeled" repere="repere1" x="0.3" y="0.5" stroke="none" scale="0.5" stroke-width="0.5"></g>
+    <g class="label" linkto="RAD" x="0" y="-3" style="font-size:0.3rem;">\dfrac{\pi}{2}~\text{rad}</g>
+    </svg>
+  </div>
   </ul>
 </div>
 <div class="propriete">
   <p>Les radians sont proportionnels aux degrés.</p>
   <ul>
     <li>Un angle de $\ang{180}$ mesure $\pi~\text{rad}.$</li>
+    <li>Un angle de $1~\text{rad}$ mesure $\dfrac{\ang{180}}{\pi}\approx\ang{57}.$</li>
     <li>Pour passer des degrés aux radians, on multiplie par $\dfrac{\pi~\text{rad}}{\ang{180}}.$</li>
     <li>Pour passer des radians aux degrés, on multiplie par $\dfrac{\ang{180}}{\pi~\text{rad}}.$</li>
   </ul>

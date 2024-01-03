@@ -36881,35 +36881,30 @@ var insererEntetesBlocsLesson = function () {
   });
 };
 var insererEntetesBlocsExercices = function () {
-  // Exercices
+  const questions = document.querySelectorAll(".question");
+  questions.forEach((question, index) => {
+    const title = document.createElement("titreQuestion");
+    title.innerHTML = "\n        <span class=\"titreQuestion\">\n            Question de cours ".concat(index + 1, "\n        </span>");
+    question.insertBefore(title, question.firstChild);
+  });
   const exercices = document.querySelectorAll(".exercice");
   exercices.forEach((exercice, index) => {
     const title = document.createElement("titreExercice");
     title.innerHTML = "\n        <span class=\"titreExercice\">\n            Exercice ".concat(index + 1, "\n        </span>");
     exercice.insertBefore(title, exercice.firstChild);
   });
-
-  // Exercices sans calculatrice
-  // var exercicesSansCalculatrice = document.querySelectorAll(
-  //   ".exercice:not(.calculator)"
-  // );
-  // for (var i = 0; i < exercicesSansCalculatrice.length; i++) {
-  //   exercicesSansCalculatrice[i].querySelector(".titreExercice").innerHTML +=
-  //     ' <span class="fa-stack fa-lg" style="font-size: 18px;"><i class="fas fa-calculator fa-stack-1x"></i><i class="fas fa-ban fa-stack-2x" style="color:Tomato"></i></span>';
-  // }
-
-  // Solutions
   var solutions = document.querySelectorAll(".solution");
   for (var i = 0; i < solutions.length; i++) {
     var details = document.createElement("details");
-    //details.setAttribute('open', '');
+    // Si la balise de détails est une enfant ou petit-enfant d'une balise avec la class bacasable alors l'ouvrir.
+    if (solutions[i].closest(".bacasable") != null) {
+      details.setAttribute("open", "");
+    }
     details.classList.add("solution");
     details.innerHTML = "<summary>Solution</summary>";
     solutions[i].parentNode.insertBefore(details, solutions[i]);
     details.appendChild(solutions[i]);
   }
-
-  // Indice
   var indices = document.querySelectorAll(".indice");
   for (var i = 0; i < indices.length; i++) {
     var details = document.createElement("details");
@@ -36981,7 +36976,7 @@ function preprocessLatexText(text) {
 
       // Traitement pour \ang{...}
       match = match.replace(/\\ang\{(-?[\d.,]+)\}/g, function (_, p1) {
-        return formatNumberForLatex(p1) + "\\,\\degree";
+        return formatNumberForLatex(p1) + "\\degree";
       });
       return match;
     });
@@ -37210,26 +37205,24 @@ var quadrillage = function () {
 function chargerBacasables() {
   const bacasables = document.querySelectorAll(".bacasable");
   const promesses = Array.from(bacasables).map(bacasable => {
-    return new Promise((resolve, reject) => {
-      const src = bacasable.getAttribute("src");
-      if (src) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", src, true);
-        xhr.onload = function () {
-          if (xhr.status === 200) {
-            bacasable.innerHTML = xhr.responseText;
-            resolve();
-          } else {
-            reject("Erreur de chargement pour bacASable : " + src);
-          }
-        };
-        xhr.onerror = function () {
-          reject("Erreur réseau pour bacASable : " + src);
-        };
-        xhr.send();
-      } else {
-        resolve();
+    const src = bacasable.getAttribute("src");
+    if (!src) {
+      return Promise.resolve(); // Résout immédiatement si aucun src
+    }
+
+    return fetch(src).then(response => {
+      if (!response.ok) {
+        throw new Error("Erreur de chargement pour bacASable : ".concat(src, ", statut : ").concat(response.status));
       }
+      return response.text();
+    }).then(data => {
+      bacasable.innerHTML = data;
+      // Afficher le nombre de caractères du bacASable
+      console.log("Nombre de caract\xE8res du bacASable ".concat(src, " : ").concat(data.length));
+      // Afficher le data dans la console
+      console.log(data);
+    }).catch(error => {
+      console.error("Erreur r\xE9seau pour bacASable : ".concat(src, ", erreur : ").concat(error));
     });
   });
   return Promise.all(promesses);
@@ -37495,7 +37488,7 @@ var constructLabelPoint = function (point) {
       foreignObject.setAttribute("height", "20");
       foreignObject.setAttribute("style", point.getAttribute("style"));
       foreignObject.innerHTML = katex.renderToString(point.getAttribute("name"), {
-        output: "mathml"
+        output: "htmlAndMathml"
       });
       foreignObject.style.userSelect = "none";
       point.appendChild(foreignObject);
@@ -37540,7 +37533,7 @@ var constructLabelPoint = function (point) {
         }
         foreignObject.setAttribute("style", labelLinkto[index].getAttribute("style"));
         foreignObject.innerHTML = katex.renderToString(label.innerHTML, {
-          output: "mathml"
+          output: "htmlAndMathml"
         });
         foreignObject.style.userSelect = "none";
         point.appendChild(foreignObject);
@@ -37673,10 +37666,15 @@ var constructHeadVecteur = function (vecteur) {
   var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
   var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Segment(A, B);
   var alpha = AB.angle() / Math.PI * 180;
+  // Récupérer le paramètre scale du vecteur
+  var scale = 1;
+  if (vecteur.hasAttribute("scale")) {
+    scale = vecteur.getAttribute("scale");
+  }
   var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   path.setAttribute("d", "M-7,-2 L-0,-0 L-7,2");
   // Déterminer les coordonnées relatives de B par rappport à A
-  path.setAttribute("transform", "translate(" + B.x + "," + B.y + ") rotate(" + -alpha + ")");
+  path.setAttribute("transform", "translate(" + B.x + "," + B.y + ") rotate(" + -alpha + ") scale(" + scale + ")");
   path.setAttribute("fill", "black");
   path.setAttribute("stroke-width", "0.5");
   path.classList.add("headVecteur");
@@ -39109,8 +39107,10 @@ var initialiserFigure = function (figure) {
 };
 var getCoordonneesPoint = function (point) {
   var data = point.getAttribute("transform").split("translate(")[1].split(")")[0].split(",");
-  var x = parseFloat(data[0]);
-  var y = parseFloat(data[1]);
+  // var x = parseFloat(data[0]);
+  // var y = parseFloat(data[1]);
+  var x = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(data[0]).valueOf();
+  var y = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(data[1]).valueOf();
   return [x, y];
 };
 var setCoordonneesPoint = function (point, x, y) {
@@ -39271,8 +39271,12 @@ var actualiserHeadVecteur = function (vecteur) {
   var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
   var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Segment(A, B);
   var alpha = AB.angle() / Math.PI * 180;
+  var scale = 1;
+  if (vecteur.hasAttribute("scale")) {
+    scale = parseFloat(vecteur.getAttribute("scale"));
+  }
   var path = vecteur.querySelector("path.headVecteur");
-  path.setAttribute("transform", "translate(" + B.x + "," + B.y + ") rotate(" + -alpha + ")");
+  path.setAttribute("transform", "translate(" + B.x + "," + B.y + ") rotate(" + -alpha + ") scale(" + scale + ")");
 };
 var actualiserSegment = function (segment) {
   var A = getElementLinkto(segment, 0);
