@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Trigonometrie_01</title>
+    <title>Trigonometrie_01.xml</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="viewport"
@@ -50,6 +50,8 @@
     <link rel="stylesheet" href="/src/css/main.css" />
     
     <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
     
     <link rel="stylesheet" href="/src/css/print.css" />
     
@@ -115,51 +117,637 @@
 <button onclick="colonne()">Colonnes</button>
 <button onclick="quadrillage()">Quadrillage</button>
 <button onclick="window.print()">Imprimer</button>
-    <main><h3>Objectif</h3>
-<p>L'objectif de ce guide est de <strong>convertir des angles exprimés en degrés en angles exprimés en radians</strong>, en exploitant des cas de simplification possible.</p>
-<h3>Méthode de conversion de base</h3>
-<p>Pour convertir un angle de degrés en radians, multipliez l'angle par $\dfrac{\pi}{180}$ :</p>
-$$\text{Angle en degrés} \times \dfrac{\pi}{180} = \text{Angle en radians}$$  
-<h3>Analyse des unités</h3>
-<p>Il est crucial d'analyser les unités pour éviter les erreurs. Prenons l'exemple de $\ang{172}$ :</p>
-$$\ang{172} \times \dfrac{\pi~\text{rad}}{\ang{180}} = \dfrac{\ang{172}}{\ang{180}} \times \pi~\text{rad}$$
-<p>Cela nous amène à une fraction sans unité, résultant en un angle en radians.</p>
-<h3>Simplification de la fraction</h3>
-<p>La simplification est possible en analysant les diviseurs de 180 :</p>
-<ul>
-  <li>Diviseurs de 180 : 1, 2, 3, 4, 5, 6, 9, 10, 12, 15, 18, 20, 30, 36, 45, 60, 90, 180.</li>
-  <li>Décomposition en facteurs premiers de 180 : $180 = 2^2 \times 3^2 \times 5$.</li>
-</ul>
-<p>Utilisez les critères de divisibilité pour déterminer si le numérateur est divisible par 2, 3, 5, 9 ou 10.</p>
-<h3>Exemple de simplification</h3>
-Remarque importante : nous prendrons l'habitude de ne pas écrire le symbole radian qui sera sous-entendu.
-<p>Reprenons l'exemple de $\ang{172}$ :</p>
-$$\begin{align*}
-  \ang{172} \times \dfrac{\pi}{\ang{180}} &= \dfrac{172\pi}{180}\\
-  &= \dfrac{2 \times 86\pi}{2 \times 90} \\
-  &= \dfrac{2 \times 43\pi}{2 \times 45} \\
-  &= \dfrac{43\pi}{45}
-\end{align*}$$
-<p>Ceci représente la simplification maximale par une puissance de 2. Nous avons en effet simplifié deux fois par 2 c'est-à-dire par 4. Par ailleurs, aucune simplification supplémentaire n'est possible car 43 n'est divisible ni par 3, ni par 5.</p>
-<h3>Questions clés pour la simplification</h3>
-<p>Pour simplifier, posez-vous les questions suivantes :</p>
-<ul>
-  <li>Simplifications évidentes par un diviseur de 180 ?<br> (Ex : $\dfrac{90\pi}{180}=\dfrac{\pi}{2}, \dfrac{60\pi}{180}=\dfrac{\pi}{3}, \dfrac{45\pi}{180}=\dfrac{\pi}{4}.$)</li>
-  <li>Le numérateur est-il divisible par 10 ?<br>
-    Ex : $\dfrac{130\pi}{180}=\dfrac{13\pi}{18}$ et $\dfrac{70\pi}{180}=\dfrac{7\pi}{18}$.
-  </li>
-  <li>Le numérateur est-il divisible par 2 ? par 4 ?<br>
-    Ex : $\dfrac{82\pi}{180}=\dfrac{41\pi}{90}$ et $\dfrac{68\pi}{180}=\dfrac{17\pi}{45}$. 
-  </li>
-  <li>Le numérateur est-il divisible par 3 ? par 9 ?<br>
-    Ex : $\dfrac{57\pi}{180}=\dfrac{19\pi}{60}$ et $\dfrac{63\pi}{180}=\dfrac{7\pi}{20}$.
-  </li>
-  <li>Le numérateur est-il divisible par 5 ?<br>
-    Ex : $\dfrac{55\pi}{180}=\dfrac{11\pi}{36}$ et $\dfrac{65\pi}{180}=\dfrac{13\pi}{36}$.
-  </li>
-</ul>
-<h3>Cas sans simplification</h3>
-<p>Il existe des cas où aucune simplification n'est possible, comme $\dfrac{101\pi}{180}$.</p></main>
+    <main><div class="question">
+  <div class="enonce">
+    <ol class="alphabetical-list">
+      <li>Qu'est-ce que le cercle trigonométrique ?</li>
+      <li>Que vaut $\ang{360}$ en radians ?</li>
+      <li>Comment convertir des degrés en radians ?</li>
+      <li>Comment convertir des radians en degrés ?</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li>
+        <p>
+          Le cercle trigonométrique est un cercle de rayon $1$ centré à
+          l'origine du repère orthonormé.
+        </p>
+      </li>
+      <li>
+        <p>
+          C'est l'angle plein donc le périmètre du cercle trigonométrique en
+          radians. D'où $$\ang{360} = 2\pi~\text{rad}.$$
+        </p>
+      </li>
+      <li>
+        <p>
+          On multiplie par $\dfrac{\pi}{\ang{180}}$ pour convertir des degrés en
+          radians.
+        </p>
+      </li>
+      <li>
+        <p>
+          On multiplie par $\dfrac{\ang{180}}{\pi}$ ou on remplace $\pi$ par
+          $\ang{180}$ si c'est possible pour convertir des radians en degrés.
+        </p>
+      </li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Convertir $\ang{36}$ en radians.</li>
+            <li>Convertir $\dfrac{7\pi}{9}$ en degrés.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><br>$$
+                \begin{align*}
+                    \ang{36} \times \dfrac{\pi}{\ang{180}} &= \dfrac{36\pi}{180}\\
+                    &= \dfrac{2^2 \times 3^2\pi}{2^2 \times 3^2 \times 5}\\
+                    &= \dfrac{\pi}{5}
+                \end{align*}
+            $$
+            <p>
+            Donc $\ang{36} = \dfrac{\pi}{5}~\text{rad}.$</p></li>
+            <li><br>
+            $$
+                \begin{align*}
+                    \dfrac{7\pi}{9}&= \dfrac{7\times \ang{180}}{9}\\
+                    &= 7\times \ang{20}\\
+                    &= \ang{140}
+                \end{align*}
+            $$
+            <p>Donc $\dfrac{7\pi}{9} = \ang{140}.$</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Déterminer la mesure principale d'un angle mesurant $\dfrac{29\pi}{7}.$</li>
+            <li>Déterminer la mesure principale d'un angle mesurant $\dfrac{38\pi}{7}.$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Après avoir encadré $29\pi$ par deux multiples de $7\pi$ on soustrait par le multiple qui après division par $7\pi$ donnera un nombre pair.</p>
+            $$\begin{matrix}
+            28\pi &\lt& 29\pi &\lt& 35\pi\\
+            0 &\lt& 29\pi-28\pi &\lt& 7\pi\\
+            0 &\lt& \pi &\lt& 7\pi\\
+            0 &\lt& \dfrac{\pi}{7} &\lt& \pi
+            \end{matrix}$$
+            <p>
+            Donc la mesure principale d'un angle mesurant $\dfrac{29\pi}{7}$ est $\dfrac{\pi}{7}.$</p>
+            </li>
+            <li><p>Après avoir encadré $38\pi$ par deux multiples de $7\pi$ on soustrait par le multiple qui après division par $7\pi$ donnera un nombre pair.</p>
+            $$\begin{matrix}
+            35\pi &\lt& 38\pi &\lt& 42\pi\\
+            -7\pi &\lt& 38\pi-42\pi &\lt& 0\\
+            -7\pi &\lt& -4\pi &\lt& 0\\
+            -\pi &\lt& -\dfrac{4\pi}{7} &\lt& 0
+            \end{matrix}$$
+            <p>
+            Donc la mesure principale d'un angle mesurant $\dfrac{38\pi}{7}$ est $-\dfrac{4\pi}{7}.$
+            </p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        <p>Pour chaque réel ci-dessous, effectuez les deux tâches suivantes :</p>
+        <ul>
+            <li>Tracez un cercle trigonométrique.</li>
+            <li>Placez sur ce cercle les points correspondants aux multiples du réel donné et situés dans l'intervalle $]0~;~2\pi]$.</li>
+        </ul>
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\dfrac{\pi}{2}$</li>
+            <li>$\dfrac{\pi}{3}$</li>
+            <li>$\dfrac{\pi}{4}$</li>
+            <li>$\dfrac{\pi}{6}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>
+                <p>Multiples de $\dfrac{\pi}{2}.$</p>
+                <div id="figure1" class="figure">
+                    <svg
+                    id="figure1"
+                    viewBox="0 0 60 60"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="quadrillage"
+                    >
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+                    <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                    <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                    <g name="A1" class="point labeled" repere="repere1" x="0" y="1" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                    <g class="label" linkto="A1" x="-2" y="-8" style="font-size:0.3rem;">\frac{\pi}{2}</g>
+                    <g name="A2" class="point labeled" repere="repere1" x="-1" y="0" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                    <g class="label" linkto="A2" x="-5" y="-3" style="font-size:0.3rem;">\pi</g>
+                    <g name="A3" class="point labeled" repere="repere1" x="0" y="-1" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                    <g class="label" linkto="A3" x="-2" y="1" style="font-size:0.3rem;width:2rem;">\frac{3\pi}{2}</g>
+                    <g name="A4" class="point labeled" repere="repere1" x="1" y="0" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                    <g class="label" linkto="A4" x="2" y="-3" style="font-size:0.3rem;width:2rem;">2\pi</g>
+                    </svg>
+                </div>
+            </li>
+            <li>
+                <p>Multiples de $\dfrac{\pi}{3}.$</p>
+                <div id="figure2" class="figure">
+                    <svg
+                    id="figure2"
+                    viewBox="0 0 60 60"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="quadrillage"
+                    >
+                    <!-- On définit le repère -->
+                        <g name="repere2" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+                        <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere2" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                        <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere2" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                        <g name="A1" class="point labeled" repere="repere2" x="0.5" y="sqrt(3)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A1" x="2" y="-2" style="font-size:0.3rem;">\frac{\pi}{3}</g>
+                        <g name="A2" class="point labeled" repere="repere2" x="-0.5" y="sqrt(3)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A2" x="-2" y="-2" style="font-size:0.3rem;">\frac{2\pi}{3}</g>
+                        <g name="A3" class="point labeled" repere="repere2" x="-1" y="0" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A3" x="-3" y="1" style="font-size:0.3rem;width:2rem;">\pi</g>
+                        <g name="A4" class="point labeled" repere="repere2" x="-0.5" y="-sqrt(3)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A4" x="-2" y="2" style="font-size:0.3rem;width:2rem;">\frac{4\pi}{3}</g>
+                        <g name="A5" class="point labeled" repere="repere2" x="0.5" y="-sqrt(3)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A5" x="2" y="2" style="font-size:0.3rem;width:2rem;">\frac{5\pi}{3}</g>
+                        <g name="A6" class="point labeled" repere="repere2" x="1" y="0" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A6" x="3" y="1" style="font-size:0.3rem;width:2rem;">2\pi</g>
+                    </svg>
+                </div>
+            </li>
+            <li><p>Multiples de $\dfrac{\pi}{4}.$</p>
+                <div id="figure3" class="figure">
+                    <svg
+                    id="figure3"
+                    viewBox="0 0 60 60"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="quadrillage"
+                    >
+                    <!-- On définit le repère -->
+                        <g name="repere3" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+                        <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere3" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                        <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere3" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                        <g name="A1" class="point labeled" repere="repere3" x="sqrt(2)/2" y="sqrt(2)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A1" x="2" y="-2" style="font-size:0.3rem;">\frac{\pi}{4}</g>
+                        <g name="A2" class="point labeled" repere="repere3" x="0" y="1" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A2" x="-2" y="-2" style="font-size:0.3rem;">\frac{\pi}{2}</g>
+                        <g name="A3" class="point labeled" repere="repere3" x="-sqrt(2)/2" y="sqrt(2)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A3" x="-2" y="2" style="font-size:0.3rem;width:2rem;">\frac{3\pi}{4}</g>
+                        <g name="A4" class="point labeled" repere="repere3" x="-1" y="0" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A4" x="-3" y="1" style="font-size:0.3rem;width:2rem;">\pi</g>
+                        <g name="A5" class="point labeled" repere="repere3" x="-sqrt(2)/2" y="-sqrt(2)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A5" x="-2" y="2" style="font-size:0.3rem;width:2rem;">\frac{5\pi}{4}</g>
+                        <g name="A6" class="point labeled" repere="repere3" x="0" y="-1" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A6" x="2" y="2" style="font-size:0.3rem;width:2rem;">\frac{3\pi}{2}</g>
+                        <g name="A7" class="point labeled" repere="repere3" x="sqrt(2)/2" y="-sqrt(2)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A7" x="2" y="2" style="font-size:0.3rem;width:2rem;">\frac{7\pi}{4}</g>
+                        <g name="A8" class="point labeled" repere="repere3" x="1" y="0" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A8" x="3" y="1" style="font-size:0.3rem;width:2rem;">2\pi</g>
+                    </svg>
+                </div>
+            </li>
+            <li><p>Multiples de $\dfrac{\pi}{6}.$</p>
+                <div id="figure4" class="figure">
+                    <svg
+                    id="figure4"
+                    viewBox="0 0 60 60"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="quadrillage"
+                    >
+                    <!-- On définit le repère -->
+                        <g name="repere4" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+                        <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere4" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                        <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere4" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                        <g name="A1" class="point labeled" repere="repere4" x="cos(pi/6)" y="sin(pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A1" x="1" y="-5" style="font-size:0.3rem;">\frac{\pi}{6}</g>
+                        <g name="A2" class="point labeled" repere="repere4" x="cos(2*pi/6)" y="sin(2*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A2" x="1" y="-6" style="font-size:0.3rem;">\frac{\pi}{3}</g>
+                        <g name="A3" class="point labeled" repere="repere4" x="cos(3*pi/6)" y="sin(3*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A3" x="-2" y="-8" style="font-size:0.3rem;width:2rem;">\frac{\pi}{2}</g>
+                        <g name="A4" class="point labeled" repere="repere4" x="cos(4*pi/6)" y="sin(4*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A4" x="-5" y="-6" style="font-size:0.3rem;width:2rem;">\frac{2\pi}{3}</g>
+                        <g name="A5" class="point labeled" repere="repere4" x="cos(5*pi/6)" y="sin(5*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A5" x="-5" y="-5" style="font-size:0.3rem;width:2rem;">\frac{5\pi}{6}</g>
+                        <g name="A6" class="point labeled" repere="repere4" x="cos(6*pi/6)" y="sin(6*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A6" x="-4" y="-4" style="font-size:0.3rem;width:2rem;">\pi</g>
+                        <g name="A7" class="point labeled" repere="repere4" x="cos(7*pi/6)" y="sin(7*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A7" x="-5" y="0" style="font-size:0.3rem;width:2rem;">\frac{7\pi}{6}</g>
+                        <g name="A8" class="point labeled" repere="repere4" x="cos(8*pi/6)" y="sin(8*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A8" x="-5" y="0" style="font-size:0.3rem;width:2rem;">\frac{4\pi}{3}</g>
+                        <g name="A9" class="point labeled" repere="repere4" x="cos(9*pi/6)" y="sin(9*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A9" x="-2" y="1" style="font-size:0.3rem;width:2rem;">\frac{3\pi}{2}</g>
+                        <g name="A10" class="point labeled" repere="repere4" x="cos(10*pi/6)" y="sin(10*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A10" x="1" y="1" style="font-size:0.3rem;width:2rem;">\frac{5\pi}{3}</g>
+                        <g name="A11" class="point labeled" repere="repere4" x="cos(11*pi/6)" y="sin(11*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A11" x="1" y="1" style="font-size:0.3rem;width:2rem;">\frac{11\pi}{6}</g>
+                        <g name="A12" class="point labeled" repere="repere4" x="cos(12*pi/6)" y="sin(12*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A12" x="2" y="-4" style="font-size:0.3rem;width:2rem;">2\pi</g>
+                    </svg>
+                </div>
+            </li>   
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        <div class="enonce">
+        <p>Pour chaque réel ci-dessous, effectuez les tâches suivantes :</p>
+        <ul>
+            <li>Tracez un cercle trigonométrique.</li>
+            <li>Placez sur ce cercle le point M correspondant au réel donné.</li>
+            <li>Placez sur le cercle le symétrique $M_1$ de $M$ par rapport à l'axe des abscisses.</li>
+            <li>Donnez la mesure principale de l'angle $\widehat{IOM_1}.$</li>
+            <li>Recommencez avec le symétrique $M_2$ de $M$ par rapport à l'axe des ordonnées et donnez la mesure principale de $\widehat{IOM_2}.$</li>
+            <li>Recommencez avec le symétrique $M_3$ de $M$ par rapport à l'origine et donnez la mesure principale de $\widehat{IOM_3}.$</li>
+        </ul>
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\dfrac{\pi}{2}$</li>
+            <li>$\dfrac{\pi}{3}$</li>
+            <li>$\dfrac{\pi}{4}$</li>
+            <li>$\dfrac{\pi}{6}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>
+                <div id="figure1" class="figure">
+                    <svg
+                    id="figure1"
+                    viewBox="0 0 60 60"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="quadrillage"
+                    >
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+                    <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                    <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                    <g name="A1" class="point labeled" repere="repere1" x="0" y="1" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                    <g class="label" linkto="A1" x="-2" y="-8" style="font-size:0.3rem;">\frac{\pi}{2}</g>
+                    <g name="A3" class="point labeled" repere="repere1" x="0" y="-1" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                    <g class="label" linkto="A3" x="-2" y="1" style="font-size:0.3rem;width:2rem;">-\frac{\pi}{2}</g>
+                    </svg>
+                </div>
+            </li>
+            <li>
+                <div id="figure2" class="figure">
+                    <svg
+                    id="figure2"
+                    viewBox="0 0 60 60"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="quadrillage"
+                    >
+                    <!-- On définit le repère -->
+                        <g name="repere2" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+                        <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere2" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                        <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere2" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                        <g name="A1" class="point labeled" repere="repere2" x="0.5" y="sqrt(3)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A1" x="2" y="-2" style="font-size:0.3rem;">\frac{\pi}{3}</g>
+                        <g name="A2" class="point labeled" repere="repere2" x="-0.5" y="sqrt(3)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A2" x="-2" y="-2" style="font-size:0.3rem;">\frac{2\pi}{3}</g>
+                        <g name="A4" class="point labeled" repere="repere2" x="-0.5" y="-sqrt(3)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A4" x="-2" y="2" style="font-size:0.3rem;width:2rem;">-\frac{2\pi}{3}</g>
+                        <g name="A5" class="point labeled" repere="repere2" x="0.5" y="-sqrt(3)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A5" x="2" y="2" style="font-size:0.3rem;width:2rem;">-\frac{\pi}{3}</g>
+                    </svg>
+                </div>
+            </li>
+            <li><div id="figure3" class="figure">
+                    <svg
+                    id="figure3"
+                    viewBox="0 0 60 60"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="quadrillage"
+                    >
+                    <!-- On définit le repère -->
+                        <g name="repere3" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+                        <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere3" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                        <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere3" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                        <g name="A1" class="point labeled" repere="repere3" x="sqrt(2)/2" y="sqrt(2)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A1" x="2" y="-2" style="font-size:0.3rem;">\frac{\pi}{4}</g>
+                        <g name="A3" class="point labeled" repere="repere3" x="-sqrt(2)/2" y="sqrt(2)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A3" x="-2" y="2" style="font-size:0.3rem;width:2rem;">\frac{3\pi}{4}</g>
+                        <g name="A5" class="point labeled" repere="repere3" x="-sqrt(2)/2" y="-sqrt(2)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A5" x="-2" y="2" style="font-size:0.3rem;width:2rem;">-\frac{3\pi}{4}</g>
+                        <g name="A7" class="point labeled" repere="repere3" x="sqrt(2)/2" y="-sqrt(2)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A7" x="2" y="2" style="font-size:0.3rem;width:2rem;">-\frac{\pi}{4}</g>
+                    </svg>
+                </div>
+            </li>
+            <li><div id="figure4" class="figure">
+                    <svg
+                    id="figure4"
+                    viewBox="0 0 60 60"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="quadrillage"
+                    >
+                    <!-- On définit le repère -->
+                        <g name="repere4" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+                        <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere4" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                        <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere4" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                        <g name="A1" class="point labeled" repere="repere4" x="cos(pi/6)" y="sin(pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A1" x="1" y="-5" style="font-size:0.3rem;">\frac{\pi}{6}</g>
+                        <g name="A5" class="point labeled" repere="repere4" x="cos(5*pi/6)" y="sin(5*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A5" x="-5" y="-5" style="font-size:0.3rem;width:2rem;">\frac{5\pi}{6}</g>
+                        <g name="A7" class="point labeled" repere="repere4" x="cos(7*pi/6)" y="sin(7*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A7" x="-5" y="0" style="font-size:0.3rem;width:2rem;">-\frac{5\pi}{6}</g>
+                        <g name="A11" class="point labeled" repere="repere4" x="cos(11*pi/6)" y="sin(11*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                        <g class="label" linkto="A11" x="1" y="1" style="font-size:0.3rem;width:2rem;">-\frac{\pi}{6}</g>
+                    </svg>
+                </div>
+            </li>   
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        <p>Placer les points $M_i$ pour $i=1,2,3,4,5$ respectivement associés aux réels suivants et donner leurs coordonnées.</p>
+        <ol class="alphabetical-list horizontal-list">
+            <li>$0$</li>
+            <li>$\dfrac{\pi}{2}$</li>
+            <li>$\pi$</li>
+            <li>$\dfrac{3\pi}{2}$</li>
+            <li>$2\pi$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <div id="figure1" class="figure">
+        <svg
+        id="figure1"
+        viewBox="0 0 60 60"
+        xmlns="http://www.w3.org/2000/svg"
+        class="quadrillage"
+        >
+        <!-- On définit le repère -->
+        <g name="repere1" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+        <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+        <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+        <g name="A1" class="point labeled" repere="repere1" x="1" y="0" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A1" x="1" y="-6" style="font-size:0.3rem;">M_1</g>
+        <g name="A2" class="point labeled" repere="repere1" x="0" y="1" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A2" x="-2" y="-8" style="font-size:0.3rem;">M_2</g>
+        <g name="A3" class="point labeled" repere="repere1" x="-1" y="0" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A3" x="-7" y="-3" style="font-size:0.3rem;width:2rem;">M_3</g>
+        <g name="A4" class="point labeled" repere="repere1" x="0" y="-1" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A4" x="-2" y="1" style="font-size:0.3rem;width:2rem;">M_4</g>
+        <g name="A5" class="point labeled" repere="repere1" x="1" y="0" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A5" x="1" y="-1" style="font-size:0.3rem;width:2rem;">M_5</g>
+        </svg>
+        </div>
+        <p>Les coordonnées des points $M_i$ sont les suivantes :</p>
+        <ol class="alphabetical-list">
+            <li><p>$M_1(1;0)$</p></li>
+            <li><p>$M_2(0;1)$</p></li>
+            <li><p>$M_3(-1;0)$</p></li>
+            <li><p>$M_4(0;-1)$</p></li>
+            <li><p>$M_5(1;0)$</p></li>
+        </ol>
+    </div>     
+</div>
+<div class="question">
+    <div class="enonce">
+        <p>Placer les points $M_i$ pour $i=1,2,3,4$ respectivement associés aux réels suivants et donner leurs coordonnées.</p>
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\dfrac{\pi}{4}$</li>
+            <li>$\dfrac{3\pi}{4}$</li>
+            <li>$\dfrac{5\pi}{4}$</li>
+            <li>$\dfrac{7\pi}{4}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <div id="figure1" class="figure">
+        <svg
+        id="figure1"
+        viewBox="0 0 60 60"
+        xmlns="http://www.w3.org/2000/svg"
+        class="quadrillage"
+        >
+        <!-- On définit le repère -->
+        <g name="repere1" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+        <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+        <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+        <g name="A1" class="point labeled" repere="repere1" x="sqrt(2)/2" y="sqrt(2)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A1" x="2" y="-2" style="font-size:0.3rem;">M_1</g>
+        <g name="A2" class="point labeled" repere="repere1" x="-sqrt(2)/2" y="sqrt(2)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A2" x="-2" y="2" style="font-size:0.3rem;">M_2</g>
+        <g name="A3" class="point labeled" repere="repere1" x="-sqrt(2)/2" y="-sqrt(2)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A3" x="-2" y="2" style="font-size:0.3rem;width:2rem;">M_3</g>
+        <g name="A4" class="point labeled" repere="repere1" x="sqrt(2)/2" y="-sqrt(2)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A4" x="2" y="2" style="font-size:0.3rem;width:2rem;">M_4</g>
+        </svg>
+        </div>
+        <p>Les coordonnées des points $M_i$ sont les suivantes :</p>
+        <ol class="alphabetical-list">
+            <li><p>$M_1(\dfrac{\sqrt{2}}{2};\dfrac{\sqrt{2}}{2})$</p></li>
+            <li><p>$M_2(-\dfrac{\sqrt{2}}{2};\dfrac{\sqrt{2}}{2})$</p></li>
+            <li><p>$M_3(-\dfrac{\sqrt{2}}{2};-\dfrac{\sqrt{2}}{2})$</p></li>
+            <li><p>$M_4(\dfrac{\sqrt{2}}{2};-\dfrac{\sqrt{2}}{2})$</p></li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        <p>Placer les points $M_i$ pour $i=1,2,3,4$ respectivement associés aux réels suivants et donner leurs coordonnées.</p>
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\dfrac{\pi}{3}$</li>
+            <li>$\dfrac{2\pi}{3}$</li>
+            <li>$\dfrac{4\pi}{3}$</li>
+            <li>$\dfrac{5\pi}{3}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <div id="figure1" class="figure">
+        <svg
+        id="figure1"
+        viewBox="0 0 60 60"
+        xmlns="http://www.w3.org/2000/svg"
+        class="quadrillage"
+        >
+        <!-- On définit le repère -->
+        <g name="repere1" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+        <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+        <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+        <g name="A1" class="point labeled" repere="repere1" x="1/2" y="sqrt(3)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A1" x="2" y="-2" style="font-size:0.3rem;">M_1</g>
+        <g name="A2" class="point labeled" repere="repere1" x="-1/2" y="sqrt(3)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A2" x="-2" y="2" style="font-size:0.3rem;">M_2</g>
+        <g name="A3" class="point labeled" repere="repere1" x="-1/2" y="-sqrt(3)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A3" x="-2" y="2" style="font-size:0.3rem;width:2rem;">M_3</g>
+        <g name="A4" class="point labeled" repere="repere1" x="1/2" y="-sqrt(3)/2" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A4" x="2" y="2" style="font-size:0.3rem;width:2rem;">M_4</g>
+        </svg>
+        </div>
+        <p>Les coordonnées des points $M_i$ sont les suivantes :</p>
+        <ol class="alphabetical-list">
+            <li><p>$M_1(\dfrac{1}{2};\dfrac{\sqrt{3}}{2})$</p></li>
+            <li><p>$M_2(-\dfrac{1}{2};\dfrac{\sqrt{3}}{2})$</p></li>
+            <li><p>$M_3(-\dfrac{1}{2};-\dfrac{\sqrt{3}}{2})$</p></li>
+            <li><p>$M_4(\dfrac{1}{2};-\dfrac{\sqrt{3}}{2})$</p></li>
+        </ol>
+</div>
+<div class="question">
+    <div class="enonce">
+        <p>Placer les points $M_i$ pour $i=1,2,3,4$ respectivement associés aux réels suivants et donner leurs coordonnées.</p>
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\dfrac{\pi}{6}$</li>
+            <li>$\dfrac{5\pi}{6}$</li>
+            <li>$\dfrac{7\pi}{6}$</li>
+            <li>$\dfrac{11\pi}{6}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <div id="figure1" class="figure">
+        <svg
+        id="figure1"
+        viewBox="0 0 60 60"
+        xmlns="http://www.w3.org/2000/svg"
+        class="quadrillage"
+        >
+        <!-- On définit le repère -->
+        <g name="repere1" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+        <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+        <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+        <g name="A1" class="point labeled" repere="repere1" x="cos(pi/6)" y="sin(pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A1" x="1" y="-5" style="font-size:0.3rem;">M_1</g>
+        <g name="A2" class="point labeled" repere="repere1" x="cos(5*pi/6)" y="sin(5*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A2" x="-5" y="-5" style="font-size:0.3rem;">M_2</g>
+        <g name="A3" class="point labeled" repere="repere1" x="cos(7*pi/6)" y="sin(7*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A3" x="-5" y="0" style="font-size:0.3rem;width:2rem;">M_3</g>
+        <g name="A4" class="point labeled" repere="repere1" x="cos(11*pi/6)" y="sin(11*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+        <g class="label" linkto="A4" x="1" y="1" style="font-size:0.3rem;width:2rem;">M_4</g>
+        </svg>
+        </div>
+        <p>Les coordonnées des points $M_i$ sont les suivantes :</p>
+        <ol class="alphabetical-list">
+            <li><p>$M_1(\dfrac{\sqrt{3}}{2};\dfrac{1}{2})$</p></li>
+            <li><p>$M_2(-\dfrac{\sqrt{3}}{2};\dfrac{1}{2})$</p></li>
+            <li><p>$M_3(-\dfrac{\sqrt{3}}{2};-\dfrac{1}{2})$</p></li>
+            <li><p>$M_4(\dfrac{\sqrt{3}}{2};-\dfrac{1}{2})$</p></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>Dans chaque cas on déterminera la mesure principale de l'angle, puis on placera le point associé sur le cercle trigonométrique et enfin on donnera le cosinus et le sinus de l'angle.</p>
+        <ol class="alphabetical-list  horizontal-list">
+            <li>$\dfrac{29\pi}{2}$</li>
+            <li>$\dfrac{40\pi}{3}$</li>
+            <li>$\dfrac{17\pi}{4}$</li>
+            <li>$\dfrac{43\pi}{6}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <div id="figure1" class="figure">
+                <svg
+                id="figure1"
+                viewBox="0 0 60 60"
+                xmlns="http://www.w3.org/2000/svg"
+                class="quadrillage"
+                >
+                <!-- On définit le repère -->
+                <g name="repere1" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+                <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+                <g name="A1" class="point labeled" repere="repere1" x="cos(29*pi/2)" y="sin(29*pi/2)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                <g class="label" linkto="A1" x="-2" y="-10" style="font-size:0.3rem;">\dfrac{29\pi}{2}</g>
+                <g name="A2" class="point labeled" repere="repere1" x="cos(40*pi/3)" y="sin(40*pi/3)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                <g class="label" linkto="A2" x="-10" y="0" style="font-size:0.3rem;">\dfrac{40\pi}{3}</g>
+                <g name="A3" class="point labeled" repere="repere1" x="cos(17*pi/4)" y="sin(17*pi/4)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                <g class="label" linkto="A3" x="3" y="-4" style="font-size:0.3rem;width:2rem;">\dfrac{17\pi}{4}</g>
+                <g name="A4" class="point labeled" repere="repere1" x="cos(43*pi/6)" y="sin(43*pi/6)" stroke="black" scale="0.5" stroke-width="0.5"></g>
+                <g class="label" linkto="A4" x="-10" y="-3" style="font-size:0.3rem;width:2rem">\dfrac{43\pi}{6}</g>
+                </svg>
+                </div>
+        <ol class="alphabetical-list">
+            <li>
+                $$\begin{matrix}
+                    28\pi &\lt& 29\pi &\lt& 30\pi \\
+                    28\pi - 28\pi &\lt& 29\pi - 28\pi &\lt& 30\pi - 28\pi \\
+                    0 &\lt& \pi &\lt& 2\pi \\
+                    0 &\lt& \dfrac{\pi}{2} &\lt& \pi
+                \end{matrix}$$
+                <p>La mesure principale de l'angle $\dfrac{29\pi}{2}$ est $\dfrac{\pi}{2}$.</p>
+                <p>D'où $\cos(\dfrac{29\pi}{2})=0$ et $\sin(\dfrac{29\pi}{2})=1$.</p>
+            </li>
+            <li>
+                $$\begin{matrix}
+                    39\pi &\lt& 40\pi &\lt& 42\pi \\
+                    39\pi - 42\pi &\lt& 40\pi - 42\pi &\lt& 42\pi - 42\pi \\
+                    -3\pi &\lt& -2\pi &\lt& 0 \\
+                    -\pi &\lt& -\dfrac{2\pi}{3} &\lt& 0
+                \end{matrix}$$
+                <p>La mesure principale de l'angle $\dfrac{40\pi}{3}$ est $-\dfrac{2\pi}{3}$.</p>
+                <p>D'où $\cos(\dfrac{40\pi}{3})=-\dfrac{1}{2}$ et $\sin(\dfrac{40\pi}{3})=\dfrac{\sqrt{3}}{2}$.</p>
+            </li>
+            <li>
+                $$\begin{matrix}
+                    16\pi &\lt& 17\pi &\lt& 20\pi \\
+                    16\pi - 16\pi &\lt& 17\pi - 16\pi &\lt& 20\pi - 16\pi \\
+                    0 &\lt& \pi &\lt& 4\pi \\
+                    0 &\lt& \dfrac{\pi}{4} &\lt& \dfrac{\pi}{2}
+                \end{matrix}$$
+                <p>La mesure principale de l'angle $\dfrac{17\pi}{4}$ est $\dfrac{\pi}{4}$.</p>
+                <p>D'où $\cos(\dfrac{17\pi}{4})=\dfrac{\sqrt{2}}{2}$ et $\sin(\dfrac{17\pi}{4})=\dfrac{\sqrt{2}}{2}$.</p>
+            </li>
+            <li>
+                $$\begin{matrix}
+                    42\pi &\lt& 43\pi &\lt& 48\pi \\
+                    42\pi - 48\pi &\lt& 43\pi - 48\pi &\lt& 48\pi - 48\pi \\
+                    -6\pi &\lt& -5\pi &\lt& 0 \\
+                    -\pi &\lt& -\dfrac{5\pi}{6} &\lt& 0
+                \end{matrix}$$
+                <p>La mesure principale de l'angle $\dfrac{43\pi}{6}$ est $-\dfrac{5\pi}{6}$.</p>
+                <p>D'où $\cos(\dfrac{43\pi}{6})=-\dfrac{\sqrt{3}}{2}$ et $\sin(\dfrac{43\pi}{6})=-\dfrac{1}{2}$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        <p>Tracer la courbe représentative des fonctions suivantes définies sur $]-\pi~;~\pi]$</p>
+        <ul>
+            <li>$f(x)=\cos(x)$</li>
+            <li>$g(x)=\sin(x)$</li>
+        </ul>
+    </div>
+    <div class="solution">
+        <p>La courbe de la fonction $f$ est en rouge et celle de la fonction $g$ est en vert.</p>
+        <div id="figure1" class="figure">
+        <svg
+          id="figure1"
+          viewBox="0 0 220 80"
+          xmlns="http://www.w3.org/2000/svg"
+          class="quadrillage"
+        >
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-4" ymin="-2" xmax="7" ymax ="2" xorigine="0" yorigine="0"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+          <g class="label" linkto="I" x="-2.5" y="0" style="font-size:0.5rem;">1</g>
+          <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+          <g class="label" linkto="J" x="-6" y="-6" style="font-size:0.5rem">1</g>
+          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+          <g class="label" linkto="O" x="-6" y="-2" style="font-size:0.5rem;">O</g>
+          <g name="c1" class="courbeRepresentative" expression="cos(x)"  pas="0.01" xmin="-3.14" xmax="6.28" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+          <g name="c2" class="courbeRepresentative" expression="sin(x)"  pas="0.01" xmin="-3.14" xmax="6.28" linkto="repere1" fill="transparent" stroke="green" stroke-width="0.5"></g>
+        </svg>
+      </div>
+    </div>
+</div></main>
     <footer>
       Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
       Henry Bergson à Angers.<br />
