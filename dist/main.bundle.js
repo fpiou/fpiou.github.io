@@ -36897,9 +36897,9 @@ var insererEntetesBlocsExercices = function () {
   for (var i = 0; i < solutions.length; i++) {
     var details = document.createElement("details");
     // Si la balise de détails est une enfant ou petit-enfant d'une balise avec la class bacasable alors l'ouvrir.
-    if (solutions[i].closest(".bacasable") != null) {
-      details.setAttribute("open", "");
-    }
+    // if (solutions[i].closest(".bacasable") != null) {
+    //   details.setAttribute("open", "");
+    // }
     details.classList.add("solution");
     details.innerHTML = "<summary>Solution</summary>";
     solutions[i].parentNode.insertBefore(details, solutions[i]);
@@ -37193,18 +37193,16 @@ var colonnes = function () {
 };
 var plierDeplier = function () {
   window.deplier = function () {
-    // SI le dépliage est activé, on le désactive
-    // SINON on l'active
     if (document.body.classList.contains("deplié")) {
       var details = document.querySelectorAll("details");
       details.forEach(function (detail) {
-        detail.setAttribute("open", "");
+        detail.removeAttribute("open");
       });
       document.body.classList.remove("deplié");
     } else {
       var details = document.querySelectorAll("details");
       details.forEach(function (detail) {
-        detail.removeAttribute("open");
+        detail.setAttribute("open", "");
       });
       document.body.classList.add("deplié");
     }
@@ -37236,10 +37234,6 @@ function chargerBacasables() {
       return response.text();
     }).then(data => {
       bacasable.innerHTML = data;
-      // Afficher le nombre de caractères du bacASable
-      console.log("Nombre de caract\xE8res du bacASable ".concat(src, " : ").concat(data.length));
-      // Afficher le data dans la console
-      console.log(data);
     }).catch(error => {
       console.error("Erreur r\xE9seau pour bacASable : ".concat(src, ", erreur : ").concat(error));
     });

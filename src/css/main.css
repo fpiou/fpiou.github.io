@@ -258,12 +258,25 @@ footer {
   font-weight: bold;
 }
 
-.question ol.horizontal-list {
+.question ol.horizontal-list, .question ul.horizontal-list {
+  list-style: none;
   padding: 0;
   display: flex;
+  flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante si nécessaire */
 }
-.question ol.horizontal-list li {
-  flex: 1;
+
+.question ol.horizontal-list li, .question ul.horizontal-list li {
+  flex: 1; /* Permet aux éléments de la liste de s'ajuster automatiquement */
   padding: 0 5px;
   box-sizing: border-box;
+}
+
+/* Classe pour deux colonnes */
+.horizontal-list.col-2c li {
+  flex: 0 0 calc(50% - 10px) !important; /* Fixe la largeur à environ 50% pour deux colonnes */
+}
+
+/* Classe pour trois colonnes */
+.horizontal-list.col-3c li {
+  flex: 0 0 calc(33.333% - 10px) !important; /* Fixe la largeur à environ 33% pour trois colonnes */
 }
