@@ -137,8 +137,7 @@
           <g class="label" linkto="I" x="-2.5" y="0" style="font-size:0.5rem;">1</g>
           <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
           <g class="label" linkto="J" x="-6" y="-6" style="font-size:0.5rem">1</g>
-          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
-          <g class="label" linkto="O" x="-6" y="-2" style="font-size:0.5rem;">O</g>
+          <g name="O" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
           <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
           <g name="c2" class="courbeRepresentative" expression="sqrt(1.5-x^2)"  pas="0.01" xmin="0.5" xmax="1" linkto="repere1" fill="transparent" stroke="green" stroke-width="0.5"></g>
           <g name="F1" class="point" repere="repere1" x="0.51" y="sqrt(1.5-0.51^2)" stroke="none" scale="0.5"></g>
@@ -153,6 +152,9 @@
           <g name="indirect" class="point labeled" repere="repere1" x="-0.8" y="-1.2" stroke="none" scale="0.5"></g>
           <g class="label" linkto="indirect" x="-5" y="-5" style="font-size:0.3rem;color:green">indirect</g>
         </svg>
+        <div class="etiquette" style="transform: translate(-15px,15px) translate(0,200px) translate(-50%,-50%);font-size:2em;">
+          $O$
+        </div>
       </div>
       <p>Le cercle trigonométrique est parcouru dans le sens inverse des aiguilles d'une montre. On dit que c'est le sens trigonométrique direct.<br>
       On a alors :
@@ -379,36 +381,37 @@
   <ul>
     <li>Le point associé au réel $-x$ est le symétrique par rapport à l'axe des abscisses du point associé au réel $x$.</li>
     <li>Le point associé au réel $\pi-x$ est le symétrique par rapport à l'axe des ordonnées du point associé au réel $x$.</li>
-    <li>Le point associé au réel $x+\pi$ est le symétrique par rapport à l'origine du repère du point associé au réel $x$.</li>
+    <li>Le point associé au réel $x-\pi$ (ou $x+\pi$) est le symétrique par rapport à l'origine du repère du point associé au réel $x$.</li>
   </ul>
   <div id="figure1" class="figure">
-    <svg
-      id="figure1"
-      viewBox="0 0 60 60"
-      xmlns="http://www.w3.org/2000/svg"
-      class="quadrillage"
-    >
-      <!-- On définit le repère -->
-      <g name="repere1" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
-      <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
-      <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
-      <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
-      <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
-        
-      <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
-      <g class="label" linkto="O" x="-6" y="-2" style="font-size:0.5rem;">O</g>
-      <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
-      <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
-      <g name="A1" class="point labeled" repere="repere1" x="0.8" y="0.6" stroke="black" scale="0.5"></g>
-      <g class="label" linkto="A1" x="0" y="-6" style="font-size:0.3rem;">x</g>
-      <g name="A2" class="point labeled" repere="repere1" x="-0.8" y="0.6" stroke="black" scale="0.5"></g>
-      <g class="label" linkto="A2" x="-10" y="-6" style="font-size:0.3rem;">\pi-x</g>
-      <g name="A3" class="point labeled" repere="repere1" x="0.8" y="-0.6" stroke="black" scale="0.5"></g>
-      <g class="label" linkto="A3" x="-2" y="0" style="font-size:0.3rem;">-x</g>
-      <g name="A4" class="point labeled" repere="repere1" x="-0.8" y="-0.6" stroke="black" scale="0.5"></g>
-      <g class="label" linkto="A4" x="-10" y="0" style="font-size:0.3rem;">x+\pi</g>
-    </svg>
-</div>
+      <svg
+        id="figure1"
+        viewBox="0 0 60 60"
+        xmlns="http://www.w3.org/2000/svg"
+        class="quadrillage"
+      >
+        <!-- On définit le repère -->
+        <g name="repere1" class="repere" xmin="-1.5" ymin="-1.5" xmax="1.5" ymax ="1.5" xorigine="0" yorigine="0"></g>
+        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+          
+        <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+        <g class="label" linkto="O" x="-6" y="-2" style="font-size:0.5rem;">O</g>
+        <g name="c1" class="courbeRepresentative" expression="sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+        <g name="c2" class="courbeRepresentative" expression="-sqrt(1-x^2)"  pas="0.01" xmin="-1" xmax="1" linkto="repere1" fill="transparent" stroke="red" stroke-width="0.5"></g>
+        <g name="A1" class="point labeled" repere="repere1" x="0.8" y="0.6" stroke="black" scale="0.5"></g>
+        <g class="label" linkto="A1" x="0" y="-6" style="font-size:0.3rem;">x</g>
+        <g name="A2" class="point labeled" repere="repere1" x="-0.8" y="0.6" stroke="black" scale="0.5"></g>
+        <g class="label" linkto="A2" x="-10" y="-6" style="font-size:0.3rem;">\pi-x</g>
+        <g name="A3" class="point labeled" repere="repere1" x="0.8" y="-0.6" stroke="black" scale="0.5"></g>
+        <g class="label" linkto="A3" x="-2" y="0" style="font-size:0.3rem;">-x</g>
+        <g name="A4" class="point labeled" repere="repere1" x="-0.8" y="-0.6" stroke="black" scale="0.5"></g>
+        <g class="label" linkto="A4" x="-13" y="-3" style="font-size:0.3rem;">x+\pi</g>
+        <g class="label" linkto="A4" x="-10" y="0" style="font-size:0.3rem;">x-\pi</g>
+      </svg>
+  </div>
 </div>
 <div class="demonstration">
     <p>C'est une conséquence des symétries du cercle.</p>
