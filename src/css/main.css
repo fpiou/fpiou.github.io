@@ -189,6 +189,22 @@ summary {
   font-weight: bold;
 }
 
+/* Tableau de variations */
+.tableauvariations {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin: 1em 0em;
+  table-layout: fixed;
+}
+.tableauvariations tr:nth-child(1) {
+  border-bottom: 1px solid black;
+}
+.tableauvariations td:nth-child(1) {
+  border-right: 1px solid black;
+}
+
 /* Tableaux de signes */
 .tableausigne{
   width: 100%;
@@ -223,10 +239,12 @@ summary {
     border-left: 1px solid #000000;
 }
 
-.tableausigne tr:nth-child(n+2) td:nth-child(4) span, 
+/* Je ne comprends pas pourquoi le code suivant était présent.
+Toujours est-il qu'en l'enlevant la valeur n'est pas doublée. */
+/* .tableausigne tr:nth-child(n+2) td:nth-child(4) span, 
 .tableausigne tr:nth-child(n+2) td:nth-child(6) span {
     position: relative;
-}
+} */
 
 .tableausigne td:nth-child(1) {
   border-right: 1px solid black;
@@ -258,14 +276,14 @@ footer {
   font-weight: bold;
 }
 
-.question ol.horizontal-list, .question ul.horizontal-list {
+ol.horizontal-list, ul.horizontal-list {
   list-style: none;
   padding: 0;
   display: flex;
   flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante si nécessaire */
 }
 
-.question ol.horizontal-list li, .question ul.horizontal-list li {
+ol.horizontal-list li, ul.horizontal-list li {
   flex: 1; /* Permet aux éléments de la liste de s'ajuster automatiquement */
   padding: 0 5px;
   box-sizing: border-box;
@@ -279,4 +297,9 @@ footer {
 /* Classe pour trois colonnes */
 .horizontal-list.col-3c li {
   flex: 0 0 calc(33.333% - 10px) !important; /* Fixe la largeur à environ 33% pour trois colonnes */
+}
+
+/* Classe pour quatre colonnes */
+.horizontal-list.col-4c li {
+  flex: 0 0 calc(25% - 10px) !important; /* Fixe la largeur à environ 25% pour quatre colonnes */
 }
