@@ -26,7 +26,7 @@ function readFilesRecursively(directory) {
     const fullPath = path.join(directory, file.name);
     if (file.isDirectory()) {
       results = results.concat(readFilesRecursively(fullPath));
-    } else if (path.extname(file.name) === ".html") {
+    } else if (path.extname(file.name) === ".html" || path.extname(file.name) === ".xml") {
       results.push(fullPath);
     }
   });
@@ -56,19 +56,21 @@ const htmlPlugins = contentFiles.map((file) => {
   const pathDist = path.resolve(__dirname, "./dist");
   const pathSource = path.resolve(__dirname, "./src");
   const pathOutput = path.relative(pathSource, pathDist);
-  const pathRelative = path.relative(pathSource, file);
+  const pathRelative = path.extname(file) === '.xml' 
+    ? path.relative(pathSource, file).replace('.xml', '.html') 
+    : path.relative(pathSource, file);
 
   let cssFiles = [];
   cssFiles.push("main.css");
   
   if (file.includes("exercices")) {
-    cssFiles.push("prettyExercice.css", "print2colonnes.css");
+    cssFiles.push("prettyExercice.css");
   }
   if (file.includes("lessons")) {
-    cssFiles.push("prettyLesson.css", "print1colonne.css");
+    cssFiles.push("prettyLesson.css");
   }
   if (file.includes("quizs")) {
-    cssFiles.push("quiz.css", "print2colonnes.css");
+    cssFiles.push("quiz.css");
   }
 
   if (fileContainsFigureClass(file)) {
