@@ -37629,9 +37629,11 @@ var initialiserPointTransform = function (point) {
   var y = 0;
   if (point.hasAttribute("x")) {
     x = point.getAttribute("x");
+    x = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(x);
   }
   if (point.hasAttribute("y")) {
     y = point.getAttribute("y");
+    y = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(y);
   }
   if (point.hasAttribute("repere")) {
     var repere = document.getElementById(point.getAttribute("repere"));
