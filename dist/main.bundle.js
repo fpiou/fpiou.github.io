@@ -36882,16 +36882,36 @@ var insererEntetesBlocsLesson = function () {
 };
 var insererEntetesBlocsExercices = function () {
   const questions = document.querySelectorAll(".question");
-  questions.forEach((question, index) => {
+  var index = 0;
+  questions.forEach(question => {
     const title = document.createElement("titreQuestion");
-    title.innerHTML = "\n        <span class=\"titreQuestion\">\n            Question de cours ".concat(index + 1, "\n        </span>");
-    question.insertBefore(title, question.firstChild);
+    if (question.hasAttribute("start")) {
+      index = parseInt(question.getAttribute("start")) - 1;
+    } else {
+      title.innerHTML = "\n        <span class=\"titreQuestion\">\n            Q".concat(index + 1, "\n        </span>");
+      if (question.children.length > 0) {
+        question.children[0].insertBefore(title, question.children[0].firstChild);
+      } else {
+        question.insertBefore(title, question.firstChild);
+      }
+    }
+    index++;
   });
   const exercices = document.querySelectorAll(".exercice");
-  exercices.forEach((exercice, index) => {
+  var index = 0;
+  exercices.forEach(exercice => {
     const title = document.createElement("titreExercice");
-    title.innerHTML = "\n        <span class=\"titreExercice\">\n            Exercice ".concat(index + 1, "\n        </span>");
-    exercice.insertBefore(title, exercice.firstChild);
+    if (exercice.hasAttribute("start")) {
+      index = parseInt(exercice.getAttribute("start")) - 1;
+    } else {
+      title.innerHTML = "\n        <span class=\"titreExercice\">\n            E".concat(index + 1, "\n        </span>");
+      if (exercice.children.length > 0) {
+        exercice.children[0].insertBefore(title, exercice.children[0].firstChild);
+      } else {
+        exercice.insertBefore(title, exercice.firstChild);
+      }
+    }
+    index++;
   });
   var solutions = document.querySelectorAll(".solution");
   for (var i = 0; i < solutions.length; i++) {
@@ -37072,45 +37092,19 @@ var openAvantPrint = function () {
     detailsElements.forEach(details => {
       details.setAttribute("open", "");
     });
-
-    // var clonedNodes = [];
-    // // Demander à l'utilisateur combien d'exemplaires il souhaite
-    // //var numberOfCopies = prompt("Combien d'exemplaires souhaitez-vous imprimer ?", "1");
-    // var numberOfCopies = 2;
-    // // Vérifiez si la valeur saisie est un nombre valide
-    // if (isNaN(numberOfCopies) || numberOfCopies <= 0) {
-    //   alert("Veuillez entrer un nombre valide d'exemplaires.");
-    //   return;
-    // }
-
-    // Dupliquer le contenu du body en fonction du nombre d'exemplaires spécifié
-    // for (let i = 0; i < numberOfCopies - 1; i++) {
-    //   var bodyContent = Array.from(document.body.childNodes);
-    //   bodyContent.forEach(node => {
-    //     var clone = node.cloneNode(true);
-
-    //     // Insérer un div pour forcer un saut de page avant le clone
-    //     var breakElement = document.createElement("div");
-    //     breakElement.classList.add("page-break");
-    //     document.body.appendChild(breakElement);
-
-    //     document.body.appendChild(clone);
-    //     clonedNodes.push(clone); // Stocker une référence aux noeuds clonés pour les supprimer plus tard
-    //   });
-    // }
+    duplicateContent();
   };
-
   window.onafterprint = function () {
-    // Supprimer les noeuds clonés après l'impression
-    // clonedNodes.forEach(node => {
-    //   document.body.removeChild(node);
-    // });
-    // Supprimer les div de saut de page
-    // var breakElements = document.querySelectorAll(".page-break");
-    // breakElements.forEach(breakElement => {
-    //   document.body.removeChild(breakElement);
-    // });
-    // clonedNodes = []; // Vider la liste des noeuds clonés
+    // Fermer tous les éléments <details>
+    const detailsElements = document.querySelectorAll("details");
+    detailsElements.forEach(details => {
+      details.removeAttribute("open");
+    });
+    // Supprimer les copies
+    const copies = document.querySelectorAll(".copied");
+    copies.forEach(copy => {
+      copy.remove();
+    });
   };
 };
 var adapterPositionDropdown = function (event) {
@@ -37239,6 +37233,18 @@ function chargerBacasables() {
     });
   });
   return Promise.all(promesses);
+}
+function duplicateContent() {
+  var copies = document.querySelectorAll("[copy]");
+  copies.forEach(function (copy) {
+    var nbCopies = parseInt(copy.getAttribute("copy"));
+    for (var i = 1; i < nbCopies; i++) {
+      var div = document.createElement("div");
+      div.classList.add("copied");
+      div.innerHTML = copy.innerHTML;
+      copy.parentNode.insertBefore(div, copy);
+    }
+  });
 }
 document.addEventListener("DOMContentLoaded", async function () {
   try {

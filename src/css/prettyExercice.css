@@ -28,8 +28,20 @@ details.indice {
 }
 
 .titreExercice, .titreQuestion {
+  display: inline-block;
+  width: 3rem;
   font-weight: bold;
-  font-size: 1.2em;
+  text-align: center;
+}
+
+.titreQuestion {
+  background-color:rgb(255, 183, 48);
+  color:black;
+}
+
+.titreExercice {
+  background-color:rgb(62, 159, 111);
+  color: rgb(255, 183, 48);
 }
 
 /* Empêcher le retour à la ligne des formules */
