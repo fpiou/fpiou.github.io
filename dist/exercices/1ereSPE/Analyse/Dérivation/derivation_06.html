@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Derivation_06.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+<button onclick="diminuerTaille()">Taille -1</button>
+<button onclick="augmenterTaille()">Taille +1</button>
+<button onclick="colonne()">Colonnes</button>
+<button onclick="quadrillage()">Quadrillage</button>
+<button onclick="window.print()">Imprimer</button>
+    <main><div class="question">
+    <div class="enonce">
+        Soit $f$ une fonction dérivable sur un intervalle $I$ et $a$ un réel de $I$.
+        Donner la formule qui donne l'équation de la tangente à la courbe représentative de la fonction $f$ au point d'abscisse $a.$
+    </div>
+    <div class="solution">
+        <p>Soit $f$ une fonction dérivable sur un intervalle $I$ et $a$ un réel de $I$.</p>
+        <p>La tangente à la courbe représentative de la fonction $f$ au point d'abscisse $a$ a pour équation $$y=f'(a)(x-a)+f(a)$$.</p>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        Complétez le tableau suivant.
+        <style>
+            .deriveesusuelles {
+            border-collapse: collapse;
+            width: 100%;
+            }
+        
+            .deriveesusuelles th, .deriveesusuelles td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 1px;
+            width: 25%;
+            }
+        </style>
+        <table class="deriveesusuelles">
+            <thead>
+                <tr>
+                    <th>Fonctions</th>
+                    <th>$f(x)$</th>
+                    <th>Dérivable sur ...</th>
+                    <th>$f'(x)$</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>constante</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>identité</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>linéaire</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>affine</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>carrée</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>cube</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>inverse</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>racine carrée</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="solution">
+        <table class="deriveesusuelles">
+            <thead>
+                <tr>
+                    <th>Fonctions</th>
+                    <th>$f(x)$</th>
+                    <th>Dérivable sur ...</th>
+                    <th>$f'(x)$</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>constante</td>
+                    <td>$f(x)=p$</td>
+                    <td>$\mathbb{R}$</td>
+                    <td>$f'(x)=0$</td>
+                </tr>
+                <tr>
+                    <td>identité</td>
+                    <td>$f(x)=x$</td>
+                    <td>$\mathbb{R}$</td>
+                    <td>$f'(x)=1$</td>
+                </tr>
+                <tr>
+                    <td>linéaire</td>
+                    <td>$f(x)=mx$</td>
+                    <td>$\mathbb{R}$</td>
+                    <td>$f'(x)=m$</td>
+                </tr>
+                <tr>
+                    <td>affine</td>
+                    <td>$f(x)=mx+p$</td>
+                    <td>$\mathbb{R}$</td>
+                    <td>$f'(x)=m$</td>
+                </tr>
+                <tr>
+                    <td>carrée</td>
+                    <td>$f(x)=x^2$</td>
+                    <td>$\mathbb{R}$</td>
+                    <td>$f'(x)=2x$</td>
+                </tr>
+                <tr>
+                    <td>cube</td>
+                    <td>$f(x)=x^3$</td>
+                    <td>$\mathbb{R}$</td>
+                    <td>$f'(x)=3x^2$</td>
+                </tr>
+                <tr>
+                    <td>inverse</td>
+                    <td>$f(x)=\dfrac{1}{x}$</td>
+                    <td>$\mathbb{R}^*$</td>
+                    <td>$f'(x)=-\dfrac{1}{x^2}$</td>
+                </tr>
+                <tr>
+                    <td>racine carrée</td>
+                    <td>$f(x)=\sqrt{x}$</td>
+                    <td>$]0;+\infty[$</td>
+                    <td>$f'(x)=\dfrac{1}{2\sqrt{x}}$</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>   
+</div>
+<div class="question">
+    <div class="enonce">
+    Donnez les conditions de dérivabilité si nécessaire et les formules de dérivations dans chacune situation.
+        <ol class="alphabetical-list">
+            <li>Dérivée de la somme de deux fonctions.</li>
+            <li>Dérivée du produit par une constante.</li>
+            <li>Dérivée du produit de deux fonctions.</li>
+            <li>Dérivée du carré d'une fonction.</li>
+            <li>Dérivée de l'inverse d'une fonction.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Dérivée de la somme de deux fonctions.
+                <p>Soient $u$ et $v$ deux fonctions dérivables sur un intervalle $I$.</p>
+                <p>Alors $u+v$ est dérivable sur $I$ et $(u+v)'=u'+v'$.</p>
+            </li>
+            <li>Dérivée du produit par une constante.
+                <p>Soient $u$ une fonction dérivable sur un intervalle $I$ et $k$ une constante.</p>
+                <p>Alors $k\times u$ est dérivable sur $I$ et $(k\times u)'=k\times u'$.</p>
+            </li>
+            <li>Dérivée du produit de deux fonctions.
+                <p>Soient $u$ et $v$ deux fonctions dérivables sur un intervalle $I$.</p>
+                <p>Alors $u\times v$ est dérivable sur $I$ et $(u\times v)'=u'\times v+u\times v'$.</p>
+            </li>
+            <li>Dérivée du carré d'une fonction.
+                <p>Soit $u$ une fonction dérivable sur un intervalle $I$.</p>
+                <p>Alors $u^2$ est dérivable sur $I$ et $(u^2)'=2u\times u'$.</p>
+            </li>
+            <li>Dérivée de l'inverse d'une fonction.
+                <p>Soit $u$ une fonction dérivable sur un intervalle $I$.</p>
+                <p>Si $u$ ne s'annule pas sur $I$, alors $\dfrac{1}{u}$ est dérivable sur $I$ et $\left(\dfrac{1}{u}\right)'=-\dfrac{u'}{u^2}$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $f$ la fonction définie et dérivable sur $]0~;~+\infty[$ par $f(x)=4x^3-2x^2+8+\dfrac{4}{x}-3\sqrt{x}$.<br>
+        Montrez que l'équation de la tangente à la courbe représentative de $f$ au point d'abscisse $1$ est $y=\dfrac{5x+17}{2}$.
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>On a $f'(x)=12x^2-4x-\dfrac{4}{x^2}-\dfrac{3}{2\sqrt{x}}$.</p>
+            </li>
+            <li><p>On a $$
+            \begin{align*}
+            f'(1)&=12\times 1^2-4\times 1-\dfrac{4}{1^2}-\dfrac{3}{2\sqrt{1}}\\
+            &=12-4-4-\dfrac{3}{2}\\
+            &=4-\dfrac{3}{2}\\
+            f'(1)&=\dfrac{5}{2}.
+            \end{align*}
+            $$ et $$
+            \begin{align*}
+            f(1)&=4\times 1^3-2\times 1^2+8+\dfrac{4}{1}-3\sqrt{1}\\
+            &=4-2+8+4-3\\
+            f(1)&=11</p>
+                <p>D'où l'équation de la tangente est
+                $$
+                \begin{align*}
+                y&=\dfrac{5}{2}(x-1)+11\\
+                &=\dfrac{5x}{2}-\dfrac{5}{2}+11\\
+                &=\dfrac{5x}{2}-\dfrac{5}{2}+\dfrac{22}{2}\\
+                &=\dfrac{5x+17}{2}.
+                \end{align*}
+                $$
+                </p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        En choisissant la formule la plus adaptée, calculer la dérivée des fonctions suivantes sur $I$.
+        <ol class="alphabetical-list">
+            <li>$f(x)=5\sqrt{x}$ sur $I=]0~;~+\infty[.$</li>
+            <li>$f(x)=5x-\dfrac{8}{x}$ sur $I=\mathbb{R}^*.$</li>
+            <li>$f(x)=(2x^3-3x+1)(x^2-1)$ sur $I=\mathbb{R}.$</li>
+            <li>$f(x)=\dfrac{1}{4x^2+8}$ sur $I=\mathbb{R}.$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Notons $u(x)=\sqrt{x}$.</p>
+                <p>On a $u'(x)=\dfrac{1}{2\sqrt{x}}$.</p>
+                <p>Donc $f'(x)=5u'(x)=\dfrac{5}{2\sqrt{x}}$.</p>
+            </li>
+            <li><p>Notons $u(x)=5x$ et $v(x)=-\dfrac{8}{x}$.</p>
+                <p>On a $u'(x)=5$ et $v'(x)=\dfrac{8}{x^2}$.</p>
+                <p>Donc $f'(x)=u'(x)+v'(x)=5+\dfrac{8}{x^2}$.</p>
+            </li>
+            <li><p>Notons $u(x)=2x^3-3x+1$ et $v(x)=x^2-1$.</p>
+                <p>On a $u'(x)=6x^2-3$ et $v'(x)=2x$.</p>
+                <p>Donc $f'(x)=u'(x)v(x)+u(x)v'(x)=(6x^2-3)(x^2-1)+(2x)(2x^3-3x+1)$.</p>
+            </li>
+            <li><p>Notons $u(x)=4x^2+8$.</p>
+                <p>On a $u'(x)=8x$.</p>
+                <p>Donc $f'(x)=-\dfrac{u'(x)}{u(x)^2}=-\dfrac{8x}{(4x^2+8)^2}$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=(x-3)(x+4)$.
+        <ol class="alphabetical-list">
+            <li>Développer l'expression de $f(x)$.</li>
+            <li>Calculer $f'(x)$ de deux manières différentes.</li>
+            <li>En déduire l'équation réduite de la tangente à la courbe représentative de $f$ en $-2$.</li>
+            <li>Factorisez $f(x)-(ax+b)$ où $y=ax+b$ est l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $-2$.</li>
+            <li>En déduire la position relative de la courbe représentative de $f$ par rapport à sa tangente en $-2$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>On a $f(x)=x^2+x-12$.</p>
+            </li>
+            <li><p>Notons $u(x)=(x-3)$ et $v(x)=(x+4)$.</p>
+                <p>On a $u'(x)=1$ et $v'(x)=1$.</p>
+                <p>Donc $f'(x)=u'(x)v(x)+u(x)v'(x)=1\times (x+4)+(x-3)\times 1=2x+1$.</p>
+                <p>Notons $u(x)=x^2$ et $v(x)=x-12$.</p>
+                <p>On a $u'(x)=2x$ et $v'(x)=1$.</p>
+                <p>Donc $f'(x)=u'(x)+v'(x)=2x+1$.</p>
+            </li>
+            <li><p>On a $f'(-2)=-3$ et $f(-2)=-10$.</p>
+                <p>D'où l'équation de la tangente est
+                $$
+                \begin{align*}
+                y&=-3(x+2)-10\\
+                &=-3x-6-10\\
+                &=-3x-16.
+                \end{align*}
+                $$
+                </p>
+            </li>
+            <li><p>On a $$
+                \begin{align*}
+                f(x)-(2x+1)&=x^2+x-12-(-3x-16)\\
+                &=x^2+x-12+3x+16\\
+                &=x^2+4x+4\\
+                &=(x+2)^2.
+                \end{align*}
+            </li>
+            <li>
+            <p>Un carré est toujours positif donc $f(x)-(2x+1)\geqslant 0$.</p>
+            <p>Par conséquent la courbe représentative de $f$ est au-dessus de sa tangente au point d'abscisse $-2$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+            </main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>
