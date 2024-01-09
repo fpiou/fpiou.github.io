@@ -40015,8 +40015,8 @@ function printQuiz(nextQuestions) {
   // On ajoute les solutions à l'élément div
   quizElement.innerHTML += "\n<div class=\"titrePrintQuiz-date solution-quiz\">\n  <div class=\"titrePrintQuiz\">Quiz - Solutions</div>\n</div><br>\n  " + solution;
   // PLacer l'entete et le quiz dans le body
-  document.body.prepend(quizElement);
-  document.body.prepend(entete);
+  document.body.appendChild(entete);
+  document.body.appendChild(quizElement);
   mettreEnFormeQuiz();
 }
 async function createQuizs() {
