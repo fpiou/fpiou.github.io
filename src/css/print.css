@@ -57,13 +57,11 @@
     gap: 1em; /* Espacement entre les colonnes */
   }
 
-  .titrePrintQuiz-date {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5em 0em 2em 0em;
-    gap: 1em; /* Espacement entre les colonnes */
+  #enteteQuiz {
+    display:block;
+  }
+  .titrePrintQuiz {
+    display: block;
     text-align: center;
     font-size: larger;
     font-weight: bold;
@@ -116,9 +114,7 @@
   svg {
     width: 100%;
   }
-  .titrePrintQuiz-date {
-    display: block;
-  }
+  
   .solution-quiz {
     display: inline-block;
   }
@@ -127,5 +123,9 @@
     column-rule: 1px solid black;
     width: 100vw;
     max-width: 100vw;
-  }  
+  }
+  /* Empêcher le saut de page pour les les div avec la class div-formulaire */
+  .quiz {
+    page-break-inside: avoid;
+  }
 }

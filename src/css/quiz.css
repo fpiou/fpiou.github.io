@@ -60,3 +60,8 @@
   padding: 1em;
   align-content: center;
   background-color: lightblue;
+}
+
+#enteteQuiz {
+  display:none;
+}

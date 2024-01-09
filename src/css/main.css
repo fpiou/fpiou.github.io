@@ -305,3 +305,4 @@ ol.horizontal-list li, ul.horizontal-list li {
 .horizontal-list.col-4c li {
   flex: 0 0 calc(25% - 10px) !important; /* Fixe la largeur à environ 25% pour quatre colonnes */
 }
+

@@ -37181,7 +37181,15 @@ var colonnes = function () {
     if (document.body.classList.contains("deuxcolonnes")) {
       document.body.classList.remove("deuxcolonnes");
     } else {
-      document.body.classList.add("deuxcolonnes");
+      if (document.getElementById("printquiz") != null) {
+        if (document.getElementById("printquiz").classList.contains("deuxcolonnes")) {
+          document.getElementById("printquiz").classList.remove("deuxcolonnes");
+        } else {
+          document.getElementById("printquiz").classList.add("deuxcolonnes");
+        }
+      } else {
+        document.body.classList.add("deuxcolonnes");
+      }
     }
   };
 };
@@ -39966,14 +39974,22 @@ function nextQuestion(nextQuestions) {
   };
 }
 function printQuiz(nextQuestions) {
-  // On vide le div printquiz s'il existe
+  var deuxcolonnes = false;
+  // On supprime le printquiz s'il existe
   if (document.getElementById("printquiz")) {
+    if (document.getElementById("printquiz").classList.contains("deuxcolonnes")) {
+      deuxcolonnes = true;
+    }
     document.getElementById("printquiz").remove();
+  }
+  // On supprime l'entete s'il existe
+  if (document.getElementById("enteteQuiz")) {
+    document.getElementById("enteteQuiz").remove();
   }
   let quiz = "";
   let solution = "";
   for (let i = 0; i < nextQuestions.length; i++) {
-    quiz += "\n    <div class=\"question\">\n<strong>Question ".concat(i + 1, " : </strong>").concat(nextQuestions[i].question, "\n</div>\n<form class=\"quiz-choices\">\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[0], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[1], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[2], "</label>\n    </div>\n\n    <div class=\"choix\">\n        <input type=\"radio\" name=\"choix\">\n        <label>").concat(nextQuestions[i].answers[3], "</label>\n    </div>\n</form>\n");
+    quiz += "\n    <div class=\"quiz\">\n      <div class=\"question\">\n        <strong>Question ".concat(i + 1, " : </strong>").concat(nextQuestions[i].question, "\n      </div>\n      <form class=\"quiz-choices\">\n          <div class=\"choix\">\n              <input type=\"radio\" name=\"choix\">\n              <label>").concat(nextQuestions[i].answers[0], "</label>\n          </div>\n\n          <div class=\"choix\">\n              <input type=\"radio\" name=\"choix\">\n              <label>").concat(nextQuestions[i].answers[1], "</label>\n          </div>\n\n          <div class=\"choix\">\n              <input type=\"radio\" name=\"choix\">\n              <label>").concat(nextQuestions[i].answers[2], "</label>\n          </div>\n\n          <div class=\"choix\">\n              <input type=\"radio\" name=\"choix\">\n              <label>").concat(nextQuestions[i].answers[3], "</label>\n          </div>\n      </form>\n    </div>\n");
     solution += "\n<div class=\"solution-quiz\">\n<strong>Question ".concat(i + 1, " : </strong>").concat(nextQuestions[i].answers[nextQuestions[i].correctAnswer], "\n</div>\n    ");
   }
   // On créé un élément div pour contenir le quiz
@@ -39982,20 +39998,25 @@ function printQuiz(nextQuestions) {
   quizElement.id = "printquiz";
   // Ajouter la class page-break pour l'impression
   quizElement.classList.add("page-break");
+  // On ajoute la classe deuxcolonnes si elle existe
+  if (deuxcolonnes) {
+    quizElement.classList.add("deuxcolonnes");
+  }
   // On ajoute une entete avec un titre, la date, un espace pour le nom, le prénom et la classe
   var entete = document.createElement("div");
   entete.id = "enteteQuiz";
-  entete.innerHTML = "\n<div class=\"nom-prenom-classe\">\n  <div id=\"nom\">Nom :</div>\n  <div id=\"prenom\">Pr\xE9nom :</div>\n  <div id=\"classe\">Classe :</div>\n</div>\n<div class=\"titrePrintQuiz-date\">\n  <div class=\"titrePrintQuiz\">Quiz</div>\n  <div class=\"date\">".concat(new Date().toLocaleDateString(), "</div>\n</div>\n    ");
+  entete.innerHTML = "\n<div class=\"nom-prenom-classe\">\n  <div id=\"nom\">Nom :</div>\n  <div id=\"prenom\">Pr\xE9nom :</div>\n  <div id=\"classe\">Classe :</div>\n</div>\n<div class=\"titrePrintQuiz\">\n  Quiz du ".concat(new Date().toLocaleDateString(), "\n</div>\n    ");
   // On ajoute le quiz à l'élément div
   quizElement.innerHTML = quiz;
-  // On ajoute l'entete à l'élément div
-  quizElement.prepend(entete);
+  // quizElement.prepend(entete);
   // On le rend invisible
   // quizElement.style.display = "none";
   // On ajoute l'élément div au body
   // On ajoute les solutions à l'élément div
-  quizElement.innerHTML += "\n<div class=\"titrePrintQuiz-date solution-quiz\">\n  <div class=\"titrePrintQuiz\">Quiz - Solutions</div>\n  <div class=\"date\">".concat(new Date().toLocaleDateString(), "</div>\n</div>\n  ") + solution;
-  document.body.appendChild(quizElement);
+  quizElement.innerHTML += "\n<div class=\"titrePrintQuiz-date solution-quiz\">\n  <div class=\"titrePrintQuiz\">Quiz - Solutions</div>\n</div><br>\n  " + solution;
+  // PLacer l'entete et le quiz dans le body
+  document.body.prepend(quizElement);
+  document.body.prepend(entete);
   mettreEnFormeQuiz();
 }
 async function createQuizs() {
