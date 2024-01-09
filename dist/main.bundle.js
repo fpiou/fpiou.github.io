@@ -37178,17 +37178,22 @@ var taillePolice = function () {
 };
 var colonnes = function () {
   window.colonne = function () {
+    var button = document.getElementById("boutonColonnes");
     if (document.body.classList.contains("deuxcolonnes")) {
       document.body.classList.remove("deuxcolonnes");
+      button.classList.remove("boutonActive");
     } else {
       if (document.getElementById("printquiz") != null) {
         if (document.getElementById("printquiz").classList.contains("deuxcolonnes")) {
           document.getElementById("printquiz").classList.remove("deuxcolonnes");
+          button.classList.remove("boutonActive");
         } else {
           document.getElementById("printquiz").classList.add("deuxcolonnes");
+          button.classList.add("boutonActive");
         }
       } else {
         document.body.classList.add("deuxcolonnes");
+        button.classList.add("boutonActive");
       }
     }
   };
@@ -37212,12 +37217,13 @@ var plierDeplier = function () {
 };
 var quadrillage = function () {
   window.quadrillage = function () {
-    // SI le quadrillage est activé, on le désactive
-    // SINON on l'active
+    var button = document.getElementById("boutonQuadrillage");
     if (document.body.classList.contains("quadrillage")) {
       document.body.classList.remove("quadrillage");
+      button.classList.remove("boutonActive");
     } else {
       document.body.classList.add("quadrillage");
+      button.classList.add("boutonActive");
     }
   };
 };
@@ -37257,11 +37263,14 @@ function duplicateContent() {
 function quiz_print_choices() {
   window.quiz_print_choices = function () {
     var forms = document.querySelectorAll("form.quiz-choices");
+    var button = document.getElementById("boutonImprimerChoix");
     forms.forEach(function (form) {
       if (form.classList.contains("noprint")) {
         form.classList.remove("noprint");
+        button.classList.add("boutonActive");
       } else {
         form.classList.add("noprint");
+        button.classList.remove("boutonActive");
       }
     });
   };
@@ -37269,11 +37278,14 @@ function quiz_print_choices() {
 function quiz_print_solutions() {
   window.quiz_print_solutions = function () {
     var forms = document.querySelectorAll(".solution-quiz");
+    var button = document.getElementById("boutonImprimerSolutions");
     forms.forEach(function (form) {
       if (form.classList.contains("noprint")) {
         form.classList.remove("noprint");
+        button.classList.add("boutonActive");
       } else {
         form.classList.add("noprint");
+        button.classList.remove("boutonActive");
       }
     });
   };
@@ -39640,6 +39652,10 @@ async function importerBD() {
       nomFichier += ".html";
     }
     nomFichier = nomFichier.replace(".html", ".sqlite");
+    // Si le nom du fichier contient quiz, on le remplace par quizs.sqlite
+    if (nomFichier.includes("quiz")) {
+      nomFichier = "quizs.sqlite";
+    }
     xhr.open("GET", nomFichier, true);
     xhr.responseType = "arraybuffer";
     xhr.onload = function (e) {

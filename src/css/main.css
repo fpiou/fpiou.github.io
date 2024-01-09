@@ -306,3 +306,12 @@ ol.horizontal-list li, ul.horizontal-list li {
   flex: 0 0 calc(25% - 10px) !important; /* Fixe la largeur à environ 25% pour quatre colonnes */
 }
 
+/* Classe pour les boutons du bandeau */
+.boutonsBandeau {
+  display: inline-block;
+  appearance: auto;
+}
+
+.boutonActive {
+  background-color: #079b34a8;
+}
