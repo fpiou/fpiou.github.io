@@ -37254,6 +37254,30 @@ function duplicateContent() {
     }
   });
 }
+function quiz_print_choices() {
+  window.quiz_print_choices = function () {
+    var forms = document.querySelectorAll("form.quiz-choices");
+    forms.forEach(function (form) {
+      if (form.classList.contains("noprint")) {
+        form.classList.remove("noprint");
+      } else {
+        form.classList.add("noprint");
+      }
+    });
+  };
+}
+function quiz_print_solutions() {
+  window.quiz_print_solutions = function () {
+    var forms = document.querySelectorAll(".solution-quiz");
+    forms.forEach(function (form) {
+      if (form.classList.contains("noprint")) {
+        form.classList.remove("noprint");
+      } else {
+        form.classList.add("noprint");
+      }
+    });
+  };
+}
 document.addEventListener("DOMContentLoaded", async function () {
   try {
     await chargerBacasables();
@@ -37274,6 +37298,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     colonnes();
     plierDeplier();
     quadrillage();
+    quiz_print_choices();
+    quiz_print_solutions();
   } catch (erreur) {
     console.error(erreur);
   }
@@ -39975,6 +40001,16 @@ function nextQuestion(nextQuestions) {
 }
 function printQuiz(nextQuestions) {
   var deuxcolonnes = false;
+  var noprint_choices = "";
+  var noprint_solutions = "";
+  var forms = document.querySelectorAll("form");
+  if (forms[0].classList.contains('noprint')) {
+    noprint_choices = "noprint";
+  }
+  var solutions_quiz = document.querySelectorAll(".solution-quiz");
+  if (solutions_quiz.length > 0 && solutions_quiz[0].classList.contains('noprint')) {
+    noprint_solutions = "noprint";
+  }
   // On supprime le printquiz s'il existe
   if (document.getElementById("printquiz")) {
     if (document.getElementById("printquiz").classList.contains("deuxcolonnes")) {
@@ -39989,8 +40025,8 @@ function printQuiz(nextQuestions) {
   let quiz = "";
   let solution = "";
   for (let i = 0; i < nextQuestions.length; i++) {
-    quiz += "\n    <div class=\"quiz\">\n      <div class=\"question\">\n        <strong>Question ".concat(i + 1, " : </strong>").concat(nextQuestions[i].question, "\n      </div>\n      <form class=\"quiz-choices\">\n          <div class=\"choix\">\n              <input type=\"radio\" name=\"choix\">\n              <label>").concat(nextQuestions[i].answers[0], "</label>\n          </div>\n\n          <div class=\"choix\">\n              <input type=\"radio\" name=\"choix\">\n              <label>").concat(nextQuestions[i].answers[1], "</label>\n          </div>\n\n          <div class=\"choix\">\n              <input type=\"radio\" name=\"choix\">\n              <label>").concat(nextQuestions[i].answers[2], "</label>\n          </div>\n\n          <div class=\"choix\">\n              <input type=\"radio\" name=\"choix\">\n              <label>").concat(nextQuestions[i].answers[3], "</label>\n          </div>\n      </form>\n    </div>\n");
-    solution += "\n<div class=\"solution-quiz\">\n<strong>Question ".concat(i + 1, " : </strong>").concat(nextQuestions[i].answers[nextQuestions[i].correctAnswer], "\n</div>\n    ");
+    quiz += "\n    <div class=\"quiz\">\n      <div class=\"question\">\n        <strong>Question ".concat(i + 1, " : </strong>").concat(nextQuestions[i].question, "\n      </div>\n      <form class=\"quiz-choices ").concat(noprint_choices, "\">\n          <div class=\"choix\">\n              <input type=\"radio\" name=\"choix\">\n              <label>").concat(nextQuestions[i].answers[0], "</label>\n          </div>\n\n          <div class=\"choix\">\n              <input type=\"radio\" name=\"choix\">\n              <label>").concat(nextQuestions[i].answers[1], "</label>\n          </div>\n\n          <div class=\"choix\">\n              <input type=\"radio\" name=\"choix\">\n              <label>").concat(nextQuestions[i].answers[2], "</label>\n          </div>\n\n          <div class=\"choix\">\n              <input type=\"radio\" name=\"choix\">\n              <label>").concat(nextQuestions[i].answers[3], "</label>\n          </div>\n      </form>\n    </div>\n");
+    solution += "\n<div class=\"solution-quiz ".concat(noprint_solutions, "\">\n<strong>Question ").concat(i + 1, " : </strong>").concat(nextQuestions[i].answers[nextQuestions[i].correctAnswer], "\n</div>\n    ");
   }
   // On créé un élément div pour contenir le quiz
   const quizElement = document.createElement("div");
@@ -40013,7 +40049,7 @@ function printQuiz(nextQuestions) {
   // quizElement.style.display = "none";
   // On ajoute l'élément div au body
   // On ajoute les solutions à l'élément div
-  quizElement.innerHTML += "\n<div class=\"titrePrintQuiz-date solution-quiz\">\n  <div class=\"titrePrintQuiz\">Quiz - Solutions</div>\n</div><br>\n  " + solution;
+  quizElement.innerHTML += "\n<div class=\"titrePrintQuiz-date solution-quiz ".concat(noprint_solutions, "\">\n  <div class=\"titrePrintQuiz\">Quiz - Solutions</div>\n</div><br>\n  ") + solution;
   // PLacer l'entete et le quiz dans le body
   document.body.appendChild(entete);
   document.body.appendChild(quizElement);

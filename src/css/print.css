@@ -34,12 +34,11 @@
   .background-figure,
   #sommaire,
   #formulaire,
-  .quiz-choices,
+  .noprint,
   .quiz-button-valider,
   button,
   nav,
   .introduction-quiz,
-  /*.solution-quiz,*/
   #score {
     display: none !important;
   }
