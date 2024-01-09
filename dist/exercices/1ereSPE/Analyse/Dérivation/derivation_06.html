@@ -321,8 +321,10 @@
             \begin{align*}
             f(1)&=4\times 1^3-2\times 1^2+8+\dfrac{4}{1}-3\sqrt{1}\\
             &=4-2+8+4-3\\
-            f(1)&=11</p>
-                <p>D'où l'équation de la tangente est
+            f(1)&=11
+            \end{align*}
+            $$</p>
+            <p>D'où l'équation de la tangente est
                 $$
                 \begin{align*}
                 y&=\dfrac{5}{2}(x-1)+11\\
@@ -331,7 +333,7 @@
                 &=\dfrac{5x+17}{2}.
                 \end{align*}
                 $$
-                </p>
+            </p>
             </li>
         </ol>
     </div>
@@ -397,11 +399,22 @@
     </div>
     <div class="solution">
         <ol class="alphabetical-list">
-            <li><p>On a $f(x)=x^2+x-12$.</p>
+            <li><p>Après développement on obtient $$f(x)=x^2+x-12$$</p>
             </li>
-            <li><p>Notons $u(x)=(x-3)$ et $v(x)=(x+4)$.</p>
+            <li><p>Dérivons la fonction $f$ d'abord en utilisant sa forme factorisée.</p>
+            $$f(x)=(x-3)(x+4)$$
+                <p>Notons $u(x)=x-3$ et $v(x)=x+4$.</p>
                 <p>On a $u'(x)=1$ et $v'(x)=1$.</p>
-                <p>Donc $f'(x)=u'(x)v(x)+u(x)v'(x)=1\times (x+4)+(x-3)\times 1=2x+1$.</p>
+                <p>Donc $$
+                \begin{align*}
+                f'(x)&=u'(x)v(x)+u(x)v'(x)\\
+                &=1\times (x+4)+(x-3)\times 1\\
+                &=2x+1
+                \end{align*}
+                $$
+                </p>
+                <p>Dérivons maintenant la fonction $f$ en utilisant sa forme développée-réduite.</p>
+                $$f(x)=x^2+x-12$$
                 <p>Notons $u(x)=x^2$ et $v(x)=x-12$.</p>
                 <p>On a $u'(x)=2x$ et $v'(x)=1$.</p>
                 <p>Donc $f'(x)=u'(x)+v'(x)=2x+1$.</p>
@@ -410,20 +423,24 @@
                 <p>D'où l'équation de la tangente est
                 $$
                 \begin{align*}
-                y&=-3(x+2)-10\\
+                y&=-3(x-(-2))-10\\
+                &=-3(x+2)-10\\
                 &=-3x-6-10\\
-                &=-3x-16.
+                y&=-3x-16.
                 \end{align*}
                 $$
                 </p>
             </li>
             <li><p>On a $$
                 \begin{align*}
-                f(x)-(2x+1)&=x^2+x-12-(-3x-16)\\
+                f(x)-(-3x-16)&=x^2+x-12-(-3x-16)\\
                 &=x^2+x-12+3x+16\\
                 &=x^2+4x+4\\
-                &=(x+2)^2.
+                &=x^2+2\times x\times 2+2^2\\
+                &=(x+2)^2
                 \end{align*}
+                $$
+                </p>
             </li>
             <li>
             <p>Un carré est toujours positif donc $f(x)-(2x+1)\geqslant 0$.</p>
