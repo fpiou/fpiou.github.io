@@ -51,6 +51,8 @@
     
     <link rel="stylesheet" href="/src/css/prettyExercice.css" />
     
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
     <link rel="stylesheet" href="/src/css/print.css" />
     
 
@@ -135,6 +137,111 @@
             <li>Citez deux intervalles ayant une intersection vide.</li>
         </ul>
     </div>
+    <div class="solution">
+        <ul class="alphabetical-list">
+            <li>Représentez graphiquement les intervalles $I$, $J$, $K$ et $L$ sur des droites graduées.
+            <div class="figure">
+                <svg viewBox="0 0 160 100" class="quadrillage">
+                <g name="repere1" class="repere" xmin="-8" ymin="-4" xmax="8" ymax ="1" xorigine="0" yorigine="0"></g>
+                <g name="I1" class="point labeled" repere="repere1" x="3" y="0" stroke="black" forme="["></g>
+                <g class="label" linkto="I1" x="-3" y="0" style="font-size: 0.8em;">3</g>
+                <g name="I2" class="point labeled" repere="repere1" x="7" y="0" stroke="black" forme="]"></g>
+                <g class="label" linkto="I2" x="-3" y="0" style="font-size: 0.8em;">7</g>
+                <g name="dI" class="droite" linkto="I1 I2"></g>
+                <g name="dI" class="segment" linkto="I1 I2" stroke-width="3" stroke="red" opacity="0.5"></g>
+                <g name="J1" class="point labeled" repere="repere1" x="-4" y="-1" stroke="black" forme="]"></g>
+                <g class="label" linkto="J1" x="-3" y="0" style="font-size: 0.8em;">-4</g>
+                <g name="J2" class="point labeled" repere="repere1" x="2" y="-1" stroke="black" forme="]"></g>
+                <g class="label" linkto="J2" x="-3" y="0" style="font-size: 0.8em;">2</g>
+                <g name="dJ" class="droite" linkto="J1 J2"></g>
+                <g name="dJ" class="segment" linkto="J1 J2" stroke-width="3" stroke="red" opacity="0.5"></g>
+                <g name="K1" class="point labeled" repere="repere1" x="-6" y="-2" stroke="black" forme="]"></g>
+                <g class="label" linkto="K1" x="-3" y="0" style="font-size: 0.8em;">-6</g>
+                <g name="K2" class="point labeled" repere="repere1" x="3" y="-2" stroke="black" forme="["></g>
+                <g class="label" linkto="K2" x="-3" y="0" style="font-size: 0.8em;">3</g>
+                <g name="dK" class="droite" linkto="K1 K2"></g>
+                <g name="dK" class="segment" linkto="K1 K2" stroke-width="3" stroke="red" opacity="0.5"></g>
+                <g name="L1" class="point labeled" repere="repere1" x="0" y="-3" stroke="black" forme="["></g>
+                <g class="label" linkto="L1" x="-3" y="0" style="font-size: 0.8em;">0</g>
+                <g name="L2" class="point labeled" repere="repere1" x="4" y="-3" stroke="black" forme="["></g>
+                <g class="label" linkto="L2" x="-3" y="0" style="font-size: 0.8em;">4</g>
+                <g name="dL" class="droite" linkto="L1 L2"></g>
+                <g name="dL" class="segment" linkto="L1 L2" stroke-width="3" stroke="red" opacity="0.5"></g>
+                </svg>
+            </div>
+            </li>
+            <li><p>Les bornes de l'intervalle $I$ sont $3$ et $7$.</p>
+                $$3\in I\text{ et }7\in I$$
+                <p>Les bornes de l'intervalle $J$ sont $-4$ et $2$.</p>
+                $$-4\notin J\text{ et }2\in J$$
+                <p>Les bornes de l'intervalle $K$ sont $-6$ et $3$.</p>
+                $$-6\notin K\text{ et }3\notin K$$
+                <p>Les bornes de l'intervalle $L$ sont $0$ et $4$.</p>
+                $$0\in L\text{ et }4\notin L$$
+            </li>
+            <li><p>$x\in I$ si et seulement si $3\leqslant x\leqslant 7$</p>
+                <p>$x\in J$ si et seulement si $-4\lt x\leqslant 2$</p>
+                <p>$x\in K$ si et seulement si $-6\lt x\lt 3$</p>
+                <p>$x\in L$ si et seulement si $0\leqslant x\lt 4$</p>
+            </li>
+            <li><p>L'intersection de $K$ et $L$ est l'ensemble des nombres réels $x$ tels que $x\in K$ et $x\in L$.</p>
+            <div class="figure">
+                <svg viewBox="0 0 160 60" class="quadrillage">
+                <g name="repere1" class="repere" xmin="-8" ymin="-4" xmax="8" ymax ="-1" xorigine="0" yorigine="0"></g>
+                <g name="K1" class="point labeled" repere="repere1" x="-6" y="-2" stroke="black" forme="]"></g>
+                <g class="label" linkto="K1" x="-3" y="0" style="font-size: 0.8em;">-6</g>
+                <g name="K2" class="point labeled" repere="repere1" x="3" y="-2" stroke="black" forme="["></g>
+                <g class="label" linkto="K2" x="-3" y="0" style="font-size: 0.8em;">3</g>
+                <g name="dK" class="droite" linkto="K1 K2"></g>
+                <g name="dK" class="segment" linkto="K1 K2" stroke-width="3" stroke="red" opacity="0.5"></g>
+                <g name="L1" class="point labeled" repere="repere1" x="0" y="-3" stroke="black" forme="["></g>
+                <g class="label" linkto="L1" x="-3" y="0" style="font-size: 0.8em;">0</g>
+                <g name="L2" class="point labeled" repere="repere1" x="4" y="-3" stroke="black" forme="["></g>
+                <g class="label" linkto="L2" x="-3" y="0" style="font-size: 0.8em;">4</g>
+                <g name="dL" class="droite" linkto="L1 L2"></g>
+                <g name="dL" class="segment" linkto="L1 L2" stroke-width="3" stroke="red" opacity="0.5"></g>
+                <g name="P1" class="point" repere="repere1" x="0" y="-1"></g>
+                <g name="P2" class="point" repere="repere1" x="3" y="-1"></g>
+                <g name="P3" class="point" repere="repere1" x="0" y="-4"></g>
+                <g name="P4" class="point" repere="repere1" x="3" y="-4"></g>
+                <g name="p" class="polygone" linkto="P1 P2 P4 P3" fill="blue" opacity="0.3"></g>
+                </svg>
+            </div>
+                <p>Donc $K\cap L=[0;3[$</p>
+            <li><p>La réunion de $I$ et $L$ est l'ensemble des nombres réels $x$ tels que $x\in I$ ou $x\in L$.</p>
+            <div class="figure">
+                <svg viewBox="0 0 160 60" class="quadrillage">
+                <g name="repere1" class="repere" xmin="-8" ymin="-2" xmax="8" ymax ="1" xorigine="0" yorigine="0"></g>
+                <g name="I1" class="point labeled" repere="repere1" x="3" y="0" stroke="black" forme="["></g>
+                <g class="label" linkto="I1" x="-3" y="0" style="font-size: 0.8em;">3</g>
+                <g name="I2" class="point labeled" repere="repere1" x="7" y="0" stroke="black" forme="]"></g>
+                <g class="label" linkto="I2" x="-3" y="0" style="font-size: 0.8em;">7</g>
+                <g name="dI" class="droite" linkto="I1 I2"></g>
+                <g name="dI" class="segment" linkto="I1 I2" stroke-width="3" stroke="red" opacity="0.5"></g>
+                <g name="L1" class="point labeled" repere="repere1" x="0" y="-1" stroke="black" forme="["></g>
+                <g class="label" linkto="L1" x="-3" y="0" style="font-size: 0.8em;">0</g>
+                <g name="L2" class="point labeled" repere="repere1" x="4" y="-1" stroke="black" forme="["></g>
+                <g class="label" linkto="L2" x="-3" y="0" style="font-size: 0.8em;">4</g>
+                <g name="dL" class="droite" linkto="L1 L2"></g>
+                <g name="dL" class="segment" linkto="L1 L2" stroke-width="3" stroke="red" opacity="0.5"></g>
+                <g name="P1" class="point" repere="repere1" x="0" y="1"></g>
+                <g name="P2" class="point" repere="repere1" x="7" y="1"></g>
+                <g name="P3" class="point" repere="repere1" x="0" y="-2"></g>
+                <g name="P4" class="point" repere="repere1" x="7" y="-2"></g>
+                <g name="p" class="polygone" linkto="P1 P2 P4 P3" fill="blue" opacity="0.3"></g>
+                </svg>
+            </div>
+                <p>Donc $I\cup L=[0;7]$</p>
+            <li><p>Un intervalle inclus dans $K$ est $J$.</p>
+                <p>En effet, $]-4;2]\subset ]-6;3[$.</p>
+            </li>
+            <li><p>Deux intervalles ayant une intersection vide sont $I$ et $J$.</p>
+            <p>En effet, $]-4;2]\cap [3;7]=\emptyset$.</p>
+            <p>Deux intervalles ayant une intersection vide sont $I$ et $K$.</p>
+            <p>En effet, $]-6;3[\cap [3;7]=\emptyset$.</p>
+            </li>
+        </ul>
+    </div>
 </div>
 <div class="question">
     <div class="enonce">
@@ -155,7 +262,65 @@
             <li>Citez deux intervalles ayant une intersection vide.</li>
             <li>Déterminez le complémentaire de chacun des intervalles.</li>
         </ul>
-    </div>       
+    </div>
+    <div class="solution">
+        <ul class="alphabetical-list">
+            <li>Représentez graphiquement les intervalles $I$, $J$, $K$ et $L$ sur des droites graduées.
+            <div class="figure">
+                <svg viewBox="0 0 160 100" class="quadrillage">
+                <g name="repere1" class="repere" xmin="-8" ymin="-4" xmax="8" ymax ="1" xorigine="0" yorigine="0"></g>
+                <g name="I1" class="point labeled" repere="repere1" x="4" y="0" stroke="black" forme="[" ></g>
+                <g class="label" linkto="I1" x="-3" y="0" style="font-size: 0.8em;">4</g>
+                <g name="I2" class="point" repere="repere1" x="8" y="0" stroke="none" ></g>
+                <g name="dI" class="droite" linkto="I1 I2"></g>
+                <g name="dI" class="segment" linkto="I1 I2" stroke-width="3" stroke="red" opacity="0.5"></g>
+                <g name="J1" class="point" repere="repere1" x="-8" y="-1" stroke="none" forme="]" ></g>
+                <g name="J2" class="point labeled" repere="repere1" x="2" y="-1" stroke="black" forme="[" ></g>
+                <g class="label" linkto="J2" x="-3" y="0" style="font-size: 0.8em;">2</g>
+                <g name="dJ" class="droite" linkto="J1 J2"></g>
+                <g name="dJ" class="segment" linkto="J1 J2" stroke-width="3" stroke="red" opacity="0.5"></g>
+                <g name="K1" class="point" repere="repere1" x="-8" y="-2" stroke="none" forme="]" ></g>
+                <g name="K2" class="point labeled" repere="repere1" x="-1" y="-2" stroke="black" forme="[" ></g>
+                <g class="label" linkto="K2" x="-3" y="0" style="font-size: 0.8em;">-1</g>
+                <g name="dK" class="droite" linkto="K1 K2"></g>
+                <g name="dK" class="segment" linkto="K1 K2" stroke-width="3" stroke="red" opacity="0.5"></g>
+                <g name="L1" class="point labeled" repere="repere1" x="-1" y="-3" stroke="black" forme="[" ></g>
+                <g class="label" linkto="L1" x="-3" y="0" style="font-size: 0.8em;">-1</g>
+                <g name="L2" class="point" repere="repere1" x="8" y="-3" stroke="none" forme="[" ></g>
+                <g name="dL" class="droite" linkto="L1 L2"></g>
+                <g name="dL" class="segment" linkto="L1 L2" stroke-width="3" stroke="red" opacity="0.5"></g>
+                </svg>
+                </div>
+            </li>
+            <li><p>La borne inférieure de l'intervalle $I$ est $4$ et $4\in I$</p>
+            <p>La borne supérieure de l'intervalle $J$ est $2$ et $2\notin J$</p>
+            <p>La borne supérieure de l'intervalle $K$ est $-1$ et $-1\notin K$</p>
+            <p>La borne inférieure de l'intervalle $L$ est $-1$ et $-1\in L$</p>
+            </li>
+            <li><p>$x\in I$ si et seulement si $x\geqslant 4$</p>
+            <p>$x\in J$ si et seulement si $x\leqslant 2$</p>
+            <p>$x\in K$ si et seulement si $x\lt -1$</p>
+            <p>$x\in L$ si et seulement si $x\geqslant -1$</p>
+            </li>
+            <li><p>L'intersection de $I$ et $J$ est l'ensemble des nombres réels $x$ tels que $x\in I$ et $x\in J$.</p>
+            <p>Or il n'y a pas de nombre réel $x$ tel que $x\geqslant 4$ et $x\leqslant 2$.</p>
+            <p>Donc $I\cap J=\emptyset$</p>
+            </li>
+            <li><p>La réunion de $J$ et $K$ est l'ensemble des nombres réels $x$ tels que $x\in J$ ou $x\in K$ :
+            $$J\cup K=]-\infty;2]$$
+            </p>
+            </li>
+            <li><p>Un intervalle inclus dans $J$ est $K$.</p>
+                <p>En effet, $]-\infty;-1[\subset ]-\infty;2]$.</p>
+            </li>
+            <li><p>Deux intervalles ayant une intersection vide sont $I$ et $J$.</p></li>
+            <li><p>Le complémentaire de $I$ est $]-\infty;4[$</p>
+            <p>Le complémentaire de $J$ est $[2;+\infty[$</p>
+            <p>Le complémentaire de $K$ est $[-1;+\infty[$</p>
+            <p>Le complémentaire de $L$ est $]-\infty;-1[$</p>
+            </li>
+        </ul>
+    </div>
 </div>
 <div class="question">
     <div class="enonce">
@@ -165,6 +330,43 @@
             <li>$\vert 6-4\vert - \vert 3-7\vert$</li>
             <li>$\vert 6-9\vert +9$</li>
             <li>$\left\vert -14-\vert 4-6\vert\right\vert$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            \vert 3-7\vert + \vert 7-3\vert&=\vert -4\vert + \vert 4\vert\\
+            &=4+4\\
+            &=8
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+            \vert 6-4\vert - \vert 3-7\vert&=\vert 2\vert - \vert -4\vert\\
+            &=2-4\\
+            &=-2
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+            \vert 6-9\vert +9&=\vert -3\vert +9\\
+            &=3+9\\
+            &=12
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+            \left\vert -14-\vert 4-6\vert\right\vert&=\left\vert -14-\vert -2\vert\right\vert\\
+            &=\left\vert -14-2\right\vert\\
+            &=\left\vert -16\right\vert\\
+            &=16
+            \end{align*}
+            $$
+            </li>
         </ol>
     </div>
 </div>
@@ -180,6 +382,54 @@
             <li>Donner la réunion de ces deux intervalles.</li>
         </ul>
     </div>
+    <div class="solution">
+        <ul class="alphabetical-list">
+            <li>
+            <div class="figure">
+                <svg viewBox="0 0 190 60" class="quadrillage">
+                <g name="repere1" class="repere" xmin="-8" ymin="-2" xmax="11" ymax ="1" xorigine="0" yorigine="0"></g>
+                <g name="A" class="point labeled" repere="repere1" x="7" y="0" stroke="black" forme="|"></g>
+                <g class="label" linkto="A" x="-3" y="0" style="font-size: 0.8em;">7</g>
+                <g name="I1" class="point labeled" repere="repere1" x="4" y="0" stroke="black" forme="[" ></g>
+                <g class="label" linkto="I1" x="-3" y="0" style="font-size: 0.8em;">4</g>
+                <g name="I2" class="point labeled" repere="repere1" x="10" y="0" stroke="black" forme="]" ></g>
+                <g class="label" linkto="I2" x="-3" y="0" style="font-size: 0.8em;">10</g>
+                <g name="dI" class="droite" linkto="I1 I2"></g>
+                <g name="I" class="segment" linkto="I1 I2" stroke-width="3" stroke="red" opacity="0.5"></g>
+                <g name="B" class="point labeled" repere="repere1" x="-2" y="-1" stroke="black" forme="|"></g>
+                <g class="label" linkto="B" x="-3" y="0" style="font-size: 0.8em;">-2</g>
+                <g name="J1" class="point labeled" repere="repere1" x="-7" y="-1" stroke="black" forme="[" ></g>
+                <g class="label" linkto="J1" x="-3" y="0" style="font-size: 0.8em;">-7</g>
+                <g name="J1inf" class="point" repere="repere1" x="-8" y="-1" stroke="none"></g>
+                <g name="J2" class="point labeled" repere="repere1" x="3" y="-1" stroke="black" forme="]" ></g>
+                <g class="label" linkto="J2" x="-3" y="0" style="font-size: 0.8em;">3</g>
+                <g name="J2sup" class="point" repere="repere1" x="11" y="-1" stroke="none"></g>
+                <g name="dJ" class="droite" linkto="J1inf J2sup"></g>
+                <g name="Jinf" class="segment" linkto="J1inf J1" stroke-width="3" stroke="red" opacity="0.5"></g>
+                <g name="Jsup" class="segment" linkto="J2 J2sup" stroke-width="3" stroke="red" opacity="0.5"></g>
+                </svg>
+                </div>
+            </li>
+            <li><p>$I=[4;10[$</p>
+            <p>$J=]-\infty;-7[\cup]3;+\infty[$</p>
+            </li>
+            <li><p>$x$ appartient à $I$ si et seulement si $x\in I$ si et seulement si $4\leqslant x\lt 10$</p>
+            <p>$x$ appartient à $J$ si et seulement si $x\in J$ si et seulement si $x\lt -7$ ou $x\gt 3$</p>
+            </li>
+            <li><p>$x$ appartient à $I$ si et seulement si $\vert x-7\vert \leqslant 3$</p>
+            <p>$x$ appartient à $J$ si et seulement si $\vert x+2\vert \gt 5$</p>
+            </li>
+            <li><p>L'intersection de $I$ et $J$ est l'ensemble des nombres réels $x$ tels que $x\in I$ et $x\in J$.</p>
+            <p>Or tous les nombres réels dans $I$ sont dans $J$.</p>
+            <p>Donc $I\cap J=I$</p>
+            </li>
+            <li><p>La réunion de $I$ et $J$ est l'ensemble des nombres réels $x$ tels que $x\in I$ ou $x\in J$.</p>
+            <p>Or tous les nombres réels dans $I$ sont dans $J$.</p>
+            <p>Donc $I\cup J=J$
+            </p>
+            </li>
+        </ul>
+    </div>
 </div>
 <div class="question">
     <div class="enonce">
@@ -193,6 +443,61 @@
             <li>Donner la réunion de ces deux intervalles.</li>
         </ul>
     </div>
+    <div class="solution">
+        <ul class="alphabetical-list">
+            <li><p>Pour $x=-10$, $\vert x-5\vert =\vert -10-5\vert =\vert -15\vert =15$ et $15\gt 8$ donc $-10\notin I$.</p>
+            <p>Pour $x=-10$, $\vert x+2\vert =\vert -10+2\vert =\vert -8\vert =8$ et $8\gt 4$ donc $-10\notin J$.</p>
+            <p>Pour $x=-5$, $\vert x-5\vert =\vert -5-5\vert =\vert -10\vert =10$ et $10\gt 8$ donc $-5\notin I$.</p>
+            <p>Pour $x=-5$, $\vert x+2\vert =\vert -5+2\vert =\vert -3\vert =3$ et $3\lt 4$ donc $-5\in J$.</p>
+            <p>Pour $x=-2$, $\vert x-5\vert =\vert -2-5\vert =\vert -7\vert =7$ et $7\lt 8$ donc $-2\in I$.</p>
+            <p>Pour $x=-2$, $\vert x+2\vert =\vert -2+2\vert =\vert 0\vert =0$ et $0\leqslant 4$ donc $-2\in J$.</p>
+            <p>Pour $x=0$, $\vert x-5\vert =\vert 0-5\vert =\vert -5\vert =5$ et $5\lt 8$ donc $0\in I$.</p>
+            <p>Pour $x=0$, $\vert x+2\vert =\vert 0+2\vert =\vert 2\vert =2$ et $2\leqslant 4$ donc $0\in J$.</p>
+            <p>Pour $x=5$, $\vert x-5\vert =\vert 5-5\vert =\vert 0\vert =0$ et $0\lt 8$ donc $5\in I$.</p>
+            <p>Pour $x=5$, $\vert x+2\vert =\vert 5+2\vert =\vert 7\vert =7$ et $7\gt 4$ donc $5\notin J$.</p>
+            <p>Pour $x=12$, $\vert x-5\vert =\vert 12-5\vert =\vert 7\vert =7$ et $7\lt 8$ donc $12\in I$.</p>
+            <p>Pour $x=12$, $\vert x+2\vert =\vert 12+2\vert =\vert 14\vert =14$ et $14\gt 4$ donc $12\notin J$.</p>
+            <p>Pour $x=14$, $\vert x-5\vert =\vert 14-5\vert =\vert 9\vert =9$ et $9\gt 8$ donc $14\notin I$.</p>
+            <p>Pour $x=14$, $\vert x+2\vert =\vert 14+2\vert =\vert 16\vert =16$ et $16\gt 4$ donc $14\notin J$.</p>
+            </li>
+            <li>
+            <div class="figure">
+                <svg viewBox="0 0 210 60" class="quadrillage">
+                <g name="repere1" class="repere" xmin="-7" ymin="-2" xmax="14" ymax ="1" xorigine="0" yorigine="0"></g>
+                <g name="A" class="point labeled" repere="repere1" x="5" y="0" stroke="black" forme="|"></g>
+                <g class="label" linkto="A" x="-3" y="0" style="font-size: 0.8em;">5</g>
+                <g name="I1" class="point labeled" repere="repere1" x="-3" y="0" stroke="black" forme="[" ></g>
+                <g class="label" linkto="I1" x="-3" y="-20" style="font-size: 0.8em;">-3</g>
+                <g name="I2" class="point labeled" repere="repere1" x="13" y="0" stroke="black" forme="]" ></g>
+                <g class="label" linkto="I2" x="-3" y="0" style="font-size: 0.8em;">13</g>
+                <g name="dI" class="droite" linkto="I1 I2"></g>
+                <g name="I" class="segment" linkto="I1 I2" stroke-width="3" stroke="red" opacity="0.5"></g>
+                <g name="B" class="point labeled" repere="repere1" x="-2" y="-1" stroke="black" forme="|"></g>
+                <g class="label" linkto="B" x="-3" y="0" style="font-size: 0.8em;">-2</g>
+                <g name="J1" class="point labeled" repere="repere1" x="-6" y="-1" stroke="black" forme="]" ></g>
+                <g class="label" linkto="J1" x="-3" y="0" style="font-size: 0.8em;">-6</g>
+                <g name="J2" class="point labeled" repere="repere1" x="2" y="-1" stroke="black" forme="[" ></g>
+                <g class="label" linkto="J2" x="-3" y="0" style="font-size: 0.8em;">2</g>
+                <g name="dJ" class="droite" linkto="J1 J2"></g>
+                <g name="J" class="segment" linkto="J1 J2" stroke-width="3" stroke="red" opacity="0.5"></g>
+                </svg>
+            </div>
+            </li>
+            <li><p>$I=[-3;13[$</p>
+            <p>$J=]-6;2[$</p>
+            </li>
+            <li><p>$x\in I$ si et seulement si $-3\leqslant x\leqslant 13$</p>
+            <p>$x\in J$ si et seulement si $-6\lt x\lt 2$</p>
+            </li>
+            <li><p>L'intersection de $I$ et $J$ est l'ensemble des nombres réels $x$ tels que $x\in I$ et $x\in J$.</p>
+            <p>Donc $I\cap J=[-3;2[$</p>
+            </li>
+            <li><p>La réunion de $I$ et $J$ est l'ensemble des nombres réels $x$ tels que $x\in I$ ou $x\in J$.</p>
+            <p>Donc $I\cup J=]-6;13]$
+            </p>
+            </li>
+        </ul>
+    </div>
 </div>
 <div class="question">
     <div class="enonce">
@@ -200,6 +505,57 @@
         <ul class="alphabetical-list">
             <li>$L=5$, $\ell=x$ et $x\lt 3$</li>
             <li>$L=7-x$, $\ell=8$ et $x\geqslant 3$</li>
+        </ul>
+    </div>
+    <div class="solution">
+        <ul class="alphabetical-list">
+            <li><p>Le périmètre est $p=2(L+\ell)$.</p>
+            <p>D'où $p=2(5+x).$</p>
+            $$
+            \begin{align*}
+            x&\lt 3\\
+            5+x&\lt 3+5\\
+            5+x&\lt 8\\
+            2(5+x)&\lt 2\times 8\\
+            p&\lt 16
+            \end{align*}
+            $$
+            <p>L'aire est $\mathcal{A}=L\ell$.</p>
+            <p>D'où $\mathcal{A}=5x.$</p>
+            $$
+            \begin{align*}
+            x&\lt 3\\
+            5x&\lt 3\times 5\\
+            5x&\lt 15\\
+            \mathcal{A}&\lt 15
+            \end{align*}
+            $$
+            </li>
+            <li><p>Le périmètre est $p=2(L+\ell)$.</p>
+            <p>D'où $p=2(7-x+8)=2(15-x).$</p>
+            $$
+            \begin{align*}
+            x&\geqslant 3\\
+            -x&\leqslant -3\\
+            15-x&\leqslant 15-3\\
+            15-x&\leqslant 12\\
+            2(15-x)&\leqslant 2\times 12\\
+            p&\leqslant 24
+            \end{align*}
+            $$
+            <p>L'aire est $\mathcal{A}=L\ell$.</p>
+            <p>D'où $\mathcal{A}=(7-x)\times 8.$</p>
+            $$
+            \begin{align*}
+            x&\geqslant 3\\
+            -x&\leqslant -3\\
+            7-x&\leqslant 7-3\\
+            7-x&\leqslant 4\\
+            (7-x)\times 8&\leqslant 4\times 8\\
+            \mathcal{A}&\leqslant 32
+            \end{align*}
+            $$
+            </li>
         </ul>
     </div>
 </div>
@@ -218,6 +574,90 @@
             <li>$4-(x-1)$</li>
         </ul>
     </div>
+    <div class="solution">
+        <ul class="alphabetical-list">
+            <li>$$
+            \begin{matrix}
+            3&\lt& x&\lt& 5\\
+            3+7&\lt& x+7&\lt& 5+7\\
+            10&\lt& x+7&\lt& 12
+            \end{matrix}
+            $$
+            </li>
+            <li>$$
+            \begin{matrix}
+            3&\lt& x&\lt& 5\\
+            -3\times 3&\gt& -3x&\gt& -3\times 5\\
+            -9&\gt& -3x&\gt& -15\\
+            \end{matrix}
+            $$
+            </li>
+            <li>$$
+            \begin{matrix}
+            3&\lt& x&\lt& 5\\
+            \dfrac{3}{5}&\lt& \dfrac{x}{5}&\lt& \dfrac{5}{5}\\
+            \dfrac{3}{5}&\lt& \dfrac{x}{5}&\lt& 1
+            \end{matrix}
+            $$
+            </li>
+            <li>$$
+            \begin{matrix}
+            3&\lt& x&\lt& 5\\
+            -2\times 3&\gt& -2x&\gt& -2\times 5\\
+            -6&\gt& -2x&\gt& -10\\
+            -6+6&\gt& 6-2x&\gt& 10+6\\
+            0&\gt& 6-2x&\gt& 16\\
+            \end{matrix}
+            $$
+            </li>
+            <li>$$
+            \begin{matrix}
+            3&\lt& x&\lt& 5\\
+            4\times 3&\lt& 4x&\lt& 4\times 5\\
+            12&\lt& 4x&\lt& 20\\
+            12-8&\lt& 4x-8&\lt& 20-8\\
+            4&\lt& 4x-8&\lt& 12\\
+            \dfrac{4}{2}&\lt& \dfrac{4x-8}{2}&\lt& \dfrac{12}{2}\\
+            2&\lt& \dfrac{4x-8}{2}&\lt& 6\\
+            \end{matrix}
+            $$
+            </li>
+            <li>$$
+            \begin{matrix}
+            3&\lt& x&\lt& 5\\
+            -1\times 3&\gt& -x&\gt& -1\times 5\\
+            -3&\gt& -x&\gt& -5\\
+            -\dfrac{3}{2}&\lt& -\dfrac{x}{2}&\lt& -\dfrac{5}{2}\\
+            7-\dfrac{3}{2}&\lt& 7-\dfrac{x}{2}&\lt& 7-\dfrac{5}{2}\\
+            \dfrac{14}{2}-\dfrac{3}{2}&\lt& 7-\dfrac{x}{2}&\lt& \dfrac{14}{2}-\dfrac{5}{2}\\
+            \dfrac{11}{2}&\lt& 7-\dfrac{x}{2}&\lt& \dfrac{9}{2}\\
+            \end{matrix}
+            $$
+            </li>
+            <li>$$
+            \begin{matrix}
+            3&\lt& x&\lt& 5\\
+            \dfrac{3}{2}\times 3&\lt& \dfrac{3x}{2}&\lt& \dfrac{3}{2}\times 5\\
+            \dfrac{9}{2}&\lt& \dfrac{3x}{2}&\lt& \dfrac{15}{2}\\
+            \dfrac{9}{2}-6&\lt& \dfrac{3x}{2}-6&\lt& \dfrac{15}{2}-6\\
+            \dfrac{9}{2}-\dfrac{12}{2}&\lt& \dfrac{3x}{2}-6&\lt& \dfrac{15}{2}-\dfrac{12}{2}\\
+            -\dfrac{3}{2}&\lt& \dfrac{3x}{2}-6&\lt& \dfrac{3}{2}
+            \end{matrix}
+            $$
+            </li>
+            <li>$$
+            \begin{matrix}
+            3&\lt& x&\lt& 5\\
+            3-1&\lt& x-1&\lt& 5-1\\
+            2&\lt& x-1&\lt& 4\\
+            -1\times 2&\gt& -1\times (x-1)&\gt& -1\times 4\\
+            4-1&\gt& 4-(1-x)&\gt& 4-4\\
+            3&\gt& 4-(x-1)&\gt& 0
+            \end{matrix}
+            $$
+            </li>
+        </ul>
+    </div>
 </div>
 <div class="exercice">
     <div class="enonce">
@@ -233,6 +673,103 @@
             <li>$\dfrac{3x-1}{2}\lt 0$</li>
         </ul>
     </div>
+    <div class="solution">
+        <ul class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            3x-2&\gt 7\\
+            3x-2+2&\gt 7+2\\
+            3x&\gt 9\\
+            \dfrac{3x}{3}&\gt \dfrac{9}{3}\\
+            x&\gt 3
+            \end{align*}
+            $$
+            <p>Donc l'ensemble des solutions est $]3;+\infty[$.</p>
+            </li>
+            <li>$$
+            \begin{align*}
+            -2x+5&\lt 3\\
+            -2x+5-5&\lt 3-5\\
+            -2x&\lt -2\\
+            \dfrac{-2x}{-2}&\gt \dfrac{-2}{-2}\\
+            x&\gt 1
+            \end{align*}
+            $$
+            <p>Donc l'ensemble des solutions est $]1;+\infty[$.</p>
+            </li>
+            <li>$$
+            \begin{align*}
+            \dfrac{2x-1}{3}&\leqslant 5\\
+            \dfrac{2x-1}{3}\times 3&\leqslant 5\times 3\\
+            2x-1&\leqslant 15\\
+            2x-1+1&\leqslant 15+1\\
+            2x&\leqslant 16\\
+            \dfrac{2x}{2}&\leqslant \dfrac{16}{2}\\
+            x&\leqslant 8
+            \end{align*}
+            $$
+            <p>Donc l'ensemble des solutions est $]-\infty;8]$.</p>
+            </li>
+            <li>$$
+            \begin{align*}
+            5x&\geqslant 7x+8\\
+            5x-7x&\geqslant 7x-7x+8\\
+            -2x&\geqslant 8\\
+            \dfrac{-2x}{-2}&\leqslant \dfrac{8}{-2}\\
+            x&\leqslant -4
+            \end{align*}
+            $$
+            <p>Donc l'ensemble des solutions est $]-\infty;-4]$.</p>
+            </li>
+            <li>$$
+            \begin{align*}
+            -2x+3&\leqslant 3\\
+            -2x+3-3&\leqslant 3-3\\
+            -2x&\leqslant 0\\
+            \dfrac{-2x}{-2}&\geqslant \dfrac{0}{-2}\\
+            x&\geqslant 0
+            \end{align*}
+            $$
+            <p>Donc l'ensemble des solutions est $[0;+\infty[$.</p>
+            </li>
+            <li>$$
+            \begin{align*}
+            \dfrac{2x}{3}&\gt 0\\
+            \dfrac{2x}{3}\times 3&\gt 0\times 3\\
+            2x&\gt 0\\
+            \dfrac{2x}{2}&\gt \dfrac{0}{2}\\
+            x&\gt 0
+            \end{align*}
+            $$
+            <p>Donc l'ensemble des solutions est $]0;+\infty[$.</p>
+            </li>
+            <li>$$
+            \begin{align*}
+            \dfrac{2x}{7}+12&\gt 0\\
+            \dfrac{2x}{7}+12-12&\gt 0-12\\
+            \dfrac{2x}{7}&\gt -12\\
+            \dfrac{2x}{7}\times 7&\gt -12\times 7\\
+            2x&\gt -84\\
+            \dfrac{2x}{2}&\gt \dfrac{-84}{2}\\
+            x&\gt -42
+            \end{align*}
+            $$
+            <p>Donc l'ensemble des solutions est $]-42;+\infty[$.</p>
+            </li>
+            <li>$$
+            \begin{align*}
+            \dfrac{3x-1}{2}&\lt 0\\
+            \dfrac{3x-1}{2}\times 2&\lt 0\times 2\\
+            3x-1&\lt 0\\
+            3x-1+1&\lt 0+1\\
+            3x&\lt 1\\
+            \dfrac{3x}{3}&\lt \dfrac{1}{3}\\
+            x&\lt \dfrac{1}{3}
+            \end{align*}
+            $$
+            <p>Donc l'ensemble des solutions est $]-\infty;\dfrac{1}{3}[$.</p>
+            </li>
+        </ul>
 </div>
 <div class="exercice">
     <div class="enonce">
@@ -246,6 +783,102 @@
             <li>$x(x+5)\lt x(x-2)$</li>
         </ul>
     </div>
+    <div class="solution">
+        <ul class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            \dfrac{3x-7}{5}&\leqslant\dfrac{2x+1}{3}\\
+            \dfrac{3x-7}{5}\times 3&\leqslant\dfrac{2x+1}{3}\times 3\\
+            \dfrac{3x-7}{5}\times 3&\leqslant 2x+1\\
+            5\times \dfrac{3x-7}{5}\times 3&\leqslant 5\times (2x+1)\\
+            (3x-7)\times 3&\leqslant 5\times (2x+1)\\
+            3x\times 3-7\times 3&\leqslant 5\times 2x+5\times 1\\
+            9x-21&\leqslant 10x+5\\
+            9x-21-10x&\leqslant 10x-10x+5\\
+            -x-21&\leqslant 5\\
+            -x-21+21&\leqslant 5+21\\
+            -x&\leqslant 26\\
+            -1 \times (-x)&\geqslant -1 \times 26\\
+            x&\geqslant -26
+            \end{align*}
+            $$
+            <p>Donc l'ensemble des solutions est $[-26;+\infty[$.</p>
+            </li>
+            <li>$$
+            \begin{align*}
+            2x-\dfrac{1}{3}&\gt 5x+\dfrac{1}{4}\\
+            2x-\dfrac{1}{3}-5x&\gt 5x-\dfrac{1}{3}-5x\\
+            -3x-\dfrac{1}{3}&\gt \dfrac{1}{4}\\
+            -3x-\dfrac{1}{3}+\dfrac{1}{3}&\gt \dfrac{1}{4}+\dfrac{1}{3}\\
+            -3x&\gt \dfrac{7}{12}\\
+            \dfrac{-3x}{-3}&\lt \dfrac{\dfrac{7}{12}}{-3}\\
+            x&\lt -\dfrac{7}{36}
+            \end{align*}
+            $$
+            <p>Donc l'ensemble des solutions est $]-\infty;-\dfrac{7}{36}[$.</p>
+            </li>
+            <li>$$
+            \begin{align*}
+            7(x-1)&\geqslant 3(x+2)\\
+            7x-7&\geqslant 3x+6\\
+            7x-7-3x&\geqslant 3x+6-3x\\
+            4x-7&\geqslant 6\\
+            4x-7+7&\geqslant 6+7\\
+            4x&\geqslant 13\\
+            \dfrac{4x}{4}&\geqslant \dfrac{13}{4}\\
+            x&\geqslant \dfrac{13}{4}
+            \end{align*}
+            $$
+            <p>Donc l'ensemble des solutions est $[\dfrac{13}{4};+\infty[$.</p>
+            </li>
+            <li>$$
+            \begin{align*}
+            \dfrac{2x-1}{3}&\lt 5(x-1)\\
+            \dfrac{2x-1}{3}\times 3&\lt 5(x-1)\times 3\\
+            2x-1&\lt 15(x-1)\\
+            2x-1&\lt 15x-15\\
+            2x-1-15x&\lt 15x-15-15x\\
+            -13x-1&\lt -15\\
+            -13x-1+1&\lt -15+1\\
+            -13x&\lt -14\\
+            \dfrac{-13x}{-13}&\gt \dfrac{-14}{-13}\\
+            x&\gt \dfrac{14}{13}
+            \end{align*}
+            $$
+            <p>Donc l'ensemble des solutions est $]\dfrac{14}{13};+\infty[$.</p>
+            </li>
+            <li>$$
+            \begin{align*}
+            \dfrac{2x-5}{6}-\dfrac{3x+1}{4}&\lt 1\\
+            6\times \left(\dfrac{2x-5}{6}-\dfrac{3x+1}{4}\right)&\lt 6\times 1\\
+            2x-5-6\times \dfrac{3x+1}{4}&\lt 6\\
+            4\times \left(2x-5-6\times \dfrac{3x+1}{4}\right)&\lt 4\times 6\\
+            4\times (2x-5)-4\times 6\times \dfrac{3x+1}{4}&\lt 24\\
+            4(2x-5)-6\times (3x+1)&\lt 24\\
+            8x-20-18x-6&\lt 24\\
+            8x-18x-20-6&\lt 24\\
+            -10x-26&\lt 24\\
+            -10x-26+26&\lt 24+26\\
+            -10x&\lt 50\\
+            \dfrac{-10x}{-10}&\gt \dfrac{50}{-10}\\
+            x&\gt -5
+            \end{align*}
+            $$
+            <p>Donc l'ensemble des solutions est $]-5;+\infty[$.</p>
+            </li>
+            <li>$$
+            \begin{align*}
+            x(x+5)&\lt x(x-2)\\
+            x^2+5x&\lt x^2-2x\\
+            x^2+5x-x^2+2x&\lt x^2-2x-x^2+2x\\
+            7x&\lt 0\\
+            \dfrac{7x}{7}&\lt \dfrac{0}{7}\\
+            x&\lt 0
+            \end{align*}
+            $$
+            <p>Donc l'ensemble des solutions est $]-\infty;0[$.</p> 
+            </li>
+        </ul>
 </div>
 <div class="exercice">
     <div class="enonce">
@@ -258,6 +891,84 @@
             <li>$M=\left[-9~;~-\dfrac{1}{3}\right]$</li>
             <li>$N=\left[\dfrac{1}{5}~;~\dfrac{7}{3}\right]$</li>
         </ol>
+    </div>
+    <div class="solution">
+        <ul class="alphabetical-list">
+            <li><p>Le milieu de l'intervalle est $\dfrac{6+10}{2}=8$.</p>
+            <p>L'amplitude de l'intervalle est $10-6=4$.</p>
+            <p>Donc l'ensemble des nombres réels appartenant à l'intervalle est $\vert x-8\vert \leqslant 4$.</p>
+            </li>
+            <li><p>Le milieu de l'intervalle est $\dfrac{-3+5}{2}=1$.</p>
+            <p>L'amplitude de l'intervalle est $5-(-3)=8$.</p>
+            <p>Donc l'ensemble des nombres réels appartenant à l'intervalle est $\vert x-1\vert \leqslant 8$.</p>
+            </li>
+            <li><p>Le milieu de l'intervalle est $\dfrac{\num{-2.6}+\num{5.8}}{2}=\num{1.6}$.</p>
+            <p>L'amplitude de l'intervalle est $\num{5.8}-(\num{-2.6})=\num{5.8}+\num{2.6}=\num{8.4}$.</p>
+            <p>Donc l'ensemble des nombres réels appartenant à l'intervalle est $\vert x-\num{1.6}\vert \leqslant \num{8.4}$.</p>
+            </li>
+            <li><p>Le milieu de l'intervalle est $\dfrac{-\dfrac{5}{2}+\dfrac{3}{4}}{2}=-\dfrac{7}{8}$.</p>
+            <p>L'amplitude de l'intervalle est $$
+            \begin{align*}
+            \dfrac{3}{4}-\left(-\dfrac{5}{2}\right)&=\dfrac{3}{4}+\dfrac{5}{2}\\
+            &=\dfrac{3}{4}+\dfrac{5\times 2}{2\times 2}\\
+            &=\dfrac{3}{4}+\dfrac{10}{4}\\
+            &=\dfrac{3+10}{4}\\
+            &=\dfrac{13}{4}
+            \end{align*}
+            $$
+            </p>
+            <p>Donc l'ensemble des nombres réels appartenant à l'intervalle est $\left\vert x+\dfrac{7}{8}\right\vert \leqslant \dfrac{13}{4}$.</p>
+            </li>
+            <li><p>Le milieu de l'intervalle est $$
+            \begin{align*}
+            \dfrac{-9+\left(-\dfrac{1}{3}\right)}{2}&=\dfrac{-9-\dfrac{1}{3}}{2}\\
+            &=\dfrac{-\dfrac{9\times 3}{3}-\dfrac{1}{3}}{2}\\
+            &=\dfrac{-\dfrac{9\times 3-1}{3}}{2}\\
+            &=\dfrac{-\dfrac{26}{3}}{2}\\
+            &=\dfrac{-26}{3}\times \dfrac{1}{2}\\
+            &=\dfrac{-26}{3\times 2}\\
+            &=\dfrac{-13\times 2}{3\times 2}\\
+            &=-\dfrac{13}{3}
+            \end{align*}
+            $$
+            </p>
+            <p>L'amplitude de l'intervalle est $$
+            \begin{align*}
+            -\dfrac{1}{3}-(-9)&=-\dfrac{1}{3}+9\\
+            &=-\dfrac{1}{3}+\dfrac{9\times 3}{3}\\
+            &=-\dfrac{1}{3}+\dfrac{27}{3}\\
+            &=\dfrac{26}{3}
+            \end{align*}
+            $$
+            </p>
+            <p>Donc l'ensemble des nombres réels appartenant à l'intervalle est $\left\vert x+\dfrac{13}{3}\right\vert \leqslant \dfrac{26}{3}$.</p>
+            </li>
+            <li><p>Le milieu de l'intervalle est $$
+            \begin{align*}
+            \dfrac{\dfrac{1}{5}+\dfrac{7}{3}}{2}&=\dfrac{\dfrac{1}{5}\times 3+\dfrac{7}{3}\times 5}{2\times 5}\\
+            &=\dfrac{\dfrac{3}{5}+\dfrac{35}{15}}{10}\\
+            &=\dfrac{\dfrac{9}{15}+\dfrac{35}{15}}{10}\\
+            &=\dfrac{\dfrac{9+35}{15}}{10}\\
+            &=\dfrac{\dfrac{44}{15}}{10}\\
+            &=\dfrac{44}{15}\times \dfrac{1}{10}\\
+            &=\dfrac{44}{15\times 10}\\
+            &=\dfrac{44}{150}\\
+            &=\dfrac{22}{75}
+            \end{align*}
+            $$
+            </p>
+            <p>L'amplitude de l'intervalle est $$
+            \begin{align*}
+            \dfrac{7}{3}-\dfrac{1}{5}&=\dfrac{7\times 5}{3\times 5}-\dfrac{1}{5}\\
+            &=\dfrac{35}{15}-\dfrac{3}{15}\\
+            &=\dfrac{35-3}{15}\\
+            &=\dfrac{32}{15}
+            \end{align*}
+            $$
+            </p>
+            <p>Donc l'ensemble des nombres réels appartenant à l'intervalle est $\left\vert x-\dfrac{22}{75}\right\vert \leqslant \dfrac{32}{15}$.</p>
+            </li>
+        </ul>
     </div>
 </div>
 <div class="exercice">
@@ -280,10 +991,107 @@
             <li>Déterminez toutes les valeurs de $x$ pour lesquelles le périmètre du rectangle est inférieur ou égal à $36$.</li>
         </ul>
     </div>
+    <div class="solution">
+        <ul class="alphabetical-list">
+            <li><p>On a $$
+            \begin{align*}
+            \ell&=5x-4\\
+            5x-4&\gt 0\\
+            5x-4+4&\gt 0+4\\
+            5x&\gt 4\\
+            \dfrac{5x}{5}&\gt \dfrac{4}{5}\\
+            x&\gt \dfrac{4}{5}
+            \end{align*}
+            $$
+            </p>
+            <p>Donc l'ensemble des solutions est $\left]\dfrac{4}{5};+\infty\right[$.</p>
+            <p>On a $$
+            \begin{align*}
+            L&=4x+2\\
+            4x+2&\gt 0\\
+            4x+2-2&\gt 0-2\\
+            4x&\gt -2\\
+            \dfrac{4x}{4}&\gt \dfrac{-2}{4}\\
+            x&\gt -\dfrac{1}{2}
+            \end{align*}
+            $$
+            </p>
+            <p>Donc l'ensemble des solutions est $\left]-\dfrac{1}{2};+\infty\right[$.</p>
+            </li>
+            <li><p>Les valeurs possibles sont à l'intersection des deux intervalles $\left]\dfrac{4}{5};+\infty\right[$ et $\left]-\dfrac{1}{2};+\infty\right[$.</p>
+            <p>Or $\left]\dfrac{4}{5};+\infty\right[\cap \left]-\dfrac{1}{2};+\infty\right[=\left]\dfrac{4}{5};+\infty\right[$.</p>
+            <p>Donc l'ensemble des valeurs possibles de $x$ est $\left]\dfrac{4}{5};+\infty\right[$.</p>
+            </li>
+            <li><p>Le périmètre est $p=2(L+\ell)$.</p>
+            <p>D'où $p=2(4x+2+5x-4)=2(9x-2).$</p>
+            $$
+            \begin{align*}
+            2(9x-2)&\leqslant 36\\
+            9x-2&\leqslant 18\\
+            9x-2+2&\leqslant 18+2\\
+            9x&\leqslant 20\\
+            \dfrac{9x}{9}&\leqslant \dfrac{20}{9}\\
+            x&\leqslant \dfrac{20}{9}
+            \end{align*}
+            $$
+            <p>Donc l'ensemble des solutions est $\left]-\infty;\dfrac{20}{9}\right]$.</p>
+            <p>Les valeurs possibles sont à l'intersection des deux intervalles $\left]\dfrac{4}{5};+\infty\right[$ et $\left]-\infty;\dfrac{20}{9}\right]$.</p>
+            <p>Or $\left]\dfrac{4}{5};+\infty\right[\cap \left]-\infty;\dfrac{20}{9}\right]=\left]\dfrac{4}{5};\dfrac{20}{9}\right]$.</p>
+            <p>Donc le périmètre du rectangle est inférieur ou égal à $36$ si et seulement si $x\in\left]\dfrac{4}{5};\dfrac{20}{9}\right]$.</p>
+            </li>
+        </ul>
+    </div>
 </div>
 <div class="exercice">
     <div class="enonce">
         $x$ désigne un nombre réel. On considère un rectangle ayant pour largeur $\ell=2+3x$, pour longueur $L=7-6x$. Déterminez les valeurs de $x$ pour lesquelles le périmètre du rectangle est strictement supérieur à $2.$
+    </div>
+    <div class="solution">
+        <p>Tout d'abord déterminons l'ensemble des valeurs possibles de $x$.</p>
+        <p>On a $$
+        \begin{align*}
+        \ell&=2+3x\\
+        2+3x&\gt 0\\
+        2+3x-2&\gt 0-2\\
+        3x&\gt -2\\
+        \dfrac{3x}{3}&\gt \dfrac{-2}{3}\\
+        x&\gt -\dfrac{2}{3}
+        \end{align*}
+        $$
+        </p>
+        <p>Donc l'ensemble des solutions est $\left]-\dfrac{2}{3};+\infty\right[$.</p>
+        <p>On a $$
+        \begin{align*}
+        L&=7-6x\\
+        7-6x&\gt 0\\
+        7-6x-7&\gt 0-7\\
+        -6x&\gt -7\\
+        \dfrac{-6x}{-6}&\lt \dfrac{-7}{-6}\\
+        x&\lt \dfrac{-7}{-6}\\
+        x&\lt \dfrac{7}{6}
+        \end{align*}
+        $$
+        </p>
+        <p>Donc l'ensemble des solutions est $\left]-\infty;\dfrac{7}{6}\right[$.</p>
+        <p>Les valeurs possibles sont à l'intersection des deux intervalles $\left]-\dfrac{2}{3};+\infty\right[$ et $\left]-\infty;\dfrac{7}{6}\right[$.</p>
+        <p>Or $\left]-\dfrac{2}{3};+\infty\right[\cap \left]-\infty;\dfrac{7}{6}\right[=\left]-\dfrac{2}{3};\dfrac{7}{6}\right[$.</p>
+        <p>Donc l'ensemble des valeurs possibles de $x$ est $\left]-\dfrac{2}{3};\dfrac{7}{6}\right[$.</p>
+        <p>Le périmètre est $p=2(L+\ell)$.</p>
+        <p>D'où $p=2(7-6x+2+3x)=2(9-3x).$</p>
+        $$
+        \begin{align*}
+        2(9-3x)&\gt 2\\
+        9-3x&\gt 1\\
+        9-3x-9&\gt 1-9\\
+        -3x&\gt -8\\
+        \dfrac{-3x}{-3}&\lt \dfrac{-8}{-3}\\
+        x&\lt \dfrac{8}{3}
+        \end{align*}
+        $$
+        <p>Donc l'ensemble des solutions est $\left]-\infty;\dfrac{8}{3}\right[$.</p>
+        <p>Les valeurs possibles sont à l'intersection des deux intervalles $\left]-\dfrac{2}{3};\dfrac{7}{6}\right[$ et $\left]-\infty;\dfrac{8}{3}\right[$.</p>
+        <p>Or $\left]-\dfrac{2}{3};\dfrac{7}{6}\right[\cap \left]-\infty;\dfrac{8}{3}\right[=\left]-\dfrac{2}{3};\dfrac{7}{6}\right[$.</p>
+        <p>Donc le périmètre du rectangle est strictement supérieur à $2$ si et seulement si $x\in\left]-\dfrac{2}{3};\dfrac{7}{6}\right[$.</p>
     </div>
 </div></main>
     <footer>
