@@ -37334,6 +37334,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var _class2_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./class2.js */ "./src/js/class2.js");
 /* harmony import */ var mathjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mathjs */ "./node_modules/mathjs/lib/esm/entry/impureFunctionsAny.generated.js");
+/* harmony import */ var mathjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! mathjs */ "./node_modules/mathjs/lib/esm/entry/pureFunctionsAny.generated.js");
 /* harmony import */ var svg_intersections__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! svg-intersections */ "./node_modules/svg-intersections/index.js");
 // Version: 1.0.0
 
@@ -37617,11 +37618,11 @@ var constructCrossPoint = function (point) {
   // Si le point a des paramètres
   var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   // Si le point a un parametre forme
-  if (parametres.forme != undefined && parametres.forme == "+") {
-    path.setAttribute("d", "M-2,0 L2,0 M0,-2 L0,2");
-  } else {
-    path.setAttribute("d", "M-2,-2 L2,2 M-2,2 L2,-2");
-  }
+  // if (parametres.forme != undefined && parametres.forme == "+") {
+  //   path.setAttribute("d", "M-2,0 L2,0 M0,-2 L0,2");
+  // } else {
+  //   path.setAttribute("d", "M-2,-2 L2,2 M-2,2 L2,-2");
+  // }
   path.setAttribute("fill", "none");
   if (point.getAttribute("stroke") == null) {
     path.setAttribute("stroke", "black");
@@ -37634,6 +37635,21 @@ var constructCrossPoint = function (point) {
   // Vers de nouvelles prises en charge des paramètres
   if (point.getAttribute("scale") != null) {
     path.setAttribute("transform", "scale(" + point.getAttribute("scale") + ")");
+  }
+  if (point.getAttribute("forme") != undefined) {
+    if (point.getAttribute("forme") == "+") {
+      path.setAttribute("d", "M-2,0 L2,0 M0,-2 L0,2");
+    } else if (point.getAttribute("forme") == "[") {
+      path.setAttribute("d", "M2,4 L0,4 L0,-4 L2,-4");
+    } else if (point.getAttribute("forme") == "]") {
+      path.setAttribute("d", "M-2,4 L0,4 L0,-4 L-2,-4");
+    } else if (point.getAttribute("forme") == "|") {
+      path.setAttribute("d", "M0,4 L0,-4");
+    } else {
+      path.setAttribute("d", "M-2,-2 L2,2 M-2,2 L2,-2");
+    }
+  } else {
+    path.setAttribute("d", "M-2,-2 L2,2 M-2,2 L2,-2");
   }
   point.appendChild(path);
 };
@@ -37812,8 +37828,10 @@ var determinerExtremitesDroite = function (droite) {
   var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Vecteur();
   AB.setCoordonneesVecteur2Points(A, B);
   var u = AB.normalisation();
-  var E1 = A.translation(u.multiplicationVecteur(-200));
-  var E2 = A.translation(u.multiplicationVecteur(200));
+  // Dimension de la figure
+  var viewBox = droite.closest("svg").getAttribute("viewBox").split(" ").map(x => parseFloat(x));
+  var E1 = A.translation(u.multiplicationVecteur(-mathjs__WEBPACK_IMPORTED_MODULE_4__.max(viewBox[2], viewBox[3]).valueOf()));
+  var E2 = A.translation(u.multiplicationVecteur(mathjs__WEBPACK_IMPORTED_MODULE_4__.max(viewBox[2], viewBox[3]).valueOf()));
   return [E1, E2];
 };
 var setStroke = function (objet, path) {
