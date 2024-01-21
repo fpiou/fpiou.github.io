@@ -262,17 +262,17 @@ footer {
   page-break-after: always;
 }
 
-.alphabetical-list {
+ol.alphabetical-list {
   counter-reset: list-counter;
   list-style: none;
   padding: 0;
 }
 
-.alphabetical-list li {
+ol.alphabetical-list > li {
   counter-increment: list-counter;
 }
 
-.alphabetical-list li::before {
+ol.alphabetical-list > li::before {
   content: counter(list-counter, lower-alpha) ".";
   margin-right: 5px; /* Espace après le numéro */
   font-weight: bold;
