@@ -51,6 +51,8 @@
     
     <link rel="stylesheet" href="/src/css/prettyExercice.css" />
     
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
     <link rel="stylesheet" href="/src/css/print.css" />
     
 
@@ -140,11 +142,430 @@
             <li><p>Un repère du plan est un point $O$ appelé origine et une base de vecteurs $(\vec{i},\vec{j})$.</p></li>
             <li><p>Un repère orthonormé est un repère du plan dans lequel les deux vecteurs de la base sont de norme 1 et orthogonaux.</p></li>
             <li><p>Les coordonnées d'un point $M$ dans un repère $(O~;~\vec{i},\vec{j})$ sont les nombres $(x,y)$ tels que $\vec{OM}=x\vec{i}+y\vec{j}$.</p></li>
-            <li>
         </ol>
     </div>
 </div>
-<div class=""</main>
+<div class="exercice">
+    <div class="enonce">
+        <p>Pour chaque vecteur, donnez ses coordonnées dans la base $(\vec{i},\vec{j})$.</p>
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$\vec{u}_1=2\vec{i}-7\vec{j}$</li>
+            <li>$\vec{u}_2=4\vec{j}+8\vec{i}$</li>
+            <li>$\vec{u}_3=2(-2\vec{i}+3\vec{j})$</li>
+            <li>$\vec{u}_4=\vec{i}-\vec{j}$</li>
+            <li>$\vec{u}_5=\dfrac{-\vec{i}+\vec{j}}{2}$</li>
+            <li>$\vec{u}_6=2\vec{i}+3\vec{i}$</li>
+            <li>$\vec{u}_7=4\vec{j}-7\vec{j}$</li>
+            <li>$\vec{u}_8=\dfrac{\vec{i}}{\sqrt{25}}-\dfrac{3}{15}\vec{i}$</li>
+            <li>$\vec{u}_9=\dfrac{4^3\vec{i}+2^8\vec{j}}{8^2}$</li>
+            <li>$\vec{u}_{10}=4(\vec{i}-\vec{j})+2\vec{i}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li><p>$\vec{u}_1=2\vec{i}-7\vec{j}$</p>
+            <p>$\vec{u}_1=2\vec{i}+(-7)\vec{j}$</p>
+            <p>$\vec{u}_1\left(\begin{matrix}2\\-7\end{matrix}\right)$</p></li>
+            <li><p>$\vec{u}_2=4\vec{j}+8\vec{i}$</p>
+                <p>$\vec{u}_2=8\vec{i}+4\vec{j}$</p>
+                <p>$\vec{u}_2\left(\begin{matrix}8\\4\end{matrix}\right)$</p>
+            </li>
+            <li><p>$\vec{u}_3=2(-2\vec{i}+3\vec{j})$</p>
+                <p>$\vec{u}_3=2\times(-2)\vec{i}+2\times 3\vec{j}$</p>
+                <p>$\vec{u}_3=-4\vec{i}+6\vec{j}$</p>
+                <p>$\vec{u}_3\left(\begin{matrix}-4\\6\end{matrix}\right)$</p>
+            </li>
+            <li><p>$\vec{u}_4=\vec{i}-\vec{j}$</p>
+                <p>$\vec{u}_4=1\vec{i}+(-1)\vec{j}$</p>
+                <p>$\vec{u}_4\left(\begin{matrix}1\\-1\end{matrix}\right)$</p>
+            </li>
+            <li><p>$\vec{u}_5=\dfrac{-\vec{i}+\vec{j}}{2}$</p>
+                <p>$\vec{u}_5=\dfrac{-1}{2}\vec{i}+\dfrac{1}{2}\vec{j}$</p>
+                <p>$\vec{u}_5\left(\begin{matrix}-\frac{1}{2}\\\frac{1}{2}\end{matrix}\right)$</p>
+            </li>
+            <li><p>$\vec{u}_6=2\vec{i}+3\vec{i}$</p>
+                <p>$\vec{u}_6=5\vec{i}$</p>
+                <p>$\vec{u}_6\left(\begin{matrix}5\\0\end{matrix}\right)$</p>
+            </li>
+            <li><p>$\vec{u}_7=4\vec{j}-7\vec{j}$</p>
+                <p>$\vec{u}_7=(4-7)\vec{j}$</p>
+                <p>$\vec{u}_7=-3\vec{j}$</p>
+                <p>$\vec{u}_7\left(\begin{matrix}0\\-3\end{matrix}\right)$</p>
+            </li>
+            <li><p>$\vec{u}_8=\dfrac{\vec{i}}{\sqrt{25}}-\dfrac{3}{15}\vec{i}$</p>
+                <p>$\vec{u}_8=\dfrac{1}{5}\vec{i}-\dfrac{1}{5}\vec{i}$</p>
+                <p>$\vec{u}_8=0\vec{i}$</p>
+                <p>$\vec{u}_8\left(\begin{matrix}0\\0\end{matrix}\right)$</p>
+            </li>
+            <li>$$
+                \begin{align*}
+                    \vec{u}_9&=\dfrac{(2^2)^3\vec{i}+2^8\vec{j}}{(2^3)^2}\\
+                    &=\dfrac{2^6\vec{i}+2^8\vec{j}}{2^6}\\
+                    &=\vec{i}+2^2\vec{j}\\
+                    \vec{u_9}&=\vec{i}+4\vec{j}
+                \end{align*}
+                $$
+                <p>$\vec{u}_9\left(\begin{matrix}1\\4\end{matrix}\right)$</p>
+            </li>
+            <li><p>$\vec{u}_{10}=4(\vec{i}-\vec{j})+2\vec{i}$</p>
+                <p>$\vec{u}_{10}=4\vec{i}-4\vec{j}+2\vec{i}$</p>
+                <p>$\vec{u}_{10}=6\vec{i}-4\vec{j}$</p>
+                <p>$\vec{u}_{10}\left(\begin{matrix}6\\-4\end{matrix}\right)$</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>Dans chaque cas, déterminez les coordonnées du vecteur $\vec{u}$ dans la base $(\vec{i},\vec{j})$.</p>
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$5\vec{u}+\vec{i}=2\vec{j}+4\vec{u}$</li>
+            <li>$\vec{u}+2\vec{i}=\vec{j}+3\vec{u}$</li>
+            <li>$4(\vec{u}+\vec{j})=-3\vec{i}+3\vec{u}$</li>
+            <li>$\dfrac{\vec{u}+\vec{i}}{2}=\dfrac{\vec{j}+\vec{u}}{3}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$$
+            \begin{align*}
+                5\vec{u}+\vec{i}&=2\vec{j}+4\vec{u}\\
+                5\vec{u}-4\vec{u}&=2\vec{j}-\vec{i}\\
+                \vec{u}&=2\vec{j}-\vec{i}\\
+                \vec{u}&=-\vec{i}+2\vec{j}
+            \end{align*}
+            $$
+            <p>$\vec{u}\left(\begin{matrix}-1\\2\end{matrix}\right)$</p>
+            </li>
+            <li>$$
+            \begin{align*}
+                \vec{u}+2\vec{i}&=\vec{j}+3\vec{u}\\
+                \vec{u}-3\vec{u}&=\vec{j}-2\vec{i}\\
+                -2\vec{u}&=\vec{j}-2\vec{i}\\
+                \vec{u}&=-\dfrac{1}{2}\vec{j}+\vec{i}\\
+                \vec{u}&=\vec{i}-\dfrac{1}{2}\vec{j}
+            \end{align*}
+            $$
+            <p>$\vec{u}\left(\begin{matrix}1\\-\frac{1}{2}\end{matrix}\right)$</p>
+            </li>
+            <li>$$
+            \begin{align*}
+                4(\vec{u}+\vec{j})&=-3\vec{i}+3\vec{u}\\
+                4\vec{u}+4\vec{j}&=-3\vec{i}+3\vec{u}\\
+                4\vec{u}-3\vec{u}&=-3\vec{i}-4\vec{j}\\
+                \vec{u}&=-3\vec{i}-4\vec{j}
+            \end{align*}
+            $$
+            <p>$\vec{u}\left(\begin{matrix}-3\\-4\end{matrix}\right)$</p>
+            </li>
+            <li>$$
+            \begin{align*}
+                \dfrac{\vec{u}+\vec{i}}{2}&=\dfrac{\vec{j}+\vec{u}}{3}\\
+                3(\vec{u}+\vec{i})&=2(\vec{j}+\vec{u})\\
+                3\vec{u}+3\vec{i}&=2\vec{j}+2\vec{u}\\
+                3\vec{u}-2\vec{u}&=2\vec{j}-3\vec{i}\\
+                \vec{u}&=2\vec{j}-3\vec{i}\\
+                \vec{u}&=-3\vec{i}+2\vec{j}
+            \end{align*}
+            $$
+            <p>$\vec{u}\left(\begin{matrix}-3\\2\end{matrix}\right)$</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Placez dans un repère orthonormé les points $A(2~;~1)$, $B(5~;~1)$, $C(-1~;~3)$, $D(7~;~3)$ et $E(2~;~-2)$.</li>
+            <li>Déterminer par lecture graphique les coordonnées des vecteurs suivants.
+                <ol class="horizontal-list">
+                    <li>$\overrightarrow{AB}$</li>
+                    <li>$\overrightarrow{AC}$</li>
+                    <li>$\overrightarrow{AD}$</li>
+                    <li>$\overrightarrow{AE}$</li>
+                    <li>$\overrightarrow{BC}$</li>
+                    <li>$\overrightarrow{BD}$</li>
+                    <li>$\overrightarrow{BE}$</li>
+                    <li>$\overrightarrow{CD}$</li>
+                    <li>$\overrightarrow{CE}$</li>
+                    <li>$\overrightarrow{DE}$</li>
+                </ol>
+            </li>
+            <li>Retrouver les résultats de la question précédente par le calcul.</li>
+            <li>Calculer les coordonnées des vecteurs suivants puis contrôler le résultat avec la figure.
+                <ol class="horizontal-list col-4c">
+                    <li>$\overrightarrow{AB}+\overrightarrow{AC}$</li>
+                    <li>$\overrightarrow{AB}+\overrightarrow{AD}$</li>
+                    <li>$\overrightarrow{AB}+\overrightarrow{AE}$</li>
+                    <li>$\overrightarrow{AC}+\overrightarrow{AD}$</li>
+                    <li>$\overrightarrow{AC}+\overrightarrow{AE}$</li>
+                    <li>$\overrightarrow{AD}+\overrightarrow{AE}$</li>
+                    <li>$\overrightarrow{BC}+\overrightarrow{BD}$</li>
+                    <li>$\overrightarrow{BC}+\overrightarrow{BE}$</li>
+                    <li>$\overrightarrow{BD}+\overrightarrow{BE}$</li>
+                    <li>$\overrightarrow{CD}+\overrightarrow{CE}$</li>
+                </ol>
+            </li> 
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><div class="figure">
+                <svg viewBox="0 0 100 70" class="quadrillage">
+                    <g name="repere1" class="repere" xmin="-2" ymin="-3" xmax="8" ymax ="4" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                    <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
+                    <g class="label" linkto="O" x="-4" y="0" style="font-size:0.4rem;">O</g>
+                    <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                    <g name="i" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+                    <g class="label" linkto="i" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+                    <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                    <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                    <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
+                    <g name="A" class="point labeled" repere="repere1" x="2" y="1" stroke="red" style="font-size:0.5rem;"></g>
+                    <g name="B" class="point labeled" repere="repere1" x="5" y="1" stroke="red" style="font-size:0.5rem;"></g>
+                    <g name="C" class="point labeled" repere="repere1" x="-1" y="3" stroke="red" style="font-size:0.5rem;"></g>
+                    <g name="D" class="point labeled" repere="repere1" x="7" y="3" stroke="red" style="font-size:0.5rem;"></g>
+                    <g name="E" class="point labeled" repere="repere1" x="2" y="-2" stroke="red" style="font-size:0.5rem;"></g>
+                </svg>
+            </div></li>
+            <li><ul class="horizontal-list">
+                <li>$\overrightarrow{AB}\left(\begin{matrix}3\\0\end{matrix}\right)$</li>
+                <li>$\overrightarrow{AC}\left(\begin{matrix}-3\\2\end{matrix}\right)$</li>
+                <li>$\overrightarrow{AD}\left(\begin{matrix}5\\2\end{matrix}\right)$</li>
+                <li>$\overrightarrow{AE}\left(\begin{matrix}0\\-3\end{matrix}\right)$</li>
+                <li>$\overrightarrow{BC}\left(\begin{matrix}-6\\2\end{matrix}\right)$</li>
+                <li>$\overrightarrow{BD}\left(\begin{matrix}2\\2\end{matrix}\right)$</li>
+                <li>$\overrightarrow{BE}\left(\begin{matrix}-3\\-3\end{matrix}\right)$</li>
+                <li>$\overrightarrow{CD}\left(\begin{matrix}8\\0\end{matrix}\right)$</li>
+                <li>$\overrightarrow{CE}\left(\begin{matrix}3\\-5\end{matrix}\right)$</li>
+                <li>$\overrightarrow{DE}\left(\begin{matrix}-5\\-5\end{matrix}\right)$</li>
+            </ul></li>
+            <li><ul class="horizontal-list">
+                <li>$$
+                \begin{align*}
+                \overrightarrow{AB}&\left(\begin{matrix}x_B-x_A\\y_B-y_A\end{matrix}\right)\\
+                \overrightarrow{AB}&\left(\begin{matrix}5-2\\1-1\end{matrix}\right)\\
+                \overrightarrow{AB}&\left(\begin{matrix}3\\0\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{AC}&\left(\begin{matrix}x_C-x_A\\y_C-y_A\end{matrix}\right)\\
+                \overrightarrow{AC}&\left(\begin{matrix}-1-2\\3-1\end{matrix}\right)\\
+                \overrightarrow{AC}&\left(\begin{matrix}-3\\2\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{AD}&\left(\begin{matrix}x_D-x_A\\y_D-y_A\end{matrix}\right)\\
+                \overrightarrow{AD}&\left(\begin{matrix}7-2\\3-1\end{matrix}\right)\\
+                \overrightarrow{AD}&\left(\begin{matrix}5\\2\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{AE}&\left(\begin{matrix}x_E-x_A\\y_E-y_A\end{matrix}\right)\\
+                \overrightarrow{AE}&\left(\begin{matrix}2-2\\-2-1\end{matrix}\right)\\
+                \overrightarrow{AE}&\left(\begin{matrix}0\\-3\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{BC}&\left(\begin{matrix}x_C-x_B\\y_C-y_B\end{matrix}\right)\\
+                \overrightarrow{BC}&\left(\begin{matrix}-1-5\\3-1\end{matrix}\right)\\
+                \overrightarrow{BC}&\left(\begin{matrix}-6\\2\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{BD}&\left(\begin{matrix}x_D-x_B\\y_D-y_B\end{matrix}\right)\\
+                \overrightarrow{BD}&\left(\begin{matrix}7-5\\3-1\end{matrix}\right)\\
+                \overrightarrow{BD}&\left(\begin{matrix}2\\2\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{BE}&\left(\begin{matrix}x_E-x_B\\y_E-y_B\end{matrix}\right)\\
+                \overrightarrow{BE}&\left(\begin{matrix}2-5\\-2-1\end{matrix}\right)\\
+                \overrightarrow{BE}&\left(\begin{matrix}-3\\-3\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{CD}&\left(\begin{matrix}x_D-x_C\\y_D-y_C\end{matrix}\right)\\
+                \overrightarrow{CD}&\left(\begin{matrix}7-(-1)\\3-3\end{matrix}\right)\\
+                \overrightarrow{CD}&\left(\begin{matrix}7+1\\3-3\end{matrix}\right)\\
+                \overrightarrow{CD}&\left(\begin{matrix}8\\0\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{CE}&\left(\begin{matrix}x_E-x_C\\y_E-y_C\end{matrix}\right)\\
+                \overrightarrow{CE}&\left(\begin{matrix}2-(-1)\\-2-3\end{matrix}\right)\\
+                \overrightarrow{CE}&\left(\begin{matrix}2+1\\-2-3\end{matrix}\right)\\
+                \overrightarrow{CE}&\left(\begin{matrix}3\\-5\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{DE}&\left(\begin{matrix}x_E-x_D\\y_E-y_D\end{matrix}\right)\\
+                \overrightarrow{DE}&\left(\begin{matrix}2-7\\-2-3\end{matrix}\right)\\
+                \overrightarrow{DE}&\left(\begin{matrix}-5\\-5\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+            </ul></li>
+            <li><ul class="horizontal-list">
+                <li>$$
+                \begin{align*}
+                \overrightarrow{AB}+\overrightarrow{AC}&\left(\begin{matrix}3-3\\0+2\end{matrix}\right)\\
+                \overrightarrow{AB}+\overrightarrow{AC}&\left(\begin{matrix}0\\2\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{AB}+\overrightarrow{AD}&\left(\begin{matrix}3+5\\0+2\end{matrix}\right)\\
+                \overrightarrow{AB}+\overrightarrow{AD}&\left(\begin{matrix}8\\2\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{AB}+\overrightarrow{AE}&\left(\begin{matrix}3+0\\0-3\end{matrix}\right)\\
+                \overrightarrow{AB}+\overrightarrow{AE}&\left(\begin{matrix}3\\-3\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{AC}+\overrightarrow{AD}&\left(\begin{matrix}-3+5\\2+2\end{matrix}\right)\\
+                \overrightarrow{AC}+\overrightarrow{AD}&\left(\begin{matrix}2\\4\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{AC}+\overrightarrow{AE}&\left(\begin{matrix}-3+0\\2-3\end{matrix}\right)\\
+                \overrightarrow{AC}+\overrightarrow{AE}&\left(\begin{matrix}-3\\-1\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{AD}+\overrightarrow{AE}&\left(\begin{matrix}5+0\\2-3\end{matrix}\right)\\
+                \overrightarrow{AD}+\overrightarrow{AE}&\left(\begin{matrix}5\\-1\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{BC}+\overrightarrow{BD}&\left(\begin{matrix}-6+2\\2+2\end{matrix}\right)\\
+                \overrightarrow{BC}+\overrightarrow{BD}&\left(\begin{matrix}-4\\4\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{BC}+\overrightarrow{BE}&\left(\begin{matrix}-6-3\\2-3\end{matrix}\right)\\
+                \overrightarrow{BC}+\overrightarrow{BE}&\left(\begin{matrix}-9\\-1\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{BD}+\overrightarrow{BE}&\left(\begin{matrix}2-3\\2-3\end{matrix}\right)\\
+                \overrightarrow{BD}+\overrightarrow{BE}&\left(\begin{matrix}-1\\-1\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+                <li>$$
+                \begin{align*}
+                \overrightarrow{CD}+\overrightarrow{CE}&\left(\begin{matrix}8+3\\0-5\end{matrix}\right)\\
+                \overrightarrow{CD}+\overrightarrow{CE}&\left(\begin{matrix}11\\-5\end{matrix}\right)
+                \end{align*}
+                $$
+                </li>
+            </ul></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère les vecteurs $\vec{u}\left(\begin{matrix}2\\-1\end{matrix}\right)$ et $\vec{v}\left(\begin{matrix}1\\2\end{matrix}\right)$.
+        <ol class="alphabetical-list">
+            <li>Calculez les coordonnées de $3\vec{u}+2\vec{v}$.</li>
+            <li>Calculez les coordonnées de $3\vec{u}-2\vec{v}$.</li>
+            <li>Tracez les vecteurs $3\vec{u}$, $2\vec{v}$ puis contrôlez le résultat précédent.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+                3\vec{u}+2\vec{v}&\left(\begin{matrix}3\times 2+2\times 1\\3\times(-1)+2\times 2\end{matrix}\right)\\
+                3\vec{u}+2\vec{v}&\left(\begin{matrix}6+2\\-3+4\end{matrix}\right)\\
+                3\vec{u}+2\vec{v}&\left(\begin{matrix}8\\1\end{matrix}\right)
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+                3\vec{u}-2\vec{v}&\left(\begin{matrix}3\times 2-2\times 1\\3\times(-1)-2\times 2\end{matrix}\right)\\
+                3\vec{u}-2\vec{v}&\left(\begin{matrix}6-2\\-3-4\end{matrix}\right)\\
+                3\vec{u}-2\vec{v}&\left(\begin{matrix}4\\-7\end{matrix}\right)
+            \end{align*}
+            $$
+            </li>
+            <li><div class="figure">
+                <svg viewBox="0 0 100 90" class="quadrillage">
+                    <g name="repere1" class="repere" xmin="-1" ymin="-4" xmax="9" ymax ="5" xorigine="0" yorigine="0"></g>
+                    <g name="O" class="point" repere="repere1" x="0" y="0" stroke="transparent"></g>
+                    <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                    <g name="i" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+                    <g class="label" linkto="i" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+                    <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                    <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                    <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
+                    <g name="A" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+                    <g name="B" class="point" repere="repere1" x="6" y="-3" stroke="none"></g>
+                    <g name="C" class="point" repere="repere1" x="2" y="4" stroke="none"></g>
+                    <g name="D" class="point" repere="repere1" x="8" y="1" stroke="none"></g>
+                    <g name="3u" class="vecteur" linkto="A B" stroke="blue" scale="0.5"></g>
+                    <g name="I2v" class="point labeled" repere="repere1" x="1" y="2" stroke="none" style="font-size:0.3em;"></g>
+                    <g class="label" linkto="I2v" x="-5" y="-10" style="font-size:0.4rem;">2\vec{v}</g>
+                    <g name="2v" class="vecteur" linkto="A C" stroke="blue" scale="0.5" style="font-size:0.3em;"></g>
+                    <g name="I3u" class="point labeled" repere="repere1" x="3" y="-1.5" stroke="none" style="font-size:0.3em;"></g>
+                    <g class="label" linkto="I3u" x="-2" y="2" style="font-size:0.4rem;">3\vec{u}</g>
+                    <g name="3u+2v" class="vecteur" linkto="A D" stroke="green" scale="0.5" style="font-size:0.3em;"></g>
+                    <g name="3u+2v" class="point labeled" repere="repere1" x="4" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                    <g class="label" linkto="3u+2v" x="0" y="-10" style="font-size:0.4rem;width:2rem;">3\vec{u}+2\vec{v}</g>
+                    <g name="3u-2v" class="vecteur" linkto="C B" stroke="green" scale="0.5" style="font-size:0.3em;"></g>
+                    <g name="3u-2v" class="point labeled" repere="repere1" x="4" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                    <g class="label" linkto="3u-2v" x="2" y="10" style="font-size:0.4rem;width:2rem;">3\vec{u}-2\vec{v}</g>
+                </svg>
+            </div></li>
+        </ol>
+    </div>
+</div>
+</main>
     <footer>
       Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
       Henry Bergson à Angers.<br />
