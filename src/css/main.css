@@ -263,7 +263,7 @@ footer {
 }
 
 ol.alphabetical-list {
-  counter-reset: list-counter;
+  counter-reset: list-counter var(--start, 0);
   list-style: none;
   padding: 0;
 }
