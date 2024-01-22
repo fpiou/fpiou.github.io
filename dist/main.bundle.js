@@ -37290,6 +37290,16 @@ function quiz_print_solutions() {
     });
   };
 }
+function ajusterStartol() {
+  // Sélectionnez toutes les listes ordonnées avec la classe 'alphabetical-list'
+  var lists = document.querySelectorAll('ol.alphabetical-list');
+  lists.forEach(function (list) {
+    // Lisez la valeur de l'attribut 'start'
+    var startValue = parseInt(list.getAttribute('start')) || 1;
+    // Ajustez le compteur CSS en conséquence
+    list.style.setProperty('--start', startValue - 1);
+  });
+}
 document.addEventListener("DOMContentLoaded", async function () {
   try {
     await chargerBacasables();
@@ -37312,6 +37322,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     quadrillage();
     quiz_print_choices();
     quiz_print_solutions();
+    ajusterStartol();
   } catch (erreur) {
     console.error(erreur);
   }
@@ -39766,12 +39777,18 @@ function creerSerieQuizs(database) {
   const result = database.exec(query);
   const nbGroupes = result[0].values[0][0];
   // On parcourt les groupes
+  const nomFichier = window.location.pathname.split("/").pop();
   for (let i = 1; i <= nbGroupes; i++) {
     // On récupère toutes les questions du groupe
     const query2 = "SELECT * FROM questions_answers WHERE group_id = ".concat(i, ";");
     const result2 = database.exec(query2);
     // On mélange les questions
-    const shuffledQuestions = shuffle(result2[0].values);
+    let shuffledQuestions = "";
+    if (nomFichier.includes("quizo")) {
+      shuffledQuestions = result2[0].values;
+    } else {
+      shuffledQuestions = shuffle(result2[0].values);
+    }
     // On ajoute les questions mélangées à la série
     series.push(shuffledQuestions);
   }
@@ -39839,7 +39856,10 @@ function tourSuivant() {
     }
   });
   // On mélange les questions
-  nextQuestions = shuffle(nextQuestions);
+  const nomFichier = window.location.pathname.split("/").pop();
+  if (!nomFichier.includes("quizo")) {
+    nextQuestions = shuffle(nextQuestions);
+  }
   // On conserve le nombre de questions
   nbQuestions = nextQuestions.length;
   // On ajoute le div pour l'impression du quiz
