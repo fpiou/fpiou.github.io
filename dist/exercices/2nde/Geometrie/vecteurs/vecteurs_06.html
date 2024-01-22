@@ -521,7 +521,7 @@
 </div>
 <div class="exercice">
     <div class="enonce">
-        On considère les vecteurs $\vec{u}\left(\begin{matrix}2\\-1\end{matrix}\right)$ et $\vec{v}\left(\begin{matrix}1\\2\end{matrix}\right)$.
+        On considère $\vec{u}\left(\begin{matrix}2\\-1\end{matrix}\right)$ et $\vec{v}\left(\begin{matrix}1\\2\end{matrix}\right)$.
         <ol class="alphabetical-list">
             <li>Calculez les coordonnées de $3\vec{u}+2\vec{v}$.</li>
             <li>Calculez les coordonnées de $3\vec{u}-2\vec{v}$.</li>
@@ -584,7 +584,7 @@
         <ol class="alphabetical-list">
             <li>Comment déterminer la norme d'un vecteur à partir de ses coordonnées ?</li>
             <li>Que peut-on dire de la norme du produit d'un vecteur $\vec{u}$ par un nombre $k$ ?</li>
-            <li>Peut-on ajouter des normes ?</li>
+            <li>Comment calculer la norme de la somme de deux vecteurs ?</li>
             <li>Comment déterminer la distance entre deux points à partir de leurs coordonnées ?</li>
         </ol>
     </div>
@@ -597,7 +597,9 @@
             <li><p>Dans le cas général on ne peut pas ajouter des normes.</p>
             <p>Par exemple, soient $\vec{u}\left(\begin{matrix}1\\0\end{matrix}\right)$ et $\vec{v}\left(\begin{matrix}0\\1\end{matrix}\right)$ deux vecteurs.</p>
             <p>On a $\|\vec{u}\|=1$ et $\|\vec{v}\|=1$.</p>
-            <p>Mais $\|\vec{u}+\vec{v}\|=\sqrt{1^2+1^2}=\sqrt{2}\neq 2$.</p></li>
+            <p>Mais $\|\vec{u}+\vec{v}\|=\sqrt{1^2+1^2}=\sqrt{2}\neq 2$.</p>
+            <p>Donc pour calculer la norme de la somme de deux vecteurs, il faut d'abord calculer la somme des vecteurs puis la norme du vecteur obtenu.</p></li>
+            </li>
             <li><p>Soient $A(x_A~;~y_A)$ et $B(x_B~;~y_B)$ deux points.</p>
             <p>La distance entre $A$ et $B$ est donnée par la formule suivante : $$AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$$</p></li>
         </ol>
@@ -711,8 +713,259 @@
         </ol>
     </div>
 </div>
+<div class="exercice">
+    <div class="enonce">
+        Toutes les coordonnées sont exprimées dans un repère orthonormé $(O,\vec{i},\vec{j})$.
+        <ol class="alphabetical-list">
+            <li>Calculer la distance entre les points $A(5~;~7)$ et $B(3~;~7)$.</li>
+            <li>Calculer la distance entre les points $C(-6~;~-2)$ et $D(-6~;~3)$.</li>
+            <li>Montrer que si $E(-1~;~2)$, $F(3~;~1)$ et $G(2~;~5)$, alors le triangle $EFG$ est isocèle.</li>
+            <li>Montrer que si $H(-4~;~1)$, $I(4~;~-2)$ et $J(-2~;~5)$, alors le triangle $HIJ$ n'est pas rectangle.</li>
+            <li>Montrer que si $K(-1~;~1)$, $L(1~;~-2)$ et $M(5~;~5)$, alors le triangle $KLM$ est rectangle.</li>
+            <li>Calculer le périmètre du triangle $ABC$ si $A(-1~;~9)$, $B(3~;~6)$ et $C(5~;~1)$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+                AB&=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}\\
+                AB&=\sqrt{(3-5)^2+(7-7)^2}\\
+                AB&=\sqrt{(-2)^2+0^2}\\
+                AB&=\sqrt{4}\\
+                AB&=2
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+                CD&=\sqrt{(x_D-x_C)^2+(y_D-y_C)^2}\\
+                CD&=\sqrt{(-6-(-6))^2+(3-(-2))^2}\\
+                CD&=\sqrt{0^2+5^2}\\
+                CD&=\sqrt{25}\\
+                CD&=5
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+                EF&=\sqrt{(x_F-x_E)^2+(y_F-y_E)^2}\\
+                EF&=\sqrt{(3-(-1))^2+(1-2)^2}\\
+                EF&=\sqrt{4^2+(-1)^2}\\
+                EF&=\sqrt{16+1}\\
+                EF&=\sqrt{17}\\
+                FG&=\sqrt{(x_G-x_F)^2+(y_G-y_F)^2}\\
+                FG&=\sqrt{(2-3)^2+(5-1)^2}\\
+                FG&=\sqrt{(-1)^2+4^2}\\
+                FG&=\sqrt{1+16}\\
+                FG&=\sqrt{17}
+            \end{align*}
+            $$
+            <p>$EF=FG$ donc le triangle $EFG$ est isocèle en $F$.</p>
+            </li>
+            <li>$$
+            \begin{align*}
+                HI&=\sqrt{(x_I-x_H)^2+(y_I-y_H)^2}\\
+                HI&=\sqrt{(4-(-4))^2+(-2-1)^2}\\
+                HI&=\sqrt{8^2+(-3)^2}\\
+                HI&=\sqrt{64+9}\\
+                HI&=\sqrt{73}\\
+                HJ&=\sqrt{(x_J-x_H)^2+(y_J-y_H)^2}\\
+                HJ&=\sqrt{(-2-(-4))^2+(5-1)^2}\\
+                HJ&=\sqrt{(-2+4)^2+4^2}\\
+                HJ&=\sqrt{2^2+16}\\
+                HJ&=\sqrt{4+16}\\
+                HJ&=\sqrt{20}\\
+                IJ&=\sqrt{(x_J-x_I)^2+(y_J-y_I)^2}\\
+                IJ&=\sqrt{(-2-4)^2+(5-(-2))^2}\\
+                IJ&=\sqrt{(-6)^2+7^2}\\
+                IJ&=\sqrt{36+49}\\
+                IJ&=\sqrt{85}
+            \end{align*}
+            $$
+            <p>$HI^2+HJ^2=73+20=93\neq 85=IJ^2$ donc le triangle $HIJ$ n'est pas rectangle.</p>
+            </li>
+            <li>$$
+            \begin{align*}
+                KL&=\sqrt{(x_L-x_K)^2+(y_L-y_K)^2}\\
+                KL&=\sqrt{(1-(-1))^2+(-2-1)^2}\\
+                KL&=\sqrt{2^2+(-3)^2}\\
+                KL&=\sqrt{4+9}\\
+                KL&=\sqrt{13}\\
+                KM&=\sqrt{(x_M-x_K)^2+(y_M-y_K)^2}\\
+                KM&=\sqrt{(5-(-1))^2+(5-1)^2}\\
+                KM&=\sqrt{6^2+4^2}\\
+                KM&=\sqrt{36+16}\\
+                KM&=\sqrt{52}\\
+                LM&=\sqrt{(x_M-x_L)^2+(y_M-y_L)^2}\\
+                LM&=\sqrt{(5-1)^2+(5-(-2))^2}\\
+                LM&=\sqrt{4^2+7^2}\\
+                LM&=\sqrt{16+49}\\
+                LM&=\sqrt{65}
+            \end{align*}
+            $$
+            <p>$KL^2+KM^2=13+52=65=LM^2$ donc d'après la réciproque du théorème de Pythagore le triangle $KLM$ est rectangle en $L$.</p>
+            </li>
+            <li>$$
+            \begin{align*}
+                AB&=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}\\
+                AB&=\sqrt{(3-(-1))^2+(6-9)^2}\\
+                AB&=\sqrt{4^2+(-3)^2}\\
+                AB&=\sqrt{16+9}\\
+                AB&=\sqrt{25}\\
+                AB&=5\\
+                BC&=\sqrt{(x_C-x_B)^2+(y_C-y_B)^2}\\
+                BC&=\sqrt{(5-3)^2+(1-6)^2}\\
+                BC&=\sqrt{2^2+(-5)^2}\\
+                BC&=\sqrt{4+25}\\
+                BC&=\sqrt{29}\\
+                AC&=\sqrt{(x_C-x_A)^2+(y_C-y_A)^2}\\
+                AC&=\sqrt{(5-(-1))^2+(1-9)^2}\\
+                AC&=\sqrt{6^2+(-8)^2}\\
+                AC&=\sqrt{36+64}\\
+                AC&=\sqrt{100}\\
+                AC&=10
+            \end{align*}
+            $$
+            <p>$AB+BC+AC=5+\sqrt{29}+10=15+\sqrt{29}$</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Toutes les coordonnées sont exprimées dans un repère orthonormé $(O,\vec{i},\vec{j})$.
+        On considère les points $A(-1~;~3)$, $B(5~;~7)$ et $C(5~;~-3)$ et $H(0~;~2).$
+        <ol class="alphabetical-list">
+            <li>Montrer que le triangle $ABH$ est rectangle.</li>
+            <li>En déduire un calcul de l'aire du triangle $ABC.$</li>
+            <li>La formule de Héron est donnée par la formule suivante : $$\mathcal{A}=\sqrt{p(p-a)(p-b)(p-c)}$$ où $p$ est le demi-périmètre du triangle et $a$, $b$ et $c$ sont les longueurs des côtés du triangle. Calculer l'aire du triangle $ABC$ à l'aide de cette formule.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+                AB&=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}\\
+                AB&=\sqrt{(5-(-1))^2+(7-3)^2}\\
+                AB&=\sqrt{6^2+4^2}\\
+                AB&=\sqrt{36+16}\\
+                AB&=\sqrt{52}\\
+                AB&=2\sqrt{13}\\
+                AH&=\sqrt{(x_H-x_A)^2+(y_H-y_A)^2}\\
+                AH&=\sqrt{(0-(-1))^2+(2-3)^2}\\
+                AH&=\sqrt{1^2+(-1)^2}\\
+                AH&=\sqrt{1+1}\\
+                AH&=\sqrt{2}\\
+                BH&=\sqrt{(x_H-x_B)^2+(y_H-y_B)^2}\\
+                BH&=\sqrt{(0-5)^2+(2-7)^2}\\
+                BH&=\sqrt{(-5)^2+(-5)^2}\\
+                BH&=\sqrt{25+25}\\
+                BH&=\sqrt{50}\\
+                BH&=5\sqrt{2}
+            \end{align*}
+            $$
+            <p>$AH^2+BH^2=2+50=52=AB^2$ donc d'après la réciproque du théorème de Pythagore le triangle $ABH$ est rectangle en $H$.</p>
+            </li>
+            <li><p>$(BH)$ est donc la hauteur du triangle $ABC$ issue de $B$.</p>
+            $$
+            \begin{align*}
+                BH&=\sqrt{(x_H-x_B)^2+(y_H-y_B)^2}\\
+                BH&=\sqrt{(0-5)^2+(2-7)^2}\\
+                BH&=\sqrt{(-5)^2+(-5)^2}\\
+                BH&=\sqrt{25+25}\\
+                BH&=\sqrt{50}\\
+                BH&=5\sqrt{2}
+            \end{align*}
+            $$
+            <p>$(BH)$ est la hauteur relative au côté $[AC]$.</p>
+            $$\begin{align*}
+            AC&=\sqrt{(x_C-x_A)^2+(y_C-y_A)^2}\\
+            AC&=\sqrt{(5-(-1))^2+(-3-3)^2}\\
+            AC&=\sqrt{6^2+(-6)^2}\\
+            AC&=\sqrt{36+36}\\
+            AC&=\sqrt{72}\\
+            AC&=6\sqrt{2}
+            \end{align*}$$
+            <p>Donc l'aire du triangle $ABC$ est donnée par la formule suivante :
+            $$
+            \begin{align*}
+            \mathcal{A}&=\frac{AC\times BH}{2}\\
+            \mathcal{A}&=\frac{6\sqrt{2}\times 5\sqrt{2}}{2}\\
+            \mathcal{A}&=\frac{6\times 5\times \sqrt{2}\times \sqrt{2}}{2}\\
+            \mathcal{A}&=\frac{30\times 2}{2}\\
+            \mathcal{A}&=30
+            \end{align*}
+            $$</p>
+            </li>
+            <li>$$\begin{align*}
+            BC&=\sqrt{(x_C-x_B)^2+(y_C-y_B)^2}\\
+            BC&=\sqrt{(5-5)^2+(-3-7)^2}\\
+            BC&=\sqrt{0^2+(-10)^2}\\
+            BC&=\sqrt{100}\\
+            BC&=10
+            \end{align*}$$
+            <p>Le demi-périmètre du triangle $ABC$ est donné par la formule suivante :
+            $$\begin{align*}
+            p&=\frac{AB+AC+BC}{2}\\
+            p&=\frac{2\sqrt{13}+6\sqrt{2}+10}{2}
+            \end{align*}$$</p>
+            $$\begin{align*}
+            p-a&=\frac{2\sqrt{13}+6\sqrt{2}+10}{2}-2\sqrt{13}\\
+            p-a&=\frac{2\sqrt{13}+6\sqrt{2}+10-4\sqrt{13}}{2}\\
+            p-a&=\frac{6\sqrt{2}+10-2\sqrt{13}}{2}
+            \end{align*}$$
+            $$\begin{align*}
+            p-b&=\frac{2\sqrt{13}+6\sqrt{2}+10}{2}-6\sqrt{2}\\
+            p-b&=\frac{2\sqrt{13}+6\sqrt{2}+10-12\sqrt{2}}{2}\\
+            p-b&=\frac{2\sqrt{13}-6\sqrt{2}+10}{2}
+            \end{align*}$$
+            $$\begin{align*}
+            p-c&=\frac{2\sqrt{13}+6\sqrt{2}+10}{2}-10\\
+            p-c&=\frac{2\sqrt{13}+6\sqrt{2}+10-20}{2}\\
+            p-c&=\frac{2\sqrt{13}+6\sqrt{2}-10}{2}
+            \end{align*}$$
+            $$\begin{align*}
+            p(p-a)&=\frac{2\sqrt{13}+6\sqrt{2}+10}{2}\times\frac{6\sqrt{2}+10-2\sqrt{13}}{2}\\
+            p(p-a)&=\frac{(2\sqrt{13}+6\sqrt{2}+10)(6\sqrt{2}+10-2\sqrt{13})}{4}\\
+            p(p-a)&=\frac{12\sqrt{26}+20\sqrt{2}+60\sqrt{2}+100-12\sqrt{26}-20\sqrt{2}-60}{4}\\
+            p(p-a)&=\frac{80\sqrt{2}+40}{4}\\
+            p(p-a)&=20\sqrt{2}+10
+            \end{align*}$$
+            $$\begin{align*}
+            (p-b)(p-c)&=\frac{2\sqrt{13}+6\sqrt{2}+10}{2}\times\frac{2\sqrt{13}+6\sqrt{2}-10}{2}\\
+            (p-b)(p-c)&=\frac{(2\sqrt{13}+6\sqrt{2}+10)(2\sqrt{13}+6\sqrt{2}-10)}{4}\\
+            (p-b)(p-c)&=\frac{4\times 13+12\sqrt{26}+12\sqrt{26}+36\times 2-100}{4}\\
+            (p-b)(p-c)&=\frac{52+24\sqrt{26}+72-100}{4}\\
+            (p-b)(p-c)&=\frac{24\sqrt{26}+24}{4}\\
+            (p-b)(p-c)&=6\sqrt{26}+6
+            \end{align*}$$
+            <p>Donc l'aire du triangle $ABC$ est donnée par la formule suivante :
+            $$\begin{align*}
+            \mathcal{A}&=\sqrt{p(p-a)(p-b)(p-c)}\\
+            \mathcal{A}&=\sqrt{(20\sqrt{2}+10)(20\sqrt{2}+10-20\sqrt{2}-10)(6\sqrt{26}+6)}\\
+            \mathcal{A}&=\sqrt{(20\sqrt{2}+10)(6\sqrt{26}+6)}\\
+            \mathcal{A}&=\sqrt{120\sqrt{52}+120\sqrt{2}+60\sqrt{26}+60}\\
+            \mathcal{A}&=\sqrt{60\sqrt{104}+120\sqrt{2}+60\sqrt{26}+60}\\
+            \mathcal{A}&=\sqrt{60\times 2\sqrt{26}+120\sqrt{2}+60\sqrt{26}+60}\\
+            \mathcal{A}&=\sqrt{120\sqrt{26}+120\sqrt{2}+60\sqrt{26}+60}\\
+            \mathcal{A}&=\sqrt{180\sqrt{26}+180\sqrt{2}+60}\\
+            \mathcal{A}&=\sqrt{60(3\sqrt{26}+3\sqrt{2}+1)}\\
+            \mathcal{A}&=\sqrt{60}\times\sqrt{3\sqrt{26}+3\sqrt{2}+1}\\
+            \mathcal{A}&=2\sqrt{15}\times\sqrt{3\sqrt{26}+3\sqrt{2}+1}\\
+            \mathcal{A}&=2\sqrt{15(3\sqrt{26}+3\sqrt{2}+1)}\\
+            \mathcal{A}&=2\sqrt{45\sqrt{26}+45\sqrt{2}+45}\\
+            \mathcal{A}&=2\sqrt{45}\times\sqrt{\sqrt{26}+\sqrt{2}+1}
+            \end{align*}$$</p>
+            </li>
+        </ol>
+    </div>
+</div>
 
-</main>
+
+
+
+            </main>
     <footer>
       Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
       Henry Bergson à Angers.<br />
