@@ -505,6 +505,20 @@
         </ol>
     </div>
 </div>
+<div class="question">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Quelles sont les coordonnées de la somme de deux vecteurs</li>
+            <li>Quelles sont les coordonnées du produit d'un vecteur par un nombre</li>
+        </ol>
+    </div>
+    <div class="reponse">
+        <ol class="alphabetical-list">
+            <li>La somme de deux vecteurs est un vecteur dont les coordonnées sont la somme des coordonnées des deux vecteurs.</li>
+            <li>Le produit d'un vecteur par un nombre est un vecteur dont les coordonnées sont le produit des coordonnées du vecteur par le nombre.</li>
+        </ol>
+    </div>
+</div>
 <div class="exercice">
     <div class="enonce">
         On considère les vecteurs $\vec{u}\left(\begin{matrix}2\\-1\end{matrix}\right)$ et $\vec{v}\left(\begin{matrix}1\\2\end{matrix}\right)$.
@@ -565,6 +579,139 @@
         </ol>
     </div>
 </div>
+<div class="question">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Comment déterminer la norme d'un vecteur à partir de ses coordonnées ?</li>
+            <li>Que peut-on dire de la norme du produit d'un vecteur $\vec{u}$ par un nombre $k$ ?</li>
+            <li>Peut-on ajouter des normes ?</li>
+            <li>Comment déterminer la distance entre deux points à partir de leurs coordonnées ?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Soient $\vec{u}\left(\begin{matrix}x\\y\end{matrix}\right)$ un vecteur.</p>
+            <p>La norme de $\vec{u}$ est donnée par la formule suivante : $$\|\vec{u}\|=\sqrt{x^2+y^2}$$</p></li>
+            <li><p>Soient $\vec{u}\left(\begin{matrix}x\\y\end{matrix}\right)$ un vecteur et $k$ un nombre.</p>
+            <p>La norme du produit de $\vec{u}$ par $k$ est donnée par la formule suivante : $$\|k\vec{u}\|=|k|\times \|\vec{u}\|$$</p></li>
+            <li><p>Dans le cas général on ne peut pas ajouter des normes.</p>
+            <p>Par exemple, soient $\vec{u}\left(\begin{matrix}1\\0\end{matrix}\right)$ et $\vec{v}\left(\begin{matrix}0\\1\end{matrix}\right)$ deux vecteurs.</p>
+            <p>On a $\|\vec{u}\|=1$ et $\|\vec{v}\|=1$.</p>
+            <p>Mais $\|\vec{u}+\vec{v}\|=\sqrt{1^2+1^2}=\sqrt{2}\neq 2$.</p></li>
+            <li><p>Soient $A(x_A~;~y_A)$ et $B(x_B~;~y_B)$ deux points.</p>
+            <p>La distance entre $A$ et $B$ est donnée par la formule suivante : $$AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$$</p></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Dans chaque cas déterminez la norme du vecteur $\vec{u}.$ Toutes les coordonnées sont exprimées dans une base orthonormée $(\vec{i},\vec{j})$.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$\vec{u}\left(\begin{matrix}3\\4\end{matrix}\right)$</li>
+            <li>$\vec{u}\left(\begin{matrix}-2\\2\end{matrix}\right)$</li>
+            <li>$\vec{u}=3\vec{i}-4\vec{j}$</li>
+            <li>$\vec{u}=\vec{i}+\vec{j}$</li>
+        </ol>
+        <ol start="5" class="alphabetical-list">
+            <li>$\vec{u}=\vec{a}-\vec{b}$ si $\vec{a}\left(\begin{matrix}1\\2\end{matrix}\right)$ et $\vec{b}\left(\begin{matrix}5\\-1\end{matrix}\right)$</li>
+            <li>$\vec{u}=-6\vec{a}$ si $\vec{a}\left(\begin{matrix}-3\\-4\end{matrix}\right)$</li>
+            <li>$u=-3\vec{a}+4\vec{b}$ si $\vec{a}\left(\begin{matrix}1\\2\end{matrix}\right)$ et $\vec{b}\left(\begin{matrix}-1\\3\end{matrix}\right)$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+                \|\vec{u}\|&=\sqrt{3^2+4^2}\\
+                \|\vec{u}\|&=\sqrt{9+16}\\
+                \|\vec{u}\|&=\sqrt{25}\\
+                \|\vec{u}\|&=5
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+                \|\vec{u}\|&=\sqrt{(-2)^2+2^2}\\
+                \|\vec{u}\|&=\sqrt{4+4}\\
+                \|\vec{u}\|&=\sqrt{8}\\
+                \|\vec{u}\|&=2\sqrt{2}
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+                \|\vec{u}\|&=\sqrt{3^2+(-4)^2}\\
+                \|\vec{u}\|&=\sqrt{9+16}\\
+                \|\vec{u}\|&=\sqrt{25}\\
+                \|\vec{u}\|&=5
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+                \|\vec{u}\|&=\sqrt{1^2+1^2}\\
+                \|\vec{u}\|&=\sqrt{1+1}\\
+                \|\vec{u}\|&=\sqrt{2}
+            \end{align*}
+            $$
+            </li>
+            <li>
+            $$
+            \begin{align*}
+            \vec{a}-\vec{b}&\left(\begin{matrix}1-5\\2-(-1)\end{matrix}\right)\\
+            \vec{a}-\vec{b}&\left(\begin{matrix}-4\\2+1\end{matrix}\right)\\
+            \vec{a}-\vec{b}&\left(\begin{matrix}-4\\3\end{matrix}\right)
+            \end{align*}
+            $$
+            <p>D'où</p>
+            $$
+            \begin{align*}
+                \|\vec{u}\|&=\sqrt{(-4)^2+3^2}\\
+                \|\vec{u}\|&=\sqrt{16+9}\\
+                \|\vec{u}\|&=\sqrt{25}\\
+                \|\vec{u}\|&=5
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+                \|\vec{a}\|&=\sqrt{(-3)^2+(-4)^2}\\
+                \|\vec{a}\|&=\sqrt{9+16}\\
+                \|\vec{a}\|&=\sqrt{25}\\
+                \|\vec{a}\|&=5
+            \end{align*}
+            $$
+            <p>D'où</p>
+            $$
+            \begin{align*}
+                \|\vec{u}\|&=\|-6\vec{a}\|\\
+                \|\vec{u}\|&=|-6|\times\|\vec{a}\|\\
+                \|\vec{u}\|&=6\times \|\vec{a}\|\\
+                \|\vec{u}\|&=6\times 5\\
+                \|\vec{u}\|&=30
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+                -3\vec{a}+4\vec{b}&\left(\begin{matrix}-3\times 1+4\times(-1)\\-3\times 2+4\times 3\end{matrix}\right)\\
+                -3\vec{a}+4\vec{b}&\left(\begin{matrix}-3-4\\-6+12\end{matrix}\right)\\
+                -3\vec{a}+4\vec{b}&\left(\begin{matrix}-7\\6\end{matrix}\right)
+            \end{align*}
+            $$
+            <p>D'où</p>
+            $$
+            \begin{align*}
+                \|\vec{u}\|&=\sqrt{(-7)^2+6^2}\\
+                \|\vec{u}\|&=\sqrt{49+36}\\
+                \|\vec{u}\|&=\sqrt{85}
+            \end{align*}
+            $$
+            </li>
+        </ol>
+    </div>
+</div>
+
 </main>
     <footer>
       Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
