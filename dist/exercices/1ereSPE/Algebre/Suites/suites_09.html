@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Suites_09.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    
+    <main><div class="question">
+  <div class="enonce">
+    <ul class="alphabetical-list">
+      <li>Qu'est-ce qu'une suite arithmétique ?</li>
+      <li>Quel est le terme général d'une suite arithmétique ?</li>
+    </ul>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    Pour chacune des suites $(u_n)$ suivantes, calculez les quatre premiers termes puis conjecturez sur la nature de la suite (arithmétique ou non). Dans le cas d'une suite artithmétique, indiquez le premier terme et la raison.
+    <ol class="alphabetical-list">
+      <li>$u_0=13$ et pour tout $n \in \mathbb{N}$, $u_{n+1}=u_n-6.$</li>
+      <li>$u_0=3$ et pour tout $n \in \mathbb{N}$, $u_{n+1}=u_n+n.$</li>
+      <li>Pour tout $n \in \mathbb{N}$, $u_{n}=-3n+8.$</li>
+      <li>Pour tout $n \in \mathbb{N}$, $u_{n}=n^2-2n+1.$</li>
+      <li>Pour tout $n \in \mathbb{N}$, $u_{n}=(n-2)^2-(n+1)^2.$</li>
+      <li>Pour tout $n \in \mathbb{N}$, $u_{n}=\sqrt{9n^2+6n+1}.$</li>
+      <li>$u_0=-15$ et pour tout $n \in \mathbb{N}$, $u_{n+1}+u_{n}=6.$</li>
+      <li>$u_0=5$ et pour tout $n \in \mathbb{N}$, $\dfrac{u_{n+1}}{u_{n}}=2.$</li>
+      <li>$u_1=\sqrt{3}$ et pour tout $n \in \mathbb{N}$, $\dfrac{u_{n+1}-u_{n}}{\sqrt{2}}=\sqrt{6}.$</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li>$$u_0=13$$
+      $$\begin{align*}
+        u_1&=u_0-6\\
+        &=13-6\\
+        u_1&=7
+        \end{align*}$$
+        $$\begin{align*}
+        u_2&=u_1-6\\
+        &=7-6\\
+        u_2&=1
+        \end{align*}$$
+        $$\begin{align*}
+        u_3&=u_2-6\\
+        &=1-6\\
+        u_3&=-5
+        \end{align*}$$
+        La suite $(u_n)$ est arithmétique de premier terme $u_0=13$ et de raison $r=-6$.</li>
+      <li>$$u_0=3$$
+      $$\begin{align*}
+        u_1&=u_0+1\\
+        &=3+1\\
+        u_1&=4
+        \end{align*}$$
+        $$\begin{align*}
+        u_2&=u_1+2\\
+        &=4+2\\
+        u_2&=6
+        \end{align*}$$
+        $$\begin{align*}
+        u_3&=u_2+3\\
+        &=6+3\\
+        u_3&=9
+        \end{align*}$$
+        <p>On a $u_1-u_0=4-3=1$ et $u_2-u_1=6-4=2$.</p>
+        <p>$u_1-u_0\neq u_2-u_1$ donc la suite $(u_n)$ n'est pas arithmétique.</p></li>
+      <li>$$\begin{align*}
+        u_0&=-3\times 0+8\\
+        &=0+8\\
+        u_0&=8
+        \end{align*}$$
+      $$\begin{align*}
+        u_1&=-3\times 1+8\\
+        &=3+8\\
+        u_1&=5
+        \end{align*}$$
+        $$\begin{align*}
+        u_2&=-3\times 2+8\\
+        &=-6+8\\
+        u_2&=2
+        \end{align*}$$
+        $$\begin{align*}
+        u_3&=-3\times 3+8\\
+        &=-9+8\\
+        u_3&=-1
+        \end{align*}$$
+        <p>On a $$\begin{align*}
+          u_{n+1}&=-3(n+1)+8\\
+          u_{n+1}&=-3n+5
+          \end{align*}$$</p>
+        <p>D'où $$\begin{align*}
+          u_{n+1}-u_n&=-3n+5-(-3n+8)\\
+          &=-3n+5+3n-8\\
+          u_{n+1}-u_n&=-3
+          \end{align*}$$</p>
+        <p>Donc la suite $(u_n)$ est arithmétique de premier terme $u_0=8$ et de raison $r=-3$.</p></li>
+      <li>$$\begin{align*}
+        u_0&=0^2-2\times 0+1\\
+        &=0-0+1\\
+        u_0&=1
+        \end{align*}$$
+      $$\begin{align*}
+        u_1&=1^2-2\times 1+1\\
+        &=1-2+1\\
+        u_1&=0
+        \end{align*}$$
+        $$\begin{align*}
+        u_2&=2^2-2\times 2+1\\
+        &=4-4+1\\
+        u_2&=1
+        \end{align*}$$
+        $$\begin{align*}
+        u_3&=3^2-2\times 3+1\\
+        &=9-6+1\\
+        u_3&=4
+        \end{align*}$$
+        <p>On a $u_1-u_0=0-1=-1$ et $u_2-u_1=1-0=1$.</p>
+        <p>$u_1-u_0\neq u_2-u_1$ donc la suite $(u_n)$ n'est pas arithmétique.</p></li>
+      <li>$$\begin{align*}
+        u_0&=(0-2)^2-(0+1)^2\\
+        &=(-2)^2-1^2\\
+        &=4-1\\
+        u_0&=3
+        \end{align*}$$
+      $$\begin{align*}
+        u_1&=(1-2)^2-(1+1)^2\\
+        &=(-1)^2-2^2\\
+        &=1-4\\
+        u_1&=-3
+        \end{align*}$$
+        $$\begin{align*}
+        u_2&=(2-2)^2-(2+1)^2\\
+        &=0^2-3^2\\
+        &=0-9\\
+        u_2&=-9
+        \end{align*}$$
+        $$\begin{align*}
+        u_3&=(3-2)^2-(3+1)^2\\
+        &=1^2-4^2\\
+        &=1-16\\
+        u_3&=-15
+        \end{align*}$$
+        <p>On a $$\begin{align*}
+          u_{n}&=(n-2)^2-(n+1)^2\\
+          u_{n}&=(n-2+n+1)(n-2-n-1)\\
+          u_{n}&=(2n-1)(-3)\\
+          u_{n}&=3-6n
+          \end{align*}$$</p>
+        <p>D'où $$\begin{align*}
+          u_{n+1}-u_n&=3-6(n+1)-(3-6n)\\
+          &=3-6n-6-3+6n\\
+          u_{n+1}-u_n&=-6
+          \end{align*}$$</p>
+        <p>Donc la suite $(u_n)$ est arithmétique de premier terme $u_0=3$ et de raison $r=-6$.</p></li>
+      <li>$$\begin{align*}
+        u_0&=\sqrt{9\times 0^2+6\times 0+1}\\
+        &=\sqrt{1}\\
+        u_0&=1
+        \end{align*}$$
+      $$\begin{align*}
+        u_1&=\sqrt{9\times 1^2+6\times 1+1}\\
+        &=\sqrt{9+6+1}\\
+        &=\sqrt{16}\\
+        u_1&=4
+        \end{align*}$$
+        $$\begin{align*}
+        u_2&=\sqrt{9\times 2^2+6\times 2+1}\\
+        &=\sqrt{36+12+1}\\
+        &=\sqrt{49}\\
+        u_2&=7
+        \end{align*}$$
+        $$\begin{align*}
+        u_3&=\sqrt{9\times 3^2+6\times 3+1}\\
+        &=\sqrt{81+18+1}\\
+        &=\sqrt{100}\\
+        u_3&=10
+        \end{align*}$$
+        <p>On a $$\begin{align*}
+          u_{n}&=\sqrt{9n^2+6n+1}\\
+          u_{n}&=\sqrt{(3n)^2+2\times 3n+1}\\
+          u_{n}&=\sqrt{(3n+1)^2}\\
+          u_{n}&=3n+1&\text{car $3n+1\geqslant 0$}
+          \end{align*}$$</p>
+        <p>D'où $$\begin{align*}
+          u_{n+1}-u_n&=3(n+1)+1-(3n+1)\\
+          &=3n+3+1-3n-1\\
+          u_{n+1}-u_n&=3
+          \end{align*}$$</p>
+        <p>Donc la suite $(u_n)$ est arithmétique de premier terme $u_0=1$ et de raison $r=3$.</p></li>
+      <li>$$u_0=-15$$
+      $$\begin{align*}
+        u_1+u_0&=6\\
+        u_1&=6-u_0\\
+        &=6-(-15)\\
+        u_1&=21
+        \end{align*}$$
+        $$\begin{align*}
+        u_2+u_1&=6\\
+        u_2&=6-u_1\\
+        &=6-21\\
+        u_2&=-15
+        \end{align*}$$
+        $$\begin{align*}
+        u_3+u_2&=6\\
+        u_3&=6-u_2\\
+        &=6-(-15)\\
+        u_3&=21
+        \end{align*}$$
+        <p>On $u_1-u_0=21-(-15)=36$ et $u_2-u_1=-15-21=-36$.</p>
+        <p>$u_1-u_0\neq u_2-u_1$ donc la suite $(u_n)$ n'est pas arithmétique.</p></li>
+      <li>$$u_0=5$$
+      $$\begin{align*}
+        \dfrac{u_1}{u_0}&=2\\
+        u_1&=2u_0\\
+        &=2\times 5\\
+        u_1&=10
+        \end{align*}$$
+        $$\begin{align*}
+        \dfrac{u_2}{u_1}&=2\\
+        u_2&=2u_1\\
+        &=2\times 10\\
+        u_2&=20
+        \end{align*}$$
+        $$\begin{align*}
+        \dfrac{u_3}{u_2}&=2\\
+        u_3&=2u_2\\
+        &=2\times 20\\
+        u_3&=40
+        \end{align*}$$
+        <p>On a $u_1-u_0=10-5=5$ et $u_2-u_1=20-10=10$.</p>
+        <p>$u_1-u_0\neq u_2-u_1$ donc la suite $(u_n)$ n'est pas arithmétique.</p></li>
+      <li>
+      $$\begin{align*}
+        \dfrac{u_{n+1}-u_n}{\sqrt{2}}&=\sqrt{6}\\
+        u_{n+1}-u_n&=\sqrt{2}\sqrt{6}\\
+        u_{n+1}-u_n&=\sqrt{2}\times \sqrt{2}\times \sqrt{3}\\
+        u_{n+1}-u_n&=2\sqrt{3}\\
+        \end{align*}$$
+        <p>Donc la suite $(u_n)$ est arithmétique de premier terme $u_0=\sqrt{3}$ et de raison $r=2\sqrt{3}$.</p></li>
+        $$\begin{align*}
+        u_n=\sqrt{3}+n\times 2\sqrt{3}\\
+        u_n=\sqrt{3}(1+2n)
+        \end{align*}$$
+        <p>D'où $$\begin{align*}
+          u_{2}&=\sqrt{3}(1+2\times 2)\\
+          &=\sqrt{3}(1+4)\\
+          &=\sqrt{3}\times 5\\
+          u_{2}&=5\sqrt{3}
+          \end{align*}$$</p>
+          $$\begin{align*}
+          u_{3}&=\sqrt{3}(1+2\times 3)\\
+          &=\sqrt{3}(1+6)\\
+          &=\sqrt{3}\times 7\\
+          u_{3}&=7\sqrt{3}
+          \end{align*}$$
+          $$\begin{align*}
+          u_{4}&=\sqrt{3}(1+2\times 4)\\
+          &=\sqrt{3}(1+8)\\
+          &=\sqrt{3}\times 9\\
+          u_{4}&=9\sqrt{3}
+          \end{align*}$$
+        </li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    Chaque suite $u_n$ est arithmétique de raison $r$. Calculez les quatre premiers termes, puis déterminez le terme demandé et enfin pour quels entiers $n$ l'inégalité est vérifiée.
+    <ol class="alphabetical-list">
+      <li>$u_0=-15$ et $r=2$ ; $u_{100}$ ; $u_n\geqslant 1000$.</li>
+      <li>$u_0=3$ et $r=-5$ ; $u_{100}$ ; $u_n\lt-997$.</li>
+      <li>$u_1=6$ et $r=\num{0.15}$ ; $u_{100}$ ; $u_n\geqslant 51$.</li>
+      <li>$u_0=0$ et $r=\cos\left(\dfrac{\pi}{6}\right)$ ; $u_{100}$ ; $u_n\geqslant 1000$.</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li>$$\begin{align*}
+        u_0&=-15\\
+        u_1&=u_0+r\\
+        &=(-15)+2\\
+        u_1&=-13
+        \end{align*}$$
+        $$\begin{align*}
+        u_2&=u_1+r\\
+        &=(-13)+2\\
+        u_2&=-11
+        \end{align*}$$
+        $$\begin{align*}
+        u_3&=u_2+r\\
+        &=(-11)+2\\
+        u_3&=-9
+        \end{align*}$$
+        <p>On a $$\begin{align*}
+          u_n&=u_0+nr\\
+          u_n&=-15+n\times 2\\
+          u_n&=2n-15
+          \end{align*}$$</p>
+        $$\begin{align*}
+        u_{100}&=2\times 100-15\\
+        &=200-15\\
+        u_{100}&=185
+        \end{align*}$$
+        <p>On cherche $n$ tel que $u_n\geqslant 1000$.</p>
+        <p>$$\begin{align*}
+          u_n&\geqslant 1000\\
+          2n-15&\geqslant 1000\\
+          2n&\geqslant 1000+15\\
+          2n&\geqslant 1015\\
+          n&\geqslant \dfrac{1015}{2}\\
+          n&\geqslant 507,5
+          \end{align*}$$</p>
+        <p>Donc $u_n\geqslant 1000$ à partir de $n=508$.</p></li>
+      <li>$$\begin{align*}
+        u_0&=3\\
+        u_1&=u_0+(-5)\\
+        &=3+(-5)\\
+        u_1&=-2
+        \end{align*}$$
+        $$\begin{align*}
+        u_2&=u_1+(-5)\\
+        &=-2+(-5)\\
+        u_2&=-7
+        \end{align*}$$
+        $$\begin{align*}
+        u_3&=u_2+(-5)\\
+        &=-7+(-5)\\
+        u_3&=-12
+        \end{align*}$$
+        <p>On a $$\begin{align*}
+          u_n&=u_0+nr\\
+          u_n&=3+n\times (-5)\\
+          u_n&=-5n+3
+          \end{align*}$$</p>
+        $$\begin{align*}
+        u_{100}&=-5\times 100+3\\
+        &=-500+3\\
+        u_{100}&=-497
+        \end{align*}$$
+        <p>On cherche $n$ tel que $u_n\lt-997$.</p>
+        <p>$$\begin{align*}
+          u_n&\lt-997\\
+          -5n+3&\lt-997\\
+          -5n&\lt-997-3\\
+          -5n&\lt-1000\\
+          n&\gt \dfrac{-1000}{-5}\\
+          n&\gt 200
+          \end{align*}$$</p>
+        <p>Donc $u_n\lt-997$ à partir de $n=201$.</p></li>
+      <li>$$\begin{align*}
+        u_1&=6\\
+        u_2&=u_1+\num{0.15}\\
+        &=6+\num{0.15}\\
+        u_2&=\num{6.15}
+        \end{align*}$$
+        $$\begin{align*}
+        u_3&=u_2+\num{0.15}\\
+        &=\num{6.15}+\num{0.15}\\
+        u_3&=\num{6.3}
+        \end{align*}$$
+        $$\begin{align*}
+        u_4&=u_3+\num{0.15}\\
+        &=\num{6.3}+\num{0.15}\\
+        u_4&=\num{6.45}
+        \end{align*}$$
+        <p>On a $$\begin{align*}
+          u_n&=u_1+(n-1)r\\
+          u_n&=6+(n-1)\times \num{0.15}\\
+          u_n&=6+\num{0.15}n-\num{0.15}\\
+          u_n&=\num{0.15}n+\num{5.85}
+          \end{align*}$$</p>
+        $$\begin{align*}
+        u_{100}&=\num{0.15}\times 100+\num{5.85}\\
+        &=\num{15}+\num{5.85}\\
+        u_{100}&=\num{20.85}
+        \end{align*}$$
+        <p>On cherche $n$ tel que $u_n\geqslant 51$.</p>
+        <p>$$\begin{align*}
+          u_n&\geqslant 51\\
+          \num{0.15}n+\num{5.85}&\geqslant 51\\
+          \num{0.15}n&\geqslant 51-\num{5.85}\\
+          \num{0.15}n&\geqslant \num{45.15}\\
+          n&\geqslant \dfrac{\num{45.15}}{\num{0.15}}\\
+          n&\geqslant \dfrac{4515}{15}\\
+          n&\geqslant \dfrac{4500+15}{15}\\
+          n&\geqslant \dfrac{4500}{15}+\dfrac{15}{15}\\
+          n&\geqslant 300+1\\
+          n&\geqslant 301
+          \end{align*}$$</p>
+    </ol>
+  </div>
+</div>
+<div class="question">
+  <div class="enonce">
+    <ul class="alphabetical-list">
+      <li>Quelle est la formule du calcul de la somme des $n$ premiers entiers naturels non nuls ?</li>
+      <li>Quelle est la formule du calcul de la somme des $n$ premiers termes d'une suite arithmétique ?</li>
+    </ul>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    <ol class="alphabetical-list">
+      <li>Calculez $1+2+\ldots+100$.</li>
+      <li>Calculez $1+2+\ldots+50$.</li>
+      <li>En déduire $51+52+\ldots+100$.</li>
+      <li>Soit $u_n$ une suite arithmétique de raison $1$ et de premier terme $u_0=51.$ Déterminez le 50ème terme de cette suite. Retrouvez le résultat de la question précédente en utilisant la formule du calcul de la somme des $n$ premiers termes d'une suite arithmétique.</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li>$$\begin{align*}
+        1+2+\ldots+100&=\dfrac{100\times 101}{2}\\
+        &=\dfrac{10100}{2}\\
+        1+2+\ldots+100&=5050
+        \end{align*}$$</li>
+      <li>$$\begin{align*}
+        1+2+\ldots+50&=\dfrac{50\times 51}{2}\\
+        &=\dfrac{2550}{2}\\
+        1+2+\ldots+50&=1275
+        \end{align*}$$</li>
+      <li>$$\begin{align*}
+        1+2+\ldots+100&=(1+2+\ldots+50)+(51+52+\ldots+100)\\
+        5050&=1275+(51+52+\ldots+100)\\
+        5050-1275&=51+52+\ldots+100\\
+        3775&=51+52+\ldots+100
+        \end{align*}$$</li>
+      <li><p>Le 50ème terme de la suite $(u_n)$ est $u_{49}.$</p>
+        <p>$$\begin{align*}
+          u_{49}&=u_0+49\times 1\\
+          u_{49}&=51+49\\
+          u_{49}&=100
+          \end{align*}$$</p>
+        <p>$$\begin{align*}
+          51+52+\ldots+100&=u_0+u_1+\ldots+u_{49}\\
+          &=\dfrac{50\times (u_0+u_{49})}{2}\\
+          &=\dfrac{50\times (51+100)}{2}\\
+          &=\dfrac{50\times 151}{2}\\
+          &=\dfrac{7550}{2}\\
+          51+52+\ldots+100&=3775
+          \end{align*}$$</p></li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    On considère la suite arithmétique $u_n$ de raison $3$ et de premier terme $u_0=4$ et la suite $v_n$ définie pour tout entier naturel $n$ par $v_n=\dfrac{u_n-1}{3}.$
+    <ol class="alphabetical-list">
+      <li>Calculez les quatre premiers termes de la suite $(u_n).$</li>
+      <li>Déterminez le terme général de la suite $(u_n).$</li>
+      <li>Calculez la somme $S$ des $20$ premiers termes de la suite $(u_n).$</li>
+      <li>Calculez les quatre premiers termes de la suite $(v_n).$</li>
+      <li>Montrez que la suite $(v_n)$ est la suite des entiers naturels non nuls.</li>
+      <li>Calculez la somme des $20$ premiers termes de la suite $(v_n).$</li>
+      <li>Reprendre les questions à partir de la question c. mais en considérant la somme $S'$ des 50 premiers termes.</li>
+      <li>Calculez de deux manières $u_{20}+u_{21}+\ldots+u_{49}.$</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li>$$\begin{align*}
+        u_0&=4\\
+        u_1&=u_0+3\\
+        &=4+3\\
+        u_1&=7
+        \end{align*}$$
+        $$\begin{align*}
+        u_2&=u_1+3\\
+        &=7+3\\
+        u_2&=10
+        \end{align*}$$
+        $$\begin{align*}
+        u_3&=u_2+3\\
+        &=10+3\\
+        u_3&=13
+        \end{align*}$$</li>
+      <li>$$\begin{align*}
+        u_n&=u_0+3n\\
+        u_n&=4+3n
+        \end{align*}$$</li>
+      <li>$$\begin{align*}
+        u_0+u_1+\ldots+u_{19}&=\dfrac{20\times (u_0+u_{19})}{2}\\
+        &=\dfrac{20\times (4+4+19\times 3)}{2}\\
+        &=\dfrac{20\times (4+4+57)}{2}\\
+        &=\dfrac{20\times 65}{2}\\
+        &=\dfrac{20}{2}\times 65\\
+        &=10\times 65\\
+        u_0+u_1+\ldots+u_{19}&=650
+        \end{align*}$$</li>
+      <li>$$\begin{align*}
+        v_0&=\dfrac{u_0-1}{3}\\
+        &=\dfrac{4-1}{3}\\
+        v_0&=\dfrac{3}{3}\\
+        v_0&=1
+        \end{align*}$$
+        $$\begin{align*}
+        v_1&=\dfrac{u_1-1}{3}\\
+        &=\dfrac{7-1}{3}\\
+        v_1&=\dfrac{6}{3}\\
+        v_1&=2
+        \end{align*}$$
+        $$\begin{align*}
+        v_2&=\dfrac{u_2-1}{3}\\
+        &=\dfrac{10-1}{3}\\
+        v_2&=\dfrac{9}{3}\\
+        v_2&=3
+        \end{align*}$$
+        $$\begin{align*}
+        v_3&=\dfrac{u_3-1}{3}\\
+        &=\dfrac{13-1}{3}\\
+        v_3&=\dfrac{12}{3}\\
+        v_3&=4
+        \end{align*}$$</li>
+      <li>$$\begin{align*}
+      v_n&=\dfrac{u_n-1}{3}\\
+      v_n&=\dfrac{4+3n-1}{3}\\
+      v_n&=\dfrac{3n+3}{3}\\
+      v_n&=\dfrac{3(n+1)}{3}\\
+      v_n&=n+1
+      \end{align*}$$
+      <p>Donc $(v_n)$ est la suite des entiers naturels non nuls.</p></li>
+      <li>$$\begin{align*}
+        v_0+v_1+\ldots+v_{19}&=1+2+\ldots+20\\
+        &=\dfrac{20\times (1+20)}{2}\\
+        &=\dfrac{20\times 21}{2}\\
+        &=\dfrac{420}{2}\\
+        v_0+v_1+\ldots+v_{19}&=210
+        \end{align*}$$</li>
+      <li>Calculons la somme des 50 premiers termes de la suite $(u_n).$
+        $$\begin{align*}
+        u_0+u_1+\ldots+u_{49}&=\dfrac{50\times (u_0+u_{49})}{2}\\
+        &=\dfrac{50\times (4+4+49\times 3)}{2}\\
+        &=\dfrac{50\times (4+4+147)}{2}\\
+        &=\dfrac{50\times 155}{2}\\
+        &=\dfrac{7750}{2}\\
+        u_0+u_1+\ldots+u_{49}&=3875
+        \end{align*}$$
+        Calculons la somme des 50 premiers termes de la suite $(v_n).$
+        $$\begin{align*}
+        v_0+v_1+\ldots+v_{49}&=1+2+\ldots+50\\
+        &=\dfrac{50\times (1+50)}{2}\\
+        &=\dfrac{50\times 51}{2}\\
+        &=\dfrac{2550}{2}\\
+        v_0+v_1+\ldots+v_{49}&=1275
+        \end{align*}$$</li>
+      <li>$$\begin{align*}
+        u_{20}+u_{21}+\ldots+u_{49}&=\dfrac{30\times (u_{20}+u_{49})}{2}\\
+        &=\dfrac{30\times (4+20\times 3+4+49\times 3)}{2}\\
+        &=\dfrac{30\times (4+60+4+147)}{2}\\
+        &=\dfrac{30\times 215}{2}\\
+        &=\dfrac{6450}{2}\\
+        u_{20}+u_{21}+\ldots+u_{49}&=3225
+        \end{align*}$$</li>
+      <p>On a $$\begin{align*}
+        u_0+u_1+\ldots+u_{49}&=u_0+u_1+\ldots+u_{19}+u_{20}+u_{21}+\ldots+u_{49}\\
+        3875&=650+u_{20}+u_{21}+\ldots+u_{49}\\
+        3875-650&=u_{20}+u_{21}+\ldots+u_{49}\\
+        3225&=u_{20}+u_{21}+\ldots+u_{49}
+        \end{align*}$$</p>
+    </ol>
+  </div>
+</div>
+</main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>

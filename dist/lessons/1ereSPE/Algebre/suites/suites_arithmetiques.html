@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Suites_arithmetiques.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+        rel="stylesheet">
+
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+        crossorigin="anonymous"
+      />
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+        integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"
+      ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+        <link rel="stylesheet" href="/src/css/main.css">
+    
+        <link rel="stylesheet" href="/src/css/prettyLesson.css">
+    
+        <link rel="stylesheet" href="/src/css/figures.css">
+    
+        <link rel="stylesheet" href="/src/css/print.css">
+    
+
+    <!--Scripts personnalisés-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+<body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    
+    <main>
+        <h1>Suite arithmétique</h1>
+<h2>Généralités</h2>
+<div class="definition">
+    Considérons un suite $(u_n)$ définie pour tout entier naturel. On dit que $(u_n)$ est arithmétique si chaque terme se déduit du précédent en ajoutant toujours le même nombre. Ce nombre est appelé la raison de la suite arithmétique.
+    <div class="figure">
+        <svg viewBox="-20 -50 220 100">
+            <g name="u0" class="point labeled" x="0" y="0" stroke="none"></g>
+            <g class="label" linkto="u0" x="-7" y="-5" style="font-size:1em">u_0</g>
+            <g name="u1" class="point labeled" x="30" y="0" stroke="none"></g>
+            <g class="label" linkto="u1" x="-7" y="-5" style="font-size:1em">u_1</g>
+            <g name="r1" class="courbe" linkto="u0 u1" pentes="u0:1,u1:-1" parametres=""></g>
+            <g name="u2" class="point labeled" x="60" y="0" stroke="none"></g>
+            <g class="label" linkto="u2" x="-7" y="-5" style="font-size:1em">u_2</g>
+            <g name="r2" class="courbe" linkto="u1 u2" pentes="u1:1,u2:-1" parametres=""></g>
+            <g name="u3" class="point labeled" x="90" y="0" stroke="none"></g>
+            <g class="label" linkto="u3" x="-7" y="-5" style="font-size:1em">u_3</g>
+            <g name="r3" class="courbe" linkto="u2 u3" pentes="u2:1,u3:-1" parametres=""></g>
+            <g name="u4" class="point labeled" x="120" y="0" stroke="none"></g>
+            <g class="label" linkto="u4" x="-7" y="-5" style="font-size:1em">u_4</g>
+            <g name="r4" class="courbe" linkto="u3 u4" pentes="u3:1,u4:-1" parametres=""></g>
+            <g name="u5" class="point labeled" x="150" y="0" stroke="none"></g>
+            <g class="label" linkto="u5" x="-7" y="-5" style="font-size:1em">u_5</g>
+            <g name="r5" class="courbe" linkto="u4 u5" pentes="u4:1,u5:-1" parametres=""></g>
+            <g name="u6" class="point labeled" x="180" y="0" stroke="none"></g>
+            <g class="label" linkto="u6" x="-7" y="-5" style="font-size:1em">u_6</g>
+            <g name="r6" class="courbe" linkto="u5 u6" pentes="u5:1,u6:-1" parametres=""></g>
+            <g name="u7" class="point labeled" x="210" y="0" stroke="none"></g>
+            <g class="label" linkto="u7" x="-7" y="-5" style="font-size:1em">u_7</g>
+            <g name="r7" class="courbe" linkto="u6 u7" pentes="u6:1,u7:-1" parametres=""></g>
+            <g name="r1" class="point labeled" x="15" y="-15" stroke="none"></g>
+            <g class="label" linkto="r1" x="-7" y="-13" style="font-size:1em;width:3em;">+r</g>
+            <g name="r2" class="point labeled" x="45" y="-15" stroke="none"></g>
+            <g class="label" linkto="r2" x="-7" y="-13" style="font-size:1em;width:3em;">+r</g>
+            <g name="r3" class="point labeled" x="75" y="-15" stroke="none"></g>
+            <g class="label" linkto="r3" x="-7" y="-13" style="font-size:1em;width:3em;">+r</g>
+            <g name="r4" class="point labeled" x="105" y="-15" stroke="none"></g>
+            <g class="label" linkto="r4" x="-7" y="-13" style="font-size:1em;width:3em;">+r</g>
+            <g name="r5" class="point labeled" x="135" y="-15" stroke="none"></g>
+            <g class="label" linkto="r5" x="-7" y="-13" style="font-size:1em;width:3em;">+r</g>
+            <g name="r6" class="point labeled" x="165" y="-15" stroke="none"></g>
+            <g class="label" linkto="r6" x="-7" y="-13" style="font-size:1em;width:3em;">+r</g>
+            <g name="r7" class="point labeled" x="195" y="-15" stroke="none"></g>
+            <g class="label" linkto="r7" x="-7" y="-13" style="font-size:1em;width:3em;">+r</g>
+        </svg>
+    </div>
+</div>
+<div class="propriete">
+  <p>Une suite $(u_n)$ est arithmétique si et seulement s'il existe un nombre réel $r$ tel que pour tout entier naturel $n$ $$u_{n+1}=u_n+r$$ (ou encore $u_{n+1}-u_n=r$).</p>
+</div>
+<div class="methode">
+  Pour déterminer si une suite est arithmétique, on peut :
+  <ol>
+    <li>Calculer les premiers termes.</li>
+    <li>Si on passe d'un terme au suivant en ajoutant toujours le même nombre, alors la suite peut être  arithmétique sinon elle ne l'est pas.</li>
+    <li>Calculer $u_{n+1}-u_n$.</li>
+    <li>Si $u_{n+1}-u_n$ est constant, alors la suite est arithmétique sinon elle ne l'est pas.</li>
+    <li>Si la suite est arithmétique alors sa raison est $u_{n+1}-u_n$ pour n'importe quel entier naturel $n$.</li>
+  </ol>
+</div>
+<div class="propriete">
+  <p>Si $(u_n)$ est une suite arithmétique de raison $r$ alors pour tout entier naturel $n$ $$u_n=u_0+nr$$</p>
+  <p>Si $(u_n)$ est une suite arithmétique de raison $r$ alors pour tout entier naturel $n$ $$u_n=u_1+(n-1)r$$</p>
+</div>
+<div class="remarque">
+  <ul>
+    <li>On a ajouté $n$ fois la raison $r$ pour passer du premier terme $u_0$ au terme $u_n$.
+        <div class="figure">
+            <svg viewBox="-20 -50 220 100">
+                <g name="u0" class="point labeled" x="0" y="0" stroke="none"></g>
+                <g class="label" linkto="u0" x="-7" y="-5" style="font-size:1em">u_0</g>
+                <g name="u1" class="point labeled" x="30" y="0" stroke="none"></g>
+                <g class="label" linkto="u1" x="-7" y="-5" style="font-size:1em">u_1</g>
+                <g name="r1" class="courbe" linkto="u0 u1" pentes="u0:1,u1:-1" parametres=""></g>
+                <g name="u2" class="point labeled" x="60" y="0" stroke="none"></g>
+                <g class="label" linkto="u2" x="-7" y="-5" style="font-size:1em">u_2</g>
+                <g name="r2" class="courbe" linkto="u1 u2" pentes="u1:1,u2:-1" parametres=""></g>
+                <g name="u3" class="point labeled" x="90" y="0" stroke="none"></g>
+                <g class="label" linkto="u3" x="-7" y="-5" style="font-size:1em">u_3</g>
+                <g name="r3" class="courbe" linkto="u2 u3" pentes="u2:1,u3:-1" parametres=""></g>
+                <g name="u4" class="point labeled" x="120" y="0" stroke="none"></g>
+                <g class="label" linkto="u4" x="-7" y="-5" style="font-size:1em">u_4</g>
+                <g name="r4" class="courbe" linkto="u3 u4" pentes="u3:1,u4:-1" parametres=""></g>
+                <g name="u5" class="point labeled" x="150" y="0" stroke="none"></g>
+                <g class="label" linkto="u5" x="-7" y="-5" style="font-size:1em">u_5</g>
+                <g name="r5" class="courbe" linkto="u4 u5" pentes="u4:1,u5:-1" parametres=""></g>
+                <g name="u6" class="point labeled" x="180" y="0" stroke="none"></g>
+                <g class="label" linkto="u6" x="-7" y="-5" style="font-size:1em">u_6</g>
+                <g name="r6" class="courbe" linkto="u5 u6" pentes="u5:1,u6:-1" parametres=""></g>
+                <g name="u7" class="point labeled" x="210" y="0" stroke="none"></g>
+                <g class="label" linkto="u7" x="-7" y="-5" style="font-size:1em">u_7</g>
+                <g name="r7" class="courbe" linkto="u6 u7" pentes="u6:1,u7:-1" parametres=""></g>
+                <g name="r06" class="courbe" linkto="u0 u6" pentes="u0:0.5,u6:-0.5" parametres=""></g>
+                <g name="l1" class="point labeled" x="90" y="-40" stroke="none"></g>
+                <g class="label" linkto="l1" x="-7" y="-10" style="font-size:1em;width:2em">+6r</g>
+                <g name="l2" class="point labeled" x="90" y="30" stroke="none"></g>
+                <g class="label" linkto="l2" x="-40" y="-10" style="font-size:1em;width:10em">u_6=u_0+6r</g>
+            </svg>
+        </div>
+    </li>
+    <li>On a ajouté une fois de moins la raison $r$ pour passer du terme $u_1$ au terme $u_n$.</li>
+  </ul>
+</div>
+<h2>Somme de termes consécutifs</h2>
+<div class="propriete">
+  Pour tout entier naturel $n$ $$1+2+3+...+n=\dfrac{n(n+1)}{2}$$
+</div>
+<div class="propriete">
+  La somme $S$ de termes consécutifs d'une suite arithmétique est égale au produit du nombre de termes par la moyenne des termes situés aux extrémités.
+  $$S=\text{nombre de termes} \times \dfrac{\text{premier terme + dernier terme}}{2}$$
+  <ul>
+  <li>$u_0+u_1+u_2+...+u_n=(n+1)\times\dfrac{u_0+u_n}{2}$</li>
+  <li>$u_1+u_2+u_3+...+u_n=n\times\dfrac{u_1+u_n}{2}$</li>
+  </ul>
+</div>
+<h2>Variations</h2>
+<div class="propriete">
+  Considérons une suite arithmétique $(u_n)$ de raison $r$.
+  <ul>
+    <li>Si $r\gt 0$, alors $(u_n)$ est strictement croissante.</li>
+    <li>Si $r\lt 0$, alors $(u_n)$ est strictement décroissante.</li>
+    <li>Si $r=0$, alors $(u_n)$ est constante.</li>
+  </ul>
+</div>
+
+    </main>
+    <footer>
+        Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
+        Licence CC BY-NC-SA.
+    </footer>
+</body>
+
+</html>

@@ -508,14 +508,30 @@
 <div class="question">
     <div class="enonce">
         <ol class="alphabetical-list">
-            <li>Quelles sont les coordonnées de la somme de deux vecteurs</li>
-            <li>Quelles sont les coordonnées du produit d'un vecteur par un nombre</li>
+            <li>Quelles sont les coordonnées de la somme de deux vecteurs ?</li>
+            <li>Quelles sont les coordonnées du produit d'un vecteur par un nombre ?</li>
         </ol>
     </div>
-    <div class="reponse">
+    <div class="solution">
         <ol class="alphabetical-list">
-            <li>La somme de deux vecteurs est un vecteur dont les coordonnées sont la somme des coordonnées des deux vecteurs.</li>
-            <li>Le produit d'un vecteur par un nombre est un vecteur dont les coordonnées sont le produit des coordonnées du vecteur par le nombre.</li>
+            <li><p>La somme de deux vecteurs est un vecteur dont les coordonnées sont la somme des coordonnées des deux vecteurs.</p>
+            <p>Par exemple considérons les vecteurs $\vec{u}\left(\begin{matrix}2\\-1\end{matrix}\right)$ et $\vec{v}\left(\begin{matrix}1\\2\end{matrix}\right)$.</p>
+            <p>La somme de ces deux vecteurs est $$
+            \begin{align*}
+                \vec{u}+\vec{v}&\left(\begin{matrix}2+1\\-1+2\end{matrix}\right)\\
+                \vec{u}+\vec{v}&\left(\begin{matrix}3\\1\end{matrix}\right)
+            \end{align*}
+            $$</p>
+            </li>
+            <li><p>Le produit d'un vecteur par un nombre est un vecteur dont les coordonnées sont le produit des coordonnées du vecteur par le nombre.</p>
+            <p>Par exemple considérons le vecteur $\vec{u}\left(\begin{matrix}2\\-1\end{matrix}\right)$ et le nombre $3$.</p>
+            <p>Le produit de ce vecteur par ce nombre est $$
+            \begin{align*}
+                3\vec{u}&\left(\begin{matrix}3\times 2\\3\times(-1)\end{matrix}\right)\\
+                3\vec{u}&\left(\begin{matrix}6\\-3\end{matrix}\right)
+            \end{align*}
+            $$</p>
+            </li>
         </ol>
     </div>
 </div>
@@ -715,14 +731,14 @@
 </div>
 <div class="exercice">
     <div class="enonce">
-        Toutes les coordonnées sont exprimées dans un repère orthonormé $(O,\vec{i},\vec{j})$.
+        On considère les points $A(5~;~7)$, $B(3~;~7)$, $C(-6~;~-2)$, $D(-6~;~3)$, $E(-1~;~2)$, $F(3~;~1)$, $G(2~;~5)$, $H(-4~;~1)$, $I(4~;~-2)$, $J(-2~;~5)$, $K(-1~;~1)$, $L(1~;~-2)$ et $M(5~;~5)$.
         <ol class="alphabetical-list">
-            <li>Calculer la distance entre les points $A(5~;~7)$ et $B(3~;~7)$.</li>
-            <li>Calculer la distance entre les points $C(-6~;~-2)$ et $D(-6~;~3)$.</li>
-            <li>Montrer que si $E(-1~;~2)$, $F(3~;~1)$ et $G(2~;~5)$, alors le triangle $EFG$ est isocèle.</li>
-            <li>Montrer que si $H(-4~;~1)$, $I(4~;~-2)$ et $J(-2~;~5)$, alors le triangle $HIJ$ n'est pas rectangle.</li>
-            <li>Montrer que si $K(-1~;~1)$, $L(1~;~-2)$ et $M(5~;~5)$, alors le triangle $KLM$ est rectangle.</li>
-            <li>Calculer le périmètre du triangle $ABC$ si $A(-1~;~9)$, $B(3~;~6)$ et $C(5~;~1)$.</li>
+            <li>Calculer $AB$.</li>
+            <li>Calculer $CD$.</li>
+            <li>Montrer que $EFG$ est isocèle.</li>
+            <li>Montrer que $HIJ$ n'est pas rectangle.</li>
+            <li>Montrer que $KLM$ est rectangle.</li>
+            <li>Calculer le périmètre de $ABC$.</li>
         </ol>
     </div>
     <div class="solution">
@@ -834,15 +850,46 @@
 </div>
 <div class="exercice">
     <div class="enonce">
+        La formule de Héron permet de calculer l'aire d'un triangle : $$\mathcal{A}=\sqrt{p(p-a)(p-b)(p-c)}$$ où $p$ est le demi-périmètre du triangle et $a$, $b$ et $c$ sont les longueurs des côtés du triangle.<br>
         Toutes les coordonnées sont exprimées dans un repère orthonormé $(O,\vec{i},\vec{j})$.
-        On considère les points $A(-1~;~3)$, $B(5~;~7)$ et $C(5~;~-3)$ et $H(0~;~2).$
+        On considère les points $A(-1~;~3)$, $B(5~;~7)$, $C(5~;~-3)$ et $H(0~;~2).$
         <ol class="alphabetical-list">
-            <li>Montrer que le triangle $ABH$ est rectangle.</li>
+            <li>Montrer que $ABH$ est rectangle.</li>
             <li>En déduire un calcul de l'aire du triangle $ABC.$</li>
-            <li>La formule de Héron est donnée par la formule suivante : $$\mathcal{A}=\sqrt{p(p-a)(p-b)(p-c)}$$ où $p$ est le demi-périmètre du triangle et $a$, $b$ et $c$ sont les longueurs des côtés du triangle. Calculer l'aire du triangle $ABC$ à l'aide de cette formule.</li>
+            <li>Calculer $BC$, $p$, $p-a$, $p-b$ et $p-c.$</li>
+            <li>Montrer que $p(p-a)=30\sqrt{2}+30$ et $(p-b)(p-c)=30\sqrt{2}-30.$</li>
+            <li>En déduire l'aire du triangle $ABC$ à l'aide de la formule de Héron.</li>
         </ol>
     </div>
     <div class="solution">
+        <div class="figure">
+            <svg class="quadrillage" viewBox="0 0 120 120">
+                <g name="repere1" class="repere" xmin="-4" ymin="-4" xmax="8" ymax ="8" xorigine="0" yorigine="0"></g>
+                <g name="O" class="point" repere="repere1" x="0" y="0" stroke="transparent"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="i" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="i" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+                <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
+                <g name="A" class="point labeled" repere="repere1" x="-1" y="3" stroke="none"></g>
+                <g class="label" linkto="A" x="-5" y="-3" style="font-size:0.4rem;">A</g>
+                <g name="B" class="point labeled" repere="repere1" x="5" y="7" stroke="none"></g>
+                <g class="label" linkto="B" x="2" y="-5" style="font-size:0.4rem;">B</g>
+                <g name="C" class="point labeled" repere="repere1" x="5" y="-3" stroke="none"></g>
+                <g class="label" linkto="C" x="2" y="-3" style="font-size:0.4rem;">C</g>
+                <g name="H" class="point labeled" repere="repere1" x="0" y="2" stroke="none"></g>
+                <g class="label" linkto="H" x="-5" y="0" style="font-size:0.4rem;">H</g>
+                <g name="BH" class="segment" linkto="B H" stroke="blue" stroke-width="0.5" stroke-dasharray="2 2"></g>
+                <g name="T1" class="polygone" linkto="A B C" fill="none" stroke="blue"></g>
+            </svg>
+        </div>
         <ol class="alphabetical-list">
             <li>$$
             \begin{align*}
@@ -867,18 +914,7 @@
             $$
             <p>$AH^2+BH^2=2+50=52=AB^2$ donc d'après la réciproque du théorème de Pythagore le triangle $ABH$ est rectangle en $H$.</p>
             </li>
-            <li><p>$(BH)$ est donc la hauteur du triangle $ABC$ issue de $B$.</p>
-            $$
-            \begin{align*}
-                BH&=\sqrt{(x_H-x_B)^2+(y_H-y_B)^2}\\
-                BH&=\sqrt{(0-5)^2+(2-7)^2}\\
-                BH&=\sqrt{(-5)^2+(-5)^2}\\
-                BH&=\sqrt{25+25}\\
-                BH&=\sqrt{50}\\
-                BH&=5\sqrt{2}
-            \end{align*}
-            $$
-            <p>$(BH)$ est la hauteur relative au côté $[AC]$.</p>
+            <li><p>$(BH)$ est la hauteur relative au côté $[AC]$.</p>
             $$\begin{align*}
             AC&=\sqrt{(x_C-x_A)^2+(y_C-y_A)^2}\\
             AC&=\sqrt{(5-(-1))^2+(-3-3)^2}\\
@@ -908,64 +944,49 @@
             <p>Le demi-périmètre du triangle $ABC$ est donné par la formule suivante :
             $$\begin{align*}
             p&=\frac{AB+AC+BC}{2}\\
-            p&=\frac{2\sqrt{13}+6\sqrt{2}+10}{2}
+            p&=\frac{2\sqrt{13}+6\sqrt{2}+10}{2}\\
+            p&=\sqrt{13}+3\sqrt{2}+5
             \end{align*}$$</p>
             $$\begin{align*}
-            p-a&=\frac{2\sqrt{13}+6\sqrt{2}+10}{2}-2\sqrt{13}\\
-            p-a&=\frac{2\sqrt{13}+6\sqrt{2}+10-4\sqrt{13}}{2}\\
-            p-a&=\frac{6\sqrt{2}+10-2\sqrt{13}}{2}
+            p-a&=\sqrt{13}+3\sqrt{2}+5-2\sqrt{13}\\
+            p-a&=3\sqrt{2}+5-\sqrt{13}
             \end{align*}$$
             $$\begin{align*}
-            p-b&=\frac{2\sqrt{13}+6\sqrt{2}+10}{2}-6\sqrt{2}\\
-            p-b&=\frac{2\sqrt{13}+6\sqrt{2}+10-12\sqrt{2}}{2}\\
-            p-b&=\frac{2\sqrt{13}-6\sqrt{2}+10}{2}
+            p-b&=\sqrt{13}+3\sqrt{2}+5-6\sqrt{2}\\
+            p-b&=\sqrt{13}-3\sqrt{2}+5
             \end{align*}$$
             $$\begin{align*}
-            p-c&=\frac{2\sqrt{13}+6\sqrt{2}+10}{2}-10\\
-            p-c&=\frac{2\sqrt{13}+6\sqrt{2}+10-20}{2}\\
-            p-c&=\frac{2\sqrt{13}+6\sqrt{2}-10}{2}
+            p-c&=\sqrt{13}+3\sqrt{2}+5-10\\
+            p-c&=\sqrt{13}+3\sqrt{2}-5
             \end{align*}$$
-            $$\begin{align*}
-            p(p-a)&=\frac{2\sqrt{13}+6\sqrt{2}+10}{2}\times\frac{6\sqrt{2}+10-2\sqrt{13}}{2}\\
-            p(p-a)&=\frac{(2\sqrt{13}+6\sqrt{2}+10)(6\sqrt{2}+10-2\sqrt{13})}{4}\\
-            p(p-a)&=\frac{12\sqrt{26}+20\sqrt{2}+60\sqrt{2}+100-12\sqrt{26}-20\sqrt{2}-60}{4}\\
-            p(p-a)&=\frac{80\sqrt{2}+40}{4}\\
-            p(p-a)&=20\sqrt{2}+10
-            \end{align*}$$
-            $$\begin{align*}
-            (p-b)(p-c)&=\frac{2\sqrt{13}+6\sqrt{2}+10}{2}\times\frac{2\sqrt{13}+6\sqrt{2}-10}{2}\\
-            (p-b)(p-c)&=\frac{(2\sqrt{13}+6\sqrt{2}+10)(2\sqrt{13}+6\sqrt{2}-10)}{4}\\
-            (p-b)(p-c)&=\frac{4\times 13+12\sqrt{26}+12\sqrt{26}+36\times 2-100}{4}\\
-            (p-b)(p-c)&=\frac{52+24\sqrt{26}+72-100}{4}\\
-            (p-b)(p-c)&=\frac{24\sqrt{26}+24}{4}\\
-            (p-b)(p-c)&=6\sqrt{26}+6
-            \end{align*}$$
-            <p>Donc l'aire du triangle $ABC$ est donnée par la formule suivante :
-            $$\begin{align*}
-            \mathcal{A}&=\sqrt{p(p-a)(p-b)(p-c)}\\
-            \mathcal{A}&=\sqrt{(20\sqrt{2}+10)(20\sqrt{2}+10-20\sqrt{2}-10)(6\sqrt{26}+6)}\\
-            \mathcal{A}&=\sqrt{(20\sqrt{2}+10)(6\sqrt{26}+6)}\\
-            \mathcal{A}&=\sqrt{120\sqrt{52}+120\sqrt{2}+60\sqrt{26}+60}\\
-            \mathcal{A}&=\sqrt{60\sqrt{104}+120\sqrt{2}+60\sqrt{26}+60}\\
-            \mathcal{A}&=\sqrt{60\times 2\sqrt{26}+120\sqrt{2}+60\sqrt{26}+60}\\
-            \mathcal{A}&=\sqrt{120\sqrt{26}+120\sqrt{2}+60\sqrt{26}+60}\\
-            \mathcal{A}&=\sqrt{180\sqrt{26}+180\sqrt{2}+60}\\
-            \mathcal{A}&=\sqrt{60(3\sqrt{26}+3\sqrt{2}+1)}\\
-            \mathcal{A}&=\sqrt{60}\times\sqrt{3\sqrt{26}+3\sqrt{2}+1}\\
-            \mathcal{A}&=2\sqrt{15}\times\sqrt{3\sqrt{26}+3\sqrt{2}+1}\\
-            \mathcal{A}&=2\sqrt{15(3\sqrt{26}+3\sqrt{2}+1)}\\
-            \mathcal{A}&=2\sqrt{45\sqrt{26}+45\sqrt{2}+45}\\
-            \mathcal{A}&=2\sqrt{45}\times\sqrt{\sqrt{26}+\sqrt{2}+1}
-            \end{align*}$$</p>
             </li>
+            <li>$$\begin{align*}
+            p(p-a)&=(3\sqrt{2}+5+\sqrt{13})(3\sqrt{2}+5-\sqrt{13})\\
+            p(p-a)&=(3\sqrt{2}+5)^2-13\\
+            p(p-a)&=9\sqrt{2}^2+2\times 3\sqrt{2}\times 5+5^2-13\\
+            p(p-a)&=18+30\sqrt{2}+25-13\\
+            p(p-a)&=30\sqrt{2}+30
+            \end{align*}$$
+            $$\begin{align*}
+            (p-b)(p-c)&=(\sqrt{13}+5-3\sqrt{2})(\sqrt{13}-5+3\sqrt{2})\\
+            (p-b)(p-c)&=(\sqrt{13}+5-3\sqrt{2})(\sqrt{13}-(5-3\sqrt{2}))\\
+            (p-b)(p-c)&=\sqrt{13}^2-(5-3\sqrt{2})^2\\
+            (p-b)(p-c)&=13-(25-30\sqrt{2}+18)\\
+            (p-b)(p-c)&=13-43+30\sqrt{2}\\
+            (p-b)(p-c)&=30\sqrt{2}-30
+            \end{align*}$$
+            </li>
+            <li>$$\begin{align*}
+            \mathcal{A}&=\sqrt{p(p-a)(p-b)(p-c)}\\
+            \mathcal{A}&=\sqrt{(30\sqrt{2}+30)(30\sqrt{2}-30)}\\
+            \mathcal{A}&=\sqrt{(30\sqrt{2})^2-30^2}\\
+            \mathcal{A}&=\sqrt{1800-900}\\
+            \mathcal{A}&=\sqrt{900}\\
+            \mathcal{A}&=30
+            \end{align*}$$</li>
         </ol>
     </div>
-</div>
-
-
-
-
-            </main>
+</div></main>
     <footer>
       Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
       Henry Bergson à Angers.<br />

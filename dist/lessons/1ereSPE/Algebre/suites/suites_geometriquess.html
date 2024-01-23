@@ -1,8 +1,9 @@
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
+    <meta charset="utf-8">
+    <title>Suites_geometriquess</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,40 +14,52 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
     <link rel="manifest" href="/favicon_io/site.webmanifest" />
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
-        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
-
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
-        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
-        crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+        crossorigin="anonymous"
+      />
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+        integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
         integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"
+      ></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
 
     <!--Styles personnalisés-->
-    <link rel="stylesheet" href="/src/css/main.css">
-
+    
+        <link rel="stylesheet" href="/src/css/main.css">
+    
+        <link rel="stylesheet" href="/src/css/prettyLesson.css">
+    
+        <link rel="stylesheet" href="/src/css/print.css">
+    
 
     <!--Scripts personnalisés-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
+    
     <!-- Biliothèque pour manipuler le svg -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
 
     <!-- Marqueurs pour les figures en SVG-->
     <div id="interactivite"></div>
-    <script defer src="/dist/main.bundle.js"></script>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
 
-    <title>1re Spécialité - Leçons</title>
-</head>
 <body>
     <nav class="navbar">
     <ul>
@@ -90,7 +103,33 @@
         </li> -->
     </ul>
 </nav>
-    <h1>1re spécialité - Leçons</h1>
-    <ul><li>Algebre<ul><li>polynomes<ul><li><a href="./dist/lessons\1ereSPE\Algebre\polynomes\polynomes.html">polynomes</a></li></ul></li><li>suites<ul><li><a href="./dist/lessons\1ereSPE\Algebre\suites\suites.html">suites</a></li><li><a href="./dist/lessons\1ereSPE\Algebre\suites\suites_arithmetiques.html">suites_arithmetiques</a></li><li><a href="./dist/lessons\1ereSPE\Algebre\suites\suites_geometriquess.html">suites_geometriquess</a></li></ul></li></ul></li><li>Analyse<ul><li><a href="./dist/lessons\1ereSPE\Analyse\derivation.html">derivation</a></li></ul></li><li>Geometrie<ul><li><a href="./dist/lessons\1ereSPE\Geometrie\trigonometrie.html">trigonometrie</a></li></ul></li></ul>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    
+    <main>
+        <h2>Suite géométrique</h2>
+<div class="definition">
+  <p>
+    Considérons un suite $(u_n)$ définie pour tout entier naturel. On dit que $(u_n)$ est géométrique si chaque terme se déduit du précédent en multipliant toujours par le même nombre. Ce nombre est appelé la raison de la suite géométrique.
+  </p>
+</div>
+<div class="remarque">
+  <p>S'il existe un terme nul dans la suite, alors tous les termes suivants sont nuls.</p>
+</div>
+</div>
+<div class="propriete">
+  <p>Une suite $(u_n)$ est géométrique de raison $q$ si et seulement s'il existe un nombre réel $q$ tel que pour tout entier naturel $n$ $$u_{n+1}=u_n\times q$$</p>
+  <p>Si on suppose les termes de la suite non nuls, alors une suite est géométrique de raison $q$ si et seulement si pour tout entier naturel $n$ $$\dfrac{u_{n+1}}{u_n}=q$$</p>
+</div>
+
+    </main>
+    <footer>
+        Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
+        Licence CC BY-NC-SA.
+    </footer>
 </body>
+
 </html>
