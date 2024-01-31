@@ -38587,99 +38587,20 @@ var getNuagesPointsFigure = function (figure) {
   return nuagesPointsArray.filter(nuagePoints => nuagePoints.id.split("-")[0] == figure.id);
 };
 var constructNuagePoints = function (nuagePoints) {
-  var viewBox = getViewBoxFigure(nuagePoints.parentNode);
-  var paramString = nuagePoints.getAttribute("parametres");
-  var parametres = convertStringToParametres(paramString);
-  // Si dans parametres il y a un paramètre expression alors on construit le nuage de points à partir de l'expression
-  var abscisses = [];
-  var ordonnees = [];
-  if (parametres.expression == undefined) {
-    var data = nuagePoints.innerHTML.split("\n");
-    // On supprime les lignes vides
-    data = data.filter(ligne => ligne != "");
-    // On supprime les espaces en début et fin de ligne
-    data = data.map(ligne => ligne.trim());
-    // On supprime les espaces en trop dans les lignes
-    data = data.map(ligne => ligne.replace(/ +/g, " "));
-    // On supprime les espaces avant et après les ;
-    data = data.map(ligne => ligne.replace(/ *; */g, ";"));
-    // On récupère les données dans un tableau
-    data = data.map(ligne => ligne.split(";"));
-    // La première ligne contient les catégories des données
-    data.shift();
-    // La dernière ligne est à supprimer si elle est vide
-    if (data[data.length - 1].length == 1 && data[data.length - 1][0] == "") {
-      data.pop();
-    }
-    // La première colonne contient les abscisses des points
-    abscisses = data.map(ligne => parseFloat(ligne[0]));
-    // L'autre colonne contient les ordonnées des points
-    ordonnees = data.map(ligne => parseFloat(ligne[1]));
-  } else {
-    // On calcule les coordonnées avec l'expression
-    var {
-      x,
-      y
-    } = calculCoordonneesPointsCourbe(parametres.expression, parametres);
-    abscisses = x;
-    ordonnees = y;
-  }
-  // L'objectif est de construire un + pour chaque point
-  // Pour les axes, si aucune indication n'est donnée, on prend les valeurs min et max des abscisses et des ordonnées
-  // Si parametres.xmin n'existe pas alors on prend la valeur minimale des abscisses
-  if (parametres.xmin == undefined) {
-    parametres.xmin = Math.min(...abscisses);
-  }
-  if (parametres.xBoxmin == undefined) {
-    parametres.xBoxmin = parametres.xmin;
-  }
-  // Si parametres.xmax n'existe pas alors on prend la valeur maximale des abscisses
-  if (parametres.xmax == undefined) {
-    parametres.xmax = Math.max(...abscisses);
-  }
-  if (parametres.xBoxmax == undefined) {
-    parametres.xBoxmax = parametres.xmax;
-  }
-  // Calcul de l'échelle en x
-  var echelleX = viewBox.width / (parametres.xBoxmax - parametres.xBoxmin);
-  // Si parametres.ymin n'existe pas alors on prend la valeur minimale des ordonnées
-  if (parametres.ymin == undefined) {
-    parametres.ymin = Math.min(...ordonnees);
-  }
-  if (parametres.yBoxmin == undefined) {
-    parametres.yBoxmin = parametres.ymin;
-  }
-  // Si parametres.ymax n'existe pas alors on prend la valeur maximale des ordonnées
-  if (parametres.ymax == undefined) {
-    parametres.ymax = Math.max(...ordonnees);
-  }
-  if (parametres.yBoxmax == undefined) {
-    parametres.yBoxmax = parametres.ymax;
-  }
-  // Calcul de l'échelle en y
-  var echelleY = viewBox.height / (parametres.yBoxmax - parametres.yBoxmin);
-  // Si parametres.xunit n'existe pas alors on prend 1
-  if (parametres.xunit == undefined) {
-    parametres.xunit = 1;
-  }
-  // Si parametres.yunit n'existe pas alors on prend 1
-  if (parametres.yunit == undefined) {
-    parametres.yunit = 1;
-  }
-  // Si parametres.afficherAxes n'existe pas alors on prend true
-  if (parametres.afficherAxes == undefined) {
-    parametres.afficherAxes = true;
-  }
-  // Si parametres.afficherGraduations n'existe pas alors on prend true
-  if (parametres.afficherGraduations == undefined) {
-    parametres.afficherGraduations = true;
-  }
-  //parametres = initialiserParametresCourbe(parametres);
-  // On calcule les coordonnées des points en prenant en compte le changement d'échelle et le changement d'origine
+  var repere = getElementLinkto(nuagePoints, 0);
+  var xmin = parseFloat(nuagePoints.getAttribute("xmin"));
+  var xmax = parseFloat(nuagePoints.getAttribute("xmax"));
+  var pas = parseFloat(nuagePoints.getAttribute("pas"));
+  var expression = nuagePoints.getAttribute("expression");
   var points = [];
-  for (var i = 0; i < abscisses.length; i++) {
-    var [x, y] = changementEchelleRepere(abscisses[i], ordonnees[i], parametres.xBoxmin, parametres.yBoxmax, echelleX, echelleY, viewBox);
-    points.push([x, y]);
+  let n = (xmax - xmin) / pas; // Calcule le nombre total d'itérations
+  for (let i = 0; i <= n; i++) {
+    let x = xmin + i * pas;
+    let y = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(expression, {
+      x: x
+    });
+    var d = getCoordonneesDansViewBox(repere, x, y);
+    points.push(d);
   }
   // On construit les points
   points.forEach((point, index) => {
@@ -38698,19 +38619,157 @@ var constructNuagePoints = function (nuagePoints) {
     nuagePoints.parentNode.appendChild(pointSVG);
     initialiserPoint(pointSVG);
   });
-  // On construit les axes
-  var [xOrigin, yOrigin] = changementEchelleRepere([0], [0], parametres.xBoxmin, parametres.yBoxmax, echelleX, echelleY, viewBox);
-  if (parametres.afficherAxes) {
-    var [axesSVG, graduationsSVG, uniteXSVG, uniteYSVG] = constructAxes(nuagePoints, xOrigin, yOrigin, echelleX, echelleY, viewBox, parametres);
-  }
-  // On ajoute les axes à la figure
-  if (parametres.afficherAxes) {
-    nuagePoints.parentNode.appendChild(axesSVG);
-    nuagePoints.parentNode.appendChild(graduationsSVG);
-    nuagePoints.parentNode.appendChild(uniteXSVG);
-    nuagePoints.parentNode.appendChild(uniteYSVG);
-  }
 };
+// var constructNuagePoints = function (nuagePoints) {
+//   var viewBox = getViewBoxFigure(nuagePoints.parentNode);
+//   var paramString = nuagePoints.getAttribute("parametres");
+//   var parametres = convertStringToParametres(paramString);
+//   // Si dans parametres il y a un paramètre expression alors on construit le nuage de points à partir de l'expression
+//   var abscisses = [];
+//   var ordonnees = [];
+//   if (parametres.expression == undefined) {
+//     var data = nuagePoints.innerHTML.split("\n");
+//     // On supprime les lignes vides
+//     data = data.filter((ligne) => ligne != "");
+//     // On supprime les espaces en début et fin de ligne
+//     data = data.map((ligne) => ligne.trim());
+//     // On supprime les espaces en trop dans les lignes
+//     data = data.map((ligne) => ligne.replace(/ +/g, " "));
+//     // On supprime les espaces avant et après les ;
+//     data = data.map((ligne) => ligne.replace(/ *; */g, ";"));
+//     // On récupère les données dans un tableau
+//     data = data.map((ligne) => ligne.split(";"));
+//     // La première ligne contient les catégories des données
+//     data.shift();
+//     // La dernière ligne est à supprimer si elle est vide
+//     if (data[data.length - 1].length == 1 && data[data.length - 1][0] == "") {
+//       data.pop();
+//     }
+//     // La première colonne contient les abscisses des points
+//     abscisses = data.map((ligne) => parseFloat(ligne[0]));
+//     // L'autre colonne contient les ordonnées des points
+//     ordonnees = data.map((ligne) => parseFloat(ligne[1]));
+//   } else {
+//     // On calcule les coordonnées avec l'expression
+//     var { x, y } = calculCoordonneesPointsCourbe(
+//       parametres.expression,
+//       parametres
+//     );
+//     abscisses = x;
+//     ordonnees = y;
+//   }
+//   // L'objectif est de construire un + pour chaque point
+//   // Pour les axes, si aucune indication n'est donnée, on prend les valeurs min et max des abscisses et des ordonnées
+//   // Si parametres.xmin n'existe pas alors on prend la valeur minimale des abscisses
+//   if (parametres.xmin == undefined) {
+//     parametres.xmin = Math.min(...abscisses);
+//   }
+//   if (parametres.xBoxmin == undefined) {
+//     parametres.xBoxmin = parametres.xmin;
+//   }
+//   // Si parametres.xmax n'existe pas alors on prend la valeur maximale des abscisses
+//   if (parametres.xmax == undefined) {
+//     parametres.xmax = Math.max(...abscisses);
+//   }
+//   if (parametres.xBoxmax == undefined) {
+//     parametres.xBoxmax = parametres.xmax;
+//   }
+//   // Calcul de l'échelle en x
+//   var echelleX = viewBox.width / (parametres.xBoxmax - parametres.xBoxmin);
+//   // Si parametres.ymin n'existe pas alors on prend la valeur minimale des ordonnées
+//   if (parametres.ymin == undefined) {
+//     parametres.ymin = Math.min(...ordonnees);
+//   }
+//   if (parametres.yBoxmin == undefined) {
+//     parametres.yBoxmin = parametres.ymin;
+//   }
+//   // Si parametres.ymax n'existe pas alors on prend la valeur maximale des ordonnées
+//   if (parametres.ymax == undefined) {
+//     parametres.ymax = Math.max(...ordonnees);
+//   }
+//   if (parametres.yBoxmax == undefined) {
+//     parametres.yBoxmax = parametres.ymax;
+//   }
+//   // Calcul de l'échelle en y
+//   var echelleY = viewBox.height / (parametres.yBoxmax - parametres.yBoxmin);
+//   // Si parametres.xunit n'existe pas alors on prend 1
+//   if (parametres.xunit == undefined) {
+//     parametres.xunit = 1;
+//   }
+//   // Si parametres.yunit n'existe pas alors on prend 1
+//   if (parametres.yunit == undefined) {
+//     parametres.yunit = 1;
+//   }
+//   // Si parametres.afficherAxes n'existe pas alors on prend true
+//   if (parametres.afficherAxes == undefined) {
+//     parametres.afficherAxes = true;
+//   }
+//   // Si parametres.afficherGraduations n'existe pas alors on prend true
+//   if (parametres.afficherGraduations == undefined) {
+//     parametres.afficherGraduations = true;
+//   }
+//   //parametres = initialiserParametresCourbe(parametres);
+//   // On calcule les coordonnées des points en prenant en compte le changement d'échelle et le changement d'origine
+//   var points = [];
+//   for (var i = 0; i < abscisses.length; i++) {
+//     var [x, y] = changementEchelleRepere(
+//       abscisses[i],
+//       ordonnees[i],
+//       parametres.xBoxmin,
+//       parametres.yBoxmax,
+//       echelleX,
+//       echelleY,
+//       viewBox
+//     );
+//     points.push([x, y]);
+//   }
+//   // On construit les points
+//   points.forEach((point, index) => {
+//     var pointSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+//     pointSVG.classList.add("point");
+//     // AJouter parametres à point
+//     var parametresPoint = "";
+//     pointSVG.id = nuagePoints.id + "-" + index;
+//     pointSVG.setAttribute("x", point[0]);
+//     pointSVG.setAttribute("y", point[1]);
+//     parametresPoint = "";
+//     parametresPoint += "forme:+,";
+//     parametresPoint += ",style:" + nuagePoints.getAttribute("style");
+//     pointSVG.setAttribute("parametres", parametresPoint);
+//     // On ajoute le point à la figure
+//     nuagePoints.parentNode.appendChild(pointSVG);
+//     initialiserPoint(pointSVG);
+//   });
+//   // On construit les axes
+//   var [xOrigin, yOrigin] = changementEchelleRepere(
+//     [0],
+//     [0],
+//     parametres.xBoxmin,
+//     parametres.yBoxmax,
+//     echelleX,
+//     echelleY,
+//     viewBox
+//   );
+
+//   if (parametres.afficherAxes) {
+//     var [axesSVG, graduationsSVG, uniteXSVG, uniteYSVG] = constructAxes(
+//       nuagePoints,
+//       xOrigin,
+//       yOrigin,
+//       echelleX,
+//       echelleY,
+//       viewBox,
+//       parametres
+//     );
+//   }
+//   // On ajoute les axes à la figure
+//   if (parametres.afficherAxes) {
+//     nuagePoints.parentNode.appendChild(axesSVG);
+//     nuagePoints.parentNode.appendChild(graduationsSVG);
+//     nuagePoints.parentNode.appendChild(uniteXSVG);
+//     nuagePoints.parentNode.appendChild(uniteYSVG);
+//   }
+// };
 var initialiserNuagePoints = function (nuagePoints) {
   constructNuagePoints(nuagePoints);
 };
