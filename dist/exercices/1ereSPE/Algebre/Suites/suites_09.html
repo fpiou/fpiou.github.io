@@ -471,7 +471,7 @@
       <li>$u_0=-15$ et $r=2$ ; $u_{100}$ ; $u_n\geqslant 1000$.</li>
       <li>$u_0=3$ et $r=-5$ ; $u_{100}$ ; $u_n\lt-997$.</li>
       <li>$u_1=6$ et $r=\num{0.15}$ ; $u_{100}$ ; $u_n\geqslant 51$.</li>
-      <li>$u_0=0$ et $r=\cos\left(\dfrac{\pi}{6}\right)$ ; $u_{100}$ ; $u_n\geqslant 1000$.</li>
+      <li>$u_0=0$ et $r=\cos\left(\dfrac{\pi}{6}\right)$ ; $u_{100}$ ; $u_n\geqslant 1000\sqrt{3}$.</li>
     </ol>
   </div>
   <div class="solution">
@@ -588,6 +588,42 @@
           n&\geqslant 300+1\\
           n&\geqslant 301
           \end{align*}$$</p>
+        <p>Donc $u_n\geqslant 51$ à partir de $n=301$.</p></li>
+      <li>$$\begin{align*}
+        u_0&=0\\
+        u_1&=u_0+\cos\left(\dfrac{\pi}{6}\right)\\
+        &=0+\cos\left(\dfrac{\pi}{6}\right)\\
+        u_1&=\dfrac{\sqrt{3}}{2}
+        \end{align*}$$
+        $$\begin{align*}
+        u_2&=u_1+\cos\left(\dfrac{\pi}{6}\right)\\
+        &=\dfrac{\sqrt{3}}{2}+\cos\left(\dfrac{\pi}{6}\right)\\
+        u_2&=\dfrac{\sqrt{3}}{2}+\dfrac{\sqrt{3}}{2}\\
+        u_2&=\sqrt{3}
+        \end{align*}$$
+        $$\begin{align*}
+        u_3&=u_2+\cos\left(\dfrac{\pi}{6}\right)\\
+        &=\sqrt{3}+\cos\left(\dfrac{\pi}{6}\right)\\
+        u_3&=\sqrt{3}+\dfrac{\sqrt{3}}{2}\\
+        u_3&=\dfrac{3\sqrt{3}}{2}
+        \end{align*}$$
+        <p>On a $$\begin{align*}
+          u_n&=u_0+n\cos\left(\dfrac{\pi}{6}\right)\\
+          u_n&=n\cos\left(\dfrac{\pi}{6}\right)\\
+          u_n&=n\dfrac{\sqrt{3}}{2}
+          \end{align*}$$</p>
+        $$\begin{align*}
+        u_{100}&=100\dfrac{\sqrt{3}}{2}\\
+        &=\dfrac{100\sqrt{3}}{2}\\
+        u_{100}&=50\sqrt{3}
+        \end{align*}$$
+        <p>On cherche $n$ tel que $u_n\geqslant 1000\sqrt{3}$.</p>
+        <p>$$\begin{align*}
+          n\dfrac{\sqrt{3}}{2}&\geqslant 1000\sqrt{3}\\
+          n&\geqslant 1000\sqrt{3}\times \dfrac{2}{\sqrt{3}}\\
+          n&\geqslant 2000
+          \end{align*}$$</p>
+        <p>Donc $u_n\geqslant 1000\sqrt{3}$ à partir de $n=2000$.</p></li>
     </ol>
   </div>
 </div>
