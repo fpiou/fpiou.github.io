@@ -28,6 +28,14 @@
     margin: 0em;
   }
 
+  /* Sauf quand ils sont dans un environnement div avec la class equation */
+  p div.equation span.katex-display,
+  li div.equation span.katex-display
+  {
+    display: block;
+    margin: 0.5em;
+  }
+
   /* Ne pas imprimer */
   .solution,
   .indice,

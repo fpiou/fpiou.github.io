@@ -262,18 +262,24 @@ footer {
   page-break-after: always;
 }
 
-ol.alphabetical-list {
+ol.alphabetical-list, ol.numerical-list {
   counter-reset: list-counter var(--start, 0);
   list-style: none;
   padding: 0;
 }
 
-ol.alphabetical-list > li {
+ol.alphabetical-list > li, ol.numerical-list > li{
   counter-increment: list-counter;
 }
 
 ol.alphabetical-list > li::before {
   content: counter(list-counter, lower-alpha) ".";
+  margin-right: 5px; /* Espace après le numéro */
+  font-weight: bold;
+}
+
+ol.numerical-list > li::before {
+  content: counter(list-counter) ".";
   margin-right: 5px; /* Espace après le numéro */
   font-weight: bold;
 }
@@ -314,4 +320,17 @@ ol.horizontal-list li, ul.horizontal-list li {
 
 .boutonActive {
   background-color: #079b34a8;
+}
+
+.reponse {
+  border: 1px solid #000000; /* Bordure noire */
+  background-color: #f0f0f0; /* Fond gris clair */
+  padding: 10px; /* Espace intérieur pour ne pas que le texte touche la bordure */
+  margin: 10px 0; /* Marge extérieure pour séparer ce div des autres éléments */
+}
+.encart {
+  border: 1px solid #000000; /* Bordure noire */
+  background-color: #f0f0f0; /* Fond gris clair */
+  padding: 10px; /* Espace intérieur pour ne pas que le texte touche la bordure */
+  margin: 10px 0; /* Marge extérieure pour séparer ce div des autres éléments */
 }
