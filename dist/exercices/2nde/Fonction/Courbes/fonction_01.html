@@ -122,37 +122,169 @@
 <div class="question">
   <div class="enonce">
   <div class="encart">
-    Rappel : la notation $f:x\longmapsto 3x$ signifie que $f$ est une fonction qui à tout nombre $x$ associe le nombre $3x.$<br>
+    Rappel : la notation $x\longmapsto 3x$ définie une fonction qui à tout nombre $x$ associe le nombre $3x.$<br>
     <div class="figure">
       <svg viewBox="0 0 100 20">
-        <foreignObject width="100%" height="100%" x="30" y="0" style="font-size:0.5rem;">$f:x\longmapsto 3x$</foreignObject>
-        <text x="60" y="15" style="font-size:0.3rem;">image</text> 
+        <foreignObject width="100%" height="100%" x="30" y="0" style="font-size:0.5rem;">$x\longmapsto 3x$</foreignObject>
+        <text x="50" y="15" style="font-size:0.3rem;">image</text> 
       </svg>
     </div>
-    Par exemple la fonction $f$ associe à $2$ le nombre $3\times 2=6.$<br> $6$ est appelé l'image de $2$ par $f$.
+    Par exemple au nombre $2$, la fonction associe le nombre $3\times 2=6.$ Le résultat $6$ est appelé l'image de $2$ par cette fonction.
   </div>
-    Considérons une fonction $f$ tel que l'image de $7$ est $14$ par cette fonction. Quelle(s) fonction(s) répond(ent) à cette condition dans la liste suivante&nbsp;?
-      <ol class="alphabetical-list horizontal-list col-3c">
-        <li>$x\longmapsto 2x$</li>
-        <li>$x\longmapsto x^2$</li>
-        <li>$x\longmapsto x+7$</li>
-        <li>$x\longmapsto x-7$</li>
-        <li>$x\longmapsto 14-x$</li>
-        <li>$x\longmapsto \dfrac{x}{2}$</li>
-      </ol>     
+    Considérons une fonction $f$ telle que l'image de $7$ est $14$ par cette fonction.
+    Quelle(s) fonction(s) répond(ent) à cette condition dans la liste suivante&nbsp;?
+      <ol class="horizontal-list col-2c">
+        <li>$f_1:x\longmapsto 2x$</li>
+        <li>$f_2:x\longmapsto x^2$</li>
+        <li>$f_3:x\longmapsto x+7$</li>
+        <li>$f_4:x\longmapsto x-7$</li>
+        <li>$f_5:x\longmapsto 14-x$</li>
+        <li>$f_6:x\longmapsto \dfrac{x}{2}$</li>
+        <li>$f_7:x\longmapsto -x^2$</li>
+        <li>$f_8:x\longmapsto 14$</li>
+      </ol>
+  </div>
+  <div class="solution">
+    Les fonctions $f_1$, $f_3$ et $f_8$ répondent à cette condition.
   </div>
 </div>
 <div class="question">
   <div class="enonce">
+    <div class="encart">
+      Rappel : on écrit $f(2)=3$ pour signifier que l'image de $2$ par $f$ est $3.$
+    </div>
+    Les fonctions citées dans cet exercice sont celles de l'exercice précédent. Quelles sont les phrases vraies parmi les suivantes&nbsp;?
     <ol class="alphabetical-list">
-      <li>Considérons la fonction $f:x\longmapsto \dfrac{7x-3}{4-8x}$, montrez que l'image de $-1$ par $f$ est $-\dfrac{5}{6}$.</li>
-      <div class="encart">
-      Rappel : on écrit $f(-1)=-\dfrac{5}{6}$ pour signifier que l'image de $-1$ par $f$ est $-\dfrac{5}{6}$.
-      </div>
+      <li>L'image de $-5$ par $f_1$ est $-3.$</li>
+      <li>Le nombre $36$ a pour image $6$ par la fonction $f_2.$</li>
+      <li>$f_2(-7)$ est négatif</li>
+      <li>$f_6(-7)\lt -3.$</li>
+      <li>Le nombre $1$ est l'image de $\dfrac{1}{2}$ par $f_1$.</li>
+      <li>On a $f_4(\num{10.5})=f_5(\num{10.5})$ donc $f_1$ et $f_2$ sont identiques.</li>
+      <li>Pour chacune des fonctions $f_1$ à $f_8$, $-2$ est l'image d'un nombre.</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li><p>L'image de $-5$ par $f_1$ est $2\times(-5)=-10.$ Donc l'affirmation est fausse.</p></li>
+      <li><p>L'image de $36$ par $f_2$ est $36^2\neq 6.$ Donc l'affirmation est fausse.</p></li>
+      <li></p>L'affirmation est fausse car un carré est toujours positif ou nul.</p>
+      <li><p>L'affirmation est vraie car $f_6(-7)=-\num{3.5}\lt -3.$</p></li>
+      <li><p>L'image de $\dfrac{1}{2}$ par $f_1$ est $3\times \dfrac{1}{3}=1.$ Donc l'affirmation est vraie.</p></li>
+      <li><p>Calculons $f_4(\num{10.5})$ et $f_5(\num{10.5})$ :</p>
+        $$\begin{align*}
+        f_4(\num{10.5})&=\num{10.5}-7=\num{3.5}\\
+        f_5(\num{10.5})&=14-\num{10.5}=\num{3.5}
+        \end{align*}$$
+        <p>Cependant $f_4(7)=0$ et $f_5(7)=7.$ Donc l'affirmation est fausse.</p>
+      </li>
+      <li><p>L'image de $-1$ par $f_1$ est $2\times(-1)=-2.$</p>
+        <p>$f_2$ est toujours positive ou nulle donc l'affirmation est fausse.</p>
+        <p>L'image de $-9$ par $f_3$ est $-9+7=-2$.</p>
+        <p>L'image de $5$ par $f_4$ est $5-7=-2$.</p>
+        <p>L'image de $16$ par $f_5$ est $14-16=-2$.</p>
+        <p>L'image de $-4$ par $f_6$ est $\dfrac{-4}{2}=-2$.</p>
+        <p>L'image de $\sqrt{2}$ par $f_7$ est $-(\sqrt{2})^2=-2$.</p>
+        <p>$f_8$ est constante et égale à $14$ donc l'affirmation est fausse.</p>
+      </li>
+    </ol>
+  </div>
+</div>
+<div class="question">
+  <div class="enonce">
+    Les fonctions citées dans cet exercice sont celles de l'exercice précédent. Recopier et compléter les phrases suivantes.
+    <ol class="alphabetical-list">
+      <li>L'image de $\ldots$ par la fonction $f_1$ est $15.$</li>
+      <li>Le nombre $-5$ a pour image $\ldots$ par la fonction $f_2.$</li>
+      <li>$8$ est l'image de $\ldots$ par la fonction $f_3.$</li>
+      <li>$f_3(10)=\ldots$ ; $f_3(\ldots)=10$ ; $f_4(10)=\ldots$ ; $f_4(\ldots)=10$</li>
+      <li>$f_3(-10)=\ldots$ ; $f_3(\ldots)=-10$ ; $f_4(-10)=\ldots$ ; $f_4(\ldots)=-10$</li>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li>L'image de $5$ par la fonction $f_1$ est $15.$</li>
+      <li>Le nombre $-5$ a pour image $25$ par la fonction $f_2.$</li>
+      <li>$8$ est l'image de $1$ par la fonction $f_3.$</li>
+      <li>$f_3(10)=17$ ; $f_3(3)=10$ ; $f_4(10)=3$ ; $f_4(17)=10$</li>
+      <li>$f_3(-10)=-3$ ; $f_3(-17)=-10$ ; $f_4(-10)=-17$ ; $f_4(-3)=-10$</li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    Considérons la fonction $f:x\longmapsto (x+1)^2-(x^2+1)$.
+  <ol class="alphabetical-list">
+    <li>Calculez les images des nombres $-1$, $0$, $1$, $2$ et $3$ par $f$.</li>
+    <li>Quelle conjecture peut-on émettre&nbsp;?</li>
+    <li>Développer et réduire l'expression de $f(x)$.</li>
+    <li>La conjecture est-elle prouvée&nbsp;?</li>
+    <li>Calculez $f(583)$, $f\left(\dfrac{4}{5}\right)$, $f\left(\dfrac{7}{2}\right)$ et $f\left(\dfrac{3}{8}\right)$.</li>
+  </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li><p>Calculons $f(-1)$ :</p>
+        $$\begin{align*}
+        f(-1)&=(-1+1)^2-((-1)^2+1)\\
+        &=0-(1+1)\\
+        &=-2
+        \end{align*}$$
+        <p>Calculons $f(0)$ :</p>
+        $$\begin{align*}
+        f(0)&=(0+1)^2-(0^2+1)\\
+        &=1-(0+1)\\
+        &=0
+        \end{align*}$$
+        <p>Calculons $f(1)$ :</p>
+        $$\begin{align*}
+        f(1)&=(1+1)^2-(1^2+1)\\
+        &=4-(1+1)\\
+        &=2
+        \end{align*}$$
+        <p>Calculons $f(2)$ :</p>
+        $$\begin{align*}
+        f(2)&=(2+1)^2-(2^2+1)\\
+        &=9-(4+1)\\
+        &=4
+        \end{align*}$$
+        <p>Calculons $f(3)$ :</p>
+        $$\begin{align*}
+        f(3)&=(3+1)^2-(3^2+1)\\
+        &=16-(9+1)\\
+        &=6
+        \end{align*}$$
+      </li>
+      <li><p>Il semble que l'image de $x$ par $f$ est son double.</p></li>
+      <li><p>Calculons $f(x)$ :</p>
+        $$\begin{align*}
+        f(x)&=(x+1)^2-(x^2+1)\\
+        &=x^2+2x+1-x^2-1\\
+        &=2x
+        \end{align*}$$
+      </li>
+      <li><p>La conjecture est prouvée car on a $f(x)=2x$.</p></li>
+      <li><p>La conjecture étant prouvée, on peut utiliser l'expression $f(x)=2x$ pour calculer les images.</p>
+      <p>Calculons $f(583)$ :</p>
+      $$f(583)=2\times 583=1166$$
+      <p>Calculons $f\left(\dfrac{7}{2}\right)$ :</p>
+      $$f\left(\dfrac{7}{2}\right)=2\times \dfrac{7}{2}=7$$
+      <p>Calculons $f\left(\dfrac{4}{5}\right)$ :</p>
+      $$f\left(\dfrac{4}{5}\right)=2\times \dfrac{4}{5}=\dfrac{8}{5}$$
+      <p>Calculons $f\left(\dfrac{3}{8}\right)$ :</p>
+      $$f\left(\dfrac{3}{8}\right)=2\times \dfrac{3}{8}=\dfrac{3}{4}$$
+      </li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    <ol class="alphabetical-list">
+      <li>Considérons la fonction $f:x\longmapsto \dfrac{7x-3}{4-8x}$.<br>
+      Montrez que l'image de $-1$ par $f$ est $-\dfrac{5}{6}$.</li>
       <li>Expliquez pourquoi $f\left(\dfrac{1}{2}\right)$ n'est pas définie. Existe-t-il d'autres valeurs de $x$ pour lesquelles $f(x)$ n'est pas définie ?</li>
       <li>Considérons la fonction définie par $g(x)=6x^2-7x+9$, montrez que $g\left(\dfrac{1}{2}\right)=7.$</li>
-      <li>Considérons la fonction définie par $h(x)=\dfrac{2^x}{\sqrt{x}}$.<br> Montrez que $4$ a pour image $8$ par $f$.</li>
-      <li>Pour quels nombres la fonction $h$ n'est-elle pas définie&nbsp;?.</li>
+      <li>Considérons la fonction définie par $h(x)=\dfrac{2^x}{\sqrt{x}}$. Montrez que $4$ a pour image $8$ par $h$.</li>
+      <li>Pour quels nombres la fonction $h$ n'est-elle pas définie&nbsp;?</li>
     </ol>
   </div>
   <div class="solution">
@@ -260,37 +392,6 @@
     </div>
     </li>
     <li>Quel est le domaine de définition de la fonction $f$ ?</li>
-    <li>Tracez dans un repère une fonction $g$ dont le domaine de définition est $[-1~;~4]$, et tels que&nbsp: l'image de $-1$ par $g$ est $-\num{0.5}$ ; $0$ a pour image $-1$ par la fonction $g$ ; $g(1)=-\num{0.75}$ ; $g(2)=\dfrac{1}{2}$ ; $g(3)=1$ ; $g(4)=\num{0.5}.$</li>
-    <div class="encart">
-    Rappel : un nombre possède au plus une image par une fonction.
-    </div>
-    <li>Considérons une fonction $h$ définie sur $\mathbb{R}$. Expliquez pourquoi il n'est pas possible que $8$ soit l'image de $-3$ par la fonction $h$ et qu'en même temps le point de coordonnées $(-3~;~6)$ appartienne à la courbe représentative de $h.$</li>
-    <li>Expliquez pourquoi la courbe suivante n'est pas celle d'une fonction.
-      <div class="figure">
-          <svg
-            viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" class="quadrillage"
-          >
-            <!-- On définit le repère -->
-            <g name="repere1" class="repere" xmin="-2.5" ymin="-1.5" xmax="3.5" ymax ="2.5" xorigine="0" yorigine="0"></g>
-            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
-            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
-            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
-            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
-            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
-            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
-            <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
-            <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
-            <g name="A" class="point" repere="repere1" x="-2" y="1" stroke="none"></g>
-            <g name="B" class="point" repere="repere1" x="-1" y="-1" stroke="none"></g>
-            <g name="C" class="point" repere="repere1" x="0" y="-0.5" stroke="none"></g>
-            <g name="D" class="point" repere="repere1" x="-1" y="2" stroke="none"></g>
-            <g name="E" class="point" repere="repere1" x="3" y="1" stroke="none"></g>
-            <g name="c1" class="pathPointsControls" controls="" linkto="A B C D E" stroke="red" stroke-width="1" fill="transparent"></g>
-          </svg>
-        </div>
-    </li>
     </ol>
   </div>
   <div class="solution">
@@ -461,388 +562,10 @@
       <li>
         <p>Le domaine de définition de cette fonction $f$ est l'intervalle $[-2;3]$.</p>
       </li>
-      <li>
-        <div class="figure">
-          <svg
-            viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg" class="quadrillage"
-          >
-            <!-- On définit le repère -->
-            <g name="repere1" class="repere" xmin="-1.5" ymin="-1.5" xmax="4.5" ymax ="2" xorigine="0" yorigine="0"></g>
-            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
-            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
-            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
-            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
-            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
-            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
-            <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
-            <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
-            <g name="c1" class="pathPointsControls" controls="" linkto="A B C D E F" stroke="red" stroke-width="1" fill="transparent"></g>
-            <g name="A" class="point" repere="repere1" x="-1" y="-0.5" stroke="blue"></g>
-            <g name="B" class="point" repere="repere1" x="0" y="-1" stroke="blue"></g> 
-            <g name="C" class="point" repere="repere1" x="1" y="-0.75" stroke="blue"></g>
-            <g name="D" class="point" repere="repere1" x="2" y="0.5" stroke="blue"></g>
-            <g name="E" class="point" repere="repere1" x="3" y="1" stroke="blue"></g>
-            <g name="F" class="point" repere="repere1" x="4" y="0.5" stroke="blue"></g>
-          </svg>
-        </div>
-      </li>
-      <li>
-        <p>Si on lit l'image de $-1$ par $g$ sur la courbe, on obtient $-1$, $\num{1.5}$ ou $2.$</p>
-        <p>Or un nombre ne peut avoir qu'une seule image par une fonction.</p>
-        <p>Donc la courbe ci-dessus n'est pas celle d'une fonction.</p>
-      </li>
     </ol>
   </div>
 </div>
-<h3>Lecture des antécédents</h3>
-<div class="question">
-  <div class="enonce">
-  </div>
-  <div class="solution">
-  </div>
-</div>
-<div class="question">
-  <div class="enonce">
-    <ol class="alphabetical-list">
-      <li>Comment déterminer l'image d'un nombre par une fonction $f$ à l'aide de son expression $f(x)$ ?</li>
-      <li>Comment déterminer l'image d'un nombre par une fonction à l'aide de sa courbe représentative ?</li>
-      <li>Comment déterminer si un point appartient à la courbe représentative d'une fonction ?</li>
-      <li>Comment déterminer si une fonction est paire ou impaire ?</li>
-      <li>Comment déterminer les coordonnées d'un point d'intersection de la courbe représentative d'une fonction avec l'axe des abscisses ?</li>
-      <li>Comment déterminer les coordonnées d'un point d'intersection de la courbe représentative d'une fonction avec l'axe des ordonnées ?</li>
-    </ol>
-  </div>
-  <div class="solution">
-    <ol class="alphabetical-list">
-      <li><p>Pour déterminer l'image d'un nombre par une fonction $f$, il suffit de remplacer $x$ par ce nombre dans l'expression $f(x)$ puis d'effectuer les calculs.</p>
-      <p>Par exemple pour déterminer l'image de $3$ par la fonction $f$ définie sur $\mathbb{R}$ par $f(x)=2x+1$, on remplace $x$ par $3$ dans l'expression $f(x)$.</p>
-      $$\begin{align*}
-      f(3)&=2\times 3+1\\
-      &=6+1\\
-      &=7
-      \end{align*}$$
-      <p>Ainsi $f(3)=7$ donc $7$ est l'image de $3$ par la fonction $f$.</p>
-      </li>
-      <li><p>Pour déterminer l'image d'un nombre par une fonction à l'aide de sa courbe représentative, il suffit de tracer une droite verticale passant par ce nombre et de regarder où elle coupe la courbe.</p>
-      <p>Par exemple pour déterminer l'image de $3$ par la fonction $f$ dont la courbe représentative est donnée ci-dessous, on trace une droite verticale passant par $3$.</p>
-      <div class="figure">
-        <svg viewBox="0 0 140 140" class="quadrillage">
-        <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="6" ymax ="6" xorigine="0" yorigine="0"></g>
-        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
-        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
-        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
-        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
-        <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
-        <g class="label" linkto="O" x="-4" y="0" style="font-size:0.4rem;">O</g>
-        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-        <g class="label" linkto="I" x="-1" y="2" style="font-size:0.4rem;">1</g>
-        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-        <g class="label" linkto="J" x="-8" y="-4" style="font-size:0.4rem;">1</g>
-        <g name="c1" class="courbeRepresentative" expression="7-2*x^2/6" xmin="-1" xmax="5" pas="0.01" linkto="repere1" stroke="red" stroke-width="1" fill="transparent"></g>
-        <g name="A1" class="point" repere="repere1" x="3" y="6" stroke="none"></g>
-        <g name="A2" class="point labeled" repere="repere1" x="3" y="0" stroke="none"></g>
-        <g class="label" linkto="A2" x="-4" y="0" style="font-size:0.4rem;">3</g>
-        <g name="d" class="droite" linkto="A1 A2" stroke="blue" stroke-width="1" stroke-dasharray="2 2"></g>
-        <g name="M" class="point labeled" repere="repere1" x="3" y="4" stroke="black" scale="0.5"></g>
-        <g class="label" linkto="M" x="2" y="-4" style="font-size:0.4rem;">M</g>
-        <g name="A3" class="point labeled" repere="repere1" x="0" y="4" stroke="none"></g>
-        <g class="label" linkto="A3" x="-8" y="-4" style="font-size:0.4rem;">4</g>
-        <g name="s" class="segment" linkto="A3 M" stroke="black" stroke-width="1" stroke-dasharray="1 1"></g>
-        </svg>
-        
-      </div>
-      <p>On voit que la droite coupe la courbe au point $M$ d'ordonnée $4$.</p>
-      <p>Donc l'image de $3$ par la fonction $f$ est $4$.</p>
-      </li>
-    </ol>
-  </div>
-</div>
-<div class="exercice">
-  <div class="enonce">
-    Notons $(\mathscr{C})$ la courbe représentative de la fonction $g$ définie sur $]-\infty~{;}~3[$ par $f(x)=\dfrac{3x-4}{2x-6}.$
-    <ol class="alphabetical-list">
-      <li>Montrer que $g(1)=\dfrac{1}{4}.$</li>
-      <li>En déduire les coordonnées d'un point appartenant à la courbe $(\mathcal{C}).$</li>
-      <li>Montrer que le point $A(-2~;~1)$ appartient à la courbe $(\mathcal{C}).$</li>
-      <li>Montrer que le symétrique de $A$ par rapport à l'origine $O$ du repère appartient à la courbe $(\mathcal{C}).$</li>
-      <li>Peut-on en déduire que la fonction $g$ est impaire ? Expliquer.</li>
-      <li>Déterminer les coordonnées du point $B$ d'abscisse $-1$ appartenant à $(\mathscr{C}).$</li>
-      <li>La fonction $g$ est-elle paire ou impaire sur $[-2~;~2]$ ? Justifier.</li>
-      <li>Montrer que la courbe $(\mathscr{C})$ coupe l'axe des abscisses en un point d'abscisse $\dfrac{4}{3}.$</li>
-      <li>Déterminer les coordonnées du point d'intersection de la courbe $(\mathscr{C})$ avec l'axe des ordonnées.</li>
-      <li>Dresser le tableau de valeurs de la fonction $g$ sur $[-2~;~2]$ avec un pas régulier de $1$.</li>
-      <li>Tracer sur $[-2~;~2]$ la courbe $(\mathscr{C})$ dans un repère orthonormé avec pour unité graphique $\SI{1}{\cm}.$</li>
-    </ol>
-    </div>
-  <div class="solution">
-    <ol>
-      <li><p>Calculons $g(1)$ :</p>
-        $$\begin{align*}
-        g(1)&=\dfrac{3\times 1-4}{2\times 1-6}\\
-        &=\dfrac{-1}{-4}\\
-        &=\dfrac{1}{4}
-        \end{align*}$$
-      </li>
-      <li><p>On a $g(1)=\dfrac{1}{4}$ donc le point de coordonnées $\left( 1 ~;~ \dfrac{1}{4}\right)$ appartient à la courbe $(\mathscr{C}).$</p>
-      </li>
-      <li><p>Calculons $g(-2)$ :</p>
-        $$\begin{align*}
-        g(-2)&=\dfrac{3\times (-2)-4}{2\times (-2)-6}\\
-        &=\dfrac{-10}{-10}\\
-        &=1
-        \end{align*}$$
-        <p>Donc $A(-2~;~1)$ appartient à la courbe $(\mathscr{C}).$</p>
-      </li>
-      <li><p>Le symétrique de $A$ par rapport à l'origine $O$ a pour coordonnées $\left( 2 ~;~ -1\right)$.</p>
-        <p>Calculons $g(2)$ :</p>
-        $$\begin{align*}
-        g(2)&=\dfrac{3\times 2-4}{2\times 2-6}\\
-        &=\dfrac{2}{-2}\\
-        &=-1
-        \end{align*}$$
-        <p>Donc le symétrique de $A$ par rapport à l'origine $O$ appartient à la courbe $(\mathscr{C}).$</p>
-      </li>
-      <li><p>Le symétrique de $A$ par rapport à l'origine $O$ appartient à $(\mathscr{C})$ ce qui est caractéristique des fonctions impaires.</p>
-        <p>Cependant on ne peut rien conclure sur la symétrie de la courbe entière par rapport à l'origine $O$.</p>
-        <p>Donc on ne peut pas en déduire si la fonction $g$ est impaire ou non pour le moment.</p>
-      </li>
-      <li><p>Calculons $g(-1)$ :</p>
-        $$\begin{align*}
-        g(-1)&=\dfrac{3\times (-1)-4}{2\times (-1)-6}\\
-        &=\dfrac{-7}{-8}\\
-        &=\dfrac{7}{8}
-        \end{align*}$$
-        <p>Donc $B$ a pour coordonnées $\left( -1 ~;~ \dfrac{7}{8}\right)$.</p>
-      </li>
-      <li><p>On a $g(-1)=\dfrac{7}{8}$ et $g(1)=\dfrac{1}{4}$.</p>
-        <p>Donc $g(-1)\neq g(1)$ et $g(-1)\neq -g(1)$.</p>
-        <p>Donc la fonction n'est ni paire ni impaire.</p>
-      </li>
-      <li><p>Calculons $g\left(\dfrac{4}{3}\right)$</p>
-        $$\begin{align*}
-        g\left(\dfrac{4}{3}\right)&=\dfrac{3\times \dfrac{4}{3}-4}{2\times \dfrac{4}{3}-6}\\
-        &=\dfrac{4-4}{\dfrac{8}{3}-6}\\
-        &=\dfrac{0}{\dfrac{8}{3}-\dfrac{18}{3}}\\
-        &=\dfrac{0}{-\dfrac{10}{3}}\\
-        &=0
-        \end{align*}$$
-        <p>Donc la courbe $(\mathscr{C})$ coupe l'axe des abscisses en un point d'abscisse $\dfrac{4}{3}.$</p>
-      </li>
-      <li><p>Le point d'intersection de la courbe avec l'axe des ordonnées est le point d'abscisse $0$.</p>
-        <p>Calculons $g(0)$ :</p>
-        $$\begin{align*}
-        g(0)&=\dfrac{3\times 0-4}{2\times 0-6}\\
-        &=\dfrac{-4}{-6}\\
-        &=\dfrac{2}{3}
-        \end{align*}$$
-        <p>Donc le point d'intersection de la courbe avec l'axe des ordonnées est le point de coordonnées $\left( 0 ~;~ \dfrac{2}{3}\right)$.</p>
-      </li>
-      <li>
-        <p>On dresse le tableau de valeurs.</p>
-        <table class="tableauvaleurs">
-          <thead>
-            <tr>
-              <th>$x$</th>
-              <td>$-2$</td>
-              <td>$-1$</td>
-              <td>$0$</td>
-              <td>$1$</td>
-              <td>$2$</td>
-            </tr>
-            <tr>
-              <th>$g(x)$</th>
-              <td>$1$</td>
-              <td>$\dfrac{7}{8}$</td>
-              <td>$\dfrac{2}{3}$</td>
-              <td>$\dfrac{1}{4}$</td>
-              <td>$-1$</td>
-            </tr>
-          </thead>
-        </table>
-      </li>
-      <li>
-        <div id="figure1" class="figure">
-          <svg
-            id="figure1"
-            viewBox="0 0 120 80"
-            xmlns="http://www.w3.org/2000/svg"
-            class="quadrillage"
-          >
-          <g name="repere1" class="repere" xmin="-3" ymin="-2" xmax="3" ymax ="2" xorigine="0" yorigine="0"></g>
-          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
-          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
-          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
-          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
-          <g name="A" class="point" repere="repere1" x="-2" y="1"></g>
-          <g name="B" class="point" repere="repere1" x="-1" y="0.875"></g>
-          <g name="C" class="point" repere="repere1" x="0" y="0.667"></g>
-          <g name="D" class="point" repere="repere1" x="1" y="0.25"></g>
-          <g name="E" class="point" repere="repere1" x="2" y="-1"></g>
-          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
-          <g class="label" linkto="O" x="-4" y="0" style="font-size:0.4rem;">O</g>
-          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-          <g class="label" linkto="I" x="-1" y="2" style="font-size:0.4rem;">1</g>
-          <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-          <g class="label" linkto="J" x="-8" y="-4" style="font-size:0.4rem;">1</g>
-        
-          <g name="c1" class="courbeRepresentative" expression="(3x-4)/(2x-6)" xmin="-2" xmax="2" pas="0.01" linkto="repere1" stroke="red" stroke-width="1" fill="transparent"></g>
-          </svg>
-        </div>
-      </li>
-    </ol>
-  </div>
-</div>
-<div class="exercice">
-  <div class="enonce">
-    Notons $(\mathscr{C})$ la courbe représentative de la fonction $f$ définie sur $]-3{;}+\infty[$ par $f(x)=\dfrac{7x+6}{x+3}.$
-    <ol class="alphabetical-list">
-      <li>Montrer que le point $A\left( 2 ~;~ 4\right)$ appartient à $(\mathscr{C})$.</li>
-      <li>Montrer que le point $B\left( 1 ~;~ 3\right)$ n'appartient pas à $(\mathscr{C})$.</li>
-      <li>Déterminer les coordonnées du point $C$ d'abscisse $-1$ appartenant à $(\mathscr{C})$.</li>
-      <li>Déterminer les coordonnées du point $D$ d'ordonnée $-8$ appartenant à $(\mathscr{C})$.</li>
-      <li>En déduire que la fonction n'est ni paire ni impaire.</li>
-      <li>Déterminer les coordonnées du point d'intersection de la courbe avec l'axe des ordonnées.</li>
-      <li>Déterminer les coordonnées du point d'intersection de la courbe avec l'axe des abscisses.</li>
-      <li>Dresser le tableau de valeurs de la fonction $f$ sur $[-1~;~3]$ avec un pas régulier de $1$.</li>
-      <li>Tracer la courbe $(\mathscr{C})$ dans un repère orthonormé avec pour unité graphique $\SI{1}{\cm}.$</li>
-    </ol>
-  </div>
-  <div class="solution">
-    <ol>
-      <li><p>Calculons $f(2)$ :</p>
-        $$\begin{align*}
-        f(2)&=\dfrac{7\times 2+6}{2+3}\\
-        &=\dfrac{20}{5}\\
-        &=4
-        \end{align*}$$
-        <p>Donc $A\left( 2 ~;~ 4\right)$ appartient à $(\mathscr{C})$.</p>
-      </li>
-      <li><p>Calculons $f(1)$ :</p>
-        $$\begin{align*}
-        f(1)&=\dfrac{7\times 1+6}{1+3}\\
-        &=\dfrac{13}{4}
-        \end{align*}$$
-        <p>Donc $B\left( 1 ~;~ 3\right)$ n'appartient pas à $(\mathscr{C})$.</p>
-      </li>
-      <li><p>Calculons $f(-1)$ :</p>
-        $$\begin{align*}
-        f(-1)&=\dfrac{7\times (-1)+6}{(-1)+3}\\
-        &=-\dfrac{1}{2}
-        \end{align*}$$
-        <p>Donc $C$ a pour coordonnées $\left( -1 ~;~ -\dfrac{1}{2}\right)$.</p>
-      </li>
-      <li><p>Les coordonnées de $D$ vérifient l'équation suivante.</p>
-        $$y=\dfrac{7x+6}{x+3}$$
-        <p>Or $y=-8$ donc il suffit de résoudre l'équation suivante.</p>
-        $$-8=\dfrac{7x+6}{x+3}$$
-        <p>On ajoute $8$ de chaque côté.</p>
-        $$0=\dfrac{7x+6}{x+3}+8$$
-        <p>On réduit au même dénominateur.</p>
-        $$0=\dfrac{7x+6+8(x+3)}{x+3}$$
-        <p>On développe et on réduit le numérateur.</p>
-        $$0=\dfrac{15x+30}{x+3}$$
-        <p>C'est une équation quotient-nul de valeur interdite $-3$.</p>
-        <p>Or un quotient est nul si et seulement si son numérateur est nul et son dénominateur est non nul.</p>
-        <p>On résout l'équation obtenue en annulant le numérateur.</p>
-        $$\begin{align*}
-        15x+30&=0\\
-        15x&=-30\\
-        \dfrac{15x}{15}&=\dfrac{-30}{15}\\
-        x&=-2
-        \end{align*}$$
-        <p>On vérifie que $x\neq -3$.</p>
-        <p>Donc $D$ a pour coordonnées $\left( -2 ~;~ -8\right)$.</p>
-      </li>
-      <li>
-        <p>On a $f(1)=\dfrac{13}{4}$ et $f(-1)=-\dfrac{1}{2}$.</p>
-        <p>Donc $f(1)\neq f(-1)$ et $f(-1)\neq -f(1)$.</p>
-        <p>Donc la fonction n'est ni paire ni impaire.</p>
-      </li>
-      <li>
-        <p>Le point d'intersection de la courbe avec l'axe des ordonnées est le point d'abscisse $0$.</p>
-        <p>Calculons $f(0)$ :</p>
-        $$\begin{align*}
-        f(0)&=\dfrac{7\times 0+6}{0+3}\\
-        &=\dfrac{6}{3}\\
-        &=2
-        \end{align*}$$
-        <p>Donc le point d'intersection de la courbe avec l'axe des ordonnées est le point de coordonnées $\left( 0 ~;~ 2\right)$.</p>
-      </li>
-      <li>
-        <p>Le point d'intersection de la courbe avec l'axe des abscisses est le point d'ordonnée $0$.</p>
-        <p>Ses coordonnées vérifient l'équation suivante.</p>
-        $$y=\dfrac{7x+6}{x+3}$$
-        <p>Or $y=0$ donc il suffit de résoudre l'équation suivante.</p>
-        $$0=\dfrac{7x+6}{x+3}$$
-        <p>C'est une équation quotient-nul de valeur interdite $-3$.</p>
-        <p>Or un quotient est nul si et seulement si son numérateur est nul et son dénominateur est non nul.</p>
-        <p>On résout l'équation obtenue en annulant le numérateur.</p>
-        $$\begin{align*}
-        7x+6&=0\\
-        7x&=-6\\
-        \dfrac{7x}{7}&=\dfrac{-6}{7}\\
-        x&=-\dfrac{6}{7}
-        \end{align*}$$
-        <p>On vérifie que $x\neq -3$.</p>
-        <p>Donc le point d'intersection de la courbe avec l'axe des abscisses est le point de coordonnées $\left( -\dfrac{6}{7} ~;~ 0\right)$.</p>
-      </li>
-      <li>
-        <p>On dresse le tableau de valeurs.</p>
-        <table class="tableauvaleurs">
-          <thead>
-            <tr>
-              <th>$x$</th>
-              <td>$-1$</td>
-              <td>$0$</td>
-              <td>$1$</td>
-              <td>$2$</td>
-              <td>$3$</td>
-            </tr>
-            <tr>
-              <th>$f(x)$</th>
-              <td>$-\dfrac{1}{2}$</td>
-              <td>$2$</td>
-              <td>$\dfrac{13}{4}$</td>
-              <td>$4$</td>
-              <td>$\dfrac{9}{2}$</td>
-            </tr>
-          </thead>
-        </table>
-      </li>
-      <li>
-        <div id="figure1" class="figure">
-          <svg
-            id="figure1"
-            viewBox="0 0 120 120"
-            xmlns="http://www.w3.org/2000/svg"
-            class="quadrillage"
-          >
-          <g name="repere1" class="repere" xmin="-2" ymin="-1" xmax="4" ymax ="5" xorigine="0" yorigine="0"></g>
-          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
-          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
-          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
-          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
-          <g name="A" class="point" repere="repere1" x="-1" y="-0.5"></g>
-          <g name="B" class="point" repere="repere1" x="0" y="2"></g>
-          <g name="C" class="point" repere="repere1" x="1" y="3.25"></g>
-          <g name="D" class="point" repere="repere1" x="2" y="4"></g>
-          <g name="E" class="point" repere="repere1" x="3" y="4.5"></g>
-          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
-          <g class="label" linkto="O" x="-4" y="0" style="font-size:0.4rem;">O</g>
-          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-          <g class="label" linkto="I" x="-1" y="2" style="font-size:0.4rem;">1</g>
-          <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-          <g class="label" linkto="J" x="-8" y="-4" style="font-size:0.4rem;">1</g>
-
-          <g name="c1" class="courbeRepresentative" expression="(7x+6)/(x+3)" xmin="-1" xmax="3" pas="0.01" linkto="repere1" stroke="red" stroke-width="1" fill="transparent"></g>
-          </svg>
-        </div>
-      </li>
-    </ol>
-  </div>
-</div></main>
+</main>
     <footer>
       Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
       Henry Bergson à Angers.<br />

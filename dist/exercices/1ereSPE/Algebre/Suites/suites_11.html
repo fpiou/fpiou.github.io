@@ -118,6 +118,34 @@
     
     <main><div class="question">
     <div class="enonce">
+        Modélisez chacune des situations suivantes par une suite géométrique et déterminez le terme général de la suite.
+        <ol class="alphabetical-list">
+            <li>Un capital de $\SI{1000}{\euros}$ est placé à un taux de $5\%$ par an.</li>
+            <li>Un globetrotter parcourt $\SI{50}{\km}$ en une journée mais chaque jour il parcourt $10\%$ de moins que la veille.</li>
+            <li>On trace un triangle rectangle isocèle de côté $\SI{1}{\cm}.$ On trace ensuite un nouveau triangle rectangle isocèle de côté l'hypoténuse du triangle précédent. On continue ainsi de suite et on calcule l'aire de chaque triangle.</li>
+            <li>On plie une feuille de papier d'épaisseur $\SI{0.1}{\cm}$ en deux, puis on la plie en deux à nouveau, et ainsi de suite.</li>
+            <li>Un virus se propage en infectant 3 personnes par jour mais chaque jour, 1% de personnes infectées guérissent.</li>
+            <li>La pression atmpshérique est 1013 hPa. On monte en altitude et on constate que la pression atmosphérique diminue de 2% tous les 100 mètres.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Le capital est multiplié par 1.05 chaque année donc la suite est géométrique de raison $q=1.05$ et de premier terme $u_0=1000$.<br>
+            Le terme général de la suite est $u_n=1000\times 1.05^n$.</li>
+            <li>Le globetrotter parcourt 50 km le premier jour, 45 km le deuxième jour, 40.5 km le troisième jour, etc. donc la suite est géométrique de raison $q=0.9$ et de premier terme $u_0=50$.<br>
+            Le terme général de la suite est $u_n=50\times \num{0.99}^n$.</li>
+            <li>Le côté de l'hypoténuse du triangle est $\sqrt{2}$ fois le côté du triangle précédent donc la suite est géométrique de raison $q=\sqrt{2}$ et de premier terme $u_0=1$.<br>
+            Le terme général de la suite est $u_n=1\times \sqrt{2}^n$.</li>
+            <li>La feuille est pliée en deux à chaque étape donc l'épaisseur de la feuille est multipliée par 2 à chaque étape donc la suite est géométrique de raison $q=2$ et de premier terme $u_0=\SI{0.1}{\cm}$.<br>
+            Le terme général de la suite est $u_n=\SI{0.1}{\cm}\times 2^n$.</li>
+            <li>Le nombre de personnes infectées est multiplié par 3 à chaque étape et divisé multiplié par \num{0.99} à chaque étape donc la suite est géométrique de raison $q=3\times \num{0.99}$ et de premier terme $u_0=1$.<br>
+            Le terme général de la suite est $u_n=1\times (3\times \num{0.99})^n$.</li>
+            <li>La pression atmosphérique est multipliée par 0.98 à chaque étape donc la suite est géométrique de raison $q=0.98$ et de premier terme $u_0=1013$.<br>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
         On considère la suite géométrique de premier terme $u_0=2$ et de raison $q=3$.
         <ol class="alphabetical-list">
             <li>Montrez que le neuvième terme de la suite vaut $\num{13122}$.<br>
@@ -164,7 +192,191 @@
         </ol>
     </div>
 </div>
-</main>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Soit $(u_n)$ la suite géométrique de raison $\dfrac{1}{2}$ et telle que $u_3=64$. Déterminez $u_0$.</li>
+            <li>Justifiez que la suite est décroissante.</li>
+            <li>Résoudre $u_n\lt 1$.</li>
+            <li>Déterminez la somme des 10 premiers termes de la suite.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Le terme général de la suite est $u_n=u_0\times \left(\dfrac{1}{2}\right)^n$.</p>
+            <p>On a $u_3=u_0\times \left(\dfrac{1}{2}\right)^3=64$ d'où $u_0=64\times 2^3=512$.</p></li>
+            <li><p>La suite est géométrique de raison $q=\dfrac{1}{2}\lt 1$ et son premier terme est $u_0=512$.<p>
+            <p>On a $q\lt 1$ et $u_0\gt 0$ donc la suite est décroissante.</p></li>
+            <li><p>On a $u_n=512\times \left(\dfrac{1}{2}\right)^n$.</p>
+            <p>D'où $u_n\lt 1$ si et seulement si $512\times \left(\dfrac{1}{2}\right)^n\lt 1$</p>
+            <p>$$\begin{align*}
+            512\times \left(\dfrac{1}{2}\right)^n&\lt 1\\
+            2^9\times \left(\dfrac{1}{2}\right)^n&\lt 1\\
+            \left(\dfrac{1}{2}\right)^n&\lt \dfrac{1}{2^9}\\
+            \left(\dfrac{1}{2}\right)^n&\lt \left(\dfrac{1}{2}\right)^9
+            \end{align*}$$</p>
+            <p>La suite étant décroissante on en déduit que $u_n\lt 1$ si et seulement si $n\gt 9$.</p>
+            </li>
+            <li><p>La somme des 10 premiers termes de la suite est donnée par la formule :</p>
+            $$\begin{align*}
+            S&=u_0+u_1+u_2+\ldots+u_9\\
+            &=u_0\times\dfrac{1-\left(\dfrac{1}{2}\right)^{10}}{1-\dfrac{1}{2}}\\
+            &=512\times\dfrac{1-\left(\dfrac{1}{2}\right)^{10}}{\dfrac{1}{2}}\\
+            &=1024\times\left(1-\left(\dfrac{1}{2^{10}}\right)\right)\\
+            &=1024\times\dfrac{2^{10}-1}{2^{10}}\\
+            &=1024\times\dfrac{1024-1}{1024}\\
+            &=1024\times\dfrac{1023}{1024}\\
+            S&=1023
+            \end{align*}$$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère la suite géométrique $(u_n)_{n\in\mathbb{N}}$ telle que $u_4=4$, $u_6=36$ et la somme $S$ des 9 premiers termes de la suite est environ égale à $3^5.$
+        <ol class="alphabetical-list">
+            <li>Que peut valoir la raison de la suite ?</li>
+            <li>Montrez que si $q=3$, alors $u_8\gt 3^5.$</li>
+            <li>En déduire la valeur de $q.$</li>
+            <li>Déterminez le premier terme de la suite.</li>
+            <li>Montrez qu'avec cette valeur $S\approx 3^5$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>On a $u_4=u_0\times q^4=4$ et $u_6=u_0\times q^6=36$.</p>
+            <p>On a $u_6=u_4\times q^2$ d'où $q^2=\dfrac{36}{4}=9$.</p>
+            <p>On a $q=\pm 3$.</p></li>
+            <li><p>Si $q=3$, alors $u_8=u_4\times 3^4=4\times 3^4$.</p>
+            <p>Or $4\gt 3$ donc $u_8\gt 3\times 3^4=3^5$.</p></li>
+            <li><p>Si $q=3$, alors $u_8\gt 3^5$.</p>
+            <p>Or $u_8$ est le neuvième terme de la suite donc $u_8\lt S$.</p>
+            <p>Donc $q\neq 3$.</p>
+            <p>Par conséquent $q=-3$.</p></li>
+            <li><p>On a $u_4=u_0\times (-3)^4=4$ d'où $u_0=\dfrac{4}{(-3)^4}=\dfrac{4}{81}$.</p></li>
+            <li><p>La somme des 9 premiers termes de la suite est donnée par la formule :</p>
+            $$\begin{align*}
+            S&=u_0+u_1+u_2+\ldots+u_8\\
+            &=u_0\times\dfrac{1-(-3)^9}{1-(-3)}\\
+            &=\dfrac{4}{81}\times\dfrac{1-(-3^9)}{1+3}\\
+            &=\dfrac{4}{81}\times\dfrac{1+3^9}{4}\\
+            &=\dfrac{1+3^9}{81}\\
+            &=\dfrac{1}{81}+\dfrac{3^9}{81}\\
+            &=\dfrac{1}{81}+\dfrac{3^9}{3^4}\\
+            &=\dfrac{1}{81}+3^5\\
+            S&\approx 3^5
+            \end{align*}$$
+            </li>
+        </ol>        
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Selon la légende de Sissa, l'inventeur du jeu d'échecs, le roi indien Shirham aurait été tellement impressionné par le jeu qu'il aurait proposé à Sissa de choisir sa récompense. Sissa aurait alors demandé au roi de déposer un grain de riz sur la première case du jeu, deux sur la deuxième, quatre sur la troisième, et ainsi de suite, en doublant à chaque fois le nombre de grains jusqu'à la 64ème case. Le roi aurait accepté, mais aurait vite réalisé que la quantité de riz demandée était bien plus grande que ce qu'il avait imaginé.
+        <ol class="alphabetical-list">
+            <li>Notons $u_1$ le nombre de grains de riz sur la première case, $u_2$ le nombre de grains de riz sur la deuxième case, etc. Montrez que la suite $(u_n)$ est une suite géométrique.</li>
+            <li>Montrez que le nombre de grain de riz demandé est $2^{64}-1$.</li>
+            <li>Sachant que $2^{10}=1024$, montrez que le nombre de grains de riz demandé est d'environ $\num{1.6}\times 10^{19}$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>On double la quantité de riz à chaque case donc la suite $(u_n)$ est une suite géométrique de raison $q=2$ et de premier terme $u_0=1$.</li>
+            <li>Le nombre de grains de riz demandé est $2^0+2^1+2^2+\ldots+2^{63}+2^{64}$.<br>
+            On a $2^0+2^1+2^2+\ldots+2^{63}=2^{64}-1$<br>
+            Donc le nombre de grains de riz demandé est $2^{64}-1$.</li>
+            <li>On a $2^{10}=1024\approx 1000= 10^3$.<br>
+            $$\begin{align*}
+            2^{64}&=2^4 \times 2^{60}\\
+            &=16\times 2^{10\times 6}\\
+            &=16\times \left(2^{10}\right)^6\\
+            &\approx 16\times \left(10^3\right)^6\\
+            &\approx 16\times 10^{18}\\
+            &\approx \num{1.6}\times 10^{19}
+            \end{align*}$$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère la suite géométrique de premier terme $u_0=2$ et de raison $q=5$.
+        <ol class="alphabetical-list">
+            <li>Calculez les cinq premiers termes de la suite.</li>
+            <li>Calculez le onzième terme de la suite.</li>
+            <li>Calculez la somme des 10 premiers termes de la suite.</li>
+        </ol>
+        Indication : $5^{10}=\num{9765625}.$
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$u_0=2$</p>
+            <p>$u_1=u_0\times 5=2\times 5=10$</p>
+            <p>$u_2=u_1\times 5=10\times 5=50$</p>
+            <p>$u_3=u_2\times 5=50\times 5=250$</p>
+            <p>$u_4=u_3\times 5=250\times 5=1250$</p>
+            </li>
+            <li><p>Le terme général de la suite est $u_n=u_0\times 5^n=2\times 5^n$.</p>
+            <p>$u_{10}=2\times 5^{10}=2\times \num{9765625}=\num{19531250}$</p></li>
+            <li><p>La somme des 10 premiers termes de la suite est donnée par la formule :</p>
+            $$\begin{align*}
+            S&=u_0+u_1+u_2+\ldots+u_9\\
+            &=u_0\times\dfrac{1-5^{10}}{1-5}\\
+            &=2\times\dfrac{1-5^{10}}{-4}\\
+            &=2\times\dfrac{5^{10}-1}{4}\\
+            &=\dfrac{5^{10}-1}{2}\\
+            &=\dfrac{\num{9765625}-1}{2}\\
+            &=\dfrac{\num{9765624}}{2}\\
+            S&=\num{4882812}
+            \end{align*}$$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Un globetrotter parcourt 50 km en une journée mais chaque jour il parcourt 1% de moins que la veille. On note $u_1=50$ la distance parcourue le premier jour et $u_n$ la distance parcourue le $n$-ième jour.
+        <ol class="alphabetical-list">
+            <li>Montrez que la suite $(u_n)$ est une suite géométrique et donnez la raison $q$ de la suite.</li>
+            <li>Calculez la distance parcourue le deuxième jour et le troisième jour.</li>
+            <li>Quelle est la variation de la suite de terme général $v_n=q^n$ ?</li>
+            <li>EN déduire un encadrement de $v_n$.</li>
+            <li>Montrez que le globetrotter ne peut pas parcourir plus de $\SI{5000}{\km}$ au total.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>La distance parcourue le $n+1$-ième jour est $u_{n+1}=u_n\times \num{0.99}$.</p>
+            <p>Donc la suite $(u_n)$ est une suite géométrique de raison $q=\num{0.99}$ et de premier terme $u_1=50$.</p></li>
+            <li><p>La distance parcourue le deuxième jour est $u_2=u_1\times \num{0.99}=50\times \num{0.99}=49.5$ km.</p>
+            <p>La distance parcourue le troisième jour est $u_3=u_2\times \num{0.99}=49.5\times \num{0.99}=49.005$ km.</p></li>
+            <li><p>La suite de terme général $v_n=q^n$ est une suite géométrique de raison $q=\num{0.99}$ et de premier terme $v_0=1$.</p>
+            <p>$q\lt 1$ et $v_0\gt 0$ donc la suite est décroissante.</p></li>
+            <li><p>La suite de terme général $v_n=q^n$ est une suite géométrique de raison $q=\num{0.99}$ et de premier terme $v_0=1$.</p>
+            <p>La suite est décroissante donc $v_n\leqslant v_0$.</p>
+            <p>On a $v_0=1$ et $q\lt 1$ donc $v_n\gt 0$.</p>
+            <p>Donc $0\lt v_n\leqslant 1$.</p></li>
+            <li><p>La somme des distances parcourues les $n$ premiers jours est donnée par la formule :</p>
+            $$\begin{align*}
+            S&=u_1+u_2+u_3+\ldots+u_n\\
+            &=u_1\times\dfrac{1-\num{0.99}^{n}}{1-\num{0.99}}\\
+            &=50\times\dfrac{1-\num{0.99}^{n}}{\num{0.01}}\\
+            &=5000\times(1-\num{0.99}^{n})
+            \end{align*}$$
+            <p>On a l'encadrement $0\lt v_n\leqslant 1$ d'où $0\lt \num{0.99}^{n}\leqslant 1$.</p>
+            $$\begin{align*}
+            0&\lt \num{0.99}^{n}\leqslant 1\\
+            0&\gt -\num{0.99}^{n}\geqslant -1\\
+            1&\gt 1-\num{0.99}^{n}\geqslant 0\\
+            5000&\gt 5000(1-\num{0.99}^{n})\geqslant 0\\
+            5000&\gt S\geqslant 0
+            \end{align*}$$
+            <p>Donc le globetrotter ne peut pas parcourir plus de $\SI{5000}{\km}$ au total.</p>
+            </li>
+        </ol>
+    </div>
+</div></main>
     <footer>
       Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
       Henry Bergson à Angers.<br />
