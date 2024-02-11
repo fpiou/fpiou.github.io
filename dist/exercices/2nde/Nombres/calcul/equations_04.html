@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Equations_04</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    
+    <main><div class="exercice">
+  <div class="enonce">
+    Observez les transformations effectuées sur l'expression suivante.
+      $$\begin{align*}
+      A&=2(x+3)+x+3\\
+      A&=2(x+3)+(x+3)\times 1\\
+      A&=(x+3)(2+1)\\
+      A&=(x+3)\times 3\\
+      A&=3(x+3)
+      \end{align*}$$
+      Factorisez les expressions suivantes en vous inspirant de l'exemple.
+      <ol class="horizontal-list">
+        <li>$B=6x(x+5)+x+5$</li>
+        <li>$C=4x(x-3)+4x$</li>
+        <li>$D=(5x+8)^2+5x+8$</li>
+        <li>$E=(7-5x)(x+3)-5x+7$</li>
+      </ol>
+  </div>
+  <div class="solution">
+    <ol class="horizontal-list">
+      <li>$$\begin{align*}
+      B&=6x(x+5)+x+5\\
+      B&=6x(x+5)+(x+5)\times 1\\
+      B&=(x+5)(6+1)\\
+      B&=(x+5)\times 7\\
+      B&=7(x+5)
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+      C&=4x(x-3)+4x\\
+      C&=4x(x-3)+4x\times 1\\
+      C&=4x(x-3)+4x\\
+      C&=4x(x-3+1)\\
+      C&=4x(x-2)
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+      D&=(5x+8)^2+5x+8\\
+      D&=(5x+8)^2+(5x+8)\times 1\\
+      D&=(5x+8)(5x+8+1)\\
+      D&=(5x+8)(5x+9)
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+      E&=(7-5x)(x+3)-5x+7\\
+      E&=(7-5x)(x+3)+(7-5x)\times 1\\
+      E&=(x+3)(7-5x+1)\\
+      E&=(x+3)(8-5x)
+      \end{align*}$$</li>
+    </ol>
+  </div>
+</div>  
+<div class="exercice">
+  <div class="enonce">
+    Observez les transformations effectuées sur l'expression suivante.
+      $$\begin{align*}
+      A&=5(x-3)-x+3\\
+      A&=5(x-3)-(x-3)\\
+      A&=(x-3)(5-1)\\
+      A&=(x-3)\times 4\\
+      A&=4(x-3)
+      \end{align*}$$
+      Factorisez les expressions suivantes en vous inspirant de l'exemple.
+      <ol class="horizontal-list">
+        <li>$B=6x(x+6)-x-6$</li>
+        <li>$C=4x(x-3)-4x$</li>
+        <li>$D=(5x-8)^2+8-5x$</li>
+        <li>$E=5-6x+(6x-5)(x-3)$</li>
+      </ol>
+  </div>
+  <div class="solution">
+    <ol class="horizontal-list">
+      <li>$$\begin{align*}
+      B&=6x(x+6)-x-6\\
+      B&=6x(x+6)-(x+6)\times 1\\
+      B&=(x+6)(6-1)\\
+      B&=(x+6)\times 5\\
+      B&=5(x+6)
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+      C&=4x(x-3)-4x\\
+      C&=4x(x-3)-4x\times 1\\
+      C&=4x(x-3)-4x\\
+      C&=4x(x-3-1)\\
+      C&=4x(x-4)
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+      D&=(5x-8)^2+8-5x\\
+      D&=(5x-8)^2+(8-5x)\times 1\\
+      D&=(5x-8)(5x-8+1)\\
+      D&=(5x-8)(5x-7)
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+      E&=5-6x+(6x-5)(x-3)\\
+      E&=(6x-5)(x-3)+5-6x\\
+      E&=(6x-5)(x-3)+(5-6x)\times 1\\
+      E&=(x-3)(6x-5+1)\\
+      E&=(x-3)(6x-4)
+      \end{align*}$$</li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    Observez les transformations effectuées sur l'expression suivante.
+      $$\begin{align*}
+      A&=(x-2)(x-3)+5x-10\\
+      A&=(x-2)(x-3)+5(x-2)\\
+      A&=(x-2)(x-3+x-2)\\
+      A&=(x-2)(2x-5)
+      \end{align*}$$
+      Factorisez les expressions suivantes en vous inspirant de l'exemple.
+      <ol class="horizontal-list">
+        <li>$B=(x-3)(x-4)+6x-18$</li>
+        <li>$C=24x(x-3)+4x$</li>
+        <li>$D=(x-5)^2+5x-25$</li>
+        <li>$E=(x-7)(x-3)-7x+21$</li>
+      </ol>
+  </div>
+  <div class="solution">
+    <ol class="horizontal-list">
+      <li>$$\begin{align*}
+      B&=(x-3)(x-4)+6x-18\\
+      B&=(x-3)(x-4)+6(x-3)\\
+      B&=(x-3)(x-4+x-3)\\
+      B&=(x-3)(2x-7)
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+      C&=4x(x-3)+24x\\
+      C&=4x(x-3)+4x\times 6\\
+      C&=4x(x-3+6)\\
+      C&=4x(x+3)
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+      D&=(x-5)^2+5x-25\\
+      D&=(x-5)^2+5(x-5)\\
+      D&=(x-5)(x-5+5)\\
+      D&=(x-5)\times x\\
+      D&=x(x-5)
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+      E&=(x-7)(x-3)-7x+21\\
+      E&=(x-7)(x-3)-(7x-21)\\
+      E&=(x-7)(x-3)-7(x-3)\\
+      E&=(x-3)(x-7-7)\\
+      E&=(x-3)(x-14)
+      \end{align*}$$</li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    Observez les transformations effectuées sur l'expression suivante.
+      $$\begin{align*}
+      A&=36x^2-16x^2+24x-9\\
+      A&=36x^2-(16x^2-24x+9)\\
+      A&=36x^2-\left((4x)^2-2\times 4x\times 3+3^2\right)\\
+      A&=36x^2-(4x-3)^2\\
+      A&=\left(6x\right)^2-\left(4x-3\right)^2\\
+      A&=\left(6x+4x-3\right)\left(6x-(4x-3)\right)\\
+      A&=(10x-3)(6x-4x+3)\\
+      A&=(10x-3)(2x+3)
+      \end{align*}$$
+      Factorisez les expressions suivantes en vous inspirant de l'exemple.
+      <ol class="horizontal-list">
+        <li>$B=25x^2-64x^2+64x-16$</li>
+        <li>$C=(2x-3)^2-4x^2+12x-9$</li>
+      </ol>
+  </div>
+  <div class="solution">
+    <ol class="horizontal-list">
+      <li>$$\begin{align*}
+      B&=25x^2-64x^2+64x-16\\
+      B&=25x^2-(64x^2-64x+16)\\
+      B&=25x^2-\left((8x)^2-2\times 8x\times 4+4^2\right)\\
+      B&=25x^2-(8x-4)^2\\
+      B&=\left(5x\right)^2-\left(8x-4\right)^2\\
+      B&=\left(5x+8x-4\right)\left(5x-(8x-4)\right)\\
+      B&=(13x-4)(5x-8x+4)\\
+      B&=(13x-4)(-3x+4)
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+      C&=(7x-3)^2-4x^2+12x-9\\
+      C&=(7x-3)^2-(4x^2-12x+9)\\
+      C&=(7x-3)^2-(2x-3)^2\\
+      C&=(7x-3+2x-3)(7x-3-(2x-3))\\
+      C&=(9x-6)(7x-3-2x+3)\\
+      C&=(9x-6)\times 5x\\
+      C&=5x(9x-6)
+      \end{align*}$$</li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    Observez les transformations effectuées sur l'expression suivante.
+      $$\begin{align*}
+      A&=25x^2-16+(5x-4)(6x+1)\\
+      A&=\left(5x\right)^2-4^2+(5x-4)(6x+1)\\
+      A&=(5x+4)(5x-4)+(5x-4)(6x+1)\\
+      A&=(5x-4)(5x+4+6x+1)\\
+      A&=(5x-4)(11x+5)
+      \end{align*}$$
+      Factorisez les expressions suivantes en vous inspirant de l'exemple.
+      <ol class="horizontal-list">
+        <li>$B=9x^2-1+(3x+1)(8x-1)$</li>
+        <li>$C=(4x-7)(x+1)+(4x-3)^2-16$</li>
+        <li>$D=(5x-3)^2-4x^2+14x-6$</li>
+      </ol>
+  </div>
+  <div class="solution">
+    <ol class="horizontal-list">
+      <li>$$\begin{align*}
+      B&=9x^2-1+(3x+1)(8x-1)\\
+      B&=(3x)^2-1^2+(3x+1)(8x-1)\\
+      B&=(3x+1)(3x-1)+(3x+1)(8x-1)\\
+      B&=(3x+1)(3x-1+8x-1)\\
+      B&=(3x+1)(11x-2)
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+      C&=(4x-7)(x+1)+(4x-3)^2-16\\
+      C&=(4x-7)(x+1)+(4x-3)^2-4^2\\
+      C&=(4x-7)(x+1)+(4x-3+4)(4x-3-4)\\
+      C&=(4x-7)(x+1)+(4x+1)(4x-7)\\
+      C&=(4x-7)(x+1+4x+1)\\
+      C&=(4x-7)(5x+2)
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+      D&=(5x-3)^2-4x^2+14x-6\\
+      D&=(5x-3)^2-(2x)^2+14x-6\\
+      D&=(5x-3+2x)(5x-3-2x)+14x-6\\
+      D&=(5x+2x-3)(5x-2x-3)+14x-6\\
+      D&=(7x-3)(3x-3)+14x-6\\
+      D&=(7x-3)(3x-3)+2(7x-3)\\
+      D&=(7x-3)(3x-3+2)\\
+      D&=(7x-3)(3x-1)
+      \end{align*}$$</li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    Après avoir transformé l'équation en une équation produit-nul (à l'aide d'une factorisation), résoudre l'équation.
+      <ol class="horizontal-list">
+        <li>$6x(4x-7)+4x-7=0$</li>
+        <li>$2x(x-3)-x+3=0$</li>
+        <li>$36x^2-9x+30x-25=0$</li>
+        <li>$(7x+2)^2=(3x-2)^2-(4x+4)^2$</li>
+      </ol>
+  </div>
+  <div class="solution">
+    <ol class="horizontal-list">
+      <li>$$\begin{align*}
+      6x(4x-7)+4x-7&=0\\
+      6x(4x-7)+(4x-7)&=0\\
+      (4x-7)(6x+1)&=0\\
+      4x-7=0\quad\text{ou}\quad 6x+1&=0\\
+      x=\frac{7}{4}\quad\text{ou}\quad x&=-\frac{1}{6}
+      \end{align*}$$
+      L'ensemble des solutions est $\left\{-\frac{1}{6};\frac{7}{4}\right\}$.</li>
+      <li>$$\begin{align*}
+      2x(x-3)-x+3&=0\\
+      2x(x-3)-(x-3)&=0\\
+      (x-3)(2x-1)&=0\\
+      x-3=0\quad\text{ou}\quad 2x-1&=0\\
+      x=3\quad\text{ou}\quad x&=\frac{1}{2}
+      \end{align*}$$
+      L'ensemble des solutions est $\left\{3;\frac{1}{2}\right\}$.</li>
+      <li>$$\begin{align*}
+      36x^2-9x+30x-25&=0\\
+      36x^2-(9x-30x+25)&=0\\
+      36x^2-(3x-5)^2&=0\\
+      (6x+3x-5)(6x-(3x-5))&=0\\
+      (9x-5)(6x-3x+5)&=0\\
+      (9x-5)(3x+5)&=0\\
+      9x-5=0\quad\text{ou}\quad 3x+5&=0\\
+      x=\frac{5}{9}\quad\text{ou}\quad x&=-\frac{5}{3}
+      \end{align*}$$
+      L'ensemble des solutions est $\left\{-\frac{5}{3};\frac{5}{9}\right\}$.</li>
+      <li>
+        $$\begin{align*}
+        (7x+2)^2&=(3x-2)^2-(4x+4)^2\\
+        (7x+2)^2&=(3x-2+4x+4)(3x-2-(4x+4))\\
+        (7x+2)^2&=(7x+2)(3x-2-4x-4)\\
+        (7x+2)^2&=(7x+2)(-x-6)\\
+        (7x+2)^2-(7x+2)(-x-6)&=0\\
+        (7x+2)(7x+2-(-x-6))&=0\\
+        (7x+2)(7x+2+x+6)&=0\\
+        (7x+2)(8x+8)&=0\\
+        7x+2=0\quad\text{ou}\quad 8x+8&=0\\
+        x=-\frac{2}{7}\quad\text{ou}\quad x&=-1
+        \end{align*}$$
+        L'ensemble des solutions est $\left\{-1;-\frac{2}{7}\right\}$.
+      </li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    Observez les transformations effectuées sur l'expression suivante.
+      $$\begin{align*}
+      A&=\dfrac{4}{x+2}+\dfrac{3}{x-5}\\
+      A&=\dfrac{4(x-5)}{(x+2)(x-5)}+\dfrac{3(x+2)}{(x+2)(x-5)}\\
+      A&=\dfrac{4(x-5)+3(x+2)}{(x+2)(x-5)}\\
+      A&=\dfrac{4x-20+3x+6}{(x+2)(x-5)}\\
+      A&=\dfrac{7x-14}{(x+2)(x-5)}\\
+      A&=\dfrac{7(x-2)}{(x+2)(x-5)}
+      \end{align*}$$
+      Transformez sous forme d'un quotient en vous inspirant de l'exemple.
+      <ol class="horizontal-list">
+        <li>$B=\dfrac{1}{2(x-3)}+\dfrac{3}{2x-5}$</li>
+        <li>$C=\dfrac{4}{x-5}+\dfrac{8}{x}$</li>
+        <li>$D=\dfrac{5}{x+3}+9$</li>
+      </ol> 
+  </div>
+  <div class="solution">
+    <ol class="horizontal-list">
+      <li>$$\begin{align*}
+      B&=\dfrac{1}{2(x-3)}+\dfrac{3}{2x-5}\\
+      B&=\dfrac{2x-5}{2(x-3)(2x-5)}+\dfrac{3(2x-3)}{2(x-3)(2x-5)}\\
+      B&=\dfrac{2x-5+3(2x-3)}{2(x-3)(2x-5)}\\
+      B&=\dfrac{2x-5+6x-9}{2(x-3)(2x-5)}\\
+      B&=\dfrac{8x-14}{2(x-3)(2x-5)}\\
+      B&=\dfrac{2(4x-7)}{2(x-3)(2x-5)}\\
+      B&=\dfrac{4x-7}{(x-3)(2x-5)}
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+      C&=\dfrac{4}{x-5}+\dfrac{8}{x}\\
+      C&=\dfrac{4x}{x(x-5)}+\dfrac{8(x-5)}{x(x-5)}\\
+      C&=\dfrac{4x+8(x-5)}{x(x-5)}\\
+      C&=\dfrac{4x+8x-40}{x(x-5)}\\
+      C&=\dfrac{12x-40}{x(x-5)}\\
+      C&=\dfrac{4(3x-10)}{x(x-5)}
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+      D&=\dfrac{5}{x+3}+9\\
+      D&=\dfrac{5}{x+3}+\dfrac{9(x+3)}{x+3}\\
+      D&=\dfrac{5+9(x+3)}{x+3}\\
+      D&=\dfrac{5+9x+27}{x+3}\\
+      D&=\dfrac{9x+32}{x+3}
+      \end{align*}$$</li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    Observez les transformations effectuées sur l'expression suivante.
+      $$\begin{align*}
+      A&=\dfrac{4}{x+2}-\dfrac{3}{x-5}\\
+      A&=\dfrac{4(x-5)}{(x+2)(x-5)}-\dfrac{3(x+2)}{(x+2)(x-5)}\\
+      A&=\dfrac{4(x-5)-3(x+2)}{(x+2)(x-5)}\\
+      A&=\dfrac{4x-20-3x-6}{(x+2)(x-5)}\\
+      A&=\dfrac{x-26}{(x+2)(x-5)}
+      \end{align*}$$
+      Transformez sous forme d'un quotient en vous inspirant de l'exemple.
+      <ol class="horizontal-list">
+        <li>$B=\dfrac{1}{2(x-3)}-\dfrac{3}{2x-5}$</li>
+        <li>$C=\dfrac{4}{x-5}-\dfrac{8}{x}$</li>
+        <li>$D=\dfrac{5}{x+3}-9$</li>
+      </ol>
+  </div>
+  <div class="solution">
+    <ol class="horizontal-list">
+      <li>$$\begin{align*}
+      B&=\dfrac{1}{2(x-3)}-\dfrac{3}{2x-5}\\
+      B&=\dfrac{2x-5}{2(x-3)(2x-5)}-\dfrac{3(2x-3)}{2(x-3)(2x-5)}\\
+      B&=\dfrac{2x-5-3(2x-3)}{2(x-3)(2x-5)}\\
+      B&=\dfrac{2x-5-6x+9}{2(x-3)(2x-5)}\\
+      B&=\dfrac{-4x+4}{2(x-3)(2x-5)}\\
+      B&=\dfrac{2(-2x+2)}{2(x-3)(2x-5)}\\
+      B&=\dfrac{-2x+2}{(x-3)(2x-5)}
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+      C&=\dfrac{4}{x-5}-\dfrac{8}{x}\\
+      C&=\dfrac{4x}{x(x-5)}-\dfrac{8(x-5)}{x(x-5)}\\
+      C&=\dfrac{4x-8(x-5)}{x(x-5)}\\
+      C&=\dfrac{4x-8x+40}{x(x-5)}\\
+      C&=\dfrac{-4x+40}{x(x-5)}\\
+      C&=\dfrac{-4(x-10)}{x(x-5)}
+      \end{align*}$$</li>
+      <li>$$\begin{align*}
+      D&=\dfrac{5}{x+3}-9\\
+      D&=\dfrac{5}{x+3}-\dfrac{9(x+3)}{x+3}\\
+      D&=\dfrac{5-9(x+3)}{x+3}\\
+      D&=\dfrac{5-9x-27}{x+3}\\
+      D&=\dfrac{-9x-22}{x+3}\\
+      D&=\dfrac{-1(9x+22)}{x+3}\\
+      D&=-\dfrac{9x+22}{x+3}
+      \end{align*}$$</li>
+    </ol>
+  </div>
+</div>
+</main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>
