@@ -51,6 +51,8 @@
     
     <link rel="stylesheet" href="/src/css/prettyExercice.css" />
     
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
     <link rel="stylesheet" href="/src/css/print.css" />
     
 
@@ -118,12 +120,27 @@
     
     <main><div class="question">
   <div class="enonce">
-    <ol class="alphabetical-list">
-      <li>Qu'appelle-t-on le projeté orthogonal d'un point sur une droite ?</li>
-      <li>Quelle propriété possède le projeté orthogonal d'un point sur une droite ?</li>
-      <li>Qu'appelle-t-on la distance d'un point à une droite ?</li>
-    </ol>
-  </div>
+    <div class="encart">
+      <b>Définition</b> : Le projeté orthogonal d'un point $M$ sur une droite $(d)$ est le point $H$ d'intersection de la perpendiculaire à $(d)$ et passant par $M.$
+      <div class="figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+            <!-- Début de la figure -->
+            
+            <!-- Projeté orthogonal de P sur (AB)  -->
+            <g name="H" class="point labeled dilatation" linkto="A B P" data="90 0"></g>
+
+            <!-- Droite -->
+            <g name="AB" class="droite" linkto="A B"></g>
+            <g name="HP" class="droite" linkto="H P" style="stroke-dasharray: 5, 5;" stroke-opacity="0.5" stroke="red"></g>
+            <!-- Point libre -->
+            <g name="A" class="point draggable" x="50" y="50"></g>
+            <g name="B" class="point draggable" x="150" y="100"></g>
+            <g name="P" class="point labeled  draggable" x="50" y="150"></g>
+
+            <!-- Fin de la figure -->
+        </svg>
+    </div>
+      </div>
 </div>
 <div class="question">
   <div class="enonce">

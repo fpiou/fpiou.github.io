@@ -118,7 +118,7 @@
     <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     
-    <main><h2>Lecture de l'image (suite)</h2>
+    <main><h3>Lecture de l'image (suite)</h3>
 <div class="question">
   <div class="enonce">
     <ol class="alphabetical-list">
@@ -195,346 +195,197 @@
 <h3>Lecture des antécédents</h3>
 <div class="question">
   <div class="enonce">
-  </div>
-  <div class="solution">
-  </div>
-</div>
-<div class="question">
-  <div class="enonce">
-    <ol class="alphabetical-list">
-      <li>Comment déterminer l'image d'un nombre par une fonction $f$ à l'aide de son expression $f(x)$ ?</li>
-      <li>Comment déterminer l'image d'un nombre par une fonction à l'aide de sa courbe représentative ?</li>
-      <li>Comment déterminer si un point appartient à la courbe représentative d'une fonction ?</li>
-      <li>Comment déterminer si une fonction est paire ou impaire ?</li>
-      <li>Comment déterminer les coordonnées d'un point d'intersection de la courbe représentative d'une fonction avec l'axe des abscisses ?</li>
-      <li>Comment déterminer les coordonnées d'un point d'intersection de la courbe représentative d'une fonction avec l'axe des ordonnées ?</li>
-    </ol>
-  </div>
-  <div class="solution">
-    <ol class="alphabetical-list">
-      <li><p>Pour déterminer l'image d'un nombre par une fonction $f$, il suffit de remplacer $x$ par ce nombre dans l'expression $f(x)$ puis d'effectuer les calculs.</p>
-      <p>Par exemple pour déterminer l'image de $3$ par la fonction $f$ définie sur $\mathbb{R}$ par $f(x)=2x+1$, on remplace $x$ par $3$ dans l'expression $f(x)$.</p>
-      $$\begin{align*}
-      f(3)&=2\times 3+1\\
-      &=6+1\\
-      &=7
-      \end{align*}$$
-      <p>Ainsi $f(3)=7$ donc $7$ est l'image de $3$ par la fonction $f$.</p>
-      </li>
-      <li><p>Pour déterminer l'image d'un nombre par une fonction à l'aide de sa courbe représentative, il suffit de tracer une droite verticale passant par ce nombre et de regarder où elle coupe la courbe.</p>
-      <p>Par exemple pour déterminer l'image de $3$ par la fonction $f$ dont la courbe représentative est donnée ci-dessous, on trace une droite verticale passant par $3$.</p>
-      <div class="figure">
-        <svg viewBox="0 0 140 140" class="quadrillage">
-        <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="6" ymax ="6" xorigine="0" yorigine="0"></g>
+    On considère la représentation graphique de la fonction $f$ ci-dessous.<br>
+    <div class="figure">
+      <svg
+        viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="quadrillage"
+      >
+        <!-- On définit le repère -->
+        <g name="repere1" class="repere" xmin="-7" ymin="-3" xmax="8" ymax ="7" xorigine="0" yorigine="0"></g>
         <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
         <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
         <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
         <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
-        <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
-        <g class="label" linkto="O" x="-4" y="0" style="font-size:0.4rem;">O</g>
         <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-        <g class="label" linkto="I" x="-1" y="2" style="font-size:0.4rem;">1</g>
+        <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
         <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-        <g class="label" linkto="J" x="-8" y="-4" style="font-size:0.4rem;">1</g>
-        <g name="c1" class="courbeRepresentative" expression="7-2*x^2/6" xmin="-1" xmax="5" pas="0.01" linkto="repere1" stroke="red" stroke-width="1" fill="transparent"></g>
-        <g name="A1" class="point" repere="repere1" x="3" y="6" stroke="none"></g>
-        <g name="A2" class="point labeled" repere="repere1" x="3" y="0" stroke="none"></g>
-        <g class="label" linkto="A2" x="-4" y="0" style="font-size:0.4rem;">3</g>
-        <g name="d" class="droite" linkto="A1 A2" stroke="blue" stroke-width="1" stroke-dasharray="2 2"></g>
-        <g name="M" class="point labeled" repere="repere1" x="3" y="4" stroke="black" scale="0.5"></g>
-        <g class="label" linkto="M" x="2" y="-4" style="font-size:0.4rem;">M</g>
-        <g name="A3" class="point labeled" repere="repere1" x="0" y="4" stroke="none"></g>
-        <g class="label" linkto="A3" x="-8" y="-4" style="font-size:0.4rem;">4</g>
-        <g name="s" class="segment" linkto="A3 M" stroke="black" stroke-width="1" stroke-dasharray="1 1"></g>
-        </svg>
-        
-      </div>
-      <p>On voit que la droite coupe la courbe au point $M$ d'ordonnée $4$.</p>
-      <p>Donc l'image de $3$ par la fonction $f$ est $4$.</p>
-      </li>
-    </ol>
-  </div>
-</div>
-<div class="exercice">
-  <div class="enonce">
-    Notons $(\mathscr{C})$ la courbe représentative de la fonction $g$ définie sur $]-\infty~{;}~3[$ par $f(x)=\dfrac{3x-4}{2x-6}.$
+        <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+        <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+        <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+        <g name="P1" class="point" repere="repere1" x="-6" y="-2" stroke="none"></g>
+        <g name="P2" class="point" repere="repere1" x="-4" y="1" stroke="none"></g>
+        <g name="P3" class="point" repere="repere1" x="-3" y="3" stroke="none"></g>
+        <g name="P4" class="point" repere="repere1" x="-2" y="4" stroke="none"></g>
+        <g name="P5" class="point" repere="repere1" x="-1" y="3" stroke="none"></g>
+        <g name="P6" class="point" repere="repere1" x="1" y="2" stroke="none"></g>
+        <g name="P7" class="point" repere="repere1" x="3" y="3" stroke="none"></g>
+        <g name="P8" class="point" repere="repere1" x="4" y="5" stroke="none"></g>
+        <g name="P9" class="point" repere="repere1" x="5" y="6" stroke="none"></g>
+        <g name="P10" class="point" repere="repere1" x="6" y="5" stroke="none"></g>
+        <g name="P11" class="point" repere="repere1" x="7" y="4" stroke="none"></g>
+        <g name="c1" class="pathPointsControls" linkto="P1 P2 P3 P4 P5 P6 P7 P8 P9 P10 P11" stroke="red" stroke-width="1" fill="transparent"></g>
+        <g name="d" class="droite" linkto="P3 P5" stroke="blue" stroke-width="0.5" stroke-dasharray="2 2"></g>
+        <g name="x1" class="point" repere="repere1" x="-3" y="0" stroke="none"></g>
+        <g name="M1v1" class="vecteur" linkto="P3 x1" stroke="blue" stroke-width="0.5" stroke-dasharray="1 1"></g> 
+      </svg>
+    </div><br>
     <ol class="alphabetical-list">
-      <li>Montrer que $g(1)=\dfrac{1}{4}.$</li>
-      <li>En déduire les coordonnées d'un point appartenant à la courbe $(\mathcal{C}).$</li>
-      <li>Montrer que le point $A(-2~;~1)$ appartient à la courbe $(\mathcal{C}).$</li>
-      <li>Montrer que le symétrique de $A$ par rapport à l'origine $O$ du repère appartient à la courbe $(\mathcal{C}).$</li>
-      <li>Peut-on en déduire que la fonction $g$ est impaire ? Expliquer.</li>
-      <li>Déterminer les coordonnées du point $B$ d'abscisse $-1$ appartenant à $(\mathscr{C}).$</li>
-      <li>La fonction $g$ est-elle paire ou impaire sur $[-2~;~2]$ ? Justifier.</li>
-      <li>Montrer que la courbe $(\mathscr{C})$ coupe l'axe des abscisses en un point d'abscisse $\dfrac{4}{3}.$</li>
-      <li>Déterminer les coordonnées du point d'intersection de la courbe $(\mathscr{C})$ avec l'axe des ordonnées.</li>
-      <li>Dresser le tableau de valeurs de la fonction $g$ sur $[-2~;~2]$ avec un pas régulier de $1$.</li>
-      <li>Tracer sur $[-2~;~2]$ la courbe $(\mathscr{C})$ dans un repère orthonormé avec pour unité graphique $\SI{1}{\cm}.$</li>
-    </ol>
+    <li>Pour lire les antécédents de $3$ on recherche les points d'intersections de la courbe avec la droite d'équation $y=3$ tracée en pointillée sur le graphique. Chaque point d'intersection indique un antécédent de $3$ par $f$. Reliez ces points d'intersections à l'axe des abscisses pour obtenir les antécédents de $3$ par $f$ comme avec l'exemple.</li>
+    <div class="encart">
+      Rappel : Un nombre peut avoir aucun, un ou plusieurs antécédents par une fonction.
     </div>
+    <li>Par lecture graphique, quels sont les antécédents de $3$ par $f$&nbsp;?</li>
+    <li>Déterminez de même par lecture graphique l'antécédent de $1$ par $f$.</li>
+    <li>Combien d'antécédents possèdent le nombre $5$ par $f$&nbsp;?</li>
+    <li>Combien d'antécédents possèdent le nombre $\num{6.5}$ par $f$&nbsp;?</li>
+    <div class="encart">
+      Définition : Les solutions de l'équation $f(x)=k$ sont les abscisses des points d'intersection de la courbe représentative de $f$ avec la droite d'équation $y=k.$
+    </div>
+    <li>Quelles sont les solutions de l'équation $f(x)=3$&nbsp;?</li>
+    <li>Combien de solutions possède l'équation $f(x)=\num{2.5}$&nbsp;?</li>
+    <li>Combien de solutions possède l'équation $f(x)=\num{-2.5}$&nbsp;?</li>
+    </ol>
+  </div>
   <div class="solution">
-    <ol>
-      <li><p>Calculons $g(1)$ :</p>
-        $$\begin{align*}
-        g(1)&=\dfrac{3\times 1-4}{2\times 1-6}\\
-        &=\dfrac{-1}{-4}\\
-        &=\dfrac{1}{4}
-        \end{align*}$$
-      </li>
-      <li><p>On a $g(1)=\dfrac{1}{4}$ donc le point de coordonnées $\left( 1 ~;~ \dfrac{1}{4}\right)$ appartient à la courbe $(\mathscr{C}).$</p>
-      </li>
-      <li><p>Calculons $g(-2)$ :</p>
-        $$\begin{align*}
-        g(-2)&=\dfrac{3\times (-2)-4}{2\times (-2)-6}\\
-        &=\dfrac{-10}{-10}\\
-        &=1
-        \end{align*}$$
-        <p>Donc $A(-2~;~1)$ appartient à la courbe $(\mathscr{C}).$</p>
-      </li>
-      <li><p>Le symétrique de $A$ par rapport à l'origine $O$ a pour coordonnées $\left( 2 ~;~ -1\right)$.</p>
-        <p>Calculons $g(2)$ :</p>
-        $$\begin{align*}
-        g(2)&=\dfrac{3\times 2-4}{2\times 2-6}\\
-        &=\dfrac{2}{-2}\\
-        &=-1
-        \end{align*}$$
-        <p>Donc le symétrique de $A$ par rapport à l'origine $O$ appartient à la courbe $(\mathscr{C}).$</p>
-      </li>
-      <li><p>Le symétrique de $A$ par rapport à l'origine $O$ appartient à $(\mathscr{C})$ ce qui est caractéristique des fonctions impaires.</p>
-        <p>Cependant on ne peut rien conclure sur la symétrie de la courbe entière par rapport à l'origine $O$.</p>
-        <p>Donc on ne peut pas en déduire si la fonction $g$ est impaire ou non pour le moment.</p>
-      </li>
-      <li><p>Calculons $g(-1)$ :</p>
-        $$\begin{align*}
-        g(-1)&=\dfrac{3\times (-1)-4}{2\times (-1)-6}\\
-        &=\dfrac{-7}{-8}\\
-        &=\dfrac{7}{8}
-        \end{align*}$$
-        <p>Donc $B$ a pour coordonnées $\left( -1 ~;~ \dfrac{7}{8}\right)$.</p>
-      </li>
-      <li><p>On a $g(-1)=\dfrac{7}{8}$ et $g(1)=\dfrac{1}{4}$.</p>
-        <p>Donc $g(-1)\neq g(1)$ et $g(-1)\neq -g(1)$.</p>
-        <p>Donc la fonction n'est ni paire ni impaire.</p>
-      </li>
-      <li><p>Calculons $g\left(\dfrac{4}{3}\right)$</p>
-        $$\begin{align*}
-        g\left(\dfrac{4}{3}\right)&=\dfrac{3\times \dfrac{4}{3}-4}{2\times \dfrac{4}{3}-6}\\
-        &=\dfrac{4-4}{\dfrac{8}{3}-6}\\
-        &=\dfrac{0}{\dfrac{8}{3}-\dfrac{18}{3}}\\
-        &=\dfrac{0}{-\dfrac{10}{3}}\\
-        &=0
-        \end{align*}$$
-        <p>Donc la courbe $(\mathscr{C})$ coupe l'axe des abscisses en un point d'abscisse $\dfrac{4}{3}.$</p>
-      </li>
-      <li><p>Le point d'intersection de la courbe avec l'axe des ordonnées est le point d'abscisse $0$.</p>
-        <p>Calculons $g(0)$ :</p>
-        $$\begin{align*}
-        g(0)&=\dfrac{3\times 0-4}{2\times 0-6}\\
-        &=\dfrac{-4}{-6}\\
-        &=\dfrac{2}{3}
-        \end{align*}$$
-        <p>Donc le point d'intersection de la courbe avec l'axe des ordonnées est le point de coordonnées $\left( 0 ~;~ \dfrac{2}{3}\right)$.</p>
-      </li>
+    <ol class="alphabetical-list">
       <li>
-        <p>On dresse le tableau de valeurs.</p>
-        <table class="tableauvaleurs">
-          <thead>
-            <tr>
-              <th>$x$</th>
-              <td>$-2$</td>
-              <td>$-1$</td>
-              <td>$0$</td>
-              <td>$1$</td>
-              <td>$2$</td>
-            </tr>
-            <tr>
-              <th>$g(x)$</th>
-              <td>$1$</td>
-              <td>$\dfrac{7}{8}$</td>
-              <td>$\dfrac{2}{3}$</td>
-              <td>$\dfrac{1}{4}$</td>
-              <td>$-1$</td>
-            </tr>
-          </thead>
-        </table>
-      </li>
-      <li>
-        <div id="figure1" class="figure">
+        <div class="figure">
           <svg
-            id="figure1"
-            viewBox="0 0 120 80"
-            xmlns="http://www.w3.org/2000/svg"
-            class="quadrillage"
-          >
-          <g name="repere1" class="repere" xmin="-3" ymin="-2" xmax="3" ymax ="2" xorigine="0" yorigine="0"></g>
-          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
-          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
-          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
-          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
-          <g name="A" class="point" repere="repere1" x="-2" y="1"></g>
-          <g name="B" class="point" repere="repere1" x="-1" y="0.875"></g>
-          <g name="C" class="point" repere="repere1" x="0" y="0.667"></g>
-          <g name="D" class="point" repere="repere1" x="1" y="0.25"></g>
-          <g name="E" class="point" repere="repere1" x="2" y="-1"></g>
-          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
-          <g class="label" linkto="O" x="-4" y="0" style="font-size:0.4rem;">O</g>
-          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-          <g class="label" linkto="I" x="-1" y="2" style="font-size:0.4rem;">1</g>
-          <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-          <g class="label" linkto="J" x="-8" y="-4" style="font-size:0.4rem;">1</g>
-        
-          <g name="c1" class="courbeRepresentative" expression="(3x-4)/(2x-6)" xmin="-2" xmax="2" pas="0.01" linkto="repere1" stroke="red" stroke-width="1" fill="transparent"></g>
+            viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="quadrillage">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-7" ymin="-3" xmax="8" ymax ="7" xorigine="0" yorigine="0"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+            <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+            <g name="P1" class="point" repere="repere1" x="-6" y="-2" stroke="none"></g>
+            <g name="P2" class="point" repere="repere1" x="-4" y="1" stroke="none"></g>
+            <g name="P3" class="point" repere="repere1" x="-3" y="3" stroke="none"></g>
+            <g name="P4" class="point" repere="repere1" x="-2" y="4" stroke="none"></g>
+            <g name="P5" class="point" repere="repere1" x="-1" y="3" stroke="none"></g>
+            <g name="P6" class="point" repere="repere1" x="1" y="2" stroke="none"></g>
+            <g name="P7" class="point" repere="repere1" x="3" y="3" stroke="none"></g>
+            <g name="P8" class="point" repere="repere1" x="4" y="5" stroke="none"></g>
+            <g name="P9" class="point" repere="repere1" x="5" y="6" stroke="none"></g>
+            <g name="P10" class="point" repere="repere1" x="6" y="5" stroke="none"></g>
+            <g name="P11" class="point" repere="repere1" x="7" y="4" stroke="none"></g>
+            <g name="c1" class="pathPointsControls" linkto="P1 P2 P3 P4 P5 P6 P7 P8 P9 P10 P11" stroke="red" stroke-width="1" fill="transparent"></g>
+            <g name="d" class="droite" linkto="P3 P5" stroke="blue" stroke-width="0.5" stroke-dasharray="2 2"></g>
+            <g name="x3" class="point" repere="repere1" x="-3" y="0" stroke="none"></g>
+            <g name="v3" class="vecteur" linkto="P3 x3" stroke="blue" stroke-width="0.5" stroke-dasharray="1 1"></g>
+            <g name="x5" class="point" repere="repere1" x="-1" y="0" stroke="none"></g>
+            <g name="v5" class="vecteur" linkto="P5 x5" stroke="blue" stroke-width="0.5" stroke-dasharray="1 1"></g>
+            <g name="x7" class="point" repere="repere1" x="3" y="0" stroke="none"></g>
+            <g name="v7" class="vecteur" linkto="P7 x7" stroke="blue" stroke-width="0.5" stroke-dasharray="1 1"></g>
           </svg>
         </div>
-      </li>
+    </li>
+    <li>
+      <p>Les antécédents de $3$ par $f$ sont $-3$, $-1$ et $3$.</p>
+    </li>
+    <li>
+      <p>L'antécédent de $1$ par $f$ est $-4$.</p>
+    </li>
+    <li>
+      <p>Le nombre $5$ possède deux antécédents par $f$.</p>
+    </li>
+    <li>
+      <p>Le nombre $\num{6.5}$ ne possède pas d'antécédent par $f$.</p>
+    </li>
+    <li>
+      <p>Les solutions de l'équation $f(x)=3$ sont $-3$, $-1$ et $3$.</p>
+    </li>
+    <li>
+      <p>L'équation $f(x)=\num{2.5}$ possède trois solutions.</p>
+    </li>
+    <li>
+      <p>L'équation $f(x)=\num{-2.5}$ ne possède pas de solution.</p>
+    </li>
     </ol>
   </div>
 </div>
-<div class="exercice">
+<div class="question">
   <div class="enonce">
-    Notons $(\mathscr{C})$ la courbe représentative de la fonction $f$ définie sur $]-3{;}+\infty[$ par $f(x)=\dfrac{7x+6}{x+3}.$
+    Reprenons la représentation graphique de la fonction $f$ de l'exercise précédent.<br>
+    <div class="figure">
+      <svg
+        viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="quadrillage"
+      >
+        <!-- On définit le repère -->
+        <g name="repere1" class="repere" xmin="-7" ymin="-3" xmax="8" ymax ="7" xorigine="0" yorigine="0"></g>
+        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+        <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+        <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+        <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+        <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+        <g name="P1" class="point" repere="repere1" x="-6" y="-2" stroke="none"></g>
+        <g name="P2" class="point" repere="repere1" x="-4" y="1" stroke="none"></g>
+        <g name="P3" class="point" repere="repere1" x="-3" y="3" stroke="none"></g>
+        <g name="P4" class="point" repere="repere1" x="-2" y="4" stroke="none"></g>
+        <g name="P5" class="point" repere="repere1" x="-1" y="3" stroke="none"></g>
+        <g name="P6" class="point" repere="repere1" x="1" y="2" stroke="none"></g>
+        <g name="P7" class="point" repere="repere1" x="3" y="3" stroke="none"></g>
+        <g name="P8" class="point" repere="repere1" x="4" y="5" stroke="none"></g>
+        <g name="P9" class="point" repere="repere1" x="5" y="6" stroke="none"></g>
+        <g name="P10" class="point" repere="repere1" x="6" y="5" stroke="none"></g>
+        <g name="P11" class="point" repere="repere1" x="7" y="4" stroke="none"></g>
+        <g name="c1" class="pathPointsControls" linkto="P1 P2 P3 P4 P5 P6 P7 P8 P9 P10 P11" stroke="red" stroke-width="1" fill="transparent"></g>
+        <g name="d" class="droite" linkto="P3 P5" stroke="blue" stroke-width="0.5" stroke-dasharray="2 2"></g>
+        <g name="x1" class="point" repere="repere1" x="-3" y="0" stroke="none"></g>
+        <g name="M1v1" class="vecteur" linkto="P3 x1" stroke="blue" stroke-width="0.5" stroke-dasharray="1 1"></g> 
+      </svg>
+    </div><br>
+    <div class="encart">
+      Définition : Les solutions de l'inéquation $f(x)\lt k$ sont les abscisses des points de la courbe situés en dessous de la droite d'équation $y=k.$
+    </div>
+    On se propose de résoudre graphiquement l'inéquation $f(x)\lt 3.$
     <ol class="alphabetical-list">
-      <li>Montrer que le point $A\left( 2 ~;~ 4\right)$ appartient à $(\mathscr{C})$.</li>
-      <li>Montrer que le point $B\left( 1 ~;~ 3\right)$ n'appartient pas à $(\mathscr{C})$.</li>
-      <li>Déterminer les coordonnées du point $C$ d'abscisse $-1$ appartenant à $(\mathscr{C})$.</li>
-      <li>Déterminer les coordonnées du point $D$ d'ordonnée $-8$ appartenant à $(\mathscr{C})$.</li>
-      <li>En déduire que la fonction n'est ni paire ni impaire.</li>
-      <li>Déterminer les coordonnées du point d'intersection de la courbe avec l'axe des ordonnées.</li>
-      <li>Déterminer les coordonnées du point d'intersection de la courbe avec l'axe des abscisses.</li>
-      <li>Dresser le tableau de valeurs de la fonction $f$ sur $[-1~;~3]$ avec un pas régulier de $1$.</li>
-      <li>Tracer la courbe $(\mathscr{C})$ dans un repère orthonormé avec pour unité graphique $\SI{1}{\cm}.$</li>
+      <li>Le nombre $-4$ est-il solution de l'inéquation $f(x)\lt 3$&nbsp;? Justifier.</li>
+      <li>Le nombre $-3$ est-il solution de l'inéquation $f(x)\lt 3$&nbsp;? Justifier.</li>
+      <li>Sur quels intervalles l'inéquation $f(x)\lt 3$ est-elle vérifiée&nbsp;?</li>
+      <li>Ecrire l'ensemble des solutions de l'inéquation $f(x)\lt 3$.</li>
+      <li>Ecrire l'ensemble des solutions de l'inéquation $f(x)\geqslant 3$.</li>
+      <li>Ecrire l'ensemble des solutions de l'inéquation $f(x)\leqslant 1$.</li>
+      <li>Ecrire l'ensemble des solutions de l'inéquation $f(x)\gt 5$.</li>
+      <li>Ecrire l'ensemble des solutions de l'inéquation $f(x)\leqslant 2$.</li>
     </ol>
   </div>
   <div class="solution">
-    <ol>
-      <li><p>Calculons $f(2)$ :</p>
-        $$\begin{align*}
-        f(2)&=\dfrac{7\times 2+6}{2+3}\\
-        &=\dfrac{20}{5}\\
-        &=4
-        \end{align*}$$
-        <p>Donc $A\left( 2 ~;~ 4\right)$ appartient à $(\mathscr{C})$.</p>
-      </li>
-      <li><p>Calculons $f(1)$ :</p>
-        $$\begin{align*}
-        f(1)&=\dfrac{7\times 1+6}{1+3}\\
-        &=\dfrac{13}{4}
-        \end{align*}$$
-        <p>Donc $B\left( 1 ~;~ 3\right)$ n'appartient pas à $(\mathscr{C})$.</p>
-      </li>
-      <li><p>Calculons $f(-1)$ :</p>
-        $$\begin{align*}
-        f(-1)&=\dfrac{7\times (-1)+6}{(-1)+3}\\
-        &=-\dfrac{1}{2}
-        \end{align*}$$
-        <p>Donc $C$ a pour coordonnées $\left( -1 ~;~ -\dfrac{1}{2}\right)$.</p>
-      </li>
-      <li><p>Les coordonnées de $D$ vérifient l'équation suivante.</p>
-        $$y=\dfrac{7x+6}{x+3}$$
-        <p>Or $y=-8$ donc il suffit de résoudre l'équation suivante.</p>
-        $$-8=\dfrac{7x+6}{x+3}$$
-        <p>On ajoute $8$ de chaque côté.</p>
-        $$0=\dfrac{7x+6}{x+3}+8$$
-        <p>On réduit au même dénominateur.</p>
-        $$0=\dfrac{7x+6+8(x+3)}{x+3}$$
-        <p>On développe et on réduit le numérateur.</p>
-        $$0=\dfrac{15x+30}{x+3}$$
-        <p>C'est une équation quotient-nul de valeur interdite $-3$.</p>
-        <p>Or un quotient est nul si et seulement si son numérateur est nul et son dénominateur est non nul.</p>
-        <p>On résout l'équation obtenue en annulant le numérateur.</p>
-        $$\begin{align*}
-        15x+30&=0\\
-        15x&=-30\\
-        \dfrac{15x}{15}&=\dfrac{-30}{15}\\
-        x&=-2
-        \end{align*}$$
-        <p>On vérifie que $x\neq -3$.</p>
-        <p>Donc $D$ a pour coordonnées $\left( -2 ~;~ -8\right)$.</p>
+    <ol class="alphabetical-list">
+      <li>
+        <p>Le nombre $-4$ est solution de l'inéquation $f(x)\lt 3$ car le point de la courbe de $f$ d'abscisse $-4$ est situé en dessous de la droite d'équation $y=3.$</p>
       </li>
       <li>
-        <p>On a $f(1)=\dfrac{13}{4}$ et $f(-1)=-\dfrac{1}{2}$.</p>
-        <p>Donc $f(1)\neq f(-1)$ et $f(-1)\neq -f(1)$.</p>
-        <p>Donc la fonction n'est ni paire ni impaire.</p>
+        <p>Le nombre $-3$ n'est pas solution de l'inéquation $f(x)\lt 3$ car le point de la courbe de $f$ d'abscisse $-3$ est situé sur la droite d'équation $y=3.$</p>
       </li>
       <li>
-        <p>Le point d'intersection de la courbe avec l'axe des ordonnées est le point d'abscisse $0$.</p>
-        <p>Calculons $f(0)$ :</p>
-        $$\begin{align*}
-        f(0)&=\dfrac{7\times 0+6}{0+3}\\
-        &=\dfrac{6}{3}\\
-        &=2
-        \end{align*}$$
-        <p>Donc le point d'intersection de la courbe avec l'axe des ordonnées est le point de coordonnées $\left( 0 ~;~ 2\right)$.</p>
+        <p>L'inéquation $f(x)\lt 3$ est vérifiée sur les intervalles $]-6~-3[$ et $]-1~;~3[$.</p>
       </li>
       <li>
-        <p>Le point d'intersection de la courbe avec l'axe des abscisses est le point d'ordonnée $0$.</p>
-        <p>Ses coordonnées vérifient l'équation suivante.</p>
-        $$y=\dfrac{7x+6}{x+3}$$
-        <p>Or $y=0$ donc il suffit de résoudre l'équation suivante.</p>
-        $$0=\dfrac{7x+6}{x+3}$$
-        <p>C'est une équation quotient-nul de valeur interdite $-3$.</p>
-        <p>Or un quotient est nul si et seulement si son numérateur est nul et son dénominateur est non nul.</p>
-        <p>On résout l'équation obtenue en annulant le numérateur.</p>
-        $$\begin{align*}
-        7x+6&=0\\
-        7x&=-6\\
-        \dfrac{7x}{7}&=\dfrac{-6}{7}\\
-        x&=-\dfrac{6}{7}
-        \end{align*}$$
-        <p>On vérifie que $x\neq -3$.</p>
-        <p>Donc le point d'intersection de la courbe avec l'axe des abscisses est le point de coordonnées $\left( -\dfrac{6}{7} ~;~ 0\right)$.</p>
+        <p>L'ensemble des solutions de l'inéquation $f(x)\lt 3$ est $]-6~-3[~\cup~]-1~;~3[.$</p>
       </li>
       <li>
-        <p>On dresse le tableau de valeurs.</p>
-        <table class="tableauvaleurs">
-          <thead>
-            <tr>
-              <th>$x$</th>
-              <td>$-1$</td>
-              <td>$0$</td>
-              <td>$1$</td>
-              <td>$2$</td>
-              <td>$3$</td>
-            </tr>
-            <tr>
-              <th>$f(x)$</th>
-              <td>$-\dfrac{1}{2}$</td>
-              <td>$2$</td>
-              <td>$\dfrac{13}{4}$</td>
-              <td>$4$</td>
-              <td>$\dfrac{9}{2}$</td>
-            </tr>
-          </thead>
-        </table>
+        <p>L'ensemble des solutions de l'inéquation $f(x)\geqslant 3$ est $[-3~-1]~\cup~[3~;~7].$</p>
       </li>
       <li>
-        <div id="figure1" class="figure">
-          <svg
-            id="figure1"
-            viewBox="0 0 120 120"
-            xmlns="http://www.w3.org/2000/svg"
-            class="quadrillage"
-          >
-          <g name="repere1" class="repere" xmin="-2" ymin="-1" xmax="4" ymax ="5" xorigine="0" yorigine="0"></g>
-          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
-          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
-          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
-          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
-          <g name="A" class="point" repere="repere1" x="-1" y="-0.5"></g>
-          <g name="B" class="point" repere="repere1" x="0" y="2"></g>
-          <g name="C" class="point" repere="repere1" x="1" y="3.25"></g>
-          <g name="D" class="point" repere="repere1" x="2" y="4"></g>
-          <g name="E" class="point" repere="repere1" x="3" y="4.5"></g>
-          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
-          <g class="label" linkto="O" x="-4" y="0" style="font-size:0.4rem;">O</g>
-          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-          <g class="label" linkto="I" x="-1" y="2" style="font-size:0.4rem;">1</g>
-          <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-          <g class="label" linkto="J" x="-8" y="-4" style="font-size:0.4rem;">1</g>
-
-          <g name="c1" class="courbeRepresentative" expression="(7x+6)/(x+3)" xmin="-1" xmax="3" pas="0.01" linkto="repere1" stroke="red" stroke-width="1" fill="transparent"></g>
-          </svg>
-        </div>
+        <p>L'ensemble des solutions de l'inéquation $f(x)\leqslant 1$ est $]-6~-4].$</p>
+      </li>
+      <li>
+        <p>L'ensemble des solutions de l'inéquation $f(x)\gt 5$ est $]4~;~6[.$</p>
+      </li>
+      <li>
+        <p>L'ensemble des solutions de l'inéquation $f(x)\leqslant 2$ est $]-6~;~-\num{3.5}]\cup\{1\}$</p>
       </li>
     </ol>
   </div>
