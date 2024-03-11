@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Produit_scalaire_02.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    
+    <main><div class="exercice">
+    <div class="enonce">
+        On se propose de démontrer que dans un triangle rectangle, la médiane isse de l'angle droit est de longueur égale à la moitié de l'hypoténuse.
+        Considérons un triangle $ABC$ rectangle en $C$ et soit $O$ le milieu de $[AB].$
+        <ol class="alphabetical-list">
+            <li>Montrez que $\overrightarrow{CO}=\dfrac{\overrightarrow{CA}+\overrightarrow{CB}}{2}.$</li>
+            <li>En déduire que $CO=\dfrac{AB}{2}.$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AO}&=\overrightarrow{OB}\\
+            \overrightarrow{AC}+\overrightarrow{CO}&=\overrightarrow{OC}+\overrightarrow{CB}\\
+            \overrightarrow{CO}-\overrightarrow{OC}&=\overrightarrow{CB}-\overrightarrow{AC}\\
+            2\overrightarrow{CO}&=\overrightarrow{CA}+\overrightarrow{CB}\\
+            \overrightarrow{CO}&=\dfrac{\overrightarrow{CA}+\overrightarrow{CB}}{2}
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+            CO^2&=\|\dfrac{\overrightarrow{CA}+\overrightarrow{CB}}{2}\|^2\\
+            CO^2&=\|\dfrac{1}{2}\times(\overrightarrow{CA}+\overrightarrow{CB})\|^2\\
+            CO^2&=\dfrac{1}{4}\times\|\overrightarrow{CA}+\overrightarrow{CB}\|^2\\
+            CO^2&=\dfrac{1}{4}\times(AC^2+2\overrightarrow{CA}\cdot\overrightarrow{CB}+BC^2)\\
+            CO^2&=\dfrac{1}{4}\times(AC^2+2\times 0+BC^2)\\
+            CO^2&=\dfrac{1}{4}\times(AC^2+BC^2)\\
+            CO^2&=\dfrac{1}{4}\times AB^2\\
+            CO^2&=\dfrac{AB^2}{4}\\
+            CO&=\dfrac{AB}{2}
+            \end{align*}
+            $$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABC$ un triangle tel que $AB=5$, $AC=8$ et $BC=6$.
+        <ol class="alphabetical-list">
+            <li>Calculez $\overrightarrow{AB}\cdot\overrightarrow{AC}$.</li>
+            <li>Soit $I$ le milieu de $[BC]$. Montrez que $2\overrightarrow{AI}=\overrightarrow{AB}+\overrightarrow{AC}$.</li>
+            <li>En déduire $AI$.</li>
+            <li>Soit $J$ le milieu de $[AC]$. Calculez de même $BJ$.</li>
+            <li>Soit $K$ le milieu de $[AB]$. Calculez de même $CK$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            BC^2&=AB^2+AC^2-2\overrightarrow{AB}\cdot\overrightarrow{AC}\\
+            6^2&=5^2+8^2-2\overrightarrow{AB}\cdot\overrightarrow{AC}\\
+            36&=25+64-2\overrightarrow{AB}\cdot\overrightarrow{AC}\\
+            36&=89-2\overrightarrow{AB}\cdot\overrightarrow{AC}\\
+            2\overrightarrow{AB}\cdot\overrightarrow{AC}&=89-36\\
+            2\overrightarrow{AB}\cdot\overrightarrow{AC}&=53\\
+            \overrightarrow{AB}\cdot\overrightarrow{AC}&=\frac{53}{2}
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+            2\overrightarrow{AI}&=2(\overrightarrow{AB}+\overrightarrow{BI})\\
+            &=2\overrightarrow{AB}+2\overrightarrow{BI}\\
+            &=2\overrightarrow{AB}+\overrightarrow{BC}\\
+            &=\overrightarrow{AB}+\overrightarrow{AB}+\overrightarrow{BC}\\
+            &=\overrightarrow{AB}+\overrightarrow{AC}
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+            AI^2&=\|\overrightarrow{AI}\|^2\\
+            &=\|\dfrac{\overrightarrow{AB}+\overrightarrow{AC}}{2}\|^2\\
+            &=\dfrac{1}{4}\times\|\overrightarrow{AB}+\overrightarrow{AC}\|^2\\
+            &=\dfrac{1}{4}\times(AB^2+2\overrightarrow{AB}\cdot\overrightarrow{AC}+AC^2)\\
+            &=\dfrac{1}{4}\times(5^2+2\times\frac{53}{2}+8^2)\\
+            &=\dfrac{1}{4}\times(25+53+64)\\
+            &=\dfrac{1}{4}\times 142\\
+            &=\dfrac{142}{4}\\
+            AI&=\sqrt{\dfrac{142}{4}}\\
+            AI&=\dfrac{\sqrt{142}}{2}
+            \end{align*}
+            $$
+            </li>
+            <li>
+            <p>Calculons $\overrightarrow{BA}\cdot\overrightarrow{BC}$.</p>
+            $$\begin{align*}
+            AC^2&=AB^2+BC^2-2\overrightarrow{BA}\cdot\overrightarrow{BC}\\
+            8^2&=5^2+6^2-2\overrightarrow{BA}\cdot\overrightarrow{BC}\\
+            64&=25+36-2\overrightarrow{BA}\cdot\overrightarrow{BC}\\
+            64&=61-2\overrightarrow{BA}\cdot\overrightarrow{BC}\\
+            2\overrightarrow{BA}\cdot\overrightarrow{BC}&=61-64\\
+            2\overrightarrow{BA}\cdot\overrightarrow{BC}&=-3\\
+            \overrightarrow{BA}\cdot\overrightarrow{BC}&=-\frac{3}{2}
+            \end{align*}$$
+            <p>Calculons $\overrightarrow{BJ}$.</p>
+            $$
+            \begin{align*}
+            BJ^2&=\|\overrightarrow{BJ}\|^2\\
+            &=\|\dfrac{\overrightarrow{BA}+\overrightarrow{BC}}{2}\|^2\\
+            &=\dfrac{1}{4}\times\|\overrightarrow{BA}+\overrightarrow{BC}\|^2\\
+            &=\dfrac{1}{4}\times(AB^2+2\overrightarrow{BA}\cdot\overrightarrow{BC}+BC^2)\\
+            &=\dfrac{1}{4}\times(5^2+2\times\left(-\frac{3}{2}\right)+6^2)\\
+            &=\dfrac{1}{4}\times(25-3+36)\\
+            &=\dfrac{1}{4}\times 58\\
+            BJ&=\sqrt{\dfrac{58}{4}}\\
+            BJ&=\dfrac{\sqrt{58}}{2}
+            \end{align*}
+            $$
+            </li>
+            <li>
+            <p>Calculons $\overrightarrow{CB}\cdot\overrightarrow{CA}$.</p>
+            $$\begin{align*}
+            AB^2&=AC^2+BC^2-2\overrightarrow{CB}\cdot\overrightarrow{CA}\\
+            5^2&=8^2+6^2-2\overrightarrow{CB}\cdot\overrightarrow{CA}\\
+            25&=64+36-2\overrightarrow{CB}\cdot\overrightarrow{CA}\\
+            25&=100-2\overrightarrow{CB}\cdot\overrightarrow{CA}\\
+            2\overrightarrow{CB}\cdot\overrightarrow{CA}&=100-25\\
+            2\overrightarrow{CB}\cdot\overrightarrow{CA}&=75\\
+            \overrightarrow{CB}\cdot\overrightarrow{CA}&=\dfrac{75}{2}
+            \end{align*}$$
+            <p>Calculons $\overrightarrow{CK}$.</p>
+            $$
+            \begin{align*}
+            CK^2&=\|\overrightarrow{CK}\|^2\\
+            &=\|\dfrac{\overrightarrow{CB}+\overrightarrow{CA}}{2}\|^2\\
+            &=\dfrac{1}{4}\times\|\overrightarrow{CB}+\overrightarrow{CA}\|^2\\
+            &=\dfrac{1}{4}\times(CB^2+2\overrightarrow{CB}\cdot\overrightarrow{CA}+CA^2)\\
+            &=\dfrac{1}{4}\times(6^2+2\times\frac{75}{2}+8^2)\\
+            &=\dfrac{1}{4}\times(36+75+64)\\
+            &=\dfrac{1}{4}\times 175\\
+            CK&=\sqrt{\dfrac{175}{4}}\\
+            CK&=\dfrac{5\sqrt{7}}{2}
+            \end{align*}
+            $$
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Dans chacun des cas suivants, calculez $\overrightarrow{AB}\cdot\overrightarrow{AC}$.
+        <ol class="alphabetical-list">
+            <li>$AB=4$, $AC=5$, $\widehat{BAC}=\ang{30}$</li>
+            <li>$AB=4$, $AC=6$, $\widehat{BAC}=\dfrac{\pi}{3}$</li>
+            <li>$AB=6$, $AC=7$, $\widehat{BAC}=\dfrac{3\pi}{4}$</li>
+            <li>$AB=9$, $AC=12$, $\widehat{BAC}=\dfrac{143\pi}{3}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AB}\cdot\overrightarrow{AC}&=AB\times AC\times\cos(\widehat{BAC})\\
+            &=4\times 5\times\cos(\ang{30})\\
+            &=\frac{20\sqrt{3}}{2}
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AB}\cdot\overrightarrow{AC}&=AB\times AC\times\cos(\widehat{BAC})\\
+            &=4\times 6\times\cos\left(\frac{\pi}{3}\right)\\
+            &=24\times\frac{1}{2}\\
+            &=12
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AB}\cdot\overrightarrow{AC}&=AB\times AC\times\cos(\widehat{BAC})\\
+            &=6\times 7\times\cos\left(\frac{3\pi}{4}\right)\\
+            &=42\times\frac{-\sqrt{2}}{2}\\
+            &=-21\sqrt{2}
+            \end{align*}
+            $$</li>
+            <li>La mesure principale de $\dfrac{143\pi}{3}$ est $-\dfrac{\pi}{3}$. On a donc
+            $$
+            \begin{align*}
+            \overrightarrow{AB}\cdot\overrightarrow{AC}&=AB\times AC\times\cos(\widehat{BAC})\\
+            &=9\times 12\times\cos\left(-\frac{\pi}{3}\right)\\
+            &=108\times\frac{1}{2}\\
+            &=54
+            \end{align*}
+            $$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Dans chacun des cas suivants, déterminez une mesure de l'angle $\widehat{BAC}$ comprise entre $0$ et $\pi.$
+        <ol class="alphabetical-list">
+            <li>$AB=3$, $AC=2$, $\overrightarrow{AB}\cdot\overrightarrow{AC}=3\sqrt{2}$</li>
+            <li>$AB=3$, $AC=5$, $\overrightarrow{AB}\cdot\overrightarrow{AC}=-\num{7.5}$</li>
+            <li>$AB=3$, $AC=9$, $\overrightarrow{AB}\cdot\overrightarrow{AC}=-\dfrac{27\sqrt{3}}{2}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AB}\cdot\overrightarrow{AC}&=AB\times AC\times\cos(\widehat{BAC})\\
+            3\sqrt{2}&=3\times 2\times\cos(\widehat{BAC})\\
+            \cos(\widehat{BAC})&=\frac{\sqrt{2}}{2}\\
+            \widehat{BAC}&=\frac{\pi}{4}
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AB}\cdot\overrightarrow{AC}&=AB\times AC\times\cos(\widehat{BAC})\\
+            -\num{7.5}&=3\times 5\times\cos(\widehat{BAC})\\
+            \cos(\widehat{BAC})&=-\num{0.5}\\
+            \widehat{BAC}&=\frac{2\pi}{3}
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AB}\cdot\overrightarrow{AC}&=AB\times AC\times\cos(\widehat{BAC})\\
+            -\dfrac{27\sqrt{3}}{2}&=3\times 9\times\cos(\widehat{BAC})\\
+            \cos(\widehat{BAC})&=-\frac{\sqrt{3}}{2}\\
+            \widehat{BAC}&=\frac{5\pi}{6}
+            \end{align*}
+            $$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABC$ un trangle équilatéral tel que $AB=4$. Calculez $\overrightarrow{AB}\cdot\overrightarrow{AC}$.
+    </div>
+    <div class="solution">
+        <p>On a $\overrightarrow{AB}\cdot\overrightarrow{AC}=AB\times AC\times\cos(\widehat{BAC})$. Or, $AB=AC=4$ et $\widehat{BAC}=\ang{60}$. Donc
+        $$
+        \begin{align*}
+        \overrightarrow{AB}\cdot\overrightarrow{AC}&=4\times 4\times\cos(\ang{60})\\
+        &=16\times\frac{1}{2}\\
+        &=8
+        \end{align*}
+        $$
+        </p>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABC$ un trangle isocèle en $A$ tel que $AB=5$ et $\widehat{BAC}=\ang{120}.$
+        <ol class="alphabetical-list">
+            <li>Calculez $\overrightarrow{AB}\cdot\overrightarrow{AC}$.</li>
+            <li>Calculez $\overrightarrow{BA}\cdot\overrightarrow{BC}$ en utilisant $\overrightarrow{BC}=\overrightarrow{BA}+\overrightarrow{AC}$.</li>
+            <li>Montrez que $BC=5\sqrt{3}$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AB}\cdot\overrightarrow{AC}&=AB\times AC\times\cos(\widehat{BAC})\\
+            5\times 5\times\cos(\ang{120})&=25\times\left(-\frac{1}{2}\right)\\
+            &=-\frac{25}{2}
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{BA}\cdot\overrightarrow{BC}&=\overrightarrow{BA}\cdot(\overrightarrow{BA}+\overrightarrow{AC})\\
+            &=\overrightarrow{BA}\cdot\overrightarrow{BA}+\overrightarrow{BA}\cdot\overrightarrow{AC}\\
+            &=BA^2-\overrightarrow{AB}\cdot\overrightarrow{AC}\\
+            &=5^2+\frac{25}{2}\\
+            &=\frac{75}{2}
+            \end{align*}
+            $$</li>
+            <li>Remarquons tout d'abord que comme $ABC$ est isocèle en $A$, alors $\widehat{BCA}=\widehat{ABC}=\ang{30}$.
+            $$
+            \begin{align*}
+            \overrightarrow{BA}\cdot\overrightarrow{BC}&=BA\times BC\times\cos(\widehat{ABC})\\
+            \frac{75}{2}&=5\times BC\times\cos(\ang{30})\\
+            \frac{75}{2}&=5\times BC\times\dfrac{\sqrt{3}}{2}\\
+            \frac{75}{2}&=\frac{5\sqrt{3}}{2}\times BC\\
+            BC&=5\sqrt{3}
+            \end{align*}
+            $$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABCD$ un carré de côté $\SI{4}{\cm}$ et de centre $O$. Soit $I$ le milieu de $[AB]$.
+        <ol class="alphabetical-list">
+            <li>Calculez $\overrightarrow{AB}\cdot\overrightarrow{AC}$ de deux façons.</li>
+            <li>Calculez $\overrightarrow{OI}\cdot\overrightarrow{OC}$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Remarquons que $B$ est le projeté orthogonal de $C$ sur $(AB)$.</p>
+            $$
+            \begin{align*}
+            \overrightarrow{AB}\cdot\overrightarrow{AC}&=\overrightarrow{AB}\cdot\overrightarrow{AB}\\
+            &=AB^2=4^2=16
+            \end{align*}
+            $$
+            Seconde méthode:
+            <p>Remarquons que $AC=4\sqrt{2}$ et que $\widehat{BAC}=\ang{45}$.</p>
+            $$
+            \begin{align*}
+            \overrightarrow{AB}\cdot\overrightarrow{AC}&=AB\times AC\times\cos(\widehat{BAC})\\
+            &=4\times 4\sqrt{2}\times\cos(\ang{45})\\
+            &=16\sqrt{2}\times\frac{\sqrt{2}}{2}\\
+            &=16
+            \end{align*}
+            $$
+            </li>
+            <li><p>Remarquons que $\widehat{IOC}=\frac{3\pi}{4}$.</p>
+            $$
+                \begin{align*}
+                \overrightarrow{OI}\cdot\overrightarrow{OC}&=OI\times OC\times\cos(\widehat{IOC})\\
+                &=2\times\frac{4\sqrt{2}}{2}\times\cos\left(\frac{3\pi}{4}\right)\\
+                &=4\sqrt{2}\times\left(-\frac{\sqrt{2}}{2}\right)\\
+                &=-4
+                \end{align*}
+                $$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABCD$ un losange de côté $\SI{6}{\cm}$ et de centre $O$ tel que $\widehat{ABC}=\ang{30}$.
+        <ol class="alphabetical-list">
+            <li>Calculez $\overrightarrow{BA}\cdot\overrightarrow{BC}$.</li>
+            <li>Calculez $\overrightarrow{AB}\cdot\overrightarrow{AD}$.</li>
+            <li>Montrez que $AC=6\sqrt{2-\sqrt{3}}.$</li>
+            <li>En déduire $\overrightarrow{AB}\cdot\overrightarrow{AC}=18(2-\sqrt{3})$.</li>
+            <li>Déterminez une mesure de l'angle $\widehat{BAC}$ en degrés.</li>
+            <li>Montrez que $cos\left(\dfrac{5\pi}{12}\right)=\dfrac{\sqrt{2-\sqrt{3}}}{2}$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$\begin{align*}
+            \overrightarrow{BA}\cdot\overrightarrow{BC}&=BA\times BC\times\cos(\widehat{ABC})\\
+            &=6\times 6\times\cos(\ang{30})\\
+            &=36\times\frac{\sqrt{3}}{2}\\
+            &=18\sqrt{3}
+            \end{align*}$$</li>
+            <li>Remarquons que comme $ABCD$ est un losange et que $\widehat{ABC}=\ang{30}$, alors $\widehat{BAD}=\ang{150}$.
+            $$\begin{align*}
+            \overrightarrow{AB}\cdot\overrightarrow{AD}&=AB\times AD\times\cos(\widehat{BAD})\\
+            &=6\times 6\times\cos(\ang{150})\\
+            &=36\times\left(-\frac{\sqrt{3}}{2}\right)\\
+            &=-18\sqrt{3}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            AC^2&=AB^2+BC^2-2\overrightarrow{BA}\cdot\overrightarrow{BC}\\
+            &=6^2+6^2-2\times 18\sqrt{3}\\
+            &=36+36-36\sqrt{3}\\
+            &=72-36\sqrt{3}\\
+            &=36(2-\sqrt{3})\\
+            AC&=6\sqrt{2-\sqrt{3}}
+            \end{align*}$$</li>
+            <li>$$
+            \begin{align*}
+            BC^2&=AB^2+AC^2-2\overrightarrow{AB}\cdot\overrightarrow{AC}\\
+            6^2&=6^2+(6\sqrt{2-\sqrt{3}})^2-2\overrightarrow{AB}\cdot\overrightarrow{AC}\\
+            36&=36+36(2-\sqrt{3})-2\overrightarrow{AB}\cdot\overrightarrow{AC}\\
+            2\overrightarrow{AB}\cdot\overrightarrow{AC}&=36(2-\sqrt{3})\\
+            \overrightarrow{AB}\cdot\overrightarrow{AC}&=18(2-\sqrt{3})
+            \end{align*}
+            $$</li>
+            <li><p>Comme $ABC$ est isocèle en $A$, alors $\widehat{BAC}=\ang{75}$.</p></li>
+            <li><p>Remarquons que $\dfrac{5\pi}{12}=\dfrac{5\times\ang{180}}{12}=\ang{75}$.</p>
+            $$\begin{align*}
+            \overrightarrow{AB}\cdot\overrightarrow{AC}&=AB\times AC\times\cos(\widehat{BAC})\\
+            36-18\sqrt{3}&=6\times 6\sqrt{2-\sqrt{3}}\times\cos\left(\dfrac{5\pi}{12}\right)\\
+            36-18\sqrt{3}&=36\sqrt{2-\sqrt{3}}\times\cos\left(\dfrac{5\pi}{12}\right)\\
+            18(2-\sqrt{3})&=36\sqrt{2-\sqrt{3}}\times\cos\left(\dfrac{5\pi}{12}\right)\\
+            2-\sqrt{3}&=2\sqrt{2-\sqrt{3}}\times\cos\left(\dfrac{5\pi}{12}\right)\\
+            \cos\left(\dfrac{5\pi}{12}\right)&=\dfrac{2-\sqrt{3}}{2\sqrt{2-\sqrt{3}}}\\
+            \cos\left(\dfrac{5\pi}{12}\right)&=\dfrac{\sqrt{2-\sqrt{3}}}{2}
+            \end{align*}$$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABC$ un triangle tel que $AB=4$, $BC=8$ et $\widehat{ABC}=\ang{60}$.
+        Démontrez que $ABC$ est un triangle rectangle.
+    </div>
+    <div class="solution">
+        <p>On se propose de calculer $AC^2$ et de montrer que $BC^2=AB^2+AC^2$.</p>
+        $$\begin{align*}
+        AC^2&=AB^2+BC^2-2AB\times BC\times\cos(\widehat{ABC})\\
+        &=4^2+8^2-2\times 4\times 8\times\cos(\ang{60})\\
+        &=16+64-64\times\frac{1}{2}\\
+        &=16+64-32\\
+        &=80-32\\
+        &=48
+        \end{align*}$$
+        <p>On a donc $AC^2=48$. Or, $BC^2=8^2=64$ et $AB^2=4^2=16$. Donc $BC^2=AB^2+AC^2$.</p>
+        <p>Donc, par la réciproque du théorème de Pythagore, $ABC$ est un triangle rectangle en $A$.</p>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABC$ un triangle tel que $AB=7$, $AC=7\sqrt{3}$ et $\widehat{BAC}=\ang{30}$.
+        Démontrez que $ABC$ est un triangle isocèle.
+    </div>
+    <div class="solution">
+        <p>On se propose de calculer $BC$.</p>
+        $$\begin{align*}
+        BC^2&=AB^2+AC^2-2AB\times AC\times\cos(\widehat{BAC})\\
+        &=7^2+(7\sqrt{3})^2-2\times 7\times 7\sqrt{3}\times\cos(\ang{30})\\
+        &=49+147-98\sqrt{3}\times\dfrac{\sqrt{3}}{2}\\
+        &=196-49\times 3\\
+        &=196-147\\
+        &=49
+        BC&=7
+        \end{align*}$$
+        <p>$AB=BC$, donc $ABC$ est isocèle en $B$.</p>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABC$ un triangle tel que $AB=\sqrt{2}$, $AC=\sqrt{10}$ et $BC=2$.
+        Déterminez une mesure de l'angle $\widehat{ABC}$.
+    </div>
+    <div class="solution">
+        $$\begin{align*}
+        AC^2&=AB^2+BC^2-2AB\times BC\times\cos(\widehat{ABC})\\
+        10&=2+4-2\sqrt{2}\times 2\times\cos(\widehat{ABC})\\
+        10&=6-4\sqrt{2}\times\cos(\widehat{ABC})\\
+        4\sqrt{2}\times\cos(\widehat{ABC})&=6-10\\
+        4\sqrt{2}\times\cos(\widehat{ABC})&=-4\\
+        \sqrt{2}\times\cos(\widehat{ABC})&=-1\\
+        \cos(\widehat{ABC})&=-\frac{1}{\sqrt{2}}\\
+        \cos(\widehat{ABC})&=-\frac{\sqrt{2}}{2}\\
+        \widehat{ABC}&=\dfrac{3\pi}{4}\\
+        \widehat{ABC}&=\dfrac{3\times\ang{180}}{4}\\
+        \widehat{ABC}&=\ang{135}
+        \end{align*}$$
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABC$ un triangle tel que $a=BC=\sqrt(3)$, $\widehat{ABC}=\dfrac{\pi}{6}$ et $\widehat{ACB}=\dfrac{\pi}{4}$.
+        <ol class="alphabetical-list">
+            <li>Montrez que $b^2-c^2=3-3c$.</li>
+            <li>Montrez que $b^2-c^2=\sqrt{6}b-3.$</li>
+            <li>En déduire $b=\dfrac{6-3c}{\sqrt{6}}$.</li>
+            <li>Remplacez $b$ dans l'équation $b^2-c^2=3-3c$ et résoudre l'équation obtenue en $c$.</li>
+            <li>Montrez que $b=\dfrac{3-\sqrt{3}}{\sqrt{2}}$.</li>
+            <li>En déduire $\cos\left(\dfrac{7\pi}{12}\right)=\dfrac{1-\sqrt{3}}{2\sqrt{2}}$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            b^2=a^2+c^2-2ac\cos(\widehat{ABC})\\
+            b^2&=3+c^2-2\times\sqrt{3}c\times\cos\left(\dfrac{\pi}{6}\right)\\
+            b^2&=3+c^2-2\sqrt{3}c\times\frac{\sqrt{3}}{2}\\
+            b^2&=3+c^2-3c\\
+            b^2-c^2&=3-3c
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+            c^2&=a^2+b^2-2ab\cos(\widehat{ACB})\\
+            c^2&=3+b^2-2\sqrt{3}b\times\cos\left(\dfrac{\pi}{4}\right)\\
+            c^2&=3+b^2-2\sqrt{3}b\times\frac{\sqrt{2}}{2}\\
+            c^2&=3+b^2-\sqrt{6}b\\
+            b^2-c^2&=\sqrt{6}b-3
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+            3-3c&=\sqrt{6}b-3\\
+            6-6c&=\sqrt{6}b\\
+            b&=\dfrac{6-3c}{\sqrt{6}}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+            b^2-c^2&=3-3c\\
+            \left(\dfrac{6-3c}{\sqrt{6}}\right)^2-c^2&=3-3c\\
+            \dfrac{36-36c+9c^2}{6}-c^2&=3-3c\\
+            36-36c+9c^2-6c^2&=18-18c\\
+            3c^2-18c+18&=0\\
+            c^2-6c+6&=0
+            \end{align*}
+            $$
+            <p>Calculons le discriminant de l'équation $c^2-6c+6=0$.</p>
+            $$\Delta=6^2-4\times 6\times 1=36-24=12$$
+            <p>Le discriminant est positif, donc l'équation $c^2-6c+6=0$ admet deux solutions réelles.</p>
+            <p>Calculons les solutions de l'équation $c^2-6c+6=0$.</p>
+            $$c_1=\dfrac{6+\sqrt{12}}{2}=\dfrac{6+2\sqrt{3}}{2}=3+\sqrt{3}$$
+            $$c_2=\dfrac{6-\sqrt{12}}{2}=\dfrac{6-2\sqrt{3}}{2}=3-\sqrt{3}$$
+            <p>Donc, $c=3+\sqrt{3}$ ou $c=3-\sqrt{3}$.</p>
+            </li>
+            <li>Supposons que $c=3+\sqrt{3}$. Alors
+            $$\begin{align*}
+            b&=\dfrac{6-3c}{\sqrt{6}}\\
+            &=\dfrac{6-3(3+\sqrt{3})}{\sqrt{6}}\\
+            &=\dfrac{6-9-3\sqrt{3}}{\sqrt{6}}\\
+            b&=\dfrac{-3-3\sqrt{3}}{\sqrt{6}}
+            \end{align*}$$
+            <p>Or $-3-3\sqrt{3}\lt 0$, d'où $b\lt 0$ ce qui est absurde.</p>
+            <p>Supposons $c=3-\sqrt{3}$.</p>
+            $$\begin{align*}
+            b&=\dfrac{6-3c}{\sqrt{6}}\\
+            &=\dfrac{6-3(3-\sqrt{3})}{\sqrt{6}}\\
+            &=\dfrac{6-9+3\sqrt{3}}{\sqrt{6}}\\
+            &=\dfrac{3\sqrt{3}-3}{\sqrt{6}}\\
+            b&=\dfrac{3-\sqrt{3}}{\sqrt{2}}
+            \end{align*}$$
+            <p>Comme $9\gt 3$, alors $3\gt\sqrt{3}$, donc $3-\sqrt{3}\gt 0$. Donc $b\gt 0$.</p>
+            </li>
+            <li>
+            <p>Remarquons tout d'abord que $\widehat{CAB}=\pi-\dfrac{\pi}{6}-\dfrac{\pi}{4}=\dfrac{7\pi}{12}$.</p>
+            <p>Remarquons également que $c^2=(3-\sqrt{3})^2=9-6\sqrt{3}+3=12-6\sqrt{3}$.</p>
+            <p>D'où $b^2=\left(\dfrac{3-\sqrt{3}}{\sqrt{2}}\right)^2=6-3\sqrt{3}$.</p>
+            $$
+            \begin{align*}
+            a^2&=b^2+c^2-2bc\cos(\widehat{BAC})\\
+            3&=6-3\sqrt{3}+12-6\sqrt{3}-2\times\left(\dfrac{3-\sqrt{3}}{\sqrt{2}}\right)\times\left(3-\sqrt{3}\right)\times\cos\left(\dfrac{7\pi}{12}\right)\\
+            3&=18-9\sqrt{3}-\dfrac{2(12-6\sqrt{3})}{\sqrt{2}}\times\cos\left(\dfrac{7\pi}{12}\right)\\
+            \cos\left(\dfrac{7\pi}{12}\right)&=\dfrac{\sqrt{2}(15-9\sqrt{3})}{2(12-6\sqrt{3})}\\
+            \cos\left(\dfrac{7\pi}{12}\right)&=\dfrac{5-3\sqrt{3}}{\sqrt{2}(4-2\sqrt{3})}\\
+            \cos\left(\dfrac{7\pi}{12}\right)&=\dfrac{(5-3\sqrt{3})(4+2\sqrt{3})}{2(4-2\sqrt{3})(4+2\sqrt{3})}\\
+            \cos\left(\dfrac{7\pi}{12}\right)&=\dfrac{20+10\sqrt{3}-12\sqrt{3}-18}{\sqrt{2}(16-12)}\\
+            \cos\left(\dfrac{7\pi}{12}\right)&=\dfrac{2-2\sqrt{3}}{4\sqrt{2}}\\
+            \cos\left(\dfrac{7\pi}{12}\right)&=\dfrac{1-\sqrt{3}}{2\sqrt{2}}
+            \end{align*}
+            $$
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+
+
+</main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>

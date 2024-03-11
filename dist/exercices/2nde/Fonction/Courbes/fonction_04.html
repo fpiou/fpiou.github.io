@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Fonction_04.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    
+    <main><div class="exercice">
+  <div class="enonce">
+  <ol class="numerical-list">
+    <li>Conjecturez par lecture graphique la parité de chaque fonction dont les courbes représentatives sont données ci-dessous.
+    <ol class="horizontal-list alphabetical-list col-4c">
+      <li>
+      <div class="figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="3" ymax ="3" xorigine="0" yorigine="0"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="c1" class="courbeRepresentative" expression="2(x^3-4x)/10" linkto="repere1" xmin="-4" xmax="4" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
+        </svg>
+      </div>
+      </li>
+      <li>
+      <div class="figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-3" ymin="-3" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="c1" class="courbeRepresentative" expression="-x^2/2+3" linkto="repere1" xmin="-4" xmax="4" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
+        </svg>
+      </div>
+      </li>
+      <li>
+      <div class="figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-6" ymin="-4" xmax="2" ymax ="4" xorigine="0" yorigine="0"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="c1" class="courbeRepresentative" expression="4x/3" linkto="repere1" xmin="-4" xmax="4" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
+        </svg>
+      </div>
+      </li>
+      <li>
+      <div class="figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-3.5" ymin="-3.5" xmax="4.5" ymax ="4.5" xorigine="0" yorigine="0"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="c1" class="courbeRepresentative" expression="-x+1" linkto="repere1" xmin="-4" xmax="4.5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
+        </svg>
+      </div>
+      </li>
+      <li>
+      <div class="figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-4" ymin="-4" xmax="4" ymax ="4" xorigine="0" yorigine="0"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="c1" class="courbeRepresentative" expression="(4x^2+2x-5)/10" linkto="repere1" xmin="-4" xmax="4" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
+        </svg>
+      </div>
+      </li>
+      <li>
+      <div class="figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-6" ymin="-4" xmax="6" ymax ="8" xorigine="0" yorigine="0"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="c1" class="courbeRepresentative" expression="4/x" linkto="repere1" xmin="-6" xmax="-0.01" pas="0.01" stroke="blue" stroke-width="2" fill="transparent"></g>
+          <g name="c1" class="courbeRepresentative" expression="4/x" linkto="repere1" xmin="0.01" xmax="6" pas="0.01" stroke="blue" stroke-width="2" fill="transparent"></g>
+        </svg>
+      </div>
+      </li>
+      <li>
+      <div class="figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-4" ymin="-2" xmax="4" ymax ="6" xorigine="0" yorigine="0"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="c1" class="courbeRepresentative" expression="-1/x+2" linkto="repere1" xmin="-6" xmax="-0.01" pas="0.01" stroke="blue" stroke-width="2" fill="transparent"></g>
+          <g name="c1" class="courbeRepresentative" expression="-1/x+2" linkto="repere1" xmin="0.01" xmax="6" pas="0.01" stroke="blue" stroke-width="2" fill="transparent"></g>
+        </svg>
+      </div>
+      </li>
+      <li>
+      <div class="figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-5" ymin="-2" xmax="3" ymax ="6" xorigine="0" yorigine="0"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="c1" class="courbeRepresentative" expression="-abs(x)+7" linkto="repere1" xmin="-6" xmax="6" pas="0.01" stroke="blue" stroke-width="2" fill="transparent"></g>
+        </svg>
+      </div>
+      </li>
+    </ol>
+    </li>
+    <li>Etudiez la parité des fonctions suivantes&nbsp; en essayant d'abord avec une valeur simple puis en démontrant sa parité si nécessaire.
+    <ol class="horizontal-list">
+      <li>$f_1: x\longmapsto -|x|+7$</li>
+      <li>$f_2: x\longmapsto \dfrac{4x^2+2x-5}{10}$</li>
+      <li>$f_3: x\longmapsto -x+1$</li>
+      <li>$f_4: x\longmapsto -\dfrac{1}{x}+2$</li>
+      <li>$f_5: x\longmapsto -\dfrac{x^2}{2}+3$</li>
+      <li>$f_6: x\longmapsto \dfrac{4x}{3}$</li>
+      <li>$f_7: x\longmapsto \dfrac{4}{x}$</li>
+      <li>$f_8: x\longmapsto 2x^3-4x$</li>
+    </ol>
+    </li>
+    <li>Associez chaque fonction à sa courbe.</li>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li>
+      <ol class="alphabetical-list">
+        <li>La fonction semble impaire.</li>
+        <li>La fonction semble paire.</li>
+        <li>La fonction semble est impaire.</li>
+        <li>La fonction ne semble ni pair ni impaire.</li>
+        <li>La fonction semble paire.</li>
+        <li>La fonction ne semble ni pair ni impaire.</li>
+        <li>La fonction semble est impaire.</li>
+      </ol>
+      </li>
+      <li>
+      <ol class="alphabetical-list">
+        <li><p>$f(1)=6$ et $f(-1)=6$ ce qui suggère que $f$ est paire.</p>
+        <p>On se propose donc de démontrer que $f$ est paire.</p>
+        <p>$$\begin{align*}
+        f(-x)&=-|-x|+7\\
+        &=-|x|+7\\
+        &=f(x)
+        \end{align*}$$</p>
+        <p>Donc $f$ est paire.</p></li>
+        </li>
+        <li><p>$f(1)=\dfrac{1}{10}$ et $f(-1)=-\dfrac{7}{10}$ ce qui suffit à montrer que $f$ n'est ni paire ni impaire.</p></li>
+        <li><p>$f(1)=0$ et $f(-1)=2$ ce qui suffit à montrer que $f$ n'est ni paire ni impaire.</p></li>
+        <li><p>$f(1)=1$ et $f(-1)=3$ ce qui suffit à montrer que $f$ n'est ni paire ni impaire.</p></li>
+        <li><p>$f(1)=\dfrac{5}{2}$ et $f(-1)=\dfrac{5}{2}$ ce qui suggère que $f$ est paire.</p>
+        <p>On se propose donc de démontrer que $f$ est paire.</p>
+        <p>$$\begin{align*}
+        f(-x)&=\dfrac{4(-x)^2+2(-x)-5}{10}\\
+        &=\dfrac{4x^2-2x-5}{10}\\
+        &=f(x)
+        \end{align*}$$</p>
+        <p>Donc $f$ est paire.</p></li>
+        <li><p>$f(1)=\dfrac{4}{3}$ et $f(-1)=-\dfrac{4}{3}$ ce qui suggère que $f$ est impaire.</p>
+        <p>On se propose donc de démontrer que $f$ est impaire.</p>
+        <p>$$\begin{align*}
+        f(-x)&=\dfrac{4(-x)}{3}\\
+        &=-\dfrac{4x}{3}\\
+        &=-f(x)
+        \end{align*}$$</p>
+        <p>Donc $f$ est impaire.</p></li>
+        <li><p>$f(1)=4$ et $f(-1)=-4$ ce qui suggère que $f$ est impaire.</p>
+        <p>On se propose donc de démontrer que $f$ est impaire.</p>
+        <p>$$\begin{align*}
+        f(-x)&=\dfrac{4}{-x}\\
+        &=\dfrac{-4}{x}\\
+        &=-f(x)
+        \end{align*}$$</p>
+        <p>Donc $f$ est impaire.</p></li>
+        <li><p>$f(1)=-2$ et $f(-1)=-2$ ce qui suggère que $f$ est impaire.</p>
+        <p>On se propose donc de démontrer que $f$ est impaire.</p>
+        <p>$$\begin{align*}
+        f(-x)&=2(-x)^3-4(-x)\\
+        &=-2x^3+4x\\
+        &=-f(x)
+        \end{align*}$$</p>
+      </ol>
+      </li>
+      <li>
+      <ul>
+        <li><p>La fonction $f_1$ est associée à la courbe représentative g.</p></li>
+        <li><p>La fonction $f_2$ est associée à la courbe représentative e.</p></li>
+        <li><p>La fonction $f_3$ est associée à la courbe représentative d.</p></li>
+        <li><p>La fonction $f_4$ est associée à la courbe représentative f.</p></li>
+        <li><p>La fonction $f_5$ est associée à la courbe représentative b.</p></li>
+        <li><p>La fonction $f_6$ est associée à la courbe représentative c.</p></li>
+        <li><p>La fonction $f_7$ est associée à la courbe représentative a.</p></li>
+        <li><p>La fonction $f_8$ est associée à la courbe représentative h.</p></li>
+      </ul>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<div class="exercice">
+  <div class="enonce">
+    Considérons la fonction $f: x\longmapsto \dfrac{x^2-2x-15}{4}.$
+    <ol class="alphabetical-list">
+      <li>Quel est son domaine de définition&nbsp;?</li>
+      <li>Dressez le tableau de valeurs de $f$ pour $x$ compris entre $-5$ et $8$ avec un pas de $1$.</li>
+      <li>Placez les points obtenus dans le repère orthonormé suivant.
+      <div class="figure">
+        <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-6" ymin="-5" xmax="8" ymax ="6" xorigine="0" yorigine="0"></g>
+          <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.25" ypas="0.25" stroke="gray" stroke-width="0.2"></g>
+          <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+          <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+          <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+          <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+          <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+        </svg>
+      </div>
+      </li>
+      <li>Tracez une courbe représentative possible de la fonction $f$.</li>
+      <li>Résoudre par lecture graphique l'inéquation $f(x)\gt -3.$</li>
+      <li>Par lecture graphique, déterminer une approximation des solutions de l'équation $f(x)=\dfrac{7}{2}.$</li>
+      <li>Montrez que $f(1-\sqrt{30})=\dfrac{7}{2}.$</li>
+      <li>Vérifiez que $1+\sqrt{30}$ est une solution de l'équation $f(x)=\dfrac{7}{2}.$</li>
+      <li>Déterminez les solutions de l'équation $f(x)\leqslant \dfrac{7}{2}.$</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li><p>Le dénominateur de la fonction $f$ est $4$ et ne s'annule jamais. Le domaine de définition de $f$ est donc $\mathbb{R}.$</p></li>
+      <li><p>On a le tableau de valeurs suivant:</p>
+      <table class="tableauvaleurs">
+        <thead>
+          <tr>
+            <th>$x$</th>
+            <td>$-5$</td>
+            <td>$-4$</td>
+            <td>$-3$</td>
+            <td>$-2$</td>
+            <td>$-1$</td>
+            <td>$0$</td>
+          </tr>
+          <tr>
+            <th>$f(x)$</th>
+            <td>$5$</td>
+            <td>$\num{2.25}$</td>
+            <td>$0$</td>
+            <td>$-\num{1.75}$</td>
+            <td>$-\num{3}$</td>
+            <td>$-\num{3.75}$</td>
+          </tr>
+        </thead>
+      </table>
+      <table class="tableauvaleurs">
+        <thead>
+          <tr>
+            <th>$x$</th>
+            <td>$1$</td>
+            <td>$2$</td>
+            <td>$3$</td>
+            <td>$4$</td>
+            <td>$5$</td>
+            <td>$6$</td>
+            <td>$7$</td>
+          </tr>
+          <tr>
+            <th>$f(x)$</th>
+            <td>$-\num{4}$</td>
+            <td>$-\num{3.75}$</td>
+            <td>$-\num{3}$</td>
+            <td>$-\num{1.75}$</td>
+            <td>$0$</td>
+            <td>$\num{2.25}$</td>
+            <td>$5$</td>
+          </tr>
+        </thead>
+      </table>
+      </li>
+      <li>
+      <div class="figure">
+        <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-6" ymin="-5" xmax="8" ymax ="6" xorigine="0" yorigine="0"></g>
+          <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.25" ypas="0.25" stroke="gray" stroke-width="0.2"></g>
+          <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+          <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+          <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+          <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+          <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+          <g name="A1" class="point" repere="repere1" x="-5" y="5" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A2" class="point" repere="repere1" x="-4" y="2.25" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A3" class="point" repere="repere1" x="-3" y="0" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A4" class="point" repere="repere1" x="-2" y="-1.75" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A5" class="point" repere="repere1" x="-1" y="-3" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A6" class="point" repere="repere1" x="0" y="-3.75" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A7" class="point" repere="repere1" x="1" y="-4" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A8" class="point" repere="repere1" x="2" y="-3.75" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A9" class="point" repere="repere1" x="3" y="-3" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A10" class="point" repere="repere1" x="4" y="-1.75" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A11" class="point" repere="repere1" x="5" y="0" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A12" class="point" repere="repere1" x="6" y="2.25" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A13" class="point" repere="repere1" x="7" y="5" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+        </svg>
+      </div>
+      </li>
+      <li>
+      <div class="figure">
+        <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-6" ymin="-5" xmax="8" ymax ="6" xorigine="0" yorigine="0"></g>
+          <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.25" ypas="0.25" stroke="gray" stroke-width="0.2"></g>
+          <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+          <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+          <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+          <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+          <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+          <g name="A1" class="point" repere="repere1" x="-5" y="5" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A2" class="point" repere="repere1" x="-4" y="2.25" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A3" class="point" repere="repere1" x="-3" y="0" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A4" class="point" repere="repere1" x="-2" y="-1.75" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A5" class="point" repere="repere1" x="-1" y="-3" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A6" class="point" repere="repere1" x="0" y="-3.75" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A7" class="point" repere="repere1" x="1" y="-4" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A8" class="point" repere="repere1" x="2" y="-3.75" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A9" class="point" repere="repere1" x="3" y="-3" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A10" class="point" repere="repere1" x="4" y="-1.75" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A11" class="point" repere="repere1" x="5" y="0" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A12" class="point" repere="repere1" x="6" y="2.25" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A13" class="point" repere="repere1" x="7" y="5" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="c1" class="courbeRepresentative" expression="(x^2-2x-15)/4" linkto="repere1" xmin="-6" xmax="8" pas="0.1" stroke="blue" stroke-width="1" fill="transparent"></g>
+        </svg>
+      </div>
+      </li>
+      <li>
+      <p>On a $f(x)\gt -3$ si et seulement si la courbe représentative de $f$ est au-dessus de la droite d'équation $y=-3.$</p>
+      <div class="figure">
+        <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-6" ymin="-5" xmax="8" ymax ="6" xorigine="0" yorigine="0"></g>
+          <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.25" ypas="0.25" stroke="gray" stroke-width="0.2"></g>
+          <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+          <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+          <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+          <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+          <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+          <g name="c1" class="courbeRepresentative" expression="(x^2-2x-15)/4" linkto="repere1" xmin="-6" xmax="8" pas="0.1" stroke="blue" stroke-width="1" fill="transparent"></g>
+          <g name="d1" class="courbeRepresentative" expression="-3" linkto="repere1" xmin="-6" xmax="8" pas="0.1" stroke="red" stroke-width="1"></g>
+          <g name="c11" class="courbeRepresentative" expression="(x^2-2x-15)/4" linkto="repere1" xmin="-6" xmax="-1" pas="0.1" stroke="green" stroke-width="4" fill="transparent" opacity="0.3"></g>
+          <g name="c12" class="courbeRepresentative" expression="(x^2-2x-15)/4" linkto="repere1" xmin="3" xmax="8" pas="0.1" stroke="green" stroke-width="4" fill="transparent" opacity="0.3"></g>
+        </svg>
+      </div>
+      <p>En utilisant le tableau de valeurs, on peut voir que la courbe est au-dessus de la droite d'équation $y=-3$ pour $x\in]-\infty;-1[\cup]3;+\infty[.$</p>
+      <p>On a donc $$S=\left]-\infty;-1\right[\cup\left]3;+\infty\right[$$</p>
+      </li>
+      <li>
+      <p>On a $f(x)=\dfrac{7}{2}$ si et seulement si la courbe représentative de $f$ coupe la droite d'équation $y=\dfrac{7}{2}.$</p>
+      <div class="figure">
+        <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-6" ymin="-5" xmax="8" ymax ="6" xorigine="0" yorigine="0"></g>
+          <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.25" ypas="0.25" stroke="gray" stroke-width="0.2"></g>
+          <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+          <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+          <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+          <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+          <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+          <g name="c1" class="courbeRepresentative" expression="(x^2-2x-15)/4" linkto="repere1" xmin="-6" xmax="8" pas="0.1" stroke="blue" stroke-width="1" fill="transparent"></g>
+          <g name="d1" class="courbeRepresentative" expression="3.5" linkto="repere1" xmin="-6" xmax="8" pas="0.1" stroke="red" stroke-width="1"></g>
+        </svg>
+      </div>
+      <p>Par lecture graphique on trouve que les solutions de l'équation $f(x)=\dfrac{7}{2}$ sont $x\in\left\{-\num{4.5};\num{6.5}\right\}.$</p>
+      </li>
+      <li>
+      $$\begin{align*}
+      f(1-\sqrt{30})&=\dfrac{(1-\sqrt{30})^2-2(1-\sqrt{30})-15}{4}\\
+      &=\dfrac{1-2\sqrt{30}+30-2+2\sqrt{30}-15}{4}\\
+      &=\dfrac{14}{4}\\
+      &=\dfrac{7}{2}
+      \end{align*}$$
+      </li>
+      <li>
+      $$\begin{align*}
+      f(1+\sqrt{30})&=\dfrac{(1+\sqrt{30})^2-2(1+\sqrt{30})-15}{4}\\
+      &=\dfrac{1+2\sqrt{30}+30-2-2\sqrt{30}-15}{4}\\
+      &=\dfrac{14}{4}\\
+      &=\dfrac{7}{2}
+      \end{align*}$$
+      </li>
+      <li>
+      <p>On a $f(x)\leqslant \dfrac{7}{2}$ si et seulement si la courbe représentative de $f$ est en-dessous de la droite d'équation $y=\dfrac{7}{2}.$</p>
+      <div class="figure">
+        <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-6" ymin="-5" xmax="8" ymax ="6" xorigine="0" yorigine="0"></g>
+          <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.25" ypas="0.25" stroke="gray" stroke-width="0.2"></g>
+          <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+          <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+          <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+          <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+          <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+          <g name="c1" class="courbeRepresentative" expression="(x^2-2x-15)/4" linkto="repere1" xmin="-6" xmax="8" pas="0.1" stroke="blue" stroke-width="1" fill="transparent"></g>
+          <g name="d1" class="courbeRepresentative" expression="3.5" linkto="repere1" xmin="-6" xmax="8" pas="0.1" stroke="red" stroke-width="1"></g>
+          <g name="c2" class="courbeRepresentative" expression="(x^2-2x-15)/4" linkto="repere1" xmin="1-sqrt(30)" xmax="1+sqrt(30)" pas="0.01" stroke="green" stroke-width="4" fill="transparent" opacity="0.3"></g>
+        </svg>
+      </div>
+      <p>Par le calcul on trouve que les solutions de l'inéquation $f(x)\leqslant \dfrac{7}{2}$ sont $x\in\left[1-\sqrt{30};1+\sqrt{30}\right].$</p>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    Considérons la fonction $f: x\longmapsto \dfrac{-x^2-x+12}{5}.$
+    <ol class="alphabetical-list">
+      <li>Quel est son domaine de définition?</li>
+      <li>Complétez un tableau de valeurs de $f$ pour $x$ compris entre $-6$ et $5$ avec un pas de $1$.</li>
+      <li>Placez les points obtenus dans le repère orthonormé suivant.
+      <div class="figure">
+        <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-7" ymin="-4" xmax="6" ymax ="4" xorigine="0" yorigine="0"></g>
+          <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.2" ypas="0.2" stroke="gray" stroke-width="0.2"></g>
+          <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+          <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+          <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+          <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+          <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+        </svg>
+      </div>
+      </li>
+      <li>Tracez une courbe représentative possible de la fonction $f$.</li>
+      <li>Résoudre par lecture graphique l'inéquation $f(x)\geqslant 1.$</li>
+      <li>Montrez que résoudre l'équation $f(x)=-\dfrac{98}{5}$ revient à résoudre l'équation $(x-10)(x+11)=0.$</li>
+      <li>Déterminez les solutions de l'inéquation $f(x)\lt -\dfrac{98}{5}.$</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li><p>Le dénominateur de la fonction $f$ est $5$ et ne s'annule jamais. Le domaine de définition de $f$ est donc $\mathbb{R}.$</p></li>
+      <li><p>On a le tableau de valeurs suivant:</p>
+      <table class="tableauvaleurs">
+        <thead>
+          <tr>
+            <th>$x$</th>
+            <td>$-6$</td>
+            <td>$-5$</td>
+            <td>$-4$</td>
+            <td>$-3$</td>
+            <td>$-2$</td>
+            <td>$-1$</td>
+          </tr>
+          <tr>
+            <th>$f(x)$</th>
+            <td>$-\num{3.6}$</td>
+            <td>$-\num{1.6}$</td>
+            <td>$\num{0}$</td>
+            <td>$\num{1.2}$</td>
+            <td>$\num{2}$</td>
+            <td>$\num{2.4}$</td>
+          </tr>
+        </thead>
+      </table>
+      <table class="tableauvaleurs">
+        <thead>
+          <tr>
+            <th>$x$</th>
+            <td>$0$</td>
+            <td>$1$</td>
+            <td>$2$</td>
+            <td>$3$</td>
+            <td>$4$</td>
+            <td>$5$</td>
+          </tr>
+          <tr>
+            <th>$f(x)$</th>
+            <td>$\num{2.4}$</td>
+            <td>$\num{2}$</td>
+            <td>$\num{1.2}$</td>
+            <td>$0$</td>
+            <td>$-\num{1.6}$</td>
+            <td>$-\num{3.6}$</td>
+          </tr>
+        </thead>
+      </table>
+      </li>
+      <li>
+      <div class="figure">
+        <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-7" ymin="-4" xmax="6" ymax ="4" xorigine="0" yorigine="0"></g>
+          <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.2" ypas="0.2" stroke="gray" stroke-width="0.2"></g>
+          <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+          <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+          <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+          <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+          <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+          <g name="A1" class="point" repere="repere1" x="-6" y="-3.6" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A2" class="point" repere="repere1" x="-5" y="-1.6" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A3" class="point" repere="repere1" x="-4" y="0" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A4" class="point" repere="repere1" x="-3" y="1.2" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A5" class="point" repere="repere1" x="-2" y="2" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A6" class="point" repere="repere1" x="-1" y="2.4" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A7" class="point" repere="repere1" x="0" y="2.4" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A8" class="point" repere="repere1" x="1" y="2" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A9" class="point" repere="repere1" x="2" y="1.2" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A10" class="point" repere="repere1" x="3" y="0" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A11" class="point" repere="repere1" x="4" y="-1.6" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A12" class="point" repere="repere1" x="5" y="-3.6" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+        </svg>
+      </div>
+      </li>
+      <li>
+      <div class="figure">
+        <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-7" ymin="-4" xmax="6" ymax ="4" xorigine="0" yorigine="0"></g>
+          <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.2" ypas="0.2" stroke="gray" stroke-width="0.2"></g>
+          <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+          <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+          <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+          <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+          <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+          <g name="A1" class="point" repere="repere1" x="-6" y="-3.6" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A2" class="point" repere="repere1" x="-5" y="-1.6" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A3" class="point" repere="repere1" x="-4" y="0" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A4" class="point" repere="repere1" x="-3" y="1.2" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A5" class="point" repere="repere1" x="-2" y="2" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A6" class="point" repere="repere1" x="-1" y="2.4" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A7" class="point" repere="repere1" x="0" y="2.4" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A8" class="point" repere="repere1" x="1" y="2" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A9" class="point" repere="repere1" x="2" y="1.2" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A10" class="point" repere="repere1" x="3" y="0" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A11" class="point" repere="repere1" x="4" y="-1.6" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A12" class="point" repere="repere1" x="5" y="-3.6" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="c1" class="courbeRepresentative" expression="(-x^2-x+12)/5" linkto="repere1" xmin="-6" xmax="5" pas="0.1" stroke="blue" stroke-width="1" fill="transparent"></g>
+        </svg>
+      </div>
+      </li>
+      <li>
+      <p>On a $f(x)\geqslant 1$ si et seulement si la courbe représentative de $f$ est au-dessus de la droite d'équation $y=1.$</p>
+      <div class="figure">
+        <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-7" ymin="-4" xmax="6" ymax ="4" xorigine="0" yorigine="0"></g>
+          <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.2" ypas="0.2" stroke="gray" stroke-width="0.2"></g>
+          <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+          <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+          <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+          <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+          <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+          <g name="c1" class="courbeRepresentative" expression="(-x^2-x+12)/5" linkto="repere1" xmin="-6" xmax="5" pas="0.1" stroke="blue" stroke-width="1" fill="transparent"></g>
+          <g name="d1" class="courbeRepresentative" expression="1" linkto="repere1" xmin="-6" xmax="5" pas="0.1" stroke="red" stroke-width="1"></g>
+          <g name="c11" class="courbeRepresentative" expression="(-x^2-x+12)/5" linkto="repere1" xmin="-1/2-sqrt(29)/2" xmax="-1/2+sqrt(29)/2" pas="0.01" stroke="green" stroke-width="4" fill="transparent" opacity="0.3"></g>
+        </svg>
+      </div>
+      <p>Par lecture graphique on trouve que les solutions de l'inéquation $f(x)\geqslant 1$ sont $x\in\left[-\num{3.2};\num{2.2}\right].$</p>
+      <p>On a donc $$S=\left[-\num{3.2};\num{2.2}\right].$$</p>
+      </li>
+      <li>
+      <p>On a $f(x)=-\dfrac{98}{5}$ si et seulement si $\dfrac{-x^2-x+12}{5}=-\dfrac{98}{5}.$</p>
+      <p>D'une part on a les transformation suivantes :</p>
+      $$\begin{align*}
+      \dfrac{-x^2-x+12}{5}&=-\dfrac{98}{5}\\
+      -x^2-x+12&=-98\\
+      -x^2-x+12+98&=0\\
+      -x^2-x+110&=0\\
+      x^2+x-110&=0
+      \end{align*}$$
+      <p>D'autre part, on a :</p>
+      $$\begin{align*}
+      (x-10)(x+11)&=x^2+11x-10x-110\\
+      (x-10)(x+11)&=x^2+x-110
+      \end{align*}$$
+      <p>On a donc bien $f(x)=-\dfrac{98}{5}$ si et seulement si $(x-10)(x+11)=0.$</p>
+      </li>
+      <li>
+      <p>Résoudre l'équation $f(x)=-\dfrac{98}{5}$ revient à résoudre l'équation $(x-10)(x+11)=0.$</p>
+      $$\begin{align*}
+      (x-10)(x+11)&=0\\
+      x-10&=0\quad\text{ou}\quad x+11=0\\
+      x&=10\quad\text{ou}\quad x=-11
+      \end{align*}$$
+      <p>L'ensemble des solutions de l'équation $f(x)=-\dfrac{98}{5}$ est $$\left\{-11;10\right\}.$$</p>
+      </li>
+      <li>
+      <p>D'après ce qui précède et d'après l'allure de la courbe de la fonction $f$ l'ensemble des solutions de $f(x)\lt -\dfrac{98}{5}$ est $\left]-\infty;-11\right[\cup\left]10;+\infty\right[.$</p>
+      </li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    Considérons la fonction $f: x\longmapsto \dfrac{12}{x}.$
+    <ol class="alphabetical-list">
+      <li>Quel est son domaine de définition&nbsp;?</li>
+      <li>Calculez les images de $1$, $2$, $3$, $4$, $5$, $6$, $8$ et $12$ par la fonction $f.$</li>
+      <li>Placez les points obtenus dans le repère orthonormé suivant.
+        <div id="figure1b" class="figure">
+          <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="13" ymax ="13" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.2" ypas="0.2" stroke="gray" stroke-width="0.2"></g>
+            <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+            <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+          </svg>
+        </div>
+      </li>
+      <li>Tracez une courbe représentative possible de la fonction $f$ sur l'intervalle $\left]0;13\right].$</li>
+      <li>Tracez schématiquement la courbe représentative de la fonction $f$ sur $[-13;13]\backslash\{0\}.$</li>
+      <li>Si $f(x)\geqslant 2$, est-ce que $x$ peut être négatif ?</li>
+      <li>Résoudre l'inéquation $f(x)\geqslant 2.$</li>
+      <li>On considère la fonction $g:x\longmapsto \dfrac{x}{2}+1.$
+      De quelle nature est cette fonction ? La tracer sur le même repère que la fonction $f.$</li>
+      <li>Montrez que résoudre l'équation $f(x)=g(x)$ revient à résoudre l'équation $(x+6)(x-4)=0.$</li>
+      <li>Déterminez les solutions de l'équation $f(x)=g(x).$</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li><p>Le dénominateur de la fonction $f$ est $x$ et s'annule en $0$. Le domaine de définition de $f$ est donc $\mathbb{R}^*.$</p></li>
+      <li><p>On a le tableau de valeurs suivant:</p>
+      <table class="tableauvaleurs">
+        <thead>
+          <tr>
+            <th>$x$</th>
+            <td>$1$</td>
+            <td>$2$</td>
+            <td>$3$</td>
+            <td>$4$</td>
+            <td>$5$</td>
+            <td>$6$</td>
+            <td>$8$</td>
+            <td>$12$</td>
+          </tr>
+          <tr>
+            <th>$f(x)$</th>
+            <td>$12$</td>
+            <td>$6$</td>
+            <td>$4$</td>
+            <td>$3$</td>
+            <td>$\num{2.4}$</td>
+            <td>$2$</td>
+            <td>$\num{1.5}$</td>
+            <td>$1$</td>
+          </tr>
+        </thead>
+      </table>
+      </li>
+      <li>
+      <div class="figure">
+        <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+          <!-- On définit le repère -->
+          <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="13" ymax ="13" xorigine="0" yorigine="0"></g>
+          <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.2" ypas="0.2" stroke="gray" stroke-width="0.2"></g>
+          <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+          <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+          <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+          <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+          <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+          <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+          <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+          <g name="n1" class="nuagePoints" expression="12/x" linkto="repere1" xmin="1" xmax="6" pas="1" stroke="red" stroke-width="0.5" fill="transparent"></g>
+          <g name="A1" class="point" repere="repere1" x="8" y="3/2" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          <g name="A2" class="point" repere="repere1" x="12" y="1" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+          </svg>
+        </div>
+      </li>
+      <li>
+        <div class="figure">
+          <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="13" ymax ="13" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.2" ypas="0.2" stroke="gray" stroke-width="0.2"></g>
+            <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+            <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+            <g name="n1" class="nuagePoints" expression="12/x" linkto="repere1" xmin="1" xmax="6" pas="1" stroke="red" stroke-width="0.5" fill="transparent"></g>
+            <g name="A1" class="point" repere="repere1" x="8" y="3/2" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+            <g name="A2" class="point" repere="repere1" x="12" y="1" stroke="red" forme="+" forme="+" stroke-width="1.1"></g>
+            <g name="c1" class="courbeRepresentative" expression="12/x" linkto="repere1" xmin="0.9" xmax="13.1" pas="0.1" stroke="blue" stroke-width="1" fill="transparent"></g>
+          </svg>
+        </div>
+      </li>
+      <li>
+      <p>$f(1)=12$ et f(-1)=-12$ ce qui suggère que la fonction $f$ est impaire.</p>
+      <p>On se propose de vérifier cette propriété.</p>
+      $$\begin{align*}
+      f(-x)&=\dfrac{12}{-x}\\
+      &=\dfrac{-12}{x}\\
+      &=-f(x)
+      \end{align*}$$
+      <p>Donc la courbe représentative de la fonction $f$ est symétrique par rapport à l'origine.</p>
+        <div class="figure">
+          <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-13" ymin="-13" xmax="13" ymax ="13" xorigine="0" yorigine="0"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+            <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+            <g name="c1" class="courbeRepresentative" expression="12/x" linkto="repere1" xmin="-13.1" xmax="-0.9" pas="0.01" stroke="blue" stroke-width="1" fill="transparent"></g>
+            <g name="c1" class="courbeRepresentative" expression="12/x" linkto="repere1" xmin="0.9" xmax="13.1" pas="0.1" stroke="blue" stroke-width="1" fill="transparent"></g>
+          </svg>
+        </div>
+      </li>
+      <li>
+      <p>Si $f(x)\geqslant 2$, alors $x$ ne peut pas être négatif car $f(x)$ est toujours positif.</p>
+      </li>
+      <li>
+      <p>On a $f(x)\geqslant 2$ si et seulement si la courbe représentative de $f$ est au-dessus de la droite d'équation $y=2.$</p>
+      <div class="figure">
+          <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="13" ymax ="13" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.2" ypas="0.2" stroke="gray" stroke-width="0.2"></g>
+            <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+            <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+            <g name="c1" class="courbeRepresentative" expression="12/x" linkto="repere1" xmin="0.9" xmax="13.1" pas="0.1" stroke="blue" stroke-width="1" fill="transparent"></g>
+            <g name="d1" class="courbeRepresentative" expression="2" linkto="repere1" xmin="-1" xmax="13" pas="0.1" stroke="red" stroke-width="1"></g>
+            <g name="c11" class="courbeRepresentative" expression="12/x" linkto="repere1" xmin="0.9" xmax="6" pas="0.01" stroke="green" stroke-width="4" fill="transparent" opacity="0.3"></g>
+          </svg>
+        </div>
+      <p>Par lecture graphique on trouve que l'ensemble des solutions de l'inéquation $f(x)\geqslant 2$ est $\left]0;\num{6}\right].$</p>
+      <p>On a donc $$S=\left]0;\num{6}\right].$$</p>
+      </li>
+      <li>
+      <p>La fonction $g$ est une fonction affine. Elle est de la forme $g:x\longmapsto ax+b$ avec $a=\dfrac{1}{2}$ et $b=1.$</p>
+      <p>La courbe représentative de $g$ est une droite.</p>
+      <div class="figure">
+          <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="13" ymax ="13" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.2" ypas="0.2" stroke="gray" stroke-width="0.2"></g>
+            <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+            <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+            <g name="c1" class="courbeRepresentative" expression="12/x" linkto="repere1" xmin="0.9" xmax="13.1" pas="0.1" stroke="blue" stroke-width="1" fill="transparent"></g>
+            <g name="d2" class="courbeRepresentative" expression="x/2+1" linkto="repere1" xmin="-1" xmax="13" pas="0.1" stroke="red" stroke-width="1"></g>
+          </svg>
+        </div>
+      </li>
+      <li>
+      <p>On a $f(x)=g(x)$ si et seulement si $\dfrac{12}{x}=\dfrac{x}{2}+1.$</p>
+      <p>D'une part on a les transformation suivantes :</p>
+      $$\begin{align*}
+      \dfrac{12}{x}&=\dfrac{x}{2}+1\\
+      \dfrac{12}{x}-\dfrac{x}{2}-1&=0\\
+      \dfrac{12\times 2}{2x}-\dfrac{x}{2}-\dfrac{2}{2}&=0\\
+      \dfrac{24}{2x}-\dfrac{x}{2}-\dfrac{2}{2}&=0\\
+      \dfrac{24}{2x}-\dfrac{x^2}{2x}-\dfrac{2x}{2x}&=0\\
+      \dfrac{24-x^2-2x}{2x}&=0\\
+      \dfrac{x^2+2x-24}{2x}&=0
+      \end{align*}$$
+      <p>$x$ est solution de cette équation quotient-nul si et seulement si $x\neq 0$ et $x^2+2x-24=0.$</p>
+      <p>D'autre part, on a :</p>
+      $$\begin{align*}
+      (x+6)(x-4)&=x^2-4x+6x-24\\
+      (x+6)(x-4)&=x^2+2x-24
+      \end{align*}$$
+      <p>On a donc bien $f(x)=g(x)$ si et seulement si $(x+6)(x-4)=0.$</p>
+      </li>
+      <li>
+      <p>Résoudre l'équation $f(x)=g(x)$ revient à résoudre l'équation $(x+6)(x-4)=0.$</p>
+      $$\begin{align*}
+      (x+6)(x-4)&=0\\
+      x+6&=0\quad\text{ou}\quad x-4=0\\
+      x&=-6\quad\text{ou}\quad x=4
+      \end{align*}$$
+      <p>L'ensemble des solutions de l'équation $f(x)=g(x)$ est $$\left\{-6;4\right\}.$$</p>
+      </li>
+    </ol>
+  </div>
+</div>
+</main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>

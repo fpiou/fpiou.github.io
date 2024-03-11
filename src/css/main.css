@@ -190,7 +190,7 @@ summary {
 }
 
 /* Tableau de variations */
-.tableauvariations {
+.tableauvariations,.tableauvariations2 {
   width: 100%;
   text-align: center;
   border-collapse: collapse;
@@ -198,12 +198,16 @@ summary {
   margin: 1em 0em;
   table-layout: fixed;
 }
-.tableauvariations tr:nth-child(1) {
+.tableauvariations tr:nth-child(1), .tableauvariations2 tr:nth-child(1) {
   border-bottom: 1px solid black;
 }
-.tableauvariations td:nth-child(1) {
+.tableauvariations td:nth-child(1), .tableauvariations2 td:nth-child(1){
   border-right: 1px solid black;
 }
+.tableauvariations2 tr:nth-child(2) {
+  border-bottom: 1px solid black;
+}
+
 
 /* Tableaux de signes */
 .tableausigne{

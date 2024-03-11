@@ -120,26 +120,508 @@
     
     <main><div class="question">
     <div class="enonce">
+    On considère une fonction polynomiale du second degré de la forme $f(x)=ax^2+bx+c$ avec $a\neq 0$.
+        <ol class="alphabetical-list">
+            <li>Calculez $f'(x).$</li>
+            <li>Etablir le tableau de signes de $f'$ en étudiant séparément les cas $a\gt 0$ et $a\lt 0.$</li>
+            <li>En déduire le tableau de variations de la fonction $f$ en fonction du signe de $a.$</li>
+            <li>Déterminez les coordonnées du sommet de la parabole sous forme de quotients.</li>
+            <li>Quel est le signe de $f(x)$ si $\Delta\lt 0$ ?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>La fonction dérivée $f'$ de la fonction $f$ est donnée par $f'(x)=2ax+b.$</p></li>
+            <li><p>On établit le tableau de signes de $f'$ en étudiant séparément les cas $a\gt 0$ et $a\lt 0.$</p>
+                <table class="tableausigne">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$-\dfrac{b}{2a}$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$2ax+b$ pour $a\gt 0$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$2ax+b$ pour $a\gt 0$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td>$0$</td>
+                        <td>$-$</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </li>
+            <li><p>En déduire le tableau de variations de la fonction $f$ en fonction du signe de $a.$</p>
+                <table class="tableauvariations">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td>$-\dfrac{b}{2a}$</td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$f'(x)$ pour $a\gt 0$</td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                    </tr>
+                    <tr>
+                        <td>$f(x)$ pour $a\gt 0$</td>
+                        <td>$\searrow$</td>
+                        <td>$f\left(-\frac{b}{2a}\right)$</td>
+                        <td>$\nearrow$</td>
+                    </tr>
+                </table>    
+                <table class="tableauvariations">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td>$-\dfrac{b}{2a}$</td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$f'(x)$ pour $a\lt 0$</td>
+                        <td>$+$</td>
+                        <td>$0$</td>
+                        <td>$-$</td>
+                    </tr>
+                    <tr>
+                        <td>$f(x)$ pour $a\lt 0$</td>
+                        <td>$\nearrow$</td>
+                        <td>$f\left(-\frac{b}{2a}\right)$</td>
+                        <td>$\searrow$</td>
+                    </tr>
+                </table>
+            </li>
+            <li>$$
+            \begin{align*}
+            f\left(-\frac{b}{2a}\right)&=a\left(-\frac{b}{2a}\right)^2+b\left(-\frac{b}{2a}\right)+c\\
+            &=a\times \dfrac{b^2}{4a^2}-\dfrac{b^2}{2a}+c\\
+            &=\dfrac{b^2}{4a}-\dfrac{2b^2}{4a}+c\\
+            &=-\dfrac{b^2}{4a}+c\\
+            &=-\dfrac{b^2}{4a}+\dfrac{4ac}{4a}\\
+            &=-\dfrac{b^2-4ac}{4a}\\
+            &=-\dfrac{\Delta}{4a}
+            \end{align*}
+            $$
+            </li>
+            <li>
+            <p>Supposons que $\Delta\lt 0.$</p>
+            <p>Considérons le cas où $a\gt 0.$</p>
+            <p>On a $f\left(-\dfrac{b}{2a}\right)=-\dfrac{\Delta}{4a}\gt 0.$</p>
+            <p>On en déduit que $f$ admet un minimum en $-\dfrac{b}{2a}$ et que $f(x)\gt 0$ pour tout $x$ de $\mathbb{R}.$</p>
+            <p>Considérons le cas où $a\lt 0.$</p>
+            <p>On a $f\left(-\dfrac{b}{2a}\right)=-\dfrac{\Delta}{4a}\lt 0.$</p>
+            <p>On en déduit que $f$ admet un maximum en $-\dfrac{b}{2a}$ et que $f(x)\lt 0$ pour tout $x$ de $\mathbb{R}.$</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+    Pour chacune des fonctions polynomiales suivantes, calculez la fonction dérivée et en déduire une minoration ou une majoration de la fonction.
+        <ol class="horizontal-list">
+            <li>$f_1:x\longmapsto 2x^2-4x+5$</li>
+            <li>$f_2:x\longmapsto -3x^2+7x-1$</li>
+            <li>$f_3:x\longmapsto 4x^2-6x-5$</li>
+            <li>$f_4:x\longmapsto -9x^2+6x-1$</li>
+            <li> Comment pouvait-on deviner plus rapidement la dernière réponse ?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>La fonction dérivée $f_1'$ de la fonction $f$ est donnée par $f_1'(x)=4x-4.$</p>
+            <p>On a $f_1'(x)=0$ si et seulement si $4x-4=0$ c'est-à-dire si et seulement si $x=1.$</p>
+            <p>On en déduit le tableau de variations suivant :</p>
+            <table class="tableauvariations">
+                <tr>
+                    <td>$x$</td>
+                    <td>$-\infty$</td>
+                    <td>$1$</td>
+                    <td>$+\infty$</td>
+                </tr>
+                <tr>
+                    <td>$f_1'(x)$</td>
+                    <td>$-$</td>
+                    <td>$0$</td>
+                    <td>$+$</td>
+                </tr>
+                <tr>
+                    <td>$f_1(x)$</td>
+                    <td>$\searrow$</td>
+                    <td></td>
+                    <td>$\nearrow$</td>
+                </tr>
+            </table>
+            <p>On en déduit que $f_1$ admet un mnimum en $x=1$ et que $f_1(1)=2-4+5=3.$</p></li>
+            <p>Donc pour tout $x$ réel, on a $f_1(x)\geqslant 3.$</p>
+            <li><p>La fonction dérivée $f_2'$ de la fonction $f$ est donnée par $f_2'(x)=-6x+7.$</p>
+            <p>On a $f_2'(x)=0$ si et seulement si $-6x+7=0$ c'est-à-dire si et seulement si $x=\dfrac{7}{6}.$</p>
+            <p>On en déduit le tableau de variations suivant :</p>
+            <table class="tableauvariation">
+                <tr>
+                    <td>$x$</td>
+                    <td>$-\infty$</td>
+                    <td>$\frac{7}{6}$</td>
+                    <td>$+\infty$</td>
+                </tr>
+                <tr>
+                    <td>$f_2'(x)$</td>
+                    <td>$+$</td>
+                    <td>$0$</td>
+                    <td>$-$</td>
+                </tr>
+                <tr>
+                    <td>$f_2(x)$</td>
+                    <td>$\nearrow$</td>
+                    <td></td>
+                    <td>$\searrow$</td>
+                </tr>
+            </table>
+            <p>On en déduit que $f_2$ admet un maximum en $x=1$ et que
+            $$\begin{align*}
+            f_2\left(\dfrac{7}{6}\right)&=-3\left(\dfrac{7}{6}\right)^2+7\times\dfrac{7}{6}-1\\
+            &=-3\times\dfrac{49}{36}+\dfrac{49}{6}-1\\
+            &=-\dfrac{49}{12}+\dfrac{49}{6}-1\\
+            &=-\dfrac{49}{12}+\dfrac{98}{12}-\dfrac{12}{12}\\
+            &=\dfrac{37}{12}
+            \end{align*}$$
+            <p>Donc pour tout $x$ réel, on a $f_2(x)\leqslant \dfrac{37}{12}.$</p>
+            </li>
+            <li><p>La fonction dérivée $f_3'$ de la fonction $f$ est donnée par $f_3'(x)=8x-6.$</p>
+            <p>On a $f_3'(x)=0$ si et seulement si $8x-6=0$ c'est-à-dire si et seulement si $x=\dfrac{3}{4}.$</p>
+            <p>On en déduit le tableau de variations suivant :</p>
+            <table class="tableauvariation">
+                <tr>
+                    <td>$x$</td>
+                    <td>$-\infty$</td>
+                    <td>$\frac{3}{4}$</td>
+                    <td>$+\infty$</td>
+                </tr>
+                <tr>
+                    <td>$f_3'(x)$</td>
+                    <td>$+$</td>
+                    <td>$0$</td>
+                    <td>$-$</td>
+                </tr>
+                <tr>
+                    <td>$f_3(x)$</td>
+                    <td>$\nearrow$</td>
+                    <td></td>
+                    <td>$\searrow$</td>
+                </tr>
+            </table>
+            <p>On en déduit que $f_3$ admet un maximum en $x=\dfrac{3}{4}$ et que
+            $$\begin{align*}
+            f_3\left(\dfrac{3}{4}\right)&=4\left(\dfrac{3}{4}\right)^2-6\times\dfrac{3}{4}-5\\
+            &=4\times\dfrac{9}{16}-\dfrac{18}{4}-5\\
+            &=\dfrac{9}{4}-\dfrac{18}{4}-5\\
+            &=-\dfrac{9}{4}-5\\
+            &=-\dfrac{9}{4}-\dfrac{20}{4}\\
+            &=-\dfrac{29}{4}
+            \end{align*}$$
+            <p>Donc pour tout $x$ réel, on a $f_3(x)\leqslant -\dfrac{29}{4}.$</p>
+            </li>
+            <li><p>La fonction dérivée $f_4'$ de la fonction $f$ est donnée par $f_4'(x)=-18x+6.$</p>
+            <p>On a $f_4'(x)=0$ si et seulement si $-18x+6=0$ c'est-à-dire si et seulement si $x=\dfrac{1}{3}.$</p>
+            <p>On en déduit le tableau de variations suivant :</p>
+            <table class="tableauvariation">
+                <tr>
+                    <td>$x$</td>
+                    <td>$-\infty$</td>
+                    <td>$\frac{1}{3}$</td>
+                    <td>$+\infty$</td>
+                </tr>
+                <tr>
+                    <td>$f_4'(x)$</td>
+                    <td>$+$</td>
+                    <td>$0$</td>
+                    <td>$-$</td>
+                </tr>
+                <tr>
+                    <td>$f_4(x)$</td>
+                    <td>$\nearrow$</td>
+                    <td></td>
+                    <td>$\searrow$</td>
+                </tr>
+            </table>
+            <p>On en déduit que $f_4$ admet un maximum en $x=\dfrac{1}{3}$ et que
+            $$\begin{align*}
+            f_4\left(\dfrac{1}{3}\right)&=-9\left(\dfrac{1}{3}\right)^2+6\times\dfrac{1}{3}-1\\
+            &=-9\times\dfrac{1}{9}+2-1\\
+            &=-1+2-1\\
+            &=0
+            \end{align*}$$
+            <p>Donc pour tout $x$ réel, on a $f_4(x)\leqslant 0.$</p>
+            </li>
+            <li><p>On reconnait l'opposé d'une identité remarquable :
+            $$-9x^2+6x-1=-\left(9x^2-6x+1\right)=-\left(3x-1\right)^2$$</p>
+            <p>On en déduit que pour tout $x$ réel, on a $f_4(x)\leqslant 0.$</p>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+    Les fonctions suivantes admettent-elles des extremums&nbsp;?
+    <ul class="horizontal-list">
+        <li>$f:x\longmapsto x^3-2x^2+2x-7$</li>
+        <li>$g:x\longmapsto -2x^3+3x^2+12x-10$</li>
+        <li>$h:x\longmapsto -x^3+9x^2-27x+12$</li>
+    </ul>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+    Considérons la fonction $f:x\longmapsto \dfrac{x}{3}+\dfrac{12}{x}$.
+        <ol class="alphabetical-list">
+            <li>Déterminez son domaine de définition.</li>
+            <li>Déterminez son domaine de dérivabilité.</li>
+            <li>Calculez la dérivée de la fonction $f$.</li>
+            <li>Ecrire $f'(x)$ sous la forme d'un quotient et étudier son signe.</li>
+            <li>En déduire le tableau de variations de $f.$</li>
+            <li>Etudiez la parité de la fonction $f$.</li>
+            <li>Complétez le tableau de valeurs suivant :
+                <table class="tableauvaleurs">
+            <thead>
+            <tr>
+                <th>$x$</th>
+                <td>$1$</td>
+                <td>$2$</td>
+                <td>$3$</td>
+                <td>$4$</td>
+                <td>$6$</td>
+                <td>$8$</td>
+                <td>$12$</td>
+            </tr>
+            <tr>
+                <th>$f(x)$</th>
+                <td>$ $</td>
+                <td>$ $</td>
+                <td>$ $</td>
+                <td>$ $</td>
+                <td>$ $</td>
+                <td>$ $</td>
+                <td>$ $</td>
+            </tr>
+            </thead>
+        </table>
+            </li>
+            <li>Tracez la courbe représentative de $f$.
+            <div class="figure">
+                <svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+                    <g name="repere1" class="repere" xmin="-12" ymin="-13" xmax="12" ymax ="13" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.3333" stroke="gray" stroke-width="0.2"></g>
+                    <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-10" y="-5" style="font-size:0.5rem;">1</g>
+                </svg>
+            </div>
+            </li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Le domaine de définition de la fonction $f$ est $\mathbb{R}^*.$</p></li>
+            <li><p>Le domaine de dérivabilité de la fonction $f$ est $\mathbb{R}^*.$</p></li>
+            <li><p>La dérivée de la fonction $f$ est donnée par $f'(x)=\dfrac{1}{3}-\dfrac{12}{x^2}$.</p></li>
+            <li><p>On écrit $f'(x)$ sous la forme d'un quotient :</p>
+                $$f'(x)=\dfrac{x^2-36}{3x^2}=\dfrac{(x-6)(x+6)}{3x^2}$$
+                <p>On en déduit le tableau de signes suivant (sachant que la fonction n'est pas définie en $0$) : </p>
+                <table class="tableausigne">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$-6$</td>
+                        <td></td>
+                        <td>$6$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$x-6$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x+6$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$f'(x)$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td>$0$</td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+            </li>
+            <li><p>La fonction $f$ est impaire car pour tout $x$ de $\mathbb{R}^*$, on a $f(-x)=\dfrac{-x}{3}+\dfrac{12}{-x}=-\dfrac{x}{3}+\dfrac{12}{x}=-f(x)$.</p></li>
+            <li>
+                <table class="tableauvaleurs">
+                    <thead>
+                    <tr>
+                        <th>$x$</th>
+                        <td>$1$</td>
+                        <td>$2$</td>
+                        <td>$3$</td>
+                        <td>$4$</td>
+                        <td>$6$</td>
+                        <td>$8$</td>
+                        <td>$12$</td>
+                    </tr>
+                    <tr>
+                        <th>$f(x)$</th>
+                        <td>$12\frac{1}{3}$</td>
+                        <td>$6\frac{2}{3}$</td>
+                        <td>$5$</td>
+                        <td>$4\frac{1}{3}$</td>
+                        <td>$4$</td>
+                        <td>$4\frac{1}{6}$</td>
+                        <td>$5$</td>
+                    </tr>
+                    </thead>
+                </table>
+            </li>
+            <li>
+            <div class="figure">
+                <svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+                    <g name="repere1" class="repere" xmin="-12" ymin="-13" xmax="12" ymax ="13" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.3333" stroke="gray" stroke-width="0.2"></g>
+                    <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="c1" class="courbeRepresentative" expression="x/3+12/x" linkto="repere1" xmin="-12" xmax="-0.01" pas="0.01" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="c2" class="courbeRepresentative" expression="x/3+12/x" linkto="repere1" xmin="0.01" xmax="12" pas="0.01" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-10" y="-5" style="font-size:0.5rem;">1</g>
+                </svg>
+            </div>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
     On considère la fonction $f$ définie par :
             $\begin{matrix}
                 f: & \mathbb{R} & \longrightarrow & \mathbb{R} \\
                 & x & \longmapsto & 3x^3-36x
             \end{matrix}$
         <ol class="alphabetical-list">
-            <li>Calculez la dérivée de la fonction $f$.</li>
-            <li>Factorisez $f'(x)$ à l'aide d'une identité remarquable.</li>
+            <li>Etudiez la parité de la fonction $f.$</li>
+            <li>Déterminez les racines de la fonction $f.$</li>
+            <li>Calculez $f'$ puis la factoriser.</li>
             <li>Etablir son tableau de signes.</li>
             <li>En déduire son tableau de variations.</li>
-            <li>Tracez la courbe représentative de $f$.</li>
+            <li>Tracez la courbe représentative de $f$.<br>
+            <i>Indication :</i> $2\sqrt{3}\approx\num{3.5}$</li> 
+            <div class="figure">
+                <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="-5" ymin="-60" xmax="5" ymax ="80" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.2" ypas="2" stroke="gray" stroke-width="0.2"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="10" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="10" stroke="black" stroke-width="1"></g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="10" stroke="none"></g>
+                <g class="label" linkto="J" x="-10" y="-5" style="font-size:0.5rem;">10</g>
+                </svg>
+            </div>
+            </li>
         </ol>
     </div>
     <div class="solution">
         <ol class="alphabetical-list">
-            <li><p>La dérivée de la fonction $f$ est donnée par $f'(x)=9x^2-36$.</p></li>
-            <li><p>On factorise $f'(x)$ à l'aide de l'identité remarquable $a^2-b^2=(a-b)(a+b)$, on a donc :</p>
+            <li><p>La fonction $f$ est impaire car pour tout $x$ de $\mathbb{R}$, on a $f(-x)=3(-x)^3-36(-x)=-3x^3+36x=-f(x)$.</p></li>
+            <li><p>Les racines de la fonction $f$ sont les solutions de l'équation $3x^3-36x=0$. On factorise par $3x$ et on obtient $3x(x^2-12)=0$ puis la troisième identité remarquable donne $3x(x-\sqrt{12})(x+\sqrt{12})=0$. Les racines de la fonction $f$ sont donc $x_1=0$, $x_2=-2\sqrt{3}$ et $x_3=2\sqrt{3}$.</p></li>
+            <li><p>La dérivée de la fonction $f$ est donnée par $f'(x)=9x^2-36$.</p>
+            <p>On factorise $f'(x)$ à l'aide de l'identité remarquable $a^2-b^2=(a-b)(a+b)$, on a donc :</p>
                 $$f'(x)=9x^2-36=9(x^2-4)=9(x-2)(x+2)$$
             </li>
-            <li></li>
+            <li>
+                <table class="tableausigne">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$-2$</td>
+                        <td></td>
+                        <td>$2$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$x-2$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x+2$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$f'(x)$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td>$0$</td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </li>
             <li><p>On en déduit le tableau de variations suivant :</p>
                 <div class="figure">
             <svg viewBox="0 0 400 150">
@@ -212,24 +694,247 @@
         </div>
             </li>
             <li>
-                <div class="figure">
-                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" class="quadrillage">
-                    <g name="repere1" class="repere" xmin="-5" ymin="-60" xmax="5" ymax ="80" xorigine="0" yorigine="0"></g>
-                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
-                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
-                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
-                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="10" stroke="black" stroke-width="1"></g>
-                    <g name="d1" class="courbeRepresentative" expression="3x^3-36x" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
-                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-                    <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
-                    <g name="J" class="point labeled" repere="repere1" x="0" y="10" stroke="none"></g>
-                    <g class="label" linkto="J" x="-7" y="-5" style="font-size:0.5rem;">10</g>
-                    </svg>
-                </div>
+            <div class="figure">
+                <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="-5" ymin="-60" xmax="5" ymax ="80" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.2" ypas="2" stroke="gray" stroke-width="0.2"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="10" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="10" stroke="black" stroke-width="1"></g>
+                <g name="d1" class="courbeRepresentative" expression="3x^3-36x" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="10" stroke="none"></g>
+                <g class="label" linkto="J" x="-10" y="-5" style="font-size:0.5rem;">10</g>
+                </svg>
+            </div>  
             </li>
         </ol>
     </div>
-</div></main>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Considérons la fonction $f:x\longmapsto \dfrac{x^2}{54}+\dfrac{1}{x}$.
+        <ol class="alphabetical-list">
+            <li>Déterminez le domaine de définition de $f.$</li>
+            <li>Déterminez le domaine de dérivabilité de $f.$</li>
+            <li>Calculez $f'(x)$.</li>
+            <li>Etudier les variations de $g:x\longmapsto x^2+3x+9$ pour en déterminer le signe puis développer $(x-3)(x^2+3x+9)$ pour faire le lien avec $f'(x).$</li>
+            <li>Etudiez le signe de $f'(x)$.</li>
+            <li>En déduire le tableau de variations de $f$.</li>
+            <li>Calculez $f(3)$ et $f(6)$.</li>
+            <li>Complétez la courbe représentative de $f$.
+            <div class="figure">
+                <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+                    <g name="repere1" class="repere" xmin="-6" ymin="-6" xmax="6" ymax ="6" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.166667" stroke="gray" stroke-width="0.2"></g>
+                    <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="c1" class="courbeRepresentative" expression="x^2/54+1/x" linkto="repere1" xmin="-12" xmax="-0.01" pas="0.01" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="c2" class="courbeRepresentative" expression="x^2/54+1/x" linkto="repere1" xmin="0.01" xmax="1" pas="0.01" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-10" y="-5" style="font-size:0.5rem;">1</g>
+                </svg>
+            </div>
+            </li>
+            <li>La courbe représentative de $f$ admet-elle un centre de symétrie&nbsp;? Justifier.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Le domaine de définition de la fonction $f$ est $\mathbb{R}^*.$</p></li>
+            <li><p>Le domaine de dérivabilité de la fonction $f$ est $\mathbb{R}^*.$</p></li>
+            <li>
+            $$\begin{align*}
+            f'(x)&=\dfrac{x}{27}-\dfrac{1}{x^2}\\
+            &=\dfrac{x^3-27}{27x^2}
+            \end{align*}$$
+            </li>
+            <li>
+            <p>Tout d'abord étudions les variations de $g.$</p>
+            <p>On a $g'(x)=2x+3$</p>
+            <p>On en déduit le tableau de signes suivant : </p>
+            <table class="tableausigne">
+                <tr>
+                    <td>$x$</td>
+                    <td>$-\infty$</td>
+                    <td></td>
+                    <td>$-\dfrac{3}{2}$</td>
+                    <td></td>
+                    <td>$+\infty$</td>
+                </tr>
+                <tr>
+                    <td>$2x+3$</td>
+                    <td></td>
+                    <td>$-$</td>
+                    <td>$0$</td>
+                    <td>$+$</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>$g(x)$</td>
+                    <td></td>
+                    <td>$-$</td>
+                    <td>$0$</td>
+                    <td>$+$</td>
+                    <td></td>
+                </tr>
+            </table>
+            <p>On en déduit que $g$ admet donc un minimum en $-\dfrac{3}{2}$.</p>
+            <p>$$\begin{align*}
+            g\left(-\dfrac{3}{2}\right)&=\left(-\dfrac{3}{2}\right)^2+3\left(-\dfrac{3}{2}\right)+9\\
+            &=\dfrac{9}{4}-\dfrac{9}{2}+9\\
+            &=\dfrac{9}{4}-\dfrac{18}{4}+9\\
+            &=\dfrac{9-18+36}{4}\\
+            &=\dfrac{27}{4}
+            \end{align*}$$</p>
+            <p>On en déduit que $g(x)\geqslant\dfrac{27}{4}$ pour tout $x$ de $\mathbb{R}.$</p>
+            <p>Développons maintenant $(x-3)(x^2+3x+9)$ :</p>
+            $$\begin{align*}
+            (x-3)(x^2+3x+9)&=x^3+3x^2+9x-3x^2-9x-27\\
+            &=x^3-27
+            \end{align*}$$
+            <p>On en déduit pour $f'(x)$ :</p>
+            $$f'(x)=\dfrac{x^3-27}{27x^2}=\dfrac{(x-3)(x^2+3x+9)}{27x^2}$$
+            </li>
+            <li>
+            <p>On en déduit le tableau de signes suivant (sachant que la fonction n'est pas définie en $0$) : </p>
+                <table class="tableausigne">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$0$</td>
+                        <td></td>
+                        <td>$3$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$x-3$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x^2+3x+9$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$f'(x)$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                $$\begin{align*}
+                f(3)&=\dfrac{3^2}{54}+\dfrac{1}{3}\\
+                &=\dfrac{1}{6}+\dfrac{1}{3}\\
+                &=\dfrac{1}{6}+\dfrac{2}{6}\\
+                &=\dfrac{1+2}{6}\\
+                &=\dfrac{3}{6}\\
+                &=\dfrac{1}{2}
+                \end{align*}$$
+                $$\begin{align*}
+                f(6)&=\dfrac{6^2}{54}+\dfrac{1}{6}\\
+                &=\dfrac{36}{54}+\dfrac{1}{6}\\
+                &=\dfrac{2}{3}+\dfrac{1}{6}\\
+                &=\dfrac{4}{6}+\dfrac{1}{6}\\
+                &=\dfrac{5}{6}
+                \end{align*}$$
+            </li>
+            <li>
+            <div class="figure">
+                <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+                    <g name="repere1" class="repere" xmin="-6" ymin="-6" xmax="6" ymax ="6" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.166667" stroke="gray" stroke-width="0.2"></g>
+                    <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="c1" class="courbeRepresentative" expression="x^2/54+1/x" linkto="repere1" xmin="-12" xmax="-0.01" pas="0.01" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="c2" class="courbeRepresentative" expression="x^2/54+1/x" linkto="repere1" xmin="0.01" xmax="12" pas="0.01" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-10" y="-5" style="font-size:0.5rem;">1</g>
+                </svg>
+            </div>
+            </li>
+            <li>$$\begin{align*}
+            f(-3)&=\dfrac{(-3)^2}{54}+\dfrac{1}{-3}\\
+            &=\dfrac{9}{54}-\dfrac{1}{3}\\
+            &=\dfrac{1}{6}-\dfrac{1}{3}\\
+            &=\dfrac{1}{6}-\dfrac{2}{6}\\
+            &=\dfrac{1-2}{6}\\
+            &=-\dfrac{1}{6}
+            \end{align*}$$
+            <p>Ainsi $f(3)\neq f(-3)$ et la courbe représentative de $f$ n'admet pas de centre de symétrie.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Considérons les fonctions suivantes.
+        <ul class="horizontal-list">
+            <li>$f:x\longmapsto x\sqrt{x}$</li>
+            <li>$g:x\longmapsto x^2\sqrt{x}$</li>
+            <li>$h:x\longmapsto g(x)-f(x)$</li>
+        </ul>
+        <ol class="alphabetical-list">
+            <li>Pourquoi peut-on affirmer que ces fonctions sont définies sur $\mathbb{R}^*$  et dérivable sur $\mathbb{R}^*$ ?</li>
+            <li>Calculez les fonctions dérivées de ces fonctions.</li>
+            <li>Etudiez les variations de ces fonctions.</li>
+            <li>Déterminez les zéros de ces fonctions.</li>
+            <li>En déduire le signe de ces fonctions.</li>
+            <li>Associez chaque fonction à sa courbe.
+            <div class="figure">
+                <svg viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">
+                    <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="2" ymax ="2" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.1" ypas="0.1" stroke="gray" stroke-width="0.2"></g>
+                    <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="0.2" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="0.2" stroke="black" stroke-width="1"></g>
+                    <g name="c1" class="courbeRepresentative" expression="x*sqrt(x)" linkto="repere1" xmin="0" xmax="2" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="c1" class="courbeRepresentative" expression="x^2*sqrt(x)" linkto="repere1" xmin="0" xmax="2" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="c1" class="courbeRepresentative" expression="x^2*sqrt(x)-x*sqrt(x)" linkto="repere1" xmin="0" xmax="2" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-10" y="-5" style="font-size:0.5rem;">1</g>
+                </svg>
+            </div>
+            </li>
+        </ol>
+    </div>
+</main>
     <footer>
       Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
       Henry Bergson à Angers.<br />

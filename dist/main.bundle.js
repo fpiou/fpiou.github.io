@@ -38588,9 +38588,12 @@ var getNuagesPointsFigure = function (figure) {
 };
 var constructNuagePoints = function (nuagePoints) {
   var repere = getElementLinkto(nuagePoints, 0);
-  var xmin = parseFloat(nuagePoints.getAttribute("xmin"));
-  var xmax = parseFloat(nuagePoints.getAttribute("xmax"));
-  var pas = parseFloat(nuagePoints.getAttribute("pas"));
+  var xmin = nuagePoints.getAttribute("xmin");
+  xmin = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(xmin);
+  var xmax = nuagePoints.getAttribute("xmax");
+  xmax = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(xmax);
+  var pas = nuagePoints.getAttribute("pas");
+  pas = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(pas);
   var expression = nuagePoints.getAttribute("expression");
   var points = [];
   let n = (xmax - xmin) / pas; // Calcule le nombre total d'itérations
@@ -38611,8 +38614,8 @@ var constructNuagePoints = function (nuagePoints) {
     pointSVG.id = nuagePoints.id + "-" + index;
     pointSVG.setAttribute("x", point[0]);
     pointSVG.setAttribute("y", point[1]);
+    pointSVG.setAttribute("forme", "+");
     parametresPoint = "";
-    parametresPoint += "forme:+,";
     parametresPoint += ",style:" + nuagePoints.getAttribute("style");
     pointSVG.setAttribute("parametres", parametresPoint);
     // On ajoute le point à la figure
@@ -39112,9 +39115,12 @@ var getCourbesRepresentativesFigure = function (figure) {
 var createCourbeRepresentative = function (courbeRepresentative) {
   // <g name="c1" class="courbeRepresentative" expression="x^2" pas="0.01" xmin="-2" xmax="3" linkto="repere1" stroke="red" stroke-width="0.5"></g>
   var repere = getElementLinkto(courbeRepresentative, 0);
-  var xmin = parseFloat(courbeRepresentative.getAttribute("xmin"));
-  var xmax = parseFloat(courbeRepresentative.getAttribute("xmax"));
-  var pas = parseFloat(courbeRepresentative.getAttribute("pas"));
+  var xmin = courbeRepresentative.getAttribute("xmin");
+  xmin = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(xmin);
+  var xmax = courbeRepresentative.getAttribute("xmax");
+  xmax = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(xmax);
+  var pas = courbeRepresentative.getAttribute("pas");
+  pas = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(pas);
   var expression = courbeRepresentative.getAttribute("expression");
   var points = [];
   let n = (xmax - xmin) / pas; // Calcule le nombre total d'itérations
@@ -39237,11 +39243,133 @@ var initilialiserIntersectionPathsFigure = function (figure) {
     initialiserIntersectionPath(intersectionPath);
   });
 };
+var initialiserAnglesDroits = function (figure) {
+  getAnglesDroits(figure).forEach(function (angleDroit) {
+    initialiserAngleDroit(angleDroit);
+  });
+};
+var getAnglesDroits = function (figure) {
+  var anglesDroits = document.querySelectorAll("g.angleDroit");
+  var anglesDroitsArray = Array.from(anglesDroits);
+  return anglesDroitsArray.filter(angleDroit => angleDroit.id.split("-")[0] == figure.id);
+};
+var createAngleDroit = function (angleDroit) {
+  var linkto = angleDroit.getAttribute("linkto").split(" ");
+  var A = angleDroit.parentNode.querySelector("#" + linkto[0]);
+  var B = angleDroit.parentNode.querySelector("#" + linkto[1]);
+  var C = angleDroit.parentNode.querySelector("#" + linkto[2]);
+  var P1 = getCoordonneesPoint(A);
+  var P2 = getCoordonneesPoint(B);
+  var P3 = getCoordonneesPoint(C);
+
+  // Angle entre AB et l'axe horizontal en prenant en compte l'orientation de l'axe des y de SVG
+  var angleAB = Math.atan2(P2[1] - P1[1], P2[0] - P1[0]);
+
+  // La taille du côté du carré
+  var size = 10;
+
+  // Calculer les points du carré sans rotation
+  var d = "M ".concat(P2[0], " ").concat(P2[1], " ") + "L ".concat(P2[0] + size * Math.cos(angleAB), " ").concat(P2[1] + size * Math.sin(angleAB), " ") + "L ".concat(P2[0] + size * Math.cos(angleAB) - size * Math.sin(angleAB), " ").concat(P2[1] + size * Math.sin(angleAB) + size * Math.cos(angleAB), " ") + "L ".concat(P2[0] - size * Math.sin(angleAB), " ").concat(P2[1] + size * Math.cos(angleAB), " Z");
+  var angleDroitSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  angleDroitSVG.setAttribute("d", d);
+  angleDroitSVG.setAttribute("fill", "none");
+  angleDroitSVG.setAttribute("stroke", "black");
+  angleDroit.appendChild(angleDroitSVG);
+  //Récupérer le transform de B s'il existe et l'appliquer à angleDroit
+  if (B.getAttribute("transform") != null) {
+    angleDroit.setAttribute("transform", B.getAttribute("transform"));
+  }
+};
+var initialiserAngleDroit = function (angleDroit) {
+  createAngleDroit(angleDroit);
+};
+var getLabels = function (figure) {
+  var labels = document.querySelectorAll("g.label");
+  var labelsArray = Array.from(labels);
+  return labelsArray.filter(label => label.id.split("-")[0] == figure.id && label.getAttribute("linkto") == null);
+};
+var initialiserLabel = function (label) {
+  initialiserPointTransform(label);
+  var text = label.innerHTML;
+  //Créer un foreignObject
+  var foreignObject = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject");
+  foreignObject.setAttribute("x", 0);
+  foreignObject.setAttribute("y", 0);
+  foreignObject.setAttribute("width", 100);
+  foreignObject.setAttribute("height", 100);
+  //Créer un div
+  var div = document.createElement("div");
+  div.innerHTML = text;
+  foreignObject.appendChild(div);
+  label.appendChild(foreignObject);
+};
+var initialiserLabels = function (figure) {
+  getLabels(figure).forEach(function (label) {
+    initialiserLabel(label);
+  });
+};
+var getQuadrillagesReperesFigure = function (figure) {
+  var quadrillages = document.querySelectorAll("g.quadrillageRepere");
+  var quadrillagesArray = Array.from(quadrillages);
+  return quadrillagesArray.filter(quadrillage => quadrillage.id.split("-")[0] == figure.id);
+};
+var initialiserQuadrillageRepere = function (quadrillage) {
+  var repere = getElementLinkto(quadrillage, 0);
+  var echelleX = repere.getAttribute("echellex");
+  var echelleY = repere.getAttribute("echelley");
+  var viewBox = getViewboxFigure(repere.parentNode);
+  var xmin = parseFloat(repere.getAttribute("xmin"));
+  var xmax = parseFloat(repere.getAttribute("xmax"));
+  var ymin = parseFloat(repere.getAttribute("ymin"));
+  var ymax = parseFloat(repere.getAttribute("ymax"));
+  var xpas = parseFloat(quadrillage.getAttribute("xpas"));
+  var ypas = parseFloat(quadrillage.getAttribute("ypas"));
+  var x = xmin;
+  var y = ymin;
+  var quadrillageSVG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  quadrillageSVG.setAttribute("stroke", quadrillage.getAttribute("stroke"));
+  quadrillageSVG.setAttribute("stroke-width", quadrillage.getAttribute("stroke-width"));
+  quadrillageSVG.setAttribute("fill", "none"); // Généralement, les quadrillages n'ont pas de remplissage.
+
+  while (x <= xmax) {
+    var x1 = getCoordonneesDansViewBox(repere, x, ymin)[0];
+    var x2 = x1; // Correction : pour une ligne verticale, x1 et x2 doivent être les mêmes, y1 et y2 varient.
+    var y1 = getCoordonneesDansViewBox(repere, x, ymin)[1];
+    var y2 = getCoordonneesDansViewBox(repere, x, ymax)[1];
+    var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", x1);
+    line.setAttribute("y1", y1);
+    line.setAttribute("x2", x2);
+    line.setAttribute("y2", y2);
+    quadrillageSVG.appendChild(line);
+    x += xpas;
+  }
+  while (y <= ymax) {
+    var x1 = getCoordonneesDansViewBox(repere, xmin, y)[0];
+    var x2 = getCoordonneesDansViewBox(repere, xmax, y)[0];
+    var y1 = getCoordonneesDansViewBox(repere, xmin, y)[1];
+    var y2 = y1; // Correction : pour une ligne horizontale, y1 et y2 doivent être les mêmes, x1 et x2 varient.
+    var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", x1);
+    line.setAttribute("y1", y1);
+    line.setAttribute("x2", x2);
+    line.setAttribute("y2", y2);
+    quadrillageSVG.appendChild(line);
+    y += ypas;
+  }
+  quadrillage.appendChild(quadrillageSVG);
+};
+var initialiserQuadrillagesReperesFigure = function (figure) {
+  getQuadrillagesReperesFigure(figure).forEach(function (quadrillage) {
+    initialiserQuadrillageRepere(quadrillage);
+  });
+};
 var initialiserFigure = function (figure) {
   addQuadrillage(figure);
   addBoutonQuadrillage(figure);
   addBoutonPleinEcran(figure);
   initialiserReperesFigure(figure);
+  initialiserQuadrillagesReperesFigure(figure);
   initialiserPointsFigure(figure);
   initialiserVecteursFigure(figure);
   initialiserDroitesFigure(figure);
@@ -39260,6 +39388,8 @@ var initialiserFigure = function (figure) {
   initialiserCourbesRepresentativesFigure(figure);
   initialiserpathsPointsControlsFigure(figure);
   initilialiserIntersectionPathsFigure(figure);
+  initialiserAnglesDroits(figure);
+  initialiserLabels(figure);
 };
 var getCoordonneesPoint = function (point) {
   var data = point.getAttribute("transform").split("translate(")[1].split(")")[0].split(",");
@@ -39463,6 +39593,40 @@ var actualiserCoordonneesPolygonesLies = function (point) {
     actualiserPolygone(polygones[i]);
   }
 };
+var actualiserAngleDroit = function (angleDroit) {
+  var linkto = angleDroit.getAttribute("linkto").split(" ");
+  var A = angleDroit.parentNode.querySelector("#" + linkto[0]);
+  var B = angleDroit.parentNode.querySelector("#" + linkto[1]);
+  var C = angleDroit.parentNode.querySelector("#" + linkto[2]);
+  var P1 = getCoordonneesPoint(A);
+  var P2 = getCoordonneesPoint(B);
+  var P3 = getCoordonneesPoint(C);
+
+  // Angle entre AB et l'axe horizontal en prenant en compte l'orientation de l'axe des y de SVG
+  var angleAB = Math.atan2(P2[1] - P1[1], P2[0] - P1[0]) - Math.PI;
+
+  // La taille du côté du carré en fonction de l'attribut size
+  var size = 10;
+  if (angleDroit.hasAttribute("size")) {
+    size = parseFloat(angleDroit.getAttribute("size"));
+  }
+  P2[0] = 0;
+  P2[1] = 0;
+  var d = "M ".concat(P2[0], " ").concat(P2[1], " ") + "L ".concat(P2[0] + size * Math.cos(angleAB), " ").concat(P2[1] + size * Math.sin(angleAB), " ") + "L ".concat(P2[0] + size * Math.cos(angleAB) - size * Math.sin(angleAB), " ").concat(P2[1] + size * Math.sin(angleAB) + size * Math.cos(angleAB), " ") + "L ".concat(P2[0] - size * Math.sin(angleAB), " ").concat(P2[1] + size * Math.cos(angleAB), " Z");
+  var path = angleDroit.querySelector("path");
+  path.setAttribute("d", d);
+  //Récupérer le transform de B s'il existe et l'appliquer à angleDroit
+  if (B.getAttribute("transform") != null) {
+    angleDroit.setAttribute("transform", B.getAttribute("transform"));
+  }
+};
+var actualiserAnglesDroits = function (point) {
+  var idPoint = point.getAttribute("id");
+  var anglesDroits = document.querySelectorAll("g.angleDroit[linkto*='" + idPoint + "']");
+  for (var i = 0; i < anglesDroits.length; i++) {
+    actualiserAngleDroit(anglesDroits[i]);
+  }
+};
 var actualiserCoordonneesPoint = function (point) {
   actualiserCoordonneesPointClassTranslation(point);
   actualiserCoordonneesPointClassDilatation(point);
@@ -39473,6 +39637,7 @@ var actualiserCoordonneesPoint = function (point) {
   actualiserCoordonneesDemiDroitesLies(point);
   actualiserCoordonneesSegmentsLies(point);
   actualiserCoordonneesPolygonesLies(point);
+  actualiserAnglesDroits(point);
 };
 var actualiserPointsFigure = function (figure) {
   getPointsFigure(figure).forEach(function (point) {

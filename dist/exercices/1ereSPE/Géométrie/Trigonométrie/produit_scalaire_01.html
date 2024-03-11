@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Produit_scalaire_01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    
+    <main><div class="exercice">
+    <div class="enonce">
+        On considère la figure suivante où les points qui semblent alignés le sont vraiment.
+        <div class="figure">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 160 110">
+                <!-- Début de la figure -->
+
+                <!-- Projeté orthogonal de B sur (AC)  -->
+                <g name="E" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="none"></g>
+                <g class="label" linkto="E" x="0" y="-5" style="font-size: 0.8em">E</g>
+
+                <!-- Segments -->
+                <g name="DB" class="segment" linkto="D B"></g>
+                <g name="DC" class="segment" linkto="D C"></g>
+                <g name="CE" class="segment" linkto="C E"></g>
+                <g name="BE" class="segment" linkto="B E"></g>
+                <g name="BC" class="segment" linkto="B C"></g>
+
+                <!-- Point libre -->
+                <g name="A" class="point labeled" x="70" y="100" stroke="none"></g>
+                <g class="label" linkto="A" x="-5" y="0" style="font-size: 0.8em">A</g>
+                <g name="B" class="point labeled" x="150" y="100" stroke="none"></g>
+                <g class="label" linkto="B" x="0" y="-10" style="font-size: 0.8em">B</g>
+                <g name="C" class="point labeled" x="10" y="50" stroke="none"></g>
+                <g class="label" linkto="C" x="-10" y="-10" style="font-size: 0.8em">C</g>
+                <g name="D" class="point labeled" x="10" y="100" stroke="none"></g>
+                <g class="label" linkto="D" x="-10" y="-5" style="font-size: 0.8em">D</g>
+
+                <!-- Angles droits -->
+                <g class="angleDroit" linkto="C E B" size="5"></g>
+                <g class="angleDroit" linkto="C D B" size="5"></g>
+                <!-- Fin de la figure -->
+            </svg>
+      </div>
+      Dans chaque cas, donner un produit scalaire de deux vecteurs colinéaires puis en déduire le signe. Plusieurs solutions sont parfois possibles, les donner toutes.
+        <ol class="horizontal-list col-3c">
+            <li>$\overrightarrow{BC} \cdot \overrightarrow{BD}$</li>
+            <li>$\overrightarrow{BC} \cdot \overrightarrow{BA}$</li>
+            <li>$\overrightarrow{AB} \cdot \overrightarrow{AC}$</li>
+            <li>$\overrightarrow{CB} \cdot \overrightarrow{CD}$</li>
+            <li>$\overrightarrow{EC} \cdot \overrightarrow{EB}$</li>
+            <li>$\overrightarrow{CB} \cdot \overrightarrow{CA}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{BC} \cdot \overrightarrow{BD}&=\overrightarrow{BD} \cdot \overrightarrow{BD}\\
+            &=BD^2
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{BC} \cdot \overrightarrow{BA}&=\overrightarrow{BD} \cdot \overrightarrow{BA}\\
+            &=BD\times BA
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AB} \cdot \overrightarrow{AC}&=\overrightarrow{AB} \cdot \overrightarrow{AD}\\
+            &=-AB\times AD
+            \end{align*}
+            $$
+            ou encore
+            $$
+            \begin{align*}
+            \overrightarrow{AB} \cdot \overrightarrow{AC}&=\overrightarrow{AE} \cdot \overrightarrow{AC}\\
+            &=-AE\times AC
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{CB} \cdot \overrightarrow{CD}&=\overrightarrow{CD} \cdot \overrightarrow{CD}\\
+            &=CD^2
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{EC} \cdot \overrightarrow{EB}&=\overrightarrow{EC} \cdot \overrightarrow{EE}\\
+            &=0
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{CB} \cdot \overrightarrow{CA}&=\overrightarrow{CE} \cdot \overrightarrow{CA}\\
+            &=CE\times CA
+            \end{align*}
+            $$</li>
+        </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère la figure suivante où les points qui semblent alignés le sont vraiment.
+        <div class="figure">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 110">
+                <!-- Début de la figure -->
+
+                <!-- Projeté orthogonal de B sur (AC)  -->
+                <g name="D" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="none"></g>
+                <g class="label" linkto="D" x="-15" y="-10" style="font-size: 0.8em">D</g>
+                <g name="E" class="point labeled dilatation" linkto="A B D" data="90 0" stroke="none"></g>
+                <g class="label" linkto="E" x="-5" y="0" style="font-size: 0.8em">E</g>
+                <g name="F" class="point labeled dilatation" linkto="D E C" data="90 0" stroke="none"></g>
+                <g class="label" linkto="F" x="-15" y="-10" style="font-size: 0.8em">F</g>
+                
+
+                <!-- Segments -->
+                <g name="AB" class="segment" linkto="A B"></g>
+                <g name="BC" class="segment" linkto="B C"></g>
+                <g name="AC" class="segment" linkto="A C"></g>
+                <g name="BD" class="segment" linkto="B D"></g>
+                <g name="FE" class="segment" linkto="F E"></g>
+                <g name="FC" class="segment" linkto="F C"></g>
+                
+                <!-- Point libre -->
+                <g name="A" class="point labeled" x="10" y="90" stroke="none"></g>
+                <g class="label" linkto="A" x="-5" y="0" style="font-size: 0.8em">A</g>
+                <g name="B" class="point labeled" x="150" y="90" stroke="none"></g>
+                <g class="label" linkto="B" x="-5" y="0" style="font-size: 0.8em">B</g>
+                <g name="C" class="point labeled" x="150" y="10" stroke="none"></g>
+                <g class="label" linkto="C" x="0" y="-10" style="font-size: 0.8em">C</g>
+
+                <!-- Angles droits -->
+                <g class="angleDroit" linkto="B D A" size="5"></g>
+                <g class="angleDroit" linkto="A B C" size="5"></g>
+                <g class="angleDroit" linkto="F E B" size="5"></g>
+                <g class="angleDroit" linkto="C F E" size="5"></g>
+                <!-- Fin de la figure -->
+            </svg>
+      </div>
+    Dans chaque cas, donner un produit scalaire de deux vecteurs colinéaires puis en déduire le signe. Plusieurs solutions sont parfois possibles, les donner toutes.
+        <ol class="horizontal-list col-3c">
+            <li>$\overrightarrow{BA} \cdot \overrightarrow{BD}$</li>
+            <li>$\overrightarrow{AB} \cdot \overrightarrow{AC}$</li>
+            <li>$\overrightarrow{CB} \cdot \overrightarrow{CA}$</li>
+            <li>$\overrightarrow{DC} \cdot \overrightarrow{DE}$</li>
+            <li>$\overrightarrow{DB} \cdot \overrightarrow{DA}$</li>
+            <li>$\overrightarrow{DF} \cdot \overrightarrow{DB}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{BA} \cdot \overrightarrow{BD}&=\overrightarrow{BD} \cdot \overrightarrow{BD}\\
+            &=BD^2
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AB} \cdot \overrightarrow{AC}&=\overrightarrow{AB} \cdot \overrightarrow{AB}\\
+            &=AB^2
+            \end{align*}
+            $$
+            ou encore
+            $$
+            \begin{align*}
+            \overrightarrow{AB} \cdot \overrightarrow{AC}&=\overrightarrow{AD} \cdot \overrightarrow{AC}\\
+            &=AD\times AC
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{CB} \cdot \overrightarrow{CA}&=\overrightarrow{CD} \cdot \overrightarrow{CA}\\
+            &=CD\times CA
+            \end{align*}
+            $$
+            ou encore
+            $$
+            \begin{align*}
+            \overrightarrow{CB} \cdot \overrightarrow{CA}&=\overrightarrow{CB} \cdot \overrightarrow{CB}\\
+            &=CB^2
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{DC} \cdot \overrightarrow{DE}&=\overrightarrow{DF} \cdot \overrightarrow{DE}\\
+            &=-DF\times DE
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{DB} \cdot \overrightarrow{DA}&=\overrightarrow{DB} \cdot \overrightarrow{DD}\\
+            &=0
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{DF} \cdot \overrightarrow{DB}&=\overrightarrow{DF} \cdot \overrightarrow{DE}\\
+            &=-DF\times DE
+            \end{align*}
+            $$</li>
+        </ul>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div class="figure">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40">
+                <!-- Début de la figure -->
+
+                <g name="A" class="point labeled" x="10" y="20" stroke="black" forme="+"></g>
+                <g class="label" linkto="A" x="-5" y="-17" style="font-size: 0.8em">A</g>
+                <g class="label" linkto="A" x="-3" y="0" style="font-size: 0.8em">0</g>
+                <g name="B" class="point labeled" x="10+30" y="20" stroke="black" forme="+"></g>
+                <g class="label" linkto="B" x="-5" y="-17" style="font-size: 0.8em">B</g>
+                <g name="C" class="point labeled" x="10+2*30" y="20" stroke="black" forme="+"></g>
+                <g class="label" linkto="C" x="-5" y="-17" style="font-size: 0.8em">C</g>
+                <g name="D" class="point labeled" x="10+3*30" y="20" stroke="black" forme="+"></g>
+                <g class="label" linkto="D" x="-5" y="-17" style="font-size: 0.8em">D</g>
+                <g name="E" class="point labeled" x="10+4*30" y="20" stroke="black" forme="+"></g>
+                <g class="label" linkto="E" x="-5" y="-17" style="font-size: 0.8em">E</g>
+                <g class="label" linkto="E" x="-3" y="0" style="font-size: 0.8em">1</g>
+                <g name="F" class="point labeled" x="10+5*30" y="20" stroke="black" forme="+"></g>
+                <g class="label" linkto="F" x="-5" y="-17" style="font-size: 0.8em">F</g>
+                <g name="G" class="point labeled" x="10+6*30" y="20" stroke="black" forme="+"></g>
+                <g class="label" linkto="G" x="-5" y="-17" style="font-size: 0.8em">G</g>
+
+                <g name="d" class="droite" linkto="A G"></g>
+            </svg>
+        </div>
+        <ol class="alphabetical-list">
+            <li>Déterminez les produits scalaires suivants :
+            <ul class="horizontal-list">
+                <li>$\overrightarrow{AB} \cdot \overrightarrow{AC}$</li>
+                <li>$\overrightarrow{BC} \cdot \overrightarrow{AF}$</li>
+                <li>$\overrightarrow{CE} \cdot \overrightarrow{DA}$</li>
+                <li>$\overrightarrow{EC} \cdot \overrightarrow{FA}$</li>
+                <li>$(-\overrightarrow{DB}) \cdot (-\overrightarrow{FC})$</li>
+                <li>$(\overrightarrow{BE}+\overrightarrow{DC}) \cdot (\overrightarrow{BF}-\overrightarrow{BA})$</li>
+                <li>$(\overrightarrow{DF}+\overrightarrow{GC}) \cdot (\overrightarrow{FB}+\overrightarrow{GA})$</li>
+                <li>$\overrightarrow{DG}\cdot\overrightarrow{DA}$</li>
+                <li>$(\overrightarrow{GA}+\overrightarrow{BF})\cdot(\overrightarrow{AG}+\overrightarrow{FC})$</li>
+            </ul>
+            </li>
+            <li>Trouvez deux vecteurs dont le produit scalaire est $-1$.</li>
+            <li>Trouvez deux vecteurs dont le produit scalaire est $-\dfrac{9}{8}$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+       <ol class="alphabetical-list">
+            <li>$$\overrightarrow{AB} \cdot \overrightarrow{AC}=\dfrac{1}{4}\times\dfrac{1}{2}=\dfrac{1}{8}$$
+            $$\overrightarrow{BC} \cdot \overrightarrow{AF}=\dfrac{1}{4}\times\dfrac{5}{4}=\dfrac{5}{16}$$
+            $$\overrightarrow{CE} \cdot \overrightarrow{DA}=-\dfrac{1}{2}\times\dfrac{3}{4}=-\dfrac{3}{8}$$
+            $$\overrightarrow{EC} \cdot \overrightarrow{FA}=\dfrac{1}{2}\times\dfrac{5}{4}=\dfrac{5}{8}$$
+            $$(-\overrightarrow{DB}) \cdot (-\overrightarrow{FC})=\dfrac{1}{2}\times\dfrac{3}{4}=\dfrac{3}{8}$$
+            $$(\overrightarrow{BE}+\overrightarrow{DC}) \cdot (\overrightarrow{BF}-\overrightarrow{BA})=\dfrac{1}{2}\times\dfrac{5}{4}=\dfrac{5}{8}$$
+            $$(\overrightarrow{DF}+\overrightarrow{GC}) \cdot (\overrightarrow{FB}+\overrightarrow{GA})=\dfrac{1}{2}\times\dfrac{5}{2}=\dfrac{5}{4}$$
+            $$\overrightarrow{DG}\cdot\overrightarrow{DA}=-\dfrac{3}{4}\times\dfrac{3}{4}= -\dfrac{9}{16}$$
+            $$(\overrightarrow{GA}+\overrightarrow{BF})\cdot(\overrightarrow{AG}+\overrightarrow{FC})=-\dfrac{1}{2}\times\dfrac{3}{4}=-\dfrac{3}{8}$$
+            </li>
+            <li>$$\overrightarrow{AE} \cdot \overrightarrow{EA}=-1$$</li>
+            <li>$$\overrightarrow{DA} \cdot \overrightarrow{AG}=-\dfrac{3}{4}\times\dfrac{3}{2}= -\dfrac{9}{8}$$</li>
+        </ol>
+    </div>           
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABC$ un triangle rectangle en $C$ et $H$ le projeté orthogonal de $C$ sur $(AB)$ tel que $AH=3$ et $HB=9.$
+        Calculez $\overrightarrow{AC}\cdot\overrightarrow{BC}$ de deux façons différentes et en déduire $AC.$
+    </div>
+    <div class="solution">
+        <p>$$
+        \begin{align*}
+        \overrightarrow{AC}\cdot\overrightarrow{BC}&=\overrightarrow{AH}\cdot\overrightarrow{AB}\\
+        &=AH\times AB\\
+        &=3\times 12\\
+        &=36
+        \end{align*}
+        $$</p>
+        <p>$$
+        \begin{align*}
+        \overrightarrow{AC}\cdot\overrightarrow{AB}&=\overrightarrow{AC}\cdot\overrightarrow{AC}\\
+        &=AC^2
+        \end{align*}
+        $$</p>
+        <p>On en déduit que $AC^2=36$ donc $AC=6.$</p>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABC$ un triangle tel que $AB=2$, $BC=4$ et $\overrightarrow{AB}\cdot\overrightarrow{AC}=10.$
+        <ol class="alphabetical-list">
+            <li>Déterminez $\overrightarrow{AB}\cdot\overrightarrow{CA}$, $\overrightarrow{BA}\cdot\overrightarrow{AC}$ et $\overrightarrow{CA}\cdot\overrightarrow{BA}.$</li>
+            <li>Calculez $\overrightarrow{BA}\cdot\overrightarrow{BC}$ en développant $\overrightarrow{BA}\cdot(\overrightarrow{BA}+\overrightarrow{AC}).$</li>
+            <li>En utilisant une astuce semblable à celle de la question précédente, calculez $\overrightarrow{CA}\cdot\overrightarrow{CB}.$</li>
+            <li>Notons $H$ le projeté orthogonal de $B$ sur $(AC)$.
+            Déterminez $AC$ en remarquant que $\overrightarrow{AC}^2=(\overrightarrow{AH}+\overrightarrow{HC})\cdot\overrightarrow{AC}.$</li>
+            <li>Utilisez $\overrightarrow{AB}\cdot\overrightarrow{AC}$ pour déterminer $AH.$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <div class="figure">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 10 200 55">
+                <!-- Début de la figure -->
+
+                <!-- Segments -->
+                <g name="AB" class="segment" linkto="A B"></g>
+                <g name="BC" class="segment" linkto="B C"></g>
+                <g name="AC" class="segment" linkto="A C"></g>
+                
+                <!-- Point libre -->
+                <g name="A" class="point labeled" x="10" y="50" stroke="none"></g>
+                <g class="label" linkto="A" x="-5" y="0" style="font-size: 0.8em">A</g>
+                <g name="B" class="point labeled" x="10+3*50*sqrt(2)/4" y="50-3*10*sqrt(7/8)" stroke="none"></g>
+                <g class="label" linkto="B" x="-5" y="-15" style="font-size: 0.8em">B</g>
+                <g name="C" class="point labeled" x="10+3*40*sqrt(2)" y="50" stroke="none"></g>
+                <g class="label" linkto="C" x="-5" y="0" style="font-size: 0.8em">C</g>
+                <!-- Fin de la figure -->
+            </svg>
+        </div>
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AB}\cdot\overrightarrow{CA}&=\overrightarrow{AB}\cdot(-\overrightarrow{AC})\\
+            &=-\overrightarrow{AB}\cdot\overrightarrow{AC}\\
+            &=-10
+            \end{align*}
+            $$
+            $$\begin{align*}
+            \overrightarrow{BA}\cdot\overrightarrow{AC}&=(-\overrightarrow{AB})\cdot\overrightarrow{AC}\\
+            &=-\overrightarrow{AB}\cdot\overrightarrow{AC}\\
+            &=-10
+            \end{align*}
+            $$
+            $$\begin{align*}
+            \overrightarrow{CA}\cdot\overrightarrow{BA}&=\overrightarrow{BA}\cdot\overrightarrow{CA}\\
+            &=(-\overrightarrow{AB})\cdot(-\overrightarrow{AC})\\
+            &=\overrightarrow{AB}\cdot\overrightarrow{AC}\\
+            &=10
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{BA}\cdot\overrightarrow{BC}&=\overrightarrow{BA}\cdot(\overrightarrow{BA}+\overrightarrow{AC})\\
+            &=\overrightarrow{BA}\cdot\overrightarrow{BA}+\overrightarrow{BA}\cdot\overrightarrow{AC}\\
+            &=BA^2-\overrightarrow{AB}\cdot\overrightarrow{AC}\\
+            &=2^2-10\\
+            &=-6
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{CA}\cdot\overrightarrow{CB}&=(\overrightarrow{CB}+\overrightarrow{BA})\cdot\overrightarrow{CB}\\
+            &=\overrightarrow{CB}\cdot\overrightarrow{CB}+\overrightarrow{BA}\cdot\overrightarrow{CB}\\
+            &=CB^2-\overrightarrow{BA}\cdot\overrightarrow{BC}\\
+            &=4^2-(-6)\\
+            &=22
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AC}^2&=(\overrightarrow{AH}+\overrightarrow{HC})\cdot\overrightarrow{AC}\\
+            AC^2&=\overrightarrow{AH}\cdot\overrightarrow{AC}+\overrightarrow{HC}\cdot\overrightarrow{AC}\\
+            &=\overrightarrow{AH}\cdot\overrightarrow{AC}+\overrightarrow{CA}\cdot\overrightarrow{CH}\\
+            &=\overrightarrow{AB}\cdot\overrightarrow{AC}+\overrightarrow{CA}\cdot\overrightarrow{CB}\\
+            &=10+22\\
+            AC^2&=32\\
+            AC&=4\sqrt{2}
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AB}\cdot\overrightarrow{AC}&=\overrightarrow{AH}\cdot\overrightarrow{AC}\\
+            10&=AH\times AC\\
+            10&=AH\times 4\sqrt{2}\\
+            AH&=\frac{10}{4\sqrt{2}}\\
+            AH&=\frac{5}{2\sqrt{2}}\\
+            AH&=\frac{5\sqrt{2}}{4}
+            \end{align*}
+            $$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABCD$ un parallélogramme. Montrez que $AC^2+BD^2=2(AB^2+BC^2).$
+    </div>
+    <div class="solution">
+        <p>$$
+        \begin{align*}
+        AC^2+BD^2&=\overrightarrow{AC}^2+\overrightarrow{BD}^2\\
+        &=(\overrightarrow{AB}+\overrightarrow{BC})^2+(\overrightarrow{BA}+\overrightarrow{AD})^2\\
+        &=\overrightarrow{AB}^2+2\overrightarrow{AB}\cdot\overrightarrow{BC}+\overrightarrow{BC}^2+\overrightarrow{BA}^2+2\overrightarrow{BA}\cdot\overrightarrow{AD}+\overrightarrow{AD}^2\\
+        &=AB^2+2\overrightarrow{AB}\cdot\overrightarrow{BC}+BC^2+BA^2+2\overrightarrow{AB}\cdot\overrightarrow{DA}+AD^2\\
+        &=AB^2+BC^2+AB^2+AD^2+2\overrightarrow{AB}\cdot(\overrightarrow{BC}+\overrightarrow{DA})\\
+        &=AB^2+BC^2+AB^2+AD^2+2\overrightarrow{AB}\cdot\overrightarrow{0}\\
+        &=AB^2+BC^2+AB^2+BC^2\\
+        &=2(AB^2+BC^2)
+        \end{align*}
+        $$</p>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABCD$ un parallélogramme tel que $AB=4$ et $AD=5$ et $\overrightarrow{AB}\cdot\overrightarrow{AD}=\num{11.5}.$
+        Calculez $AC$ puis $BD.$
+    </div>
+    <div class="solution">
+        <p>$$
+        \begin{align*}
+        AC^2&=\overrightarrow{AC}^2\\
+        &=(\overrightarrow{AB}+\overrightarrow{BC})^2\\
+        &=(\overrightarrow{AB}+\overrightarrow{AD})^2\\
+        &=\overrightarrow{AB}^2+2\overrightarrow{AB}\cdot\overrightarrow{AD}+\overrightarrow{AD}^2\\
+        &=AB^2+2\overrightarrow{AB}\cdot\overrightarrow{AD}+AD^2\\
+        &=4^2+2\times\num{11.5}+5^2\\
+        &=16+23+25\\
+        &=64\\
+        AC&=8
+        \end{align*}
+        $$</p>
+        <p>$$
+        \begin{align*}
+        BD^2&=\overrightarrow{BD}^2\\
+        &=(\overrightarrow{BA}+\overrightarrow{AD})^2\\
+        &=(\overrightarrow{AD}-\overrightarrow{AB})^2\\
+        &=\overrightarrow{AD}^2-2\overrightarrow{AD}\cdot\overrightarrow{AB}+\overrightarrow{AB}^2\\
+        &=AD^2-2\overrightarrow{AD}\cdot\overrightarrow{AB}+AB^2\\
+        &=5^2-2\times\num{11.5}+4^2\\
+        &=25-23+16\\
+        &=18\\
+        BD&=3\sqrt{2}
+        \end{align*}
+        $$</p>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABC$ un triangle isocèle en $A.$
+        <ol class="alphabetical-list">
+            <li>Montrez que $\overrightarrow{BC}\cdot(\overrightarrow{AB}+\overrightarrow{AC})=0$ en utilisant que $\overrightarrow{BC}=\overrightarrow{BA}+\overrightarrow{AC}.$</li>
+            <li>En déduire que $\overrightarrow{BC}\cdot\overrightarrow{BA}=\overrightarrow{CB}\cdot\overrightarrow{CA}.$</li>
+            <li>Notons $H$ le projeté orthogonal de $A$ sur $(BC)$.
+            Montrez que $H$ est le milieu de $[BC]$.</li>
+            <li>Considérons le point $D$ tel que $\overrightarrow{AD}=\overrightarrow{AB}+\overrightarrow{AC}.$
+            Que vient-on de montrer pour le quadrilatère $ABDC$ ?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+                \begin{align*}
+                \overrightarrow{BC}\cdot(\overrightarrow{AB}+\overrightarrow{AC})&=(\overrightarrow{BA}+\overrightarrow{AC})\cdot(\overrightarrow{AB}+\overrightarrow{AC})\\
+                &=(\overrightarrow{AC}-\overrightarrow{AB})\cdot(\overrightarrow{AC}+\overrightarrow{AB})\\
+                &=\overrightarrow{AC}^2-\overrightarrow{AB}^2\\
+                &=AC^2-AB^2\\
+                &=0
+                \end{align*}
+                $$
+            </li>
+            <li>$$
+                \begin{align*}
+                \overrightarrow{BC}\cdot(\overrightarrow{AB}+\overrightarrow{AC})&=0\\
+                \overrightarrow{BC}\cdot\overrightarrow{AB}+\overrightarrow{BC}\cdot\overrightarrow{AC}&=0\\
+                \overrightarrow{BC}\cdot\overrightarrow{AB}&=-\overrightarrow{BC}\cdot\overrightarrow{AC}\\
+                -\overrightarrow{BC}\cdot\overrightarrow{BA}&=-\overrightarrow{CB}\cdot\overrightarrow{CA}\\
+                \overrightarrow{BC}\cdot\overrightarrow{BA}&=\overrightarrow{CB}\cdot\overrightarrow{CA}
+                \end{align*}
+                $$
+            </li>
+            <li><p>D'une part $\overrightarrow{BC}\cdot\overrightarrow{BA}=\overrightarrow{BC}\cdot\overrightarrow{BH}=BC\times BH$</p>
+            <p>D'autre part $\overrightarrow{CB}\cdot\overrightarrow{CA}=\overrightarrow{CB}\cdot\overrightarrow{CH}=CB\times CH$</p>
+            <p>Donc $BC\times BH=CB\times CH$</p>
+            <p>Donc $BH=CH$</p>
+            <p>Donc $H$ est le milieu de $[BC]$.</p>
+            <li><p>On a montré que $\overrightarrow{BC}\cdot(\overrightarrow{AB}+\overrightarrow{AC})=0$</p>
+            <P>Donc $\overrightarrow{BC}$ est orthogonal à $\overrightarrow{AE}=\overrightarrow{AB}+\overrightarrow{AC}.$</p>
+            <p>Par conséquent on a montré que les diagonales du quadrilatère $ABDC$ sont perpendiculaires.</p>
+            <p>On a montré que $(AD)$ coupe $[BC]$ en son milieu.</p>
+            <p>Ce qui est évident car :</p>
+            <p>$ABDC$ est un parallélogramme ayant deux côté consécutifs égaux.</p>
+            <p>Donc $ABDC$ est un losange.</p>
+            <p>Dans un losange les diagonales sont perpendiculaires et se coupent en leur milieu.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On se propose de démontrer le théorème de Pythagore.
+        Soit $ABC$ un triangle rectangle en $A$.
+        Elevez au carré l'égalité vectorielle $\overrightarrow{BA}+\overrightarrow{AC}=\overrightarrow{BC}$ pour obtenir l'égalité de Pythagore en développant.
+    </div>
+    <div class="solution">
+        <p>$$
+        \begin{align*}
+        \overrightarrow{BA}+\overrightarrow{AC}&=\overrightarrow{BC}\\
+        (\overrightarrow{BA}+\overrightarrow{AC})^2&=\overrightarrow{BC}^2\\
+        \overrightarrow{BA}^2+2\overrightarrow{BA}\cdot\overrightarrow{AC}+\overrightarrow{AC}^2&=\overrightarrow{BC}^2\\
+        AB^2+2\overrightarrow{BA}\cdot\overrightarrow{AC}+AC^2&=BC^2
+        \end{align*}
+        $$
+        </p>
+        <p>Or $\overrightarrow{BA}$ et $\overrightarrow{AC}$ sont orthogonaux donc $\overrightarrow{BA}\cdot\overrightarrow{AC}=0$</p>
+        <p>Donc $AB^2+AC^2=BC^2$</p>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        $ABCD$ est un rectangle tel que $AB=8$ et $AD=6$.
+        Notons $A'$ et $C'$ les projetés orthogonaux respectifs de $A$ et $C$ sur $(BD)$.                
+        <ol class="alphabetical-list">
+            <li>Montrez que $BD=10$ en utilisant le théorème de Pythagore.</li>
+            <li>Montrez que $\overrightarrow{AC}\cdot\overrightarrow{BD}=\overrightarrow{A'C'}\cdot\overrightarrow{BD}.$</li>
+            <li>En utilisant une identité remarquable, montrez que $AD^2-AB^2=\overrightarrow{AC}\cdot\overrightarrow{BD}.$</li>
+            <li>En déduire $A'C'.$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <div class="figure" height="100">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 185 145">
+                <!-- Début de la figure -->
+                
+                <!-- Projetés orthogonaux -->
+                <g name="A1" class="point labeled dilatation" linkto="B D A" data="90 0" stroke="none"></g>
+                <g class="label" linkto="A1" x="0" y="0" style="font-size: 0.8em">A'</g>
+                <g name="C1" class="point labeled dilatation" linkto="B D C" data="90 0" stroke="none"></g>
+                <g class="label" linkto="C1" x="-10" y="-15" style="font-size: 0.8em">C'</g>
+                <!-- Segments -->
+                <g name="AB" class="segment" linkto="A B"></g>
+                <g name="AD" class="segment" linkto="A D"></g>
+                <g name="BD" class="segment" linkto="B D"></g>
+                <g name="BC" class="segment" linkto="B C"></g>
+                <g name="DC" class="segment" linkto="D C"></g>
+                <g name="A1C1" class="segment" linkto="A1 C1"></g>
+                <g name="AA1" class="segment" linkto="A A1"></g>
+                <g name="CC1" class="segment" linkto="C C1"></g>
+
+                <!-- Point libre -->
+                <g name="A" class="point labeled" x="10" y="10" stroke="none"></g>
+                <g class="label" linkto="A" x="-10" y="-10" style="font-size: 0.8em">A</g>
+                <g name="B" class="point labeled" x="10+8*20" y="10" stroke="none"></g>
+                <g class="label" linkto="B" x="0" y="-10" style="font-size: 0.8em">B</g>
+                <g name="C" class="point labeled" x="10+8*20" y="10+6*20" stroke="none"></g>
+                <g class="label" linkto="C" x="-5" y="0" style="font-size: 0.8em">C</g>
+                <g name="D" class="point labeled" x="10" y="10+6*20" stroke="none"></g>
+                <g class="label" linkto="D" x="-5" y="0" style="font-size: 0.8em">D</g>
+
+                <!-- Angles droits -->
+                <g class="angleDroit" linkto="A A1 C1" size="5"></g>
+                <g class="angleDroit" linkto="C C1 A1" size="5"></g>
+                <!-- Fin de la figure -->
+            </svg>
+        </div>
+        <ol class="alphabetical-list">
+            <li><p>$ABD$ est rectangle en $A$. D'après le théorème de Pythagore, on a :</p>
+            $$
+            \begin{align*}
+            BD^2&=AB^2+AD^2\\
+            &=8^2+6^2\\
+            &=64+36\\
+            &=100\\
+            BD&=10
+            \end{align*}
+            $$</li>
+
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AC}\cdot\overrightarrow{BD}&=(\overrightarrow{AA'}+\overrightarrow{A'C'}+\overrightarrow{C'C})\cdot\overrightarrow{BD}\\
+            &=\overrightarrow{AA'}\cdot\overrightarrow{BD}+\overrightarrow{A'C'}\cdot\overrightarrow{BD}+\overrightarrow{C'C}\cdot\overrightarrow{BD}\\
+            &=0+\overrightarrow{A'C'}\cdot\overrightarrow{BD}+0\\
+            &=\overrightarrow{A'C'}\cdot\overrightarrow{BD}
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+            AD^2-AB^2&=\overrightarrow{AD}^2-\overrightarrow{AB}^2\\
+            &=(\overrightarrow{AD}+\overrightarrow{AB})\cdot(\overrightarrow{AD}-\overrightarrow{AB})\\
+            &=(\overrightarrow{AD}+\overrightarrow{AB})\cdot(\overrightarrow{AD}+\overrightarrow{BA})\\
+            &=(\overrightarrow{AD}+\overrightarrow{AB})\cdot(\overrightarrow{BA}+\overrightarrow{AD})\\
+            &=(\overrightarrow{AD}+\overrightarrow{AB})\cdot\overrightarrow{BD}\\
+            &=(\overrightarrow{AD}+\overrightarrow{DC})\cdot\overrightarrow{BD}\\
+            &=\overrightarrow{AC}\cdot\overrightarrow{BD}
+            \end{align*}
+            $$
+            </li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AC}\cdot\overrightarrow{BD}&=AD^2-AB^2\\
+            &=6^2-8^2\\
+            &=36-64\\
+            &=-28
+            \end{align*}
+            $$
+            <p>D'où $\overrightarrow{A'C'}\cdot\overrightarrow{BD}=-28$</p>
+            <p>Or $\overrightarrow{A'C'}$ et $\overrightarrow{BD}$ sont colinéaires.</p>
+            <p>Donc $\overrightarrow{A'C'}\cdot\overrightarrow{BD}=-A'C'\times BD$</p>
+            $$
+            \begin{align*}
+            -A'C'\times BD&=-28\\
+            A'C'\times BD=28\\
+            A'4'\times 10=28\\
+            A'C'=\dfrac{28}{10}\\
+            A'C'=\num{2.8}
+            \end{align*}
+            $$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABCD$ un parallélogramme tel que $AB=4$, $AD=5$ et $AC=8$.
+        <ol class="alphabetical-list">
+            <li>Déterminez $\overrightarrow{AB}\cdot\overrightarrow{AD}$ en utilisant $AC^2=\|\overrightarrow{AB}+\overrightarrow{BC}\|^2.$</li>
+            <li>Déterminez $BD$ en exprimant $BD^2$ à l'aide d'une astuce semblable à celle de la question précédente.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Remarquons que comme $ABCD$ est un parallélogramme, ses côtés opposés sont de même longueur deux à deux.</li>
+            $$
+            \begin{align*}
+            AC^2&=\|\overrightarrow{AB}+\overrightarrow{BC}\|^2\\
+            8^2&=\overrightarrow{AB}^2+2\overrightarrow{AB}\cdot\overrightarrow{BC}+\overrightarrow{BC}^2\\
+            64&=4^2+2\overrightarrow{AB}\cdot\overrightarrow{BC}+5^2\\
+            64&=16+2\overrightarrow{AB}\cdot\overrightarrow{BC}+25\\
+            64&=41+2\overrightarrow{AB}\cdot\overrightarrow{BC}\\
+            23&=2\overrightarrow{AB}\cdot\overrightarrow{BC}\\
+            \overrightarrow{AB}\cdot\overrightarrow{BC}&=\dfrac{23}{2}\\
+            \overrightarrow{AB}\cdot\overrightarrow{AD}&=\dfrac{23}{2}
+            \end{align*}
+            $$
+            <li>$$
+            \begin{align*}
+            BD^2&=\|\overrightarrow{BA}+\overrightarrow{AD}\|^2\\
+            &=\overrightarrow{BA}^2+2\overrightarrow{BA}\cdot\overrightarrow{AD}+\overrightarrow{AD}^2\\
+            &=4^2-2\overrightarrow{AB}\cdot\overrightarrow{AD}+5^2\\
+            &=16-2\times\dfrac{23}{2}+25\\
+            &=41-23\\
+            &=18\\
+            BD&=3\sqrt{2}
+            \end{align*}
+            $$
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        $ABCD$ est un rectangle tel que $AB=8$ et $AD=2$. $O$ est le milieu de $[DC]$.
+        <ol class="alphabetical-list">
+            <li>Calculez $\overrightarrow{OA}\cdot\overrightarrow{OB}$ en remarquant que $\overrightarrow{OA}\cdot\overrightarrow{OB}=(\overrightarrow{OD}+\overrightarrow{DA})\cdot(\overrightarrow{OC}+\overrightarrow{CB}).$</li>
+            <li>Montrez à l'aide du théorème de Pythagore que $AO^2=20$, en déduire $OB^2.$</li>
+            <li>En développant $AB^2=\|\overrightarrow{AO}+\overrightarrow{OB}\|^2$ retrouvez $\overrightarrow{OA}\cdot\overrightarrow{OB}.$</li>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$$
+            \begin{align*}
+            \overrightarrow{OA}\cdot\overrightarrow{OB}&=(\overrightarrow{OD}+\overrightarrow{DA})\cdot(\overrightarrow{OC}+\overrightarrow{CB})\\
+            &=\overrightarrow{OD}\cdot\overrightarrow{OC}+\overrightarrow{OD}\cdot\overrightarrow{CB}+\overrightarrow{DA}\cdot\overrightarrow{OC}+\overrightarrow{DA}\cdot\overrightarrow{CB}\\
+            &=\overrightarrow{OD}\cdot\overrightarrow{OC}+0+0+\overrightarrow{DA}\cdot\overrightarrow{CB}\\
+            &=-16+4\\
+            &=-12
+            \end{align*}
+            $$
+            </p>
+            <p>On a de même par symétrie $OB^2=20$</p>
+            </li>
+            <li><p>Dans le triangle $OAD$ rectangle en $A$, on a $$
+            \begin{align*}
+            AO^2&=AD^2+OD^2\\
+            &=2^2+4^2\\
+            &=4+16\\
+            &=20
+            \end{align*}
+            $$</p></li>
+            <li><p>$$
+            \begin{align*}
+            AB^2&=\|\overrightarrow{AO}+\overrightarrow{OB}\|^2\\
+            8^2&=OA^2+OB^2-2\overrightarrow{OA}\cdot\overrightarrow{OB}\\
+            64&=20+20-2\overrightarrow{OA}\cdot\overrightarrow{OB}\\
+            64&=40-2\overrightarrow{OA}\cdot\overrightarrow{OB}\\
+            24&=-2\overrightarrow{OA}\cdot\overrightarrow{OB}\\
+            -12&=\overrightarrow{OA}\cdot\overrightarrow{OB}
+            \end{align*}
+            $$
+            </p></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        $ABC$ est un triangle isocèle en $B$ et $D$ est le symétrique de $C$ par rapport à $B.$
+        Démontrez que $\overrightarrow{AD}\cdot\overrightarrow{AC}=0.$ Que peut-on en déduire&nbsp;?
+    </div>
+    <div class="solution">
+        Remarquons que $\overrightarrow{BD}=\overrightarrow{CB}=-\overrightarrow{BC}.$
+        $$\begin{align*}
+        \overrightarrow{AD}\cdot\overrightarrow{AC}&=(\overrightarrow{AB}+\overrightarrow{BD})\cdot(\overrightarrow{AB}+\overrightarrow{BC})\\
+        &=\overrightarrow{AB}^2+\overrightarrow{AB}\cdot\overrightarrow{BC}+\overrightarrow{BD}\cdot\overrightarrow{AB}+\overrightarrow{BD}\cdot\overrightarrow{BC}\\
+        &=AB^2+\overrightarrow{AB}\cdot\overrightarrow{BC}+\overrightarrow{BD}\cdot\overrightarrow{AB}-\overrightarrow{BC}\cdot\overrightarrow{BC}\\
+        &=AB^2+\overrightarrow{AB}\cdot\overrightarrow{BC}+\overrightarrow{BD}\cdot\overrightarrow{AB}-BC^2\\
+        &=AB^2-BC^2+\overrightarrow{AB}\cdot\overrightarrow{BC}+\overrightarrow{BD}\cdot\overrightarrow{AB}\\
+        &=0+\overrightarrow{AB}\cdot\overrightarrow{BC}+\overrightarrow{AB}\cdot\overrightarrow{BD}\\
+        &=\overrightarrow{AB}\cdot(\overrightarrow{BC}+\overrightarrow{BD})\\
+        &=\overrightarrow{AB}\cdot\overrightarrow{0}\\
+        &=0
+        \end{align*}$$
+        <p>Donc $\overrightarrow{AD}$ est orthogonal à $\overrightarrow{AC}.$</p>
+        <p>Donc $ACD$ est rectangle en $A.$</p>
+    </div>
+</div>
+</main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>

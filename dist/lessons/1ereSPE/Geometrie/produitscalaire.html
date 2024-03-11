@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Produitscalaire.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+        rel="stylesheet">
+
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+        crossorigin="anonymous"
+      />
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+        integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"
+      ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+        <link rel="stylesheet" href="/src/css/main.css">
+    
+        <link rel="stylesheet" href="/src/css/prettyLesson.css">
+    
+        <link rel="stylesheet" href="/src/css/figures.css">
+    
+        <link rel="stylesheet" href="/src/css/print.css">
+    
+
+    <!--Scripts personnalisés-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+<script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+<body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    
+    <main>
+        <h1>Produit scalaire</h1>
+<details id="sommaire">
+  <summary>Sommaire</summary>
+  <nav id="tableOfContents"></nav>
+</details>
+<h2>Projeté orthogonal et produit scalaire</h2>
+<div class="definition">
+    Soit $\overrightarrow{u}$ et $\overrightarrow{v}$ deux vecteurs du plan.<br>
+    Soit $A$, $B$ et $C$ tel que $\overrightarrow{AB}=\overrightarrow{u}$ et $\overrightarrow{AC}=\overrightarrow{v}$.<br>
+    Soit $H$ le projeté orthogonal de $C$ sur $(AB)$.<br>
+    Les vecteurs $\overrightarrow{AB}$ et $\overrightarrow{AH}$ sont alors colinéaires.<br>
+    On appelle produit scalaire de $\overrightarrow{u}$ par $\overrightarrow{v}$ et on note $\overrightarrow{u}\cdot\overrightarrow{v}$ le nombre réel défini par:
+    <ul>
+        <li>$\overrightarrow{u}\cdot\overrightarrow{v}=AB\times AH$ si $\overrightarrow{AB}$ et $\overrightarrow{AH}$ sont de même sens.
+            <div class="figure">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 0 270 110">
+                    <!-- Début de la figure -->
+
+                    <!-- Projeté orthogonal de B sur (AC)  -->
+                    <g name="H" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="none"></g>
+                    <g class="label" linkto="H" x="0" y="-15" style="font-size: 0.8em">H</g>
+                    
+
+                    <!-- Segments -->
+                    <g name="u" class="vecteur labeled" linkto="A B" stroke="red" style="color:red;"></g>
+                    <g name="v" class="vecteur labeled" linkto="A C" stroke="blue" style="color:blue;"></g>
+                    <g name="CH" class="segment" linkto="C H" stroke-dasharray="5,5"></g>
+                    <!-- Point libre -->
+                    <g name="A" class="point labeled" x="10" y="90" stroke="none"></g>
+                    <g class="label" linkto="A" x="-5" y="0" style="font-size: 0.8em">A</g>
+                    <g name="B" class="point labeled" x="150" y="90" stroke="none"></g>
+                    <g class="label" linkto="B" x="-5" y="0" style="font-size: 0.8em">B</g>
+                    <g name="C" class="point labeled" x="100" y="10" stroke="none"></g>
+                    <g class="label" linkto="C" x="0" y="-10" style="font-size: 0.8em">C</g>
+
+                    <!-- Angles droits -->
+                    <g class="angleDroit" linkto="A H C" size="5"></g>
+                    <!-- Fin de la figure -->
+                </svg>
+            </div>
+        </li>
+        <li>$\overrightarrow{u}\cdot\overrightarrow{v}=-AB\times AH$ si $\overrightarrow{AB}$ et $\overrightarrow{AH}$ sont de sens opposés.
+            <div class="figure">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 0 270 110">
+                    <!-- Début de la figure -->
+
+                    <!-- Projeté orthogonal de B sur (AC)  -->
+                    <g name="H" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="none"></g>
+                    <g class="label" linkto="H" x="-10" y="0" style="font-size: 0.8em">H</g>
+                    
+
+                    <!-- Segments -->
+                    <g name="u" class="vecteur labeled" linkto="A B" stroke="red" style="color:red;"></g>
+                    <g name="v" class="vecteur labeled" linkto="A C" stroke="blue" style="color:blue;"></g>
+                    <g name="CH" class="segment" linkto="C H" stroke-dasharray="5,5"></g>
+                    <g name="AH" class="segment" linkto="A H" stroke-dasharray="5,5"></g>
+                    <!-- Point libre -->
+                    <g name="A" class="point labeled" x="10" y="90" stroke="none"></g>
+                    <g class="label" linkto="A" x="-5" y="0" style="font-size: 0.8em">A</g>
+                    <g name="B" class="point labeled" x="150" y="90" stroke="none"></g>
+                    <g class="label" linkto="B" x="-5" y="0" style="font-size: 0.8em">B</g>
+                    <g name="C" class="point labeled" x="-70" y="10" stroke="none"></g>
+                    <g class="label" linkto="C" x="-10" y="-10" style="font-size: 0.8em">C</g>
+
+                    <!-- Angles droits -->
+                    <g class="angleDroit" linkto="C H A" size="5"></g>
+                    <!-- Fin de la figure -->
+                </svg>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="propriete">
+    Soient $A$, $B$ et $C$ trois points du plan.<br>
+    Soit $H$ le projeté orthogonal de $C$ sur $(AB)$.<br>
+    Alors:
+    $$\overrightarrow{AB}\cdot\overrightarrow{AC}=\overrightarrow{AB}\cdot\overrightarrow{AH}$$
+    <ul class="horizontal-list">
+        <li><div class="figure">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 0 270 110">
+                    <!-- Début de la figure -->
+
+                    <!-- Projeté orthogonal de B sur (AC)  -->
+                    <g name="H" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="none"></g>
+                    <g class="label" linkto="H" x="0" y="-15" style="font-size: 0.8em">H</g>
+                    
+
+                    <!-- Segments -->
+                    <g name="u" class="vecteur" linkto="A B" stroke="red" style="color:red;"></g>
+                    <g name="v" class="vecteur" linkto="A C" stroke="blue" style="color:blue;"></g>
+                    <g name="w" class="vecteur" linkto="A H" stroke="blue" style="color:blue;"></g>
+                    <g name="CH" class="segment" linkto="C H" stroke-dasharray="5,5"></g>
+                    <!-- Point libre -->
+                    <g name="A" class="point labeled" x="10" y="90" stroke="none"></g>
+                    <g class="label" linkto="A" x="-5" y="0" style="font-size: 0.8em">A</g>
+                    <g name="B" class="point labeled" x="150" y="90" stroke="none"></g>
+                    <g class="label" linkto="B" x="-5" y="0" style="font-size: 0.8em">B</g>
+                    <g name="C" class="point labeled" x="100" y="10" stroke="none"></g>
+                    <g class="label" linkto="C" x="0" y="-10" style="font-size: 0.8em">C</g>
+
+                    <!-- Angles droits -->
+                    <g class="angleDroit" linkto="A H C" size="5"></g>
+                    <!-- Fin de la figure -->
+                </svg>
+            </div></li>
+            <li><div class="figure">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 0 270 110">
+                    <!-- Début de la figure -->
+
+                    <!-- Projeté orthogonal de B sur (AC)  -->
+                    <g name="H" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="none"></g>
+                    <g class="label" linkto="H" x="-10" y="0" style="font-size: 0.8em">H</g>
+                    
+
+                    <!-- Segments -->
+                    <g name="u" class="vecteur" linkto="A B" stroke="red" style="color:red;"></g>
+                    <g name="v" class="vecteur" linkto="A C" stroke="blue" style="color:blue;"></g>
+                    <g name="w" class="vecteur" linkto="A H" stroke="blue" style="color:blue;"></g>
+                    <g name="CH" class="segment" linkto="C H" stroke-dasharray="5,5"></g>
+                    <g name="AH" class="segment" linkto="A H" stroke-dasharray="5,5"></g>
+                    <!-- Point libre -->
+                    <g name="A" class="point labeled" x="10" y="90" stroke="none"></g>
+                    <g class="label" linkto="A" x="-5" y="0" style="font-size: 0.8em">A</g>
+                    <g name="B" class="point labeled" x="150" y="90" stroke="none"></g>
+                    <g class="label" linkto="B" x="-5" y="0" style="font-size: 0.8em">B</g>
+                    <g name="C" class="point labeled" x="-70" y="10" stroke="none"></g>
+                    <g class="label" linkto="C" x="-10" y="-10" style="font-size: 0.8em">C</g>
+
+                    <!-- Angles droits -->
+                    <g class="angleDroit" linkto="C H A" size="5"></g>
+                    <!-- Fin de la figure -->
+                </svg>
+            </div></li>
+    </ul>
+</div>
+<div class="propriete">
+    <ul>
+        <li>Si $\overrightarrow{u}$ et $\overrightarrow{v}$ sont colinéaires et <b>de même sens</b>,
+            <ul class="horizontal-list">
+                <li>
+                    <div class="figure">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 70">
+                        <!-- Début de la figure -->
+
+                        <!-- Segments -->
+                        <g name="u" class="vecteur labeled" linkto="A B" stroke="red" style="color:red;"></g>
+                        <g name="v" class="vecteur labeled" linkto="C D" stroke="blue" style="color:blue;"></g>
+                        <!-- Point libre -->
+                        <g name="A" class="point" x="10" y="10" stroke="none"></g>
+                        <g name="B" class="point" x="140" y="10" stroke="none"></g>
+                        <g name="C" class="point" x="10" y="50" stroke="none"></g>
+                        <g name="D" class="point" x="170" y="50" stroke="none"></g>
+
+                        <!-- Fin de la figure -->
+                    </svg>
+                    </div>
+                </li>
+                <li>alors $$\overrightarrow{u}\cdot\overrightarrow{v}=\|\overrightarrow{u}\|\|\overrightarrow{v}\|$$</li>
+            </ul>
+        <li>Si $\overrightarrow{u}$ et $\overrightarrow{v}$ sont colinéaires et <b>de sens opposés</b>,
+            <ul class="horizontal-list">
+            <li><div class="figure">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 70">
+                <!-- Début de la figure -->
+
+                <!-- Segments -->
+                <g name="u" class="vecteur labeled" linkto="A B" stroke="red" style="color:red;"></g>
+                <g name="v" class="vecteur labeled" linkto="D C" stroke="blue" style="color:blue;"></g>
+                <!-- Point libre -->
+                <g name="A" class="point" x="10" y="10" stroke="none"></g>
+                <g name="B" class="point" x="140" y="10" stroke="none"></g>
+                <g name="C" class="point" x="10" y="50" stroke="none"></g>
+                <g name="D" class="point" x="170" y="50" stroke="none"></g>
+
+                <!-- Fin de la figure -->
+            </svg>
+        </div></li>
+        <li>alors $$\overrightarrow{u}\cdot\overrightarrow{v}=-\|\overrightarrow{u}\|\|\overrightarrow{v}\|$$</li>
+        </li>
+    </ul>
+</div>
+<h2>Symétrie et bilinéarité du produit scalaire</h2>
+<div class="propriete">
+    (Symétrie)<br>
+    Pour tous vecteurs $\overrightarrow{u}$ et $\overrightarrow{v}$, on a $$\overrightarrow{u}\cdot\overrightarrow{v}=\overrightarrow{v}\cdot\overrightarrow{u}$$
+</div>
+<div class="propriete">
+    (Bilinéarité)<br>
+    Pour tous vecteurs $\overrightarrow{u}$, $\overrightarrow{v}$ et $\overrightarrow{w}$, on a $$\overrightarrow{u}\cdot(\overrightarrow{v}+\overrightarrow{w})=\overrightarrow{u}\cdot\overrightarrow{v}+\overrightarrow{u}\cdot\overrightarrow{w}$$
+    et pour tout réel $k$ $$\overrightarrow{u}\cdot (k\overrightarrow{v})=k(\overrightarrow{u}\cdot\overrightarrow{v})$$
+</div>
+<h2>Orthogonalité et produit scalaire</h2>
+<div class="propriete">
+    Deux vecteurs non nuls $\overrightarrow{u}$ et $\overrightarrow{v}$ sont orthogonaux si et seulement si $\overrightarrow{u}\cdot\overrightarrow{v}=0$.
+    <div class="figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 0 270 110">
+            <!-- Début de la figure -->
+
+            <!-- Projeté orthogonal de B sur (AC)  -->
+            <!-- Segments -->
+            <g name="u" class="vecteur labeled" linkto="A B" stroke="red" style="color:red;"></g>
+            <g name="v" class="vecteur labeled" linkto="A C" stroke="blue" style="color:blue;"></g>
+            <!-- Point libre -->
+            <g name="A" class="point" x="10" y="90" stroke="none"></g>
+            <g name="B" class="point" x="150" y="90" stroke="none"></g>
+            <g name="C" class="point" x="10" y="10" stroke="none"></g>
+
+            <!-- Angles droits -->
+            <g class="angleDroit" linkto="C A B" size="5"></g>
+            <!-- Fin de la figure -->
+        </svg>
+    </div>
+</div>
+<h2>Norme et produit scalaire</h2>
+<div class="definition">
+    On note $\overrightarrow{u}^2$ et on appelle carré scalaire de $\overrightarrow{u}$ le nombre réel $\overrightarrow{u}\cdot\overrightarrow{u}$.
+    $$\overrightarrow{u}^2=\overrightarrow{u}\cdot\overrightarrow{u}$$
+</div>
+<div class="propriete">
+    Pour tout vecteur $\overrightarrow{u}$, on a $$\overrightarrow{u}^2=\|\overrightarrow{u}\|^2$$
+</div>
+<div class="propriete">
+    Pour tous vecteurs $\overrightarrow{u}$ et $\overrightarrow{v}$, on a:
+    <ul>
+        <li>$\|\overrightarrow{u}+\overrightarrow{v}\|^2=\|\overrightarrow{u}\|^2+2\overrightarrow{u}\cdot\overrightarrow{v}+\|\overrightarrow{v}\|^2$</li>
+        <li>$\|\overrightarrow{u}-\overrightarrow{v}\|^2=\|\overrightarrow{u}\|^2-2\overrightarrow{u}\cdot\overrightarrow{v}+\|\overrightarrow{v}\|^2$</li>
+        <li>$(\overrightarrow{u}+\overrightarrow{v})\cdot(\overrightarrow{u}-\overrightarrow{v})=\|\overrightarrow{u}\|^2-\|\overrightarrow{v}\|^2$</li>
+    </ul>
+</div>
+<div class="propriete">
+    Soient $A$, $B$ et $C$ trois points du plan.<br>
+    Alors:
+    $$BC^2=AB^2+AC^2-2\overrightarrow{AB}\cdot\overrightarrow{AC}$$
+    On a de même :
+    $$AC^2=BA^2+BC^2-2\overrightarrow{BA}\cdot\overrightarrow{BC}$$
+    et
+    $$AB^2=AC^2+BC^2-2\overrightarrow{CA}\cdot\overrightarrow{CB}$$    
+</div>
+<h2>Norme et angle</h2>
+<div class="propriete">
+    Soient $A$, $B$ et $C$ trois points du plan.<br>
+    $$\overrightarrow{AB}\cdot\overrightarrow{AC}=AB\times AC\times\cos(\widehat{BAC})$$
+</div>
+<div class="propriete">
+    Pour tout triangle $ABC$, on a:
+    $$BC^2=AB^2+AC^2-2AB\times AC\times\cos(\widehat{BAC})$$
+    On a de même :
+    $$AC^2=BA^2+BC^2-2BA\times BC\times\cos(\widehat{ABC})$$
+    et
+    $$AB^2=AC^2+BC^2-2AC\times BC\times\cos(\widehat{ACB})$$
+</div>
+<div class="remarque">
+    Cela permet de démontrer le théorème de Pythagore.
+    En effet $ABC$ est rectangle en $A$ si et seulement si $$\widehat{BAC}=\frac{\pi}{2}$$ si et seulement si $$\cos(\widehat{BAC})=0$$ si et seulement si $$BC^2=AB^2+AC^2$$
+</div>
+    </main>
+    <footer>
+        Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
+        Licence CC BY-NC-SA.
+    </footer>
+</body>
+
+</html>
