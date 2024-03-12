@@ -37291,8 +37291,8 @@ function quiz_print_solutions() {
   };
 }
 function ajusterStartol() {
-  // Sélectionnez toutes les listes ordonnées avec la classe 'alphabetical-list'
-  var lists = document.querySelectorAll('ol.alphabetical-list');
+  // Sélectionnez toutes les listes ordonnées avec la classe 'alphabetical-list' ou 'numerical-list'
+  var lists = document.querySelectorAll('ol.alphabetical-list, ol.numerical-list');
   lists.forEach(function (list) {
     // Lisez la valeur de l'attribut 'start'
     var startValue = parseInt(list.getAttribute('start')) || 1;
