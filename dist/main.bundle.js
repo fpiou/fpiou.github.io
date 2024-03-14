@@ -36951,6 +36951,10 @@ var masquerSolutionsExercices = function () {
   });
 };
 function formatNumberForLatex(strNum) {
+  // Si strNum n'es pas un nombre, retournez le tel quel
+  if (!/^-?[\d.,]+$/.test(strNum)) {
+    return strNum;
+  }
   // Remplacez d'abord les points ou virgules par {,}
   strNum = strNum.replace(/[.,]/g, "{,}");
 
@@ -36990,8 +36994,18 @@ function preprocessLatexText(text) {
       });
 
       // Traitement pour \SI{...}{...}
-      match = match.replace(/\\SI\{(-?[\d.,]+)\}\{(.*?)\}/g, function (_, p1, p2) {
+      match = match.replace(/\\SI\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}\{(.*?)\}/g,
+      // /\\SI\{(.*?)\}\{(.*?)\}/g,
+      // /\\SI\{(-?[\d.,]+)\}\{(.*?)\}/g,
+      // Pour gérer des imbrications de {...} dans le premier groupe sur plusieurs niveaux il faudra trouver une autre solution
+      function (_, p1, p2) {
         return formatSIForLatex(p1, p2);
+      });
+
+      // Traitement pour \si{...}
+      match = match.replace(/\\si\{(.*?)\}/g, function (_, p1) {
+        return formatSIForLatex("", p1);
+        ;
       });
 
       // Traitement pour \ang{...}
