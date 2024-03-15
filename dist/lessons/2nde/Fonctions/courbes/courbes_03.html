@@ -47,6 +47,8 @@
     
         <link rel="stylesheet" href="/src/css/prettyLesson.css">
     
+        <link rel="stylesheet" href="/src/css/figures.css">
+    
         <link rel="stylesheet" href="/src/css/print.css">
     
 
@@ -110,15 +112,283 @@
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     
     <main>
-        <h2>Fiches sur les fonctions usuelles (mémorisation)</h2>
-  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <!-- On définit le repère -->
-          <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="3" ymax ="3" xorigine="0" yorigine="0"></g>
-          <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
-          <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
-          <g name="c1" class="courbeRepresentative" expression="2(x^3-4x)/10" linkto="repere1" xmin="-4" xmax="4" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
-        </svg>
+        <h4>Fonctions usuelles (fiche de mémorisation)</h4>
+<ol class="horizontal-list col-2c">
+  <li><div style="border:1px solid black">
+  <div class="equation">
+    $$\begin{matrix}
+              f: & \mathbb{R} & \longrightarrow & \mathbb{R} \\
+              & x & \longmapsto & x
+    \end{matrix}$$
+  </div>
+  <div class="figure">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="c1" class="courbeRepresentative" expression="x" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
+    </svg>
+  </div>
+  <div class="equation">
+      $$(-x)=-x$$
+  </div>
+  </div>
+  </li>
+  <li><div style="border:1px solid black">
+  <div class="equation">
+      $$\begin{matrix}
+                f: & \mathbb{R} & \longrightarrow & \mathbb{R} \\
+                & x & \longmapsto & -x
+      \end{matrix}$$
       </div>
+  <div class="figure">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="c1" class="courbeRepresentative" expression="-x" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
+    </svg>
+  </div>
+  <div class="equation">
+      $$-(-x)=x$$
+  </div>
+  </div></li>
+  <li><div style="border:1px solid black">
+  <div class="equation">
+      $$\begin{matrix}
+                f: & \mathbb{R} & \longrightarrow & \mathbb{R}^+ \\
+                & x & \longmapsto & \vert x \vert
+      \end{matrix}$$
+  </div>
+  <div class="figure">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="c1" class="courbeRepresentative" expression="abs(x)" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
+    </svg>
+  </div><div class="equation">
+      $$\vert -x \vert = \vert x \vert$$
+  </div>
+  </div></li>
+  <li><div style="border:1px solid black">
+  <div class="equation">
+      $$\begin{matrix}
+                f: & \mathbb{R} & \longrightarrow & \mathbb{R}^- \\
+                & x & \longmapsto & -\vert x \vert
+      \end{matrix}$$
+  </div>
+  <div class="figure">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="c1" class="courbeRepresentative" expression="-abs(x)" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
+    </svg>
+  </div>
+  <div class="equation">
+      $$-\vert -x \vert = -\vert x \vert$$
+  </div>
+  </div></li>
+  <li><div style="border:1px solid black">
+  <div class="equation">
+      $$\begin{matrix}
+                f: & \mathbb{R} & \longrightarrow & \mathbb{R}^+ \\
+                & x & \longmapsto & x^2
+      \end{matrix}$$
+      </div>
+  <div class="figure">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="c1" class="courbeRepresentative" expression="x^2" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
+    </svg>
+  </div>
+  <div class="equation">
+      $$(-x)^2 = x^2$$
+  </div>
+  </div></li>
+  <li><div style="border:1px solid black">
+  <div class="equation">
+      $$\begin{matrix}
+                f: & \mathbb{R} & \longrightarrow & \mathbb{R}^- \\
+                & x & \longmapsto & -x^2
+      \end{matrix}$$
+      </div>
+  <div class="figure">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="c1" class="courbeRepresentative" expression="-x^2" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
+    </svg>
+  </div>
+  <div class="equation">
+      $$-(-x)^2 = -x^2$$
+  </div>
+  </div>
+  </li>
+  <li><div style="border:1px solid black">
+  <div class="equation">
+      $$\begin{matrix}
+                f: & \mathbb{R} & \longrightarrow & \mathbb{R} \\
+                & x & \longmapsto & x^3
+      \end{matrix}$$
+      </div>
+  <div class="figure">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="c1" class="courbeRepresentative" expression="x^3" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
+    </svg>
+  </div>
+  <div class="equation">
+      $$(-x)^3 = -x^3$$
+  </div>
+  </div></li>
+  <li><div style="border:1px solid black">
+  <div class="equation">
+      $$\begin{matrix}
+                f: & \mathbb{R} & \longrightarrow & \mathbb{R} \\
+                & x & \longmapsto & -x^3
+      \end{matrix}$$
+  </div>
+  <div class="figure">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="c1" class="courbeRepresentative" expression="-x^3" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
+    </svg>
+  </div>
+  <div class="equation">
+      $$-(-x)^3 = x^3$$
+  </div>
+  </div></li>
+  <li><div style="border:1px solid black">
+  <div class="equation">
+      $$\begin{matrix}
+                f: & \mathbb{R}^* & \longrightarrow & \mathbb{R} \\
+                & x & \longmapsto & \frac{1}{x}
+      \end{matrix}$$
+  </div>
+  <div class="figure">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="c1" class="courbeRepresentative" expression="1/x" linkto="repere1" xmin="-5" xmax="-0.01" pas="0.01" stroke="blue" stroke-width="2" fill="transparent"></g>
+            <g name="c2" class="courbeRepresentative" expression="1/x" linkto="repere1" xmin="0.01" xmax="5" pas="0.01" stroke="blue" stroke-width="2" fill="transparent"></g>
+    </svg>
+  </div>
+  <div class="equation">
+      $$\frac{1}{-x} = -\frac{1}{x}$$
+  </div>
+  </div></li>
+  <li><div style="border:1px solid black">
+  <div class="equation">
+      $$\begin{matrix}
+                f: & \mathbb{R}^* & \longrightarrow & \mathbb{R} \\
+                & x & \longmapsto & -\frac{1}{x}
+      \end{matrix}$$
+      </div>
+  <div class="figure">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="c1" class="courbeRepresentative" expression="-1/x" linkto="repere1" xmin="-5" xmax="-0.01" pas="0.01" stroke="blue" stroke-width="2" fill="transparent"></g>
+            <g name="c2" class="courbeRepresentative" expression="-1/x" linkto="repere1" xmin="0.01" xmax="5" pas="0.01" stroke="blue" stroke-width="2" fill="transparent"></g>
+    </svg>
+  </div>
+  <div class="equation">
+      $$-\frac{1}{-x} = \frac{1}{x}$$
+  </div>
+  </div></li>
+</ol>
+
     </main>
     <footer>
         Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
