@@ -112,64 +112,164 @@
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     
     <main>
-        <h4>Fonctions usuelles (fiche de mémorisation)</h4>
+        <h4 class="noprint">Fonctions usuelles (fiche de mémorisation)</h4>
+<style>
+@media print {
+  .flashcard {
+    height: 6.6cm;
+  }
+}
+</style>
 <ol class="horizontal-list col-2c">
-  <li><div style="border:1px solid black">
-  <div class="equation">
-    $$\begin{matrix}
-              f: & \mathbb{R} & \longrightarrow & \mathbb{R} \\
-              & x & \longmapsto & x
-    \end{matrix}$$
-  </div>
-  <div class="figure">
-    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <!-- On définit le repère -->
-            <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
-            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
-            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
-            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
-            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
-            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
-            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
-            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
-            <g name="c1" class="courbeRepresentative" expression="x" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
-    </svg>
-  </div>
-  <div class="equation">
-      $$(-x)=-x$$
-  </div>
+  <li>
+  <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+    <div class="card">
+      <div class="card-face front">
+        <b>Fonction identité</b><br>
+        <div class="equation">
+        $$\begin{matrix}
+                  f: & \ldots & \longrightarrow & \ldots \\
+                  & x & \longmapsto & \ldots
+        \end{matrix}$$
+        </div>
+        <div class="figure">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <!-- On définit le repère -->
+                  <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                  <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                  <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                  <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                  <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                  <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                  <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                  <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          </svg>
+        </div>
+        <div class="equation">
+            $$f(-x)=\ldots$$
+        </div>  
+      </div>
+      <div class="card-face back">
+        <div class="equation">
+        $$\begin{matrix}
+                  f: & \mathbb{R} & \longrightarrow & \mathbb{R} \\
+                  & x & \longmapsto & x
+        \end{matrix}$$
+        </div>
+        <div class="figure">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <!-- On définit le repère -->
+                  <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                  <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                  <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                  <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                  <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                  <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                  <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                  <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                  <g name="c1" class="courbeRepresentative" expression="x" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
+          </svg>
+        </div>
+        <div class="equation">
+            $$(-x)=-x$$
+        </div>    
+      </div>
+    </div>
   </div>
   </li>
-  <li><div style="border:1px solid black">
-  <div class="equation">
-      $$\begin{matrix}
-                f: & \mathbb{R} & \longrightarrow & \mathbb{R} \\
-                & x & \longmapsto & -x
-      \end{matrix}$$
+  <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+    <div class="card">
+      <div class="card-face front">
+        <b>Opposée de la fonction identité</b><br>
+        <div class="equation">
+        $$\begin{matrix}
+                  f: & \ldots & \longrightarrow & \ldots \\
+                  & x & \longmapsto & \ldots
+        \end{matrix}$$
+        </div>
+        <div class="figure">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <!-- On définit le repère -->
+                  <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                  <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                  <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                  <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                  <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                  <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                  <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                  <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          </svg>
+        </div>
+        <div class="equation">
+            $$f(-x)=\ldots$$
+        </div>  
       </div>
-  <div class="figure">
-    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <!-- On définit le repère -->
-            <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
-            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
-            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
-            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
-            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
-            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
-            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
-            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
-            <g name="c1" class="courbeRepresentative" expression="-x" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
-    </svg>
+      <div class="card-face back">
+    <div class="equation">
+        $$\begin{matrix}
+                  f: & \mathbb{R} & \longrightarrow & \mathbb{R} \\
+                  & x & \longmapsto & -x
+        \end{matrix}$$
+        </div>
+    <div class="figure">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <!-- On définit le repère -->
+              <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+              <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+              <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+              <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+              <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+              <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+              <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+              <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+              <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+              <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+              <g name="c1" class="courbeRepresentative" expression="-x" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
+      </svg>
+    </div>
+    <div class="equation">
+        $$-(-x)=x$$
+    </div>
   </div>
-  <div class="equation">
-      $$-(-x)=x$$
+    </div>
   </div>
-  </div></li>
-  <li><div style="border:1px solid black">
+  </li>
+  <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+    <div class="card">
+      <div class="card-face front">
+        <b>Fonction valeur absolue</b><br>
+        <div class="equation">
+        $$\begin{matrix}
+                  f: & \ldots & \longrightarrow & \ldots \\
+                  & x & \longmapsto & \ldots
+        \end{matrix}$$
+        </div>
+        <div class="figure">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <!-- On définit le repère -->
+                  <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                  <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                  <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                  <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                  <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                  <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                  <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                  <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          </svg>
+        </div>
+        <div class="equation">
+            $$f(-x)=\ldots$$
+        </div>  
+      </div>
+      <div class="card-face back">
   <div class="equation">
       $$\begin{matrix}
                 f: & \mathbb{R} & \longrightarrow & \mathbb{R}^+ \\
@@ -194,8 +294,40 @@
   </div><div class="equation">
       $$\vert -x \vert = \vert x \vert$$
   </div>
-  </div></li>
-  <li><div style="border:1px solid black">
+  </div>
+    </div>
+  </div>
+  </li>
+  <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+    <div class="card">
+      <div class="card-face front">
+        <b>Opposée de la fonction valeur absolue</b><br>
+        <div class="equation">
+        $$\begin{matrix}
+                  f: & \ldots & \longrightarrow & \ldots \\
+                  & x & \longmapsto & \ldots
+        \end{matrix}$$
+        </div>
+        <div class="figure">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <!-- On définit le repère -->
+                  <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                  <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                  <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                  <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                  <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                  <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                  <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                  <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          </svg>
+        </div>
+        <div class="equation">
+            $$f(-x)=\ldots$$
+        </div>  
+      </div>
+      <div class="card-face back">
   <div class="equation">
       $$\begin{matrix}
                 f: & \mathbb{R} & \longrightarrow & \mathbb{R}^- \\
@@ -221,8 +353,40 @@
   <div class="equation">
       $$-\vert -x \vert = -\vert x \vert$$
   </div>
-  </div></li>
-  <li><div style="border:1px solid black">
+  </div>
+    </div>
+  </div>
+  </li>
+  <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+    <div class="card">
+      <div class="card-face front">
+        <b>Fonction carrée</b><br>
+        <div class="equation">
+        $$\begin{matrix}
+                  f: & \ldots & \longrightarrow & \ldots \\
+                  & x & \longmapsto & \ldots
+        \end{matrix}$$
+        </div>
+        <div class="figure">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <!-- On définit le repère -->
+                  <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                  <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                  <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                  <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                  <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                  <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                  <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                  <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          </svg>
+        </div>
+        <div class="equation">
+            $$f(-x)=\ldots$$
+        </div>  
+      </div>
+      <div class="card-face back">
   <div class="equation">
       $$\begin{matrix}
                 f: & \mathbb{R} & \longrightarrow & \mathbb{R}^+ \\
@@ -248,8 +412,40 @@
   <div class="equation">
       $$(-x)^2 = x^2$$
   </div>
-  </div></li>
-  <li><div style="border:1px solid black">
+  </div>
+    </div>
+  </div>
+  </li>
+  <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+    <div class="card">
+      <div class="card-face front">
+        <b>Opposée de la fonction carrée</b><br>
+        <div class="equation">
+        $$\begin{matrix}
+                  f: & \ldots & \longrightarrow & \ldots \\
+                  & x & \longmapsto & \ldots
+        \end{matrix}$$
+        </div>
+        <div class="figure">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <!-- On définit le repère -->
+                  <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                  <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                  <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                  <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                  <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                  <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                  <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                  <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          </svg>
+        </div>
+        <div class="equation">
+            $$f(-x)=\ldots$$
+        </div>  
+      </div>
+      <div class="card-face back">
   <div class="equation">
       $$\begin{matrix}
                 f: & \mathbb{R} & \longrightarrow & \mathbb{R}^- \\
@@ -276,8 +472,39 @@
       $$-(-x)^2 = -x^2$$
   </div>
   </div>
+    </div>
+  </div>
   </li>
-  <li><div style="border:1px solid black">
+  <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+    <div class="card">
+      <div class="card-face front">
+        <b>Fonction cube</b><br>
+        <div class="equation">
+        $$\begin{matrix}
+                  f: & \ldots & \longrightarrow & \ldots \\
+                  & x & \longmapsto & \ldots
+        \end{matrix}$$
+        </div>
+        <div class="figure">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <!-- On définit le repère -->
+                  <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                  <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                  <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                  <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                  <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                  <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                  <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                  <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          </svg>
+        </div>
+        <div class="equation">
+            $$f(-x)=\ldots$$
+        </div>  
+      </div>
+      <div class="card-face back">
   <div class="equation">
       $$\begin{matrix}
                 f: & \mathbb{R} & \longrightarrow & \mathbb{R} \\
@@ -303,8 +530,40 @@
   <div class="equation">
       $$(-x)^3 = -x^3$$
   </div>
-  </div></li>
-  <li><div style="border:1px solid black">
+  </div>
+    </div>
+  </div>
+  </li>
+  <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+    <div class="card">
+      <div class="card-face front">
+        <b>Opposée de la fonction cube</b><br>
+        <div class="equation">
+        $$\begin{matrix}
+                  f: & \ldots & \longrightarrow & \ldots \\
+                  & x & \longmapsto & \ldots
+        \end{matrix}$$
+        </div>
+        <div class="figure">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <!-- On définit le repère -->
+                  <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                  <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                  <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                  <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                  <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                  <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                  <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                  <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          </svg>
+        </div>
+        <div class="equation">
+            $$f(-x)=\ldots$$
+        </div>  
+      </div>
+      <div class="card-face back">
   <div class="equation">
       $$\begin{matrix}
                 f: & \mathbb{R} & \longrightarrow & \mathbb{R} \\
@@ -330,8 +589,40 @@
   <div class="equation">
       $$-(-x)^3 = x^3$$
   </div>
-  </div></li>
-  <li><div style="border:1px solid black">
+  </div>
+    </div>
+  </div>
+  </li>
+  <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+    <div class="card">
+      <div class="card-face front">
+        <b>Fonction inverse</b><br>
+        <div class="equation">
+        $$\begin{matrix}
+                  f: & \ldots & \longrightarrow & \ldots \\
+                  & x & \longmapsto & \ldots
+        \end{matrix}$$
+        </div>
+        <div class="figure">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <!-- On définit le repère -->
+                  <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                  <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                  <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                  <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                  <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                  <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                  <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                  <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          </svg>
+        </div>
+        <div class="equation">
+            $$f(-x)=\ldots$$
+        </div>  
+      </div>
+      <div class="card-face back">
   <div class="equation">
       $$\begin{matrix}
                 f: & \mathbb{R}^* & \longrightarrow & \mathbb{R} \\
@@ -358,8 +649,40 @@
   <div class="equation">
       $$\frac{1}{-x} = -\frac{1}{x}$$
   </div>
-  </div></li>
-  <li><div style="border:1px solid black">
+  </div>
+    </div>
+  </div>
+  </li>
+  <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+    <div class="card">
+      <div class="card-face front">
+        <b>Opposée de la fonction inverse</b><br>
+        <div class="equation">
+        $$\begin{matrix}
+                  f: & \ldots & \longrightarrow & \ldots \\
+                  & x & \longmapsto & \ldots
+        \end{matrix}$$
+        </div>
+        <div class="figure">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <!-- On définit le repère -->
+                  <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                  <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                  <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                  <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                  <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                  <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                  <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                  <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                  <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+          </svg>
+        </div>
+        <div class="equation">
+            $$f(-x)=\ldots$$
+        </div>  
+      </div>
+      <div class="card-face back">
   <div class="equation">
       $$\begin{matrix}
                 f: & \mathbb{R}^* & \longrightarrow & \mathbb{R} \\
@@ -386,7 +709,10 @@
   <div class="equation">
       $$-\frac{1}{-x} = \frac{1}{x}$$
   </div>
-  </div></li>
+  </div>
+    </div>
+  </div>
+  </li>
 </ol>
 
     </main>
