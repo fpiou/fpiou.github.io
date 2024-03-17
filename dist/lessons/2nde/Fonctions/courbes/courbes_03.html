@@ -125,6 +125,128 @@
   <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
       <div class="card-face front">
+        <div style="text-align:center;">
+          <b>Fonction paire</b><br>
+          $$f(-x)=\ldots$$<br>
+          Symétrie de la courbe ?
+          <div class="figure">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-10" y="0" style="font-size:0.8rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-15" y="-10" style="font-size:0.8rem;">1</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="A" class="point" repere="repere1" x="-5" y="-3" stroke="none"></g>
+                    <g name="B" class="point" repere="repere1" x="-3" y="3" stroke="none"></g>
+                    <g name="C" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+                    <g name="c1" class="pathPointsControls" linkto="A B C" controls="B:0 C:0" stroke="red" stroke-width="2" fill="transparent"></g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="card-face back">
+        <div style="text-align:center;">
+          <b>Fonction paire</b><br>
+          $$f(-x)=f(x)$$<br>
+          La courbe est symétrique par rapport à l'axe des ordonnées.
+          <div class="figure">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-10" y="0" style="font-size:0.8rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-15" y="-10" style="font-size:0.8rem;">1</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="A" class="point" repere="repere1" x="-5" y="-3" stroke="none"></g>
+                    <g name="B" class="point" repere="repere1" x="-3" y="3" stroke="none"></g>
+                    <g name="C" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+                    <g name="A1" class="point" repere="repere1" x="5" y="-3" stroke="none"></g>
+                    <g name="B1" class="point" repere="repere1" x="3" y="3" stroke="none"></g>
+                    <g name="c1" class="pathPointsControls" linkto="A B C B1 A1" controls="B:0 C:0 B1:0" stroke="red" stroke-width="2" fill="transparent"></g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </li>
+  <li>
+  <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+    <div class="card">
+      <div class="card-face front">
+        <div style="text-align:center;">
+          <b>Fonction impaire</b><br>
+          $$f(-x)=\ldots$$<br>
+          Symétrie de la courbe ?
+          <div class="figure">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-10" y="0" style="font-size:0.8rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-15" y="-10" style="font-size:0.8rem;">1</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="A" class="point" repere="repere1" x="-5" y="-3" stroke="none"></g>
+                    <g name="B" class="point" repere="repere1" x="-3" y="3" stroke="none"></g>
+                    <g name="C" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+                    <g name="A1" class="point" repere="repere1" x="5" y="-3" stroke="none"></g>
+                    <g name="B1" class="point" repere="repere1" x="3" y="3" stroke="none"></g>
+                    <g name="c1" class="pathPointsControls" linkto="A B C" controls="B:0 C:0 B1:0" stroke="red" stroke-width="2" fill="transparent"></g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="card-face back">
+        <div style="text-align:center;">
+          <b>Fonction impaire</b><br>
+          $$f(-x)=-f(x)$$<br>
+          La courbe est symétrique par rapport à l'origine.
+          <div class="figure">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-10" y="0" style="font-size:0.8rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-15" y="-10" style="font-size:0.8rem;">1</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="A" class="point" repere="repere1" x="-5" y="-3" stroke="none"></g>
+                    <g name="B" class="point" repere="repere1" x="-3" y="3" stroke="none"></g>
+                    <g name="C" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+                    <g name="A1" class="point" repere="repere1" x="5" y="3" stroke="none"></g>
+                    <g name="B1" class="point" repere="repere1" x="3" y="-3" stroke="none"></g>
+                    <g name="c1" class="pathPointsControls" linkto="A B C B1 A1" controls="B:0 C:0 B1:0" stroke="red" stroke-width="2" fill="transparent"></g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </li>
+  <li>
+  <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+    <div class="card">
+      <div class="card-face front">
         <b>Fonction identité</b><br>
         <div class="equation">
         $$\begin{matrix}
@@ -147,8 +269,8 @@
                   <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
           </svg>
         </div>
-        <div class="equation">
-            $$f(-x)=\ldots$$
+        <div style="text-align:center;">
+            Parité ? $f(-x)=\ldots$
         </div>  
       </div>
       <div class="card-face back">
@@ -174,10 +296,9 @@
                   <g name="c1" class="courbeRepresentative" expression="x" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
           </svg>
         </div>
-        <div class="equation">
-            $$(-x)=-x$$
+        <div style="text-align:center;">
+            Impaire <br> $f(-x)=-f(x)$ <br> $(-x)=-x$
         </div>    
-      </div>
     </div>
   </div>
   </li>
@@ -206,9 +327,9 @@
                   <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
           </svg>
         </div>
-        <div class="equation">
-            $$f(-x)=\ldots$$
-        </div>  
+        <div style="text-align:center;">
+            Parité ? $f(-x)=\ldots$
+        </div>
       </div>
       <div class="card-face back">
     <div class="equation">
@@ -233,8 +354,8 @@
               <g name="c1" class="courbeRepresentative" expression="-x" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
       </svg>
     </div>
-    <div class="equation">
-        $$-(-x)=x$$
+    <div style="text-align:center;">
+      Impaire <br> $f(-x)=-f(x)$ <br> $-(-x)=x$
     </div>
   </div>
     </div>
@@ -265,9 +386,9 @@
                   <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
           </svg>
         </div>
-        <div class="equation">
-            $$f(-x)=\ldots$$
-        </div>  
+        <div style="text-align:center;">
+            Parité ? $f(-x)=\ldots$
+        </div>
       </div>
       <div class="card-face back">
   <div class="equation">
@@ -291,9 +412,9 @@
             <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
             <g name="c1" class="courbeRepresentative" expression="abs(x)" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
     </svg>
-  </div><div class="equation">
-      $$\vert -x \vert = \vert x \vert$$
   </div>
+  <div style="text-align:center;">
+      Paire <br> $f(-x)=f(x)$ <br> $\vert -x \vert = \vert x \vert$
   </div>
     </div>
   </div>
@@ -323,9 +444,9 @@
                   <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
           </svg>
         </div>
-        <div class="equation">
-            $$f(-x)=\ldots$$
-        </div>  
+        <div style="text-align:center;">
+            Parité ? $f(-x)=\ldots$
+        </div>
       </div>
       <div class="card-face back">
   <div class="equation">
@@ -350,9 +471,8 @@
             <g name="c1" class="courbeRepresentative" expression="-abs(x)" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
     </svg>
   </div>
-  <div class="equation">
-      $$-\vert -x \vert = -\vert x \vert$$
-  </div>
+  <div style="text-align:center;">
+      Paire <br> $f(-x)=f(x)$ <br> $-\vert -x \vert = -\vert x \vert$
   </div>
     </div>
   </div>
@@ -382,9 +502,9 @@
                   <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
           </svg>
         </div>
-        <div class="equation">
-            $$f(-x)=\ldots$$
-        </div>  
+        <div style="text-align:center;">
+            Parité ? $f(-x)=\ldots$
+        </div>
       </div>
       <div class="card-face back">
   <div class="equation">
@@ -409,9 +529,8 @@
             <g name="c1" class="courbeRepresentative" expression="x^2" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
     </svg>
   </div>
-  <div class="equation">
-      $$(-x)^2 = x^2$$
-  </div>
+  <div style="text-align:center;">
+      Paire <br> $f(-x)=f(x)$ <br> $(-x)^2 = x^2$
   </div>
     </div>
   </div>
@@ -441,9 +560,9 @@
                   <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
           </svg>
         </div>
-        <div class="equation">
-            $$f(-x)=\ldots$$
-        </div>  
+        <div style="text-align:center;">
+            Parité ? $f(-x)=\ldots$
+        </div>
       </div>
       <div class="card-face back">
   <div class="equation">
@@ -468,9 +587,8 @@
             <g name="c1" class="courbeRepresentative" expression="-x^2" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
     </svg>
   </div>
-  <div class="equation">
-      $$-(-x)^2 = -x^2$$
-  </div>
+  <div style="text-align:center;">
+      Paire <br> $f(-x)=f(x)$ <br> $-(-x)^2 = -x^2$
   </div>
     </div>
   </div>
@@ -500,9 +618,9 @@
                   <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
           </svg>
         </div>
-        <div class="equation">
-            $$f(-x)=\ldots$$
-        </div>  
+        <div style="text-align:center;">
+            Parité ? $f(-x)=\ldots$
+        </div>
       </div>
       <div class="card-face back">
   <div class="equation">
@@ -527,9 +645,8 @@
             <g name="c1" class="courbeRepresentative" expression="x^3" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
     </svg>
   </div>
-  <div class="equation">
-      $$(-x)^3 = -x^3$$
-  </div>
+  <div style="text-align:center;">
+      Impaire <br> $f(-x)=-f(x)$ <br>$(-x)^3 = -x^3$
   </div>
     </div>
   </div>
@@ -559,9 +676,9 @@
                   <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
           </svg>
         </div>
-        <div class="equation">
-            $$f(-x)=\ldots$$
-        </div>  
+        <div style="text-align:center;">
+            Parité ? $f(-x)=\ldots$
+        </div>
       </div>
       <div class="card-face back">
   <div class="equation">
@@ -586,9 +703,8 @@
             <g name="c1" class="courbeRepresentative" expression="-x^3" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="2" fill="transparent"></g>
     </svg>
   </div>
-  <div class="equation">
-      $$-(-x)^3 = x^3$$
-  </div>
+  <div style="text-align:center;">
+      Impaire <br> $f(-x)=-f(x)$ <br> $-(-x)^3 = x^3$
   </div>
     </div>
   </div>
@@ -618,9 +734,9 @@
                   <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
           </svg>
         </div>
-        <div class="equation">
-            $$f(-x)=\ldots$$
-        </div>  
+        <div style="text-align:center;">
+            Parité ? $f(-x)=\ldots$
+        </div>
       </div>
       <div class="card-face back">
   <div class="equation">
@@ -645,9 +761,9 @@
             <g name="c1" class="courbeRepresentative" expression="1/x" linkto="repere1" xmin="-5" xmax="-0.01" pas="0.01" stroke="blue" stroke-width="2" fill="transparent"></g>
             <g name="c2" class="courbeRepresentative" expression="1/x" linkto="repere1" xmin="0.01" xmax="5" pas="0.01" stroke="blue" stroke-width="2" fill="transparent"></g>
     </svg>
-  </div>
-  <div class="equation">
-      $$\frac{1}{-x} = -\frac{1}{x}$$
+  </div> 
+  <div style="text-align:center;">
+      Impaire <br> $f(-x)=-f(x)$ <br> $\frac{1}{-x} = -\frac{1}{x}$
   </div>
   </div>
     </div>
@@ -678,9 +794,9 @@
                   <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
           </svg>
         </div>
-        <div class="equation">
-            $$f(-x)=\ldots$$
-        </div>  
+        <div style="text-align:center;">
+            Parité ? $f(-x)=\ldots$
+        </div> 
       </div>
       <div class="card-face back">
   <div class="equation">
@@ -706,8 +822,8 @@
             <g name="c2" class="courbeRepresentative" expression="-1/x" linkto="repere1" xmin="0.01" xmax="5" pas="0.01" stroke="blue" stroke-width="2" fill="transparent"></g>
     </svg>
   </div>
-  <div class="equation">
-      $$-\frac{1}{-x} = \frac{1}{x}$$
+  <div style="text-align:center;">
+      Impaire <br> $f(-x)=-f(x)$ <br> $-\frac{1}{-x} = \frac{1}{x}$
   </div>
   </div>
     </div>
