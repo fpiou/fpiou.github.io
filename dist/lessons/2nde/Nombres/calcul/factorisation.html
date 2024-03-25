@@ -110,127 +110,149 @@
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     
     <main>
-        <h3>Factorisation (fiche d'entraînement à la mémorisation)</h3>
-<ul class="flashcard-list">
-    <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
-    <div class="card">
-        <div class="card-face front">
-            Peut-on factoriser ?
-            
-            $$x^3+2x^2+x$$
+        <h3 class="noprint">Factorisation (fiche d'entraînement à la mémorisation)</h3>
+<ul class="horizontal-list col-2c">
+    <li>
+        <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+            <div class="card">
+                <div class="card-face front">
+                    Peut-on factoriser ?
+                    
+                    $$x^3+2x^2+x$$
+                </div>
+                <div class="card-face back">
+                        On peut factoriser par $x$ puis par la première identité remarquable.
+                        <br><br>
+                        $$\begin{align*}
+                        A&= x(x^2+2x+1)\\
+                        A&= x(x+1)^2
+                        \end{align*}$$
+                </div>
+            </div>
         </div>
-        <div class="card-face back">
-                On peut factoriser par $x$ puis par la première identité remarquable.
-                <br><br>
-                $$\begin{align*}
-                A&= x(x^2+2x+1)\\
-                A&= x(x+1)^2
-                \end{align*}$$
+    </li>
+    <li>
+    <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+        <div class="card">
+            <div class="card-face front">
+                Peut-on factoriser ?
+                
+                $$x(x+2)+(x-4)(x+2)$$
+            </div>
+            <div class="card-face back">
+                    On peut factoriser par $(x+2).$
+                    <br><br>
+                    $$\begin{align*}
+                    A&= x(x+2)+(x-4)(x+2)\\
+                    A&= (x+2)(x-4+x)\\
+                    A&= (x+2)(2x-4)\\
+                    A&= 2(x+2)(x-2)
+                    \end{align*}$$
+            </div>
         </div>
-    </div></li>
-    <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
-    <div class="card">
-        <div class="card-face front">
-            Peut-on factoriser ?
-            
-            $$x(x+2)+(x-4)(x+2)$$
+    </div>
+    </li>
+    <li>
+    <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+        <div class="card">
+            <div class="card-face front">
+                Peut-on factoriser ?
+                
+                $$x^2+2x+1$$
+            </div>
+            <div class="card-face back">
+                    1re identité remarquable.
+                    <br><br>
+                    $$\begin{align*}
+                    A&= x^2+2x+1\\
+                    A&= (x+1)^2
+                    \end{align*}$$
+            </div>
         </div>
-        <div class="card-face back">
-                On peut factoriser par $(x+2).$
-                <br><br>
-                $$\begin{align*}
-                A&= x(x+2)+(x-4)(x+2)\\
-                A&= (x+2)(x-4+x)\\
-                A&= (x+2)(2x-4)\\
-                A&= 2(x+2)(x-2)
-                \end{align*}$$
+    </div>
+    </li>
+    <li>
+    <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+        <div class="card">
+            <div class="card-face front">
+                Peut-on factoriser ?
+                
+                $$(x-4)^2+(x-4)(x+2)$$
+            </div>
+            <div class="card-face back">
+                    On peut factoriser par $(x-4).$
+                    <br><br>
+                    $$\begin{align*}
+                    A&= (x-4)^2+(x-4)(x+2)\\
+                    A&= (x-4)(x-4+x+2)\\
+                    A&= (x-4)(2x-2)\\
+                    A&= 2(x-4)(x-1)
+                    \end{align*}$$
+            </div>
         </div>
-    </div></li>
-    <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
-    <div class="card">
-        <div class="card-face front">
-            Peut-on factoriser ?
-            
-            $$x^2+2x+1$$
+    </div>
+    </li>
+    <li>
+    <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+        <div class="card">
+            <div class="card-face front">
+                Peut-on factoriser ?
+                
+                $$(x+2)^2-(x-4)^2$$
+            </div>
+            <div class="card-face back">
+                    3e identité remarquable.
+                    <br><br>
+                    $$\begin{align*}
+                    A&= (x+2)^2-(x-4)^2\\
+                    A&= (x+2+x-4)(x+2-x+4)\\
+                    A&= (2x-2)(6)\\
+                    A&= 6(2x-1)
+                    \end{align*}$$
+            </div>
         </div>
-        <div class="card-face back">
-                1re identité remarquable.
-                <br><br>
-                $$\begin{align*}
-                A&= x^2+2x+1\\
-                A&= (x+1)^2
-                \end{align*}$$
+    </div>
+    </li>
+    <li>
+    <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+        <div class="card">
+            <div class="card-face front">
+                Peut-on factoriser ?
+                
+                $$x^2-2x+4$$
+            </div>
+            <div class="card-face back">
+                    3e identité remarquable.
+                    <br><br>
+                    $$\begin{align*}
+                    A&= x^2-2x+4\\
+                    A&= (x-1)^2
+                    \end{align*}$$
+            </div>
         </div>
-    </div></li>
-    <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
-    <div class="card">
-        <div class="card-face front">
-            Peut-on factoriser ?
-            
-            $$(x-4)^2+(x-4)(x+2)$$
+    </div>
+    </li>
+    <li>
+        <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+            <div class="card">
+                <div class="card-face front">
+                    Peut-on factoriser ?
+                    
+                    $$4x^2+4x+1$$
+                </div>
+                <div class="card-face back">
+                        1re identité remarquable.
+                        <br><br>
+                        $$\begin{align*}
+                        A&= 4x^2+4x+1\\
+                        A&= (2x+1)^2
+                        \end{align*}$$
+                </div>
+            </div>
         </div>
-        <div class="card-face back">
-                On peut factoriser par $(x-4).$
-                <br><br>
-                $$\begin{align*}
-                A&= (x-4)^2+(x-4)(x+2)\\
-                A&= (x-4)(x-4+x+2)\\
-                A&= (x-4)(2x-2)\\
-                A&= 2(x-4)(x-1)
-                \end{align*}$$
-        </div>
-    </div></li>
-    <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
-    <div class="card">
-        <div class="card-face front">
-            Peut-on factoriser ?
-            
-            $$(x+2)^2-(x-4)^2$$
-        </div>
-        <div class="card-face back">
-                3e identité remarquable.
-                <br><br>
-                $$\begin{align*}
-                A&= (x+2)^2-(x-4)^2\\
-                A&= (x+2+x-4)(x+2-x+4)\\
-                A&= (2x-2)(6)\\
-                A&= 6(2x-1)
-                \end{align*}$$
-        </div>
-    </div></li>
-    <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
-    <div class="card">
-        <div class="card-face front">
-            Peut-on factoriser ?
-            
-            $$x^2-2x+4$$
-        </div>
-        <div class="card-face back">
-                3e identité remarquable.
-                <br><br>
-                $$\begin{align*}
-                A&= x^2-2x+4\\
-                A&= (x-1)^2
-                \end{align*}$$
-        </div>
-    </div></li>
-    <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
-    <div class="card">
-        <div class="card-face front">
-            Peut-on factoriser ?
-            
-            $$4x^2+4x+1$$
-        </div>
-        <div class="card-face back">
-                1re identité remarquable.
-                <br><br>
-                $$\begin{align*}
-                A&= 4x^2+4x+1\\
-                A&= (2x+1)^2
-                \end{align*}$$
-        </div>
-    </div></li>
-    <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+    </li>
+    <li>
+    <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
         <div class="card-face front">
             Peut-on factoriser ?
@@ -245,7 +267,7 @@
                 A&= (x+2)^2
                 \end{align*}$$
         </div>
-    </div></li>
+    </div></div></li>
     <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
         <div class="card-face front">
@@ -263,7 +285,7 @@
                 A&= (x-4)(x-5)
                 \end{align*}$$
         </div>
-    </div></li>
+    </div></div></li>
     <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
         <div class="card-face front">
@@ -283,7 +305,7 @@
                 A&= -(x+4)(x+3)
                 \end{align*}$$
         </div>
-    </div></li>
+    </div></div></li>
     <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
         <div class="card-face front">
@@ -301,7 +323,7 @@
                 A&= (x-2)(x+1)
                 \end{align*}$$
         </div>
-    </div></li>
+    </div></div></li>
     <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
         <div class="card-face front">
@@ -317,7 +339,7 @@
                 A&= (x-1)^2
                 \end{align*}$$
         </div>
-    </div></li>
+    </div></div></li>
     <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
         <div class="card-face front">
@@ -333,7 +355,7 @@
                 A&= (2x-1)^2
                 \end{align*}$$
         </div>
-    </div></li>
+    </div></div></li>
     <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
         <div class="card-face front">
@@ -351,7 +373,7 @@
                 A&= 3(x+1)(x-1)
                 \end{align*}$$
         </div>
-    </div></li>
+    </div></div></li>
     <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
         <div class="card-face front">
@@ -367,7 +389,7 @@
                 A&= (2x+1)(2x-1)
                 \end{align*}$$
         </div>
-    </div></li>
+    </div></div></li>
     <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
         <div class="card-face front">
@@ -378,7 +400,7 @@
         <div class="card-face back">
             Pas de factorisation identifiable.
         </div>
-    </div></li>
+    </div></div></li>
     <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
         <div class="card-face front">
@@ -389,7 +411,7 @@
         <div class="card-face back">
             Pas de factorisation identifiable.
         </div>
-    </div></li>
+    </div></div></li>
     <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
         <div class="card-face front">
@@ -400,7 +422,7 @@
         <div class="card-face back">
             Pas de factorisation identifiable.
         </div>
-    </div></li>
+    </div></div></li>
     <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
         <div class="card-face front">
@@ -411,7 +433,7 @@
         <div class="card-face back">
             Pas de factorisation identifiable.
         </div>
-    </div></li>
+    </div></div></li>
     <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
         <div class="card-face front">
@@ -422,7 +444,7 @@
         <div class="card-face back">
             Pas de factorisation identifiable.
         </div>
-    </div></li>
+    </div></div></li>
     <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
         <div class="card-face front">
@@ -432,8 +454,8 @@
         </div>
         <div class="card-face back">
             Pas de factorisation identifiable.
-        </div>
-    </div></li>
+    </div>
+    </div></div></li>
 </ul>
 
 
