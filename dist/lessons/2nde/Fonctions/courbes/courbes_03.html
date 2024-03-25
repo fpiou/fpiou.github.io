@@ -126,7 +126,7 @@
     <div class="card">
       <div class="card-face front">
         <div style="text-align:center;">
-          <b>Fonction paire</b><br>
+          <b>Fonction paire</b>
           $$f(-x)=\ldots$$<br>
           Symétrie de la courbe ?
           <div class="figure">
@@ -152,7 +152,7 @@
       </div>
       <div class="card-face back">
         <div style="text-align:center;">
-          <b>Fonction paire</b><br>
+          <b>Fonction paire</b>
           $$f(-x)=f(x)$$<br>
           La courbe est symétrique par rapport à l'axe des ordonnées.
           <div class="figure">
@@ -186,7 +186,7 @@
     <div class="card">
       <div class="card-face front">
         <div style="text-align:center;">
-          <b>Fonction impaire</b><br>
+          <b>Fonction impaire</b>
           $$f(-x)=\ldots$$<br>
           Symétrie de la courbe ?
           <div class="figure">
@@ -214,7 +214,7 @@
       </div>
       <div class="card-face back">
         <div style="text-align:center;">
-          <b>Fonction impaire</b><br>
+          <b>Fonction impaire</b>
           $$f(-x)=-f(x)$$<br>
           La courbe est symétrique par rapport à l'origine.
           <div class="figure">
@@ -247,33 +247,32 @@
   <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
       <div class="card-face front">
-        <b>Fonction identité</b><br>
-        <div class="equation">
-        $$\begin{matrix}
-                  f: & \ldots & \longrightarrow & \ldots \\
-                  & x & \longmapsto & \ldots
-        \end{matrix}$$
-        </div>
-        <div class="figure">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                  <!-- On définit le repère -->
-                  <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
-                  <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
-                  <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
-                  <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
-                  <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-                  <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
-                  <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-                  <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
-                  <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
-                  <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
-          </svg>
-        </div>
-        <div style="text-align:center;">
-            Parité ? $f(-x)=\ldots$
-        </div>  
+          <b>Fonction identité</b>
+          
+          $$\begin{matrix}
+                    f: & \ldots & \longrightarrow & \ldots \\
+                    & x & \longmapsto & \ldots
+          \end{matrix}$$
+          
+          <div class="figure">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            </svg>
+          </div>
+              Parité ? <br> $$f(-x)=\ldots$$
       </div>
       <div class="card-face back">
+        <div style="text-align:center;">
         <div class="equation">
         $$\begin{matrix}
                   f: & \mathbb{R} & \longrightarrow & \mathbb{R} \\
@@ -297,15 +296,16 @@
           </svg>
         </div>
         <div style="text-align:center;">
-            Impaire <br> $f(-x)=-f(x)$ <br> $(-x)=-x$
-        </div>    
+            Impaire <br>  $(-x)=-x$
+        </div> 
+        </div>  
     </div>
   </div>
   </li>
   <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
       <div class="card-face front">
-        <b>Opposée de la fonction identité</b><br>
+        <b>Opposée de la fonction identité</b>
         <div class="equation">
         $$\begin{matrix}
                   f: & \ldots & \longrightarrow & \ldots \\
@@ -327,9 +327,7 @@
                   <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
           </svg>
         </div>
-        <div style="text-align:center;">
-            Parité ? $f(-x)=\ldots$
-        </div>
+            Parité ? <br> $$f(-x)=\ldots$$
       </div>
       <div class="card-face back">
     <div class="equation">
@@ -355,7 +353,7 @@
       </svg>
     </div>
     <div style="text-align:center;">
-      Impaire <br> $f(-x)=-f(x)$ <br> $-(-x)=x$
+      Impaire <br>  $-(-x)=x$
     </div>
   </div>
     </div>
@@ -364,7 +362,7 @@
   <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
       <div class="card-face front">
-        <b>Fonction valeur absolue</b><br>
+        <b>Fonction valeur absolue</b>
         <div class="equation">
         $$\begin{matrix}
                   f: & \ldots & \longrightarrow & \ldots \\
@@ -387,7 +385,7 @@
           </svg>
         </div>
         <div style="text-align:center;">
-            Parité ? $f(-x)=\ldots$
+            Parité ? <br> $$f(-x)=\ldots$$
         </div>
       </div>
       <div class="card-face back">
@@ -414,7 +412,7 @@
     </svg>
   </div>
   <div style="text-align:center;">
-      Paire <br> $f(-x)=f(x)$ <br> $\vert -x \vert = \vert x \vert$
+      Paire <br>  $\vert -x \vert = \vert x \vert$
   </div>
     </div>
   </div>
@@ -422,7 +420,7 @@
   <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
       <div class="card-face front">
-        <b>Opposée de la fonction valeur absolue</b><br>
+        <b>Opposée de la fonction valeur absolue</b>
         <div class="equation">
         $$\begin{matrix}
                   f: & \ldots & \longrightarrow & \ldots \\
@@ -445,7 +443,7 @@
           </svg>
         </div>
         <div style="text-align:center;">
-            Parité ? $f(-x)=\ldots$
+            Parité ? <br> $$f(-x)=\ldots$$
         </div>
       </div>
       <div class="card-face back">
@@ -472,7 +470,7 @@
     </svg>
   </div>
   <div style="text-align:center;">
-      Paire <br> $f(-x)=f(x)$ <br> $-\vert -x \vert = -\vert x \vert$
+      Paire <br>  $-\vert -x \vert = -\vert x \vert$
   </div>
     </div>
   </div>
@@ -480,7 +478,7 @@
   <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
       <div class="card-face front">
-        <b>Fonction carrée</b><br>
+        <b>Fonction carrée</b>
         <div class="equation">
         $$\begin{matrix}
                   f: & \ldots & \longrightarrow & \ldots \\
@@ -503,7 +501,7 @@
           </svg>
         </div>
         <div style="text-align:center;">
-            Parité ? $f(-x)=\ldots$
+            Parité ? <br> $$f(-x)=\ldots$$
         </div>
       </div>
       <div class="card-face back">
@@ -530,7 +528,7 @@
     </svg>
   </div>
   <div style="text-align:center;">
-      Paire <br> $f(-x)=f(x)$ <br> $(-x)^2 = x^2$
+      Paire <br>  $(-x)^2 = x^2$
   </div>
     </div>
   </div>
@@ -538,7 +536,7 @@
   <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
       <div class="card-face front">
-        <b>Opposée de la fonction carrée</b><br>
+        <b>Opposée de la fonction carrée</b>
         <div class="equation">
         $$\begin{matrix}
                   f: & \ldots & \longrightarrow & \ldots \\
@@ -561,7 +559,7 @@
           </svg>
         </div>
         <div style="text-align:center;">
-            Parité ? $f(-x)=\ldots$
+            Parité ? <br> $$f(-x)=\ldots$$
         </div>
       </div>
       <div class="card-face back">
@@ -588,7 +586,7 @@
     </svg>
   </div>
   <div style="text-align:center;">
-      Paire <br> $f(-x)=f(x)$ <br> $-(-x)^2 = -x^2$
+      Paire <br>  $-(-x)^2 = -x^2$
   </div>
     </div>
   </div>
@@ -596,7 +594,7 @@
   <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
       <div class="card-face front">
-        <b>Fonction cube</b><br>
+        <b>Fonction cube</b>
         <div class="equation">
         $$\begin{matrix}
                   f: & \ldots & \longrightarrow & \ldots \\
@@ -619,7 +617,7 @@
           </svg>
         </div>
         <div style="text-align:center;">
-            Parité ? $f(-x)=\ldots$
+            Parité ? <br> $$f(-x)=\ldots$$
         </div>
       </div>
       <div class="card-face back">
@@ -646,7 +644,7 @@
     </svg>
   </div>
   <div style="text-align:center;">
-      Impaire <br> $f(-x)=-f(x)$ <br>$(-x)^3 = -x^3$
+      Impaire <br> $(-x)^3 = -x^3$
   </div>
     </div>
   </div>
@@ -654,7 +652,7 @@
   <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
       <div class="card-face front">
-        <b>Opposée de la fonction cube</b><br>
+        <b>Opposée de la fonction cube</b>
         <div class="equation">
         $$\begin{matrix}
                   f: & \ldots & \longrightarrow & \ldots \\
@@ -677,7 +675,7 @@
           </svg>
         </div>
         <div style="text-align:center;">
-            Parité ? $f(-x)=\ldots$
+            Parité ? <br> $$f(-x)=\ldots$$
         </div>
       </div>
       <div class="card-face back">
@@ -704,7 +702,7 @@
     </svg>
   </div>
   <div style="text-align:center;">
-      Impaire <br> $f(-x)=-f(x)$ <br> $-(-x)^3 = x^3$
+      Impaire <br>  $-(-x)^3 = x^3$
   </div>
     </div>
   </div>
@@ -712,7 +710,7 @@
   <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
       <div class="card-face front">
-        <b>Fonction inverse</b><br>
+        <b>Fonction inverse</b>
         <div class="equation">
         $$\begin{matrix}
                   f: & \ldots & \longrightarrow & \ldots \\
@@ -735,7 +733,7 @@
           </svg>
         </div>
         <div style="text-align:center;">
-            Parité ? $f(-x)=\ldots$
+            Parité ? <br> $$f(-x)=\ldots$$
         </div>
       </div>
       <div class="card-face back">
@@ -763,7 +761,7 @@
     </svg>
   </div> 
   <div style="text-align:center;">
-      Impaire <br> $f(-x)=-f(x)$ <br> $\frac{1}{-x} = -\frac{1}{x}$
+      Impaire <br>  $\frac{1}{-x} = -\frac{1}{x}$
   </div>
   </div>
     </div>
@@ -772,7 +770,7 @@
   <li><div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
     <div class="card">
       <div class="card-face front">
-        <b>Opposée de la fonction inverse</b><br>
+        <b>Opposée de la fonction inverse</b>
         <div class="equation">
         $$\begin{matrix}
                   f: & \ldots & \longrightarrow & \ldots \\
@@ -795,7 +793,7 @@
           </svg>
         </div>
         <div style="text-align:center;">
-            Parité ? $f(-x)=\ldots$
+            Parité ? <br> $$f(-x)=\ldots$$
         </div> 
       </div>
       <div class="card-face back">
@@ -823,7 +821,7 @@
     </svg>
   </div>
   <div style="text-align:center;">
-      Impaire <br> $f(-x)=-f(x)$ <br> $-\frac{1}{-x} = \frac{1}{x}$
+      Impaire <br>  $-\frac{1}{-x} = \frac{1}{x}$
   </div>
   </div>
     </div>
