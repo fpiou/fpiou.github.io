@@ -341,7 +341,7 @@ ol.horizontal-list li, ul.horizontal-list li {
 
 /* Flashcards */
 .flashcard {
-  width: 100%;
+  width: 280px;
   height: 400px;
   border: 1px solid #000;
   perspective: 1000px;
