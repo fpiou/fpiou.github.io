@@ -37107,6 +37107,11 @@ var openAvantPrint = function () {
       details.setAttribute("open", "");
     });
     duplicateContent();
+    // Soustraire 4 pt à la taille de la police du body
+    var bodyElement = document.body;
+    var tailleInitiale = window.getComputedStyle(bodyElement).fontSize;
+    var tailleActuelle = parseFloat(tailleInitiale);
+    bodyElement.style.fontSize = tailleActuelle - 4 + "px";
   };
   window.onafterprint = function () {
     // Fermer tous les éléments <details>
@@ -37119,6 +37124,11 @@ var openAvantPrint = function () {
     copies.forEach(copy => {
       copy.remove();
     });
+    // Réinitialiser la taille de la police du body
+    var bodyElement = document.body;
+    var tailleInitiale = window.getComputedStyle(bodyElement).fontSize;
+    var tailleActuelle = parseFloat(tailleInitiale);
+    bodyElement.style.fontSize = tailleActuelle + 4 + "px";
   };
 };
 var adapterPositionDropdown = function (event) {
