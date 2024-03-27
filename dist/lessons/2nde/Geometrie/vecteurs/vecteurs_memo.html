@@ -112,8 +112,504 @@
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     
     <main>
-        <h2 class="noprint">Les vecteurs (fiche de mémorisation)</h2>
+        <h2 class="noprint">Les vecteurs (fiches de mémorisation)</h2>
 <ul class="flashcard-list">
+    <li>
+        <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+            <div class="card">
+                <div class="card-face front">
+                <span>Si $\overrightarrow{u}\begin{pmatrix}
+                x\\
+                y
+                \end{pmatrix}$ et $\overrightarrow{v}\begin{pmatrix}
+                x'\\
+                y'
+                \end{pmatrix}$, alors
+
+                $$\overrightarrow{u}+\overrightarrow{v}=\begin{pmatrix}
+                \ldots\\
+                \ldots
+                \end{pmatrix}$$</span>
+                </div>
+                <div class="card-face back">
+                <span>Si $\overrightarrow{u}\begin{pmatrix}
+                x\\
+                y
+                \end{pmatrix}$ et $\overrightarrow{v}\begin{pmatrix}
+                x'\\
+                y'
+                \end{pmatrix}$, alors
+
+                $$\overrightarrow{u}+\overrightarrow{v}=\begin{pmatrix}
+                x+x'\\
+                y+y'
+                \end{pmatrix}$$</span>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+            <div class="card">
+                <div class="card-face front">
+                <span>Si $\overrightarrow{u}\begin{pmatrix}
+                x\\
+                y
+                \end{pmatrix}$, alors pour tous réels $k$
+
+                $$k\overrightarrow{u}=\begin{pmatrix}
+                \ldots\\
+                \ldots
+                \end{pmatrix}$$</span>
+                </div>
+                <div class="card-face back">
+                <span>Si $\overrightarrow{u}\begin{pmatrix}
+                x\\
+                y
+                \end{pmatrix}$, alors pour tous réels $k$
+
+                $$k\overrightarrow{u}=\begin{pmatrix}
+                kx\\
+                ky
+                \end{pmatrix}$$</span>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+            <div class="card">
+                <div class="card-face front">
+                <div class="figure">
+                        <svg viewBox="0 0 200 120">
+                            <g name="repere1" class="repere" xmin="0" ymin="0" xmax="10" ymax ="6" xorigine="0" yorigine="0"></g>
+                            <g name="A" class="point" repere="repere1" x="2" y="1" stroke="none"></g>
+                            <g name="B" class="point" repere="repere1" x="8" y="5" stroke="none"></g>
+                            <g name="u" class="vecteur labeled" linkto="A B" stroke="blue" stroke-width="1"></g>
+                        </svg>
+                </div>
+                <span>Si $\overrightarrow{u}\begin{pmatrix}
+                x\\
+                y
+                \end{pmatrix}$, alors
+
+                $$\|\overrightarrow{u}\|=\ldots$$</span>
+                </div>
+                <div class="card-face back">
+                    <div class="figure">
+                        <svg viewBox="0 0 200 120">
+                            <g name="repere1" class="repere" xmin="0" ymin="0" xmax="10" ymax ="6" xorigine="0" yorigine="0"></g>
+                            <g name="A" class="point" repere="repere1" x="2" y="1" stroke="none"></g>
+                            <g name="B" class="point" repere="repere1" x="8" y="5" stroke="none"></g>
+                            <g name="u" class="vecteur labeled" linkto="A B" stroke="blue" stroke-width="1"></g>
+                        </svg>
+                </div>
+                <span>Si $\overrightarrow{u}\begin{pmatrix}
+                x\\
+                y
+                \end{pmatrix}$, alors
+
+                $$\|\overrightarrow{u}\|= \sqrt{x^2+y^2}$$</span>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+            <div class="card">
+                <div class="card-face front">
+                <div class="figure">
+                    <svg viewBox="0 0 200 200">
+                        <g name="repere1" class="repere" xmin="-4" ymin="-4" xmax="4" ymax ="4" xorigine="0" yorigine="0"></g>
+                        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                        <g class="label" linkto="I" x="-10" y="0" style="font-size:0.8rem;">1</g>
+                        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                        <g class="label" linkto="J" x="-15" y="-10" style="font-size:0.8rem;">1</g>
+                        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="A" class="point labeled" repere="repere1" x="-2.3" y="1.5" stroke="black"></g>
+                        <g class="label" linkto="A" x="-15" y="-20" style="width:5em;">A(x_A~;~y_A)</g>
+                        <g name="B" class="point labeled" repere="repere1" x="1.5" y="-2.4" stroke="black"></g>
+                        <g class="label" linkto="B" x="-15" y="0" style="width:5em;">B(x_B~;~y_B)</g>
+                        <g name="u" class="vecteur" linkto="A B" stroke="blue" stroke-width="1"></g>
+                    </svg>
+                </div>
+                $$
+                AB=\ldots
+                $$
+                </div>
+                <div class="card-face back">
+                    <div class="figure">
+                    <svg viewBox="0 0 200 200">
+                        <g name="repere1" class="repere" xmin="-4" ymin="-4" xmax="4" ymax ="4" xorigine="0" yorigine="0"></g>
+                        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                        <g class="label" linkto="I" x="-10" y="0" style="font-size:0.8rem;">1</g>
+                        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                        <g class="label" linkto="J" x="-15" y="-10" style="font-size:0.8rem;">1</g>
+                        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="A" class="point labeled" repere="repere1" x="-2.3" y="1.5" stroke="black"></g>
+                        <g class="label" linkto="A" x="-15" y="-20" style="width:5em;">A(x_A~;~y_A)</g>
+                        <g name="B" class="point labeled" repere="repere1" x="1.5" y="-2.4" stroke="black"></g>
+                        <g class="label" linkto="B" x="-15" y="0" style="width:5em;">B(x_B~;~y_B)</g>
+                        <g name="u" class="vecteur" linkto="A B" stroke="blue" stroke-width="1"></g>
+                    </svg>
+                </div>
+                    $$
+                    AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}
+                    $$
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+            <div class="card">
+                <div class="card-face front">
+                <div class="figure">
+                    <svg viewBox="0 0 200 200">
+                        <g name="repere1" class="repere" xmin="-4" ymin="-4" xmax="4" ymax ="4" xorigine="0" yorigine="0"></g>
+                        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                        <g class="label" linkto="I" x="-10" y="0" style="font-size:0.8rem;">1</g>
+                        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                        <g class="label" linkto="J" x="-15" y="-10" style="font-size:0.8rem;">1</g>
+                        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="A" class="point labeled" repere="repere1" x="-2.3" y="1.5" stroke="black"></g>
+                        <g class="label" linkto="A" x="-15" y="-20" style="width:5em;">A(x_A~;~y_A)</g>
+                        <g name="B" class="point labeled" repere="repere1" x="1.5" y="-2.4" stroke="black"></g>
+                        <g class="label" linkto="B" x="-15" y="0" style="width:5em;">B(x_B~;~y_B)</g>
+                        <g name="u" class="vecteur" linkto="A B" stroke="blue" stroke-width="1"></g>
+                    </svg>
+                </div>
+                $$
+                \overrightarrow{AB}\begin{pmatrix}
+                \ldots\\
+                \ldots
+                \end{pmatrix}
+                $$
+                </div>
+                <div class="card-face back">
+                    <div class="figure">
+                    <svg viewBox="0 0 200 200">
+                        <g name="repere1" class="repere" xmin="-4" ymin="-4" xmax="4" ymax ="4" xorigine="0" yorigine="0"></g>
+                        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                        <g class="label" linkto="I" x="-10" y="0" style="font-size:0.8rem;">1</g>
+                        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                        <g class="label" linkto="J" x="-15" y="-10" style="font-size:0.8rem;">1</g>
+                        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="A" class="point labeled" repere="repere1" x="-2.3" y="1.5" stroke="black"></g>
+                        <g class="label" linkto="A" x="-15" y="-20" style="width:5em;">A(x_A~;~y_A)</g>
+                        <g name="B" class="point labeled" repere="repere1" x="1.5" y="-2.4" stroke="black"></g>
+                        <g class="label" linkto="B" x="-15" y="0" style="width:5em;">B(x_B~;~y_B)</g>
+                        <g name="u" class="vecteur" linkto="A B" stroke="blue" stroke-width="1"></g>
+                    </svg>
+                </div>
+                    $$
+                    \overrightarrow{AB}\begin{pmatrix}
+                        x_B-x_A\\
+                        y_B-y_A
+                    \end{pmatrix}
+                    $$
+
+                    En effet :
+                    $$
+                    \begin{align*}
+                    \overrightarrow{AB}&=\overrightarrow{OB}-\overrightarrow{OA}\\
+                    \overrightarrow{AB}&=\begin{pmatrix}
+                        x_B\\
+                        y_B
+                    \end{pmatrix}-\begin{pmatrix}
+                        x_A\\
+                        y_A
+                    \end{pmatrix}
+                    \end{align*}
+                    $$
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+            <div class="card">
+                <div class="card-face front">
+                <span>Si $I$ est le milieu de $[AB]$,</span>
+
+                <span>alors $\ldots$</span>
+                </div>
+                <div class="card-face back">
+                    <span>Si $I$ est le milieu de $[AB]$,</span>
+
+                    <span>alors $\overrightarrow{AI}=\overrightarrow{IB}.$</span>
+                
+                    <div class="figure">
+                        <svg viewBox="0 0 200 120">
+                            <g name="repere1" class="repere" xmin="0" ymin="0" xmax="10" ymax ="6" xorigine="0" yorigine="0"></g>
+                            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2"></g>
+                            <g name="A" class="point labeled" repere="repere1" x="2" y="1" stroke="none"></g>
+                            <g class="label" linkto="A" x="-15" y="0">A</g>
+                            <g name="B" class="point labeled" repere="repere1" x="8" y="5" stroke="none"></g>
+                            <g class="label" linkto="B" x="0" y="-10">B</g>
+                            <g name="I" class="point labeled" repere="repere1" x="5" y="3" stroke="black"></g>
+                            <g class="label" linkto="I" x="0" y="0">I</g>
+                            <g name="u" class="vecteur" linkto="A I" stroke="blue" stroke-width="1"></g>
+                            <g name="v" class="vecteur" linkto="I B" stroke="blue" stroke-width="1"></g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+            <div class="card">
+                <div class="card-face front">
+                <span>Si $\overrightarrow{AI}=\overrightarrow{IB}$,</span>
+
+                <span>alors $\ldots$</span>
+                </div>
+                <div class="card-face back">
+                    <span>Si $\overrightarrow{AI}=\overrightarrow{IB}$,</span>
+
+                    <span>alors $I$ est le milieu de $[AB]$</span>
+                
+                    
+                    <div class="figure">
+                        <svg viewBox="0 0 200 120">
+                            <g name="repere1" class="repere" xmin="0" ymin="0" xmax="10" ymax ="6" xorigine="0" yorigine="0"></g>
+                            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2"></g>
+                            <g name="A" class="point labeled" repere="repere1" x="2" y="1" stroke="none"></g>
+                            <g class="label" linkto="A" x="-15" y="0">A</g>
+                            <g name="B" class="point labeled" repere="repere1" x="8" y="5" stroke="none"></g>
+                            <g class="label" linkto="B" x="0" y="-10">B</g>
+                            <g name="I" class="point labeled" repere="repere1" x="5" y="3" stroke="black"></g>
+                            <g class="label" linkto="I" x="0" y="0">I</g>
+                            <g name="u" class="vecteur" linkto="A I" stroke="blue" stroke-width="1"></g>
+                            <g name="v" class="vecteur" linkto="I B" stroke="blue" stroke-width="1"></g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+            <div class="card">
+                <div class="card-face front">
+                <span>Si $\overrightarrow{AB}=\overrightarrow{DC}$,</span>
+
+                <span>alors $\ldots$</span>
+                </div>
+                <div class="card-face back">
+                    <span>Si $\overrightarrow{AB}=\overrightarrow{DC}$,</span>
+                
+                    <span>alors $ABCD$ est un parallélogramme.</span>
+                
+                    
+                    <div class="figure">
+                        <svg viewBox="0 0 200 120">
+                            <g name="repere1" class="repere" xmin="0" ymin="0" xmax="10" ymax ="6" xorigine="0" yorigine="0"></g>
+                            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2"></g>
+                            <g name="A" class="point labeled" repere="repere1" x="2" y="1" stroke="none"></g>
+                            <g class="label" linkto="A" x="-15" y="0">A</g>
+                            <g name="B" class="point labeled" repere="repere1" x="4" y="4" stroke="none"></g>
+                            <g class="label" linkto="B" x="-20" y="-15">B</g>
+                            <g name="D" class="point labeled" repere="repere1" x="7" y="2" stroke="none"></g>
+                            <g name="C" class="point labeled" repere="repere1" x="9" y="5" stroke="none"></g>
+                            <g class="label" linkto="C" x="0" y="-10">C</g>
+                            <g name="ABCD" class="polygone" linkto="A B C D" stroke="black" fill="none" stroke-width="0.5"></g>
+                            <g name="u" class="vecteur" linkto="A B" stroke="blue" stroke-width="1"></g>
+                            <g name="v" class="vecteur" linkto="D C" stroke="blue" stroke-width="1"></g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+            <div class="card">
+                <div class="card-face front">
+                <span>Si $ABCD$ est un parallélogramme, alors
+
+                    $$\overrightarrow{AB}=\ldots$$</span>
+                </div>
+                <div class="card-face back">
+                    <span>Si $ABCD$ est un parallélogramme, alors
+
+                    $$\overrightarrow{AB}= \overrightarrow{DC}$$</span>
+                    
+                    <div class="figure">
+                        <svg viewBox="0 0 200 120">
+                            <g name="repere1" class="repere" xmin="0" ymin="0" xmax="10" ymax ="6" xorigine="0" yorigine="0"></g>
+                            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2"></g>
+                            <g name="A" class="point labeled" repere="repere1" x="2" y="1" stroke="none"></g>
+                            <g class="label" linkto="A" x="-15" y="0">A</g>
+                            <g name="B" class="point labeled" repere="repere1" x="4" y="4" stroke="none"></g>
+                            <g class="label" linkto="B" x="-20" y="-15">B</g>
+                            <g name="D" class="point labeled" repere="repere1" x="7" y="2" stroke="none"></g>
+                            <g name="C" class="point labeled" repere="repere1" x="9" y="5" stroke="none"></g>
+                            <g class="label" linkto="C" x="0" y="-10">C</g>
+                            <g name="ABCD" class="polygone" linkto="A B C D" stroke="black" fill="none" stroke-width="0.5"></g>
+                            <g name="u" class="vecteur" linkto="A B" stroke="blue" stroke-width="1"></g>
+                            <g name="v" class="vecteur" linkto="D C" stroke="blue" stroke-width="1"></g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+            <div class="card">
+                <div class="card-face front">
+                <span>Pour tous points $A$, $B$ et $C$ du plan, on a&nbsp;:</span>
+
+                    $$\overrightarrow{AB}+\overrightarrow{BC}=\ldots$$
+                </div>
+                <div class="card-face back">
+                    <span>Pour tous points $A$, $B$ et $C$ du plan, on a&nbsp;:</span>
+
+                    $$\overrightarrow{AB}+\overrightarrow{BC}=\overrightarrow{AC}$$
+
+                    C'est ce qu'on appelle la relation de Chasles.
+                    
+                    <div class="figure">
+                        <svg viewBox="0 0 200 120">
+                            <g name="repere1" class="repere" xmin="0" ymin="0" xmax="10" ymax ="6" xorigine="0" yorigine="0"></g>
+                            <g name="A" class="point labeled" repere="repere1" x="2" y="1" stroke="none"></g>
+                            <g class="label" linkto="A" x="-15" y="0">A</g>
+                            <g name="B" class="point labeled" repere="repere1" x="4" y="4" stroke="none"></g>
+                            <g class="label" linkto="B" x="-20" y="-15">B</g>
+                            <g name="C" class="point labeled" repere="repere1" x="9" y="5" stroke="none"></g>
+                            <g class="label" linkto="C" x="0" y="-10">C</g>
+                            <g name="u" class="vecteur" linkto="A B" stroke="blue" stroke-width="1"></g>
+                            <g name="v" class="vecteur" linkto="B C" stroke="blue" stroke-width="1"></g>
+                            <g name="w" class="vecteur" linkto="A C" stroke="green" stroke-width="1"></g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+            <div class="card">
+                <div class="card-face front">
+                    <span>Si $ABCD$ est un parallélogramme, alors
+                    $$\overrightarrow{AB}-\overrightarrow{AD}=\ldots$$</span>
+                    
+                    <div class="figure">
+                        <svg viewBox="0 0 200 120">
+                            <g name="repere1" class="repere" xmin="0" ymin="0" xmax="10" ymax ="6" xorigine="0" yorigine="0"></g>
+                            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2"></g>
+                            <g name="A" class="point labeled" repere="repere1" x="2" y="1" stroke="none"></g>
+                            <g class="label" linkto="A" x="-15" y="0">A</g>
+                            <g name="B" class="point labeled" repere="repere1" x="4" y="4" stroke="none"></g>
+                            <g class="label" linkto="B" x="-20" y="-15">B</g>
+                            <g name="D" class="point labeled" repere="repere1" x="7" y="2" stroke="none"></g>
+                            <g name="C" class="point labeled" repere="repere1" x="9" y="5" stroke="none"></g>
+                            <g class="label" linkto="C" x="0" y="-10">C</g>
+                            <g name="ABCD" class="polygone" linkto="A B C D" stroke="black" fill="none" stroke-width="0.5"></g>
+                            <g name="u" class="vecteur" linkto="A B" stroke="blue" stroke-width="1"></g>
+                            <g name="v" class="vecteur" linkto="A D" stroke="blue" stroke-width="1"></g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-face back">
+                    <span>Si $ABCD$ est un parallélogramme, alors
+                    $$
+                    \begin{align*}
+                    \overrightarrow{AB}-\overrightarrow{AD}&= \overrightarrow{AB}+\overrightarrow{DA}\\
+                    \overrightarrow{AB}-\overrightarrow{AD}&= \overrightarrow{DA}+\overrightarrow{AB}\\
+                    \overrightarrow{AB}-\overrightarrow{AD}&= \overrightarrow{DB}
+                    \end{align*}
+                    $$</span>
+                    
+                    <div class="figure">
+                        <svg viewBox="0 0 200 120">
+                            <g name="repere1" class="repere" xmin="0" ymin="0" xmax="10" ymax ="6" xorigine="0" yorigine="0"></g>
+                            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2"></g>
+                            <g name="A" class="point labeled" repere="repere1" x="2" y="1" stroke="none"></g>
+                            <g class="label" linkto="A" x="-15" y="0">A</g>
+                            <g name="B" class="point labeled" repere="repere1" x="4" y="4" stroke="none"></g>
+                            <g class="label" linkto="B" x="-20" y="-15">B</g>
+                            <g name="D" class="point labeled" repere="repere1" x="7" y="2" stroke="none"></g>
+                            <g name="C" class="point labeled" repere="repere1" x="9" y="5" stroke="none"></g>
+                            <g class="label" linkto="C" x="0" y="-10">C</g>
+                            <g name="ABCD" class="polygone" linkto="A B C D" stroke="black" fill="none" stroke-width="0.5"></g>
+                            <g name="u" class="vecteur" linkto="A B" stroke="blue" stroke-width="1"></g>
+                            <g name="v" class="vecteur" linkto="A D" stroke="blue" stroke-width="1"></g>
+                            <g name="w" class="vecteur" linkto="D B" stroke="green" stroke-width="1"></g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
+            <div class="card">
+                <div class="card-face front">
+                    <span>Si $ABCD$ est un parallélogramme, alors
+                    $$\overrightarrow{AB}+\overrightarrow{AD}=\ldots$$</span>
+                    
+                    <div class="figure">
+                        <svg viewBox="0 0 200 120">
+                            <g name="repere1" class="repere" xmin="0" ymin="0" xmax="10" ymax ="6" xorigine="0" yorigine="0"></g>
+                            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2"></g>
+                            <g name="A" class="point labeled" repere="repere1" x="2" y="1" stroke="none"></g>
+                            <g class="label" linkto="A" x="-15" y="0">A</g>
+                            <g name="B" class="point labeled" repere="repere1" x="4" y="4" stroke="none"></g>
+                            <g class="label" linkto="B" x="-20" y="-15">B</g>
+                            <g name="D" class="point labeled" repere="repere1" x="7" y="2" stroke="none"></g>
+                            <g name="C" class="point labeled" repere="repere1" x="9" y="5" stroke="none"></g>
+                            <g class="label" linkto="C" x="0" y="-10">C</g>
+                            <g name="ABCD" class="polygone" linkto="A B C D" stroke="black" fill="none" stroke-width="0.5"></g>
+                            <g name="u" class="vecteur" linkto="A B" stroke="blue" stroke-width="1"></g>
+                            <g name="v" class="vecteur" linkto="A D" stroke="blue" stroke-width="1"></g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-face back">
+                    <span>Si $ABCD$ est un parallélogramme, alors
+                    $$
+                    \begin{align*}
+                    \overrightarrow{AB}+\overrightarrow{AD}&= \overrightarrow{AB}+\overrightarrow{BC}\\
+                    \overrightarrow{AB}+\overrightarrow{AD}&= \overrightarrow{AC}
+                    \end{align*}
+                    $$</span>
+                    
+                    <div class="figure">
+                        <svg viewBox="0 0 200 120">
+                            <g name="repere1" class="repere" xmin="0" ymin="0" xmax="10" ymax ="6" xorigine="0" yorigine="0"></g>
+                            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2"></g>
+                            <g name="A" class="point labeled" repere="repere1" x="2" y="1" stroke="none"></g>
+                            <g class="label" linkto="A" x="-15" y="0">A</g>
+                            <g name="B" class="point labeled" repere="repere1" x="4" y="4" stroke="none"></g>
+                            <g class="label" linkto="B" x="-20" y="-15">B</g>
+                            <g name="D" class="point labeled" repere="repere1" x="7" y="2" stroke="none"></g>
+                            <g name="C" class="point labeled" repere="repere1" x="9" y="5" stroke="none"></g>
+                            <g class="label" linkto="C" x="0" y="-10">C</g>
+                            <g name="ABCD" class="polygone" linkto="A B C D" stroke="black" fill="none" stroke-width="0.5"></g>
+                            <g name="u" class="vecteur" linkto="A B" stroke="blue" stroke-width="1"></g>
+                            <g name="v" class="vecteur" linkto="A D" stroke="blue" stroke-width="1"></g>
+                            <g name="w" class="vecteur" linkto="A C" stroke="green" stroke-width="1"></g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
     <li>
         <div class="flashcard" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
             <div class="card">
@@ -143,7 +639,7 @@
                         </svg>
                         </div>
 
-                        Les vecteurs $\overrightarrow{u}\text{ et }\overrightarrow{v}~:$
+                        <span>Les vecteurs $\overrightarrow{u}$ et $\overrightarrow{v}~:$</span>
                         <ul>
                             <li>ont la même direction&nbsp;;</li>
                             <li>sont de sens opposés&nbsp;;</li>
@@ -182,7 +678,7 @@
                         </svg>
                         </div>
 
-                        Les vecteurs $\overrightarrow{u}\text{ et }\overrightarrow{v}~:$
+                        <span>Les vecteurs $\overrightarrow{u}$ et $\overrightarrow{v}~:$</span>
                         <ul>
                             <li>ont la même direction&nbsp;;</li>
                             <li>sont de sens opposés&nbsp;;</li>
@@ -222,7 +718,7 @@
                         </svg>
                         </div>
 
-                        Les vecteurs $\overrightarrow{u}\text{ et }\overrightarrow{v}~:$
+                        <span>Les vecteurs $\overrightarrow{u}$ et $\overrightarrow{v}~:$</span>
                         <ul>
                             <li>n'ont pas la même direction&nbsp;;</li>
                             <li>ont la même norme.</li>
@@ -260,7 +756,7 @@
                         </svg>
                         </div>
 
-                        Les vecteurs $\overrightarrow{u}\text{ et }\overrightarrow{v}~:$
+                        <span>Les vecteurs $\overrightarrow{u}$ et $\overrightarrow{v}~:$</span>
                         <ul>
                             <li>ont la même direction&nbsp;;</li>
                             <li>ont le même sens&nbsp;;</li>
@@ -300,7 +796,7 @@
                         </svg>
                         </div>
 
-                        Les vecteurs $\overrightarrow{u}\text{ et }\overrightarrow{v}~:$
+                        <span>Les vecteurs $\overrightarrow{u}$ et $\overrightarrow{v}~:$</span>
                         <ul>
                             <li>ont la même direction&nbsp;;</li>
                             <li>sont de même sens&nbsp;;</li>
@@ -311,6 +807,7 @@
         </div>
     </li>
 </ul>
+
     </main>
     <footer>
         Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée Henry Bergson à Angers.<br>
