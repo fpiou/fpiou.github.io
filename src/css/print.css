@@ -143,24 +143,15 @@
   /* Flashcards */
   .flashcard {
     width: 100%;
-    height: 9cm;
+    height: 8.5cm;
     margin: 0;
     perspective: none;
-    /* border: none; */
   }
 
-  .card {
-    transform: none !important; /* Annule toute transformation 3D appliquée */
-    position: relative;
-    flex-direction: row; /* Disposition côte à côte */
-    display: flex;
-  }
-
-  .card-face {
+  .card-face {   
     position: relative; /* Assure que les deux faces sont positionnées correctement */
     transform: none !important; /* Annule les transformations comme rotateY */
     width: 50%; /* Chaque face prend la moitié de la largeur de la carte */
-    display: block; /* S'assure que le contenu est bien affiché */
   }
 
   .card-face.back {

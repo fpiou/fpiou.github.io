@@ -353,9 +353,6 @@ ol.horizontal-list li, ul.horizontal-list li {
   transform-style: preserve-3d;
   transition: transform 0.5s;
   display: flex; /* Ajouté */
-  justify-content: center; /* Centre horizontalement */
-  align-items: center; /* Centre verticalement */
-  text-align: center;
 }
 
 .card.is-flipped {
@@ -369,9 +366,7 @@ ol.horizontal-list li, ul.horizontal-list li {
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: center; /* Centre verticalement */
   font-size: 12px;
 }
 
