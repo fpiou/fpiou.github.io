@@ -152,14 +152,14 @@
     position: relative; /* Assure que les deux faces sont positionnées correctement */
     transform: none !important; /* Annule les transformations comme rotateY */
     width: 50%; /* Chaque face prend la moitié de la largeur de la carte */
+    /* Centrer verticalement */
+    justify-content: center;
   }
 
   .card-face.back {
-    display: block; /* S'assure que le verso est affiché */
     background:none; /* Supprime le fond */
   }
   .card-face.front {
-    display: block; /* S'assure que le recto est affiché */
     background:none; /* Supprime le fond */
   }
 }

@@ -366,7 +366,7 @@ ol.horizontal-list li, ul.horizontal-list li {
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
-  /* Centre verticalement */
+  /* Centrer verticalement */
   justify-content: center;
   font-size: 12px;
 }
