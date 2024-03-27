@@ -37782,7 +37782,24 @@ var createHeadLine = function (line) {
 };
 var constructHeadVecteur = function (vecteur) {
   var A = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
-  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
+  if (getLinkto(vecteur).length == 2) {
+    var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
+  } else {
+    // Récupérer les coordonnées du vecteur
+    // Récupérer les coordonnées du vecteur
+    var x = vecteur.getAttribute("x");
+    x = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(x);
+    var y = vecteur.getAttribute("y");
+    y = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(y);
+    if (vecteur.hasAttribute("repere")) {
+      var repere = document.getElementById(vecteur.getAttribute("repere"));
+      var echelleX = repere.getAttribute("echellex");
+      var echelleY = repere.getAttribute("echelley");
+      [x, y] = [x * echelleX, -y * echelleY];
+    }
+    // Les coordonnées de l'extrémité sont A.x +x et A.y + y
+    var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(A.x + parseFloat(x), A.y + parseFloat(y));
+  }
   var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Segment(A, B);
   var alpha = AB.angle() / Math.PI * 180;
   // Récupérer le paramètre scale du vecteur
@@ -37813,7 +37830,23 @@ var constructHeadVecteur = function (vecteur) {
 };
 var constructLabelVecteur = function (vecteur) {
   var A = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
-  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
+  if (getLinkto(vecteur).length == 2) {
+    var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
+  } else {
+    // Récupérer les coordonnées du vecteur
+    var x = vecteur.getAttribute("x");
+    x = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(x);
+    var y = vecteur.getAttribute("y");
+    y = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(y);
+    if (vecteur.hasAttribute("repere")) {
+      var repere = document.getElementById(vecteur.getAttribute("repere"));
+      var echelleX = repere.getAttribute("echellex");
+      var echelleY = repere.getAttribute("echelley");
+      [x, y] = [x * echelleX, -y * echelleY];
+    }
+    // Les coordonnées de l'extrémité sont A.x +x et A.y + y
+    var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(A.x + parseFloat(x), A.y + parseFloat(y));
+  }
   var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Segment(A, B);
   var I = AB.milieu();
   var foreignObject = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject");
@@ -37831,10 +37864,26 @@ var constructLabelVecteur = function (vecteur) {
   vecteur.appendChild(foreignObject);
 };
 var constructVecteur = function (vecteur) {
-  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
-  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
   var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  path.setAttribute("d", "M" + A.x + "," + A.y + " L" + B.x + "," + B.y);
+  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
+  if (getLinkto(vecteur).length == 2) {
+    var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
+    path.setAttribute("d", "M" + A.x + "," + A.y + " L" + B.x + "," + B.y);
+  } else {
+    // Récupérer les coordonnées du vecteur
+    var x = vecteur.getAttribute("x");
+    x = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(x);
+    var y = vecteur.getAttribute("y");
+    y = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(y);
+    if (vecteur.hasAttribute("repere")) {
+      var repere = document.getElementById(vecteur.getAttribute("repere"));
+      var echelleX = repere.getAttribute("echellex");
+      var echelleY = repere.getAttribute("echelley");
+      [x, y] = [x * echelleX, -y * echelleY];
+    }
+    // Les coordonnées de l'extrémité sont A.x +x et A.y + y
+    path.setAttribute("d", "M" + A.x + "," + A.y + " L" + (A.x + x) + "," + (A.y + y));
+  }
   setStroke(vecteur, path);
   vecteur.appendChild(path);
   constructHeadVecteur(vecteur);
@@ -39516,7 +39565,23 @@ var initialiserDataPoint = function (point) {
 var actualiserLabelVecteur = function (vecteur) {
   if (vecteur.classList.contains("labeled")) {
     var A = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
-    var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
+    if (getLinkto(vecteur).length == 2) {
+      var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
+    } else {
+      // Récupérer les coordonnées du vecteur
+      var x = vecteur.getAttribute("x");
+      x = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(x);
+      var y = vecteur.getAttribute("y");
+      y = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(y);
+      if (vecteur.hasAttribute("repere")) {
+        var repere = document.getElementById(vecteur.getAttribute("repere"));
+        var echelleX = repere.getAttribute("echellex");
+        var echelleY = repere.getAttribute("echelley");
+        [x, y] = [x * echelleX, -y * echelleY];
+      }
+      // Les coordonnées de l'extrémité sont A.x +x et A.y + y
+      var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(A.x + parseFloat(x), A.y + parseFloat(y));
+    }
     var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Segment(A, B);
     var I = AB.milieu();
     var foreignObject = vecteur.querySelector("foreignObject");
@@ -39525,10 +39590,26 @@ var actualiserLabelVecteur = function (vecteur) {
   }
 };
 var actualiserVecteur = function (vecteur) {
-  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
-  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
   var path = vecteur.querySelector("path");
-  path.setAttribute("d", "M" + A.x + "," + A.y + " L" + B.x + "," + B.y);
+  var A = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
+  if (getLinkto(vecteur).length == 2) {
+    var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
+    path.setAttribute("d", "M" + A.x + "," + A.y + " L" + B.x + "," + B.y);
+  } else {
+    // Récupérer les coordonnées du vecteur
+    var x = vecteur.getAttribute("x");
+    x = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(x);
+    var y = vecteur.getAttribute("y");
+    y = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(y);
+    if (vecteur.hasAttribute("repere")) {
+      var repere = document.getElementById(vecteur.getAttribute("repere"));
+      var echelleX = repere.getAttribute("echellex");
+      var echelleY = repere.getAttribute("echelley");
+      [x, y] = [x * echelleX, -y * echelleY];
+    }
+    // Les coordonnées de l'extrémité sont A.x +x et A.y + y
+    path.setAttribute("d", "M" + A.x + "," + A.y + " L" + (A.x + x) + "," + (A.y + y));
+  }
   actualiserHeadVecteur(vecteur);
   actualiserLabelVecteur(vecteur);
 };
@@ -39578,7 +39659,23 @@ var actualiserCodageSegment = function (segment) {
 };
 var actualiserHeadVecteur = function (vecteur) {
   var A = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 0)));
-  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
+  if (getLinkto(vecteur).length == 2) {
+    var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
+  } else {
+    // Récupérer les coordonnées du vecteur
+    var x = vecteur.getAttribute("x");
+    x = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(x);
+    var y = vecteur.getAttribute("y");
+    y = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(y);
+    if (vecteur.hasAttribute("repere")) {
+      var repere = document.getElementById(vecteur.getAttribute("repere"));
+      var echelleX = repere.getAttribute("echellex");
+      var echelleY = repere.getAttribute("echelley");
+      [x, y] = [x * echelleX, -y * echelleY];
+    }
+    // Les coordonnées de l'extrémité sont A.x +x et A.y + y
+    var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(A.x + parseFloat(x), A.y + parseFloat(y));
+  }
   var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Segment(A, B);
   var alpha = AB.angle() / Math.PI * 180;
   var scale = 1;

@@ -400,3 +400,11 @@ ul.flashcard-list li {
   padding: 0 5px;
   box-sizing: border-box;
 }
+
+.flashcard .bouton-quadrillage {
+  display:none !important ;
+}
+
+.flashcard .bouton-pleinecran {
+  display:none !important ;
+}
