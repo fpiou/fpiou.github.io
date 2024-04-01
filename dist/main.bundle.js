@@ -37111,7 +37111,7 @@ var openAvantPrint = function () {
     var bodyElement = document.body;
     var tailleInitiale = window.getComputedStyle(bodyElement).fontSize;
     var tailleActuelle = parseFloat(tailleInitiale);
-    bodyElement.style.fontSize = tailleActuelle - 4 + "px";
+    bodyElement.style.fontSize = tailleActuelle - 6 + "px";
   };
   window.onafterprint = function () {
     // Fermer tous les éléments <details>
@@ -37128,7 +37128,7 @@ var openAvantPrint = function () {
     var bodyElement = document.body;
     var tailleInitiale = window.getComputedStyle(bodyElement).fontSize;
     var tailleActuelle = parseFloat(tailleInitiale);
-    bodyElement.style.fontSize = tailleActuelle + 4 + "px";
+    bodyElement.style.fontSize = tailleActuelle + 6 + "px";
   };
 };
 var adapterPositionDropdown = function (event) {
@@ -37680,6 +37680,13 @@ var constructCrossPoint = function (point) {
       path.setAttribute("d", "M-2,4 L0,4 L0,-4 L-2,-4");
     } else if (point.getAttribute("forme") == "|") {
       path.setAttribute("d", "M0,4 L0,-4");
+    } else if (point.getAttribute("forme") == ".") {
+      // Créer un disque plein de rayon 2
+      path.setAttribute("d", "M-2,0 A2,2 0 1,0 2,0 A2,2 0 1,0 -2,0");
+      path.setAttribute("fill", path.getAttribute("stroke"));
+    } else if (point.getAttribute("forme") == "o") {
+      // Créer un cercle de rayon 4
+      path.setAttribute("d", "M-4,0 A4,4 0 1,0 4,0 A4,4 0 1,0 -4,0");
     } else {
       path.setAttribute("d", "M-2,-2 L2,2 M-2,2 L2,-2");
     }
