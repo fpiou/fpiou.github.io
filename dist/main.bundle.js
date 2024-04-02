@@ -39310,6 +39310,9 @@ var createIntersectionPath = function (intersectionPath) {
       pointSVG.id = intersectionPath.id + "-" + index;
       pointSVG.setAttribute("x", point.x);
       pointSVG.setAttribute("y", point.y);
+      if (intersectionPath.hasAttribute("repere")) {
+        pointSVG.setAttribute("repere", point.repere);
+      }
       intersectionPath.appendChild(pointSVG);
       initialiserPoint(pointSVG);
     }
