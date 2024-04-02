@@ -179,7 +179,7 @@
       </div>
     <ol class="alphabetical-list">
       <li>Résoudre l'inéquation $f(x)\leqslant 0.$</li>
-      <li>Indiquez les extremums de $f$ sur $[-10~;~7]$.</li>
+      <li>Déterminez les extremums de $f$ sur $[-10~;~7]$.</li>
     </ol>
   </div>
   <div class="solution">
@@ -278,10 +278,6 @@
 
 <!-- Avec un tableau de valeurs, comparer entre plusieurs valeurs entre elles -->
 
-<div class="encart">
-  <b>Définition :</b> Une fonction est dite croissante sur un intervalle $I$ si elle conserve l'ordre des nombres sur cet intervalle.
-</div>
-
 <div class="exercice">
   <div class="enonce">
     La courbe d'une fonction $f$ passe par les points de coordonnées $(3~;~\num{6.2})$ et $(-4~;~\num{6.018})$.<br>
@@ -297,10 +293,177 @@
 <div class="exercice">
   <div class="enonce">
     <div class="encart">
-      <b>Propriété :</b> Si $f$ est une fonction affine de la forme $f(x)=ax+b$, alors :
+      <b>Propriété :</b> Considérons une fonction $f$ de la forme $f(x)=ax+b$, où $a$ et $b$ sont des réels.<br>
       <ul style="padding-left:2em;">
-        <li>$f$ conserve l'ordre des nombres de départ.</li>
-        <li>Si $a\gt 0$, alors $f$ est croissante.</li></main>
+        <li>Si $a\gt 0$, alors $f$ est strictement croissante.
+        <div class="figure">
+          <svg viewBox="0 0 400 170">
+              <g name="A1" class="point" stroke="none" x="170" y="140"></g>
+              <g name="d" class="vecteur" linkto="A1" x="165" y="-70" stroke="black"></g>
+              <foreignObject width="99%" height="100%">
+              <div xmlns="http://www.w3.org/1999/xhtml">
+                  <table style="font-size:20px;" width="400" height="140" class="tableauvariations">
+                  <tr>
+                      <td>$x$</td>
+                      <td>$-\infty$</td>
+                      <td></td>
+                      <td>$+\infty$</td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>$+\infty$</td>
+                  </tr>
+                  <tr>
+                      <td style="font-size:14px;">Variations de $x\mapsto ax+b$ pour $a\gt 0$</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td>$-\infty$</td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  </table>
+              </div>
+              </foreignObject>
+          </svg>
+        </div>
+        </li>
+        <li>Si $a\lt 0$, alors $f$ est strictement décroissante.
+        <div class="figure">
+          <svg viewBox="0 0 400 170">
+              <g name="A1" class="point" stroke="none" x="170" y="70"></g>
+              <g name="d" class="vecteur" linkto="A1" x="165" y="70" stroke="black"></g>
+              <foreignObject width="99%" height="100%">
+              <div xmlns="http://www.w3.org/1999/xhtml">
+                  <table style="font-size:20px;" width="400" height="140" class="tableauvariations">
+                  <tr>
+                      <td>$x$</td>
+                      <td>$-\infty$</td>
+                      <td></td>
+                      <td>$+\infty$</td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td>$+\infty$</td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td style="font-size:14px;">Variations de $x\mapsto ax+b$ pour $a\lt 0$</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>$-\infty$</td>
+                  </tr>
+                  </table>
+              </div>
+              </foreignObject>
+          </svg>
+        </div></li>
+        <li>Si $a=0$, alors $f$ est constante.
+      </ul>
+    </div>
+    Dans chaque cas, déterminez si la fonction $f$ est croissante, décroissante ou constante.
+    <ol class="horizontal-list col-2c">
+      <li>$f_1(x)=3x+2$</li>
+      <li>$f_2(x)=-2x+5$</li>
+      <li>$f_3(x)=\dfrac{x}{2}$</li>
+      <li>$f_4(x)=-\num{0.5}$</li>
+      <li>$f_5(x)=6-4x$</li>
+      <li>$f_6(x)=-2+x$</li>
+      <li>$f_7(x)=6x+3-8x$</li>
+      <li>$f_8(x)=\dfrac{4x-3}{2}$</li>
+      <li>$f_9(x)=-2(3-4x)$</li>
+      <li>$f_{10}(x)=6x^2-3(2x-4)^2$</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ul>
+      <li><p>On a $a=3\gt 0$ donc $f_1$ est strictement croissante.</p></li>
+      <li><p>On a $a=-2\lt 0$ donc $f_2$ est strictement décroissante.</p></li>
+      <li><p>On a $a=\dfrac{1}{2}\gt 0$ donc $f_3$ est strictement croissante.</p></li>
+      <li><p>On a $a=0$ donc $f_4$ est constante.</p></li>
+      <li><p>On a $a=-4\lt 0$ donc $f_5$ est strictement décroissante.</p></li>
+      <li><p>On a $a=1\gt 0$ donc $f_6$ est strictement croissante.</p></li>
+      <li><p>On a $a=-2\lt 0$ donc $f_7$ est strictement décroissante.</p></li>
+      <li><p>On a $a=2\gt 0$ donc $f_8$ est strictement croissante.</p></li>
+      <li><p>On a $a=8\gt 0$ donc $f_9$ est strictement croissante.</p></li>
+      <li><p>On a $a=48\gt 0$ donc $f_{10}$ est strictement croissante.</p></li>
+    </ul>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    <div class="encart">
+      <b>Définition :</b> Une fonction est dite croissante sur un intervalle $I$ si elle conserve l'ordre des nombres sur cet intervalle.
+    </div>
+    On se propose de démontrer la propriété précédente en utilisant cette définition.
+    <ol class="alphabetical-list">
+      <li>Soit $f(x)=ax+b$ avec $a\gt 0$.<br>
+      Montrer que si $x_1\lt x_2$ alors $f(x_1)\lt f(x_2).$</li>
+      <li>Soit $f(x)=ax+b$ avec $a\lt 0$.<br>
+      Montrer que si $x_1\lt x_2$ alors $f(x_1)\gt f(x_2).$</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li><p>On a $f(x_1)=ax_1+b$ et $f(x_2)=ax_2+b.$</p>
+      $$\begin{align*}
+      x_1&\lt x_2\\
+      ax_1&\lt ax_2&&\text{car $a\gt 0$}\\
+      ax_1+b&\lt ax_2+b\\
+      f(x_1)&\lt f(x_2)
+      \end{align*}$$</p></li>
+      <li><p>On a $f(x_1)=ax_1+b$ et $f(x_2)=ax_2+b.$</p>
+      $$\begin{align*}
+      x_1&\lt x_2\\
+      ax_1&\gt ax_2&&\text{car $a\lt 0$}\\
+      ax_1+b&\gt ax_2+b\\
+      f(x_1)&\gt f(x_2)
+      \end{align*}$$</p></li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div classs="enonce">
+    <div class="encart">
+      <b>Propriété :</b> La fonction carrée $x\longmapsto x^2$ est strictement décroissante sur $]-\infty~;~0]$ et strictement croissante sur $[0~;~+\infty[$.
+    </div>
+    <ol class="alphabetical-list">
+      <li>Comparez les nombres $(-\num{2.01})^2$ et $(-\num{2.1})^2$ en utilisant les variations de la fonction carrée.</li>
+      <li>Comparez les nombres $\left(\frac{4}{83}\right)^2$ et $\left(\frac{4}{85}\right)^2$ en utilisant les variations de la fonction carrée.</li>
+      <li>Donnez deux nombres $a$ et $b$ de signes contraires tels que la fonction carrée conserve l'ordre des nombres $a$ et $b$.</li>
+      <li>Donnez deux nombres $a$ et $b$ de signes contraires tels que la fonction carrée change l'ordre des nombres $a$ et $b$.</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li><p>On a $-2.01\lt -2.1$</p>
+      <p>Or la fonction carrée est strictement décroissante sur $]-\infty~;~0]$.</p>
+      <p>Donc $(-2.01)^2 \gt (-2.1)^2.$</p></li>
+      </li>
+      <li><p>On a $\dfrac{4}{83}\gt \dfrac{4}{85}$</p>
+      <p>Or la fonction carrée est strictement croissante sur $[0~;~+\infty[$.</p>
+      <p>Donc $\left(\dfrac{4}{83}\right)^2 \gt \left(\dfrac{4}{85}\right)^2.$</p></li>
+      <li><p>On peut prendre $a=-1$ et $b=2$.</p>
+      <p>On a $a\lt b$ et $a^2 \lt b^2$.</p>
+      <p>Donc la fonction carrée conserve l'ordre des nombres $a$ et $b$.</p></li>
+      <li><p>On peut prendre $a=-2$ et $b=1$.</p>
+      <p>On a $a\lt b$ et $a^2 \gt b^2$.</p>
+      <p>Donc la fonction carrée change l'ordre des nombres $a$ et $b$.</p></li>
+    </ol>
+  </div>
+</div></main>
     <footer>
       Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
       Henry Bergson à Angers.<br />
