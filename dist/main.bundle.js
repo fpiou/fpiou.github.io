@@ -37793,7 +37793,6 @@ var constructHeadVecteur = function (vecteur) {
     var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(vecteur, 1)));
   } else {
     // Récupérer les coordonnées du vecteur
-    // Récupérer les coordonnées du vecteur
     var x = vecteur.getAttribute("x");
     x = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(x);
     var y = vecteur.getAttribute("y");
@@ -37893,7 +37892,9 @@ var constructVecteur = function (vecteur) {
   }
   setStroke(vecteur, path);
   vecteur.appendChild(path);
-  constructHeadVecteur(vecteur);
+  if (!(vecteur.hasAttribute("head") && vecteur.getAttribute("head") == "none")) {
+    constructHeadVecteur(vecteur);
+  }
   // Ajouter le style du vecteur au path
   path.setAttribute("style", vecteur.getAttribute("style"));
   if (vecteur.classList.contains("labeled")) {
@@ -39447,6 +39448,56 @@ var initialiserQuadrillagesReperesFigure = function (figure) {
     initialiserQuadrillageRepere(quadrillage);
   });
 };
+var createEllipse = function (ellipse) {
+  var linkto = ellipse.getAttribute("linkto").split(" ");
+  var A = ellipse.parentNode.querySelector("#" + linkto[0]);
+  var B = ellipse.parentNode.querySelector("#" + linkto[1]);
+  var C = ellipse.parentNode.querySelector("#" + linkto[2]);
+  var P1 = getCoordonneesPoint(A);
+  var P2 = getCoordonneesPoint(B);
+  var P3 = getCoordonneesPoint(C);
+  var a = mathjs__WEBPACK_IMPORTED_MODULE_4__.distance(P1, P2);
+  var b = mathjs__WEBPACK_IMPORTED_MODULE_4__.distance(P2, P3);
+  var x = (P1[0] + P3[0]) / 2;
+  var y = (P1[1] + P3[1]) / 2;
+  var ellipseSVG = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
+  ellipseSVG.setAttribute("cx", x);
+  ellipseSVG.setAttribute("cy", y);
+  ellipseSVG.setAttribute("rx", a);
+  ellipseSVG.setAttribute("ry", b);
+  ellipse.appendChild(ellipseSVG);
+};
+var initialiserEllipse = function (ellipse) {
+  createEllipse(ellipse);
+};
+var getEllipsesFigure = function (figure) {
+  var ellipses = document.querySelectorAll("g.ellipse");
+  var ellipsesArray = Array.from(ellipses);
+  return ellipsesArray.filter(ellipse => ellipse.id.split("-")[0] == figure.id);
+};
+var initialiserEllipsesFigure = function (figure) {
+  getEllipsesFigure(figure).forEach(function (ellipse) {
+    initialiserEllipse(ellipse);
+  });
+};
+var actualiserEllipse = function (ellipse) {
+  var linkto = ellipse.getAttribute("linkto").split(" ");
+  var A = ellipse.parentNode.querySelector("#" + linkto[0]);
+  var B = ellipse.parentNode.querySelector("#" + linkto[1]);
+  var C = ellipse.parentNode.querySelector("#" + linkto[2]);
+  var P1 = getCoordonneesPoint(A);
+  var P2 = getCoordonneesPoint(B);
+  var P3 = getCoordonneesPoint(C);
+  var a = mathjs__WEBPACK_IMPORTED_MODULE_4__.distance(P1, P2);
+  var b = mathjs__WEBPACK_IMPORTED_MODULE_4__.distance(P2, P3);
+  var x = (P1[0] + P3[0]) / 2;
+  var y = (P1[1] + P3[1]) / 2;
+  var ellipseSVG = ellipse.querySelector("ellipse");
+  ellipseSVG.setAttribute("cx", x);
+  ellipseSVG.setAttribute("cy", y);
+  ellipseSVG.setAttribute("rx", a);
+  ellipseSVG.setAttribute("ry", b);
+};
 var initialiserFigure = function (figure) {
   addQuadrillage(figure);
   addBoutonQuadrillage(figure);
@@ -39459,6 +39510,7 @@ var initialiserFigure = function (figure) {
   initialiserDemiDroitesFigure(figure);
   initialiserSegmentsFigure(figure);
   initialiserPolygonesFigure(figure);
+  initialiserEllipsesFigure(figure);
   initialiserGraduationsFigure(figure);
   initialiserCourbesFigure(figure);
   initialiserDiagrammesCirculairesFigure(figure);
@@ -39620,7 +39672,9 @@ var actualiserVecteur = function (vecteur) {
     // Les coordonnées de l'extrémité sont A.x +x et A.y + y
     path.setAttribute("d", "M" + A.x + "," + A.y + " L" + (A.x + x) + "," + (A.y + y));
   }
-  actualiserHeadVecteur(vecteur);
+  if (!(vecteur.hasAttribute("head") && vecteur.getAttribute("head") == "none")) {
+    actualiserHeadVecteur(vecteur);
+  }
   actualiserLabelVecteur(vecteur);
 };
 var actualiserCoordonneesVecteursLies = function (point) {
@@ -39724,6 +39778,13 @@ var actualiserCoordonneesPolygonesLies = function (point) {
     actualiserPolygone(polygones[i]);
   }
 };
+var actualiserCoordonneesEllipsesLies = function (point) {
+  var idPoint = point.getAttribute("id");
+  var ellipses = document.querySelectorAll("g.ellipse[linkto*='" + idPoint + "']");
+  for (var i = 0; i < ellipses.length; i++) {
+    actualiserEllipse(ellipses[i]);
+  }
+};
 var actualiserAngleDroit = function (angleDroit) {
   var linkto = angleDroit.getAttribute("linkto").split(" ");
   var A = angleDroit.parentNode.querySelector("#" + linkto[0]);
@@ -39768,6 +39829,7 @@ var actualiserCoordonneesPoint = function (point) {
   actualiserCoordonneesDemiDroitesLies(point);
   actualiserCoordonneesSegmentsLies(point);
   actualiserCoordonneesPolygonesLies(point);
+  actualiserCoordonneesEllipsesLies(point);
   actualiserAnglesDroits(point);
 };
 var actualiserPointsFigure = function (figure) {
