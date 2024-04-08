@@ -118,20 +118,33 @@
     <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     
-    <main><div class="figure">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 110">
-        <g name="A" class="point draggable" x="10" y="55"></g>
-        <g name="B" class="point" x="100" y="10"></g>
-        <g name="C" class="point" x="100" y="45"></g>
-        <g name="e1" class="ellipse" linkto="A B C" fill="none" stroke="black"></g>
-    </svg>
-</div>
-        
-
-<div class="exercice">
+    <main> <div class="exercice">
     <div class="enonce">
         <div class="encart">
-            $A$ et $B$ désignent deux évélénements d'un univers.
+            $A$ et $B$ désignent deux événements d'un univers $\Omega$.
+            <div class="figure">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="10 0 110 85">
+                    <ellipse cx="65" cy="45" rx="50" ry="35" fill="none" stroke="black"></ellipse>
+                    <ellipse cx="50" cy="45" rx="30" ry="20" fill="red" fill-opacity="0.2" stroke="black"></ellipse>
+                    <ellipse cx="80" cy="45" rx="30" ry="20" fill="green" fill-opacity="0.2" stroke="black"></ellipse>
+                    <g name="P1" class="label" x="25" y="40" style="font-size:8px;">$A\cap \overline{B}$</g>
+                    <g name="P2" class="label" x="55" y="40" style="font-size:8px;">$A\cap B$</g>
+                    <g name="P3" class="label" x="85" y="40" style="font-size:8px;">$\overline{A}\cap B$</g>
+                    <g name="P4" class="label" x="55" y="67" style="font-size:8px;">$\overline{A}\cap \overline{B}$</g>
+                    <g name="A" class="label" x="28" y="20" style="font-size:8px;">$A$</g>
+                    <g name="B" class="label" x="96" y="20" style="font-size:8px;">$B$</g>
+                    <g name="O" class="label" x="80" y="3" style="font-size:8px;">$\Omega$</g>
+                </svg>
+            </div>
+            <ul style="padding-left: 10px;">
+                <li>$A\cap\overline{B}$ et $A\cap B$ forment une partition de $A$
+                <div style="text-align:center">$P(A)=P(A\cap \overline{B})+P(A\cap B)$</div>
+                </li>
+                <li>$A\cap B$ et $\overline{A}\cap B$ forment une partition de $B$
+                <div style="text-align:center">$P(B)=P(A\cap B)+P(\overline{A}\cap B)$</div>
+                </li>
+            </ul>
+            On en déduit le tableau croisé suivant :
             <table class="tableaucroise" width="75%" height="100px">
                 <tr>
                     <td width="25%"></td>
@@ -141,33 +154,28 @@
                 </tr>
                 <tr>
                     <td>$\bold{A}$</td>
-                    <td>$P(A\cap B)$</td>
-                    <td>$P(A\cap \overline{B})$</td>
-                    <td>$P(A)$</td>
+                    <td>$\footnotesize{P(A\cap B)}$</td>
+                    <td>$\footnotesize{P(A\cap \overline{B})}$</td>
+                    <td>$\footnotesize{P(A)}$</td>
                 </tr>
                 <tr>
                     <td>$\bold{\overline{A}}$</td>
-                    <td>$P(\overline{A}\cap B)$</td>
-                    <td>$P(\overline{A}\cap \overline{B})$</td>
-                    <td>$P(\overline{A})$</td>
+                    <td>$\footnotesize{P(\overline{A}\cap B)}$</td>
+                    <td>$\footnotesize{P(\overline{A}\cap \overline{B})}$</td>
+                    <td>$\footnotesize{P(\overline{A})}$</td>
                 </tr>
                 <tr>
                     <td>Total</td>
-                    <td>$P(B)$</td>
-                    <td>$P(\overline{B})$</td>
+                    <td>$\footnotesize{P(B)}$</td>
+                    <td>$\footnotesize{P(\overline{B})}$</td>
                     <td>$1$</td>
                 </tr>
             </table>
-            On a les propriétés suivantes :
-            <ul class="horizontal-list col-c2">
-                <li>$P(A)=P(A\cap B)+P(A\cap \overline{B})$</li>
-                <li>$P(\overline{A})=P(\overline{A}\cap B)+P(\overline{A}\cap \overline{B})$</li>
-                <li>$P(B)=P(A\cap B)+P(\overline{A}\cap B)$</li>
-                <li>$P(\overline{B})=P(A\cap \overline{B})+P(\overline{A}\cap \overline{B})$</li>
-            </ul>
+
         </div>
+
         <ol class="alphabetical-list">
-            <li>Recopier et compléter le tableau ci-dessous.
+            <li>Recopiez et complétez le tableau ci-dessous.
                 <table class="tableaucroise" width="75%" height="100px">
                     <tr>
                         <td width="25%"></td>
@@ -195,7 +203,7 @@
                     </tr>
                 </table>
             </li>
-            <li>Recopier et compléter le tableau ci-dessous.
+            <li>Recopiez et complétez le tableau ci-dessous.
                 <table class="tableaucroise" width="75%" height="100px">
                     <tr>
                         <td width="25%"></td>
@@ -205,21 +213,21 @@
                     </tr>
                     <tr>
                         <td>$\bold{A}$</td>
-                        <td>$\frac{1}{6}$</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$\bold{\overline{A}}$</td>
+                        <td></td>
                         <td>$\frac{1}{3}$</td>
                         <td>$\frac{1}{2}$</td>
                     </tr>
                     <tr>
-                        <td>$\bold{\overline{A}}$</td>
-                        <td>$\frac{5}{12}$</td>
-                        <td>$\frac{1}{12}$</td>
-                        <td>$\frac{1}{2}$</td>
-                    </tr>
-                    <tr>
                         <td>Total</td>
-                        <td>$\frac{7}{12}$</td>
+                        <td></td>
                         <td>$\frac{5}{12}$</td>
-                        <td>$1$</td>
+                        <td></td>
                     </tr>
                 </table>
             </li>
@@ -227,7 +235,7 @@
     </div>
     <div class="solution">
         <ol class="alphabetical-list">
-            <li>Recopier et compléter le tableau ci-dessous.
+            <li>
                 <table class="tableaucroise" width="75%" height="100px">
                     <tr>
                         <td width="25%"></td>
@@ -255,7 +263,7 @@
                     </tr>
                 </table>
             </li>
-            <li>Recopier et compléter le tableau ci-dessous.
+            <li>
                 <table class="tableaucroise" width="75%" height="100px">
                     <tr>
                         <td width="25%"></td>
@@ -265,14 +273,14 @@
                     </tr>
                     <tr>
                         <td>$\bold{A}$</td>
-                        <td>$\frac{1}{6}$</td>
-                        <td>$\frac{1}{3}$</td>
+                        <td>$\frac{5}{12}$</td>
+                        <td>$\frac{1}{12}$</td>
                         <td>$\frac{1}{2}$</td>
                     </tr>
                     <tr>
                         <td>$\bold{\overline{A}}$</td>
-                        <td>$\frac{5}{12}$</td>
-                        <td>$\frac{1}{12}$</td>
+                        <td>$\frac{1}{6}$</td>
+                        <td>$\frac{1}{3}$</td>
                         <td>$\frac{1}{2}$</td>
                     </tr>
                     <tr>
@@ -285,7 +293,250 @@
             </li>
         </ol>
     </div>
-</div></main>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        $A$ et $B$ désignent deux événements d'un univers $\Omega$.
+        On donne $P(A)=\num{0.47}$, $P(B)=\num{0.36}$ et $P(A\cap B)=\num{0.18}$.
+        Calculez $P(A\cap \overline{B})$, $P(\overline{A}\cap B)$ et $P(\overline{A}\cap \overline{B})$.
+    </div>
+    <div class="solution">
+        $$\begin{align*}
+        P(A)&=P(A\cap B)+P(A\cap \overline{B})\\
+        \num{0.47}&=\num{0.18}+P(A\cap \overline{B})\\
+        P(A\cap \overline{B})&=\num{0.47}-\num{0.18}\\
+        P(A\cap \overline{B})&=\num{0.29}
+        \end{align*}$$
+        $$\begin{align*}
+        P(B)&=P(A\cap B)+P(\overline{A}\cap B)\\
+        \num{0.36}&=\num{0.18}+P(\overline{A}\cap B)\\
+        P(\overline{A}\cap B)&=\num{0.36}-\num{0.18}\\
+        P(\overline{A}\cap B)&=\num{0.18}
+        \end{align*}$$
+        <p>Calculons tout d'abord $P(\overline{A})$ $$P(\overline{A})=1-P(A)=1-\num{0.47}=\num{0.53}$$</p>
+        <p>$\overline{A}\cap B$ et $\overline{A}\cap \overline{B}$ forment une partition de $\overline{A}$.</p>
+        $$\begin{align*}
+        P(\overline{A})&=P(\overline{A}\cap B)+P(\overline{A}\cap \overline{B})\\
+        \num{0.53}&=\num{0.18}+P(\overline{A}\cap \overline{B})\\
+        P(\overline{A}\cap \overline{B})&=\num{0.53}-\num{0.18}\\
+        P(\overline{A}\cap \overline{B})&=\num{0.35}
+        \end{align*}$$
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        $A$ et $B$ désignent deux événements d'un univers $\Omega$.<br>
+        On donne $P(B)=\frac{5}{12}$, $P(\overline{A}\cap B)=\frac{1}{6}$ et $P(A\cap \overline{B})=\frac{1}{2}$.<br>
+        Calculez $P(A\cap B)$, $P(A)$ et $P(\overline{A}\cap \overline{B})$.
+    </div>
+    <div class="solution">
+        $$\begin{align*}
+        P(B)&=P(A\cap B)+P(\overline{A}\cap B)\\
+        \frac{5}{12}&=P(A\cap B)+\frac{1}{6}\\
+        P(A\cap B)&=\frac{5}{12}-\frac{1}{6}\\
+        P(A\cap B)&=\frac{1}{4}
+        \end{align*}$$
+        $$\begin{align*}
+        P(A)&=P(A\cap B)+P(A\cap \overline{B})\\
+        P(A)&=\frac{1}{4}+P(A\cap \overline{B})\\
+        P(A)&=\frac{1}{4}+\frac{1}{2}\\
+        P(A)&=\frac{3}{4}
+        \end{align*}$$
+        <p>Calculons tout d'abord $P(\overline{A})$ $$P(\overline{A})=1-P(A)=1-\frac{3}{4}=\frac{1}{4}$$</p>
+        <p>$\overline{A}\cap \overline{B}$ et $\overline{A}\cap B$ forment une partition de $\overline{A}$.</p>
+        $$\begin{align*}
+        P(\overline{A})&=P(\overline{A}\cap \overline{B})+P(\overline{A}\cap B)\\
+        \frac{1}{4}&=P(\overline{A}\cap \overline{B})+\frac{1}{6}\\
+        P(\overline{A}\cap \overline{B})&=\frac{1}{4}-\frac{1}{6}\\
+        P(\overline{A}\cap \overline{B})&=\frac{1}{12}
+        \end{align*}$$
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div class="encart">
+            $A$ et $B$ désignent deux événements d'un univers $\Omega$. On a :
+            $$P(A\cup B)=P(A)+P(B)-P(A\cap B)$$
+        </div>
+        <ol class="alphabetical-list">
+            <li>On donne $P(A)=\num{0.2}$, $P(B)=\num{0.6}$ et $P(A\cup B)=\num{0.65}$. Calculez $P(A\cap \overline{B})$.</li>
+            <li>On donne $P(\overline{A}\cup\overline{B})=\frac{5}{6}$, $P(\overline{A})=\frac{1}{2}$ et $P(\overline{B})=\frac{5}{9}$. Calculez $P(A\cap B)$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+        <li><p>Calculons tout d'abord $P(A\cap B)$</p>
+        $$\begin{align*}
+        P(A\cup B)&=P(A)+P(B)-P(A\cap B)\\
+        \num{0.65}&=\num{0.2}+\num{0.6}-P(A\cap B)\\
+        P(A\cap B)&=\num{0.2}+\num{0.6}-\num{0.65}\\
+        P(A\cap B)&=\num{0.15}
+        \end{align*}$$
+        <p>$A\cap B$ et $A\cap \overline{B}$ forment une partition de $A$.</p>
+        $$\begin{align*}
+        P(A)&=P(A\cap B)+P(A\cap \overline{B})\\
+        \num{0.2}&=\num{0.15}+P(A\cap \overline{B})\\
+        P(A\cap \overline{B})&=\num{0.2}-\num{0.15}\\
+        P(A\cap \overline{B})&=\num{0.05}
+        \end{align*}$$</li>
+        <li><p>Calculons tout d'abord $P(\overline{A}\cap\overline{B})$</p>
+        $$\begin{align*}
+        P(\overline{A}\cup\overline{B})&=P(\overline{A})+P(\overline{B})-P(\overline{A}\cap\overline{B})\\
+        \frac{5}{6}&=\frac{1}{2}+\frac{5}{9}-P(\overline{A}\cap\overline{B})\\
+        P(\overline{A}\cap\overline{B})&=\frac{1}{2}+\frac{5}{9}-\frac{5}{6}\\
+        P(\overline{A}\cap\overline{B})&=\frac{2}{9}
+        \end{align*}$$
+        <p>Calculons maintenant $P(A)$</p>
+        $$P(A)=1-P(\overline{A})=1-\frac{1}{2}=\frac{1}{2}$$
+        <p>Calculons maintenant $P(A\cap \overline{B})$</p>
+        <p>$A\cap \overline{B}$ et $\overline{A}\cap \overline{B}$ forment une partition de $\overline{B}$.</p>
+        $$\begin{align*}
+        P(\overline{B})&=P(A\cap \overline{B})+P(\overline{A}\cap \overline{B})\\
+        \frac{5}{9}&=P(A\cap \overline{B})+\frac{2}{9}\\
+        P(A\cap \overline{B})&=\frac{5}{9}-\frac{2}{9}\\
+        P(A\cap \overline{B})&=\frac{1}{3}
+        \end{align*}$$
+        <p>On en déduit $P(A\cap B)$</p>
+        $$\begin{align*}
+        P(A)&=P(A\cap B)+P(A\cap \overline{B})\\
+        \frac{1}{2}&=P(A\cap B)+\frac{1}{3}\\
+        P(A\cap B)&=\frac{1}{2}-\frac{1}{3}\\
+        P(A\cap B)&=\frac{1}{6}
+        \end{align*}$$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div class="encart">
+            $A$ et $B$ désignent deux événements d'un univers $\Omega$. On a :
+            $$P_A(B)=\frac{P(A\cap B)}{P(A)}$$
+        </div>
+        <ol class="alphabetical-list">
+            <li>On donne $P(A\cup B)=\num{0.92}$, $P(A)=\num{0.6}$ et $P(B)=\num{0.52}$. Calculez $P_A(B)$.</li>
+            <li>On donne $P(A\cap B)=\frac{1}{5}$, $P(A\cap \overline{B})=\frac{1}{4}$ et $P(\overline{B})=\frac{13}{20}$. Calculez $P_{\overline{A}}(B)$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Calculons tout d'abord $P(A\cap B)$</p>
+            $$\begin{align*}
+            P(A\cup B)&=P(A)+P(B)-P(A\cap B)\\
+            \num{0.92}&=\num{0.6}+\num{0.52}-P(A\cap B)\\
+            P(A\cap B)&=\num{0.6}+\num{0.52}-\num{0.92}\\
+            P(A\cap B)&=\num{0.2}
+            \end{align*}$$
+            <p>Calculons maintenant $P_A(B)$</p>
+            $$\begin{align*}
+            P_A(B)&=\frac{P(A\cap B)}{P(A)}\\
+            P_A(B)&=\frac{\num{0.2}}{\num{0.6}}\\
+            P_A(B)&=\frac{1}{3}
+            \end{align*}$$</li>
+            <li>
+            <p>Calculons tout d'abord $P(B)$</p>
+            $$\begin{align*}
+            P(B)&=1-P(\overline{B})\\
+            P(B)&=1-\frac{13}{20}\\
+            P(B)&=\frac{7}{20}
+            \end{align*}$$
+            <p>Calculons maintenant $P(\overline{A}\cap B)$</p>
+            <p>$\overline{A}\cap B$ et $A\cap B$ forment une partition de $B$.</p>
+            $$\begin{align*}
+            P(B)&=P(\overline{A}\cap B)+P(A\cap B)\\
+            \frac{7}{20}&=P(\overline{A}\cap B)+\frac{1}{5}\\
+            P(\overline{A}\cap B)&=\frac{7}{20}-\frac{1}{5}\\
+            P(\overline{A}\cap B)&=\frac{3}{20}
+            \end{align*}$$
+            <p>Calculons maintenant $P(A)$</p>
+            $A\cap B$ et $A\cap \overline{B}$ forment une partition de $A$.
+            $$\begin{align*}
+            P(A)&=P(A\cap B)+P(A\cap \overline{B})\\
+            P(A)&=\frac{1}{5}+\frac{1}{4}\\
+            P(A)&=\frac{9}{20}
+            \end{align*}$$
+            <p>Calculons maintenant $P(\overline(A))$</p>
+            $$\begin{align*}
+            P(\overline{A})&=1-P(A)\\
+            P(\overline{A})&=1-\frac{9}{20}\\
+            P(\overline{A})&=\frac{11}{20}
+            \end{align*}$$
+            <p>Calculons maintenant $P_{\overline{A}}(B)$</p>
+            $$\begin{align*}
+            P_{\overline{A}}(B)&=\frac{P(\overline{A}\cap B)}{P(\overline{A})}\\
+            P_{\overline{A}}(B)&=\frac{\frac{3}{20}}{\frac{11}{20}}\\
+            P_{\overline{A}}(B)&=\frac{3}{11}
+            \end{align*}$$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Durant une année on a pu mesurer le nombre de jours de pluie et le nombre de jours de vent fort. On a obtenu les résultats suivants :
+        <ul style="padding-left: 10px;">
+            <li>$\SI{40}{\%}$ des jours sont des jours de pluie&nbsp;;</li>
+            <li>Trois quarts des jours de pluie sont des jours de vent fort&nbsp;;</li>
+            <li>Parmi les jours non venteux, $\SI{20}{\%}$ sont des jours de pluie&nbsp;;</li>
+            <li>$\dfrac{2}{5}$ des jours sont des jours sans pluie ni vent fort.</li>
+        </ul>
+        On choisit un jour de l'année au hasard. On appelle $A$ l'événement "le jour choisi est pluvieux" et $B$ l'événement "le jour choisi est venteux".
+        <ol class="alphabetical-list">
+            <li>Traduisez ces informations en probabilités.</li>
+            <li>On a choisi un jour sans pluie. Calculez la probabilité que ce jour soit venteux.</li>
+            <li>Calculez la probabilité que le jour choisi soit pluvieux et venteux.</li>
+            <li>On a choisi un jour venteux. Calculez la probabilité que ce jour soit pluvieux.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><ul>
+            <li>$P(A)=\num{0.4}$</li>
+            <li>$P_A(B)=\frac{3}{4}=\num{0.75}$</li>
+            <li>$P_{\overline{B}}(A)=\num{0.2}$</li>
+            <li>$P(\overline{A}\cap \overline{B})=\frac{2}{5}=\num{0.4}$</li>
+            </ul></li>
+            <li><p>Calculons tout d'abord $P(\overline{A})$</p>
+            $$\begin{align*}
+            P(\overline{A})&=1-P(A)\\
+            P(\overline{A})&=1-\num{0.4}\\
+            P(\overline{A})&=\num{0.6}
+            \end{align*}$$
+            <p>$\overline{A}\cap \overline{B}$ et $\overline{A}\cap B$ forment une partition de $\overline{A}$.</p>
+            $$\begin{align*}
+            P(\overline{A})&=P(\overline{A}\cap \overline{B})+P(\overline{A}\cap B)\\
+            \num{0.6}&=\num{0.4}+P(\overline{A}\cap B)\\
+            P(\overline{A}\cap B)&=\num{0.6}-\num{0.4}\\
+            P(\overline{A}\cap B)&=\num{0.2}
+            \end{align*}$$
+            <p>On en déduit $P_{\overline{A}}(B)$</p>
+            $$\begin{align*}
+            P_{\overline{A}}(B)&=\frac{P(\overline{A}\cap B)}{P(\overline{A})}\\
+            P_{\overline{A}}(B)&=\frac{\num{0.2}}{\num{0.6}}\\
+            P_{\overline{A}}(B)&=\frac{1}{3}
+            \end{align*}$$</li>
+            <li><p>Calculons tout d'abord $P(A\cap B)$</p>
+            $$\begin{align*}
+            P_A(B)&=\frac{P(A\cap B)}{P(A)}\\
+            \num{0.75}&=\frac{P(A\cap B)}{\num{0.4}}\\
+            P(A\cap B)&=\num{0.75}\times\num{0.4}\\
+            P(A\cap B)&=\num{0.3}
+            \end{align*}$$</li>
+            <li><p>Calculons tout d'abord $P(B)$</p>
+            $$\begin{align*}
+            P(B)&=P(A\cap B)+P(\overline{A}\cap B)\\
+            P(B)&=\num{0.3}+\num{0.2}\\
+            P(B)&=\num{0.5}
+            \end{align*}$$
+            <p>Calculons maintenant $P_B(A)$</p>
+            $$\begin{align*}
+            P_B(A)&=\frac{P(A\cap B)}{P(B)}\\
+            P_B(A)&=\frac{\num{0.3}}{\num{0.5}}\\
+            P_B(A)&=\num{0.6}
+            \end{align*}$$</li>
+        </ol>
+    </div>
+</div>
+</main>
     <footer>
       Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
       Henry Bergson à Angers.<br />
