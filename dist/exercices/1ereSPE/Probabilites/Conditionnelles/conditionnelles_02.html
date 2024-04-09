@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Conditionnelles_02.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    
+    <main><div class="exercice">
+    <div class="enonce">
+        Dans une grande compétition internationale de sports électroniques, deux jeux dominent la scène : "Legends of Battle" (LoB) et "Strategic Conquest" (SC). Les participants sont soit spécialisés dans LoB, soit dans SC, et chaque joueur a un statut qui peut être soit "amateur", soit "professionnel". On choisit au hasard un joueur parmi les participants à la compétition. Nous définissons $A$ comme l'événement "le joueur est spécialiste de LoB" et $B$ comme l'événement "le joueur est professionnel". 
+        <ol class="alphabetical-list">
+            <li>Traduisez les informations suivantes en probabilités
+            <ul style="padding-left: 10px;">
+                <li>Les spécialistes de "Legends of Battle" (LoB) constituent $\SI{55}{\%}$ des joueurs ;</li>
+                <li>$\SI{36}{\%}$ des joueurs sont des spécialistes de LoB avec le statut professionnel ;</li>
+                <li>$\SI{64}{\%}$ des spécialistes de SC ont le statut professionnel.</li>
+            </ul>
+            </li>
+            <li>À l'aide de pourcentages, traduire par une phrase les probabilités suivantes : $P(B)=\num{0.648}$, $P(B\cap \overline{A})=\num{0.288}$ et $P_B(A)=\frac{5}{9}$.</li>
+            <li>Dressez un tableau croisé des probabilités entre $A$ et $B$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><ul>
+            <li>$P(A)=\num{0.55}$</li>
+            <li>$P(A\cap B)=\num{0.36}$</li>
+            <li>$P_{\overline{A}}(B)=\num{0.64}$</li>
+            </ul></li>
+            <li><ul>
+            <li>$P(B)=\num{0.648}$ signifie que $\SI{64.8}{\%}$ des joueurs sont professionnels.</li>
+            <li>$P(B\cap \overline{A})=\num{0.288}$ signifie que $\SI{28.8}{\%}$ des joueurs sont professionnels et spécialistes de SC.</li>
+            <li>$P_B(A)=\frac{5}{9}$ signifie que $\SI{55.6}{\%}$ des professionnels sont spécialistes de LoB.</li>
+            </ul></li>
+            <li><table class="tableaucroise" width="100%" height="100px">
+                <tr>
+                    <td width="25%"></td>
+                    <td>$\bold{B}$</td>
+                    <td>$\bold{\overline{B}}$</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>$\bold{A}$</td>
+                    <td>$\num{0.36}$</td>
+                    <td>$\num{0.19}$</td>
+                    <td>$\num{0.55}$</td>
+                </tr>
+                <tr>
+                    <td>$\bold{\overline{A}}$</td>
+                    <td>$\num{0.288}$</td>
+                    <td>$\num{0.162}$</td>
+                    <td>$\num{0.45}$</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>$\num{0.648}$</td>
+                    <td>$\num{0.352}$</td>
+                    <td>$1$</td>
+                </tr>
+            </table></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <i>Un placebo est une substance inactive qui ressemble à un médicament mais qui ne contient pas de principe actif.</i><br>
+        Des personnes atteintes d'une maladie ont accepté de participer à un essai clinique pour tester l'efficacité de certains traitements. Deux médicaments et un placebo sont testés. Les participants sont répartis en trois groupes : un groupe de contrôle qui reçoit le placebo, et deux groupes expérimentaux qui reçoivent l'un des deux médicaments. Notons $M_i$ pour $i\in\{1,2,3\}$ l'événement "le participant a reçu le médicament $i$" sachant que nous ne connaissons pas à l'avance lequel est le placebo. Notons $A$ l'événement "le participant a vu son état s'améliorer". Voici les informations dont on dispose :
+        <ul style="padding-left: 10px;">
+            <li>Le quart des participants a été traité avec le médicament&nbsp;1&nbsp;;</li>
+            <li>$\SI{5}{\%}$ des participants ont reçu le médicament&nbsp;1 sans voir leur état s'améliorer&nbsp;;</li>
+            <li>$\SI{60}{\%}$ des participants ont vu leur état s'améliorer&nbsp;;</li>
+            <li>La moitié des participants ayant vu leur état s'améliorer ont pris le médicament&nbsp;2&nbsp;;</li>
+            <li>Les deux tiers des participants ayant pris le médicament&nbsp;3 n'ont pas vu leur état s'améliorer.</li>
+            <li>La moitié des patients n'ayant pas vu leur état s'améliorer ont pris le placebo.</li>
+        </ul>
+        <ol class="alphabetical-list">
+            <li>Traduisez les informations précédentes en probabilités</li>
+            <li>Calculez $P(\overline{A})$, $P(A\cap M_1)$.</li>
+            <li>Calculez la probabilité qu'un participant ait pris le médicament&nbsp;2 et que son état se soit amélioré.</li>
+            <li>Calculez la probabilité qu'un participant ait pris le médicament&nbsp;3.</li>
+            <li>Un participant a vu son état s'améliorer. Calculez la probabilité qu'il ait pris le médicament&nbsp;3.</li>
+            <li>Dressez un tableau croisé des probabilités entre l'événement $A$ et les événements $M_i$.</li>
+            <li>En déduire le numréo du placebo.</li>
+            <li>Pour déterminer l'efficacité d'un médicament par rapport au placebo, on compare les probabilités conditionnelles que son état s'est amélioré sachant qu'il a pris un médicament. Quel médicament semble le plus efficace ?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><ul>
+                <li>$P(M_1)=\frac{1}{4}=\num{0.25}$</li>
+                <li>$P(M_1\cap \overline{A})=\num{0.05}$</li>
+                <li>$P(A)=\num{0.6}$</li>
+                <li>$P_A(M_2)=\frac{1}{2}=\num{0.5}$</li>
+                <li>$P_{M_3}(\overline{A})=\frac{2}{3}$</li>
+                <li>$P_{\overline{A}}(Placebo)=\num{0.5}$</li>
+            </ul></li>
+            <li><ul>
+                <li>$P(\overline{A})=1-P(A)=0.4$</li>
+                <li>$$\begin{align*}
+                P(M_1)&=P(M_1\cap A)+P(M_1\cap \overline{A})\\
+                \num{0.25}&=P(M_1\cap A)+\num{0.05}\\
+                P(M_1\cap A)&=\num{0.25}-\num{0.05}\\
+                P(M_1\cap A)&=\num{0.2}
+                \end{align*}$$</li>
+            </ul></li>
+            <li>$$\begin{align*}
+            P_A(M_2)&=\frac{P(M_2\cap A)}{P(A)}\\
+            \num{0.5}&=\frac{P(M_2\cap A)}{\num{0.6}}\\
+            P(M_2\cap A)&=\num{0.5}\times\num{0.6}\\
+            P(M_2\cap A)&=\num{0.3}
+            \end{align*}$$</li>
+            <li><p>Tout d'abord calculons $P(A\cap M_3)$ :</p>
+            $$\begin{align*}
+            P(A)&=P(A\cap M_1)+P(A\cap M_2)+P(A\cap M_3)\\
+            \num{0.6}&=\num{0.2}+\num{0.3}+P(A\cap M_3)\\
+            P(A\cap M_3)&=\num{0.6}-\num{0.2}-\num{0.3}\\
+            P(A\cap M_3)&=\num{0.1}
+            \end{align*}$$
+            <p>Ensuite, calculons $P(M_3)$ :</p>
+            $$\begin{align*}
+            P(M_3)=P(A\cap M_3)+P(\overline{A}\cap M_3)\\
+            P(M_3)=\num{0.1}+P(M_3)\times P_{M_3}(\overline{A})\\
+            P(M_3)=\num{0.1}+P(M_3)\times \frac{2}{3}\\
+            P(M_3)=\num{0.1}+\frac{2}{3}P(M_3)\\
+            \frac{1}{3}P(M_3)=\num{0.1}\\
+            P(M_3)=\num{0.3}
+            \end{align*}$$</li>
+            <li><p>Calculons $P_A(M_3)$ :</p>
+            $$\begin{align*}
+            P_A(M_3)&=\frac{P(M_3\cap A)}{P(A)}\\
+            P_A(M_3)&=\frac{\num{0.1}}{\num{0.6}}\\
+            P_A(M_3)&=\frac{1}{6}
+            \end{align*}$$</li>
+            <li>
+            <p>Tout d'abord calculons $P(M_2)$ :</p>
+            <p>$M_1$, $M_2$ et $M_3$ forment une partition de l'univers</p>
+            <p>Donc $P(M_2)=1-P(M_1)-P(M_3)=1-\num{0.25}-\num{0.3}=\num{0.45}$.</p>
+            <table class="tableaucroise">
+                <tr>
+                    <td></td>
+                    <td>$M_1$</td>
+                    <td>$M_2$</td>
+                    <td>$M_3$</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>$A$</td>
+                    <td>$\num{0.2}$</td>
+                    <td>$\num{0.3}$</td>
+                    <td>$\num{0.1}$</td>
+                    <td>$\num{0.6}$</td>
+                </tr>
+                <tr>
+                    <td>$\overline{A}$</td>
+                    <td>$\num{0.05}$</td>
+                    <td>$\num{0.15}$</td>
+                    <td>$\num{0.2}$</td>
+                    <td>$\num{0.4}$</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>$\num{0.25}$</td>
+                    <td>$\num{0.45}$</td>
+                    <td>$\num{0.3}$</td>
+                    <td>$1$</td>
+                </tr>
+            </table>
+            </li>
+            <li>$$\begin{align*}
+            P_{\overline{A}}(M_3)&=\frac{P(M_3\cap \overline{A})}{P(\overline{A})}\\
+            P_{\overline{A}}(M_3)&=\frac{\num{0.2}}{\num{0.4}}\\
+            P_{\overline{A}}(M_3)&=\frac{1}{2}$
+            \end{align*}$$
+            <p>Donc le médicament $M_3$ est le placebo.</p>
+            </li>
+            <li>
+            <p>Calculons les probabilités conditionnelles :</p>
+            $$\begin{align*}
+            P_{M_1}(A)&=\frac{P(M_1\cap A)}{P(M_1)}\\
+            P_{M_1}(A)&=\frac{\num{0.2}}{\num{0.25}}\\
+            P_{M_1}(A)&=\num{0.8}\\
+            P_{M_2}(A)&=\frac{P(M_2\cap A)}{P(M_2)}\\
+            P_{M_2}(A)&=\frac{\num{0.3}}{\num{0.45}}\\
+            P_{M_2}(A)&=\frac{2}{3}\\
+            P_{M_3}(A)&=\frac{P(M_3\cap A)}{P(M_3)}\\
+            P_{M_3}(A)&=\frac{\num{0.1}}{\num{0.3}}\\
+            P_{M_3}(A)&=\frac{1}{3}
+            \end{align*}$$
+            <p>Ainsi si un participant a pris le médicament $M_1$ sont état s'est amélioré dans $\SI{80}{\%}$ des cas,</p>
+            <p>s'il a pris le médicament $M_2$ sont état s'est amélioré dans environ $\SI{67}{\%}$ des cas</p>
+            <p>et s'il a pris le médicament $M_3$ (le placebo) sont état s'est amélioré dans environ $\SI{33}{\%}$ des cas.</p>
+            <p>Le médicament $M_1$ semble le plus efficace par rapport au placebo.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div class="encart">
+            $A$ et $B$ désignent deux événements d'un univers $\Omega$.
+            On peut modéliser les probabilités conditionnelles par un arbre pondéré.
+            <div class="figure">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 110">
+                    <g name="O" class="point" x="10" y="55" stroke="none"></g>
+                    <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
+                    <g name="lb1" class="label" x="20" y="30" style="font-size:8px;">$p(A)$</g>
+                    <g name="lA1" class="label" x="52" y="20" style="font-size:10px;">$A$</g>
+                    <g name="b2" class="vecteur" linkto="O" x="40" y="25" head="none"></g>
+                    <g name="lb2" class="label" x="20" y="70" style="font-size:8px;">$p(\overline{A})$</g>
+                    <g name="lA2" class="label" x="52" y="75" style="font-size:10px;">$\overline{A}$</g>
+                    <g name="A1" class="point" x="60" y="27" stroke="none"></g>
+                    <g name="A2" class="point" x="60" y="82" stroke="none"></g>
+                    <g name="B1" class="point" x="100" y="10" stroke="none"></g>
+                    <g name="B2" class="point" x="100" y="45" stroke="none"></g>
+                    <g name="B3" class="point" x="100" y="65" stroke="none"></g>
+                    <g name="B4" class="point" x="100" y="100" stroke="none"></g>
+                    <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
+                    <g name="lb11" class="label" x="70" y="5" style="font-size:8px;">$p_A(B)$</g>
+                    <g name="lB1" class="label" x="100" y="3" style="font-size:10px;">$B$</g>
+                    <g name="lB1p" class="label" x="150" y="3" style="font-size:8px;">$p(A\cap B)=p(A)\times p_A(B)$</g>
+                    <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
+                    <g name="lb12" class="label" x="70" y="40" style="font-size:8px;">$p_A(\overline{B})$</g>
+                    <g name="lB2" class="label" x="100" y="37" style="font-size:10px;">$\overline{B}$</g>
+                    <g name="lB2p" class="label" x="150" y="37" style="font-size:8px;">$p(A\cap \overline{B})=p(A)\times p_A(\overline{B})$</g>
+                    <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
+                    <g name="lb21" class="label" x="70" y="60" style="font-size:8px;">$p_{\overline{A}}(B)$</g>
+                    <g name="lB3" class="label" x="100" y="58" style="font-size:10px;">$B$</g>
+                    <g name="lB3p" class="label" x="150" y="58" style="font-size:8px;">$p(\overline{A}\cap B)=p(\overline{A})\times p_{\overline{A}}(B)$</g>
+                    <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
+                    <g name="lb22" class="label" x="70" y="95" style="font-size:8px;">$p_{\overline{A}}(\overline{B})$</g>
+                    <g name="lB4" class="label" x="100" y="92" style="font-size:10px;">$\overline{B}$</g>
+                    <g name="lB4p" class="label" x="150" y="92" style="font-size:8px;">$p(\overline{A}\cap \overline{B})=p(\overline{A})\times p_{\overline{A}}(\overline{B})$</g>
+                </svg>
+            </div>
+            <ul style="padding:10px;">
+                <li>La somme des probabilités des branches issues d'un même nœud est égale à 1.<br>
+                Par exemple, $p(A)+p(B)+p(C)=1$.
+                <div class="figure">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 20 120 70">
+                        <g name="O" class="point" x="10" y="55" stroke="none"></g>
+                        <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
+                        <g name="lb1" class="label" x="20" y="30" style="font-size:8px;">$p(A)$</g>
+                        <g name="lA1" class="label" x="52" y="20" style="font-size:10px;">$A$</g>
+                        <g name="b2" class="vecteur" linkto="O" x="40" y="0" head="none"></g>
+                        <g name="lb2" class="label" x="30" y="45" style="font-size:8px;">$p(B)$</g>
+                        <g name="lA2" class="label" x="52" y="50" style="font-size:10px;">$B$</g>
+                        <g name="b3" class="vecteur" linkto="O" x="40" y="25" head="none"></g>
+                        <g name="lb3" class="label" x="20" y="70" style="font-size:8px;">$p(C)$</g>
+                        <g name="lA3" class="label" x="52" y="80" style="font-size:10px;">$C$</g>
+                    </svg>
+                </div>
+                </li>
+                <li>La probabilité d'un chemin est le produit des probabilités des branches qui le composent.<br>
+                Par exemple, $p(A\cap \overline{B})=p(A)\times p_A(\overline{B})$.
+                <div class="figure">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 0 200 110">
+                            <g name="O" class="point" x="10" y="55" stroke="none"></g>
+                            <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
+                            <g name="lb1" class="label" x="20" y="30" style="font-size:8px;">$p(A)$</g>
+                            <g name="lA1" class="label" x="52" y="20" style="font-size:10px;">$A$</g>
+                            <g name="b2" class="vecteur" linkto="O" x="40" y="25" head="none"></g>
+                            <g name="A1" class="point" x="60" y="27" stroke="none"></g>
+                            <g name="A2" class="point" x="60" y="82" stroke="none"></g>
+                            <g name="B1" class="point" x="100" y="10" stroke="none"></g>
+                            <g name="B2" class="point" x="100" y="45" stroke="none"></g>
+                            <g name="B3" class="point" x="100" y="65" stroke="none"></g>
+                            <g name="B4" class="point" x="100" y="100" stroke="none"></g>
+                            <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
+                            <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
+                            <g name="lb12" class="label" x="70" y="40" style="font-size:8px;">$p_A(\overline{B})$</g>
+                            <g name="lB2" class="label" x="100" y="37" style="font-size:10px;">$\overline{B}$</g>
+                            <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
+                            <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
+                            <g name="c1" class="segment" linkto="O A1" stroke="red" stroke-width="5" opacity="0.2"></g>
+                            <g name="c1b" class="segment" linkto="A1 B2" stroke="red" stroke-width="5" opacity="0.2"></g>
+                        </svg>
+                    </div>
+                </li>
+                <li>La somme des probabilités des chemins qui mènent à un même événement est égale à la probabilité de cet événement.<br>
+                Par exemple, 
+                $\footnotesize{p(B)=p(A\cap B)+p(\overline{A}\cap B)=p(A)\times p_A(B)+p(\overline{A})\times p_{\overline{A}}(B)}$.</li>
+                <div class="figure">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 0 200 110">
+                            <g name="O" class="point" x="10" y="55" stroke="none"></g>
+                            <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
+                            <g name="lb1" class="label" x="20" y="30" style="font-size:8px;">$p(A)$</g>
+                            <g name="lA1" class="label" x="52" y="20" style="font-size:10px;">$A$</g>
+                            <g name="b2" class="vecteur" linkto="O" x="40" y="25" head="none"></g>
+                            <g name="lb2" class="label" x="20" y="70" style="font-size:8px;">$p(\overline{A})$</g>
+                            <g name="lA2" class="label" x="52" y="75" style="font-size:10px;">$\overline{A}$</g>
+                            <g name="A1" class="point" x="60" y="27" stroke="none"></g>
+                            <g name="A2" class="point" x="60" y="82" stroke="none"></g>
+                            <g name="B1" class="point" x="100" y="10" stroke="none"></g>
+                            <g name="B2" class="point" x="100" y="45" stroke="none"></g>
+                            <g name="B3" class="point" x="100" y="65" stroke="none"></g>
+                            <g name="B4" class="point" x="100" y="100" stroke="none"></g>
+                            <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
+                            <g name="lb11" class="label" x="70" y="5" style="font-size:8px;">$p_A(B)$</g>
+                            <g name="lB1" class="label" x="100" y="3" style="font-size:10px;">$B$</g>
+                            <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
+                            <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
+                            <g name="lb21" class="label" x="70" y="60" style="font-size:8px;">$p_{\overline{A}}(B)$</g>
+                            <g name="lB3" class="label" x="100" y="58" style="font-size:10px;">$B$</g>
+                            <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
+                            <g name="c1" class="segment" linkto="O A1" stroke="red" stroke-width="5" opacity="0.2"></g>
+                            <g name="c1b" class="segment" linkto="A1 B1" stroke="red" stroke-width="5" opacity="0.2"></g>
+                            <g name="c2" class="segment" linkto="O A2" stroke="blue" stroke-width="5" opacity="0.2"></g>
+                            <g name="c2b" class="segment" linkto="A2 B3" stroke="blue" stroke-width="5" opacity="0.2"></g>
+                        </svg>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <ol class="alphabetical-list">
+            <li>Recopiez et complétez l'arbre pondéré ci-dessous.
+            <div class="figure">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 0 200 110">
+                    <g name="O" class="point" x="10" y="55" stroke="none"></g>
+                    <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
+                    <g name="lb1" class="label" x="20" y="35" style="font-size:8px;">$\num{0.3}$</g>
+                    <g name="lA1" class="label" x="52" y="20" style="font-size:10px;">$A$</g>
+                    <g name="b2" class="vecteur" linkto="O" x="40" y="25" head="none"></g>
+                    <g name="lA2" class="label" x="52" y="75" style="font-size:10px;">$\overline{A}$</g>
+                    <g name="A1" class="point" x="60" y="27" stroke="none"></g>
+                    <g name="A2" class="point" x="60" y="82" stroke="none"></g>
+                    <g name="B1" class="point" x="100" y="10" stroke="none"></g>
+                    <g name="B2" class="point" x="100" y="45" stroke="none"></g>
+                    <g name="B3" class="point" x="100" y="65" stroke="none"></g>
+                    <g name="B4" class="point" x="100" y="100" stroke="none"></g>
+                    <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
+                    <g name="lB1" class="label" x="100" y="3" style="font-size:10px;">$B$</g>
+                    <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
+                    <g name="lb12" class="label" x="70" y="35" style="font-size:8px;">$\num{0.6}$</g>
+                    <g name="lB2" class="label" x="100" y="37" style="font-size:10px;">$\overline{B}$</g>
+                    <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
+                    <g name="lb21" class="label" x="70" y="65" style="font-size:8px;">$\num{0.2}$</g>
+                    <g name="lB3" class="label" x="100" y="58" style="font-size:10px;">$B$</g>
+                    <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
+                    <g name="lB4" class="label" x="100" y="92" style="font-size:10px;">$\overline{B}$</g>
+                </svg>
+            </div>
+            </li>
+            <li>En déduire un tableau croisé des probabilités de $A$ et $B$.</li>
+            <li>Recopiez et complétez l'arbre pondéré ci-dessous.
+            <div class="figure">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 0 200 110">
+                    <g name="O" class="point" x="10" y="55" stroke="none"></g>
+                    <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
+                    <g name="lA1" class="label" x="52" y="20" style="font-size:10px;">$B$</g>
+                    <g name="b2" class="vecteur" linkto="O" x="40" y="25" head="none"></g>
+                    <g name="lA2" class="label" x="52" y="75" style="font-size:10px;">$\overline{B}$</g>
+                    <g name="A1" class="point" x="60" y="27" stroke="none"></g>
+                    <g name="A2" class="point" x="60" y="82" stroke="none"></g>
+                    <g name="B1" class="point" x="100" y="10" stroke="none"></g>
+                    <g name="B2" class="point" x="100" y="45" stroke="none"></g>
+                    <g name="B3" class="point" x="100" y="65" stroke="none"></g>
+                    <g name="B4" class="point" x="100" y="100" stroke="none"></g>
+                    <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
+                    <g name="lB1" class="label" x="100" y="3" style="font-size:10px;">$A$</g>
+                    <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
+                    <g name="lB2" class="label" x="100" y="37" style="font-size:10px;">$\overline{A}$</g>
+                    <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
+                    <g name="lB3" class="label" x="100" y="58" style="font-size:10px;">$A$</g>
+                    <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
+                    <g name="lB4" class="label" x="100" y="92" style="font-size:10px;">$\overline{A}$</g>
+                </svg>
+            </div>
+            </li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>
+                <div class="figure">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 0 200 110">
+                        <g name="O" class="point" x="10" y="55" stroke="none"></g>
+                        <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
+                        <g name="lb1" class="label" x="20" y="35" style="font-size:8px;">$\num{0.3}$</g>
+                        <g name="lA1" class="label" x="52" y="20" style="font-size:10px;">$A$</g>
+                        <g name="b2" class="vecteur" linkto="O" x="40" y="25" head="none"></g>
+                        <g name="lb2" class="label" x="20" y="65" style="font-size:8px;">$\num{0.7}$</g>
+                        <g name="lA2" class="label" x="52" y="75" style="font-size:10px;">$\overline{A}$</g>
+                        <g name="A1" class="point" x="60" y="27" stroke="none"></g>
+                        <g name="A2" class="point" x="60" y="82" stroke="none"></g>
+                        <g name="B1" class="point" x="100" y="10" stroke="none"></g>
+                        <g name="B2" class="point" x="100" y="45" stroke="none"></g>
+                        <g name="B3" class="point" x="100" y="65" stroke="none"></g>
+                        <g name="B4" class="point" x="100" y="100" stroke="none"></g>
+                        <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
+                        <g name="lb11" class="label" x="70" y="10" style="font-size:8px;">$\num{0.4}$</g>
+                        <g name="lB1" class="label" x="100" y="3" style="font-size:10px;">$B$</g>
+                        <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
+                        <g name="lb12" class="label" x="70" y="35" style="font-size:8px;">$\num{0.6}$</g>
+                        <g name="lB2" class="label" x="100" y="37" style="font-size:10px;">$\overline{B}$</g>
+                        <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
+                        <g name="lb21" class="label" x="70" y="65" style="font-size:8px;">$\num{0.2}$</g>
+                        <g name="lB3" class="label" x="100" y="58" style="font-size:10px;">$B$</g>
+                        <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
+                        <g name="lb22" class="label" x="70" y="90" style="font-size:8px;">$\num{0.8}$</g>
+                        <g name="lB4" class="label" x="100" y="92" style="font-size:10px;">$\overline{B}$</g>
+                    </svg>
+                </div>
+            </li>
+            <li>
+                <p>Produit des probabilités des branches d'un même chemin :</p>
+                <p>$P(A\cap B)=P(A)\times P_A(B)=\num{0.3}\times\num{0.4}=\num{0.12}$</p>
+                <p>$P(A\cap \overline{B})=P(A)\times P_A(\overline{B})=\num{0.3}\times\num{0.6}=\num{0.18}$</p>
+                <p>$P(\overline{A}\cap B)=P(\overline{A})\times P_{\overline{A}}(B)=\num{0.7}\times\num{0.2}=\num{0.14}$</p>
+                <p>$P(\overline{A}\cap \overline{B})=P(\overline{A})\times P_{\overline{A}}(\overline{B})=\num{0.7}\times\num{0.8}=\num{0.56}$</p>
+                <p>Somme des probabilités des chemins qui mènent à un même événement :</p>
+                <p>$p(B)=p(A\cap B)+p(\overline{A}\cap B)=\num{0.12}+\num{0.14}=\num{0.26}$</p>
+                <p>$p(\overline{B})=p(A\cap \overline{B})+p(\overline{A}\cap \overline{B})=\num{0.18}+\num{0.56}=\num{0.74}$</p>
+                <p>Tableau croisé des probabilités de $A$ et $B$ :</p>
+                <table class="tableaucroise" width="100%" height="100px">
+                    <tr>
+                        <td width="25%"></td>
+                        <td>$\bold{B}$</td>
+                        <td>$\bold{\overline{B}}$</td>
+                        <td>Total</td>
+                    </tr>
+                    <tr>
+                        <td>$\bold{A}$</td>
+                        <td>$\num{0.12}$</td>
+                        <td>$\num{0.18}$</td>
+                        <td>$\num{0.3}$</td>
+                    </tr>
+                    <tr>
+                        <td>$\bold{\overline{A}}$</td>
+                        <td>$\num{0.14}$</td>
+                        <td>$\num{0.56}$</td>
+                        <td>$\num{0.7}$</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>$\num{0.26}$</td>
+                        <td>$\num{0.74}$</td>
+                        <td>$1$</td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>Probabilités conditionnelles :</p>
+                <p>$P_B(A)=\frac{P(A\cap B)}{P(B)}=\frac{\num{0.12}}{\num{0.26}}=\frac{6}{13}$</p>
+                <p>$P_B(\overline{A})=\frac{P(\overline{A}\cap B)}{P(B)}=\frac{\num{0.14}}{\num{0.26}}=\frac{7}{13}$</p>
+                <p>$P_{\overline{B}}(A)=\frac{P(A\cap \overline{B})}{P(\overline{B})}=\frac{\num{0.18}}{\num{0.74}}=\frac{9}{37}$</p>
+                <p>$P_{\overline{B}}(\overline{A})=\frac{P(\overline{A}\cap \overline{B})}{P(\overline{B})}=\frac{\num{0.56}}{\num{0.74}}=\frac{28}{37}$</p>
+                <p>Arbre pondéré :</p>
+                <div class="figure">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 0 200 110">
+                        <g name="O" class="point" x="10" y="55" stroke="none"></g>
+                        <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
+                        <g name="lb1" class="label" x="20" y="35" style="font-size:8px;">$\num{0.26}$</g>
+                        <g name="lA1" class="label" x="52" y="20" style="font-size:10px;">$B$</g>
+                        <g name="b2" class="vecteur" linkto="O" x="40" y="25" head="none"></g>
+                        <g name="lb2" class="label" x="20" y="65" style="font-size:8px;">$\num{0.74}$</g>
+                        <g name="lA2" class="label" x="52" y="75" style="font-size:10px;">$\overline{B}$</g>
+                        <g name="A1" class="point" x="60" y="27" stroke="none"></g>
+                        <g name="A2" class="point" x="60" y="82" stroke="none"></g>
+                        <g name="B1" class="point" x="100" y="10" stroke="none"></g>
+                        <g name="B2" class="point" x="100" y="45" stroke="none"></g>
+                        <g name="B3" class="point" x="100" y="65" stroke="none"></g>
+                        <g name="B4" class="point" x="100" y="100" stroke="none"></g>
+                        <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
+                        <g name="lb11" class="label" x="70" y="10" style="font-size:8px;">$\frac{6}{13}$</g>
+                        <g name="lB1" class="label" x="100" y="3" style="font-size:10px;">$A$</g>
+                        <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
+                        <g name="lb12" class="label" x="70" y="35" style="font-size:8px;">$\frac{7}{37}$</g>
+                        <g name="lB2" class="label" x="100" y="37" style="font-size:10px;">$\overline{A}$</g>
+                        <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
+                        <g name="lb21" class="label" x="70" y="65" style="font-size:8px;">$\frac{9}{37}$</g>
+                        <g name="lB3" class="label" x="100" y="58" style="font-size:10px;">$A$</g>
+                        <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
+                        <g name="lb22" class="label" x="70" y="90" style="font-size:8px;">$\frac{28}{37}$</g>
+                        <g name="lB4" class="label" x="100" y="92" style="font-size:10px;">$\overline{A}$</g>
+                    </svg>
+                </div>
+            </li>
+        </ol>
+    </div>
+</div></main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>
