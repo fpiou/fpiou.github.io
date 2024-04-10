@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Fonction_07.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    
+    <main><div class="encart">
+    <b>Définition :</b> Considérons une fonction $f$ définie sur un intervalle $I$ symétrique par rapport à l'origine. On dit que $f$ est :
+    <ul class="horizontal-list">
+        <li style="border: 1px solid black; padding: 5px; margin: 5px;text-align:center;">
+        paire si pour tout $x$ de $I$, on a $$f(-x)=f(x)$$
+            <div class="figure">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- On définit le repère -->
+                        <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                        <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                        <g class="label" linkto="I" x="-10" y="0" style="font-size:0.8rem;">1</g>
+                        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                        <g class="label" linkto="J" x="-15" y="-10" style="font-size:0.8rem;">1</g>
+                        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="A" class="point" repere="repere1" x="-5" y="-3" stroke="none"></g>
+                        <g name="B" class="point" repere="repere1" x="-3" y="3" stroke="none"></g>
+                        <g name="C" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+                        <g name="A1" class="point" repere="repere1" x="5" y="-3" stroke="none"></g>
+                        <g name="B1" class="point" repere="repere1" x="3" y="3" stroke="none"></g>
+                        <g name="c1" class="pathPointsControls" linkto="A B C B1 A1" controls="B:0 C:0 B1:0" stroke="red" stroke-width="2" fill="transparent"></g>
+                </svg>
+            </div>
+            Sa courbe représentative est caractérisée par une symétrie axiale par rapport à l'axe des ordonnées.
+        </li>
+        <li style="border: 1px solid black; padding: 5px; margin: 5px;text-align:center;">
+        impaire si pour tout $x$ de $I$, on a $$f(-x)=-f(x)$$
+            <div class="figure">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- On définit le repère -->
+                        <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                        <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                        <g class="label" linkto="I" x="-10" y="0" style="font-size:0.8rem;">1</g>
+                        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                        <g class="label" linkto="J" x="-15" y="-10" style="font-size:0.8rem;">1</g>
+                        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="A" class="point" repere="repere1" x="-5" y="-3" stroke="none"></g>
+                        <g name="B" class="point" repere="repere1" x="-3" y="3" stroke="none"></g>
+                        <g name="C" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+                        <g name="A1" class="point" repere="repere1" x="5" y="3" stroke="none"></g>
+                        <g name="B1" class="point" repere="repere1" x="3" y="-3" stroke="none"></g>
+                        <g name="c1" class="pathPointsControls" linkto="A B C B1 A1" controls="B:0 C:0 B1:0" stroke="red" stroke-width="2" fill="transparent"></g>
+                </svg>
+            </div>
+            Sa courbe représentative est caractérisée par une symétrie centrale par rapport à l'origine.
+        </li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Considérons la fonction carré dont la courbe représentative est donnée ci-dessous.
+        <div class="figure">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-5" ymin="-10" xmax="5" ymax ="10" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="c1" class="courbeRepresentative" expression="x^2" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="1" fill="transparent"></g>
+            </svg>
+        </div>
+        <i>Remarque :<br> Le repère ci-dessus $\underline{\hspace{2cm}}$ orthonormé.<br></i>
+
+        <b>Définition</b><br>
+        La fonction carré est définie sur $\underline{\hspace{1.5cm}}$
+            $$\begin{array}{rcl}
+            f : \underline{\hspace{0.5cm}} & \longrightarrow & \mathbb{R} \\
+            x & \longmapsto & \underline{\hspace{1cm}}
+            \end{array}$$
+        <b>Signe</b><br>
+        La fonction carré est $\underline{\hspace{3cm}}$ sur $\underline{\hspace{0.5cm}}$.<br><br>
+        <b>Parité</b><br>
+        La fonction carré est une fonction $\underline{\hspace{1.5cm}}$.
+        $$(-x)^2 = \underline{\hspace{1cm}}$$
+        Par exemple $f(-2) = \underline{\hspace{1cm}}$ et $f(2) = \underline{\hspace{1cm}}$.<br><br>
+        <b>Variations</b><br>
+        La fonction carré est
+        <ul style="padding-left: 2em;">
+            <br>
+            <li>$\underline{\hspace{4cm}}$ sur $\underline{\hspace{1.5cm}}$</li>
+            <br>
+            <li>$\underline{\hspace{4cm}}$ sur $\underline{\hspace{1.5cm}}$.</li>
+        </ul><br><br>
+        <b>Ordre</b><br>
+        La fonction carré :
+        <ul style="padding-left: 2em;">
+            <br>
+            <li>$\underline{\hspace{3cm}}$ l'ordre sur $\underline{\hspace{1.5cm}}$
+            </li>
+            <br>
+            <li>$\underline{\hspace{3cm}}$ l'ordre sur $\underline{\hspace{1.5cm}}$</li>
+        </ul><br><br>
+        Par exemple :
+        <ul style="padding-left: 2em;">
+            <br>
+            <li>$-3 \underline{\hspace{1cm}} -2$ et $(-3)^2 \underline{\hspace{1cm}} (-2)^2$.<br>
+            </li>
+            <br>
+            <li>$3 \underline{\hspace{1cm}} 2$ et $3^2 \underline{\hspace{1cm}} 2^2$.</li>
+        </ul><br><br>
+        <b>Equation $f(x)=k$</b><br>
+        <ul style="padding-left: 2em;">
+            <br>
+            <li>Si $k=0$, alors $f(x) = k$ admet $\underline{\hspace{0.5cm}}$ pour $\underline{\hspace{1.5cm}}$ solution.</li>
+            <li>Si $k\gt 0$, alors $f(x) = k$ admet $\underline{\hspace{0.5cm}}$ et $\underline{\hspace{0.5cm}}$ pour solutions.</li>
+            <li>Si $k\lt 0$, alors $f(x) = k$ $\underline{\hspace{3cm}}$ $\underline{\hspace{3cm}}$ solution.</li>
+        </ul><br><br>
+        <b>Inéquation</b><br>
+        <ul style="padding-left: 2em;">
+            <li>Si $k\leqslant 0$, l'ensemble des solutions
+            <ul style="padding-left: 2em;">
+                <li>de $f(x)\lt k$ est $\underline{\hspace{1.5cm}}$</li>
+                <li>de $f(x)\geqslant k$ est $\underline{\hspace{1.5cm}}$</li>
+            </ul>
+            </li>
+            <li>Si $k\gt 0$, l'ensemble des solutions 
+            <ul style="padding-left: 2em;">
+                <li>de $f(x)\lt k$ est $\underline{\hspace{1.5cm}}$</li>
+                <li>de $f(x)\geqslant k$ est $\underline{\hspace{1.5cm}}$</li>
+            </ul>
+        </ul>
+    </div>
+    <div class="solution">
+         Considérons la fonction carré dont la courbe représentative est donnée ci-dessous.
+        <div class="figure">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-5" ymin="-10" xmax="5" ymax ="10" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="c1" class="courbeRepresentative" expression="x^2" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="1" fill="transparent"></g>
+            </svg>
+        </div>
+        <i>Remarque :<br> Le repère ci-dessus <b>n'est pas</b> orthonormé.<br></i>
+
+        <b>Définition</b><br>
+        La fonction carré est définie sur $\mathbb{R}$
+            $$\begin{array}{rcl}
+            f : \mathbb{R} & \longrightarrow & \mathbb{R} \\
+            x & \longmapsto & x^2
+            \end{array}$$
+        <b>Signe</b><br>
+        La fonction carré est <b>positive</b> sur $\mathbb{R}$.<br><br>
+        <b>Parité</b><br>
+        La fonction carré est une fonction <b>paire</b>.
+        $$(-x)^2 = x^2$$
+        Par exemple $f(-2) = 4$ et $f(2) = 4$.<br><br>
+        <b>Variations</b><br>
+        La fonction carré est
+        <ul style="padding-left: 2em;">
+            <br>
+            <li><b>décroissante</b> sur $]-\infty;0]$</li>
+            <br>
+            <li><b>croissante</b> sur $[0;+\infty[$.</li>
+        </ul><br><br>
+        <b>Ordre</b><br>
+        La fonction carré :
+        <ul style="padding-left: 2em;">
+            <br>
+            <li><b>change</b> l'ordre sur $]-\infty;0]$
+            </li>
+            <br>
+            <li><b>conserve</b> l'ordre sur $[0;+\infty[$</li>
+        </ul><br><br>
+        Par exemple :
+        <ul style="padding-left: 2em;">
+            <br>
+            <li>$-3 \lt -2$ et $(-3)^2 \gt (-2)^2$.<br>
+            </li>
+            <br>
+            <li>$3 \gt 2$ et $3^2 \gt 2^2$.</li>
+        </ul><br><br>
+        <b>Equation $f(x)=k$</b><br>
+        <ul style="padding-left: 2em;">
+            <br>
+            <li>Si $k=0$, alors $f(x) = k$ admet <b>$0$</b> pour <b>unique</b> solution.</li>
+            <li>Si $k\gt 0$, alors $f(x) = k$ admet <b>$\sqrt{k}$</b> et <b>$-\sqrt{k}$</b> pour solutions.</li>
+            <li>Si $k\lt 0$, alors $f(x) = k$ <b>n'admet aucune</b> solution.</li>
+        </ul><br><br>
+        <b>Inéquation</b><br>
+        <ul style="padding-left: 2em;">
+            <li>Si $k\leqslant 0$, l'ensemble des solutions
+            <ul style="padding-left: 2em;">
+                <li>de $f(x)\lt k$ est $\varnothing$&nbsp;;</li>
+                <li>de $f(x)\geqslant k$ est $\mathbb{R}$.</li>
+            </ul>
+            </li>
+            <li>Si $k\gt 0$, l'ensemble des solutions 
+            <ul style="padding-left: 2em;">
+                <li>de $f(x)\lt k$ est $]-\sqrt{k};\sqrt{k}[$</li>
+                <li>de $f(x)\geqslant k$ est $]-\infty;-\sqrt{k}]\cup[\sqrt{k};+\infty[$</li>
+            </ul>
+        </ul>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Considérons la fonction cube dont la courbe représentative est donnée ci-dessous.
+        <div class="figure">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-5" ymin="-50" xmax="5" ymax ="50" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.1" ypas="1" stroke="gray" stroke-width="0.2"></g>
+                    <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="10" stroke="gray" stroke-width="0.4"></g>
+                    
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="5" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="5" stroke="none"></g>
+                    <g class="label" linkto="J" x="-8" y="-5" style="font-size:0.5rem;">5</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="c1" class="courbeRepresentative" expression="x^3" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="1" fill="transparent"></g>
+            </svg>
+        </div>
+        Établir les caractéristiques de la fonction cube.
+    </div>
+    <div class="solution">
+        Considérons la fonction cube dont la courbe représentative est donnée ci-dessous.
+        <div class="figure">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-5" ymin="-50" xmax="5" ymax ="50" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.1" ypas="1" stroke="gray" stroke-width="0.2"></g>
+                    <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="10" stroke="gray" stroke-width="0.4"></g>
+                    
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="5" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-2" y="0" style="font-size:0.5rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="5" stroke="none"></g>
+                    <g class="label" linkto="J" x="-8" y="-5" style="font-size:0.5rem;">5</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="c1" class="courbeRepresentative" expression="x^3" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="1" fill="transparent"></g>
+            </svg>
+        </div>
+        <b>Définition</b><br>
+        La fonction cube est définie sur $\mathbb{R}$
+            $$\begin{array}{rcl}
+            f : \mathbb{R} & \longrightarrow & \mathbb{R} \\
+            x & \longmapsto & x^3
+            \end{array}$$
+        <b>Signe</b><br>
+        La fonction cube est <b>négative</b> sur $]-\infty;0[$ et <b>positive</b> sur $[0;+\infty[$.<br><br>
+        <b>Parité</b><br>
+        La fonction cube est une fonction <b>impaire</b>.
+        $$(-x)^3 = -x^3$$
+        Par exemple $f(-2) = -8$ et $f(2) = 8$.<br><br>
+        <b>Variations</b><br>
+        La fonction cube est <b>croissante</b> sur $\mathbb{R}$.<br><br>
+        <b>Ordre</b><br>
+        La fonction cube <b>conserve</b> l'ordre sur $\mathbb{R}$<br><br>
+        Par exemple :
+        <ul style="padding-left: 2em;">
+            <br>
+            <li>$-3 \lt -2$ et $(-3)^3 \lt (-2)^3$.<br>
+            </li>
+            <br>
+            <li>$3 \gt 2$ et $3^3 \gt 2^3$.</li>
+        </ul><br><br>
+        <b>Equation $f(x)=k$</b><br>
+        $f(x)=k$ admet une solution unique $x=\sqrt[3]{k}$<br><br>
+        <b>Inéquation</b><br>
+        L'ensemble des solutions de $f(x)\lt k$ est $]-\infty;\sqrt[3]{k}[$<br>
+        L'ensemble des solutions de $f(x)\geqslant k$ est $[\sqrt[3]{k};+\infty[$
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Tracer la courbe représentative de la fonction valeur absolue dans un repère orthonormé et sur l'intervalle $[-5;5]$.
+        Établir les caractéristiques de la fonction valeur absolue.
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Comparez les couples de nombres suivants en justifiant . 
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\small(-47)^2$ et $\small(-49)^2$.</li>
+            <li>$\small18^3$ et $\small17^3$.</li>
+            <li>$\small(-89)^3$ et $\small(-59)^3$.</li>
+        </ol>
+    </div>
+</div>
+</main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>
