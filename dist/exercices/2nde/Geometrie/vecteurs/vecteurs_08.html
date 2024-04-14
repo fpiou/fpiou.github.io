@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Vecteurs_08.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    
+    <main><h3>Comprendre la notion coordonnées de vecteur dans une base</h3>
+<div class="encart">
+    <b>Rappel :</b> Une base $\mathscr{B}=(\overrightarrow{i},\overrightarrow{j})$ est un couple de vecteurs non nuls n'ayant pas la même direction.<br>
+    <b>Propriété :</b> Deux vecteurs forment une base si et seulement s'ils ne sont pas colinéaires.<br>
+    <b>Définition : </b>
+    <ul style="padding-left: 20px;">
+        <li>Une base est orthogonale si les vecteurs qui la composent sont orthogonaux.</li>
+        <li>Une base est orthonormale si de plus ils ont la même norme.</li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Parmi les vecteurs suivants, quels couples forment une base ?
+        <div class="figure">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="0" ymin="0" xmax="10" ymax ="10" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="A" class="point" repere="repere1" x="2" y="2" stroke="none"></g>
+                <g name="u_1" class="vecteur labeled" repere="repere1" linkto="A" x="0" y="3" stroke="black" stroke-width="1"></g>
+                <g name="B" class="point" repere="repere1" x="4" y="6" stroke="none"></g>
+                <g name="u_2" class="vecteur labeled" repere="repere1" linkto="B" x="2" y="-1" stroke="black" stroke-width="1"></g>
+                <g name="C" class="point" repere="repere1" x="9" y="7" stroke="none"></g>
+                <g name="u_3" class="vecteur labeled" repere="repere1" linkto="C" x="0" y="-6" stroke="black" stroke-width="1"></g>
+                <g name="D" class="point" repere="repere1" x="1" y="6" stroke="none"></g> 
+                <g name="u_4" class="vecteur labeled" repere="repere1" linkto="D" x="1" y="2" stroke="black" stroke-width="1"></g>
+                <g name="E" class="point" repere="repere1" x="8" y="7" stroke="none"></g>
+                <g name="u_5" class="vecteur labeled" repere="repere1" linkto="E" x="-3" y="-6" stroke="black" stroke-width="1"></g>
+                <g name="F" class="point" repere="repere1" x="3" y="1" stroke="none"></g>
+                <g name="u_6" class="vecteur labeled" repere="repere1" linkto="F" x="1" y="3" stroke="black" stroke-width="1"></g>
+                <g name="G" class="point" repere="repere1" x="7" y="8" stroke="none"></g>
+                <g name="u_7" class="vecteur labeled" repere="repere1" linkto="G" x="-3" y="1" stroke="black" stroke-width="1"></g>
+            </svg>
+        </div>
+    </div>
+    <ol class="alphabetical-list">
+        <li>Citez deux bases orthonormales.</li>
+        <li>Citez l'unique base orthogonale mais non orthonormale.</li>
+        <li>Quels sont les vecteurs qui forment avec le vecteur $\overrightarrow{u}_1$ une base non orthogonale ?</li>
+        <li>Tracez le vecteur $\overrightarrow{v}$ de coordonnées $\left(\begin{array}{c}-2\\\frac{1}{3}\end{array}\right)$ dans la base $(\overrightarrow{u}_2,\overrightarrow{u}_5)$.</li>
+        <li>Dans quelle base orthonormale (question a.) les coordonnées de $\overrightarrow{v}$ sont $\left(\begin{array}{c}-1\\-2\end{array}\right)$ ?</li>
+        <li>Quelles sont les coordonnées de $\overrightarrow{v}$ dans l'autre base orthonormale (toujours question a.) ?</li>
+    </ol>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Bases orthonormales : $(\overrightarrow{u}_2,\overrightarrow{u}_4)$ et $(\overrightarrow{u}_6,\overrightarrow{u}_7)$.</li>
+            <li>Base orthogonale mais non orthonormale : $(\overrightarrow{u}_2,\overrightarrow{u}_5)$.</li>
+            <li>Base non orthogonale : $(\overrightarrow{u}_1,\overrightarrow{u}_2)$, $(\overrightarrow{u}_1,\overrightarrow{u}_4)$, $(\overrightarrow{u}_1,\overrightarrow{u}_5)$, $(\overrightarrow{u}_1,\overrightarrow{u})_6$ et $(\overrightarrow{u}_1,\overrightarrow{u}_7)$.
+            <br>
+            Autrement dit seul $(\overrightarrow{u}_1,\overrightarrow{u}_3)$ ne forme pas une base car les deux vecteurs sont colinéaires.</li>
+            </li>
+            <li>Le vecteur $\overrightarrow{v}$ de coordonnées $\left(\begin{array}{c}-2\\\frac{1}{3}\end{array}\right)$ dans la base $(\overrightarrow{u}_2,\overrightarrow{u}_5)$ est le vecteur $\overrightarrow{v}=-2\overrightarrow{u}_2+\frac{1}{3}\overrightarrow{u}_5$.
+            <div class="figure">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="0" ymin="0" xmax="10" ymax ="10" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="B" class="point" repere="repere1" x="4" y="6" stroke="none"></g>
+                <g name="u_2" class="vecteur labeled" repere="repere1" linkto="B" x="2" y="-1" stroke="black" stroke-width="1"></g>
+                <g name="E" class="point" repere="repere1" x="8" y="7" stroke="none"></g>
+                <g name="u_5" class="vecteur labeled" repere="repere1" linkto="E" x="-3" y="-6" stroke="black" stroke-width="1"></g>
+                <g name="F" class="point" repere="repere1" x="6" y="7" stroke="none"></g>
+                <g name="v1" class="vecteur" repere="repere1" linkto="F" x="-4" y="2" stroke="green" stroke-width="1"></g>
+                <g name="G" class="point" repere="repere1" x="2" y="9" stroke="none"></g>
+                <g name="v2" class="vecteur" repere="repere1" linkto="G" x="-1" y="-2" stroke="green" stroke-width="1"></g>
+                <g name="H" class="point" repere="repere1" x="6" y="7" stroke="none"></g>
+                <g name="v" class="vecteur labeled" repere="repere1" linkto="H" x="-5" y="0" stroke="red" stroke-width="1"></g>
+            </svg>
+        </div>
+            </li>
+            <li>Les coordonnées de $\overrightarrow{v}$ dans la base $(\overrightarrow{u}_2,\overrightarrow{u}_4)$ sont $\left(\begin{array}{c}-1\\-2\end{array}\right)$.
+            </li>
+            <li>Les coordonnées de $\overrightarrow{v}$ dans la base $(\overrightarrow{u}_6,\overrightarrow{u}_7)$ sont $\left(\begin{array}{c}\frac{1}{2}\\-\frac{3}{2}\end{array}\right)$.</li>
+        </ol>
+    </div>
+</div>
+<h3>Notion de déterminant de deux vecteurs dans une base</h3>
+<div class="encart">
+    <b>Définition :</b> Considérons une base $\mathscr{B}$ et deux vecteurs $\overrightarrow{u}\left(\begin{array}{c}x\\y\end{array}\right)$ et $\overrightarrow{v}\left(\begin{array}{c}x'\\y'\end{array}\right)$ dans cette base.<br>
+    Le déterminant de ces deux vecteurs est le nombre réel $xy'-x'y$ noté $det(\overrightarrow{u},\overrightarrow{v})$ ou encore $\left\vert\begin{array}{cc}x&x'\\y&y'\end{array}\right\vert$.<br>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez les déterminants suivants.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\small\left\vert\begin{array}{cc}1&2\\3&4\end{array}\right\vert$</li>
+            <li>$\small\left\vert\begin{array}{cc}1&-2\\3&4\end{array}\right\vert$</li>
+            <li>$\small\left\vert\begin{array}{cc}1&2\\-3&4\end{array}\right\vert$</li>
+            <li>$\small\left\vert\begin{array}{cc}1&2\\3&-4\end{array}\right\vert$</li>
+            <li>$\small\left\vert\begin{array}{cc}-1&2\\3&4\end{array}\right\vert$</li>
+        </ol>
+    Ajoutez des signes $-$ à certains nombres du déterminant du a. pour obtenir un déterminant égal à 2.
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$\small\left\vert\begin{array}{cc}1&2\\3&4\end{array}\right\vert=1\times 4-2\times 3=4-6=-2$</li>
+            <li>$\small\left\vert\begin{array}{cc}1&-2\\3&4\end{array}\right\vert=1\times 4-(-2)\times 3=4+6=10$</li>
+            <li>$\small\left\vert\begin{array}{cc}1&2\\-3&4\end{array}\right\vert=1\times 4-2\times (-3)=4+6=10$</li>
+            <li>$\small\left\vert\begin{array}{cc}1&2\\3&-4\end{array}\right\vert=1\times (-4)-2\times 3=-4-6=-10$</li>
+            <li>$\small\left\vert\begin{array}{cc}-1&2\\3&4\end{array}\right\vert=-1\times 4-2\times 3=-4-6=-10$</li>
+        </ol>
+        $\small\left\vert\begin{array}{cc}1&-2\\3&-4\end{array}\right\vert=1\times (-4)-(-2)\times 3=-4+6=2$
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez les déterminants suivants.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\small\left\vert\begin{array}{cc}2&6\\3&9\end{array}\right\vert$</li>
+            <li>$\small\left\vert\begin{array}{cc}2&-6\\3&-9\end{array}\right\vert$</li>
+            <li>$\small\left\vert\begin{array}{cc}2&6\\-3&-9\end{array}\right\vert$</li>
+            <li>$\small\left\vert\begin{array}{cc}-2&6\\-3&9\end{array}\right\vert$</li>
+        </ol>
+        Propose d'autres déterminants égaux à 0 avec les nombres positifs du a. mais dans un autre ordre.
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$\small\left\vert\begin{array}{cc}2&6\\3&9\end{array}\right\vert=2\times 9-6\times 3=18-18=0$</li>
+            <li>$\small\left\vert\begin{array}{cc}2&-6\\3&-9\end{array}\right\vert=2\times (-9)-(-6)\times 3=-18+18=0$</li>
+            <li>$\small\left\vert\begin{array}{cc}2&6\\-3&-9\end{array}\right\vert=2\times (-9)-6\times (-3)=-18+18=0$</li>
+            <li>$\small\left\vert\begin{array}{cc}-2&6\\-3&9\end{array}\right\vert=-2\times 9-6\times (-3)=-18+18=0$</li>
+        </ol>
+        $\small\left\vert\begin{array}{cc}2&6\\3&9\end{array}\right\vert=\left\vert\begin{array}{cc}6&2\\9&3\end{array}\right\vert=\left\vert\begin{array}{cc}3&9\\2&6\end{array}\right\vert=0$
+    </div>
+</div>
+<div class="exercice">    
+    <div class="enonce">
+        Calculez les déterminants suivants.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\small\left\vert\begin{array}{cc}2&2\\2&2\end{array}\right\vert$</li>
+            <li>$\small\left\vert\begin{array}{cc}2&3\\2&2\end{array}\right\vert$</li>
+            <li>$\small\left\vert\begin{array}{cc}2&3\\2&3\end{array}\right\vert$</li>
+            <li>$\small\left\vert\begin{array}{cc}2&3\\3&2\end{array}\right\vert$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$\small\left\vert\begin{array}{cc}2&2\\2&2\end{array}\right\vert=2\times 2-2\times 2=4-4=0$</li>
+            <li>$\small\left\vert\begin{array}{cc}2&3\\2&2\end{array}\right\vert=2\times 2-3\times 2=4-6=-2$</li>
+            <li>$\small\left\vert\begin{array}{cc}2&3\\2&3\end{array}\right\vert=2\times 3-3\times 2=6-6=0$</li>
+            <li>$\small\left\vert\begin{array}{cc}2&3\\3&2\end{array}\right\vert=2\times 2-3\times 3=4-9=-5$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez les déterminants suivants.
+        <ol class="alphabetical-list horizontal-list col-3c">
+            <li>$\small\left\vert\begin{array}{cc}\num{0.04}&\num{0.1}\\\num{0.28}&\num{7}\end{array}\right\vert$</li>
+            <li>$\small\left\vert\begin{array}{cc}\num{0.9}&\num{-0.3}\\\num{15}&\num{-5}\end{array}\right\vert$</li>
+            <li>$\left\vert\begin{array}{cc}\num{2}&\num{3}\\\frac{4}{5}&\frac{3}{10}\end{array}\right\vert$</li>
+            <li>$\small\left\vert\begin{array}{cc}\sqrt{2}&\sqrt{10}\\\num{3}&\sqrt{5}\end{array}\right\vert$</li>
+            <li>$\small\left\vert\begin{array}{cc}10^{2}&10^{-4}\\10^{-1}&10^{-7}\end{array}\right\vert$</li>
+            <li>$\left\vert\begin{array}{cc}\frac{2}{3}&\frac{3}{7}\\\frac{7}{2}&\frac{3}{10}\end{array}\right\vert$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$\small\left\vert\begin{array}{cc}\num{0.04}&\num{0.1}\\\num{0.28}&\num{7}\end{array}\right\vert=\num{0.04}\times 7-\num{0.1}\times \num{0.28}=\num{0.28}-\num{0.028}=\num{0.252}$</li>
+            <li>$\small\left\vert\begin{array}{cc}\num{0.9}&\num{-0.3}\\\num{15}&\num{-5}\end{array}\right\vert=\num{0.9}\times (-5)-(\num{-0.3})\times 15=-\num{4.5}+\num{4.5}=0$</li>
+            <li>$\small\left\vert\begin{array}{cc}\num{2}&\num{3}\\\frac{4}{5}&\frac{3}{10}\end{array}\right\vert=\num{2}\times \frac{3}{10}-3\times \frac{4}{5}=\frac{3}{5}-\frac{12}{5}=-\frac{9}{5}$</li>
+            <li>$\small\left\vert\begin{array}{cc}\sqrt{2}&\sqrt{10}\\\num{3}&\sqrt{5}\end{array}\right\vert=\sqrt{2}\times \sqrt{5}-\sqrt{10}\times 3=\sqrt{10}-3\sqrt{10}=-2\sqrt{10}$</li>
+            <li>$\small\left\vert\begin{array}{cc}10^{2}&10^{-4}\\10^{-1}&10^{-7}\end{array}\right\vert=10^{2}\times 10^{-7}-10^{-4}\times 10^{-1}=10^{-5}-10^{-5}=0$</li>
+            <li>$\small\left\vert\begin{array}{cc}\frac{2}{3}&\frac{3}{7}\\\frac{7}{2}&\frac{3}{10}\end{array}\right\vert=\frac{2}{3}\times \frac{3}{10}-\frac{3}{7}\times \frac{7}{2}=\frac{1}{5}-\frac{3}{2}=\frac{2}{10}-\frac{15}{10}=-\frac{13}{10}$</li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Propriété :</b> Deux vecteurs sont colinéaires si et seulement si leur déterminant est nul.
+</div>
+<div class="exercice">  
+    <div class="enonce">
+        <div class="figure">
+            <svg viewBox="0 0 280 240" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="0" ymin="0" xmax="14" ymax ="12" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="O" class="point" repere="repere1" x="1" y="1" stroke="none"></g>
+                <g name="i" class="vecteur labeled" repere="repere1" linkto="O" x="1" y="0" stroke="black" stroke-width="1"></g>
+                <g name="j" class="vecteur labeled" repere="repere1" linkto="O" x="0" y="1" stroke="black" stroke-width="1"></g>
+                <g name="A" class="point" repere="repere1" x="4" y="4" stroke="none"></g>
+                <g name="u_1" class="vecteur labeled" repere="repere1" linkto="A" x="-2" y="-1" stroke="black" stroke-width="1"></g>
+                <g name="B" class="point" repere="repere1" x="7" y="2" stroke="none"></g>
+                <g name="u_2" class="vecteur labeled" repere="repere1" linkto="B" x="3" y="2" stroke="black" stroke-width="1"></g>
+                <g name="C" class="point" repere="repere1" x="11" y="2" stroke="none"></g>
+                <g name="u_3" class="vecteur labeled" repere="repere1" linkto="C" x="2" y="2" stroke="black" stroke-width="1"></g>
+                <g name="D" class="point" repere="repere1" x="5" y="5" stroke="none"></g>
+                <g name="u_4" class="vecteur labeled" repere="repere1" linkto="D" x="3" y="-1" stroke="black" stroke-width="1"></g>
+                <g name="E" class="point" repere="repere1" x="7" y="7" stroke="none"></g>
+                <g name="u_5" class="vecteur labeled" repere="repere1" linkto="E" x="6" y="-2" stroke="black" stroke-width="1"></g>
+                <g name="F" class="point" repere="repere1" x="1" y="6" stroke="none"></g>
+                <g name="u_6" class="vecteur labeled" repere="repere1" linkto="F" x="5" y="5" stroke="black" stroke-width="1"></g>
+                <g name="G" class="point" repere="repere1" x="3" y="6" stroke="none"></g>
+                <g name="u_7" class="vecteur labeled" repere="repere1" linkto="G" x="6" y="3" stroke="black" stroke-width="1"></g>
+                <g name="H" class="point" repere="repere1" x="13" y="6" stroke="none"></g>
+                <g name="u_8" class="vecteur labeled" repere="repere1" linkto="H" x="-4" y="6" stroke="black" stroke-width="1"></g>
+                <g name="I" class="point" repere="repere1" x="1" y="12" stroke="none"></g>
+                <g name="u_9" class="vecteur labeled" repere="repere1" linkto="I" x="3" y="-2" stroke="black" stroke-width="1"></g>
+            </svg>
+        </div>
+        <ol class="alphabetical-list">
+            <li>Indiquez les coordonnées des vecteurs $\overrightarrow{u}_1$ à $\overrightarrow{u}_9$ dans la base $(\overrightarrow{i},\overrightarrow{j})$.</li>
+            <li>Calculez les déterminants suivants :
+            <ul class="horizontal-list col-3c">
+                <li>$\det(\overrightarrow{u}_2,\overrightarrow{u}_8)$</li>
+                <li>$\det(\overrightarrow{u}_1,\overrightarrow{u}_7)$</li>
+                <li>$\det(\overrightarrow{u}_9,\overrightarrow{u}_4)$</li>
+                <li>$\det(\overrightarrow{u}_4,\overrightarrow{u}_5)$</li>
+                <li>$\det(\overrightarrow{u}_6,\overrightarrow{u}_3)$</li>
+                <li>$\det(\overrightarrow{u}_7,\overrightarrow{u}_2)$</li>
+            </ul>
+            </li>
+            <li>En déduire des vecteurs colinéaires.</li>
+            <li>À quel vecteur le vecteur $\overrightarrow{u}_9\left(\begin{array}{c}-2\\3\end{array}\right)$ est-il colinéaire&nbsp;? Justifiez.</li>
+            <li>À quels vecteurs le vecteur $\overrightarrow{u}_{10}\left(\begin{array}{c}7\\\num{3.5}\end{array}\right)$ est-il colinéaire&nbsp;? Justifiez.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Les coordonnées des vecteurs $\overrightarrow{u}_1$ à $\overrightarrow{u}_9$ dans la base $(\overrightarrow{i},\overrightarrow{j})$ sont :
+            <ul class="horizontal-list col-3c">
+                <li>$\overrightarrow{u}_1=\left(\begin{array}{c}-2\\-1\end{array}\right)$</li>
+                <li>$\overrightarrow{u}_2=\left(\begin{array}{c}3\\2\end{array}\right)$</li>
+                <li>$\overrightarrow{u}_3=\left(\begin{array}{c}2\\2\end{array}\right)$</li>
+                <li>$\overrightarrow{u}_4=\left(\begin{array}{c}3\\-1\end{array}\right)$</li>
+                <li>$\overrightarrow{u}_5=\left(\begin{array}{c}6\\-2\end{array}\right)$</li>
+                <li>$\overrightarrow{u}_6=\left(\begin{array}{c}5\\5\end{array}\right)$</li>
+                <li>$\overrightarrow{u}_7=\left(\begin{array}{c}6\\3\end{array}\right)$</li>
+                <li>$\overrightarrow{u}_8=\left(\begin{array}{c}-4\\6\end{array}\right)$</li>
+                <li>$\overrightarrow{u}_9=\left(\begin{array}{c}3\\-2\end{array}\right)$</li>
+            </ul>
+            </li>
+            <li>
+            <ul class="horizontal-list col-3c">
+                <li>$\det(\overrightarrow{u}_2,\overrightarrow{u}_8)=3\times 6-2\times (-4)=18+8=26$</li>
+                <li>$\det(\overrightarrow{u}_1,\overrightarrow{u}_7)=-2\times 3-(-1)\times 6=-6+6=0$</li>
+                <li>$\det(\overrightarrow{u}_9,\overrightarrow{u}_4)=3\times (-1)-(-2)\times 3=-3+6=3$</li>
+                <li>$\det(\overrightarrow{u}_4,\overrightarrow{u}_5)=3\times (-2)-(-1)\times 6=-6+6=0$</li>
+                <li>$\det(\overrightarrow{u}_6,\overrightarrow{u}_3)=5\times 2-5\times 2=0$</li>
+                <li>$\det(\overrightarrow{u}_7,\overrightarrow{u}_2)=6\times 2-3\times 3=12-9=3$</li>
+            </ul>
+            </li>
+            <li>Les vecteurs $\overrightarrow{u}_1$ et $\overrightarrow{u}_7$ sont colinéaires car leur déterminant est nul. De même pour les vecteurs $\overrightarrow{u}_4$ et $\overrightarrow{u}_5$ et de même pour les vecteurs $\overrightarrow{u}_6$ et $\overrightarrow{u}_3$.</li>
+            <li>$\det(\overrightarrow{u}_9,\overrightarrow{u}_8)=\left\vert\begin{array}{cc}-2&-4\\3&6\end{array}\right\vert=-2\times 6-(-4)\times 3=-12+12=0$.<br>
+            Les vecteurs $\overrightarrow{u}_9$ et $\overrightarrow{u}_8$ sont donc colinéaires.</li>
+            <li>$\det(\overrightarrow{u}_{10},\overrightarrow{u}_1)=\left\vert\begin{array}{cc}7&-2\\\num{3.5}&-1\end{array}\right\vert=7\times (-1)-(-2)\times \num{3.5}=-7+7=0$.<br>
+            Les vecteurs $\overrightarrow{u}_{10}$ et $\overrightarrow{u}_1$ sont donc colinéaires.</li>
+            $\det(\overrightarrow{u}_{10},\overrightarrow{u}_7)=\left\vert\begin{array}{cc}7&6\\\num{3.5}&3\end{array}\right\vert=7\times 3-6\times \num{3.5}=21-21=0$.<br>
+            Les vecteurs $\overrightarrow{u}_{10}$ et $\overrightarrow{u}_7$ sont donc colinéaires.
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>$\overrightarrow{u}$ et $\overrightarrow{v}$ sont deux vecteurs tels que $\overrightarrow{v}=3\overrightarrow{u}$. Quelle est la valeur de $det(\overrightarrow{u},\overrightarrow{v})$&nbsp;?</li>
+            <li>$\overrightarrow{u}$ et $\overrightarrow{v}$ sont deux vecteurs colinéaires de coordonnées respectives $\left(\begin{array}{c}15\\-15\end{array}\right)$ et $\left(\begin{array}{c}3\\y\end{array}\right)$. Quelle est la valeur de $y$&nbsp;?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Comme $\overrightarrow{v}=3\overrightarrow{u}$, on a $det(\overrightarrow{u},\overrightarrow{v})=det(\overrightarrow{u},3\overrightarrow{u})=3det(\overrightarrow{u},\overrightarrow{u})=3\times 0=0$.</li>
+            <li>Les vecteurs $\overrightarrow{u}$ et $\overrightarrow{v}$ sont colinéaires donc $det(\overrightarrow{u},\overrightarrow{v})=0$.<br>
+            On a donc $det\left(\left(\begin{array}{c}15\\-15\end{array}\right),\left(\begin{array}{c}3\\y\end{array}\right)\right)=15\times y-(-15)\times 3=15y+45=0$<br>
+            D'où $y=-3$.</li>
+        </ol>
+    </div>
+</div></main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>
