@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Conditionnelles_03.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    
+    <main><div class="encart">
+    <b>Définition :</b> On dit que des événements $A_1$, $A_2$, $A_3$, ..., forment une partition de l'univers $\Omega$ si:
+    <ul style="padding-left:20px">
+        <li>Les événements $A_1$, $A_2$, $A_3$, ... sont deux à deux incompatibles (intersection vide).</li>
+        <li>La réunion des événements $A_1$, $A_2$, $A_3$, ... est égale à l'univers $\Omega$.</li>
+    </ul>
+    <div class="figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-52 -40 104 80">
+            <ellipse cx="0" cy="0" rx="50" ry="35" fill="none" stroke="black" stroke-width="0.5"></ellipse>
+            <g name="A" class="point" x="50*cos(2pi/3)" y="50*sin(2pi/3)*0.7" style="font-size:8px;" stroke="none"></g>
+            <g name="B" class="point" x="50*cos(pi/6)" y="50*sin(pi/6)*0.7" style="font-size:8px;" stroke="none"></g>
+            <g name="C" class="point" x="50*cos(-pi/4)" y="50*sin(-pi/4)*0.7" style="font-size:8px;" stroke="none"></g>
+            <g name="O" class="point" x="-10" y="-10" style="font-size:8px;" stroke="none"></g>
+            <g name="c1" class="pathPointsControls" controls="O:1 A:1" linkto="O A" stroke="green" stroke-width="0.5" fill="transparent"></g>
+            <g name="c2" class="pathPointsControls" controls="O:0 B:1" linkto="O B" stroke="green" stroke-width="0.5" fill="transparent"></g>
+            <g name="c3" class="pathPointsControls" controls="O:1 C:1" linkto="O C" stroke="green" stroke-width="0.5" fill="transparent"></g>
+            <g name="O" class="label" x="20" y="-50*0.8" style="font-size:8px;">$\Omega$</g>
+            <g name="A_1" class="point labeled" x="-40" y="0" style="font-size:8px;" stroke="none"></g>
+            <g name="A_2" class="point labeled" x="0" y="20" style="font-size:8px;" stroke="none"></g>
+            <g name="A_3" class="point labeled" x="30" y="10" style="font-size:8px;" stroke="none"></g>
+            <g name="B1" class="point" x="-20" y="-20" style="font-size:8px;" stroke="none"></g>
+            <g name="B2" class="point" x="10" y="-30" style="font-size:8px;" stroke="none"></g>
+            <g name="B3" class="point" x="20" y="0" style="font-size:8px;" stroke="none"></g>
+            <g name="B4" class="point" x="0" y="10" style="font-size:8px;" stroke="none"></g>
+            <g name="d1" class="pathPointsControls" linkto="B1 B2 B3 B4 B1" stroke="green" stroke-width="0.5" fill="red" fill-opacity="0.2"></g>
+            <g name="B" class="point labeled" x="-20" y="-20" style="font-size:8px;" stroke="none"></g>
+            <g class="label" linkto="B" x="-5" y="-0" style="font-size:8px;">B</g>
+        </svg>
+    </div>
+    <b>Propriété : Formule des probabilités totales</b><br>
+    Si $A_1$, $A_2$, $A_3$, ... forment une partition de $\Omega$, alors pour tout événement $B$ de $\Omega$, on a:<br>
+    $$\footnotesize P(B) = P(A_1\cap B) + P(A_2\cap B) + P(A_3\cap B) + ...$$    
+    <table class="tableaucroise" width="75%" height="100px">
+        <tr>
+            <td width="25%"></td>
+            <td>$\bold{A_1}$</td>
+            <td>$\bold{A_2}$</td>
+            <td>$\bold{A_3}$</td>
+            <td>Total</td>
+        </tr>
+        <tr>
+            <td>$\bold{B}$</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>$\footnotesize{P(B)}$</td>
+        </tr>
+        <tr>
+            <td>$\bold{\overline{B}}$</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>$\footnotesize{P(\overline{B})}$</td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td>$\footnotesize{P(A_1)}$</td>
+            <td>$\footnotesize{P(A_2)}$</td>
+            <td>$\footnotesize{P(A_3)}$</td>
+            <td>1</td>
+        </tr>
+    </table><br>
+    Si de plus $P(A_1)>0$, $P(A_2)>0$, $P(A_3)>0$, ..., alors pour tout événement $B$ de $\Omega$, on a:<br>
+    $$\footnotesize P(B) = P(A_1)P_{A_1}(B) + P(A_2)P_{A_2}(B) + P(A_3)P_{A_3}(B) + ...$$
+    <div class="figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 200 170">
+            <g name="O" class="point" x="10" y="55" stroke="none"></g>
+            <g name="b1" class="vecteur" linkto="O" x="40" y="-50" head="none"></g>
+            <g name="lA1" class="label" x="52" y="-5" style="font-size:10px;">$A_1$</g>
+            <g name="b0" class="vecteur" linkto="O" x="40" y="0" head="none"></g>
+            <g name="lA0" class="label" x="52" y="47.5" style="font-size:10px;">$A_2$</g>
+            <g name="b2" class="vecteur" linkto="O" x="40" y="50" head="none"></g>
+            <g name="lA2" class="label" x="52" y="100" style="font-size:10px;">$A_3$</g>
+            <g name="A1" class="point" x="60" y="2" stroke="none"></g>
+            <g name="A0" class="point" x="60" y="54.5" stroke="none"></g>
+            <g name="A2" class="point" x="60" y="107" stroke="none"></g>
+            
+            <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
+            <g name="lB1" class="label" x="100" y="-22" style="font-size:10px;">$B$</g>
+            <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
+            <g name="lB2" class="label" x="100" y="12" style="font-size:10px;">$\overline{B}$</g>
+            
+            <g name="b01" class="vecteur" linkto="A0" x="40" y="-17" head="none"></g>
+            <g name="lB00" class="label" x="100" y="30.5" style="font-size:10px;">$B$</g>
+            <g name="b02" class="vecteur" linkto="A0" x="40" y="17" head="none"></g>
+            <g name="lB01" class="label" x="100" y="64.5" style="font-size:10px;">$\overline{B}$</g>
+            
+            <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
+            <g name="lB3" class="label" x="100" y="83" style="font-size:10px;">$B$</g>
+            <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
+            <g name="lB4" class="label" x="100" y="117" style="font-size:10px;">$\overline{B}$</g>
+        </svg>
+    </div>
+    On peut donc déduire la formule des probabilités totales à partir d'un arbre pondéré en additionnant les probabilités des chemins menant à $B$ :
+    <ul style="padding-left:20px">
+        <li>Pour chaque chemin menant à $B$, on multiplie les probabilités des branches empruntées.</li>
+        <li>On additionne les produits obtenus.</li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère une partition de l'univers $\Omega$ en trois événements $D$, $E$ et $F$, un événement $B$ et les probabilités suivantes synthétisées dans l'arbre pondéré ci-dessous:<br>
+        <div class="figure">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 200 170">
+                <g name="O" class="point" x="10" y="55" stroke="none"></g>
+                <g name="b1" class="vecteur" linkto="O" x="40" y="-50" head="none"></g>
+                <g name="lb1" class="label" x="20" y="15" style="font-size:8px;">$\num{0.1}$</g>
+                <g name="lA1" class="label" x="52" y="-5" style="font-size:10px;">$D$</g>
+                <g name="b0" class="vecteur" linkto="O" x="40" y="0" head="none"></g>
+                <g name="lA0" class="label" x="52" y="47.5" style="font-size:10px;">$E$</g>
+                <g name="b2" class="vecteur" linkto="O" x="40" y="50" head="none"></g>
+                <g name="lb2" class="label" x="20" y="80" style="font-size:8px;">$\num{0.7}$</g>
+                <g name="lA2" class="label" x="52" y="100" style="font-size:10px;">$F$</g>
+                <g name="A1" class="point" x="60" y="2" stroke="none"></g>
+                <g name="A0" class="point" x="60" y="54.5" stroke="none"></g>
+                <g name="A2" class="point" x="60" y="107" stroke="none"></g>
+                
+                <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
+                <g name="lB1" class="label" x="100" y="-22" style="font-size:10px;">$B$</g>
+                <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
+                <g name="lb12" class="label" x="70" y="10" style="font-size:8px;">$\num{0.36}$</g>
+                <g name="lB2" class="label" x="100" y="12" style="font-size:10px;">$\overline{B}$</g>
+                
+                <g name="b01" class="vecteur" linkto="A0" x="40" y="-17" head="none"></g>
+                <g name="lb01" class="label" x="70" y="37.5" style="font-size:8px;">$\num{0.12}$</g>
+                <g name="lB00" class="label" x="100" y="30.5" style="font-size:10px;">$B$</g>
+                <g name="b02" class="vecteur" linkto="A0" x="40" y="17" head="none"></g>
+                <g name="lB01" class="label" x="100" y="64.5" style="font-size:10px;">$\overline{B}$</g>
+                
+                <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
+                <g name="lB3" class="label" x="100" y="83" style="font-size:10px;">$B$</g>
+                <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
+                <g name="lb22" class="label" x="70" y="115" style="font-size:8px;">$\num{0.95}$</g>
+                <g name="lB4" class="label" x="100" y="117" style="font-size:10px;">$\overline{B}$</g>
+            </svg>
+        </div>
+    </div>
+    <ol class="alphabetical-list">
+        <li>Que signifie la valeur $\num{0.1}$ dans cet arbre&nbsp;?</li>
+        <li>Que signifie la valeur $\num{0.12}$ dans cet arbre&nbsp;?</li>
+        <li>Si l'événement $F$ est réalisé : calculez la probabilité que $B$ soit réalisé.</li>
+        <li>Complétez l'arbre en ajoutant les probabilités manquantes.</li>
+        <li>Calculez la probabilité que l'événement $B$ soit réalisé.</li>
+        <li>Calculez de deux manières $P(\overline{B})$.</li>
+    </ol>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>La probabilité de l'événement $D$ est $\num{0.1}$.
+            $$P(D)=\num{0.1}$$</li>
+            </li>
+            <li>La probabilité de l'événement $B$ sachant $E$ est $\num{0.12}$.
+            $$P_E(B)=\num{0.12}$$</li>
+            <li>Calculons la probabilité de $B$ sachant que $F$ est réalisé.<br>
+            $$P_F(B)=1-P_F(\overline{B})=1-\num{0.95}=\num{0.05}$$</li>
+            </li>
+            <li>Complétons l'arbre en ajoutant les probabilités manquantes.<br>
+                <div class="figure">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 200 170">
+                        <g name="O" class="point" x="10" y="55" stroke="none"></g>
+                        <g name="b1" class="vecteur" linkto="O" x="40" y="-50" head="none"></g>
+                        <g name="lb1" class="label" x="20" y="15" style="font-size:8px;">$\num{0.1}$</g>
+                        <g name="lA1" class="label" x="52" y="-5" style="font-size:10px;">$D$</g>
+                        <g name="b0" class="vecteur" linkto="O" x="40" y="0" head="none"></g>
+                        <g name="lb0" class="label" x="25" y="45" style="font-size:8px;">$\num{0.2}$</g>
+                        <g name="lA0" class="label" x="52" y="47.5" style="font-size:10px;">$E$</g>
+                        <g name="b2" class="vecteur" linkto="O" x="40" y="50" head="none"></g>
+                        <g name="lb2" class="label" x="20" y="80" style="font-size:8px;">$\num{0.7}$</g>
+                        <g name="lA2" class="label" x="52" y="100" style="font-size:10px;">$F$</g>
+                        <g name="A1" class="point" x="60" y="2" stroke="none"></g>
+                        <g name="A0" class="point" x="60" y="54.5" stroke="none"></g>
+                        <g name="A2" class="point" x="60" y="107" stroke="none"></g>
+                        
+                        <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
+                        <g name="lb11" class="label" x="70" y="-15" style="font-size:8px;">$\num{0.64}$</g>
+                        <g name="lB1" class="label" x="100" y="-22" style="font-size:10px;">$B$</g>
+                        <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
+                        <g name="lb12" class="label" x="70" y="10" style="font-size:8px;">$\num{0.36}$</g>
+                        <g name="lB2" class="label" x="100" y="12" style="font-size:10px;">$\overline{B}$</g>
+                        
+                        <g name="b01" class="vecteur" linkto="A0" x="40" y="-17" head="none"></g>
+                        <g name="lb01" class="label" x="70" y="37.5" style="font-size:8px;">$\num{0.12}$</g>
+                        <g name="lB00" class="label" x="100" y="30.5" style="font-size:10px;">$B$</g>
+                        <g name="b02" class="vecteur" linkto="A0" x="40" y="17" head="none"></g>
+                        <g name="lb02" class="label" x="70" y="62.5" style="font-size:8px;">$\num{0.88}$</g>
+                        <g name="lB01" class="label" x="100" y="64.5" style="font-size:10px;">$\overline{B}$</g>
+                        
+                        <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
+                        <g name="lb21" class="label" x="70" y="90" style="font-size:8px;">$\num{0.05}$</g>
+                        <g name="lB3" class="label" x="100" y="83" style="font-size:10px;">$B$</g>
+                        <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
+                        <g name="lb22" class="label" x="70" y="115" style="font-size:8px;">$\num{0.95}$</g>
+                        <g name="lB4" class="label" x="100" y="117" style="font-size:10px;">$\overline{B}$</g>
+                    </svg>
+                </div>
+            </li>
+            <li>Calculons la probabilité que l'événement $B$ soit réalisé en utilisant la formule des probabilités totales.<br>
+            $$\begin{align*}
+                P(B) &= P(D)P_D(B) + P(E)P_E(B) + P(F)P_F(B)\\
+                P(B)&= \num{0.1}\times\num{0.64} + \num{0.2}\times\num{0.12} + \num{0.7}\times\num{0.05}\\
+                P(B)&= \num{0.064} + \num{0.024} + \num{0.035}\\
+                P(B)&= \num{0.123}
+            \end{align*}$$</li>
+            <li>Calculons la probabilité que l'événement $B$ ne soit pas réalisé de deux manières.<br>
+            $$\begin{align*}
+                P(\overline{B}) &= 1-P(B)\\
+                P(\overline{B}) &= 1-\num{0.123}\\
+                P(\overline{B}) &= \num{0.877}
+            \end{align*}$$
+            En utilisant la formule des probabilités totales:<br>
+            $$\begin{align*}
+                P(\overline{B}) &= P(D)P_D(\overline{B}) + P(E)P_E(\overline{B}) + P(F)P_F(\overline{B})\\
+                P(\overline{B}) &= \num{0.1}\times\num{0.36} + \num{0.2}\times\num{0.88} + \num{0.7}\times\num{0.95}\\
+                P(\overline{B}) &= \num{0.036} + \num{0.176} + \num{0.665}\\
+                P(\overline{B}) &= \num{0.877}
+            \end{align*}$$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Dans un lycée, il y a $\SI{35}{\%}$ d'élèves en section scientifique, $\SI{45}{\%}$ en section littéraire et $\SI{20}{\%}$ en section économique.
+
+        $\SI{30}{\%}$ des élèves de la section scientifique sont membres du club de robotique, $\SI{15}{\%}$ des élèves de la section littéraire y participent également, et $\SI{10}{\%}$ des élèves de la section économique.
+
+        On rencontre un élève du lycée au hasard.
+        <ol class="alphabetical-list">
+            <li>Représenter cette expérience aléatoire par un arbre pondéré.</li>
+            <li>Quelle est la probabilité que l'élève rencontré soit membre du club de robotique ?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Notons $L$ l'événement "l'élève est en section littéraire", $S$ l'événement "l'élève est en section scientifique" et $E$ l'événement "l'élève est en section économique".<br>
+            Notons $R$ l'événement "l'élève est membre du club de robotique".<br>
+            Représentons cette expérience aléatoire par un arbre pondéré.<br>
+            <div class="figure">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 200 170">
+                    <g name="O" class="point" x="10" y="55" stroke="none"></g>
+                    <g name="b1" class="vecteur" linkto="O" x="40" y="-50" head="none"></g>
+                    <g name="lb1" class="label" x="20" y="15" style="font-size:8px;">$\num{0.35}$</g>
+                    <g name="lA1" class="label" x="52" y="-5" style="font-size:10px;">$L$</g>
+                    <g name="b0" class="vecteur" linkto="O" x="40" y="0" head="none"></g>
+                    <g name="lb0" class="label" x="25" y="45" style="font-size:8px;">$\num{0.45}$</g>
+                    <g name="lA0" class="label" x="52" y="47.5" style="font-size:10px;">$S$</g>
+                    <g name="b2" class="vecteur" linkto="O" x="40" y="50" head="none"></g>
+                    <g name="lb2" class="label" x="20" y="80" style="font-size:8px;">$\num{0.2}$</g>
+                    <g name="lA2" class="label" x="52" y="100" style="font-size:10px;">$E$</g>
+                    <g name="A1" class="point" x="60" y="2" stroke="none"></g>
+                    <g name="A0" class="point" x="60" y="54.5" stroke="none"></g>
+                    <g name="A2" class="point" x="60" y="107" stroke="none"></g>
+                    
+                    <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
+                    <g name="lb11" class="label" x="70" y="-15" style="font-size:8px;">$\num{0.3}$</g>
+                    <g name="lB1" class="label" x="100" y="-22" style="font-size:10px;">$R$</g>
+                    <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
+                    <g name="lb12" class="label" x="70" y="10" style="font-size:8px;">$\num{0.7}$</g>
+                    <g name="lB2" class="label" x="100" y="12" style="font-size:10px;">$\overline{R}$</g>
+                    
+                    <g name="b01" class="vecteur" linkto="A0" x="40" y="-17" head="none"></g>
+                    <g name="lb01" class="label" x="70" y="37.5" style="font-size:8px;">$\num{0.15}$</g>
+                    <g name="lB00" class="label" x="100" y="30.5" style="font-size:10px;">$R$</g>
+                    <g name="b02" class="vecteur" linkto="A0" x="40" y="17" head="none"></g>
+                    <g name="lb02" class="label" x="70" y="62.5" style="font-size:8px;">$\num{0.85}$</g>
+                    <g name="lB01" class="label" x="100" y="64.5" style="font-size:10px;">$\overline{R}$</g>
+                    
+                    <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
+                    <g name="lb21" class="label" x="70" y="90" style="font-size:8px;">$\num{0.1}$</g>
+                    <g name="lB3" class="label" x="100" y="83" style="font-size:10px;">$R$</g>
+                    <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
+                    <g name="lb22" class="label" x="70" y="115" style="font-size:8px;">$\num{0.9}$</g>
+                    <g name="lB4" class="label" x="100" y="117" style="font-size:10px;">$\overline{R}$</g>
+                </svg>
+            </div>
+            </li>
+            <li>Calculons la probabilité que l'élève rencontré soit membre du club de robotique.<br>
+            $$\begin{align*}
+                P(R) &= P(L)P_L(R) + P(S)P_S(R) + P(E)P_E(R)\\
+                P(R) &= \num{0.45}\times\num{0.15} + \num{0.35}\times\num{0.3} + \num{0.2}\times\num{0.1}\\
+                P(R) &= \num{0.0675} + \num{0.105} + \num{0.02}\\
+                P(R) &= \num{0.1925}
+            \end{align*}$$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Dans une population donnée, on estime qu'il naît $\SI{40}{\%}$ de garçons et $\SI{60}{\%}$ de filles. Si le premier enfant d'un couple est une fille, la probabilité qu'il y ait un deuxième enfant est de $\SI{70}{\%}$, et si le premier enfant est un garçon, la probabilité qu'il y ait un deuxième enfant est de $\SI{60}{\%}$.
+        <ol class="alphabetical-list">
+            <li>Représenter cette expérience aléatoire par un arbre pondéré.</li>
+            <li>Calculez la probabilité qu'un couple ait deux enfants et que le premier soit une fille.</li>
+            <li>Calculez la probabilité qu'une famille ait un deuxième enfant.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><div class="figure">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 110">
+                        <g name="O" class="point" x="10" y="55" stroke="none"></g>
+                        <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
+                        <g name="lb1" class="label" x="20" y="30" style="font-size:8px;">$\num{0.6}$</g>
+                        <g name="lA1" class="label" x="52" y="20" style="font-size:10px;">$F$</g>
+                        <g name="b2" class="vecteur" linkto="O" x="40" y="25" head="none"></g>
+                        <g name="lb2" class="label" x="20" y="70" style="font-size:8px;">$\num{0.4}$</g>
+                        <g name="lA2" class="label" x="52" y="75" style="font-size:10px;">$G$</g>
+                        <g name="A1" class="point" x="60" y="27" stroke="none"></g>
+                        <g name="A2" class="point" x="60" y="82" stroke="none"></g>
+                        <g name="B1" class="point" x="100" y="10" stroke="none"></g>
+                        <g name="B2" class="point" x="100" y="45" stroke="none"></g>
+                        <g name="B3" class="point" x="100" y="65" stroke="none"></g>
+                        <g name="B4" class="point" x="100" y="100" stroke="none"></g>
+                        <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
+                        <g name="lb11" class="label" x="70" y="5" style="font-size:8px;">$\num{0.7}$</g>
+                        <g name="lB1" class="label" x="100" y="3" style="font-size:10px;">$D$</g>
+                        <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
+                        <g name="lb12" class="label" x="70" y="40" style="font-size:8px;">$\num{0.3}$</g>
+                        <g name="lB2" class="label" x="100" y="37" style="font-size:10px;">$\overline{D}$</g>
+                        <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
+                        <g name="lb21" class="label" x="70" y="60" style="font-size:8px;">$\num{0.6}$</g>
+                        <g name="lB3" class="label" x="100" y="58" style="font-size:10px;">$D$</g>
+                        <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
+                        <g name="lb22" class="label" x="70" y="95" style="font-size:8px;">$\num{0.4}$</g>
+                        <g name="lB4" class="label" x="100" y="92" style="font-size:10px;">$\overline{D}$</g>
+                    </svg>
+                </div>
+            </li>
+            <li>Calculons la probabilité qu'un couple ait deux enfants et que le premier soit une fille.<br>
+            $$\begin{align*}
+                P(F\cap D) &= P(F)P_F(D)\\
+                P(F\cap D) &= \num{0.6}\times\num{0.7}\\
+                P(F\cap D) &= \num{0.42}
+            \end{align*}$$</li>
+            <li>Calculons la probabilité qu'une famille ait un deuxième enfant.<br>
+            $$\begin{align*}
+                P(D) &= P(F)P_F(D) + P(G)P_G(D)\\
+                P(D) &= \num{0.6}\times\num{0.7} + \num{0.4}\times\num{0.6}\\
+                P(D) &= \num{0.42} + \num{0.24}\\
+                P(D) &= \num{0.66}
+            \end{align*}$$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Au lycée, le comité écologique propose trois types de paniers de fruits mixtes : 60% des paniers sont des mélanges de fruits de saison, 30% des paniers sont des mélanges de fruits exotiques et le reste des mélanges de baies. De plus, 50% des paniers de fruits de saison incluent un badge 'Éco-responsable', 90% des paniers de fruits exotiques contiennent ce badge en raison de leur commerce équitable, et 60% des paniers de baies le comportent pour promouvoir la biodiversité. Un élève décide de prendre un panier au hasard pour sa pause.<br>
+        On note $P_1$ l'événement "le panier est un mélange de fruits de saison", $P_2$ l'événement "le panier est un mélange de fruits exotiques" et $P_3$ l'événement "le panier est un mélange de baies".
+        On note $B$ l'événement "le panier contient un badge 'Éco-responsable'".
+        <ol class="alphabetical-list">
+            <li>Représentez cette expérience aléatoire par un arbre pondéré.</li>
+            <li>Représentez cette expérience aléatoire par un tableau croisé.</li>
+            <li>Vrai/Faux : si un élève possède un badge 'Éco-responsable', alors la probabilité qu'il ait pris un panier de fruits de saison est moins de $\SI{50}{\%}$.</li>
+            <li>Représentez cette expérience aléatoire par un arbre pondéré où figurent la probabilité de la question c.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><div class="figure">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 200 170">
+                        <g name="O" class="point" x="10" y="55" stroke="none"></g>
+                        <g name="b1" class="vecteur" linkto="O" x="40" y="-50" head="none"></g>
+                        <g name="lb1" class="label" x="20" y="10" style="font-size:8px;">$\num{0.6}$</g>
+                        <g name="lA1" class="label" x="52" y="-5" style="font-size:10px;">$P_1$</g>
+                        <g name="b0" class="vecteur" linkto="O" x="40" y="0" head="none"></g>
+                        <g name="lb0" class="label" x="20" y="50" style="font-size:8px;">$\num{0.3}$</g>
+                        <g name="lA0" class="label" x="52" y="47.5" style="font-size:10px;">$P_2$</g>
+                        <g name="b2" class="vecteur" linkto="O" x="40" y="50" head="none"></g>
+                        <g name="lb2" class="label" x="20" y="90" style="font-size:8px;">$\num{0.1}$</g>
+                        <g name="lA2" class="label" x="52" y="100" style="font-size:10px;">$P_3$</g>
+                        <g name="A1" class="point" x="60" y="2" stroke="none"></g>
+                        <g name="A0" class="point" x="60" y="54.5" stroke="none"></g>
+                        <g name="A2" class="point" x="60" y="107" stroke="none"></g>
+                        
+                        <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
+                        <g name="lb11" class="label" x="70" y="-15" style="font-size:8px;">$\num{0.5}$</g>
+                        <g name="lB1" class="label" x="100" y="-22" style="font-size:10px;">$B$</g>
+                        <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
+                        <g name="lb12" class="label" x="70" y="10" style="font-size:8px;">$\num{0.5}$</g>
+                        <g name="lB2" class="label" x="100" y="12" style="font-size:10px;">$\overline{B}$</g>
+                        
+                        <g name="b01" class="vecteur" linkto="A0" x="40" y="-17" head="none"></g>
+                        <g name="lb01" class="label" x="70" y="37.5" style="font-size:8px;">$\num{0.9}$</g>
+                        <g name="lB00" class="label" x="100" y="30.5" style="font-size:10px;">$B$</g>
+                        <g name="b02" class="vecteur" linkto="A0" x="40" y="17" head="none"></g>
+                        <g name="lb02" class="label" x="70" y="62.5" style="font-size:8px;">$\num{0.1}$</g>
+                        <g name="lB01" class="label" x="100" y="64.5" style="font-size:10px;">$\overline{B}$</g>
+                        
+                        <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
+                        <g name="lb21" class="label" x="70" y="90" style="font-size:8px;">$\num{0.6}$</g>
+                        <g name="lB3" class="label" x="100" y="83" style="font-size:10px;">$B$</g>
+                        <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
+                        <g name="lb22" class="label" x="70" y="115" style="font-size:8px;">$\num{0.4}$</g>
+                        <g name="lB4" class="label" x="100" y="117" style="font-size:10px;">$\overline{B}$</g>
+                    </svg>
+                </div>
+            </li>
+            <li>Représentons cette expérience aléatoire par un tableau croisé.<br>
+            <table class="tableaucroise" width="75%" height="100px">
+                <tr>
+                    <th></th>
+                    <th>$P_1$</th>
+                    <th>$P_2$</th>
+                    <th>$P_3$</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td>$B$</td>
+                    <td>$\num{0.3}$</td>
+                    <td>$\num{0.27}$</td>
+                    <td>$\num{0.06}$</td>
+                    <td>$\num{0.63}$</td>
+                </tr>
+                <tr>
+                    <td>$\overline{B}$</td>
+                    <td>$\num{0.3}$</td>
+                    <td>$\num{0.03}$</td>
+                    <td>$\num{0.04}$</td>
+                    <td>$\num{0.37}$</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>$\num{0.6}$</td>
+                    <td>$\num{0.3}$</td>
+                    <td>$\num{0.1}$</td>
+                    <td>$\num{1}$</td>
+                    </tr>
+            </table>
+            </li>
+            <li>Calculons la probabilité qu'un élève possédant un badge 'Éco-responsable' ait pris un panier de fruits de saison.<br>
+            $$\begin{align*}
+                P_B(P_1) &= \frac{P(P_1\cap B)}{P(B)}\\
+                P_B(P_1) &= \frac{\num{0.3}}{\num{0.63}}\\
+                P_B(P_1) &= \frac{10}{21}
+            \end{align*}$$
+            Donc la probabilité qu'un élève possédant un badge 'Éco-responsable' ait pris un panier de fruits de saison est de $\frac{10}{21}$, soit un peu moins de $\SI{50}{\%}$.
+            </li>
+        </ol>
+    </div>
+</div>
+</main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>
