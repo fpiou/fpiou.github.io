@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Vecteurs_09.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    
+    <main><h3>Caractériser alignement et parallélisme</h3>
+<div class="encart">
+    <b>Propriété : </b> Trois points $A$, $B$ et $C$ sont alignés si et seulement si les vecteurs $\overrightarrow{AB}$ et $\overrightarrow{AC}$ sont colinéaires.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Pour chaque égalité, justifiez que les points sont alignés en transformant l'égalité sous la forme $\overrightarrow{AB}=k\overrightarrow{AC}$ (indiquez la valeur de $k$).
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$\overrightarrow{AB}=\overrightarrow{AC}$.</li>
+            <li>$\overrightarrow{AB}=-\overrightarrow{AC}$.</li>
+            <li>$\overrightarrow{AB}=2\overrightarrow{CA}$.</li>
+            <li>$2\overrightarrow{AB}=3\overrightarrow{AC}$.</li>
+            <li>$-3\overrightarrow{AB}=2\overrightarrow{CA}$.</li>
+            <li>$\frac{2}{7}\overrightarrow{BA}=\frac{1}{2}\overrightarrow{AC}$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Si $\overrightarrow{AB}=\overrightarrow{AC}$, alors les points $A$, $B$ et $C$ sont alignés car $\overrightarrow{AB}=1\overrightarrow{AC}$ avec $k=1$.</li>
+            <li>Si $\overrightarrow{AB}=-\overrightarrow{AC}$, alors les points $A$, $B$ et $C$ sont alignés car $\overrightarrow{AB}=-1\overrightarrow{AC}$ avec $k=-1$.</li>
+            <li>Si $\overrightarrow{AB}=2\overrightarrow{CA}$, alors les points $A$, $B$ et $C$ sont alignés car $\overrightarrow{AB}=-2\overrightarrow{AC}$ avec $k=-2$.</li>
+            <li>Si $2\overrightarrow{AB}=3\overrightarrow{AC}$, alors les points $A$, $B$ et $C$ sont alignés car $\overrightarrow{AB}=\frac{3}{2}\overrightarrow{AC}$ avec $k=\frac{3}{2}$.</li>
+            <li>Si $-3\overrightarrow{AB}=2\overrightarrow{CA}$, alors les points $A$, $B$ et $C$ sont alignés car $\overrightarrow{AB}=\frac{2}{3}\overrightarrow{AC}$ avec $k=\frac{3}{2}$.</li>
+            <li>Si $\frac{2}{7}\overrightarrow{BA}=\frac{1}{2}\overrightarrow{AC}$, alors les points $A$, $B$ et $C$ sont alignés car $\overrightarrow{AB}=-\frac{7}{4}\overrightarrow{AC}$ avec $k=-\frac{7}{4}$.</li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Méthode :</b> Pour déterminer si trois points $A$, $B$, $C$ sont alignés, il suffit :
+    <ol class="numerical-list">
+        <li>de calculer les coordonnées des vecteurs
+        $$\overrightarrow{AB}\begin{pmatrix} x_B - x_A \\ y_B - y_A \end{pmatrix}\qquad\text{ et }\qquad\overrightarrow{AC}\begin{pmatrix} x_C - x_A \\ y_C - y_A \end{pmatrix}~;$$</li>
+        </li>
+
+        <li>de calculer le déterminant suivant :
+        $$\small\det(\overrightarrow{AB}, \overrightarrow{AC})=\begin{vmatrix}
+            x_{\overrightarrow{AB}} & x_{\overrightarrow{AC}} \\
+            y_{\overrightarrow{AB}} & y_{\overrightarrow{AC}}
+        \end{vmatrix}=x_{\overrightarrow{AB}}\times y_{\overrightarrow{AC}}-y_{\overrightarrow{AB}}\times x_{\overrightarrow{AC}}~;$$
+        </li>
+        <li>les points $A$, $B$ et $C$ sont alors alignés si et seulement si $\det(\overrightarrow{AB}, \overrightarrow{AC}) = 0$.</li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Pour chaque cas, déterminez si les points $A$, $B$ et $C$ sont alignés.
+        <ol class="alphabetical-list">
+            <li>$\det(\overrightarrow{AB}, \overrightarrow{AC})=\begin{vmatrix}
+                6 & 7 \\
+                3 & \num{3.5}
+            \end{vmatrix}$.</li>
+            <li>$\det(\overrightarrow{AB}, \overrightarrow{AC})=\begin{vmatrix}
+                18 & 22 \\
+                4 & 5
+            \end{vmatrix}$.</li>
+            <li>$\det(\overrightarrow{AB}, \overrightarrow{AC})=\begin{vmatrix}
+                \sqrt{15} & 10 \\
+                \sqrt{3} & 2\sqrt{5}
+            \end{vmatrix}$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Les points $A$, $B$ et $C$ sont alignés si et seulement si $\det(\overrightarrow{AB}, \overrightarrow{AC}) = 0$.
+            $$\det(\overrightarrow{AB}, \overrightarrow{AC})=\begin{vmatrix}
+                6 & 7 \\
+                3 & \num{3.5}
+            \end{vmatrix}=6\times \num{3.5}-7\times 3=21-21=0~;$$
+            donc les points $A$, $B$ et $C$ sont alignés.</li>
+            <li>Les points $A$, $B$ et $C$ sont alignés si et seulement si $\det(\overrightarrow{AB}, \overrightarrow{AC}) = 0$.
+            $$\det(\overrightarrow{AB}, \overrightarrow{AC})=\begin{vmatrix}
+                18 & 22 \\
+                4 & 5
+            \end{vmatrix}=18\times 5-22\times 4=90-88=2\neq 0~;$$
+            donc les points $A$, $B$ et $C$ ne sont pas alignés.</li>
+            <li>Les points $A$, $B$ et $C$ sont alignés si et seulement si $\det(\overrightarrow{AB}, \overrightarrow{AC}) = 0$.
+            $$\det(\overrightarrow{AB}, \overrightarrow{AC})=\begin{vmatrix}
+                \sqrt{15} & 10 \\
+                \sqrt{3} & 2\sqrt{5}
+            \end{vmatrix}=\sqrt{15}\times 2\sqrt{5}-10\times \sqrt{3}=2\sqrt{75}-10\sqrt{3}=10\sqrt{3}-10\sqrt{3}=0~;$$
+            donc les points $A$, $B$ et $C$ sont alignés.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère les points suivants dans un repère orthonormé : $A(-9~;~-1)$, $B(-3~;~1)$, $C(6~;~4)$, $D(-2~;~5)$, $E(7~;~-1)$, $F(10~;~-3)$, $G(-6~;~-7)$ et $H(2~;~-1)$.<br>
+        <div class="figure">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="-10" ymin="-10" xmax="10" ymax ="10" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
+                <g class="label" linkto="O" x="-4" y="0" style="font-size:0.4rem;">O</g>
+                <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="i" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="i" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+                <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>  
+            </svg>
+        </div>
+        Pour chaque cas déterminez si les points sont alignés ou non en calculant les coordonnées.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$A$, $B$ et $C$.</li>
+            <li>$G$, $B$ et $D$.</li>
+            <li>$D$, $E$ et $F$.</li>
+            <li>$C$, $H$ et $G$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Les points $A$, $B$ et $C$ sont alignés si et seulement si $\det(\overrightarrow{AB}, \overrightarrow{AC}) = 0$.
+            $$\overrightarrow{AB}\begin{pmatrix} -3 - (-9) \\ 1 - (-1) \end{pmatrix}=\begin{pmatrix} 6 \\ 2 \end{pmatrix}\qquad\text{ et }\qquad\overrightarrow{AC}\begin{pmatrix} 6 - (-9) \\ 4 - (-1) \end{pmatrix}=\begin{pmatrix} 15 \\ 5 \end{pmatrix}~;$$
+            $$\det(\overrightarrow{AB}, \overrightarrow{AC})=\begin{vmatrix}
+                6 & 15 \\
+                2 & 5
+            \end{vmatrix}=6\times 5-15\times 2=30-30=0~;$$
+            donc les points $A$, $B$ et $C$ sont alignés.</li>
+            <li>Les points $G$, $B$ et $D$ sont alignés si et seulement si $\det(\overrightarrow{GB}, \overrightarrow{GD}) = 0$.
+            $$\overrightarrow{GB}\begin{pmatrix} -3 - (-6) \\ 1 - (-7) \end{pmatrix}=\begin{pmatrix} 3 \\ 8 \end{pmatrix}\qquad\text{ et }\qquad\overrightarrow{GD}\begin{pmatrix} -2 - (-6) \\ 5 - (-7) \end{pmatrix}=\begin{pmatrix} 4 \\ 12 \end{pmatrix}~;$$
+            $$\det(\overrightarrow{GB}, \overrightarrow{GD})=\begin{vmatrix}
+                3 & 4 \\
+                8 & 12
+            \end{vmatrix}=3\times 12-4\times 8=36-32=4\neq 0~;$$
+            donc les points $G$, $B$ et $D$ ne sont pas alignés.</li>
+            <li>Les points $D$, $E$ et $F$ sont alignés si et seulement si $\det(\overrightarrow{DE}, \overrightarrow{DF}) = 0$.
+            $$\overrightarrow{DE}\begin{pmatrix} 7 - (-2) \\ -1 - 5 \end{pmatrix}=\begin{pmatrix} 9 \\ -6 \end{pmatrix}\qquad\text{ et }\qquad\overrightarrow{DF}\begin{pmatrix} 10 - (-2) \\ -3 - 5 \end{pmatrix}=\begin{pmatrix} 12 \\ -8 \end{pmatrix}~;$$
+            $$\det(\overrightarrow{DE}, \overrightarrow{DF})=\begin{vmatrix}
+                9 & 12 \\
+                -6 & -8
+            \end{vmatrix}=9\times (-8)-12\times (-6)=-72+72=0~;$$
+            donc les points $D$, $E$ et $F$ sont alignés.</li>
+            <li>Les points $C$, $H$ et $G$ sont alignés si et seulement si $\det(\overrightarrow{CH}, \overrightarrow{CG}) = 0$.
+            $$\overrightarrow{CH}\begin{pmatrix} -6 - 2 \\ -7 - (-1) \end{pmatrix}=\begin{pmatrix} -8 \\ -6 \end{pmatrix}\qquad\text{ et }\qquad\overrightarrow{CG}\begin{pmatrix} -6 - 6 \\ -7 - (-7) \end{pmatrix}=\begin{pmatrix} -12 \\ 0 \end{pmatrix}~;$$
+            $$\det(\overrightarrow{CH}, \overrightarrow{CG})=\begin{vmatrix}
+                -8 & -12 \\
+                -6 & 0
+            \end{vmatrix}=-8\times 0-(-12)\times (-6)=0-72=72\neq 0~;$$
+            donc les points $C$, $H$ et $G$ ne sont pas alignés.</li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Méthode</b> : Pour déterminer si deux droites $(AB)$ et $(CD)$ sont parallèles, il suffit :
+    <ol class="numerical-list">
+        <li>de calculer les coordonnées des vecteurs directeurs
+        $$\overrightarrow{AB}\begin{pmatrix} x_B - x_A \\ y_B - y_A \end{pmatrix}\qquad\text{ et }\qquad\overrightarrow{CD}\begin{pmatrix} x_D - x_C \\ y_D - y_C \end{pmatrix}~;$$</li>
+        <li>les droites $(AB)$ et $(CD)$ sont alors parallèles si et seulement si $$\det(\overrightarrow{AB}, \overrightarrow{CD}) = 0~.$$</li>
+    </ol>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère les points suivants dans un repère orthonormé : $A(-6~;~-2)$, $B(-2~;~2)$, $C(2~;~-4)$, $D(8~;~2)$, $E(4~;~1)$, $F(6~;~-2)$, $G(1~;~-1)$ et $H(2~;~\num{1.5})$.
+        <div class="figure">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="-10" ymin="-10" xmax="10" ymax ="10" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
+                <g class="label" linkto="O" x="-4" y="0" style="font-size:0.4rem;">O</g>
+                <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="i" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="i" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+                <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>  
+            </svg>
+        </div>
+        Pour chaque cas dire si les droites sont parallèles ou non en calculant le déterminant.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$(AB)$ et $(CD)$.</li>
+            <li>$(BC)$ et $(EF)$.</li>
+            <li>$(BG)$ et $(EF)$.</li>
+            <li>$(GH)$ et $(CE)$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Les droites $(AB)$ et $(CD)$ sont parallèles si et seulement si $\det(\overrightarrow{AB}, \overrightarrow{CD}) = 0$.
+            $$\overrightarrow{AB}\begin{pmatrix} -2 - (-6) \\ 2 - (-2) \end{pmatrix}=\begin{pmatrix} 4 \\ 4 \end{pmatrix}\qquad\text{ et }\qquad\overrightarrow{CD}\begin{pmatrix} 8 - 2 \\ 2 - (-4) \end{pmatrix}=\begin{pmatrix} 6 \\ 6 \end{pmatrix}~;$$
+            $$\det(\overrightarrow{AB}, \overrightarrow{CD})=\begin{vmatrix}
+                4 & 6 \\
+                4 & 6
+            \end{vmatrix}=4\times 6-6\times 4=24-24=0~;$$
+            donc les droites $(AB)$ et $(CD)$ sont parallèles.</li>
+            <li>Les droites $(BC)$ et $(EF)$ sont parallèles si et seulement si $\det(\overrightarrow{BC}, \overrightarrow{EF}) = 0$.
+            $$\overrightarrow{BC}\begin{pmatrix} 2 - (-2) \\ -4 - 2 \end{pmatrix}=\begin{pmatrix} 4 \\ -6 \end{pmatrix}\qquad\text{ et }\qquad\overrightarrow{EF}\begin{pmatrix} 6 - 4 \\ -2 - 1 \end{pmatrix}=\begin{pmatrix} 2 \\ -3 \end{pmatrix}~;$$
+            $$\det(\overrightarrow{BC}, \overrightarrow{EF})=\begin{vmatrix}
+                4 & 2 \\
+                -6 & -3
+            \end{vmatrix}=4\times (-3)-2\times (-6)=-12+12=0~;$$
+            donc les droites $(BC)$ et $(EF)$ sont parallèles.</li>
+            <li>Les droites $(BG)$ et $(EF)$ sont parallèles si et seulement si $\det(\overrightarrow{BG}, \overrightarrow{EF}) = 0$.
+            $$\overrightarrow{BG}\begin{pmatrix} 1 - (-6) \\ -1 - (-2) \end{pmatrix}=\begin{pmatrix} 7 \\ 1 \end{pmatrix}\qquad\text{ et }\qquad\overrightarrow{EF}\begin{pmatrix} 6 - 4 \\ -2 - 1 \end{pmatrix}=\begin{pmatrix} 2 \\ -3 \end{pmatrix}~;$$
+            $$\det(\overrightarrow{BG}, \overrightarrow{EF})=\begin{vmatrix}
+                7 & 2 \\
+                1 & -3
+            \end{vmatrix}=7\times (-3)-2\times 1=-21-2=-23\neq 0~;$$
+            donc les droites $(BG)$ et $(EF)$ ne sont pas parallèles.</li>
+            <li>Les droites $(GH)$ et $(CE)$ sont parallèles si et seulement si $\det(\overrightarrow{GH}, \overrightarrow{CE}) = 0$.
+            $$\overrightarrow{GH}\begin{pmatrix} 2 - 1 \\ \num{1.5} - (-1) \end{pmatrix}=\begin{pmatrix} 1 \\ \num{2.5} \end{pmatrix}\qquad\text{ et }\qquad\overrightarrow{CE}\begin{pmatrix} 4 - 2 \\ 1 - (-4) \end{pmatrix}=\begin{pmatrix} 2 \\ 5 \end{pmatrix}~;$$
+            $$\det(\overrightarrow{GH}, \overrightarrow{CE})=\begin{vmatrix}
+                1 & 2 \\
+                \num{2.5} & 5
+            \end{vmatrix}=1\times 5-2\times \num{2.5}=5-5=0~;$$
+            donc les droites $(GH)$ et $(CE)$ sont parallèles.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère deux points $A(-3~;~1)$ et $B(2~;~4)$ dans un repère orthonormé.
+        Dans chaque cas, déterminez si le point $D_i$ appartient à la droite $(AB)$.
+        <ol class="alphabetical-list">
+            <li>$D_1(9~;~\num{8.2})$.</li>
+            <li>$D_2(\frac{5\sqrt{3}}{3}-3~;~1+\sqrt{3})$.</li>
+            <li>$D_3(1~;~5)$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        Calculons les coordonnées de $\overrightarrow{AB}$ :
+        $$\overrightarrow{AB}\begin{pmatrix} 2 - (-3) \\ 4 - 1 \end{pmatrix}=\begin{pmatrix} 5 \\ 3 \end{pmatrix}~;$$
+        <ol class="alphabetical-list">
+            <li>Le point $D_1$ appartient à la droite $(AB)$ si et seulement si $\overrightarrow{AD_1}$ et $\overrightarrow{AB}$ sont colinéaires.
+            $$\overrightarrow{AD_1}\begin{pmatrix} 9 - (-3) \\ \num{8.2} - 1 \end{pmatrix}=\begin{pmatrix} 12 \\ \num{7.2} \end{pmatrix}~;$$
+            $$\det(\overrightarrow{AD_1}, \overrightarrow{AB})=\begin{vmatrix}
+                12 & 5 \\
+                \num{7.2} & 3
+            \end{vmatrix}=12\times 3-5\times \num{7.2}=36-36=0~;$$
+            donc le point $D_1$ appartient à la droite $(AB)$.</li>
+            <li>Le point $D_2$ appartient à la droite $(AB)$ si et seulement si $\overrightarrow{AD_2}$ et $\overrightarrow{AB}$ sont colinéaires.
+            $$\overrightarrow{AD_2}\begin{pmatrix} \frac{5\sqrt{3}}{3}-3 - (-3) \\ 1+\sqrt{3} - 1 \end{pmatrix}=\begin{pmatrix} \frac{5\sqrt{3}}{3} \\ \sqrt{3} \end{pmatrix}~;$$
+            $$\det(\overrightarrow{AD_2}, \overrightarrow{AB})=\begin{vmatrix}
+                \frac{5\sqrt{3}}{3} & 5 \\
+                \sqrt{3} & 3
+            \end{vmatrix}=\frac{5\sqrt{3}}{3}\times 3-5\times \sqrt{3}=5\sqrt{3}-5\sqrt{3}=0~;$$
+            donc le point $D_2$ appartient à la droite $(AB)$.</li>
+            <li>Le point $D_3$ appartient à la droite $(AB)$ si et seulement si $\overrightarrow{AD_3}$ et $\overrightarrow{AB}$ sont colinéaires.
+            $$\overrightarrow{AD_3}\begin{pmatrix} 1 - (-3) \\ 5 - 1 \end{pmatrix}=\begin{pmatrix} 4 \\ 4 \end{pmatrix}~;$$
+            $$\det(\overrightarrow{AD_3}, \overrightarrow{AB})=\begin{vmatrix}
+                4 & 5 \\
+                4 & 3
+            \end{vmatrix}=4\times 3-5\times 4=12-20=-8\neq 0~;$$
+            donc le point $D_3$ n'appartient pas à la droite $(AB)$.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère les points $A(-4~;~2)$, $B(3~;~2)$ et $C(5~;~-4)$.
+        <ol class="alphabetical-list">
+            <li>$M$ est le point tel que $AM=\frac{4}{5}\overrightarrow{AB}$. Calculez ses coordonnées.</li>
+            <li>$N$ est le point tel que $CN=\frac{1}{5}\overrightarrow{CA}$. Calculez ses coordonnées.</li>
+            <li>Démontrez que les droites $(MN)$ et $(BC)$ sont parallèles en calculant le déterminant de deux vecteurs.</li>
+            <li>Calculez $\frac{MN}{BC}$ en calculant les distances $MN$ et $BC$.</li>
+            <li>Quelles remarques peut-on faire sur ces résultats&nbsp;?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Le point $M$ est tel que $AM=\frac{4}{5}\overrightarrow{AB}$, d'où
+            $$\begin{align*}
+                \overrightarrow{AM}&=\frac{4}{5}\overrightarrow{AB}\\
+                \overrightarrow{AM}&=\frac{4}{5}\begin{pmatrix} 3 - (-4) \\ 2 - 2 \end{pmatrix}\\
+                \overrightarrow{AM}&=\frac{4}{5}\begin{pmatrix} 7 \\ 0\end{pmatrix}\\
+                \overrightarrow{AM}&=\begin{pmatrix} \frac{28}{5} \\ 0 \end{pmatrix}
+            \end{align*}$$
+            Notons $M(x_M~;~y_M)$, alors $\overrightarrow{AM}=\begin{pmatrix} x_M - (-4) \\ y_M - 2 \end{pmatrix}=\begin{pmatrix} x_M + 4 \\ y_M - 2 \end{pmatrix}$.
+            On a donc $\begin{cases} x_M + 4 = \frac{28}{5} \\ y_M - 2 = 0 \end{cases}$, d'où $x_M = \frac{28}{5} - 4 = \frac{28}{5} - \frac{20}{5} = \frac{8}{5}$ et $y_M = 2$.
+            Ainsi, les coordonnées de $M$ sont $M\left(\frac{8}{5}~;~2\right)$.</li>
+            <li>Le point $N$ est tel que $CN=\frac{1}{5}\overrightarrow{CA}$, d'où
+            $$\begin{align*}
+                \overrightarrow{CN}&=\frac{1}{5}\overrightarrow{CA}\\
+                \overrightarrow{CN}&=\frac{1}{5}\begin{pmatrix} -4 - 5 \\ 2 - (-4) \end{pmatrix}\\
+                \overrightarrow{CN}&=\frac{1}{5}\begin{pmatrix} -9 \\ 6\end{pmatrix}\\
+                \overrightarrow{CN}&=\begin{pmatrix} -\frac{9}{5} \\ \frac{6}{5} \end{pmatrix}
+            \end{align*}$$
+            Notons $N(x_N~;~y_N)$, alors $\overrightarrow{CN}=\begin{pmatrix} x_N - 5 \\ y_N - (-4) \end{pmatrix}=\begin{pmatrix} x_N - 5 \\ y_N + 4 \end{pmatrix}$.
+            On a donc $\begin{cases} x_N - 5 = -\frac{9}{5} \\ y_N + 4 = \frac{6}{5} \end{cases}$, d'où $x_N = -\frac{9}{5} + 5 = -\frac{9}{5} + \frac{25}{5} = \frac{16}{5}$ et $y_N = \frac{6}{5} - 4 = \frac{6}{5} - \frac{20}{5} = -\frac{14}{5}$.
+            Ainsi, les coordonnées de $N$ sont $N\left(\frac{16}{5}~;~-\frac{14}{5}\right)$.</li>
+            <li>Les droites $(MN)$ et $(BC)$ sont parallèles si et seulement si $\det(\overrightarrow{MN}, \overrightarrow{BC}) = 0$.
+            $$\overrightarrow{MN}\begin{pmatrix} \frac{16}{5} - \frac{8}{5} \\ -\frac{14}{5} - 2 \end{pmatrix}=\begin{pmatrix} \frac{8}{5} \\ -\frac{24}{5} \end{pmatrix}\qquad\text{ et }\qquad\overrightarrow{BC}\begin{pmatrix} 5 - 3 \\ -4 - 2 \end{pmatrix}=\begin{pmatrix} 2 \\ -6 \end{pmatrix}~;$$
+            $$\det(\overrightarrow{MN}, \overrightarrow{BC})=\begin{vmatrix}
+                \frac{8}{5} & 2 \\
+                -\frac{24}{5} & -6
+            \end{vmatrix}=\frac{8}{5}\times (-6)-2\times (-\frac{24}{5})=-\frac{48}{5}+\frac{48}{5}=0~;$$
+            donc les droites $(MN)$ et $(BC)$ sont parallèles.</li>
+            <li>Calculons les distances $MN$ et $BC$ :
+            $$\begin{align*}
+                MN&=\sqrt{\left(\frac{16}{5} - \frac{8}{5}\right)^2 + \left(-\frac{14}{5} - 2\right)^2}\\
+                MN&=\sqrt{\left(\frac{8}{5}\right)^2 + \left(-\frac{24}{5}\right)^2}\\
+                MN&=\sqrt{\frac{64}{25} + \frac{576}{25}}\\
+                MN&=\sqrt{\frac{640}{25}}\\
+                MN&=\frac{8\sqrt{10}}{5}
+            \end{align*}$$
+            $$\begin{align*}
+                BC&=\sqrt{(5 - 3)^2 + (-4 - 2)^2}\\
+                BC&=\sqrt{2^2 + (-6)^2}\\
+                BC&=\sqrt{4 + 36}\\
+                BC&=\sqrt{40}\\
+                BC&=2\sqrt{10}
+            \end{align*}$$
+            Ainsi, $\frac{MN}{BC}=\frac{\frac{8\sqrt{10}}{5}}{2\sqrt{10}}=\frac{8}{5\times 2}=\frac{4}{5}$.</li>
+            <li>On remarque que $\frac{MN}{BC}=\frac{4}{5}=\frac{AM}{AB}$, ce qui est cohérent avec le fait que les droites $(MN)$ et $(BC)$ sont parallèles (théorème de Thalès).</li>
+        </ol>
+    </div>
+</div>
+</main>
+    <footer>
+      Document réalisé par Frédéric PIOU, professeur de mathématiques au lycée
+      Henry Bergson à Angers.<br />
+      Licence CC BY-NC-SA.
+    </footer>
+  </body>
+</html>
