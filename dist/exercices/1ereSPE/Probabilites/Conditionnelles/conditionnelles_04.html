@@ -51,6 +51,8 @@
     
     <link rel="stylesheet" href="/src/css/prettyExercice.css" />
     
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
     <link rel="stylesheet" href="/src/css/print.css" />
     
 
@@ -118,7 +120,7 @@
     
     <main><div class="encart">
     <b>Définition</b>
-    Deux évènements sont dits indépendants si la probabilité de l'un ne dépend pas de la réalisation de l'autre.<br><br>
+    Deux évènements sont dits indépendants si la probabilité de l'un ne dépend pas de la réalisation de l'autre. Autrement dit si la probabilité de l'un ne change pas si l'autre est réalisé.
 </div>
 <div class="exercice">
     <div class="enonce">
@@ -131,7 +133,7 @@
     <div class="solution">
         <ol class="alphabetical-list">
             <li>Les deux évènements sont indépendants car si on tire un roi, la probabilité de tirer un coeur est toujours $\frac{1}{4}$.</li>
-            <li>Les deux évènements ne sont pas indépendants car la probabilité d'obtenir un nombre pair est $\frac{1}{2}$ mais si on obtient un 6, la probabilité d'obtenir un nombre pair est $1$.</li>
+            <li>Les deux évènements ne sont pas indépendants car la probabilité d'obtenir un nombre pair est $\frac{1}{2}$ mais si on obtient un 6, la probabilité qu'il soit pair est $1$.</li>
         </ol>
     </div>
 </div>
@@ -153,7 +155,7 @@
             <li>Démontrez que si $P(A\cap B)=P(A)\times P(B)$ alors $A$ et $B$ sont indépendants.</li>
         </ol>
     </div>
-    <div class="reponse">
+    <div class="solution">
         <ol class="alphabetical-list">
             <li>On a $P_A(B) = P(B)$ donc $P(A \cap B) = P(B)$.<br>
                 Or $P(A \cap B) = P_B(A) \times P(A)$.<br>
@@ -167,6 +169,148 @@
                 Donc $A$ et $B$ sont indépendants.
             </li>
         </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Propriété</b>
+    Soient $A$ et $B$ deux évènements d'un espace probabilisé $(\Omega, P)$.<br>
+    Pour déterminez si $A$ et $B$ sont indépendants, il suffit :
+    <ol class="numerical-list">
+        <li>de déterminez $P(A)$ et $P(B)$&nbsp;;</li>
+        <li>de déterminez $P(A \cap B)$&nbsp;;</li>
+        <li>de vérifiez si $P(A \cap B) = P(A) \times P(B)$.</li>
+    </ol>
+    Si cette égalité est vérifiée, alors $A$ et $B$ sont indépendants.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On lance un dé cubique équilibré dont les faces sont numérotées de 1 à 6. On considère les évènements suivants :
+        <ul style="list-style-type: none;padding-left:20px;">
+            <li>$A$ : "obtenir un nombre pair"</li>
+            <li>$B$ : "obtenir un multiple de trois"</li>
+            <li>$C$ : "obtenir un nombre supérieur ou égal à 4"</li>
+        </ul>
+        Déterminez si les couples d'évènements suivants sont indépendants :
+        <ol class="alphabetical-list horizontal-list">
+            <li>$A$ et $B$</li>
+            <li>$A$ et $C$</li>
+            <li>$B$ et $C$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            $A=\{2,4,6\}$, $B=\{3,6\}$ et $C=\{4,5,6\}$.
+            $A\cap B=\{6\}$, $A\cap C=\{4,6\}$ et $B\cap C=\{6\}$.
+            D'où les probabilités : $P(A)=\frac{3}{6}=\frac{1}{2}$, $P(B)=\frac{2}{6}=\frac{1}{3}$, $P(C)=\frac{3}{6}=\frac{1}{2}$, $P(A\cap B)=\frac{1}{6}$, $P(A\cap C)=\frac{2}{6}=\frac{1}{3}$ et $P(B\cap C)=\frac{1}{6}$.
+            <li>$P(A) \times P(B) = \frac{1}{2} \times \frac{1}{3} = \frac{1}{6} = P(A \cap B)$ donc $A$ et $B$ sont indépendants.</li>
+            <li>$P(A) \times P(C) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4} \neq P(A \cap C)$ donc $A$ et $C$ ne sont pas indépendants.</li>
+            <li>$P(B) \times P(C) = \frac{1}{3} \times \frac{1}{2} = \frac{1}{6} = P(B \cap C)$ donc $B$ et $C$ sont indépendants.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Un hopital est divisé en trois services. Le premier service accueille 450 patients dont 180 femmes, le deuxième service accueille 250 patients dont 102 femmes et le troisième service accueille 300 patients dont 118 femmes. On choisit un patient au hasard. On note les évènements suivants :
+        <ul style="list-style-type: none;padding-left:20px;">
+            <li>$F$ : "le patient est une femme"</li>
+            <li>$A$ : "le patient est dans le premier service"</li>
+            <li>$B$ : "le patient est dans le deuxième service"</li>
+            <li>$C$ : "le patient est dans le troisième service"</li>
+        </ul>
+        <ol class="alphabetical-list">
+            <li>Les évènements $F$ et $A$ sont-ils indépendants ?</li>
+            <li>Les évènements $F$ et $B$ sont-ils indépendants ?</li>
+            <li>Les évènements $F$ et $C$ sont-ils indépendants ?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        $450+250+300=1000$ patients sont dans l'hopital.<br>
+        $180+102+118=400$ patients sont des femmes.<br>
+        On obtient les probabilités suivantes :
+        <ul style="list-style-type: none;padding-left:20px;">
+            <li>$P(F)=\frac{400}{1000}=\num{0.4}$</li>
+            <li>$P(A)=\frac{450}{1000}=\num{0.45}$</li>
+            <li>$P(B)=\frac{250}{1000}=\num{0.25}$</li>
+            <li>$P(C)=\frac{300}{1000}=\num{0.3}$</li>
+            <li>$P(F\cap A)=\frac{180}{1000}=\num{0.18}$</li>
+            <li>$P(F\cap B)=\frac{102}{1000}=\num{0.102}$</li>
+            <li>$P(F\cap C)=\frac{118}{1000}=\num{0.118}$</li>
+        </ul>
+        <ol class="alphabetical-list">
+            <li>$P(F) \times P(A) = \num{0.4} \times \num{0.45} = \num{0.18} = P(F \cap A)$ donc $F$ et $A$ sont indépendants.</li>
+            <li>$P(F) \times P(B) = \num{0.4} \times \num{0.25} = \num{0.1} \neq P(F \cap B)$ donc $F$ et $B$ ne sont pas indépendants.</li>
+            <li>$P(F) \times P(C) = \num{0.4} \times \num{0.3} = \num{0.12} \neq P(F \cap C)$ donc $F$ et $C$ ne sont pas indépendants.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Un système de sécurité pour une installation industrielle comprend deux alarmes incendie identiques, numérotées 1 et 2.<br>
+        On note :
+        <ul style="padding-left:20px;">
+            <li>$A_1$ l'évènement "l'alarme 1 se déclenche incorrectement avant la fin de l'année"</li>
+            <li>$A_2$ l'évènement "l'alarme 2 se déclenche incorrectement avant la fin de l'année".</li>
+        </ul>
+        On suppose que les deux évènements $A_1$ et $A_2$ sont indépendants et que $P(A_1)=P(A_2)=\num{0.1}$.<br>
+        <ul style="padding-left:20px;">
+            <li>Lorsque les deux alarmes sont configurées en mode redondant, le système de sécurité émet une fausse alerte uniquement si les deux alarmes se déclenchent incorrectement en même temps.</li>
+            <li>Lorsque les deux alarmes sont utilisées de manière indépendante, une fausse alerte est émise si au moins l'une des deux alarmes se déclenche incorrectement.</li>
+        </ul>
+        Calculez la probabilité d'une fausse alerte dans chacun des deux cas.
+    </div>
+    <div class="solution">
+        <ul style="padding-left:20px;">
+            <li>La probabilité d'une fausse alerte en mode redondant est $P(A_1 \cap A_2) = P(A_1) \times P(A_2) = \num{0.1} \times \num{0.1} = \num{0.01}$.</li>
+            <li>La probabilité d'une fausse alerte en mode indépendant est $P(A_1 \cup A_2) = P(A_1) + P(A_2) - P(A_1 \cap A_2) = \num{0.1} + \num{0.1} - \num{0.01} = \num{0.19}$.</li>
+        </ul>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Un robot est programmé pour se déplacer sur le carré $ABCD$ suivant.
+        <div class="figure">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <!-- Début de la figure -->
+                <g name="A" class="point labeled" x="20" y="80" stroke="none"></g>
+                <g class="label" linkto="A" x="-10" y="0" style="font-size: 0.8em">A</g>
+                <g name="B" class="point labeled" x="80" y="80" stroke="none"></g>
+                <g class="label" linkto="B" x="0" y="0" style="font-size: 0.8em">B</g>
+                <g name="C" class="point labeled" x="80" y="20" stroke="none"></g>
+                <g class="label" linkto="C" x="0" y="-10" style="font-size: 0.8em">C</g>
+                <g name="D" class="point labeled" x="20" y="20" stroke="none"></g>
+                <g class="label" linkto="D" x="-10" y="-10" style="font-size: 0.8em">D</g>
+                <g class="polygone" linkto="A B C D" fill="red" fill-opacity="0.2"></g>
+            </svg>
+        </div>
+        Le robot se déplace de manière aléatoire en suivant les règles suivantes :
+        <ul style="padding-left:20px;">
+            <li>Le robot part de $A$.</li>
+            <li>À chaque étape, le robot se déplace d'un sommet à un autre sommet adjacent.</li>
+            <li>La probabilité qu'il fasse un déplacement horizontal est toujours $\frac{2}{3}$.</li>
+            <li>Les mouvements successifs du robot sont indépendants.</li>
+        </ul>
+        Quelle est la probabilité la plus grande entre arriver en $C$ en deux ou en quatre mouvements&nbsp;? Justifiez par le calcul de probabilités.
+    </div>
+    <div class="solution">
+        Voici les chemins possibles pour arriver en $C$ en deux mouvements.
+        <ul>
+            <li>$A-B-C$ avec une probabilité de $\frac{2}{3}\times \frac{1}{3} = \frac{2}{9}$.</li>
+            <li>$A-D-C$ avec une probabilité de $\frac{1}{3}\times \frac{2}{3} = \frac{2}{9}$.</li>
+        </ul>
+        Donc $P(C_2) = \frac{2}{9} + \frac{2}{9} = \frac{4}{9}$.
+        Voici les chemins possibles pour arriver en $C$ en quatre mouvements.
+        <ul>
+            <li>$A-B-A-B-C$ avec une probabilité de $\frac{2}{3}\times \frac{2}{3}\times \frac{2}{3}\times \frac{1}{3} = \frac{8}{81}$.</li>
+            <li>$A-B-A-D-C$ avec une probabilité de $\frac{2}{3}\times \frac{2}{3}\times \frac{1}{3}\times \frac{2}{3} = \frac{8}{81}$.</li>
+            <li>$A-B-C-D-C$ avec une probabilité de $\frac{2}{3}\times \frac{1}{3}\times \frac{2}{3}\times \frac{2}{3} = \frac{8}{81}$.</li>
+            <li>$A-B-C-B-C$ avec une probabilité de $\frac{2}{3}\times \frac{1}{3}\times \frac{1}{3}\times \frac{1}{3} = \frac{2}{81}$.</li>
+            <li>$A-D-C-D-C$ avec une probabilité de $\frac{1}{3}\times \frac{2}{3}\times \frac{2}{3}\times \frac{2}{3} = \frac{8}{81}$.</li>
+            <li>$A-D-C-B-C$ avec une probabilité de $\frac{1}{3}\times \frac{2}{3}\times \frac{1}{3}\times \frac{1}{3} = \frac{2}{81}$.</li>
+            <li>$A-D-A-B-C$ avec une probabilité de $\frac{1}{3}\times \frac{1}{3}\times \frac{2}{3}\times \frac{1}{3} = \frac{2}{81}$.</li>
+            <li>$A-D-A-D-C$ avec une probabilité de $\frac{1}{3}\times \frac{1}{3}\times \frac{1}{3}\times \frac{2}{3} = \frac{2}{81}$.</li>
+        </ul>
+        Donc $P(C_4) = \frac{8}{81} + \frac{8}{81} + \frac{8}{81} + \frac{2}{81} + \frac{8}{81} + \frac{2}{81} + \frac{2}{81} + \frac{2}{81} = \frac{40}{81}$.
+        Donc la probabilité la plus grande est $P(C_4) = \frac{40}{81}$.
     </div>
 </div>
 </main>
