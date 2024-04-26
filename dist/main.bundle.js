@@ -39103,18 +39103,27 @@ var getCoordonneesDansViewBox = function (repere, x, y) {
 var createAxe = function (axe) {
   var repere = getElementLinkto(axe, 0);
   var axeSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  var tailleFleche = 5; // Taille de la flèche en pixels
+
   if (axe.classList.contains("ordonnees")) {
     var ymin = getCoordonneesDansViewBox(repere, 0, repere.getAttribute("ymin"))[1];
     var ymax = getCoordonneesDansViewBox(repere, 0, repere.getAttribute("ymax"))[1];
     var xorigine = getCoordonneesDansViewBox(repere, repere.getAttribute("xorigine"), 0)[0];
+
+    // Ajout des flèches sur l'axe des ordonnées
     var d = "M ".concat(xorigine, " ").concat(ymin, " V ").concat(ymax);
+    d += " M ".concat(xorigine, " ").concat(ymax, " l ").concat(-tailleFleche / 2, " ").concat(tailleFleche, " l ").concat(tailleFleche, " 0 Z"); // Flèche en haut
   } else {
-    // Par défaut l'axe des abscisses
+    // Par défaut, l'axe des abscisses
     var xmin = getCoordonneesDansViewBox(repere, repere.getAttribute("xmin"), 0)[0];
     var xmax = getCoordonneesDansViewBox(repere, repere.getAttribute("xmax"), 0)[0];
     var yorigine = getCoordonneesDansViewBox(repere, 0, repere.getAttribute("yorigine"))[1];
+
+    // Ajout des flèches sur l'axe des abscisses
     var d = "M ".concat(xmin, " ").concat(yorigine, " H ").concat(xmax);
+    d += " M ".concat(xmax, " ").concat(yorigine, " l ").concat(-tailleFleche, " ").concat(-tailleFleche / 2, " l 0 ").concat(tailleFleche, " Z"); // Flèche à droite
   }
+
   axeSVG.setAttribute("d", d);
   axe.appendChild(axeSVG);
 };
