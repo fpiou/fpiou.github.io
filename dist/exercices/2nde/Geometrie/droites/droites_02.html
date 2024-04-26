@@ -51,6 +51,8 @@
     
     <link rel="stylesheet" href="/src/css/prettyExercice.css" />
     
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
     <link rel="stylesheet" href="/src/css/print.css" />
     
 
@@ -116,47 +118,129 @@
     <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     
-    <main><div class="encart">
-    <b>Propriété :</b> Si $ax+by+c=0$ est une équation cartésienne de la droite $d$, alors le vecteur $\overrightarrow{u}\begin{pmatrix}-b\\a\end{pmatrix}$ est un vecteur directeur de la droite $d$.
+    <main><h3>Rappels</h3>
+<div class="exercice">
+    <div class="enonce">
+        Dans chaque cas, déterminez si les points $A$, $B$ et $C$ sont alignés en calculant $\det\left(\overrightarrow{AB},\overrightarrow{AC}\right)$.
+        <ol class="alphabetical-list">
+            <li>$A(-7~;~7)$, $B(-1~;~4)$ et $C(1~;~3)$</li>
+            <li>$A(7~;~2)$, $B(1~;~-2)$ et $C(-3~;~-5)$</li>
+            <li>$A(-7~;~1)$, $B(5~;~5)$ et $C(11~;~7)$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Commençons par calculer les coordonnées des vecteurs $\overrightarrow{AB}$ et $\overrightarrow{AC}$ :</p>
+                $$\begin{align*}
+                    \overrightarrow{AB}&\begin{pmatrix}-1-(-7)\\4-7\end{pmatrix}\\
+                    \overrightarrow{AB}&\begin{pmatrix}6\\-3\end{pmatrix}\\
+                \end{align*}$$
+                $$\begin{align*}
+                    \overrightarrow{AC}&\begin{pmatrix}1-(-7)\\3-7\end{pmatrix}\\
+                    \overrightarrow{AC}&\begin{pmatrix}8\\-4\end{pmatrix}\\
+                \end{align*}$$
+                <p>Calculons maintenant le déterminant :</p>
+                $$\begin{align*}
+                    \det\left(\overrightarrow{AB},\overrightarrow{AC}\right) &= \begin{vmatrix}6&8\\-3&-4\end{vmatrix}\\
+                    &= 6\times(-4)-8\times(-3)\\
+                    &= -24+24\\
+                    &= 0
+                \end{align*}$$
+                <p>Le déterminant est nul, donc les points $A$, $B$ et $C$ sont alignés.</p>
+            </li>
+            <li><p>Commençons par calculer les coordonnées des vecteurs $\overrightarrow{AB}$ et $\overrightarrow{AC}$ :</p>
+                $$\begin{align*}
+                    \overrightarrow{AB}&\begin{pmatrix}1-7\\-2-2\end{pmatrix}\\
+                    \overrightarrow{AB}&\begin{pmatrix}-6\\-4\end{pmatrix}\\
+                \end{align*}$$
+                $$\begin{align*}
+                    \overrightarrow{AC}&\begin{pmatrix}-3-7\\-5-2\end{pmatrix}\\
+                    \overrightarrow{AC}&\begin{pmatrix}-10\\-7\end{pmatrix}\\
+                \end{align*}$$
+                <p>Calculons maintenant le déterminant :</p>
+                $$\begin{align*}
+                    \det\left(\overrightarrow{AB},\overrightarrow{AC}\right) &= \begin{vmatrix}-6&-10\\-4&-7\end{vmatrix}\\
+                    &= -6\times(-7)-(-10)\times(-4)\\
+                    &= 42-40\\
+                    &= 2
+                \end{align*}$$
+                <p>Le déterminant est non nul, donc les points $A$, $B$ et $C$ ne sont pas alignés.</p>
+            </li>
+            <li><p>Commençons par calculer les coordonnées des vecteurs $\overrightarrow{AB}$ et $\overrightarrow{AC}$ :</p>
+                $$\begin{align*}
+                    \overrightarrow{AB}&\begin{pmatrix}5-(-7)\\5-1\end{pmatrix}\\
+                    \overrightarrow{AB}&\begin{pmatrix}12\\4\end{pmatrix}\\
+                \end{align*}$$
+                $$\begin{align*}
+                    \overrightarrow{AC}&\begin{pmatrix}11-(-7)\\7-1\end{pmatrix}\\
+                    \overrightarrow{AC}&\begin{pmatrix}18\\6\end{pmatrix}\\
+                \end{align*}$$
+                <p>Calculons maintenant le déterminant :</p>
+                $$\begin{align*}
+                    \det\left(\overrightarrow{AB},\overrightarrow{AC}\right) &= \begin{vmatrix}12&18\\4&6\end{vmatrix}\\
+                    &= 12\times6-18\times4\\
+                    &= 72-72\\
+                    &= 0
+                \end{align*}$$
+                <p>Le déterminant est nul, donc les points $A$, $B$ et $C$ sont alignés.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<h3>Equation cartésienne d'une droite</h3>
+<div class="encart">
+    <b>Propriété :</b> Toute droite $d$ du plan admet une équation de la forme $ax+by+c=0$ appelée <i>équation cartésienne</i> où $a$, $b$ et $c$ sont des réels.
 </div>
 <div class="exercice">
     <div class="enonce">
-        Donnez un vecteur directeur des droites définies par les équations cartésiennes suivantes&nbsp;:
-        <ul class="horizontal-list col-2c">
-            <li>$d_1: 7x+2y-3=0$&nbsp;;</li>
-            <li>$d_2: -3x+4y+5=0$&nbsp;;</li>
-            <li>$d_3: -2x-3y+1=0$&nbsp;;</li>
-            <li>$d_4: 5x-6y-7=0$&nbsp;;</li>
-            <li>$d_5: 4y-5=0$&nbsp;;</li>
-            <li>$d_6: 3x-2=0$&nbsp;.</li>
-        </ul>
+        Dans un repère orthonormé, soit $d$ la droite d'équation passant par le point $A(1~;~2)$ et de vecteur directeur $\overrightarrow{u}\begin{pmatrix}3\\-2\end{pmatrix}$.
+        <div class="figure">
+            <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="-6" ymin="-5" xmax="5" ymax ="6" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
+                <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="i" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="i" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+                <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
+                <g class="label" linkto="O" x="-4" y="0" style="font-size:0.7rem;">O</g>
+                <g name="u_1" class="vecteur" repere="repere1" linkto="A" x="2" y="3" stroke="none" stroke-width="1"></g>
+                <g name="d_1" class="droite labeled" linkto="A u_1" stroke="red" stroke-width="1" pos_label="0"></g>
+                <g name="A" class="point labeled" repere="repere1" x="1" y="2" stroke="black"></g>
+            </svg>
+        </div>
+        On se propose de déterminer une équation cartésienne de $d$ de la manière suivante :
+        <ol class="alphabetical-list">
+            <li>Calculez les coordonnées du vecteur $\overrightarrow{AM}$ où $M$ est un point de coordonnées $(x~;~y)$.</li>
+            <li>Exprimez le $\det\left(\overrightarrow{u},\overrightarrow{AM}\right)$ en fonction de $x$ et $y$.</li>
+            <li>$M$ appartient à $d$ si et seulement si $\det\left(\overrightarrow{u},\overrightarrow{AM}\right)=0$.<br>
+            En déduire qu'une équation cartésienne de $d$ est $2x+3y-8=0$.</li>
+        </ol>
     </div>
     <div class="solution">
-        <ol style="padding-left: 1em;">
-            <li><p>$d_1$ : $7x+2y-3=0$</p>
-            $$\begin{align*}
-            \overrightarrow{u}\begin{pmatrix}-2\\7\end{pmatrix}
-            \end{align*}$$</li>
-            <li><p>$d_2$ : $-3x+4y+5=0$</p>
-            $$\begin{align*}
-            \overrightarrow{v}\begin{pmatrix}4\\3\end{pmatrix}
-            \end{align*}$$</li>
-            <li><p>$d_3$ : $-2x-3y+1=0$</p>
-            $$\begin{align*}
-            \overrightarrow{w}\begin{pmatrix}-3\\2\end{pmatrix}
-            \end{align*}$$</li>
-            <li><p>$d_4$ : $5x-6y-7=0$</p>
-            $$\begin{align*}
-            \overrightarrow{t}\begin{pmatrix}6\\5\end{pmatrix}
-            \end{align*}$$</li>
-            <li><p>$d_5$ : $4y-5=0$</p>
-            $$\begin{align*}
-            \overrightarrow{r}\begin{pmatrix}1\\0\end{pmatrix}
-            \end{align*}$$</li>
-            <li><p>$d_6$ : $3x-2=0$</p>
-            $$\begin{align*}
-            \overrightarrow{s}\begin{pmatrix}1\\0\end{pmatrix}
-            \end{align*}$$</li>
+        <ol class="alphabetical-list">
+            <li><p>Commençons par calculer les coordonnées du vecteur $\overrightarrow{AM}$ :</p>
+                $$\begin{align*}
+                    \overrightarrow{AM}&\begin{pmatrix}x-1\\y-2\end{pmatrix}\\
+                \end{align*}$$
+            </li>
+            <li><p>Exprimons le déterminant $\det\left(\overrightarrow{u},\overrightarrow{AM}\right)$ :</p>
+                $$\begin{align*}
+                    \det\left(\overrightarrow{u},\overrightarrow{AM}\right) &= \begin{vmatrix}3&x-1\\-2&y-2\end{vmatrix}\\
+                    &= 3\times(y-2)-(-2)\times(x-1)\\
+                    &= 3y-6+2x-2\\
+                    &= 2x+3y-8
+                \end{align*}$$
+            </li>
+            <li><p>On sait que $M$ appartient à $d$ si et seulement si $\det\left(\overrightarrow{u},\overrightarrow{AM}\right)=0$. On a donc l'équation cartésienne de $d$ :</p>
+                $$2x+3y-8=0$$
+            </li>
         </ol>
     </div>
 </div></main>
