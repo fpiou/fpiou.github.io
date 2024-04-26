@@ -37916,16 +37916,65 @@ var getDroitesFigure = function (figure) {
 };
 var determinerExtremitesDroite = function (droite) {
   var A = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(droite, 0)));
-  var B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(droite, 1)));
-  var AB = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Vecteur();
-  AB.setCoordonneesVecteur2Points(A, B);
-  var u = AB.normalisation();
-  // Dimension de la figure
-  var viewBox = droite.closest("svg").getAttribute("viewBox").split(" ").map(x => parseFloat(x));
-  var E1 = A.translation(u.multiplicationVecteur(-mathjs__WEBPACK_IMPORTED_MODULE_4__.max(viewBox[2], viewBox[3]).valueOf()));
-  var E2 = A.translation(u.multiplicationVecteur(mathjs__WEBPACK_IMPORTED_MODULE_4__.max(viewBox[2], viewBox[3]).valueOf()));
-  return [E1, E2];
+  var L2 = getElementLinkto(droite, 1);
+  var B;
+  if (L2.classList.contains("vecteur")) {
+    var x = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(L2.getAttribute("x"));
+    var y = mathjs__WEBPACK_IMPORTED_MODULE_3__.evaluate(L2.getAttribute("y"));
+    if (L2.hasAttribute("repere")) {
+      var repere = document.getElementById(L2.getAttribute("repere"));
+      var echelleX = parseFloat(repere.getAttribute("echellex"));
+      var echelleY = parseFloat(repere.getAttribute("echelley"));
+      x = x * echelleX;
+      y = -y * echelleY;
+    }
+    B = A.translation(new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Vecteur(x, y));
+  } else {
+    B = new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(...getCoordonneesPoint(getElementLinkto(droite, 1)));
+  }
+  var viewBox = droite.closest("svg").getAttribute("viewBox").split(" ").map(Number);
+  var xmin = viewBox[0];
+  var ymin = viewBox[1];
+  var width = viewBox[2];
+  var height = viewBox[3];
+  var coefficients = getCoefficientsDroite(A, B);
+  var [a, b, c] = coefficients;
+  var intersections = [];
+  if (a === 0) {
+    // Cas d'une droite horizontale
+    intersections.push(new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(xmin, -c / b));
+    intersections.push(new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(xmin + width, -c / b));
+  } else if (b === 0) {
+    // Cas d'une droite verticale
+    intersections.push(new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(-c / a, ymin));
+    intersections.push(new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(-c / a, ymin + height));
+  } else {
+    calculateIntersectionsWithBorders(a, b, c, xmin, ymin, width, height, intersections);
+  }
+
+  // Filtrer les points pour ne garder que ceux qui sont dans les limites de la viewBox
+  return intersections.filter(p => p.x >= xmin && p.x <= xmin + width && p.y >= ymin && p.y <= ymin + height);
 };
+function getCoefficientsDroite(A, B) {
+  var a = B.y - A.y;
+  var b = A.x - B.x;
+  var c = B.x * A.y - A.x * B.y;
+  return [a, b, c];
+}
+function calculateIntersectionsWithBorders(a, b, c, xmin, ymin, width, height, intersections) {
+  var xleft = xmin;
+  var xright = xmin + width;
+  var ybottom = ymin;
+  var ytop = ymin + height;
+  var yAtXmin = (-c - a * xleft) / b;
+  var yAtXmax = (-c - a * xright) / b;
+  var xAtYmin = (-c - b * ybottom) / a;
+  var xAtYmax = (-c - b * ytop) / a;
+  if (yAtXmin >= ymin && yAtXmin <= ytop) intersections.push(new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(xleft, yAtXmin));
+  if (yAtXmax >= ymin && yAtXmax <= ytop) intersections.push(new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(xright, yAtXmax));
+  if (xAtYmin >= xmin && xAtYmin <= xright) intersections.push(new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(xAtYmin, ybottom));
+  if (xAtYmax >= xmin && xAtYmax <= xright) intersections.push(new _class2_js__WEBPACK_IMPORTED_MODULE_1__.Point(xAtYmax, ytop));
+}
 var setStroke = function (objet, path) {
   var stroke = objet.hasAttribute("stroke") ? objet.getAttribute("stroke") : "black";
   path.setAttribute("stroke", stroke);
@@ -37943,6 +37992,25 @@ var constructDroite = function (droite) {
   var E2 = extremites[1];
   path.setAttribute("d", "M" + E1.x + "," + E1.y + " L" + E2.x + "," + E2.y);
   setStroke(droite, path);
+  // Si la droite possède la class labeled, ajouter un label à l'extrémité E2
+  if (droite.classList.contains("labeled")) {
+    var foreignObject = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject");
+    // Si le paramètre pos_label il représente le poids enter E1 et E2
+    var pos_label = 0.9;
+    if (droite.hasAttribute("pos_label")) {
+      pos_label = parseFloat(droite.getAttribute("pos_label"));
+    }
+    foreignObject.setAttribute("x", E1.x + pos_label * (E2.x - E1.x));
+    foreignObject.setAttribute("y", E1.y + pos_label * (E2.y - E1.y));
+    foreignObject.setAttribute("width", "20");
+    foreignObject.setAttribute("height", "20");
+    foreignObject.setAttribute("style", droite.getAttribute("style"));
+    foreignObject.innerHTML = katex.renderToString(droite.getAttribute("name"), {
+      output: "htmlAndMathml"
+    });
+    foreignObject.style.userSelect = "none";
+    droite.appendChild(foreignObject);
+  }
   droite.appendChild(path);
 };
 var initialiserDroite = function (droite) {
