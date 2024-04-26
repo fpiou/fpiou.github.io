@@ -155,6 +155,20 @@
 <h3>Vecteur directeur d'une droite</h3>
 <div class="encart">
     <b>Définition :</b> On dit qu'un vecteur $\overrightarrow{u}$ est un vecteur directeur de la droite $d$ si sa direction est celle de la droite $d$.
+    <div class="figure">
+        <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+            <g name="repere1" class="repere" xmin="0" ymin="0" xmax="10" ymax ="5" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+            <g name="A" class="point" repere="repere1" x="2" y="3" stroke="none"></g>
+            <g name="u" class="vecteur labeled" repere="repere1" linkto="A" x="4" y="1" stroke="black" stroke-width="1"></g>
+            <g name="B" class="point" repere="repere1" x="6" y="4" stroke="none"></g>
+            <g name="A_1" class="point" repere="repere1" x="3" y="1" stroke="none"></g>
+            <g name="B_1" class="point" repere="repere1" x="7" y="2" stroke="none"></g>
+            <g name="d" class="droite labeled" linkto="A_1 u" stroke="red" stroke-width="1"></g>
+            <g name="s1" class="segment" linkto="A A_1" stroke="black" stroke-width="1" stroke-dasharray="5,5"></g>
+            <g name="s2" class="segment" linkto="B B_1" stroke="black" stroke-width="1" stroke-dasharray="5,5"></g>
+        </svg>
+    </div>
 </div>
 <div class="exercice">
     <div class="enonce">
@@ -176,9 +190,19 @@
                 <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
                 <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
                 <g class="label" linkto="O" x="-4" y="0" style="font-size:0.7rem;">O</g>
-                <g name="A" class="point" repere="repere1" x="-5" y="2" stroke="none"></g>
+                <g name="A" class="point" repere="repere1" x="-6" y="3" stroke="none"></g>
+                <g name="B" class="point" repere="repere1" x="-4" y="6" stroke="none"></g>
                 <g name="u_1" class="vecteur labeled" repere="repere1" linkto="A" x="2" y="3" stroke="black" stroke-width="1"></g>
-                <g name="A_1" class="point" repere="repere1" x="-4" y="1" stroke="none"></g>
+                <g name="A_1" class="point" repere="repere1" x="-4" y="2" stroke="none"></g>
+                <g name="B_1" class="point" repere="repere1" x="-2" y="5" stroke="none"></g>
+                <g name="C" class="point" repere="repere1" x="-2" y="2" stroke="none"></g>
+                <g name="s1" class="segment" linkto="A A_1" stroke="black" stroke-width="1" stroke-dasharray="5,5"></g>
+                <g name="s2" class="segment" linkto="B B_1" stroke="black" stroke-width="1" stroke-dasharray="5,5"></g>
+                <g name="s3" class="segment" linkto="C A_1" stroke="black" stroke-width="1" stroke-dasharray="5,5"></g>
+                <g name="s4" class="segment" linkto="C B_1" stroke="black" stroke-width="1" stroke-dasharray="5,5"></g>
+                <g name="l1" class="label" repere="repere1" x="-3.1" y="2" style="font-size:1rem;">$2$</g>
+                <g name="l2" class="label" repere="repere1" x="-2" y="4" style="font-size:1rem;">$3$</g>
+                <g name="A_1B_1C" class="polygone" linkto="A_1 B_1 C" stroke="none" stroke-width="1" fill="red" fill-opacity="0.3"></g>
                 <g name="d_1" class="droite labeled" linkto="A_1 u_1" stroke="red" stroke-width="1"></g>
                 <g name="A_2" class="point" repere="repere1" x="-3" y="0" stroke="none"></g>
                 <g name="u_2" class="vecteur" repere="repere1" linkto="A_2" x="1" y="1" stroke="none" stroke-width="1"></g>
