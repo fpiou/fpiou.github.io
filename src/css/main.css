@@ -337,6 +337,7 @@ ol.horizontal-list li, ul.horizontal-list li {
   background-color: #f0f0f0; /* Fond gris clair */
   padding: 10px; /* Espace intérieur pour ne pas que le texte touche la bordure */
   margin: 10px 0; /* Marge extérieure pour séparer ce div des autres éléments */
+  break-inside: avoid; /* Empêcher le saut de colonne à l'intérieur de cet élément */
 }
 
 /* Flashcards */

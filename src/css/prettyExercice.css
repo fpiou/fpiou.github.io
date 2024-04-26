@@ -27,6 +27,10 @@ details.indice {
   margin: 0.5em 0em 1em 0em;
 }
 
+.exercice {
+  break-inside:avoid;
+}
+
 .titreExercice, .titreQuestion {
   display: inline-block;
   width: 3rem;
