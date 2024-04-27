@@ -118,7 +118,8 @@
     <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     
-    <main><h3>Rappels</h3>
+    <main><header><div>Droites - Equations de droites</div> <div>Fiche n° 02</div></header>
+<h3>Rappels</h3>
 <div class="exercice">
     <div class="enonce">
         Dans chaque cas, déterminez si les points $A$, $B$ et $C$ sont alignés en calculant $\det\left(\overrightarrow{AB},\overrightarrow{AC}\right)$.
@@ -187,13 +188,13 @@
         </ol>
     </div>
 </div>
-<h3>Equation cartésienne d'une droite</h3>
+<h3>Notion d'équation cartésienne d'une droite</h3>
 <div class="encart">
     <b>Propriété :</b> Toute droite $d$ du plan admet une équation de la forme $$ax+by+c=0$$ appelée <i>équation cartésienne</i> où $a$, $b$ et $c$ sont des réels.
 </div>
 <div class="exercice">
     <div class="enonce">
-        Dans un repère orthonormé, soit $d$ la droite d'équation passant par le point $A(1~;~2)$ et de vecteur directeur $\overrightarrow{u}\begin{pmatrix}3\\-2\end{pmatrix}$.
+        On considère les droites suivantes du plan muni d'un repère orthonormé :
         <div class="figure">
             <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
                 <g name="repere1" class="repere" xmin="-6" ymin="-5" xmax="5" ymax ="6" xorigine="0" yorigine="0"></g>
@@ -210,20 +211,252 @@
                 <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
                 <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
                 <g class="label" linkto="O" x="-4" y="0" style="font-size:0.7rem;">O</g>
-                <g name="u_1" class="vecteur" repere="repere1" linkto="A" x="3" y="-2" stroke="none" stroke-width="1"></g>
-                <g name="d_1" class="droite labeled" linkto="A u_1" stroke="red" stroke-width="1" pos_label="0"></g>
+                <g name="u_1" class="vecteur" repere="repere1" linkto="A" x="-2" y="3" stroke="none" stroke-width="1"></g>
+                <g name="d_1" class="droite labeled" linkto="A u_1" stroke="red" stroke-width="1" pos_label="0.9"></g>
+                <g name="A" class="point labeled" repere="repere1" x="-1" y="2" stroke="black"></g>
+                <g name="u_2" class="vecteur" repere="repere1" linkto="B" x="-4" y="1" stroke="none" stroke-width="1"></g>
+                <g name="d_2" class="droite labeled" linkto="A u_2" stroke="blue" stroke-width="1" pos_label="0"></g>
+                <g name="u_3" class="vecteur" repere="repere1" linkto="D" x="5" y="2" stroke="none" stroke-width="1"></g>
+                <g name="d_3" class="droite labeled" linkto="D u_3" stroke="green" stroke-width="1" pos_label="0"></g>
+                <g name="u_4" class="vecteur" repere="repere1" linkto="B" x="1" y="0" stroke="none" stroke-width="1"></g>
+                <g name="d_4" class="droite labeled" linkto="B u_4" stroke="magenta" stroke-width="1" pos_label="0"></g>
+                <g name="u_5" class="vecteur" repere="repere1" linkto="D" x="0" y="1" stroke="none" stroke-width="1"></g>
+                <g name="d_5" class="droite labeled" linkto="D u_5" stroke="cyan" stroke-width="1" pos_label="0.9"></g>
+                <g name="B" class="point labeled" repere="repere1" x="-3" y="5" stroke="black"></g>
+                <g name="C" class="point labeled" repere="repere1" x="-5" y="3" stroke="black"></g>
+                <g name="D" class="point labeled" repere="repere1" x="1" y="-1" stroke="black"></g>
+            </svg>
+        </div>
+        On considère les équations cartésiennes des droites $d_1$ à $d_5$ (dans le désordre) :
+        <ol class="horizontal-list col-3c">
+            <li>$x+4y-7=0$</li>
+            <li>$-2x+5y+7=0$</li>
+            <li>$3x-3=0$</li>
+            <li>$2y-10=0$</li>
+            <li>$3x+2y-1=0$</li>
+        </ol>
+        <ol class="alphabetical-list">
+            <li>Montrez que les coordonnées de $D$ vérifient trois équations de droites.</li>
+            <li>Montrez que les coordonnées de $B$ vérifient deux équations de droites.</li>
+            <li>Montrez que les coordonnées de $A$ vérifient deux équations de droite.</li>
+            <li>Montrez que les coordonnées de $C$ vérifient une équation de droite.</li>
+        </ol>
+        En déduire une équation cartésienne de chaque droite $d_1$ à $d_5$.
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Les coordonnées du point $D$ sont $(1~;~-1)$. Vérifions que $D$ vérifie trois équations de droites :</p>
+                <ol style="padding-left: 1em;">
+                    <li>$$3\times1+2\times(-1)-1=3-2-1=0$$
+                    <p>Donc les coordonnées de $D$ vérifient l'équation $3x+2y-1=0$.</p></li>
+                    </li>
+                    <li>$$-2\times 1+5\times(-1)+7=-2-5+7=0$$
+                    <p>Donc les coordonnées de $D$ vérifient l'équation $-2x+5y+7=0$.</p></li>
+                    </li>
+                    <li>$$3\times1-3=3-3=0$$
+                    <p>Donc les coordonnées de $D$ vérifient l'équation $3x-3=0$.</p></li>
+                    </li>
+                </ol>
+            </li>
+            <li><p>Les coordonnées du point $B$ sont $(-3~;~5)$. Vérifions que $B$ vérifie deux équations de droites :</p>
+                <ol style="padding-left: 1em;">
+                    <li>$$3\times(-3)+2\times5-1=-9+10-1=0$$
+                    <p>Donc les coordonnées de $B$ vérifient l'équation $3x+2y-1=0$.</p></li>
+                    </li>
+                    <li>$$2\times5-10=10-10=0$$
+                    <p>Donc les coordonnées de $B$ vérifient l'équation $2y-10=0$.</p></li>
+                    </li>
+                </ol>
+            </li>
+            <li><p>Les coordonnées du point $A$ sont $(-1~;~2)$. Vérifions que $A$ vérifie deux équations de droites :</p>
+                <ol style="padding-left: 1em;">
+                    <li>$$3\times(-1)+2\times2-1=-3+4-1=0$$
+                    <p>Donc les coordonnées de $A$ vérifient l'équation $3x+2y-1=0$.</p></li>
+                    </li>
+                    <li>$$-1+4\times2-7=-1+8-7=0$$
+                    <p>Donc les coordonnées de $A$ vérifient l'équation $x+4y-7=0$.</p></li>
+                    </li>
+                </ol>
+            </li>
+            <li><p>Les coordonnées du point $C$ sont $(-5~;~3)$. Vérifions que $C$ vérifie une équation de droite :</p>
+                <ol style="padding-left: 1em;">
+                    <li>$$-5+4\times3-7=-5+12-7=0$$
+                    <p>Donc les coordonnées de $C$ vérifient l'équation $x+4y-7=0$.</p></li>
+                    </li>
+                </ol>
+            </li>
+            <li><p>En déduire une équation cartésienne de chaque droite $d_1$ à $d_5$ :</p>
+                <ol style="padding-left: 1em;">
+                    <li><p>La droite $d_1$ admet pour équation cartésienne $$3x+2y-1=0$$</p></li>
+                    <li><p>La droite $d_2$ admet pour équation cartésienne $$x+4y-7=0$$</p></li>
+                    <li><p>La droite $d_3$ admet pour équation cartésienne $$-2x+5y+7=0$$</p></li>
+                    <li><p>La droite $d_4$ admet pour équation cartésienne $$2y-10=0$$</p></li>
+                    <li><p>La droite $d_5$ admet pour équation cartésienne $$3x-3=0$$</p></li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Dans chaque cas, déterminez les coefficients $a$, $b$ et $c$ d'une équation cartésienne $ax+by+c=0$ de la droite.
+        <ol class="alphabetical-list">
+            <li>$4(x-2)+2(y+1)=0$</li>
+            <li>$6(x+3)-3(y-4)=0$</li>
+            <li>$-2(x-1)+5(y+2)=0$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>On développe l'équation pour obtenir une équation cartésienne de la droite :</p>
+                $$\begin{align*}
+                    4(x-2)+2(y+1)&=0\\
+                    4x-8+2y+2&=0\\
+                    4x+2y-6&=0
+                \end{align*}$$
+                <p>On en déduit que $a=4$, $b=2$ et $c=-6$.</p>
+            </li>
+            <li><p>On développe l'équation pour obtenir une équation cartésienne de la droite :</p>
+                $$\begin{align*}
+                    6(x+3)-3(y-4)&=0\\
+                    6x+18-3y+12&=0\\
+                    6x-3y+30&=0
+                \end{align*}$$
+                <p>On en déduit que $a=6$, $b=-3$ et $c=30$.</p>
+            </li>
+            <li><p>On développe l'équation pour obtenir une équation cartésienne de la droite :</p>
+                $$\begin{align*}
+                    -2(x-1)+5(y+2)&=0\\
+                    -2x+2+5y+10&=0\\
+                    -2x+5y+12&=0
+                \end{align*}$$
+                <p>On en déduit que $a=-2$, $b=5$ et $c=12$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère les droites suivantes du plan muni d'un repère orthonormé :
+        <ol class="horizontal-list col-3c">
+            <li>$d_1 : x=5$</li>
+            <li>$d_2 : y=-2$</li>
+            <li>$d_3 : y-4=0$</li>
+            <li>$d_4 : x+3=0$</li>
+            <li>$d_5 : 2x-8=0$</li>
+            <li>$d_6 : -3y+6=0$</li>
+            <li>$d_7 : y=x$</li>
+            <li>$d_8 : y=-x$</li>
+        </ol>
+        Associez chaque équation à une droite dans le repère suivant.
+        <div class="figure">
+            <svg viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="-5" ymin="-4" xmax="6" ymax ="6" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+                <g class="label" linkto="O" x="-10" y="0" style="font-size:0.7rem;">O</g>
+                <g name="i" class="vecteur" repere="repere1" linkto="O" x="1" y="0" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="li" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="li" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+                <g name="j" class="vecteur" linkto="O" x="0" y="1" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="lj" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="lj" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
+                <g name="d_1" class="droite" linkto="A_1 j" stroke="red" stroke-width="1" pos_label="0"></g>
+                <g name="A_1" class="point" repere="repere1" x="5" y="0" stroke="none"></g>
+                <g name="d_2" class="droite" linkto="A_2 i" stroke="blue" stroke-width="1" pos_label="0"></g>
+                <g name="A_2" class="point" repere="repere1" x="0" y="-2" stroke="none"></g>
+                <g name="d_3" class="droite" linkto="A_3 i" stroke="green" stroke-width="1" pos_label="0"></g>
+                <g name="A_3" class="point" repere="repere1" x="0" y="4" stroke="none"></g>
+                <g name="d_4" class="droite" linkto="A_4 j" stroke="magenta" stroke-width="1" pos_label="0"></g>
+                <g name="A_4" class="point" repere="repere1" x="-3" y="0" stroke="none"></g>
+                <g name="d_5" class="droite" linkto="A_5 j" stroke="cyan" stroke-width="1" pos_label="0"></g>
+                <g name="A_5" class="point" repere="repere1" x="4" y="0" stroke="none"></g>
+                <g name="d_6" class="droite" linkto="A_6 i" stroke="orange" stroke-width="1" pos_label="0"></g>
+                <g name="A_6" class="point" repere="repere1" x="0" y="2" stroke="none"></g>
+                <g name="d_7" class="droite" linkto="O A_7" stroke="purple" stroke-width="1" pos_label="0.1"></g>
+                <g name="A_7" class="point" repere="repere1" x="1" y="1" stroke="none"></g>
+                <g name="d_8" class="droite" linkto="O A_8" stroke="brown" stroke-width="1" pos_label="0"></g>
+                <g name="A_8" class="point" repere="repere1" x="-1" y="1" stroke="none"></g>
+            </svg>
+        </div>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>La droite $d_2$ est une droite horizontale passant par le point de coordonnées $(0~;~-2)$.</p></li>
+            <li><p>La droite $d_3$ est une droite horizontale passant par le point de coordonnées $(0~;~4)$.</p></li>
+            <li><p>La droite $d_4$ est une droite verticale passant par le point de coordonnées $(-3~;~0)$.</p></li>
+            <li><p>La droite $d_5$ est une droite horizontale passant par le point de coordonnées $(4~;~0)$.</p></li>
+            <li><p>La droite $d_6$ est une droite verticale passant par le point de coordonnées $(0~;~2)$.</p></li>
+            <li><p>La droite $d_7$ est une droite passant par l'origine et c'est la bissectrice du premier et du troisième quadrant.</p></li>
+            <li><p>La droite $d_8$ est une droite passant par l'origine et c'est la bissectrice du deuxième et du quatrième quadrant.</p></li>
+        </ol>
+        <div class="figure">
+            <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="6" ymax ="6" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+                <g class="label" linkto="O" x="-10" y="0" style="font-size:0.7rem;">O</g>
+                <g name="i" class="vecteur" repere="repere1" linkto="O" x="1" y="0" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="li" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="li" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+                <g name="j" class="vecteur" linkto="O" x="0" y="1" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="lj" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="lj" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
+                <g name="d_1" class="droite labeled" linkto="A_1 j" stroke="red" stroke-width="1" pos_label="0"></g>
+                <g name="A_1" class="point" repere="repere1" x="5" y="0" stroke="black"></g>
+                <g name="d_2" class="droite labeled" linkto="A_2 i" stroke="blue" stroke-width="1" pos_label="0"></g>
+                <g name="A_2" class="point" repere="repere1" x="0" y="-2" stroke="black"></g>
+                <g name="d_3" class="droite labeled" linkto="A_3 i" stroke="green" stroke-width="1" pos_label="0"></g>
+                <g name="A_3" class="point" repere="repere1" x="0" y="4" stroke="black"></g>
+                <g name="d_4" class="droite labeled" linkto="A_4 j" stroke="magenta" stroke-width="1" pos_label="0"></g>
+                <g name="A_4" class="point" repere="repere1" x="-3" y="0" stroke="black"></g>
+                <g name="d_5" class="droite labeled" linkto="A_5 j" stroke="cyan" stroke-width="1" pos_label="0"></g>
+                <g name="A_5" class="point" repere="repere1" x="4" y="0" stroke="black"></g>
+                <g name="d_6" class="droite labeled" linkto="A_6 i" stroke="orange" stroke-width="1" pos_label="0"></g>
+                <g name="A_6" class="point" repere="repere1" x="0" y="2" stroke="black"></g>
+                <g name="d_7" class="droite labeled" linkto="O A_7" stroke="purple" stroke-width="1" pos_label="0.1"></g>
+                <g name="A_7" class="point" repere="repere1" x="1" y="1" stroke="black"></g>
+                <g name="d_8" class="droite labeled" linkto="O A_8" stroke="brown" stroke-width="1" pos_label="0"></g>
+                <g name="A_8" class="point" repere="repere1" x="-1" y="1" stroke="black"></g>
+            </svg>
+        </div>
+    </div>
+</div>
+<h4>Déterminer l'équation cartésienne</h4>
+<div class="exercice">
+    <div class="enonce">
+        Dans un repère orthonormé, soit $d$ la droite d'équation passant par le point $A(1~;~2)$ et de vecteur directeur $\overrightarrow{u}\begin{pmatrix}3\\-2\end{pmatrix}$.
+        <div class="figure">
+            <svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="-6" ymin="-1" xmax="5" ymax ="5" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
+                <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="i" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="i" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+                <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
+                <g class="label" linkto="O" x="-4" y="0" style="font-size:0.7rem;">O</g>
+                <g name="A_1" class="point" repere="repere1" x="-5" y="3" stroke="none"></g>
+                <g name="u" class="vecteur labeled" repere="repere1" linkto="A_1" x="3" y="-2" stroke="black" stroke-width="1"></g>
+                <g name="d_1" class="droite labeled" linkto="A u" stroke="red" stroke-width="1" pos_label="0"></g>
                 <g name="A" class="point labeled" repere="repere1" x="1" y="2" stroke="black"></g>
             </svg>
         </div>
-        On se propose de déterminer une équation cartésienne de $d$ de la manière suivante :
         <ol class="alphabetical-list">
             <li>Calculez les coordonnées du vecteur $\overrightarrow{AM}$ où $M$ est un point de coordonnées $(x~;~y)$.</li>
-            <li>Exprimez le $\det\left(\overrightarrow{u},\overrightarrow{AM}\right)$ en fonction de $x$ et $y$.</li>
+            <li>Exprimez $\det\left(\overrightarrow{u},\overrightarrow{AM}\right)$ en fonction de $x$ et $y$.</li>
             <li>$M$ appartient à $d$ si et seulement si $\det\left(\overrightarrow{u},\overrightarrow{AM}\right)=0$.<br>
             En déduire qu'une équation cartésienne de $d$ est $2x+3y-8=0$.</li>
-            <li>Montrez que le point $B(-1~;~\frac{10}{3})$ appartient à la droite $d$ en montrant que ses coordonnées vérifient l'équation cartésienne de $d$.</li>
-            <li>Utilisez l'équation cartésienne de $d$ pour déterminer l'ordonnée du point d'abscisse $-2$ appartenant à $d$.</li>
-            <li>Utilisez l'équation cartésienne de $d$ pour déterminer l'abscisse du point d'ordonnée $-2$ appartenant à $d$.</li>
         </ol>
     </div>
     <div class="solution">
@@ -244,6 +477,23 @@
             <li><p>On sait que $M$ appartient à $d$ si et seulement si $\det\left(\overrightarrow{u},\overrightarrow{AM}\right)=0$. On a donc l'équation cartésienne de $d$ :</p>
                 $$2x+3y-8=0$$
             </li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Propriété :</b> Un point appartient à une droite si ses coordonnées vérifient une équation cartésienne de la droite.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Considérons la droite $d$ précédente d'équation cartésienne $2x+3y-8$.
+        <ol class="alphabetical-list">
+            <li>Montrez que le point $B(-1~;~\frac{10}{3})$ appartient à la droite $d$ en montrant que ses coordonnées vérifient l'équation cartésienne de $d$.</li>
+            <li>Utilisez l'équation cartésienne de $d$ pour déterminer l'ordonnée du point d'abscisse $-2$ appartenant à $d$.</li>
+            <li>Utilisez l'équation cartésienne de $d$ pour déterminer l'abscisse du point d'ordonnée $-2$ appartenant à $d$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
             <li><p>Les coordonnées du point $B$ sont $(-1~;~\frac{10}{3})$. Vérifions que $B$ appartient à la droite $d$ :</p>
                 $$2\times(-1)+3\times\frac{10}{3}-8=-2+10-8=0$$
                 <p>Les coordonnées de $B$ vérifient bien l'équation cartésienne de $d$.</p>

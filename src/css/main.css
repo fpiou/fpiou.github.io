@@ -257,8 +257,7 @@ Toujours est-il qu'en l'enlevant la valeur n'est pas doublée. */
   border-bottom: 1px solid black;
 }
 
-/* Footer en réflexion */
-footer {
+footer, header {
   display:none;
 }
 
