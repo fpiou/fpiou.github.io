@@ -37952,8 +37952,26 @@ var determinerExtremitesDroite = function (droite) {
     calculateIntersectionsWithBorders(a, b, c, xmin, ymin, width, height, intersections);
   }
 
+  // Convertir les chaînes de caractères en nombres et supprimer les doublons
+  const seen = new Set();
+  const uniqueIntersections = intersections.filter(p => {
+    const xNum = parseFloat(p.x); // Convertir la chaîne 'x' en nombre
+    const yNum = parseFloat(p.y); // Convertir la chaîne 'y' en nombre
+    const key = "".concat(xNum, ",").concat(yNum); // Utiliser les valeurs numériques pour la clé
+
+    if (seen.has(key)) {
+      return false;
+    }
+    seen.add(key);
+    return true;
+  });
+
   // Filtrer les points pour ne garder que ceux qui sont dans les limites de la viewBox
-  return intersections.filter(p => p.x >= xmin && p.x <= xmin + width && p.y >= ymin && p.y <= ymin + height);
+  return uniqueIntersections.filter(p => {
+    const xNum = parseFloat(p.x); // Convertir la chaîne 'x' en nombre, si pas déjà fait
+    const yNum = parseFloat(p.y); // Convertir la chaîne 'y' en nombre, si pas déjà fait
+    return xNum >= xmin && xNum <= xmin + width && yNum >= ymin && yNum <= ymin + height;
+  });
 };
 function getCoefficientsDroite(A, B) {
   var a = B.y - A.y;
