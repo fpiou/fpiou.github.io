@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Droites_03.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body>
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    
+    <main><header><div>Droites - Equations de droites</div> <div>Fiche n° 01</div></header>
+<h3>Tracer une droite de vecteur directeur</h3>
+<div class="encart">
+    <b>Définition :</b> On appelle vecteur directeur d'une droite $d$ tout vecteur non nul $\vec{u}$ dont la direction est celle de la droite $d$.
+    <div class="figure">
+        <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+            <g name="repere1" class="repere" xmin="0" ymin="1" xmax="5" ymax ="3" xorigine="0" yorigine="0"></g>
+            
+            <g name="d1" class="droite" linkto="A1 A2" stroke="blue"></g>
+            <g name="A" class="point" repere="repere1" x="1" y="2" stroke="none"></g>
+            <g name="u" class="vecteur labeled" repere="repere1" linkto="A" x="2" y="0.667" stroke="red" style="font-size:1em;"></g>
+            
+            <g name="A1" class="point" repere="repere1" x="1" y="1" stroke="none"></g>
+            <g name="A2" class="point" repere="repere1" x="4" y="2" stroke="none"></g>
+
+            <g class="label" x="180" y="12" style="font-size:1rem;">$d$</g>
+        </svg>
+    </div>
+</div>
+<div class="encart">
+    <b>Méthode :</b> Considérons la droite passant par le point $A(1,3)$ et de vecteur directeur $\overrightarrow{u}\begin{pmatrix}3\\-2\end{pmatrix}$.
+    On se propose de tracer cette droite dans un repère orthonormé $(O, \vec{i}, \vec{j})$.<br>
+    Pour cela, il suffit :
+    <ul>
+        <li>de placer le point $A(1,4)$&nbsp;;</li>
+        <li>de tracer un représentatnt du vecteur $\overrightarrow{u}\begin{pmatrix}3\\-2\end{pmatrix}$&nbsp;;</li>
+        <li>de tracer la droite passant par $A$ et de vecteur directeur $\vec{u}$.</li>
+    </ul>
+    <div class="figure">
+        <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+            <g name="repere1" class="repere" xmin="-3" ymin="-1" xmax="7" ymax ="4" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
+            <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+            <g name="i" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+            <g class="label" linkto="i" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+            <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+            <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+            <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
+            <g class="label" linkto="O" x="-4" y="0" style="font-size:0.7rem;">O</g>
+            <g name="A" class="point labeled" repere="repere1" x="1" y="3" stroke="black"></g>
+            <g class="label" linkto="A" x="-2" y="4" style="font-size:0.7rem;">A</g>
+            <g name="U" class="point" repere="repere1" x="4" y="1" stroke="none"></g>
+            <g name="d" class="droite" linkto="A U" stroke="blue"></g>
+            <g name="Ax" class="point labeled" repere="repere1" x="1" y="0" stroke="red" forme="+"></g>
+            <g class="label" linkto="Ax" x="-2" y="0" style="font-size:0.7rem;">1</g>
+            <g name="Ay" class="point labeled" repere="repere1" x="0" y="3" stroke="red" forme="+"></g>
+            <g class="label" linkto="Ay" x="-10" y="-7" style="font-size:0.7rem;">3</g>
+            <g name="u" class="vecteur" linkto="A U" stroke="red" scale="0.5" style="font-size:1em;"></g>
+            <g name="ux" class="vecteur" repere="repere1" linkto="A" x="3" y="0" stroke="red" scale="0.5" style="font-size:0.3em;" stroke-dasharray="2,2"></g>
+            <g name="B" class="point" repere="repere1" x="4" y="3" stroke="none"></g>
+            <g name="uy" class="vecteur" repere="repere1" linkto="B" x="0" y="-2" stroke="red" scale="0.5" style="font-size:0.3em;" stroke-dasharray="2,2"></g>
+        </svg>
+    </div>
+</div>
+
+<h3>\'Equation cartésienne</h3>
+<div class="encart">
+    <b>Définition :</b> Une droite $d$ est définie par une <strong>équation cartésienne</strong> si et seulement si elle est l'ensemble des points $M(x~;~y)$ vérifiant une relation de la forme $$ax+by+c=0$$ où $a$, $b$ et $c$ sont des réels donnés.
+</div>
+<div class="encart">
+    <b>Méthode : </b> Pour déterminer une équation cartésienne de la droite $d$ passant par le point $A(1~;~4)$ et de vecteur directeur $\overrightarrow{u}\begin{pmatrix}3\\-2\end{pmatrix}$, on peut procéder de la manière suivante&nbsp;:
+    <ol class="numerical-list">
+        <li>On note $M(x~;~y)$ un point de la droite $d$
+        <li>Le vecteur $\overrightarrow{AM}$ est alors $$\begin{pmatrix}x-1\\y-4\end{pmatrix}$$
+        <li>Comme $\overrightarrow{AM}$ est colinéaire à $\overrightarrow{u}$, on a $\det(\overrightarrow{AM}, \overrightarrow{u})=0$
+        <li>On écrit le déterminant : $$\begin{vmatrix}x-1&3\\y-4&-2\end{vmatrix}=0$$
+        <li>On développe le déterminant : $$-2(x-1)-3(y-4)=0$$
+        <li>On développe l'équation : $$-2x+2-3y+12=0$$
+    </ol>
+    On obtient une équation cartésienne de la droite $d$ : $$-2x-3y+14=0$$
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez une équation cartésienne des droites de l'exercice précédent.
+    </div>
+    <div class="solution">
+        <ul style="padding-left: 1em;">
+            <li><p>$d_1$ passe par le point $A(1; -2)$ et de vecteur directeur $\overrightarrow{u}\begin{pmatrix}3\\1\end{pmatrix}$</p>
+            $$\begin{align*}
+            \begin{vmatrix}x-1&3\\y+2&1\end{vmatrix}&=0\\
+            x-1-3(y+2)&=0\\
+            x-1-3y-6&=0\\
+            x-3y-7&=0
+            \end{align*}$$
+            <li><p>$d_2$ passe par le point $B(1; 1)$ et de vecteur directeur $\overrightarrow{v}\begin{pmatrix}2\\-3\end{pmatrix}$</p>
+            $$\begin{align*}
+            \begin{vmatrix}x-1&2\\y-1&-3\end{vmatrix}&=0\\
+            -3(x-1)-2(y-1)&=0\\
+            -3x+3-2y+2&=0\\
+            -3x-2y+5&=0
+            \end{align*}$$
+            <li><p>$d_3$ passe par le point $C(-2; 2)$ et de vecteur directeur $\overrightarrow{w}\begin{pmatrix}-2\\-3\end{pmatrix}$</p>
+            $$\begin{align*}
+            \begin{vmatrix}x+2&-2\\y-2&-3\end{vmatrix}&=0\\
+            -3(x+2)+2(y-2)&=0\\
+            -3x-6+2y-4&=0\\
+            -3x+2y-10&=0
+            \end{align*}$$
+            <li><p>$d_4$ passe par le point $D(3; 4)$ et de vecteur directeur $\overrightarrow{t}\begin{pmatrix}0\\-5\end{pmatrix}$</p>
+            $$\begin{align*}
+            \begin{vmatrix}x-3&0\\y-4&-5\end{vmatrix}&=0\\
+            -5(x-3)&=0\\
+            -5x+15&=0
+            \end{align*}$$
+            <li><p>$d_5$ passe par le point $E(-1; -3)$ et de vecteur directeur $\overrightarrow{r}\begin{pmatrix}3\\0\end{pmatrix}$</p>
+            $$\begin{align*}
+            \begin{vmatrix}x+1&3\\y+3&0\end{vmatrix}&=0\\
+            3(x+1)&=0\\
+            3x+3&=0
+            \end{align*}$$
+            <li><p>$d_6$ passe par le point $F(-2; -2)$ et de vecteur directeur $\overrightarrow{s}\begin{pmatrix}1\\1\end{pmatrix}$</p>
+            $$\begin{align*}
+            \begin{vmatrix}x+2&1\\y+2&1\end{vmatrix}&=0\\
+            (x+2)-(y+2)&=0\\
+            x+2-y-2&=0\\
+            x-y&=0
+            \end{align*}$$
+            <li><p>$d_7$ passe par le point $G(3; -2)$ et de vecteur directeur $\overrightarrow{e}\begin{pmatrix}-3\\\num{4.5}\end{pmatrix}$</p>
+            $$\begin{align*}
+            \begin{vmatrix}x-3&-3\\y+2&\num{4.5}\end{vmatrix}&=0\\
+            \num{4.5}(x-3)+3(y+2)&=0\\
+            \num{4.5}x-\num{13.5}+3y+6&=0\\
+            \num{4.5}x+3y-\num{7.5}&=0
+            \end{align*}$$
+        </ul>
+        Remarquons que les droites $d_2$ et $d_7$ sont la même droite et donc que l'équation cartésienne de l'une est une équation cartésienne de l'autre.
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez une équation cartésienne des droites passant par les points suivants.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$\scriptsize A(1; 2)$ et $\scriptsize B(3; 1)$&nbsp;;</li>
+            <li>$\scriptsize C(-1; 3)$ et $\scriptsize D(2; 1)$&nbsp;;</li>
+            <li>$\scriptsize E(-3; -2)$ et $\scriptsize F(2; -2)$&nbsp;.</li>
+            <li>$\scriptsize G(1; 1)$ et $\scriptsize H(1; 3)$&nbsp;.</li>
+        </ol>
+        <div class="figure">
+            <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="-5" ymin="-3" xmax="5" ymax ="4" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
+                <g class="label" linkto="O" x="-4" y="0" style="font-size:0.4rem;">O</g>
+                <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="i" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="i" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+                <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
+            </svg>
+        </div>
+    </div>
+    <div class="solution">
+        <div class="figure">
+            <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="-5" ymin="-3" xmax="5" ymax ="4" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
+                <g class="label" linkto="O" x="-4" y="0" style="font-size:0.4rem;">O</g>
+                <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="i" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="i" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+                <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
+                <g name="A" class="point labeled" repere="repere1" x="1" y="2" stroke="black"></g>
+                <g class="label" linkto="A" repere="repere1" x="1" y="2" style="font-size:0.4rem;">A</g>
+                <g name="B" class="point labeled" repere="repere1" x="3" y="1" stroke="black"></g>
+                <g class="label" linkto="B" repere="repere1" x="3" y="1" style="font-size:0.4rem;">B</g>
+                <g name="C" class="point labeled" repere="repere1" x="-1" y="3" stroke="black"></g>
+                <g class="label" linkto="C" repere="repere1" x="-1" y="3" style="font-size:0.4rem;">C</g>
+                <g name="D" class="point labeled" repere="repere1" x="2" y="1" stroke="black"></g>
+                <g class="label" linkto="D" repere="repere1" x="2" y="1" style="font-size:0.4rem;">D</g>
+                <g name="E" class="point labeled" repere="repere1" x="-3" y="-2" stroke="black"></g>
+                <g class="label" linkto="E" repere="repere1" x="-3" y="-2" style="font-size:0.4rem;">E</g>
+                <g name="F" class="point labeled" repere="repere1" x="2" y="-2" stroke="black"></g>
+                <g class="label" linkto="F" repere="repere1" x="2" y="-2" style="font-size:0.4rem;">F</g>
+                <g name="G" class="point labeled" repere="repere1" x="1" y="1" stroke="black"></g>
+                <g class="label" linkto="G" repere="repere1" x="1" y="1" style="font-size:0.4rem;">G</g>
+                <g name="H" class="point labeled" repere="repere1" x="1" y="3" stroke="black"></g>
+                <g class="label" linkto="H" repere="repere1" x="1" y="3" style="font-size:0.4rem;">H</g>
+                <g name="d1" class="droite" linkto="A B" stroke="blue"></g>
+                <g name="d2" class="droite" linkto="C D" stroke="red"></g>
+                <g name="d3" class="droite" linkto="E F" stroke="green"></g>
+                <g name="d4" class="droite" linkto="G H" stroke="yellow"></g>
+            </svg>
+        </div>
+
+        <ul style="padding-left: 1em;">
+            <li><p>$d_1$ passe par les points $A(1; 2)$ et $B(3; 1)$</p>
+            <p>Un vecteur directeur de la droite est $\overrightarrow{AB}\begin{pmatrix}2\\-1\end{pmatrix}$</p>
+            $$\begin{align*}
+            \begin{vmatrix}x-1&2\\y-2&-1\end{vmatrix}&=0\\
+            -1(x-1)-2(y-2)&=0\\
+            -x+1-2y+4&=0\\
+            -x-2y+5&=0
+            \end{align*}$$</li>
+            <li><p>$d_2$ passe par les points $C(-1; 3)$ et $D(2; 1)$</p>
+            <p>Un vecteur directeur de la droite est $\overrightarrow{CD}\begin{pmatrix}3\\-2\end{pmatrix}$</p>
+            $$\begin{align*}
+            \begin{vmatrix}x+1&3\\y-3&-2\end{vmatrix}&=0\\
+            -2(x+1)-3(y-3)&=0\\
+            -2x-2-3y+9&=0\\
+            -2x-3y+7&=0
+            \end{align*}$$</li>
+            <li><p>$d_3$ passe par les points $E(-3; -2)$ et $F(2; -2)$</p>
+            <p>Un vecteur directeur de la droite est $\overrightarrow{EF}\begin{pmatrix}5\\0\end{pmatrix}$</p>
+            $$\begin{align*}
+            \begin{vmatrix}x+3&5\\y+2&0\end{vmatrix}&=0\\
+            5(x+3)&=0\\
+            5x+15&=0
+            \end{align*}$$</li>
+            <li><p>$d_4$ passe par les points $G(1; 1)$ et $H(1; 3)$</p>
+            <p>Un vecteur directeur de la droite est $\overrightarrow{GH}\begin{pmatrix}0\\2\end{pmatrix}$</p>
+            $$\begin{align*}
+            \begin{vmatrix}x-1&0\\y-1&2\end{vmatrix}&=0\\
+            2(x-1)&=0\\
+            2x-2&=0
+            \end{align*}$$</li>
+        </ul>
+    </div>
+</div>
+</main>
+  </body>
+</html>
