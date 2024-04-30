@@ -626,14 +626,15 @@
     <div clas="enonce">
         Tracez les droites suivantes dans un repère orthonormé :
         <ol class="horizontal-list col-3c">
-            <li>$d_1 : x=5$</li>
-            <li>$d_2 : y=-2$</li>
+            <li>$d_1 : x-5=0$</li>
+            <li>$d_2 : y+2=0$</li>
             <li>$d_3 : y-4=0$</li>
             <li>$d_4 : x+3=0$</li>
             <li>$d_5 : 2x-8=0$</li>
             <li>$d_6 : -3y+6=0$</li>
-            <li>$d_7 : y=x$</li>
-            <li>$d_8 : y=-x$</li>
+            <li>$d_7 : y-x=0$</li>
+            <li>$d_8 : y+x=0$</li>
+            <li>$d_9 : y-x+1=0$</li>
         </ol>
     </div>
     <div class="solution">
@@ -667,6 +668,9 @@
                 <g name="A_7" class="point" repere="repere1" x="1" y="1" stroke="black"></g>
                 <g name="d_8" class="droite labeled" linkto="O A_8" stroke="brown" stroke-width="1" pos_label="0"></g>
                 <g name="A_8" class="point" repere="repere1" x="-1" y="1" stroke="black"></g>
+                <g name="u_9" class="vecteur" repere="repere1" linkto="A_9" x="1" y="1" stroke="none" stroke-width="1"></g>
+                <g name="d_9" class="droite labeled" linkto="A_9 u_9" stroke="gray" stroke-width="1" pos_label="0.8"></g>
+                <g name="A_9" class="point" repere="repere1" x="0" y="-1" stroke="black"></g>
             </svg>
         </div>
     </div>

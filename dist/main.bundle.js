@@ -38023,6 +38023,8 @@ var constructDroite = function (droite) {
     foreignObject.setAttribute("width", "20");
     foreignObject.setAttribute("height", "20");
     foreignObject.setAttribute("style", droite.getAttribute("style"));
+    // Ajouter la couleur de la droite au label
+    foreignObject.setAttribute("color", droite.getAttribute("stroke"));
     foreignObject.innerHTML = katex.renderToString(droite.getAttribute("name"), {
       output: "htmlAndMathml"
     });
