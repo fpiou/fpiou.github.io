@@ -37067,7 +37067,6 @@ var convertirKatexEnMathML = function () {
     // En mode mathml, la commande \mathbb{} ne fonctionne pas
   });
 };
-
 var ajouterSommaire = function () {
   if (document.querySelector("#tableOfContents") != null) {
     var toc = document.getElementById("tableOfContents");
@@ -37171,7 +37170,6 @@ var dropdownMenusBandeau = function () {
         }
       }
     });
-
     dropdown.addEventListener("mouseover", function (event) {
       // On survole un élément dropdown
       if (event.target.classList.contains("dropdown")) {
@@ -37265,7 +37263,6 @@ function chargerBacasables() {
     if (!src) {
       return Promise.resolve(); // Résout immédiatement si aucun src
     }
-
     return fetch(src).then(response => {
       if (!response.ok) {
         throw new Error("Erreur de chargement pour bacASable : ".concat(src, ", statut : ").concat(response.status));
@@ -39151,7 +39148,6 @@ var createAxe = function (axe) {
     var d = "M ".concat(xmin, " ").concat(yorigine, " H ").concat(xmax);
     d += " M ".concat(xmax, " ").concat(yorigine, " l ").concat(-tailleFleche, " ").concat(-tailleFleche / 2, " l 0 ").concat(tailleFleche, " Z"); // Flèche à droite
   }
-
   axeSVG.setAttribute("d", d);
   axe.appendChild(axeSVG);
 };
