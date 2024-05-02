@@ -37238,6 +37238,14 @@ var plierDeplier = function () {
     }
   };
 };
+var pdf = function () {
+  window.pdf = function () {
+    // Ouvrir un nouvel onglet avec le fichier de même nom mais en remplaçant l'extension par .pdf
+    var url = window.location.href;
+    var newUrl = url.replace(/\.[^\.]+$/, ".pdf");
+    window.open(newUrl, "_blank");
+  };
+};
 var quadrillage = function () {
   window.quadrillage = function () {
     var button = document.getElementById("boutonQuadrillage");
@@ -37343,6 +37351,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     colonnes();
     plierDeplier();
     quadrillage();
+    pdf();
     quiz_print_choices();
     quiz_print_solutions();
     ajusterStartol();
