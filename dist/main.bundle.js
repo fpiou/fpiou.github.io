@@ -39572,6 +39572,9 @@ var createEllipse = function (ellipse) {
   ellipseSVG.setAttribute("cy", y);
   ellipseSVG.setAttribute("rx", a);
   ellipseSVG.setAttribute("ry", b);
+  ellipseSVG.setAttribute("stroke", ellipse.getAttribute("stroke"));
+  ellipseSVG.setAttribute("stroke-width", ellipse.getAttribute("stroke-width"));
+  ellipseSVG.setAttribute("fill", ellipse.getAttribute("fill"));
   ellipse.appendChild(ellipseSVG);
 };
 var initialiserEllipse = function (ellipse) {

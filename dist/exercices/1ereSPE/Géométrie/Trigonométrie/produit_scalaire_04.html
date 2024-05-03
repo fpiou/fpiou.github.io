@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Produit_scalaire_04.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Produit scalaire</div> <div>Fiche n° 04</div></header>
+<h3>Equation d'un cercle</h3>
+<div class="encart">
+    <b>Propriété :</b> Soit un cercle de centre $A$ et de rayon $r$. Un point $M$ appartient à ce cercle si et seulement si $\overrightarrow{AM}^2 = r^2$. On en déduit que l'équation du cercle de centre $A(x_A;y_A)$ et de rayon $r$ est : $$(x-x_A)^2 + (y-y_A)^2 = r^2$$
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit un cercle de centre $A(2;3)$ et de rayon $5$. On considère le point $M(x;y)$ appartenant à ce cercle.
+        <ol class="alphabetical-list">
+            <li>Exprimer $\overrightarrow{AM}$ en fonction de $x$ et $y$.</li>
+            <li>En déduire une équation du cercle.</li>
+            <li>Le point $B(5;7)$ appartient-il à ce cercle ? Justifier.</li>
+            <li>Quels sont les points du cercle d'abscisse $-2$ ?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$\overrightarrow{AM}\begin{pmatrix} x-2 \\ y-3 \end{pmatrix}$$</li>
+            <li><p>On a $\overrightarrow{AM}^2 = (x-2)^2 + (y-3)^2$.</p>
+                <p>Or, $\overrightarrow{AM}^2 = 5^2$.</p>
+                <p>Donc, $(x-2)^2 + (y-3)^2 = 25$.</p>
+                <p>Une équation du cercle est donc $(x-2)^2 + (y-3)^2 = 25$.</p>
+            </li>
+            <li><p>On a $B(5;7)$.</p>
+                <p>On a $(5-2)^2 + (7-3)^2 = 3^2 + 4^2 = 9 + 16 = 25$.</p>
+                <p>Donc, $B$ appartient au cercle.</p>
+            </li>
+            <li><p>On a $x = -2$.</p>
+                <p>Donc $$(x-2)^2 + (y-3)^2 = 25$$ devient $$(-2-2)^2 + (y-3)^2 = 25$$</p>
+                <p>Soit $$16 + (y-3)^2 = 25$$</p>
+                <p>Ou encore $$(y-3)^2 - 9 = 0$$</p>
+                <p>Factorisons : $$(y-3-3)(y-3+3) = 0$$</p>
+                <p>Soit $$(y-6)(y) = 0$$</p>
+                <p>Donc $y = 6$ ou $y = 0$.</p>
+                <p>Les points du cercle d'abscisse $-2$ sont donc $(-2;6)$ et $(-2;0)$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère les cercles suivants.
+        <div class="figure">
+            <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="-8" ymin="-6" xmax="12" ymax ="8" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
+                <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="i" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="i" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+                <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
+                <g class="label" linkto="O" x="-4" y="0" style="font-size:0.7rem;">O</g>
+                <g name="M_1" class="point" repere="repere1" x="1" y="4" stroke="none"></g>
+                <g name="N_1" class="point" repere="repere1" x="4" y="4" stroke="none"></g>
+                <g name="P_1" class="point" repere="repere1" x="7" y="4" stroke="none"></g>
+                <g name="c_1" class="ellipse" repere="repere1" linkto="M_1 N_1 P_1" stroke="red" stroke-width="1" fill="none"></g>
+                <g name="M_2" class="point" repere="repere1" x="-6" y="4" stroke="none"></g>
+                <g name="N_2" class="point" repere="repere1" x="-3" y="2" stroke="none"></g>
+                <g name="P_2" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+                <g name="c_2" class="ellipse" repere="repere1" linkto="M_2 N_2 P_2" stroke="red" stroke-width="1" fill="none"></g>
+                <g name="M_3" class="point" repere="repere1" x="-2" y="-2" stroke="none"></g>
+                <g name="N_3" class="point" repere="repere1" x="4" y="-3" stroke="none"></g>
+                <g name="P_3" class="point" repere="repere1" x="10" y="-4" stroke="none"></g>
+                <g name="c_3" class="ellipse" repere="repere1" linkto="M_3 N_3 P_3" stroke="red" stroke-width="1" fill="none"></g>
+            </svg>
+        </div>
+         Le cercle $\mathscr{C}_1$ passe par le point $A(1;4)$, le cercle $\mathscr{C}_2$ passe par le point $B(-6;4)$ et le cercle $\mathscr{C}_3$ passe par le point $C(-2;-2)$.
+         <ol class="alphabetical-list">
+            <li>Déterminez une équation de chaque cercle.</li>
+            <li>Le point $D(2;2)$ appartient-il à un cercle&nbsp;? Justifiez.</li>
+            <li>Le cercle $\mathscr{C}_2$ coupe l'axe des abscisses en deux points $E$ et $F$. Déterminez les coordonnées de $E$ et $F$.</li>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Le cercle $\mathscr{C}_1$ a pour centre $M(4;4)$</p>
+                <p>Déterminons le rayon : $AM = \sqrt{(4-1)^2 + (4-4)^2} = \sqrt{3^2} = 3$.</p>
+                <p>Donc, une équation du cercle est $$(x-4)^2 + (y-4)^2 = 3^2$$</p>
+                <p>Soit $$(x-4)^2 + (y-4)^2 = 9$$</p>
+            </li>
+            <li><p>Le cercle $\mathscr{C}_2$ a pour centre $N(-3;2)$</p>
+                <p>Déterminons le rayon : $BN = \sqrt{(-6+3)^2 + (4-2)^2} = \sqrt{3^2 + 2^2} = \sqrt{13}$.</p>
+                <p>Donc, une équation du cercle est $$(x+3)^2 + (y-2)^2 = 13$$</p>
+            </li>
+            <li><p>Le cercle $\mathscr{C}_3$ a pour centre $P(4;-3)$</p>
+                <p>Déterminons le rayon : $CP = \sqrt{(-2-4)^2 + (-2+3)^2} = \sqrt{6^2 + 1^2} = \sqrt{37}$.</p>
+                <p>Donc, une équation du cercle est $$(x+2)^2 + (y+3)^2 = 37$$</p>
+            </li>
+            <li><p>Graphiquement on peut penser que $D$ appartient au cercle $\mathscr{C}_1$.</p>
+                <p>On a : $$(2-4)^2 + (2-4)^2 = 2^2 + 2^2 = 8$$</p>
+                <p>Les coordonnées de $D$ ne vérifient pas l'équation du cercle $\mathscr{C}_1$.</p>
+                <p>Donc, $D$ n'appartient à aucun cercle.</p>
+            </li>
+            <li><p>Le cercle $\mathscr{C}_2$ coupe l'axe des abscisses en deux points $E$ et $F$.</p>
+                <p>Les coordonnées de $E$ et $F$ vérifient l'équation du cercle $\mathscr{C}_2$ et ont pour ordonnée $0$.</p>
+                <p>Donc, on a $$(x+3)^2 + (0-2)^2 = 13$$</p>
+                <p>Soit $$(x+3)^2 + 4 = 13$$</p>
+                <p>Donc $$(x+3)^2 = 9$$</p>
+                <p>Donc $$x+3 = 3$$ ou $$x+3 = -3$$</p>
+                <p>Donc $$x = 0$$ ou $$x = -6$$</p>
+                <p>Donc, les coordonnées de $E$ et $F$ sont $E(0;0)$ et $F(-6;0)$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère les cercles suivants.
+        <div class="figure">
+            <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="-10" ymin="-5" xmax="10" ymax ="8" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
+                <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="i" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="i" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+                <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
+                <g class="label" linkto="O" x="-4" y="0" style="font-size:0.7rem;">O</g>
+                <g name="A_1" class="point" repere="repere1" x="2" y="0" stroke="none"></g>
+                <g name="B_1" class="point" repere="repere1" x="4" y="0" stroke="none"></g>
+                <g name="c_1" class="ellipse" repere="repere1" linkto="O A_1 B_1" stroke="red" stroke-width="1" fill="none"></g>
+                <g name="A_2" class="point" repere="repere1" x="3" y="0" stroke="none"></g>
+                <g name="B_2" class="point" repere="repere1" x="6" y="0" stroke="none"></g>
+                <g name="c_2" class="ellipse" repere="repere1" linkto="O A_2 B_2" stroke="red" stroke-width="1" fill="none"></g>
+                <g name="A_3" class="point" repere="repere1" x="4" y="0" stroke="none"></g>
+                <g name="B_3" class="point" repere="repere1" x="8" y="0" stroke="none"></g>
+                <g name="c_3" class="ellipse" repere="repere1" linkto="O A_3 B_3" stroke="red" stroke-width="1" fill="none"></g>
+                <g name="A_4" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g name="B_4" class="point" repere="repere1" x="2" y="0" stroke="none"></g>
+                <g name="c_4" class="ellipse" repere="repere1" linkto="O A_4 B_4" stroke="red" stroke-width="1" fill="none"></g>
+            </svg>
+        </div>
+        <ol class="alphabetical-list">
+            <li>Déterminez une équation de chaque cercle.</li>
+            <li>On effectue une rotation de centre $O$ et d'angle $90^\circ$ dans le sens direct. Déterminez les équations des cercles obtenus.</li>
+            <li>On effectue une symétrie axiale d'axe $(Oy)$. Déterminez les équations des cercles obtenus.</li>
+            <li>On effectue une homothétie de centre $O$ et de rapport $\num{1.5}$. Déterminez les équations des cercles obtenus.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Le cercle de centre $A_1(1;0)$ et de rayon $1$ a pour équation $$(x-1)^2 + y^2 = 1^2$$</p>
+                <p>Soit $$\mathscr{C}_1 : (x-1)^2 + y^2 = 1$$</p>
+            <p>Le cercle de centre $A_2(3;0)$ et de rayon $2$ a pour équation $$(x-3)^2 + y^2 = 2^2$$</p>
+                <p>Soit $$\mathscr{C}_2 : (x-3)^2 + y^2 = 4$$</p>
+                <p>Le cercle de centre $A_3(3;0)$ et de rayon $3$ a pour équation $$(x-3)^2 + y^2 = 3^2$$</p>
+                <p>Soit $$\mathscr{C}_3 : (x-3)^2 + y^2 = 9$$</p>
+                <p>Le cercle de centre $A_4(4;0)$ et de rayon $4$ a pour équation $$(x-4)^2 + y^2 = 4^2$$</p>
+                <p>Soit $$\mathscr{C}_4 : (x-4)^2 + y^2 = 16$$</p>
+            </li>
+            <li><p>On effectue une rotation de centre $O$ et d'angle $90^\circ$ dans le sens direct.</p>
+                <p>L'image de $O$ est $O$.</p>
+                <p>L'image de $A_1$ est $A_1'(0;1)$.</p>
+                <p>L'image du cercle $\mathscr{C}_1$ est le cercle $\mathscr{C}_1'$ de centre $A_1'(0;1)$ et de rayon $1$.</p>
+                <p>Donc, une équation du cercle $\mathscr{C}_1'$ est $$\mathscr{C}_1' : x^2 + (y-1)^2 = 1$$</p>
+                <p>De la même manière, on obtient les équations des autres cercles
+                $$\mathscr{C}_2' : x^2 + (y-2)^2 = 4$$
+                $$\mathscr{C}_3' : x^2 + (y-3)^2 = 9$$
+                $$\mathscr{C}_4' : x^2 + (y-4)^2 = 16$$</p>
+            </li>
+            <li><p>On effectue une symétrie axiale d'axe $(Oy)$.</p>
+                <p>L'image de $O$ est $O$.</p>
+                <p>L'image de $A_1$ est $A_1''(-1;0)$.</p>
+                <p>L'image du cercle $\mathscr{C}_1$ est le cercle $\mathscr{C}_1'$ de centre $A_1''(-1;0)$ et de rayon $1$.</p>
+                <p>Donc, une équation du cercle $\mathscr{C}_1''$ est $$\mathscr{C}_1''' : (x+1)^2 + y^2 = 1$$</p>
+                <p>De la même manière, on obtient les équations des autres cercles
+                $$\mathscr{C}_2'' : (x+2)^2 + y^2 = 4$$
+                $$\mathscr{C}_3'' : (x+3)^2 + y^2 = 9$$
+                $$\mathscr{C}_4'' : (x+4)^2 + y^2 = 16$$</p>
+            </li>
+            <li><p>On effectue une homothétie de centre $O$ et de rapport $\num{1.5}$.</p>
+                <p>L'image de $O$ est $O$.</p>
+                <p>L'image de $A_1$ est $A_1'''(\num{1.5};0)$.</p>
+                <p>L'image du cercle $\mathscr{C}_1$ est le cercle $\mathscr{C}_1'$ de centre $A_1'''(\num{1.5};0)$ et de rayon $\num{1.5}$.</p>
+                <p>Donc, une équation du cercle $\mathscr{C}_1'''$ est $$\mathscr{C}_1''' : (x-\num{1.5})^2 + y^2 = \num{1.5}^2$$</p>
+                <p>Soit $$\mathscr{C}_1''' : (x-\num{1.5})^2 + y^2 = \num{2.25}$$</p>
+                <p>L'image de $A_2$ est $A_2'''(\num{3};0)$.</p>
+                <p>L'image du cercle $\mathscr{C}_2$ est le cercle $\mathscr{C}_2'$ de centre $A_2'''(\num{3};0)$ et de rayon $\num{3}$.</p>
+                <p>Donc, une équation du cercle $\mathscr{C}_2'''$ est $$\mathscr{C}_2''' : (x-\num{3})^2 + y^2 = \num{3}^2$$</p>
+                <p>Soit $$\mathscr{C}_2''' : (x-\num{3})^2 + y^2 = \num{9}$$</p>
+                <p>L'image de $A_3$ est $A_3'''(\num{4.5};0)$.</p>
+                <p>L'image du cercle $\mathscr{C}_3$ est le cercle $\mathscr{C}_3'$ de centre $A_3'''(\num{4.5};0)$ et de rayon $\num{4.5}$.</p>
+                <p>Donc, une équation du cercle $\mathscr{C}_3'''$ est $$\mathscr{C}_3''' : (x-\num{4.5})^2 + y^2 = \num{4.5}^2$$</p>
+                <p>Soit $$\mathscr{C}_3''' : (x-\num{4.5})^2 + y^2 = \num{20.25}$$</p>
+                <p>L'image de $A_4$ est $A_4'''(\num{6};0)$.</p>
+                <p>L'image du cercle $\mathscr{C}_4$ est le cercle $\mathscr{C}_4'$ de centre $A_4'''(\num{6};0)$ et de rayon $\num{6}$.</p>
+                <p>Donc, une équation du cercle $\mathscr{C}_4'''$ est $$\mathscr{C}_4''' : (x-\num{6})^2 + y^2 = \num{6}^2$$</p>
+                <p>Soit $$\mathscr{C}_4''' : (x-\num{6})^2 + y^2 = \num{36}$$</p>
+            </li>
+        </ol>
+    </div>
+</div>
+        
+<div class="encart">
+    <b>Propriété :</b> Tout cercle admet une équation cartéseinne de la forme $ax^2 + by^2 + cx + dy + e = 0$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Pour chaque équation, déterminez si c'est l'équation d'une cercle et si oui, déterminez son centre et son rayon.
+        <ol class="alphabetical-list">
+            <li>$x^2 + y^2 - 4x + 6y + 9 = 0$</li>
+            <li>$x^2 + y^2 + 6x - 10y + 34 = 0$</li>
+            <li>$x^2 + y^2 - 2x - 4y + 4 = 0$</li>
+            <li>$x^2 + y^2 + 6x - 8y + 9 = 0$</li>
+        </ol>
+        Tracez les cercles correspondants.
+        <div class="figure">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="-6" ymin="-6" xmax="6" ymax ="6" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
+                <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="i" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="i" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+                <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
+                <g class="label" linkto="O" x="-4" y="0" style="font-size:0.7rem;">O</g>
+            </svg>
+        </div>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>On a $$x^2 + y^2 - 4x + 6y + 9 = 0$$</p>
+                <p>D'une part $$x^2 - 4x + 4 = (x-2)^2$$</p>
+                <p>Et d'autre part $$y^2 + 6y + 9 = (y+3)^2$$</p>
+                <p>D'où une équation du cercle est $$(x-2)^2 - 4 + (y+3)^2 = 0$$</p>
+                <p>Soit $$(x-2)^2 + (y+3)^2 = 4$$</p>
+                <p>Donc, le centre est $C(2;-3)$ et le rayon est $2$.</p>
+            </li>
+            <li><p>On a $$x^2 + y^2 + 6x - 10y + 34 = 0$$</p>
+                <p>D'une part $$x^2 + 6x + 9 = (x+3)^2$$</p>
+                <p>Et d'autre part $$y^2 - 10y + 25 = (y-5)^2$$</p>
+                <p>D'où une équation $$(x+3)^2 + (y-5)^2 = -25$$</p>
+                <p>Donc cette équation n'a aucune solution car la somme de deux carrés est toujours positive.</p>
+            <li><p>On a $$x^2 + y^2 - 2x - 4y + 4 = 0$$</p>
+                <p>D'une part $$x^2 - 2x + 1 = (x-1)^2$$</p>
+                <p>Et d'autre part $$y^2 - 4y + 4 = (y-2)^2$$</p>
+                <p>D'où une équation du cercle est $$(x-1)^2 + (y-2)^2 = 1$$</p>
+                <p>Donc, le centre est $C(1;2)$ et le rayon est $1$.</p>
+            </li>
+            <li><p>On a $$x^2 + y^2 + 6x - 8y + 9 = 0$$</p>
+                <p>D'une part $$x^2 + 6x + 9 = (x+3)^2$$</p>
+                <p>Et d'autre part $$y^2 - 8y + 16 = (y-4)^2$$</p>
+                <p>D'où une équation du cercle est $$(x+3)^2 + (y-4)^2 = 16$$</p>
+                <p>Donc, le centre est $C(-3;4)$ et le rayon est $4$.</p>
+            </li>
+        </ol>
+        <div class="figure">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="-6" ymin="-6" xmax="6" ymax ="6" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
+                <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="i" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="i" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+                <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
+                <g class="label" linkto="O" x="-4" y="0" style="font-size:0.7rem;">O</g>
+                <g name="M_1" class="point" repere="repere1" x="0" y="-3" stroke="none"></g>
+                <g name="N_1" class="point" repere="repere1" x="2" y="-3" stroke="none"></g>
+                <g name="P_1" class="point" repere="repere1" x="4" y="-3" stroke="none"></g>
+                <g name="c_1" class="ellipse" repere="repere1" linkto="M_1 N_1 P_1" stroke="red" stroke-width="1" fill="none"></g>
+                <g name="M_2" class="point" repere="repere1" x="0" y="2" stroke="none"></g>
+                <g name="N_2" class="point" repere="repere1" x="1" y="2" stroke="none"></g>
+                <g name="P_2" class="point" repere="repere1" x="2" y="2" stroke="none"></g>
+                <g name="c_2" class="ellipse" repere="repere1" linkto="M_2 N_2 P_2" stroke="red" stroke-width="1" fill="none"></g>
+                <g name="M_3" class="point" repere="repere1" x="-5" y="4" stroke="none"></g>
+                <g name="N_3" class="point" repere="repere1" x="-3" y="4" stroke="none"></g>
+                <g name="P_3" class="point" repere="repere1" x="-1" y="4" stroke="none"></g>
+                <g name="c_3" class="ellipse" repere="repere1" linkto="M_3 N_3 P_3" stroke="red" stroke-width="1" fill="none"></g>
+            </svg>
+        </div>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Considérons les points $M(-1;5)$, $N(6;4)$ et $P(6;-2)$.
+        <div class="figure">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <g name="repere1" class="repere" xmin="-2" ymin="-3" xmax="8" ymax ="7" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
+                <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="i" class="point labeled" repere="repere1" x="0.5" y="0" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="i" x="-2" y="0" style="font-size:0.4rem;">\vec{i}</g>
+                <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
+                <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
+                <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
+                <g class="label" linkto="O" x="-4" y="0" style="font-size:0.7rem;">O</g>
+                <g name="M" class="point labeled" repere="repere1" x="-1" y="5" stroke="none"></g>
+                <g class="label" linkto="M" x="-15" y="-10" style="font-size:0.7rem;">M</g>
+                <g name="N" class="point labeled" repere="repere1" x="6" y="4" stroke="none"></g>
+                <g class="label" linkto="N" x="2" y="-10" style="font-size:0.7rem;">N</g>
+                <g name="P" class="point labeled" repere="repere1" x="6" y="-2" stroke="none"></g>
+                <g class="label" linkto="P" x="2" y="-10" style="font-size:0.7rem;">P</g>
+                <g name="MNP" class="polygone" linkto="M N P" stroke="black" stroke-width="1" fill="red" fill-opacity="0.2"></g>
+            </svg>
+        </div>
+        On se propose de déterminez une équation du cercle circonscrit au triangle $MNP$.
+        <ol class="alphabetical-list">
+            <li>Calculer les coordonnées du milieu de $[MN]$.</li>
+            <li>Déterminez une équation de la médiatrice de $[MN]$.</li>
+            <li>Déterminez une équation de la médiatrice de $[MP]$.</li>
+            <li>En déduire les coordonnées du centre du cercle circonscrit au triangle $MNP$.</li>
+            <li>Calculer le rayon de ce cercle.</li>
+            <li>En déduire une équation de ce cercle.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Le milieu de $[MN]$ est $I\left(\frac{-1+6}{2};\frac{5+4}{2}\right) = I(\num{2.5};\num{4.5})$.</li>
+            <li><p>$\overrightarrow{MN}$ est un vecteur normal à la médiatrice de $[MN]$.</p>
+                <p>Déterminons ses coordonnées : $$\overrightarrow{MN}\begin{pmatrix} 6-(-1) \\ 4-5 \end{pmatrix} = \begin{pmatrix} 7 \\ -1 \end{pmatrix}$$</p>
+                <p>Donc, une équation de la médiatrice de $[MN]$ est $7x - y + c = 0$.</p>
+                <p>Calculons $c$ en passant par le point $I$ : $7 \times \num{2.5} - \num{4.5} + c = 0$.</p>
+                <p>Donc, $c = -\num{17.5} + \num{4.5} = -13$.</p>
+                <p>Une équation de la médiatrice de $[MN]$ est donc $7x - y - 13 = 0$.</p>
+            </li>
+            <li><p>Le milieu de $[MP]$ est $J\left(\frac{-1+6}{2};\frac{5-2}{2}\right) = J(\num{2.5};\num{1.5})$.</p>
+                <p>Calculons les coordonnées de $\overrightarrow{MP}$ : $$\overrightarrow{MP}\begin{pmatrix} 6-(-1) \\ -2-5 \end{pmatrix} = \begin{pmatrix} 7 \\ -7 \end{pmatrix}$$</p>
+                <p>Donc, une équation de la médiatrice de $[MP]$ est $x - y + c = 0$.</p>
+                <p>Calculons $c$ en passant par le point $J$ : $\num{2.5} - \num{1.5} + c = 0$.</p>
+                <p>Donc, $c = -1$.</p>
+                <p>Une équation de la médiatrice de $[MP]$ est donc $x - y - 1 = 0$.</p>
+            </li>
+            <li><p>Les médiatrices de $[MN]$ et $[MP]$ se coupent en un point qui est le centre du cercle circonscrit au triangle $MNP$.</p>
+                <p>Calculons les coordonnées de ce point en résolvant le système : $$\begin{cases} 7x - y - 13 = 0 \\ x - y - 1 = 0 \end{cases}$$</p>
+                <p>On a $y = 7x - 13$ et $y = x - 1$.</p>
+                <p>Donc, $7x - 13 = x - 1$.</p>
+                <p>Donc, $6x = 12$.</p>
+                <p>Donc, $x = 2$.</p>
+                <p>Donc, $y = 2 - 1 = 1$.</p>
+                <p>Donc, le centre du cercle est $O(2;1)$.</p>
+            </li>
+            <li><p>Calculons le rayon du cercle.</p>
+                <p>On a $OM = \sqrt{(2-(-1))^2 + (1-5)^2} = \sqrt{3^2 + (-4)^2} = \sqrt{9 + 16} = \sqrt{25} = 5$.</p>
+                <p>Donc, le rayon du cercle est $5$.</p>
+            </li>
+            <li><p>Une équation du cercle est $$(x-2)^2 + (y-1)^2 = 5^2$$</p>
+                <p>Soit $$(x-2)^2 + (y-1)^2 = 25$$</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère le cercle de diamètre $[AB]$ où $A(1;3)$ et $B(7;-5)$.
+        <ol class="alphabetical-list">
+            <li>Déterminez une équation cartésienne de ce cercle.</li>
+            <li>Soit $M(x;y)$ un point du cercle. Exprimez $\overrightarrow{MA} \cdot \overrightarrow{MB}$</li>
+            <li>Que peut-on en déduire sur le triangle $MAB$ ?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Le centre du cercle est le milieu de $[AB]$.</p>
+                <p>Calculons les coordonnées du milieu de $[AB]$ : $$I\left(\frac{1+7}{2};\frac{3-5}{2}\right) = I(4;-1)$$</p>
+                <p>Le rayon du cercle est la moitié de la longueur de $[AB]$.</p>
+                <p>Calculons la longueur de $[AB]$ : $$AB = \sqrt{(7-1)^2 + (-5-3)^2} = \sqrt{6^2 + (-8)^2} = \sqrt{36 + 64} = \sqrt{100} = 10$$</p>
+                <p>Donc, le rayon du cercle est $5$.</p>
+                <p>Une équation du cercle est $$(x-4)^2 + (y+1)^2 = 5^2$$</p>
+                <p>Soit $$(x-4)^2 + (y+1)^2 = 25$$</p>
+                <p>En développant : $$x^2 - 8x + 16 + y^2 + 2y + 1 = 25$$</p>
+                <p>Donc une équation cartésienne de ce cercle est $$x^2 + y^2 - 8x + 2y - 8 = 0$$</p>
+            </li>
+            <li><p>On a $\overrightarrow{MA}\begin{pmatrix} 1-x \\ 3-y \end{pmatrix}$ et $\overrightarrow{MB}\begin{pmatrix} 7-x \\ -5-y \end{pmatrix}$.</p>
+                <p>Donc, $\overrightarrow{MA} \cdot \overrightarrow{MB} = (1-x)(7-x) + (3-y)(-5-y)$.</p>
+                <p>Donc, $\overrightarrow{MA} \cdot \overrightarrow{MB} = 7 - 8x + x^2 - 15 + 2y + y^2$.</p>
+                <p>Donc, $\overrightarrow{MA} \cdot \overrightarrow{MB} = x^2 + y^2 - 8x + 2y - 8$.</p>
+            </li>
+            <li>
+                <p>Or $M$ est un point du cercle, donc $\overrightarrow{MA} \cdot \overrightarrow{MB} = 0$.</p>
+                <p>Par conséquent les vecteurs $\overrightarrow{MA}$ et $\overrightarrow{MB}$ sont orthogonaux.</p>
+                <p>Donc le triangle $MAB$ est rectangle en $M$.</p>
+            </li>
+        </ol>
+    </div>
+</div></main>
+  </body>
+</html>
