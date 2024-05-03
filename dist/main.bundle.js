@@ -37240,7 +37240,13 @@ var pdf = function () {
   window.pdf = function () {
     // Ouvrir un nouvel onglet avec le fichier de même nom mais en remplaçant l'extension par .pdf
     var url = window.location.href;
-    var newUrl = url.replace(/\.[^\.]+$/, ".pdf");
+    // Si il y a .html à la fin remplacer par .pdf
+    if (url.endsWith(".html")) {
+      var newUrl = url.replace(".html", ".pdf");
+    } else {
+      // Sinon ajouter .pdf à la fin
+      var newUrl = url + ".pdf";
+    }
     window.open(newUrl, "_blank");
   };
 };
