@@ -428,3 +428,27 @@ ul.flashcard-list li {
   font-weight: bold;
 }
 
+code.python {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: block;
+  margin: 0;
+  padding: 0.5em;
+  overflow-x: visible;
+  break-inside:avoid;
+}
+/* La première colonne est grise */
+table.editeur td:first-child {
+  background-color: lightgray;
+}
+
+.tableauAlgo {
+  text-align: center;
+  border-collapse: collapse;
+  width: 100%;
+}
+.tableauAlgo td {
+  border: 1px solid black;
+  padding: 5px;
+}

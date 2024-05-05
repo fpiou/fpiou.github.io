@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Algorithmie_01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Algorithmie</div> <div>Fiche n° 01</div></header>
+<i>Les scripts de ces exercices sont en langage Python.</i>
+<h3>Types de variables</h3>
+<div class="encart">
+    <b>Définition :</b> Une variable est une zone de mémoire qui permet de stocker une valeur. Cette valeur peut être de plusieurs types :
+    <ul style="padding-left:1em">
+        <li>nombre entier : 1, 2, 3, 4, 5, ...</li>
+        <li>nombre à virgule flottante : 2.0, 1.52 ...</li>
+        <li>chaîne de caractères : "Bonjour à tous", ...</li>
+        <li>booléen : Vrai, Faux.</li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div style="column-count:2">
+        Pour chacune des variables affectées, indiquez le type de variable dont il s'agit.
+<pre>
+<code class="language-py">a=102
+b=5.0
+c="nombre entier"
+d=Faux
+e="2.65"
+f="Vrai"</code>
+</pre>
+        </div>
+    </div>
+    <div class="solution">
+        <pre>
+        <code class="language-py">a=102 # a est un nombre entier
+        b=5.0 # b est un nombre à virgule flottante
+        c="nombre entier" # c est une chaîne de caractères
+        d=Faux # d est un booléen
+        e="2.65" # e est une chaîne de caractères
+        f="Vrai" # f est une chaîne de caractères</code>
+        </pre>
+    </div>
+</div>
+<div class="encart">
+    <b>Remarque :</b> En Python, les variables sont typées dynamiquement. Cela signifie que le type de la variable est déterminé automatiquement par le langage en fonction de la valeur qui lui est affectée.
+</div>
+<div class="exercice">
+    <div class="enonce" style="column-count:2;">
+        <div>
+        Indiquez pour chaque variable affectée le type de variable dont il s'agit.
+<pre>
+<code class="language-py">&#62;&#62;&#62; a=6/3
+&#62;&#62;&#62; a
+2.0
+&#62;&#62;&#62; b=6*3
+&#62;&#62;&#62; b
+18
+&#62;&#62;&#62; c=6+3.0
+&#62;&#62;&#62; c
+9.0
+&#62;&#62;&#62; d=6+3
+&#62;&#62;&#62; d
+9</code>
+</pre>
+        </div>
+    </div>
+    <div class="solution">
+        <ul>
+            <li>a=6/3 # a est un nombre à virgule flottante</li>
+            <li>b=6*3 # b est un nombre entier</li>
+            <li>c=6+3.0 # c est un nombre à virgule flottante</li>
+            <li>d=6+3 # d est un nombre entier</li>
+        </ul>
+    </div>
+</div>
+<div class="encart">
+    <b>Remarque :</b> En Python, les chaînes de caractères sont des séquences de caractères. Elles peuvent être concaténées (c'est-à-dire mises bout à bout) ou multipliées.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div style="column-count:2">
+        Indiquez pour chaque variable affectée le type de variable dont il s'agit.
+<pre>
+<code class="language-py">&#62;&#62;&#62; a="ma"+"tin"
+&#62;&#62;&#62; a
+'matin'
+&#62;&#62;&#62; b=2*"bon"
+&#62;&#62;&#62; b
+'bonbon'
+&#62;&#62;&#62; c="2"+"3"
+&#62;&#62;&#62; c
+'23'
+&#62;&#62;&#62; d=int('2')+3
+&#62;&#62;&#62; d
+5
+&#62;&#62;&#62; e=len(a)
+&#62;&#62;&#62; e
+5
+&#62;&#62;&#62; f=int(len(b)/2)
+&#62;&#62;&#62; f
+3</code>
+</pre>
+        </div>
+    </div>
+    <div class="solution">
+        <ul>
+            <li>a="ma"+"tin" # a est une chaîne de caractères</li>
+            <li>b=2*"bon" # b est une chaîne de caractères</li>
+            <li>c="2"+"3" # c est une chaîne de caractères</li>
+            <li>d=int('2')+int('3') # d est un nombre entier</li>
+            <li>e=len(a) # e est un nombre entier</li>
+            <li>f=len(b) # f est un nombre entier</li>
+        </ul>
+    </div>
+</div>
+<div class="encart">
+    <b>Remarque :</b> En Python, la fonction <code>len</code> permet de connaître la longueur d'une chaîne de caractères.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div style="column-count:2">
+        Indiquez pour chaque variable affectée le type de variable dont il s'agit.
+        <pre>
+<code class="language-py">&#62;&#62;&#62; a=len("hello")&#62;4
+&#62;&#62;&#62; a
+True
+&#62;&#62;&#62; b=len("hello")&#62;6
+&#62;&#62;&#62; b
+False
+&#62;&#62;&#62;c=len("hello")==5
+&#62;&#62;&#62; c
+True
+&#62;&#62;&#62;d=len("hello")-4
+&#62;&#62;&#62; d
+1</code>
+</pre>
+        </div>
+    </div>
+    <div class="solution">
+        <ul>
+            <li><code>a=len("hello")&#62;4</code> <br> a est un booléen</li>
+            <li><code>b=len("hello")&#62;6</code> <br> b est un booléen</li>
+            <li><code>c=len("hello")==5</code> <br> c est un booléen</li>
+            <li><code>d=len("hello")-4</code> <br> d est un nombre entier</li>
+        </ul>
+    </div>
+</div>
+<div class="encart">
+    <b>Remarque :</b> En Python, les indices commencent à 0. Ainsi, le premier élément d'une chaîne de caractères est à l'indice 0, le deuxième à l'indice 1, etc.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div style="column-count:2">
+        Complétez les pointillés dans le code suivant.
+        <pre>
+<code class="language-py">&#62;&#62;&#62; a="Bonjour"
+&#62;&#62;&#62; a[2]
+'n'
+&#62;&#62;&#62; a[3]
+'j'
+&#62;&#62;&#62; a[1]
+...
+&#62;&#62;&#62; ...
+'B'</code>
+</pre>
+        </div>
+    </div>
+    <div class="solution">
+        <pre>
+<code class="language-py">
+&#62;&#62;&#62; a="Bonjour"
+&#62;&#62;&#62; a[2]
+'n'
+&#62;&#62;&#62; a[3]
+'j'
+&#62;&#62;&#62; a[1]
+'o'
+&#62;&#62;&#62; a[0]
+'B'
+</code>
+</pre>
+    </div>
+</div>
+<div class="encart">
+    <b>Remarque :</b> En Python, il est possible de connaître le type d'une variable en utilisant la fonction <code>type</code>.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div style="column-count:2">
+        Complétez les pointillés dans le code suivant.
+        <pre>
+<code class="language-py">&#62;&#62;&#62; type(2)
+&#60;class 'int'&#62;
+&#62;&#62;&#62; type('Bonjour')
+&#60;class 'str'&#62;
+&#62;&#62;&#62; type(0.5)
+&#60;class 'float'&#62;
+&#62;&#62;&#62; type(True)
+&#60;class 'bool'&#62;
+&#62;&#62;&#62; type(7/2)
+...
+&#62;&#62;&#62; type(len("hello"))
+...</code>
+</pre>
+        </div>
+    </div>
+    <div class="solution">
+        <pre>
+<code class="language-py">&#62;&#62;&#62; type(2)
+&#60;class 'int'&#62;
+&#62;&#62;&#62; type('Bonjour')
+&#60;class 'str'&#62;
+&#62;&#62;&#62; type(0.5)
+&#60;class 'float'&#62;
+&#62;&#62;&#62; type(True)
+&#60;class 'bool'&#62;
+&#62;&#62;&#62; type(7/2)
+&#60;class 'float'&#62;
+&#62;&#62;&#62; type(len("hello"))
+&#60;class 'int'&#62;</code>
+</pre>
+    </div>
+</div>
+<div class="encart">
+    <b>Remarque :</b> En Python, il est possible de convertir une variable d'un type en un autre type en utilisant les fonctions <code>int</code>, <code>float</code> et <code>str</code>.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div style="column-count:2">
+        Complétez les pointillés dans le code suivant.
+        <pre>
+<code class="language-py">&#62;&#62;&#62; int(2.5)
+2
+&#62;&#62;&#62; float(2)
+2.0
+&#62;&#62;&#62; str(5)
+'2'
+&#62;&#62;&#62; str(2.5)
+...
+&#62;&#62;&#62; int("7")
+...
+&#62;&#62;&#62; float("3.2")+5
+...</code>
+</pre>
+        </div>
+    </div>
+    <div class="solution">
+        <pre>
+<code class="language-py">
+&#62;&#62;&#62; int(2.7)
+2
+&#62;&#62;&#62; float(2)
+2.0
+&#62;&#62;&#62; str(5)
+'5'
+&#62;&#62;&#62; str(2.5)
+'2.5'
+&#62;&#62;&#62; int("7")
+7
+&#62;&#62;&#62; float("3.2"+"5")
+3.25
+</code>
+</pre>
+    </div>
+</div>
+</main>
+  </body>
+</html>

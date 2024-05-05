@@ -177,4 +177,8 @@
   .card-face.front {
     background:none; /* Supprime le fond */
   }
+  /* Supprimer la coloration de Prism.js */
+  .token {
+    color: inherit !important;
+  }
 }

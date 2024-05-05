@@ -37264,21 +37264,21 @@ var quadrillage = function () {
 };
 function chargerBacasables() {
   const bacasables = document.querySelectorAll(".bacasable");
-  const promesses = Array.from(bacasables).map(bacasable => {
+  const promesses = Array.from(bacasables).map(async bacasable => {
     const src = bacasable.getAttribute("src");
     if (!src) {
       return Promise.resolve(); // Résout immédiatement si aucun src
     }
-    return fetch(src).then(response => {
+    try {
+      const response = await fetch(src);
       if (!response.ok) {
         throw new Error("Erreur de chargement pour bacASable : ".concat(src, ", statut : ").concat(response.status));
       }
-      return response.text();
-    }).then(data => {
+      const data = await response.text();
       bacasable.innerHTML = data;
-    }).catch(error => {
+    } catch (error) {
       console.error("Erreur r\xE9seau pour bacASable : ".concat(src, ", erreur : ").concat(error));
-    });
+    }
   });
   return Promise.all(promesses);
 }
@@ -37337,6 +37337,12 @@ function ajusterStartol() {
 document.addEventListener("DOMContentLoaded", async function () {
   try {
     await chargerBacasables();
+    // Si le document contient une class bacasable alors on charge un script /dist/prism.js
+    if (document.querySelector(".bacasable") != null) {
+      var script = document.createElement("script");
+      script.src = "/dist/prism.js";
+      document.head.appendChild(script);
+    }
     insererEntetesBlocsLesson();
     insererEntetesBlocsExercices();
     // On teste si on est dans un contexte <meta name="quiz" content="true">

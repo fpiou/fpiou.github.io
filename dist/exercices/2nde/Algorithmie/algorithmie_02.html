@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Algorithmie_02.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Algorithmie</div> <div>Fiche n° 02</div></header>
+<h3>Suite d'instructions</h3>
+<div class="encart">
+    <b>Définition :</b> Une suite d'instructions est une série d'instructions qui sont exécutées les unes après les autres. En Python, les instructions sont séparées par des retours à la ligne.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div style="column-count:2">
+        Recopiez et complétez le tableau suivant en indiquant les valeurs des variables après l'exécution de chaque ligne de code.
+        <pre style="break-inside:avoid;" class="line-numbers">
+<code class="language-py">a=5
+b=3
+a=a+b*2
+b=a-b/2</code>
+</pre></div>
+        <table class="tableauAlgo">
+            <tr>
+                <td>Variable</td>
+                <td>01</td>
+                <td>02</td>
+                <td>03</td>
+                <td>04</td>
+            </tr>
+            <tr>
+                <td><code>a</code></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><code>b</code></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="solution">
+        <table class="tableauAlgo">
+            <tr>
+                <td>Variable</td>
+                <td>01</td>
+                <td>02</td>
+                <td>03</td>
+                <td>04</td>
+            </tr>
+            <tr>
+                <td><code>a</code></td>
+                <td>5</td>
+                <td>5</td>
+                <td>11</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td><code>b</code></td>
+                <td></td>
+                <td>3</td>
+                <td>3</td>
+                <td>10.5</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div style="column-count:2">
+        Recopiez et complétez le tableau suivant en indiquant les valeurs des variables après l'exécution de chaque ligne de code.
+<pre style="break-inside:avoid;" class="line-numbers">
+<code class="language-py">a=8
+b=a-10
+a=a*b
+c=a-b</code>
+</pre></div>
+        <table class="tableauAlgo">
+            <tr>
+                <td>Variable</td>
+                <td>01</td>
+                <td>02</td>
+                <td>03</td>
+                <td>04</td>
+            </tr>
+            <tr>
+                <td><code>a</code></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><code>b</code></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><code>c</code></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="solution">
+        <table class="tableauAlgo">
+            <tr>
+                <td>Variable</td>
+                <td>01</td>
+                <td>02</td>
+                <td>03</td>
+                <td>04</td>
+            </tr>
+            <tr>
+                <td><code>a</code></td>
+                <td>8</td>
+                <td>8</td>
+                <td>-16</td>
+                <td>-16</td>
+            </tr>
+            <tr>
+                <td><code>b</code></td>
+                <td></td>
+                <td>-2</td>
+                <td>-2</td>
+                <td>-2</td>
+            </tr>
+            <tr>
+                <td><code>c</code></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>78</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="encart">
+    <b>Remarque :</b> L'opérateur <code>//</code> permet de réaliser une division entière. L'opérateur <code>%</code> permet de calculer le reste de la division euclidienne.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div style="column-count:2">
+        Recopiez et complétez le tableau suivant en indiquant les valeurs des variables après l'exécution de chaque ligne de code.
+<pre style="break-inside:avoid;" class="line-numbers">
+<code class="language-py">a=7//2
+b=7%2
+a=a+b/2
+a=2*a</code>
+</pre></div>
+        <table class="tableauAlgo">
+            <tr>
+                <td>Variable</td>
+                <td>01</td>
+                <td>02</td>
+                <td>03</td>
+                <td>04</td>
+            </tr>
+            <tr>
+                <td><code>a</code></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><code>b</code></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="solution">
+        <table class="tableauAlgo">
+            <tr>
+                <td>Variable</td>
+                <td>01</td>
+                <td>02</td>
+                <td>03</td>
+                <td>04</td>
+            </tr>
+            <tr>
+                <td><code>a</code></td>
+                <td>3</td>
+                <td>1</td>
+                <td>3.5</td>
+                <td>7.0</td>
+            </tr>
+            <tr>
+                <td><code>b</code></td>
+                <td></td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="encart">
+    <b>Remarque :</b> L'opérateur <code>**</code> permet de réaliser une puissance.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div style="column-count:2">
+        Recopiez et complétez le tableau suivant en indiquant les valeurs des variables après l'exécution de chaque ligne de code.
+<pre style="break-inside:avoid;" class="line-numbers">
+<code class="language-py">a=3
+b=2
+c=(a+b)**2
+c=c-a**2-b**2</code>
+</pre></div>
+        <table class="tableauAlgo">
+            <tr>
+                <td>Variable</td>
+                <td>01</td>
+                <td>02</td>
+                <td>03</td>
+                <td>04</td>
+            </tr>
+            <tr>
+                <td><code>a</code></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><code>b</code></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><code>c</code></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="solution">
+        <table class="tableauAlgo">
+            <tr>
+                <td>Variable</td>
+                <td>01</td>
+                <td>02</td>
+                <td>03</td>
+                <td>04</td>
+            </tr>
+            <tr>
+                <td><code>a</code></td>
+                <td>3</td>
+                <td>2</td>
+                <td>25</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td><code>b</code></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td><code>c</code></td>
+                <td></td>
+                <td></td>
+                <td>25</td>
+                <td>12</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="encart">
+    <b>Remarque :</b> L'opérateur <code>+=</code> permet d'ajouter une valeur à une variable. L'opérateur <code>-=</code> permet de soustraire une valeur à une variable.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div style="column-count:2">
+        Recopiez et complétez le tableau suivant en indiquant les valeurs des variables après l'exécution de chaque ligne de code.
+<pre style="break-inside:avoid;" class="line-numbers">
+<code class="language-py">a=5
+b=3
+a+=1
+b-=1
+a+=b
+b-=a</code>
+</pre></div>
+        <table class="tableauAlgo">
+            <tr>
+                <td>Variable</td>
+                <td>01</td>
+                <td>02</td>
+                <td>03</td>
+                <td>04</td>
+                <td>05</td>
+                <td>06</td>
+            </tr>
+            <tr>
+                <td><code>a</code></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><code>b</code></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="solution">
+        <table class="tableauAlgo">
+            <tr>
+                <td>Variable</td>
+                <td>01</td>
+                <td>02</td>
+                <td>03</td>
+                <td>04</td>
+                <td>05</td>
+                <td>06</td>
+            </tr>
+            <tr>
+                <td><code>a</code></td>
+                <td>5</td>
+                <td>5</td>
+                <td>6</td>
+                <td>6</td>
+                <td>8</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td><code>b</code></td>
+                <td></td>
+                <td>3</td>
+                <td>3</td>
+                <td>2</td>
+                <td>2</td>
+                <td>-6</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<h3>Fonctions</h3>
+<div class="encart">
+    <b>Définition :</b> Une fonction est un bloc d'instructions qui réalise une tâche précise. En Python, une fonction est définie par le mot-clé <code>def</code>.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div style="column-count:2">
+        Recopiez et complétez les pointillés.
+<pre style="break-inside:avoid;" class="line-numbers">
+<code class="language-py">def f(x):
+    return x**2</code>
+</pre>
+<pre>
+<code class="language-py">&#62;&#62;&#62;# script executed
+&#62;&#62;&#62;f(5)
+25
+&#62;&#62;&#62;f(-6)
+...
+&#62;&#62;&#62;f(...)
+144</code>
+</pre></div>
+    </div>
+    <div class="solution">
+        <pre>
+<code class="language-py">def f(x):
+    return x**2</code>
+</pre>
+<pre>
+<code class="language-py">&#62;&#62;&#62;# script executed
+&#62;&#62;&#62;f(5)
+25
+&#62;&#62;&#62;f(-6)
+36
+&#62;&#62;&#62;f(12)
+144</code>
+</pre>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div style="column-count:2">
+        Recopiez et complétez les pointillés.
+<pre style="break-inside:avoid;" class="line-numbers">
+<code class="language-py">def f(x):
+    return ...</code>
+</pre>
+<pre>
+<code class="language-py">&#62;&#62;&#62;# script executed
+&#62;&#62;&#62;f(1)
+5
+&#62;&#62;&#62;f(2)
+6
+&#62;&#62;&#62;f(3)
+7</code>
+</pre></div>
+    </div>
+    <div class="solution">
+        <pre>
+<code class="language-py">def f(x):
+   return x+4</code> 
+</pre>
+    </div>
+</div></main>
+  </body>
+</html>

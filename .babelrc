@@ -10,5 +10,13 @@
         "corejs": 3
       }
     ]
+  ],
+  "plugins": [
+    ["prismjs", {
+        "languages": ["javascript", "css", "python"],
+        "plugins": ["line-numbers","copy-to-clipboard"],
+        "theme": "twilight",
+        "css": true
+    }]
   ]
 }
