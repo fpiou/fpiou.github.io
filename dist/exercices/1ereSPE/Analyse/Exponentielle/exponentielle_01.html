@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Exponentielle_01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Fonction exponentielle</div> <div>Fiche n° 01</div></header>
+<div class="encart">
+    <b>Propriétés :</b> Soit $a$, $b$, $n$, $m$ des entiers relatifs tels que $a\neq 0$ et $b\neq0$. On a&nbsp;:
+    <ul class="horizontal-list col-3c">
+        <li>$a^0 = 1$</li>
+        <li>$a^1 = a$</li>
+        <li>$a^{-n} = \frac{1}{a^{n}}$</li>
+        <li>$a^n \times a^m = a^{n+m}$</li>
+        <li>$\frac{a^n}{a^m} = a^{n-m}$</li>
+        <li>$\left(a^n\right)^m = a^{n\times m}$</li>
+        <li>$a^n \times b^n = \left(a\times b\right)^n$</li>
+        <li>$\frac{a^n}{b^n} = \left(\frac{a}{b}\right)^n$</li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez les valeurs des expressions suivantes&nbsp;:
+        <ol class="horizontal-list col-4c">
+            <li>$2^3$</li>
+            <li>$3^{-2}$</li>
+            <li>$\left(\frac{1}{2}\right)^{-3}$</li>
+            <li>$2^3\times 2^4$</li>
+            <li>$2^3\div 2^4$</li>
+            <li>$2^3\times 3^3$</li>
+            <li>$2^4\div 3^4$</li>
+            <li>$\left(\frac{2}{5}\right)^3$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="horizontal-list">
+            <li>$2^3 = 2\times 2\times 2 = 8$</li>
+            <li>$3^{-2} = \frac{1}{3^2} = \frac{1}{9}$</li>
+            <li>$\left(\frac{1}{2}\right)^{-3} = \frac{1}{\left(\frac{1}{2}\right)^3} = \frac{1}{\frac{1}{2^3}} = \frac{1}{\frac{1}{8}} = 8$</li>
+            <li>$2^3\times 2^4 = 2^{3+4} = 2^7 = 128$</li>
+            <li>$2^3\div 2^4 = 2^{3-4} = 2^{-1} = \frac{1}{2}$</li>
+            <li>$2^3\times 3^3 = 2^3\times 3^3 = 8\times 27 = 216$</li>
+            <li>$2^4\div 3^4 = 16\div 81 = \frac{16}{81}$</li>
+            <li>$\left(\frac{2}{5}\right)^3 = \frac{2^3}{5^3} = \frac{8}{125}$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Considérons la fonction $f$ définie sur $\mathbb{R}$ par $$f(x) = \frac{1}{12}x^4+\frac{1}{6}x^3+\frac{5}{12} x^2+x+1$$
+        Montrez que $f'(x) = f(x)$ pour $x=-1, 0, 1$ et $2$.<br>
+        A-t-on $f'(x) = f(x)$ pour tout $x\in\mathbb{R}$&nbsp;?
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$\begin{align*}
+            f(-1) &= \frac{1}{12}(-1)^4+\frac{1}{6}(-1)^3+\frac{5}{12}(-1)^2+(-1)+1 \\
+            &= \frac{1}{12}+\frac{1}{6}+\frac{5}{12}-1+1 \\
+            &= \frac{1}{12}+\frac{2}{12}+\frac{5}{12} \\
+            &= \frac{8}{12} = \frac{2}{3}
+            \end{align*}$$
+            $$\begin{align*}
+            <li>$$\begin{align*}
+            f(0) &= \frac{1}{12}0^4+\frac{1}{6}0^3+\frac{5}{12}0^2+0+1 \\
+            &= 0+0+0+0+1 = 1
+            \end{align*}$$
+            <li>$$\begin{align*}
+            f(1) &= \frac{1}{12}1^4+\frac{1}{6}1^3+\frac{5}{12}1^2+1+1 \\
+            &= \frac{1}{12}+\frac{1}{6}+\frac{5}{12}+1+1 \\
+            &= \frac{1}{12}+\frac{2}{12}+\frac{5}{12}+1+1 \\
+            &= \frac{8}{12}+2 = \frac{2}{3}+2 = \frac{8}{3}
+            \end{align*}$$
+            <li>$$\begin{align*}
+            f(2) &= \frac{1}{12}2^4+\frac{1}{6}2^3+\frac{5}{12}2^2+2+1 \\
+            &= \frac{1}{12}16+\frac{1}{6}8+\frac{5}{12}4+2+1 \\
+            &= \frac{16}{12}+\frac{8}{6}+\frac{20}{12}+3 \\
+            &= \frac{4}{3}+\frac{4}{3}+\frac{5}{3}+3 = \frac{22}{3}
+            \end{align*}$$
+            </ol>
+            <li>$$\begin{align*}
+            f'(x) &= \frac{1}{12}\times 4x^3+\frac{1}{6}\times 3x^2+\frac{5}{12}\times 2x+1 \\
+            &= \frac{1}{3}x^3+\frac{1}{2}x^2+\frac{5}{6}x+1
+            \end{align*}$$
+            </li>
+            <li>$$\begin{align*}
+            f'(-1) &= \frac{1}{3}(-1)^3+\frac{1}{2}(-1)^2+\frac{5}{6}(-1)+1 \\
+            &= -\frac{1}{3}+\frac{1}{2}-\frac{5}{6}+1 \\
+            &= -\frac{2}{6}+\frac{3}{6}-\frac{5}{6}+1 \\
+            &= -\frac{4}{6}+1 = \frac{2}{3}
+            \end{align*}$$
+            </li>
+            <li>$$\begin{align*}
+            f'(0) &= \frac{1}{3}0^3+\frac{1}{2}0^2+\frac{5}{6}0+1 \\
+            &= 0+0+0+1 = 1
+            \end{align*}$$
+            </li>
+            <li>$$\begin{align*}
+            f'(1) &= \frac{1}{3}1^3+\frac{1}{2}1^2+\frac{5}{6}1+1 \\
+            &= \frac{1}{3}+\frac{1}{2}+\frac{5}{6}+1 \\
+            &= \frac{1}{3}+\frac{3}{6}+\frac{5}{6}+1 \\
+            &= \frac{2}{6}+\frac{3}{6}+\frac{5}{6}+1 = \frac{10}{6}+1 = \frac{16}{6} = \frac{8}{3}
+            \end{align*}$$
+            </li>
+            <li>$$\begin{align*}
+            f'(2) &= \frac{1}{3}2^3+\frac{1}{2}2^2+\frac{5}{6}2+1 \\
+            &= \frac{1}{3}8+\frac{1}{2}4+\frac{5}{6}2+1 \\
+            &= \frac{8}{3}+2+\frac{10}{6}+1 \\
+            &= \frac{8}{3}+\frac{12}{6}+\frac{10}{6}+1 \\
+            &= \frac{8}{3}+2+\frac{22}{6} = \frac{8}{3}+2+\frac{11}{3} = \frac{22}{3}
+            \end{align*}$$
+            </li>
+        </ol>
+        <p>On a $f'(x) = f(x)$ pour $x=-1$, $x=0$, $x=1$ et $x=2$ mais pas pour tout $x\in\mathbb{R}$.</p>
+        <p>Cependant, $f(-2)=\frac{1}{3}$ et $f'(-2)=-\frac{4}{3}$.</p>
+        <p>Par conséquent ce n'est pas vrai pour tout $x\in\mathbb{R}$.</p>
+    </div>
+</div>
+<div class="encart">
+    <b>Propriété et définition :</b> Il existe une unique fonction dérivable sur $\mathbb{R}$ telle que $f(0) = 1$ et pour tout $x\in\mathbb{R}$, $f'(x) = f(x)$. Cette fonction est appelée la fonction exponentielle et est notée $\exp$ :
+    $$\begin{array}{rcl}
+    \exp : \mathbb{R} & \longrightarrow & \mathbb{R} \\
+    x & \longmapsto & \exp(x)
+    \end{array}$$
+    $$\exp(0) = 1 \qquad (\exp)'=\exp$$
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On se propose de démontrer que la fonction exponentielle est strictement positive sur $\mathbb{R}$. Pour cela considérons la fonction $f$ définie sur $\mathbb{R}$ par $$f(x) = \exp(x)\times \exp(-x)$$
+        <ol class="alphabetical-list">
+            <li>Montrez que $f'(x) = 0$ pour tout $x\in\mathbb{R}$.</li>
+            <li>En déduire que $f(x) = 1$ pour tout $x\in\mathbb{R}$.</li>
+            <li>Concluez que $exp(x)\neq 0$ pour tout $x\in\mathbb{R}$.</li>
+            <li>Que peut-on en déduire sur les variations de la fonction exponentielle sur $\mathbb{R}$&nbsp;?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$\begin{align*}
+            f'(x) &= \left(\exp(x)\times \exp(-x)\right)' \\
+            &= (\exp(x))'\times \exp(-x)+\exp(x)\times (exp(-x))' \\
+            &= \exp(x)\times \exp(-x)+\exp(x)\times (-\exp(-x)) \\
+            &= \exp(x)\times \exp(-x)-\exp(x)\times \exp(-x) = 0
+            \end{align*}$$
+            </li>
+            <li><p>On a $f'(x) = 0$ pour tout $x\in\mathbb{R}$.</p>
+            <p>Donc $f$ est constante sur $\mathbb{R}$.</p>
+            <p>Or $f(0) = \exp(0)\times \exp(0) = 1\times 1 = 1$.</p>
+            <p>Donc $f(x) = 1$ pour tout $x\in\mathbb{R}$.</p>
+            </li>
+            <li><p>On a $f(x) = 1$ pour tout $x\in\mathbb{R}$.</p>
+            <p>Donc $\exp(x)\times \exp(-x) = 1$ pour tout $x\in\mathbb{R}$.</p>
+            <p>Donc $\exp(x)\neq 0$ pour tout $x\in\mathbb{R}$.</p>
+            </li>
+            <li><p>La fonction exponentielle est strictement positive sur $\mathbb{R}$.</p>
+            <p>Or $f'(x)=f(x)$ pour tout $x\in\mathbb{R}$.</p>
+            <p>Donc la fonction exponentielle est strictement croissante sur $\mathbb{R}$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Propriété :</b>
+    La fonction exponentielle est strictement positive et strictement croissante sur $\mathbb{R}$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On se propose de démontrer que pour tous réels $a$ et $b$, on a $\exp(a+b) = \exp(a)\times \exp(b)$.<br>
+        Considérons la fonction $f$ définie sur $\mathbb{R}$ par $$f(x) = \exp(a+x)\times \exp(b-x)$$
+        <ol class="alphabetical-list">
+            <li>Montrez que $f'(x) = 0$ pour tout $x\in\mathbb{R}$.</li>
+            <li>Calculez $f(0)$, $f(b)$ puis concluez.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$\begin{align*}
+            f'(x) &= \left(\exp(a+x)\times \exp(b-x)\right)' \\
+            &= (\exp(a+x))'\times \exp(b-x)+\exp(a+x)\times (\exp(b-x))' \\
+            &= \exp(a+x)\times \exp(b-x)+\exp(a+x)\times (-\exp(b-x)) \\
+            &= \exp(a+x)\times \exp(b-x)-\exp(a+x)\times \exp(b-x) = 0
+            \end{align*}$$
+            </li>
+            <li>$$\begin{align*}
+            f(0) &= \exp(a+0)\times \exp(b-0) = \exp(a)\times \exp(b) \\
+            f(b) &= \exp(a+b)\times \exp(b-b) = \exp(a+b)\times \exp(0) = \exp(a+b)
+            \end{align*}$$
+            <p>$f'$ est nulle pour tout $x\in\mathbb{R}$.</p>
+            <p>Donc $f$ est constante sur $\mathbb{R}$.</p>
+            $$\begin{align*}
+            f(0) &= \exp(a)\times \exp(b) \\
+            f(b) &= \exp(a+b) \\
+            \end{align*}$$
+            <p>Donc $\exp(a)\times \exp(b) = \exp(a+b)$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Propriétés :</b> Pour tous $a$ et $b$ dans $\mathbb{R}$, on a&nbsp;:
+    <ul class="horizontal-list col-2c">
+        <li>$\exp(a+b) = \exp(a)\times \exp(b)$</li>
+        <li>$\exp(a-b) = \frac{\exp(a)}{\exp(b)}$</li>
+        <li>$\exp(-a) = \frac{1}{\exp(a)}$</li>
+    </ul>
+</div>
+<div class="encart">
+    Voici l'allure de la fonction exponentielle&nbsp;:
+    <div class="figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- On définit le repère -->
+                <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="5" ymax ="9" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.1" ypas="0.1" stroke="gray" stroke-width="0.2"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.4"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="C_f" class="courbeRepresentative" expression="exp(x)" linkto="repere1" xmin="-5" xmax="2.5" pas="0.1" stroke="red" stroke-width="0.5" fill="transparent"></g>
+        </svg>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On admet que $\exp(-3)\approx\num{0.05}$ et $\exp(-2.5)\approx\num{0.08}$.<br>
+        Complétez le tableau de valeurs suivant avec des valeurs approchées par lecture graphique&nbsp; jusqu'à $x=2$. Pour les deux dernières valeurs, utilisez la propriété $\exp(-x)=\frac{1}{\exp(x)}$.
+        <table class="tableauvaleurs">
+            <tr>
+                <th>$\scriptsize x$</th>
+                <th>$\scriptsize\num{-3}$</th>
+                <th>$\scriptsize\num{-2.5}$</th>
+                <th>$\scriptsize\num{-2}$</th>
+                <th>$\scriptsize\num{-1.5}$</th>
+                <th>$\scriptsize\num{-1}$</th>
+                <th>$\scriptsize\num{-0.5}$</th>
+                <th>$\scriptsize\num{0}$</th>
+                <th>$\scriptsize\num{0.5}$</th>
+                <th>$\scriptsize\num{1}$</th>
+                <th>$\scriptsize\num{1.5}$</th>
+                <th>$\scriptsize\num{2}$</th>
+                <th>$\scriptsize\num{2.5}$</th>
+                <th>$\scriptsize\num{3}$</th>
+            </tr>
+            <tr>
+                <td>$\tiny\exp(x)$</td>
+                <td>$\scriptsize\num{0.05}$</td>
+                <td>$\scriptsize\num{0.08}$</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="solution">
+        <table class="tableauvaleurs">
+            <tr>
+                <th>$\scriptsize x$</th>
+                <th>$\scriptsize\num{-3}$</th>
+                <th>$\scriptsize\num{-2.5}$</th>
+                <th>$\scriptsize\num{-2}$</th>
+                <th>$\scriptsize\num{-1.5}$</th>
+                <th>$\scriptsize\num{-1}$</th>
+                <th>$\scriptsize\num{-0.5}$</th>
+                <th>$\scriptsize\num{0}$</th>
+                <th>$\scriptsize\num{0.5}$</th>
+                <th>$\scriptsize\num{1}$</th>
+                <th>$\scriptsize\num{1.5}$</th>
+                <th>$\scriptsize\num{2}$</th>
+                <th>$\scriptsize\num{2.5}$</th>
+                <th>$\scriptsize\num{3}$</th>
+            </tr>
+            <tr>
+                <td>$\tiny\exp(x)$</td>
+                <td>$\scriptsize\num{0.05}$</td>
+                <td>$\scriptsize\num{0.08}$</td>
+                <td>$\scriptsize\num{0.14}$</td>
+                <td>$\scriptsize\num{0.22}$</td>
+                <td>$\scriptsize\num{0.37}$</td>
+                <td>$\scriptsize\num{0.65}$</td>
+                <td>$\scriptsize\num{1}$</td>
+                <td>$\scriptsize\num{1.7}$</td>
+                <td>$\scriptsize\num{2.7}$</td>
+                <td>$\scriptsize\num{4.5}$</td>
+                <td>$\scriptsize\num{7.4}$</td>
+                <td>$\scriptsize\num{12.2}$</td>
+                <td>$\scriptsize\num{20.1}$</td>
+            </tr>
+        </table>
+        $$\begin{align*}
+        \exp(\num{-2.5}) &= \frac{1}{\exp(\num{2.5})} \\
+        \exp(\num{2.5}) &\approx \frac{1}{\num{0.08}}\\
+        &\approx \num{12.5}
+        \end{align*}$$
+        $$\begin{align*}
+        \exp(\num{-3}) & \frac{1}{\exp(\num{3})} \\
+        \exp(\num{3}) &\approx \frac{1}{\num{0.05}}\\
+        &\approx \num{20}
+        \end{align*}$$
+    </div>
+</div>
+<div class="encart">
+    <b>Définition :</b> On note $\mathrm{e}$ le nombre $\exp(1)$.<br>
+    On a&nbsp;:
+    $$\mathrm{e} = \num{2.7182}\ldots$$
+    $\mathrm{e}$ est un nombre irrationnel.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Montrez que $\exp(2) = \mathrm{e}^2$.</li>
+            <li>Montrez que $\exp(-1) = \frac{1}{\mathrm{e}}$.</li>
+            <li>Exprimez $\exp(3)$ en fonction de $\mathrm{e}$. Justifiez.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$\begin{align*}
+            \exp(2) &= \exp(1+1) \\
+            &= \exp(1)\times \exp(1) \\
+            &= \mathrm{e}\times \mathrm{e} = \mathrm{e}^2
+            \end{align*}$$
+            </li>
+            <li>$$\begin{align*}
+            \exp(-1) &= \frac{1}{\exp(1)} \\
+            &= \frac{1}{\mathrm{e}} = \frac{1}{\mathrm{e}}
+            \end{align*}$$
+            </li>
+            <li>$$\begin{align*}
+            \exp(3) &= \exp(1+2) \\
+            &= \exp(1)\times \exp(2) \\
+            &= \mathrm{e}\times \mathrm{e}^2 = \mathrm{e}^3
+            \end{align*}$$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Propriété :</b> Pour tout entier relatif $n$, on a&nbsp;:
+    $$\exp(n) = \mathrm{e}^n$$
+    Par prolongement on écrit pour tout réel $x$&nbsp;:
+    $$\exp(x) = \mathrm{e}^x$$
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Considérons la suite $(u_n)$ définie par $u_n = \exp(\num{1.2}n)$.<br>
+        Montrez que la suite $(u_n)$ est une suite géométrique et donnez son premier terme et sa raison.
+    </div>
+    <div class="solution">
+        <p>On a $u_{n+1} = \exp(\num{1.2}(n+1)) = \exp(\num{1.2}n+\num{1.2}) = \exp(\num{1.2}n)\times \exp(\num{1.2}) = u_n\times \exp(\num{1.2})$.</p>
+        <p>Donc la suite $(u_n)$ est une suite géométrique de premier terme $1$ et de raison $\exp(\num{1.2})$.</p>
+    </div>
+</div>
+<div class="encart">
+    <b>Propriété :</b> Pour tout réel $a$ et tout entier naturel $n$, on a&nbsp;:
+    $$\exp(an) = \left(\exp(a)\right)^n$$
+    Par prolongement on écrit :
+    $$\mathrm{e}^{an} = \left(\mathrm{e}^a\right)^n$$
+</div></main>
+  </body>
+</html>

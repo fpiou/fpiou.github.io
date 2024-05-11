@@ -39329,6 +39329,31 @@ var createCourbeRepresentative = function (courbeRepresentative) {
   // Utilisez D3 pour générer un chemin lissé
   var lineGenerator = d3.line().x(d => getCoordonneesDansViewBox(repere, d[0], d[1])[0]).y(d => getCoordonneesDansViewBox(repere, d[0], d[1])[1]).curve(d3.curveBasis);
   var d = lineGenerator(points);
+
+  // Si la courbe possède la class labeled alors on ajoute le nom de la courbe
+  if (courbeRepresentative.classList.contains("labeled")) {
+    var foreignObject = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject");
+    // Si le paramètre pos_label il représente le poids entre le premier point et le dernier point
+    var pos_label = 0.9;
+    if (courbeRepresentative.hasAttribute("pos_label")) {
+      pos_label = parseFloat(courbeRepresentative.getAttribute("pos_label"));
+    }
+    // On choisit le point
+    var point = points[Math.floor(pos_label * points.length)];
+    var [x, y] = getCoordonneesDansViewBox(repere, point[0], point[1]);
+    foreignObject.setAttribute("x", x);
+    foreignObject.setAttribute("y", y);
+    foreignObject.setAttribute("width", "20");
+    foreignObject.setAttribute("height", "20");
+    foreignObject.setAttribute("style", courbeRepresentative.getAttribute("style"));
+    // Ajouter la couleur de la droite au label
+    foreignObject.setAttribute("color", courbeRepresentative.getAttribute("stroke"));
+    foreignObject.innerHTML = katex.renderToString(courbeRepresentative.getAttribute("name"), {
+      output: "htmlAndMathml"
+    });
+    foreignObject.style.userSelect = "none";
+    courbeRepresentative.appendChild(foreignObject);
+  }
   d3.select("#" + courbeRepresentative.id).append("path").attr("d", d).attr("fill", "none").attr("stroke", courbeRepresentative.getAttribute("stroke"));
 };
 var initialiserCourbeRepresentative = function (courbeRepresentative) {
