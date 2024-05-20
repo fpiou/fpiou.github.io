@@ -262,6 +262,51 @@ Toujours est-il qu'en l'enlevant la valeur n'est pas doublée. */
   border-bottom: 1px solid black;
 }
 
+/* Tableaux de signes 1 seule valeur */
+.tableausigne1 {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin: 1em 0em;
+}
+
+/* Aligner à gauche le contenu de la deuxième colonne */
+.tableausigne1 tr td:nth-child(2) {
+    text-align: left;
+}
+
+/* Aligner à droite le contenu de la dernière colonne */
+.tableausigne1 tr td:last-child {
+    text-align: right;
+}
+
+.tableausigne1 tr:nth-child(n+2) td:nth-child(4), 
+.tableausigne1 tr:nth-child(n+2) td:nth-child(6) {
+    position: relative;
+}
+
+.tableausigne1 tr:nth-child(n+2) td:nth-child(4)::before, 
+.tableausigne1 tr:nth-child(n+2) td:nth-child(6)::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid #000000;
+}
+
+.tableausigne1 td:nth-child(1) {
+  border-right: 1px solid black;
+}
+.tableausigne1 tr:nth-child(1) {
+  border-bottom: 1px solid black;
+}
+
+.tableausigne1 tr:nth-child(n+2) td:nth-child(6)::before {
+  border-left: 0px;
+}
+
 footer, header {
   display:none;
 }

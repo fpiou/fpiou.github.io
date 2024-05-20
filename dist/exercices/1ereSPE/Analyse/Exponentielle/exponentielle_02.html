@@ -298,6 +298,351 @@
             <li>$\left(\mathrm{e}^x+\mathrm{e}^{-x}\right)^2$</li>
             <li>$\left(\mathrm{e}^{2x}-\mathrm{e}^{3x}\right)^2$</li>
             <li>$\left(\mathrm{e}^{-5x}+\mathrm{e}^{2x}\right)\left(\mathrm{e}^{-5x}-\mathrm{e}^{2x}\right)$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="horizontal-list col-2c">
+            <li>$$\begin{align*}
+            \mathrm{e}^x\left(\mathrm{e}^x+\mathrm{e}^{-x}\right)&=\mathrm{e}^x\times\mathrm{e}^x+\mathrm{e}^x\times\mathrm{e}^{-x}\\
+            \mathrm{e}^x\left(\mathrm{e}^x+\mathrm{e}^{-x}\right)&=\mathrm{e}^{x+x}+\mathrm{e}^{x-x}\\
+            \mathrm{e}^x\left(\mathrm{e}^x+\mathrm{e}^{-x}\right)&=\mathrm{e}^{2x}+\mathrm{e}^{0}\\
+            \mathrm{e}^x\left(\mathrm{e}^x+\mathrm{e}^{-x}\right)&=\mathrm{e}^{2x}+1
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \left(\mathrm{e}^x+\mathrm{e}^{-x}\right)^2&=\left(\mathrm{e}^x\right)^2+2\times\mathrm{e}^x\times\mathrm{e}^{-x}+\left(\mathrm{e}^{-x}\right)^2\\
+            \left(\mathrm{e}^x+\mathrm{e}^{-x}\right)^2&=\mathrm{e}^{2x}+2\times\mathrm{e}^{x-x}+\mathrm{e}^{2x}\\
+            \left(\mathrm{e}^x+\mathrm{e}^{-x}\right)^2&=\mathrm{e}^{2x}+2\times 1+\mathrm{e}^{2x}\\
+            \left(\mathrm{e}^x+\mathrm{e}^{-x}\right)^2&=\mathrm{e}^{2x}+2+\mathrm{e}^{2x}\\
+            \left(\mathrm{e}^x+\mathrm{e}^{-x}\right)^2&=2\mathrm{e}^{2x}+2
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \left(\mathrm{e}^{2x}-\mathrm{e}^{3x}\right)^2&=\left(\mathrm{e}^{2x}\right)^2-2\times\mathrm{e}^{2x}\times\mathrm{e}^{3x}+\left(\mathrm{e}^{3x}\right)^2\\
+            \left(\mathrm{e}^{2x}-\mathrm{e}^{3x}\right)^2&=\mathrm{e}^{4x}-2\times\mathrm{e}^{2x+3x}+\mathrm{e}^{6x}\\
+            \left(\mathrm{e}^{2x}-\mathrm{e}^{3x}\right)^2&=\mathrm{e}^{4x}-2\times\mathrm{e}^{5x}+\mathrm{e}^{6x}\\
+            \left(\mathrm{e}^{2x}-\mathrm{e}^{3x}\right)^2&=\mathrm{e}^{4x}-2\mathrm{e}^{5x}+\mathrm{e}^{6x}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \left(\mathrm{e}^{-5x}+\mathrm{e}^{2x}\right)\left(\mathrm{e}^{-5x}-\mathrm{e}^{2x}\right)&=\left(\mathrm{e}^{-5x}\right)^2-\left(\mathrm{e}^{2x}\right)^2\\
+            \left(\mathrm{e}^{-5x}+\mathrm{e}^{2x}\right)\left(\mathrm{e}^{-5x}-\mathrm{e}^{2x}\right)&=\mathrm{e}^{-10x}-\mathrm{e}^{4x}
+            \end{align*}$$</li>
+        </ol>
+    </div>
+</div>
+<h3>Signe d'expressions avec des exponentielles</h3>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez le signe des expressions suivantes&nbsp;:
+        <ol class="horizontal-list">
+            <li>$f_1(x)=4\mathrm{e}^x-x\mathrm{e}^x$</li>
+            <li>$f_2(x)=x^2\mathrm{e}^{-x}+5x\mathrm{e}^{-x}$</li>
+            <li>$f_3(x)=x^2\mathrm{e}^{x}-9\mathrm{e}^{x}$</li>
+            <li>$f_4(x)=x\mathrm{e}^{x}-\mathrm{e}^{x+1}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol style="list-style-type: none;">
+            <li>$$\begin{align*}
+            f_1(x)&=4\mathrm{e}^x-x\mathrm{e}^x\\
+            f_1(x)&=\mathrm{e}^x(4-x)
+            \end{align*}$$
+            L'exponetielle est strictement positive, donc le signe de $f_1(x)$ ne dépend que du signe de $4-x$.
+            <table class="tableausigne1">
+                <tr>
+                    <td>$x$</td>
+                    <td>$-\infty$</td>
+                    <td></td>
+                    <td>$4$</td>
+                    <td></td>
+                    <td>$+\infty$</td>
+                </tr>
+                <tr>
+                    <td>$4-x$</td>
+                    <td></td>
+                    <td>$+$</td>
+                    <td>$0$</td>
+                    <td>$-$</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>$f_1(x)$</td>
+                    <td></td>
+                    <td>$+$</td>
+                    <td>$0$</td>
+                    <td>$-$</td>
+                    <td></td>
+                </tr>
+            </table>
+            </li>
+            <li>$$\begin{align*}
+            f_2(x)&=x^2\mathrm{e}^{-x}+5x\mathrm{e}^{-x}\\
+            f_2(x)&=x\mathrm{e}^{-x}(x+5)
+            \end{align*}$$
+            L'exponetielle est strictement positive, donc le signe de $f_2(x)$ ne dépend que du signe de $x(x+5)$.
+            <table class="tableausigne">
+                <tr>
+                    <td>$x$</td>
+                    <td>$-\infty$</td>
+                    <td></td>
+                    <td>$-5$</td>
+                    <td></td>
+                    <td>$0$</td>
+                    <td></td>
+                    <td>$+\infty$</td>
+                </tr>
+                <tr>
+                    <td>$x$</td>
+                    <td></td>
+                    <td>$-$</td>
+                    <td></td>
+                    <td>$-$</td>
+                    <td>$0$</td>
+                    <td>$+$</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>$x+5$</td>
+                    <td></td>
+                    <td>$-$</td>
+                    <td>$0$</td>
+                    <td>$+$</td>
+                    <td></td>
+                    <td>$+$</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>$f_2(x)$</td>
+                    <td></td>
+                    <td>$+$</td>
+                    <td>$0$</td>
+                    <td>$-$</td>
+                    <td>$0$</td>
+                    <td>$+$</td>
+                    <td></td>
+                </tr>
+            </table>
+            </li>
+            <li>$$\begin{align*}
+            f_3(x)&=x^2\mathrm{e}^{x}-9\mathrm{e}^{x}\\
+            f_3(x)&=\mathrm{e}^{x}(x^2-9)\\
+            f_3(x)&=\mathrm{e}^{x}(x+3)(x-3)
+            \end{align*}$$
+            L'exponetielle est strictement positive, donc le signe de $f_3(x)$ ne dépend que du signe de $(x+3)(x-3)$.
+            <table class="tableausigne">
+                <tr>
+                    <td>$x$</td>
+                    <td>$-\infty$</td>
+                    <td></td>
+                    <td>$-3$</td>
+                    <td></td>
+                    <td>$3$</td>
+                    <td></td>
+                    <td>$+\infty$</td>
+                </tr>
+                <tr>
+                    <td>$x+3$</td>
+                    <td></td>
+                    <td>$-$</td>
+                    <td>$0$</td>
+                    <td>$+$</td>
+                    <td></td>
+                    <td>$+$</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>$x-3$</td>
+                    <td></td>
+                    <td>$-$</td>
+                    <td></td>
+                    <td>$-$</td>
+                    <td></td>
+                    <td>$+$</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>$f_3(x)$</td>
+                    <td></td>
+                    <td>$+$</td>
+                    <td></td>
+                    <td>$-$</td>
+                    <td></td>
+                    <td>$+$</td>
+                    <td></td>
+                </tr>
+            </table>
+            </li>
+            <li>$$\begin{align*}
+            f_4(x)&=x\mathrm{e}^{x}-\mathrm{e}^{x+1}\\
+            f_4(x)&=\mathrm{e}^{x}(x-\mathrm{e})
+            \end{align*}$$
+            L'exponetielle est strictement positive, donc le signe de $f_4(x)$ ne dépend que du signe de $x-\mathrm{e}$.
+            <table class="tableausigne1">
+                <tr>
+                    <td>$x$</td>
+                    <td>$-\infty$</td>
+                    <td></td>
+                    <td>$\mathrm{e}$</td>
+                    <td></td>
+                    <td>$+\infty$</td>
+                </tr>
+                <tr>
+                    <td>$x-\mathrm{e}$</td>
+                    <td></td>
+                    <td>$-$</td>
+                    <td>$0$</td>
+                    <td>$+$</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>$f_4(x)$</td>
+                    <td></td>
+                    <td>$-$</td>
+                    <td>$0$</td>
+                    <td>$+$</td>
+                    <td></td>
+                </tr>
+            </table>
+            </li>
+        </ol>
+    </div>
+</div>
+<h3>Équations avec l'exponentielle</h3>
+<div class="encart">
+    <b>Propriété : </b> Pour tout réel $a$ et $b$, $\mathrm{e}^a=\mathrm{e}^b$ si et seulement si $a=b$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Résolvez les équations et inéquations suivantes&nbsp;:
+        <ol class="horizontal-list">
+            <li>$\mathrm{e}^{x}=\mathrm{e}^{2x+1}$</li>
+            <li>$\mathrm{e}^{x}\mathrm{e}=\mathrm{e}^{3x+2}$</li>
+            <li>$\mathrm{e}^{x^2-2x}=\frac{1}{\mathrm{e}}$</li>
+            <li>$5\mathrm{e}^{7x+21}-1=4$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol>
+            <li><p>$\mathrm{e}^{x}=\mathrm{e}^{2x+1}$ si et seulement si $x=2x+1$.</p>
+            <p>On a $x=2x+1$ si et seulement si $x=-1$.</p>
+            <p>Donc la solution de l'équation est $x=-1$.</p></li>
+            <li>$$\begin{align*}
+            \mathrm{e}^{x}\mathrm{e}&=\mathrm{e}^{3x+2}\\
+            \mathrm{e}^{x+1}&=\mathrm{e}^{3x+2}
+            \end{align*}$$
+            <p>On a $\mathrm{e}^{x+1}=\mathrm{e}^{3x+2}$ si et seulement si $x+1=3x+2$.</p>
+            $$\begin{align*}
+            x+1&=3x+2\\
+            x-3x&=2-1\\
+            -2x&=1\\
+            x&=-\frac{1}{2}
+            \end{align*}$$
+            <p>Donc la solution de l'équation est $x=-\frac{1}{2}$.</p></li>
+            <li>$$\begin{align*}
+            \mathrm{e}^{x^2-2x}&=\frac{1}{\mathrm{e}}\\
+            \mathrm{e}^{x^2-2x}&=\mathrm{e}^{-1}
+            \end{align*}$$
+            <p>On a $\mathrm{e}^{x^2-2x}=\mathrm{e}^{-1}$ si et seulement si $x^2-2x=-1$.</p>
+            $$\begin{align*}
+            x^2-2x&=-1\\
+            x^2-2x+1&=0\\
+            (x-1)^2&=0\\
+            x-1&=0\\
+            x&=1
+            \end{align*}$$
+            <p>Donc la solution de l'équation est $x=1$.</p></li>
+            <li>$$\begin{align*}
+            5\mathrm{e}^{7x+21}-1&=4\\
+            5\mathrm{e}^{7x+21}&=5\\
+            \mathrm{e}^{7x+21}&=1\\
+            \mathrm{e}^{7x+21}&=\mathrm{e}^0
+            \end{align*}$$
+            <p>On a $\mathrm{e}^{7x+21}=\mathrm{e}^0$ si et seulement si $7x+21=0$.</p>
+            $$\begin{align*}
+            7x+21&=0\\
+            7x&=-21\\
+            x&=-3
+            \end{align*}$$
+            <p>Donc la solution de l'équation est $x=-3$.</p></li>
+        </ol>
+    </div>
+</div>
+<h3>Inéquatios avec l'exponentielle</h3>
+<div class="encart">
+    <b>Propriété : </b> Pour tout réel $a$ et $b$, $\mathrm{e}^a\lt\mathrm{e}^b$ si et seulement si $a\lt b$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Résolvez les inéquations suivantes&nbsp;:
+        <ol class="horizontal-list">
+            <li>$\mathrm{e}^{2x+1}\lt\mathrm{e}^{8x-1}$</li>
+            <li>$\mathrm{e}^{7x-3}\lt\mathrm{e}^{4x^2}$</li>
+            <li>$2\mathrm{e}^{12x-36}+3\leqslant 5$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol>
+            <li>$$\begin{align*}
+            \mathrm{e}^{2x+1}&\lt\mathrm{e}^{8x-1}\\
+            \mathrm{e}^{2x+1}&\lt\mathrm{e}^{8x}\mathrm{e}^{-1}\\
+            \mathrm{e}^{2x+1}&\lt\mathrm{e}^{8x}\mathrm{e}^{-1}\\
+            \mathrm{e}^{2x+1}&\lt\mathrm{e}^{8x-1}
+            \end{align*}$$
+            <p>On a $\mathrm{e}^{2x+1}\lt\mathrm{e}^{8x-1}$ si et seulement si $2x+1\lt 8x-1$.</p>
+            $$\begin{align*}
+            2x+1&\lt 8x-1\\
+            2x-8x&\lt -1-1\\
+            -6x&\lt -2\\
+            x&\gt\frac{1}{3}
+            \end{align*}$$
+            <p>Donc la solution de l'inéquation est $x\gt\frac{1}{3}$.</p></li>
+            <li>$$\begin{align*}
+            \mathrm{e}^{7x-3}&\lt\mathrm{e}^{4x^2}\\
+            \mathrm{e}^{7x-3}&\lt\mathrm{e}^{4x^2}\\
+            \mathrm{e}^{7x-3}&\lt\mathrm{e}^{4x^2}\\
+            \mathrm{e}^{7x-3}&\lt\mathrm{e}^{4x^2}
+            \end{align*}$$
+            <p>On a $\mathrm{e}^{7x-3}\lt\mathrm{e}^{4x^2}$ si et seulement si $7x-3\lt 4x^2$.</p>
+            $$\begin{align*}
+            7x-3&\lt 4x^2\\
+            7x-3-4x^2&\lt 0\\
+            -4x^2+7x-3&\lt 0\\
+            4x^2-7x+3&\gt 0
+            \end{align*}$$
+            <p>Déterminons les racines du polynôme $4x^2-7x+3$.</p>
+            $$\begin{align*}
+            \Delta&=7^2-4\times 4\times 3\\
+            \Delta&=49-48\\
+            \Delta&=1
+            \end{align*}$$
+            $$\begin{align*}
+            x_1&=\frac{7-1}{2\times 4}\\
+            x_1&=\frac{6}{8}\\
+            x_1&=\frac{3}{4}
+            \end{align*}$$
+            $$\begin{align*}
+            x_2&=\frac{7+1}{2\times 4}\\
+            x_2&=\frac{8}{8}\\
+            x_2&=1
+            \end{align*}$$
+            <p>On a $4x^2-7x+3\gt 0$ si et seulement si $x\in\left]-\infty;\frac{3}{4}\right[\cup\left]1;+\infty\right[$.</p>
+            <p>Donc la solution de l'inéquation est $x\in\left]-\infty;\frac{3}{4}\right[\cup\left]1;+\infty\right[$.</p></li>
+            <li>$$\begin{align*}
+            2\mathrm{e}^{12x-36}+3&\leqslant 5\\
+            2\mathrm{e}^{12x-36}&\leqslant 2\\
+            \mathrm{e}^{12x-36}&\leqslant 1\\
+            \mathrm{e}^{12x-36}&\leqslant \mathrm{e}^0
+            \end{align*}$$
+            <p>On a $\mathrm{e}^{12x-36}\leqslant \mathrm{e}^0$ si et seulement si $12x-36\leqslant 0$.</p>
+            $$\begin{align*}
+            12x-36&\leqslant 0\\
+            12x&\leqslant 36\\
+            x&\leqslant 3
+            \end{align*}$$
+            <p>Donc la solution de l'inéquation est $x\leqslant 3$.</p></li>
+        </ol>
+    </div>
+</div>
+<h3>Courbes représentatives</h3>
+<header><div>Fonction exponentielle</div> <div>Fiche n° 03</div></header>
 <div class="exercice">
     <div class="enonce">
         On considère les fonctions suivantes définies sur $\mathbb{R}$&nbsp;:
