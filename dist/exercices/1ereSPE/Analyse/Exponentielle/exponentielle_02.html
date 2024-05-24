@@ -122,7 +122,6 @@
     <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
 
     <main><header><div>Fonction exponentielle</div> <div>Fiche n° 02</div></header>
-<h3>Propriétés algébriques de l'exponentielle</h3>
 <div class="encart">
     <b>Propriétés :</b> Soit $a$, $b$ des nombres réels et $n$ un entier. On a&nbsp;:
     <ul class="horizontal-list col-3c">
@@ -328,7 +327,48 @@
         </ol>
     </div>
 </div>
-<h3>Signe d'expressions avec des exponentielles</h3>
+<div class="encart">
+    <b>Propriétés :</b> Soit $x$ un nombre réel. On a&nbsp;:
+    <ul style="padding-left:1em;">
+        <li>Pour tout $x$, $\mathrm{e}^x\gt 0$ et $\mathrm{e}^{-x}\gt 0$&nbsp;;</li>
+        <li>$\mathrm{e}^x\gt 1$ (ou $\mathrm{e}^{-x}\lt 1$) si et seulement si $x\gt 0$&nbsp;;</li>
+        <li>$\mathrm{e}^x\lt 1$ (ou $\mathrm{e}^{-x}\gt 1$) si et seulement si $x\lt 0$.</li>
+    </ul>
+    <ul class="horizontal-list col-2c">
+    <li><div class="figure">
+        <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="5" ymax ="4" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="C_f" class="courbeRepresentative" expression="exp(x)" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="black" stroke-width="0.5" fill="transparent"></g>
+        </svg>
+    </div></li>
+    <li><div class="figure">
+        <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="5" ymax ="4" xorigine="0" yorigine="0"></g>
+            <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+            <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+            <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+            <g name="C_g" class="courbeRepresentative" expression="exp(-x)" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="black" stroke-width="0.5" fill="transparent"></g>
+        </svg>
+    </div></li>
+    </ul>
+</div>
 <div class="exercice">
     <div class="enonce">
         Déterminez le signe des expressions suivantes&nbsp;:
@@ -505,13 +545,139 @@
         </ol>
     </div>
 </div>
-<h3>Équations avec l'exponentielle</h3>
-<div class="encart">
-    <b>Propriété : </b> Pour tout réel $a$ et $b$, $\mathrm{e}^a=\mathrm{e}^b$ si et seulement si $a=b$.
+<div class="exercice">
+    <div class="enonce">
+        Déterminez le signe des expressions suivantes à l'aide d'une factorisation&nbsp;:
+        <ul class="horizontal-list">
+            <li>$f_1(x)=\mathrm{e}^{x}-\mathrm{e}^{2x}$</li>
+            <li>$f_2(x)=\mathrm{e}^{2x}-\mathrm{e}$</li>
+            <li>$f_3(x)=\mathrm{e}^{-x}-\mathrm{e}^{x}$</li>
+        </ul>
+    </div>
+    <div class="solution">
+        <ul style="list-style-type: none;">
+            <li>$$\begin{align*}
+            f_1(x)&=\mathrm{e}^{x}-\mathrm{e}^{2x}\\
+            f_1(x)&=\mathrm{e}^{x}(1-\mathrm{e}^{x})\\
+            f_1(x)&=\mathrm{e}^{x}(1-\mathrm{e}^{x})
+            \end{align*}$$
+            <p>L'exponetielle est strictement positive, donc le signe de $f_1(x)$ ne dépend que du signe de $1-\mathrm{e}^{x}$.</p>
+            <p>Pour tout $x$, $\mathrm{e}^{x}\gt 1$, donc $1-\mathrm{e}^{x}\lt 0$.</p>
+            <p>Par conséquent pour tout $x$, $f_1(x)\lt 0$.</p>
+            </li>
+            <li>$$\begin{align*}
+            f_2(x)&=\mathrm{e}^{2x}-\mathrm{e}\\
+            f_2(x)&=\mathrm{e}(\mathrm{e}^{2x-1}-1)
+            \end{align*}$$
+            <p>L'exponetielle est strictement positive, donc le signe de $f_2(x)$ ne dépend que du signe de $\mathrm{e}^{2x-1}-1$.</p>
+            <p>$\mathrm{e}^{2x-1}-1\gt 0$ si et seulement si $2x-1\gt 0$.</p>
+            $$\begin{align*}
+            2x-1&\gt 0\\
+            2x&\gt 1\\
+            x&\gt \frac{1}{2}
+            \end{align*}$$
+            <table class="tableausigne1">
+                <tr>
+                    <td>$x$</td>
+                    <td>$-\infty$</td>
+                    <td></td>
+                    <td>$\frac{1}{2}$</td>
+                    <td></td>
+                    <td>$+\infty$</td>
+                </tr>
+                <tr>
+                    <td>$\mathrm{e}^{2x-1}-1$</td>
+                    <td></td>
+                    <td>$-$</td>
+                    <td>$0$</td>
+                    <td>$+$</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>$f_2(x)$</td>
+                    <td></td>
+                    <td>$-$</td>
+                    <td>$0$</td>
+                    <td>$+$</td>
+                    <td></td>
+                </tr>
+            </table>
+            </li>
+            <li>$$\begin{align*}
+            f_3(x)&=\mathrm{e}^{-x}-\mathrm{e}^{x}\\
+            f_3(x)&=\mathrm{e}^{-x}(1-\mathrm{e}^{2x})
+            \end{align*}$$
+            <p>L'exponetielle est strictement positive, donc le signe de $f_3(x)$ ne dépend que du signe de $1-\mathrm{e}^{2x}$.</p>
+            <p>$1-\mathrm{e}^{2x}\gt 0$ si et seulement si $\mathrm{e}^{2x}\lt 1$.</p>
+            <p>Donc $1-\mathrm{e}^{2x}\gt 0$ si et seulement si $2x\lt 0$.</p>
+            $$\begin{align*}
+            2x&\lt 0\\
+            x&\lt 0
+            \end{align*}$$
+            <table class="tableausigne1">
+                <tr>
+                    <td>$x$</td>
+                    <td>$-\infty$</td>
+                    <td></td>
+                    <td>$0$</td>
+                    <td></td>
+                    <td>$+\infty$</td>
+                </tr>
+                <tr>
+                    <td>$1-\mathrm{e}^{2x}$</td>
+                    <td></td>
+                    <td>$+$</td>
+                    <td>$0$</td>
+                    <td>$-$</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>$f_3(x)$</td>
+                    <td></td>
+                    <td>$+$</td>
+                    <td>$0$</td>
+                    <td>$-$</td>
+                    <td></td>
+                </tr>
+            </table>
+            </li>
+        </ul>
+    </div>
 </div>
 <div class="exercice">
     <div class="enonce">
-        Résolvez les équations et inéquations suivantes&nbsp;:
+    On se propose de déterminer le signe de l'expression $\mathrm{e}^{2x}+3\mathrm{e}^x-4$.
+        <ol class="alphabetical-list">
+            <li>Résoudre l'équation $X^2+3X-4=0$.</li>
+            <li>En déduire une factorisation de l'expression $\mathrm{e}^{2x}+3\mathrm{e}^x-4$.</li>
+            <li>Conclure.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol>
+            <li><p>$x_1=1$ est une solution évidente.</p>
+            <p>Or $x_1\times x_2=\frac{c}{a}=-4$.</p>
+            <p>Donc $x_2=-4$.</p>
+            <p>Donc les solutions de l'équation sont $x_1=1$ et $x_2=-4$.</p></li>
+            <li><p>D'après ce qui précédè, on a&nbsp;:</p>
+            $$X^2-4X+3=(X-1)(X+4)$$
+            <p>D'où : $\mathrm{e}^{2x}-4\mathrm{e}^x+3=(\mathrm{e}^x-1)(\mathrm{e}^x+4)$.</p></li>
+            <li><p>$e^x\gt 0$ pour tout $x$ d'où $\mathrm{e}^x+4\gt 0$ pour tout $x$.</p>
+            <p>Donc le signe de $\mathrm{e}^{2x}+3\mathrm{e}^x-4$ dépend du signe de $\mathrm{e}^x-1$.</p>
+            <p>Or $\mathrm{e}^x-1\gt 0$ si et seulement si $x\gt 0$.</p>
+            <p>Donc $\mathrm{e}^{2x}+3\mathrm{e}^x-4\gt 0$ si et seulement si $x\gt 0$.</p></li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Propriété : </b> Pour tous réels $a$ et $b$, <br>
+    <div style="text-align:center">
+    $\mathrm{e}^a=\mathrm{e}^b$ si et seulement si $a=b$.
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Résolvez les équations suivantes&nbsp;:
         <ol class="horizontal-list">
             <li>$\mathrm{e}^{x}=\mathrm{e}^{2x+1}$</li>
             <li>$\mathrm{e}^{x}\mathrm{e}=\mathrm{e}^{3x+2}$</li>
@@ -565,9 +731,11 @@
         </ol>
     </div>
 </div>
-<h3>Inéquatios avec l'exponentielle</h3>
 <div class="encart">
-    <b>Propriété : </b> Pour tout réel $a$ et $b$, $\mathrm{e}^a\lt\mathrm{e}^b$ si et seulement si $a\lt b$.
+    <b>Propriété : </b> Pour tous réels $a$ et $b$, <br>
+    <div style="text-align:center">
+    $\mathrm{e}^a\lt\mathrm{e}^b$ si et seulement si $a\lt b$.
+    </div>
 </div>
 <div class="exercice">
     <div class="enonce">
@@ -641,8 +809,96 @@
         </ol>
     </div>
 </div>
-<h3>Courbes représentatives</h3>
-<header><div>Fonction exponentielle</div> <div>Fiche n° 03</div></header>
+<div class="exercice">
+    <div class="enonce">
+        On considère la fonction $f$ définie sur $\mathbb{R}$ par $f(x)=20\mathrm{e}^{-\num{0,3465}}$.
+        <ol class="alphabetical-list">
+            <li>Montrez que pour tous réels $x$, $f(x+2)=e^{-\num{0.693}x}f(x)$.</li>
+            <li>Sachant que $e^{-\num{0.693}}\approx 0,5$, complétez le tableau de valeurs suivant&nbsp;:
+            <table class="tableauvaleurs">
+                <tr>
+                    <td>$x$</td>
+                    <td>$0$</td>
+                    <td>$2$</td>
+                    <td>$4$</td>
+                    <td>$6$</td>
+                </tr>
+                <tr>
+                    <td>$f(x)$</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <li>Tracez la fonction $f$ dans le repère suivant.
+            <div class="figure">
+            <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="10" ymax ="21" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="5" stroke="none"></g>
+                    <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">5</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            </svg>
+        </div>
+        </li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$\begin{align*}
+            f(x+2)&=20\mathrm{e}^{-\num{0.3465}(x+2)}\\
+            f(x+2)&=20\mathrm{e}^{-\num{0.3465}x-2\num{0.3465}}\\
+            f(x+2)&=20\mathrm{e}^{-\num{0.3465}x}\mathrm{e}^{-2\num{0.3465}}\\
+            f(x+2)&=20\mathrm{e}^{-\num{0.3465}x}\mathrm{e}^{-\num{0.693}}\\
+            f(x+2)&=\mathrm{e}^{-\num{0.693}}20\mathrm{e}^{-\num{0.3465}x}\\
+            f(x+2)&=\mathrm{e}^{-\num{0.693}}f(x)
+            \end{align*}$$</li>
+            <li>
+            <table class="tableauvaleurs">
+                <tr>
+                    <td>$x$</td>
+                    <td>$0$</td>
+                    <td>$2$</td>
+                    <td>$4$</td>
+                    <td>$6$</td>
+                </tr>
+                <tr>
+                    <td>$f(x)$</td>
+                    <td>$20$</td>
+                    <td>$10$</td>
+                    <td>$5$</td>
+                    <td>$2,5$</td>
+                </tr>
+            </table>
+            </li>
+            <li>
+            <div class="figure">
+            <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="10" ymax ="21" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="5" stroke="none"></g>
+                    <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">5</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="C_f" class="courbeRepresentative" expression="20exp(-0.3465x)" linkto="repere1" xmin="0" xmax="10" pas="0.1" stroke="black" stroke-width="0.5" fill="transparent"></g>
+            </svg>
+        </div>
+            </li>
+        </ol>
+    </div>
+</div>
 <div class="exercice">
     <div class="enonce">
         On considère les fonctions suivantes définies sur $\mathbb{R}$&nbsp;:
