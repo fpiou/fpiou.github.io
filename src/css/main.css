@@ -262,6 +262,10 @@ Toujours est-il qu'en l'enlevant la valeur n'est pas doublée. */
   border-bottom: 1px solid black;
 }
 
+/* LA dernière ligne avec son border-top black */
+.tableausigne tr:last-child {
+  border-top: 1px solid black;
+}
 /* Tableaux de signes 1 seule valeur */
 .tableausigne1 {
   width: 100%;
