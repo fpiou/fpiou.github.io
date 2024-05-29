@@ -214,7 +214,9 @@ summary {
 }
 
 
-/* Tableaux de signes */
+/*************************************/
+/* Tableaux de signes 2 valeurs      */
+/*************************************/
 .tableausigne{
   width: 100%;
   text-align: center;
@@ -248,13 +250,6 @@ summary {
     border-left: 1px solid #000000;
 }
 
-/* Je ne comprends pas pourquoi le code suivant était présent.
-Toujours est-il qu'en l'enlevant la valeur n'est pas doublée. */
-/* .tableausigne tr:nth-child(n+2) td:nth-child(4) span, 
-.tableausigne tr:nth-child(n+2) td:nth-child(6) span {
-    position: relative;
-} */
-
 .tableausigne td:nth-child(1) {
   border-right: 1px solid black;
 }
@@ -266,7 +261,75 @@ Toujours est-il qu'en l'enlevant la valeur n'est pas doublée. */
 .tableausigne tr:last-child {
   border-top: 1px solid black;
 }
+
+.double1 tr:nth-child(n+2) td:nth-child(4)::before {
+  /* Bordure double pour les valeurs interdites */
+  border-left: 3px double #000000;
+}
+
+.double2 tr:nth-child(n+2) td:nth-child(6)::before {
+  /* Bordure double pour les valeurs interdites */
+  border-left: 3px double #000000;
+}
+
+.double3 tr:nth-child(n+2) td:nth-child(8)::before {
+  /* Bordure double pour les valeurs interdites */
+  border-left: 3px double #000000;
+}
+
+/*************************************/
+/* Tableaux de signes 3 valeurs */
+/*************************************/
+.tableausigne3{
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin: 1em 0em;
+}
+
+/* Aligner à gauche le contenu de la deuxième colonne */
+.tableausigne3 tr td:nth-child(2) {
+    text-align: left;
+}
+
+/* Aligner à droite le contenu de la dernière colonne */
+.tableausigne3 tr td:last-child {
+    text-align: right;
+}
+
+.tableausigne3 tr:nth-child(n+2) td:nth-child(4), 
+.tableausigne3 tr:nth-child(n+2) td:nth-child(6),
+.tableausigne3 tr:nth-child(n+2) td:nth-child(8) {
+    position: relative;
+}
+
+.tableausigne3 tr:nth-child(n+2) td:nth-child(4)::before, 
+.tableausigne3 tr:nth-child(n+2) td:nth-child(6)::before,
+.tableausigne3 tr:nth-child(n+2) td:nth-child(8)::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid #000000;
+}
+
+.tableausigne3 td:nth-child(1) {
+  border-right: 1px solid black;
+}
+.tableausigne3 tr:nth-child(1) {
+  border-bottom: 1px solid black;
+}
+
+/* LA dernière ligne avec son border-top black */
+.tableausigne3 tr:last-child {
+  border-top: 1px solid black;
+}
+
+/*************************************/
 /* Tableaux de signes 1 seule valeur */
+/*************************************/
 .tableausigne1 {
   width: 100%;
   text-align: center;
