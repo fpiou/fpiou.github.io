@@ -54,6 +54,8 @@
     
     <link rel="stylesheet" href="/src/css/prettyExercice.css" />
     
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
     <link rel="stylesheet" href="/src/css/print.css" />
     
 
@@ -254,6 +256,322 @@
 </div>
 <div class="exercice">
     <div class="enonce">
+        On se propose de résoudre l'inéquation $$x^2\leqslant 5x$$
+        <ol class="alphabetical-list">
+            <li>Dressez le tableau de signes de $x(x-5)$</li>
+            <li>Résoudre $x^2\leqslant 5x$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol>
+            <li>
+                <p>On dresse le tableau de signes de $x(x-5)$.</p>
+                <table class="tableausigne">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$0$</td>
+                        <td></td>
+                        <td>$5$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$x$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x-5$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x(x-5)$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td>$0$</td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </li>
+            <li><p>
+            $$\begin{align*}
+            x^2&\leqslant 5x\\
+            x^2-5x&\leqslant 0\\
+            x(x-5)&\leqslant 0
+            \end{align*}$$
+                <p>Résoudre $x^2\leqslant 5x$ revient à résoudre l'inéquation $x(x-5)\leqslant 0$ (par factorisation).</p>
+                <p>L'ensemble des solutions de l'inéquation $x^2\leqslant 5x$ est $[0;5]$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Transformez les inéquations suivantes en inéquations produit puis les résoudre.
+        <ol class="horizontal-list">
+            <li>$$x^2\gt 4x$$</li>
+            <li>$$x^3\leqslant 36x$$</li>
+            <li>$$(x-7)(x+9)\geqslant (x-7)(3-x)$$</li>
+            <li>$$(x+9)^2\lt (x+9)(5-x)$$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol>
+            <li>
+                <p>On transforme l'inéquation $x^2\gt 4x$ en inéquation produit.</p>
+                <p>On commence par mettre tous les termes du même côté de l'inéquation.</p>
+                $$x^2-4x\gt 0$$
+                <p>On factorise ensuite l'expression.</p>
+                $$x(x-4)\gt 0$$
+                <p>On dresse le tableau de signes de $x(x-4)$.</p>
+                <table class="tableausigne">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$0$</td>
+                        <td></td>
+                        <td>$4$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$x$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x-4$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x(x-4)$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td>$0$</td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p>L'ensemble des solutions de l'inéquation $x^2\gt 4x$ est $]0;4[$.</p>
+            </li>
+            <li>
+                <p>On transforme l'inéquation $x^3\leqslant 36x$ en inéquation produit.</p>
+                <p>On commence par mettre tous les termes du même côté de l'inéquation.</p>
+                $$x^3-36x\leqslant 0$$
+                <p>On factorise ensuite l'expression.</p>
+                $$x(x^2-36)\leqslant 0$$
+                <p>On factorise ensuite l'expression.</p>
+                $$x(x-6)(x+6)\leqslant 0$$
+                <p>On dresse le tableau de signes de $x(x-6)(x+6)$.</p>
+                <table class="tableausigne3">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$-6$</td>
+                        <td></td>
+                        <td>$0$</td>
+                        <td></td>
+                        <td>$6$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$x$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x-6$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x+6$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x(x-6)(x+6)$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td>$0$</td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p>L'ensemble des solutions de l'inéquation $x^3\leqslant 36x$ est $]-\infty;-6]\cup[0;6]$.</p>
+            </li>
+            <li>
+                <p>On transforme l'inéquation $$(x-7)(x+9)\geqslant (x-7)(3-x)$$ en inéquation produit.</p>
+                <p>On commence par mettre tous les termes du même côté de l'inéquation.</p>
+                $$(x-7)(x+9)-(x-7)(3-x)\geqslant 0$$
+                <p>On factorise ensuite l'expression.</p>
+                $$(x-7)(x+9-(3-x))\geqslant 0$$
+                $$(x-7)(x+9-3+x)\geqslant 0$$
+                $$(x-7)(2x+6)\geqslant 0$$
+                $$(x-7)2(x+3)\geqslant 0$$
+                $$(x-7)(x+3)\geqslant 0$$
+                <p>On dresse le tableau de signes de $(x-7)(x+3)$.</p>
+                <table class="tableausigne">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$-3$</td>
+                        <td></td>
+                        <td>$7$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$x-7$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x+3$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$(x-7)(x+3)$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td>$0$</td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p>L'ensemble des solutions de l'inéquation $$(x-7)(x+9)\geqslant (x-7)(3-x)$$ est $]-\infty;-3]\cup[7;+\infty[$.</p>
+            </li>
+            <li>
+                <p>On transforme l'inéquation $$(x+9)^2\lt (x+9)(5-x)$$ en inéquation produit.</p>
+                <p>On commence par mettre tous les termes du même côté de l'inéquation.</p>
+                $$(x+9)^2-(x+9)(5-x)\lt 0$$
+                <p>On factorise ensuite l'expression.</p>
+                $$(x+9)(x+9-(5-x))\lt 0$$
+                $$(x+9)(x+9-5+x)\lt 0$$
+                $$(x+9)(2x+4)\lt 0$$
+                $$(x+9)2(x+2)\lt 0$$
+                $$(x+9)(x+2)\lt 0$$
+                <p>On dresse le tableau de signes de $(x+9)(x+2)$.</p>
+                <table class="tableausigne">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$-9$</td>
+                        <td></td>
+                        <td>$-2$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$x+9$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x+2$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$(x+9)(x+2)$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td>$0$</td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p>L'ensemble des solutions de l'inéquation $$(x+9)^2\lt (x+9)(5-x)$$ est $]-9;-2[$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
         Factorisez les expressions de chacune des fonctions puis dressez un tableau de signes.
         <ol class="horizontal-list">
             <li>$f(x)=x^2-16x$</li>
@@ -406,7 +724,7 @@
 </div>
 <div class="exercice">
     <div class="enonce">
-        On considère la fonction quotient $f$ définie par $$f(x)=\frac{x-4}{x+2}$$
+        On considère la fonction quotient $f$ définie par $f(x)=\frac{x-4}{x+2}$.
         <ol class="alphabetical-list">
             <li>Quelle est la valeur interdite de $f$ ?<br>
             <i>Autrement dit quelle valeur de $x$ annule le dénominateur ?</i></li>
@@ -653,12 +971,76 @@
         </ol>
     </div>
 </div>
+<div class="exercice">
+    <div class="enonce">
+        On se propose de résoudre l'inéquation $$-\frac{x+3}{8-x}\leqslant 0$$
+        <ol class="alphabetical-list">
+            <li>Justifiez que l'inéquation est équivalente à $$\frac{x+3}{8-x}\geqslant 0$$</li>
+            <li>Dressez le tableau de signes et conclure.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol>
+            <li>
+                <p>On montre que l'inéquation est équivalente à $\frac{x+3}{8-x}\geqslant 0$ en multipliant chaque membre de l'inéquation par $-1$.</p>
+                <p>On change donc le sens de l'inégalité.</p>
+            </li>
+            <li>
+                <p>La valeur $8$ est interdite car elle annule le dénominateur.</p>
+                <p>On dresse le tableau de signes de $\frac{x+3}{8-x}$.</p>
+                <table class="tableausigne double2">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$-3$</td>
+                        <td></td>
+                        <td>$8$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$x+3$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$8-x$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$\frac{x+3}{8-x}$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p>L'ensemble des solutions de l'inéquation $-\frac{x+3}{8-x}\leqslant 0$ est $[-3;8[$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
 <div class="encart">
-    <b>Méthode : </b> Pour résoudre une inéquation produit ou quotient il suffit de dresser le tableau de signes du produit ou du quotient puis de lire les solutions de l'inéquation.
+    <b>Méthode : </b> Pour résoudre une inéquation produit ou quotient il suffit de dresser le tableau de signes du produit ou du quotient puis de lire l'ensemble des solutions de l'inéquation.
 </div>
 <div class="exercice">
     <div class="enonce">
-        Pour chacun des tableaux de signes suivants, déterminez les solutions de l'inéquation.
+        À l'aide des tableaux de signes suivants, résoudre l'inéquation donnée.
         <ol class="alphabetical-list">
             <li><div style="text-align:center">$$uv\leqslant 0$$</div>
             <table class="tableausigne double2">
@@ -899,7 +1281,7 @@
                         <td></td>
                     </tr>
                 </table>
-                <p>Les solutions de l'inéquation $x(x-3)\geqslant 0$ sont $x\in]-\infty;0]\cup[3;+\infty[$.</p>
+                <p>L'ensemble des solutions de l'inéquation $x(x-3)\geqslant 0$ est $]-\infty;0]\cup[3;+\infty[$.</p>
             </li>
             <li>
                 <p>On dresse le tableau de signes de $\frac{x-4}{x+2}$.</p>
@@ -945,7 +1327,7 @@
                         <td></td>
                     </tr>
                 </table>
-                <p>Les solutions de l'inéquation $\frac{x-4}{x+2}\leqslant 0$ sont $x\in]-\infty;-2[\cup[4;+\infty[$.</p>
+                <p>L'ensemble des solutions de l'inéquation $\frac{x-4}{x+2}\leqslant 0$ est $]-\infty;-2[\cup[4;+\infty[$.</p>
             </li>
             <li>
                 <p>On dresse le tableau de signes de $\frac{x-4}{6-x}$.</p>
@@ -991,7 +1373,7 @@
                         <td></td>
                     </tr>
                 </table>
-                <p>Les solutions de l'inéquation $\frac{x-4}{6-x}\gt 0$ sont $x\in]4;6[$.</p>
+                <p>L'ensemble des solutions de l'inéquation $\frac{x-4}{6-x}\gt 0$ est $]4;6[$.</p>
             </li>
         </ol>
     </div>
@@ -1050,7 +1432,7 @@
                         <td></td>
                     </tr>
                 </table>
-                <p>Les solutions de l'inéquation $(14-2x)(3x+2)\gt 0$ sont $x\in]-\infty;-7[\cup]\num{7};+\infty[$.</p>
+                <p>L'ensemble des solutions de l'inéquation $(14-2x)(3x+2)\gt 0$ est $]-\infty;-7[\cup]\num{7};+\infty[$.</p>
             </li>
             <li>
                 <p>On dresse le tableau de signes de $\frac{2x-3}{10x+7}$.</p>
@@ -1096,7 +1478,7 @@
                         <td></td>
                     </tr>
                 </table>
-                <p>Les solutions de l'inéquation $\frac{2x-3}{10x+7}\leqslant 0$ sont $x\in]-\infty;-\frac{7}{10}[\cup]\frac{3}{2};+\infty[$.</p>
+                <p>L'ensemble des solutions de l'inéquation $\frac{2x-3}{10x+7}\leqslant 0$ est $]-\infty;-\frac{7}{10}]\cup[\frac{3}{2};+\infty[$.</p>
             </li>
         </ol>
     </div>
@@ -1208,38 +1590,38 @@
 </div>
 <div class="exercice">
     <div class="enonce">
+        On se propose de résoudre l'inéquation suivante :
+        $$\frac{5x-7}{3x+2}+2\leqslant 0$$
         <ol class="alphabetical-list">
-            <li>Dressez le tableau de signes de $x(x-5)$</li>
-            <li>En déduire les solutions de l'inéquation $x^2\leqslant 5x$</li>
+            <li>Montrez que l'inéquation est équivalente à $$\frac{11x-3}{3x+2}\leqslant 0$$</li>
+            <li>Dressez le tableau de signes et conclure.</li>
         </ol>
     </div>
     <div class="solution">
         <ol>
             <li>
-                <p>On dresse le tableau de signes de $x(x-5)$.</p>
-                <table class="tableausigne">
+                <p>On montre que l'inéquation est équivalente à $$\frac{11x-3}{3x+2}\leqslant 0$$</p>
+                $$\frac{5x-7}{3x+2}+2\leqslant 0$$
+                $$\frac{5x-7+2(3x+2)}{3x+2}\leqslant 0$$
+                $$\frac{5x-7+6x+4}{3x+2}\leqslant 0$$
+                $$\frac{11x-3}{3x+2}\leqslant 0$$
+            </li>
+            <li>
+                <p>La valeur $-\frac{2}{3}$ est interdite car elle annule le dénominateur.</p>
+                <p>On dresse le tableau de signes de $\frac{11x-3}{3x+2}$.</p>
+                <table class="tableausigne double1">
                     <tr>
                         <td>$x$</td>
                         <td>$-\infty$</td>
                         <td></td>
-                        <td>$0$</td>
+                        <td>$-\frac{2}{3}$</td>
                         <td></td>
-                        <td>$5$</td>
+                        <td>$\frac{3}{11}$</td>
                         <td></td>
                         <td>$+\infty$</td>
                     </tr>
                     <tr>
-                        <td>$x$</td>
-                        <td></td>
-                        <td>$-$</td>
-                        <td>$0$</td>
-                        <td>$+$</td>
-                        <td></td>
-                        <td>$+$</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>$x-5$</td>
+                        <td>$11x-3$</td>
                         <td></td>
                         <td>$-$</td>
                         <td></td>
@@ -1249,61 +1631,66 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td>$x(x-5)$</td>
+                        <td>$3x+2$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$\frac{11x-3}{3x+2}$</td>
                         <td></td>
                         <td>$+$</td>
                         <td>$0$</td>
                         <td>$-$</td>
-                        <td>$0$</td>
+                        <td></td>
                         <td>$+$</td>
                         <td></td>
                     </tr>
                 </table>
-            </li>
-            <li><p>
-            $$\begin{align*}
-            x^2&\leqslant 5x\\
-            x^2-5x&\leqslant 0\\
-            x(x-5)&\leqslant 0
-            \end{align*}$$
-                <p>Résoudre $x^2\leqslant 5x$ revient à résoudre l'inéquation $x(x-5)\leqslant 0$ (par factorisation).</p>
-                <p>Les solutions de l'inéquation $x^2\leqslant 5x$ sont $x\in[0;5]$.</p>
+                <p>L'ensemble des solutions de l'inéquation $\frac{5x-7}{3x+2}+2\leqslant 0$ est $]-\frac{2}{3};\frac{3}{11}]$.</p>
             </li>
         </ol>
     </div>
 </div>
 <div class="exercice">
     <div class="enonce">
-        Transformez les inéquations suivantes en inéquations produit puis les résoudre.
+        Résoudre les inéquations suivantes.
         <ol class="horizontal-list">
-            <li>$$x^2\gt 4x$$</li>
-            <li>$$x^3\leqslant 36x$$</li>
-            <li>$$(x-7)(x+9)\geqslant (x-7)(3-x)$$</li>
-            <li>$$(x+9)^2\lt (x+9)(5-x)$$</li>
+            <li>$$\frac{4x-3}{9x+1}\geqslant 3$$</li>
+            <li>$$\frac{6x-5}{2x-1}\lt 2$$</li>
         </ol>
     </div>
     <div class="solution">
         <ol>
             <li>
-                <p>On transforme l'inéquation $x^2\gt 4x$ en inéquation produit.</p>
+                <p>On résout transforme l'inéquation $$\frac{4x-3}{9x+1}\geqslant 3$$ en inéquation quotient.</p>
                 <p>On commence par mettre tous les termes du même côté de l'inéquation.</p>
-                $$x^2-4x\gt 0$$
-                <p>On factorise ensuite l'expression.</p>
-                $$x(x-4)\gt 0$$
-                <p>On dresse le tableau de signes de $x(x-4)$.</p>
-                <table class="tableausigne">
+                $$\frac{4x-3}{9x+1}-3\geqslant 0$$
+                <p>On réduit au même dénominateur.</p>
+                $$\frac{4x-3-3(9x+1)}{9x+1}\geqslant 0$$
+                $$\frac{4x-3-27x-3}{9x+1}\geqslant 0$$
+                $$\frac{-23x-6}{9x+1}\geqslant 0$$
+                On multiplie par $-1$ en changeant le sens de l'inégalité.
+                $$\frac{23x+6}{9x+1}\leqslant 0$$
+                <p>La valeur $-\frac{1}{9}$ est interdite car elle annule le dénominateur.</p>
+                <p>On dresse le tableau de signes de $\frac{23x+6}{9x+1}$.</p>
+                <table class="tableausigne double2">
                     <tr>
                         <td>$x$</td>
                         <td>$-\infty$</td>
                         <td></td>
-                        <td>$0$</td>
+                        <td>$-\frac{6}{23}$</td>
                         <td></td>
-                        <td>$4$</td>
+                        <td>$-\frac{1}{9}$</td>
                         <td></td>
                         <td>$+\infty$</td>
                     </tr>
                     <tr>
-                        <td>$x$</td>
+                        <td>$23x+6$</td>
                         <td></td>
                         <td>$-$</td>
                         <td>$0$</td>
@@ -1313,29 +1700,123 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td>$x-4$</td>
+                        <td>$9x+1$</td>
                         <td></td>
                         <td>$-$</td>
                         <td></td>
                         <td>$-$</td>
-                        <td>$0$</td>
+                        <td></td>
                         <td>$+$</td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td>$x(x-4)$</td>
+                        <td>$\frac{23x+6}{9x+1}$</td>
                         <td></td>
                         <td>$+$</td>
                         <td>$0$</td>
                         <td>$-$</td>
-                        <td>$0$</td>
+                        <td></td>
                         <td>$+$</td>
                         <td></td>
                     </tr>
                 </table>
-                <p>Les solutions de l'inéquation $x^2\gt 4x$ sont $x\in]0;4[$.</p>
+                <p>L'ensemble des solutions de l'inéquation $$\frac{4x-3}{9x+1}\geqslant 3$$ est $]-\frac{6}{23};-\frac{1}{9}]$.</p>
+            </li>
+            <li>
+                <p>On résout transforme l'inéquation $$\frac{6x-5}{2x-1}\lt 2$$ en inéquation quotient.</p>
+                <p>On commence par mettre tous les termes du même côté de l'inéquation.</p>
+                $$\frac{6x-5}{2x-1}-2\lt 0$$
+                <p>On réduit au même dénominateur.</p>
+                $$\frac{6x-5-2(2x-1)}{2x-1}\lt 0$$
+                $$\frac{6x-5-4x+2}{2x-1}\lt 0$$
+                $$\frac{2x-3}{2x-1}\lt 0$$
+                <p>La valeur $\frac{1}{2}$ est interdite car elle annule le dénominateur.</p>
+                <p>On dresse le tableau de signes de $\frac{2x-3}{2x-1}$.</p>
+                <table class="tableausigne double1">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$\frac{1}{2}$</td>
+                        <td></td>
+                        <td>$\frac{3}{2}$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$2x-3$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$2x-1$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$\frac{2x-3}{2x-1}$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td>$0$</td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p>L'ensemble des solutions de l'inéquation $$\frac{6x-5}{2x-1}\lt 2$$ est $]\frac{1}{2};\frac{3}{2}[$.</p>
             </li>
         </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère la figure suivante dans laquelle $ABCD$ est un rectangle tel que $AB=5$ et $BC=3$.
+        $IJKL$ est un quadrilatère inscrit dans le rectangle tel que $AI=BJ=CK=CL$.
+        <div class="figure">
+            <svg viewBox="0 0 280 200">
+                <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="6" ymax ="4" xorigine="0" yorigine="0"></g>
+                <g name="A" class="point labeled" repere="repere1" x="0" y="0"></g>
+                <g class="label" linkto="A" x="-15" y="0">A</g>
+                <g name="B" class="point labeled" repere="repere1" x="5" y="0"></g>
+                <g class="label" linkto="B" x="0" y="0">B</g>
+                <g name="C" class="point labeled" repere="repere1" x="5" y="3"></g>
+                <g class="label" linkto="C" x="0" y="-20">C</g>
+                <g name="D" class="point labeled" repere="repere1" x="0" y="3"></g>
+                <g class="label" linkto="D" x="-15" y="-20">D</g>
+                <g name="ABCD" class="polygone" linkto="A B C D" fill="none"></g>
+                <g name="I" class="point labeled" repere="repere1" x="0.7" y="0"></g>
+                <g class="label" linkto="I" x="-5" y="0">I</g>
+                <g name="J" class="point labeled" repere="repere1" x="5" y="0.7"></g>
+                <g class="label" linkto="J" x="3" y="-10">J</g>
+                <g name="K" class="point labeled" repere="repere1" x="4.3" y="3"></g>
+                <g class="label" linkto="K" x="-5" y="-20">K</g>
+                <g name="L" class="point labeled" repere="repere1" x="0" y="2.3"></g>
+                <g class="label" linkto="L" x="-15" y="-10">L</g>
+                <g name="IJKL" class="polygone" linkto="I J K L" fill="green" fill-opacity="0.2"></g>
+                <g name="AI" class="segment codage" repere="repere1" linkto="A I"></g>
+                <g name="BJ" class="segment codage" repere="repere1" linkto="B J AI"></g>
+                <g name="CK" class="segment codage" repere="repere1" linkto="C K AI"></g>
+                <g name="DL" class="segment codage" repere="repere1" linkto="D L AI"></g>
+
+            </svg>
+        </div>
+        Notons $x$ la longueur $AI$.
+        On se propose de déterminer les valeurs de $x$ pour lesquelles l'aire de la surface de $IJKL$ ets plus petite que l'aire de la surface restante dans $ABCD$.
+        
+    <br>
+    Montrez que cela revient à résoudre :
+    $$(5-2x)(x-\num{1.5})\gt 0$$
     </div>
 </div></main>
   </body>
