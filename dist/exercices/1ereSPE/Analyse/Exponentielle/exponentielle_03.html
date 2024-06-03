@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Exponentielle_03.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Fonction exponentielle</div> <div>Fiche n° 03</div></header>
+<div class="exercice">
+    <div class="enonce">
+        Considérons la fonction $f$ définie sur $\mathbb{R}$ par $f(x) = x\mathrm{e}^{x}-4\mathrm{e}^{x}$. On se propose d'étudier cette fonction.
+        <ol class="alphabetical-list">
+            <li>Étudiez le signe de $f(x)$.</li> 
+            <li>Calculez $f'(x)$.</li>
+            <li>Dressez le tableau de variation de $f$.</li>
+            <div class="figure">
+                <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+                        <!-- On définit le repère -->
+                        <g name="repere1" class="repere" xmin="-5" ymin="-30" xmax="5" ymax ="30" xorigine="0" yorigine="0"></g>
+                        <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.1" ypas="1" stroke="gray" stroke-width="0.2"></g>
+                        <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="5" stroke="gray" stroke-width="0.4"></g>
+                        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="5" stroke="black" stroke-width="0.5"></g>
+                        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                        <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                        <g name="J" class="point labeled" repere="repere1" x="0" y="5" stroke="none"></g>
+                        <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">5</g>
+                        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                </svg>
+            </div>
+            <li>Tracez la tangente à la courbe représentative de $f$ au point d'abscisse 0.</li>
+            <li>Tracez la courbe représentative de $f$ à main levée.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$e^x\gt 0$ donc le signe de $f(x)$ est le même que celui de $x-4$.</p>
+            <p>Donc $f(x)\gt 0$ si $x\gt 4$ et $f(x)\lt 0$ si $x\lt 4$.</p></li>
+            <li><p>$f'(x) = (x-4)e^x + e^x = e^x(x-3)$.</p></li>
+            <li><p>On a $f'(x) = e^x(x-3)$ donc $f'(x)\gt 0$ si $x\gt 3$ et $f'(x)\lt 0$ si $x\lt 3$.</p>
+            <p>Donc $f$ est croissante sur $]3;+\infty[$ et décroissante sur $]-\infty;3[$.</p>
+            </li>
+            <div class="figure">
+                <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-5" ymin="-30" xmax="5" ymax ="30" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.1" ypas="1" stroke="gray" stroke-width="0.2"></g>
+                    <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="5" stroke="gray" stroke-width="0.4"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="5" stroke="black" stroke-width="0.5"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="5" stroke="none"></g>
+                    <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">5</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="C_f" class="courbeRepresentative" expression="(x-4)*exp(x)" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="0.5" fill="transparent"></g>
+                    <g name="Tangente" class="courbeRepresentative" expression="-3x-4" point="0" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="0.5"></g>
+                </svg>
+            </div>
+            <li><p>La tangente à la courbe de $f$ en 0 est la droite d'équation $y=-3x-4$.</p></li>
+            <li><p>La courbe de $f$ est croissante sur $]3;+\infty[$ et décroissante sur $]-\infty;3[$.</p></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Étudiez la fonction $f$ définie sur $\mathbb{R}$ par $f(x) = xe^x-e$.
+        <ol class="alphabetical-list">
+            <li>On se propose de montrer que $f(x)$ change de signe en $1$.
+                Justifiez que si $x\gt 1$, alors $\mathrm{e}^x\gt \mathrm{e}$ et en déduire $x\mathrm{e}^x\gt \mathrm{e}$. Conclure.
+            </li>
+            <li>Calculez $f'(x)$.</li>
+            <li>Dressez le tableau de variation de $f$.</li>
+            <li>Montrez que si $x\lt 0$ alors $f(x)\lt -\mathrm{e}$. Tracez la droite d'équation $x=-\mathrm{e}$</li>
+            <li>Tracez la tangente à la courbe représentative de $f$ au point d'abscisse 0.</li>
+            <li>Tracez la courbe représentative de $f$ à main levée.</li>
+            <div class="figure">
+                <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-6" ymin="-5" xmax="3" ymax ="5" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.1" ypas="0.2" stroke="gray" stroke-width="0.2"></g>
+                    <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="1" stroke="gray" stroke-width="0.4"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                </svg>
+            </div>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Si $x\gt 1$, alors $e^x\gt \mathrm{e}$ car la fonction exponentielle est strictement croissante.</p>
+            <p>Si $x\gt 1$, alors $x\mathrm{e}^x\gt \mathrm{e}^x$ car la fonction exponentielle est strictement positive.</p>
+            <p>Donc $x\mathrm{e}^x\gt \mathrm{e}^x \gt \mathrm{e}$.</p>
+            <p>Donc $f(x) = xe^x - e\gt 0$ si $x\gt 1$.</p>
+            <p>On montre de la même manière que $f(x)\lt 0$ si $x\lt 1$.</p></li>
+            <li><p>On a $f'(x) = e^x(x+1)$.</p></li>
+            <li><p>Donc $f'(x)\gt 0$ si $x\gt -1$ et $f'(x)\lt 0$ si $x\lt -1$.</p>
+            <p>Donc $f$ est croissante sur $]0;+\infty[$ et décroissante sur $]-\infty;0[$.</p></li>
+            <li><p>Si $x\lt 0$, alors $x\mathrm{e}^x\lt 0$ car $\mathrm{e}^x \gt 0$ et donc $x\mathrm{e}^x - e\lt -e$.</p></li>
+            <li><p>La tangente à la courbe de $f$ en 0 est la droite d'équation $y=x-e-1/e$.</p></li>
+            <div class="figure">
+                <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-6" ymin="-5" xmax="3" ymax ="5" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.1" ypas="0.2" stroke="gray" stroke-width="0.2"></g>
+                    <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="1" stroke="gray" stroke-width="0.4"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="C_f" class="courbeRepresentative" expression="x*exp(x)-exp(1)" linkto="repere1" xmin="-6" xmax="1.7" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="Tangente" class="courbeRepresentative" expression="x-e" point="0" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="0.5"></g>
+                    <g name="d" class="courbeRepresentative" expression="-e" linkto="repere1" xmin="-6" xmax="3" pas="0.1" stroke="blue" stroke-width="0.5" fill="transparent"></g>
+                </svg>
+            </div>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Propriétés : </b> $x\longmapsto \exp(-x)$ est dérivable sur $\mathbb{R}$ et sa dérivée est $-\exp(-x)$.
+    $$\left(\exp(-x)\right)' = -\exp(-x)$$
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez les dérivées de $f$ et $g$ définies sur $\mathbb{R}$ par $f(x) = \frac{e^x}{e^x+1}$ et $g(x) = \frac{e^{-x}}{1+e^{-x}}$.
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Notons $u(x)=e^x$ et $v(x)=e^x+1$.</p>
+            <p>Alors $f(x) = \frac{u(x)}{v(x)}$.</p>
+            <p>Donc $f'(x) = \frac{u'(x)v(x) - u(x)v'(x)}{v(x)^2}$.</p>
+            <p>Donc $f'(x) = \frac{e^x(e^x+1) - e^x(e^x)}{(e^x+1)^2}$.</p>
+            <p>Donc $f'(x) = \frac{e^x}{(e^x+1)^2}$.</p></li>
+            <li><p>Notons $u(x)=e^{-x}$ et $v(x)=1+e^{-x}$.</p>
+            <p>Alors $g(x) = \frac{u(x)}{v(x)}$.</p>
+            <p>Donc $g'(x) = \frac{u'(x)v(x) - u(x)v'(x)}{v(x)^2}$.</p>
+            <p>Donc $g'(x) = \frac{-e^{-x}(1+e^{-x}) - e^{-x}(-e^{-x})}{(1+e^{-x})^2}$.</p>
+            <p>Donc $g'(x) = \frac{-e^{-x} - e^{-2x} + e^{-x}}{(1+e^{-x})^2}$.</p>
+            <p>Donc $g'(x) = \frac{-e^{-2x}}{(1+e^{-x})^2}$.</p></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère la fonction $f$ définie sur $\mathbb{R}$ par $$f(x) = \frac{x^2}{e^{x-2}}$$
+        <ol class="alphabetical-list">
+            <li>Déterminez le signe de $f(x)$.</li>
+            <li>Calculez $f'(x)$.</li>
+            <li>Dressez le tableau de variation de $f$.</li>
+            <li>Déterminez les extremums locaux de $f$.</li>
+            <li>Déterminez une équation réduite de la tangente en $5$ à la courbe représentative de $f$. (on prendra $e^3\approx 20$).</li>
+            <li>Tracez la courbe représentative de $f$ à main levée.</li>
+            <div class="figure">
+                <svg viewBox="0 0 220 250" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-1" ymin="-5" xmax="10" ymax ="20" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.1" ypas="0.2" stroke="gray" stroke-width="0.2"></g>
+                    <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="1" stroke="gray" stroke-width="0.4"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                </svg>
+            </div>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>On a $f(x) = \frac{x^2}{e^{x-2}} = x^2e^{2-x}$.</p>
+            <p>Or $x^2\geqslant 0$ et $e^{2-x}\gt 0$ donc $f(x)\geqslant 0$.</p>
+            <p>Donc $f(x)\gt 0$ sur $\mathbb{R}$.</p></li>
+            <li><p>On a $f'(x) = 2xe^{2-x} - x^2e^{2-x} = e^{2-x}(2x-x^2) = e^{2-x}x(2-x)$.</p></li>
+            <li><p>Donc $f'(x)\gt 0$ si $x\in ]0;2[$ et $f'(x)\lt 0$ si $x\in ]-\infty;0[\cup]2;+\infty[$.</p>
+            <p>Donc $f$ est croissante sur $]0;2[$ et décroissante sur $]-\infty;0[$ et sur $]2;+\infty[$.</p></li>
+            <li><p>On a $f'(x) = e^{2-x}x(2-x)$ donc $f'(x) = 0$ si $x=0$ ou $x=2$.</p>
+            <p>On a $f(0) = 0$ et $f(2) = 4e^0 = 4$.</p>
+            <p>Donc $f$ admet un minimum en 0 et un maximum en 2.</p></li>
+            <li><p>La tangente à la courbe de $f$ en 5 est la droite d'équation $y=-15e^{-3}(x-5)+\frac{25}{e^3}$.</p>
+            <p>On a $e^3\approx 20$ donc l'équation de la tangente est $y=-\frac{3}{4}(x-5)+\frac{5}{4}$.</p>
+            <p>On peut aussi écrire l'équation de la tangente sous la forme $y=-\frac{3}{4}x+\frac{25}{4}$.</p></li>
+            </li>
+            </li>
+            <div class="figure">
+                <svg viewBox="0 0 220 250" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-1" ymin="-5" xmax="10" ymax ="20" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.1" ypas="0.2" stroke="gray" stroke-width="0.2"></g>
+                    <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="1" stroke="gray" stroke-width="0.4"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="C_f" class="courbeRepresentative" expression="x^2/exp(x-2)" linkto="repere1" xmin="-1" xmax="10" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="Tangente" class="courbeRepresentative" expression="-15*exp(-3)*(x-5)+25/exp(3)" point="0" linkto="repere1" xmin="-2" xmax="10" pas="0.1" stroke="blue" stroke-width="0.5"></g>
+                </svg>
+            </div>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        On considère la fonction $f$ définie sur $\mathbb{R}$ par $f(x) = \frac{\mathrm{e}^{x}}{1+\mathrm{e}^{x}}$.
+        <ol class="alphabetical-list">
+            <li>Étudiez le signe de $f(x)$.</li>
+            <li>Montrez que $f(x)=\frac{1}{1+\mathrm{e}^{-x}}$.</li>
+            <li>En déduire que $f(x)\lt 1$.</li>
+            <li>Calculez $f'(x)$.</li>
+            <li>Dressez le tableau de variation de $f$.</li>
+            <li>Tracez la tangente à la courbe représentative de $f$ au point d'abscisse 0.</li>
+            <li>Tracez la courbe représentative de $f$ à main levée.</li>
+            <div class="figure">
+                <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- On définit le repère -->
+                    <g name="repere1" class="repere" xmin="-10" ymin="-0.2" xmax="10" ymax ="1.2" xorigine="0" yorigine="0"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.1" stroke="gray" stroke-width="0.2"></g>
+                    <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="0.2" stroke="gray" stroke-width="0.4"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                    <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                    <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                </svg>
+            </div>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>On a $f(x) = \frac{\mathrm{e}^{x}}{1+\mathrm{e}^{x}} = \frac{1}{\frac{1}{\mathrm{e}^{x}}+1} = \frac{1}{1+\mathrm{e}^{-x}}$.</p>
+            <p>Or $\mathrm{e}^{-x}\gt 0$ donc $1+\mathrm{e}^{-x}\gt 1$ et donc $f(x)\lt 1$.</p></li>
+            <li><p>On a $f'(x) = \frac{\mathrm{e}^{x}(1+\mathrm{e}^{x}) - \mathrm{e}^{x}\mathrm{e}^{x}}{(1+\mathrm{e}^{x})^2} = \frac{\mathrm{e}^{x}}{(1+\mathrm{e}^{x})^2}$.</p></li>
+            <li><p>Donc $f'(x)\gt 0$ si $x\gt 0$ et $f'(x)\lt 0$ si $x\lt 0$.</p>
+            <p>Donc $f$ est croissante sur $]0;+\infty[$ et décroissante sur $]-\infty;0[$.</p></li>
+            <li><p>La tangente à la courbe de $f$ en 0 est la droite d'équation $y=\frac{x}{4}+\frac{1}{2}$.</p></li>
+            <li><p>La courbe de $f$ est croissante sur $]0;+\infty[$ et décroissante sur $]-\infty;0[$.</p></li>
+        </ol>
+        <div class="figure">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                <!-- On définit le repère -->
+                <g name="repere1" class="repere" xmin="-10" ymin="-0.2" xmax="10" ymax ="1.2" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.1" stroke="gray" stroke-width="0.2"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="0.2" stroke="gray" stroke-width="0.4"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="C_f" class="courbeRepresentative" expression="e^x/(1+e^x)" linkto="repere1" xmin="-10" xmax="10" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                <g name="Tangente" class="courbeRepresentative" expression="x/4+0.5" point="0" linkto="repere1" xmin="-2" xmax="2" pas="0.1" stroke="blue" stroke-width="0.5"></g>
+            </svg>
+        </div>
+    </div>
+</div>
+<div class="encart">
+    <b>Propriétés : </b> Soient $a$ et $b$ deux réels. Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x) = \mathrm{e}^{ax+b}$. Alors $f$ est dérivable sur $\mathbb{R}$ et $f'(x) = a \mathrm{e}^{ax+b}$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Étudiez la fonction $f$ définie sur $\mathbb{R}$ par $f(x) = x\mathrm{e}^{-2x+1}$.
+    </div>
+</div></main>
+  </body>
+</html>
