@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Probabilites_01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Probabilités</div> <div>Fiche n° 01</div></header>
+<div class="encart">
+    <b>Définitions :</b> Lors d'une expérience aléatoire, on appelle <strong>univers</strong> et on note $\Omega$ l'ensemble de tous les résultats possibles de cette expérience appelés <strong>issues</strong>. Un événement est un sous-ensemble de l'univers, c'est-à-dire un ensemble d'issues.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Complète
+        <ol class="alphabetical-list">
+            <li>On lance un dé à six faces, l'univers est $\{ \ldots \}$.</li>
+            <li>On lance une pièce de monnaie, l'univers est $\{ \ldots \}$.</li>
+            <li>On tire une carte d'un jeu de 32 cartes et on ne regarde que le symbole, l'univers est $\{ \ldots \}$.</li>
+            <li>On tire une carte d'un jeu de 32 cartes et on ne regarde que la valeur, l'univers est $\{ \ldots \}$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$\{ 1, 2, 3, 4, 5, 6 \}$</li>
+            <li>$\{ P, F \}$</li>
+            <li>$\{ \heartsuit, \diamondsuit, \clubsuit, \spadesuit \}$</li>
+            <li>$\{ 7, 8, 9, 10, V, D, R, A \}$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Une urne contient 60 jetons numérotés de 1 à 12. On tire un jeton.
+        Décrire les événements suivants sous la forme d'un ensemble.
+        <ol class="alphabetical-list">
+            <li>$E_1=\text{«On tire un nombre pair»}$.</li>
+            <li>$E_2=\text{«On tire un nombre multiple de 3»}$.</li>
+            <li>$E_3=\text{«On tire un nombre diviseur de 12»}$.</li>
+            <li>$E_4=\text{«On tire un nombre supérieur à 10»}$.</li>
+            <li>$E_5=\text{«On tire un nombre premier»}$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$E_1=\{ 2, 4, 6, 8, 10, 12 \}$</li>
+            <li>$E_2=\{ 3, 6, 9, 12 \}$</li>
+            <li>$E_3=\{ 1, 2, 3, 4, 6, 12 \}$</li>
+            <li>$E_4=\{ 11, 12 \}$</li>
+            <li>$E_5=\{ 1, 2, 3, 5, 7, 11 \}$</li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Définition :</b> On note $A\cup B$ la réunion de deux événements $A$ et $B$, c'est-à-dire l'événement qui se réalise si $A$ ou $B$ se réalise. On note $A\cap B$ l'intersection de deux événements $A$ et $B$, c'est-à-dire l'événement qui se réalise si $A$ et $B$ se réalisent en même temps.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On lance un dé à six faces. On considère les événements suivants :
+        <ul>
+            <li>$A=\text{«On obtient un nombre pair»}$</li>
+            <li>$B=\text{«On obtient un nombre multiple de 3»}$</li>
+        </ul>
+        Décrire les événements suivants sous la forme d'un ensemble.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$A\cup B$</li>
+            <li>$A\cap B$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        On a $A=\{ 2, 4, 6 \}$ et $B=\{ 3, 6 \}$.
+        <ol class="alphabetical-list">
+            <li>$A\cup B=\{ 2, 3, 4, 6 \}$</li>
+            <li>$A\cap B=\{ 6 \}$</li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Définition :</b> On note $\overline{A}$ l'événement contraire de $A$, c'est-à-dire l'événement qui se réalise si $A$ ne se réalise pas.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On lance un dé à dix faces. On considère l'événement $A=\text{«On obtient un nombre premier»}$.
+        Décrire l'événement $\overline{A}$ sous la forme d'un ensemble.
+    </div>
+    <div class="solution">
+        On a $A=\{ 2, 3, 5, 7 \}$.
+        $\overline{A}=\{ 1, 4, 6, 8, 9, 10 \}$.
+    </div>
+</div>
+<div class="encart">
+    <b>Définition :</b> La <strong>probabilité</strong> d'un événement est un nombre compris entre $0$ et $1$ qui mesure la chance que cet événement se réalise.
+    <ul style="padding-left: 1em;">
+        <li>La probabilité d'un événement égal à l'univers $\Omega$ est $1$.</li>
+        <li>La probabilité d'un événement égal à l'ensemble vide $\varnothing$ est $0$.</li>
+        <li>La probabilité de l'événement contraire de $A$ est $1$ moins la probabilité de $A$.</li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Un entreprise commercialise des feutres de quatre couleurs : rouge, vert, bleu et noir. On sait que :
+        <ul>
+            <li>la probabilité de tirer un feutre rouge est de $\frac{1}{3}$ ;</li>
+            <li>la probabilité de tirer un feutre vert est de $\frac{1}{4}$ ;</li>
+            <li>la probabilité de tirer un feutre bleu est de $\frac{1}{6}$. </li>
+        </ul>
+        <ol class="alphabetical-list">
+            <li>Quelle est la probabilité de tirer un feutre rouge ou vert ?</li>
+            <li>Quelle est la probabilité de tirer un feutre rouge et vert ?</li>
+            <li>Quelle est la probabilité de ne pas tirer un feutre bleu ?</li>
+            <li>Quelle est la probabilité de tirer un feutre noir ?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>La probabilité de tirer un feutre rouge ou vert est $\frac{1}{3}+\frac{1}{4}=\frac{7}{12}$.</li>
+            <li>La probabilité de tirer un feutre rouge et vert est $0$.</li>
+            <li>La probabilité de ne pas tirer un feutre bleu est $1-\frac{1}{6}=\frac{5}{6}$.</li>
+            <li>La probabilité de tirer un feutre noir est $1-\frac{1}{3}-\frac{1}{4}-\frac{1}{6}=\frac{1}{4}$.</li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Propriété :</b> Si $A$ et $B$ sont deux événements alors on a :
+    $$P(A\cup B)+P(A\cap B)=P(A)+P(B)$$
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère $A$ et $B$ deux événements d'une même expérience aléatoire tels que $P(A)=\frac{1}{3}$, $P(B)=\frac{1}{4}$ et $P(A\cap B)=\frac{1}{6}$.
+        Calculez $P(A\cup B)$.
+    </div>
+    <div class="solution">
+        D'après la propriété, on a :
+        $$P(A\cup B)+P(A\cap B)=P(A)+P(B)$$
+        $$P(A\cup B)+\frac{1}{6}=\frac{1}{3}+\frac{1}{4}$$
+        $$P(A\cup B)=\frac{1}{3}+\frac{1}{4}-\frac{1}{6}=\frac{7}{12}$$
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère $A$ et $B$ deux événements d'une même expérience aléatoire tels que $P(A)=\frac{1}{3}$, $P(B)=\frac{1}{2}$ et $P(\overline{A}\cup B)=\frac{1}{6}$.
+        Calculez $P(\overline{A}\cap B)$.
+    </div>
+    <div class="solution">
+        On a $P(\overline{A}\cup B)=P(\overline{A})+P(B)-P(\overline{A}\cap B)$.
+        D'où $P(\overline{A}\cap B)=P(\overline{A})+P(B)-P(\overline{A}\cup B)=1-\frac{1}{3}+\frac{1}{2}-\frac{1}{6}=1-\frac{1}{3}+\frac{1}{2}-\frac{1}{6}=\frac{1}{3}$.
+    </div>
+</div>
+<div class="encart">
+    <b>Définition :</b> On dit d'une expérience aléatoire qu'elle est <strong>équiprobable</strong> si toutes les issues ont la même probabilité d'apparaître.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Deux des expériences suivantes ne sont pas équiprobables :
+        <ol class="alphabetical-list">
+            <li>On tire une boule d'une urne contenant 3 boules rouges, 2 boules vertes et 5 boules bleues et on regarde la couleur.</li>
+            <li>On tire un jeton d'une urne contenant 60 jetons et pouvant avoir neuf couleurs différentes.</li>
+        </ol>
+        Comment peut-on rendre la première expérience équiprobable en ajoutant des boules ?<br>
+        Comment peut-on rendre la deuxième expérience équiprobable sans ajouter de jetons mais en inscrivant quelque chose à l'aide d'un feutre sur chaque jeton ?
+    </div>
+    <div class="solution">
+        L'expérience a. n'est pas équiprobable car les couleurs n'ont pas la même probabilité d'être tirées. Pour rendre cette expérience équiprobable, il suffit d'ajouter des boules de manière à ce que le nombre de boules de chaque couleur soit le même.<br>
+        L'expérience b. n'est pas équiprobable car les couleurs n'ont pas la même probabilité d'être tirées. Pour rendre cette expérience équiprobable, il suffit de numéroter les jetons et de regarder le numéro en plus de la couleur.
+    </div>
+</div>
+</main>
+  </body>
+</html>
