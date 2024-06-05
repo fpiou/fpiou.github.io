@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Probabilites_02.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Probabilités</div> <div>Fiche n° 02</div></header>
+<div class="encart">
+    <b>Définition :</b> On considère une expérience aléatoire, on appelle <b>échantillon</b> l'ensemble des résultats obtenus lors de la répétition de cette expérience.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On lance $200$ fois un dé à six faces et on obtient les résultats regroupés dans un tableau.
+        <table class="tableauvaleurs">
+            <tr>
+                <td>Issue</td>
+                <td>$1$</td>
+                <td>$2$</td>
+                <td>$3$</td>
+                <td>$4$</td>
+                <td>$5$</td>
+                <td>$6$</td>
+            </tr>
+            <tr>
+                <td>Effectif</td>
+                <td>$20$</td>
+                <td>$28$</td>
+                <td>$44$</td>
+                <td>$40$</td>
+                <td>$32$</td>
+                <td>$36$</td>
+            </tr>
+        </table>
+        Calculez la fréquence de réalisation des événements suivants :
+        <ol class="alphabetical-list">
+            <li>La face est $3$.</li>
+            <li>La face est paire.</li>
+            <li>La face est inférieure à&nbsp;$5$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>La fréquence d'apparition de l'issue $3$ est $\frac{44}{200}=\num{0,22}$.</li>
+            <li>La fréquence d'apparition d'une face paire est $\frac{20+28+40+36}{200}=\num{0,62}$.</li>
+            <li>La fréquence d'apparition d'une face inférieure à $5$ est $\frac{20+28+44+40}{200}=\num{0,66}$.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère le script suivant en langage Python qui simule les lancers d'un dé à six faces :
+        <pre class="line-numbers">
+<code class="language-py">from random import randint
+def simulation_sixfaces(nb_lancers):
+    faces = [0,0,0,0,0,0]
+    for i in range(nb_lancers):
+        face= randint(0,5)
+        faces[face] += 1
+    return faces</code>
+</pre>
+    <ol class="alphabetical-list">
+        <li>On a saisi la commande suivante :
+<pre>
+<code class="language-py">&#62;&#62;&#62;simulation_sixfaces(200)
+[20, 28, 44, 40, 32, 36]</code>
+</pre>
+        Quelle est la signification de cette commande ?</li>
+        <li>Quelle est la signification de la commande <code>randint(0,5)</code> ?</li>
+        <li>Modifiez le script pour construire une fonction <code>simulation_quatrefaces(nb_lancers)</code> qui simule les lancers d'un dé à quatre faces.</li>
+        <li>Modifiez le script pour construire une fonction <code>simulation_faces(nb_faces,nb_lancers)</code> qui simule les lancers d'un dé à $n$ faces avec un maximum de 10 faces.</li>
+        <li>Complétez le script suivant pour obtenir une fonction <code>frequences(faces)</code> qui prend en paramètre une liste <code>faces</code> et qui renvoie la liste des fréquences d'apparition de chaque face d'un dé de six faces.</li>
+        <pre class="line-numbers"><code class="language-py">def frequences(faces):
+    frequences = ...
+    total= sum(...)
+    for i in range(...):
+        frequences[...] = ...
+    return ...</code></pre></li>
+        </li>
+    </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Cette commande permet de simuler $200$ lancers d'un dé à six faces et de stocker le nombre d'apparition de chaque face dans une liste.</li>
+            <li>La commande <code>randint(0,5)]</code> permet de choisir un nombre aléatoire entre $0$ et $5$.</li>
+            <li>Il suffit de modifier la ligne <code>faces = [0,0,0,0,0,0]</code> par <code>faces = [0,0,0,0]</code> et la ligne <code>faces[randint(0,5)] = faces[randint(0,5)]+1</code> par <code>faces[randint(0,3)] = faces[randint(0,3)]+1</code>.</li>
+            <li>Il suffit de modifier la ligne <code>faces = [0,0,0,0,0,0]</code> par <code>faces = [0,0,0,0,0,0,0,0,0,0]</code> et la ligne <code>faces[randint(0,5)] = faces[randint(0,5)]+1</code> par <code>faces[randint(0,nb_faces-1)] = faces[randint(0,nb_faces-1)]+1</code>.</li>
+            <li><pre class="line-numbers"><code class="language-py">def frequences(faces):
+    frequences = [0,0,0,0,0,0]
+    total= sum(faces)
+    for i in range(6):
+        frequences[i] = faces[i]/total
+    return frequences</code></pre></li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Propriété :</b> Dans un situation d'équiprobabilité, la probabilité d'un événement est le quotient du nombre de cas favorables par le nombre de cas possibles.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Une valise contient trois vestes : une noire, une bleue et une rouge et deux chapeaux : un noir et un rouge. On tire au hasard un vêtement complet de la valise.
+        <ol class="alphabetical-list">
+            <li>Complétez le tableau suivant donnant les issues de l'univers
+            <table class="tableauvaleurs">
+                <tr>
+                    <td></td>
+                    <td>$N$</td>
+                    <td>$B$</td>
+                    <td>$R$</td>
+                </tr>
+                <tr>
+                    <td>$N$</td>
+                    <td></td>
+                    <td>$(N;B)$</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>$B$</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            </li>
+            <li>Donnez la probabilité des événements suivants&nbsp;:
+            <ul class="horizontal-list">
+                <li>$A=\text{«On tire une veste rouge»}$.</li>
+                <li>$B=\text{«On tire un chapeau noir»}$.</li>
+                <li>$C=\text{«On tire deux vêtements de même couleur»}$.</li>
+                <li>$D=\text{«On tire au moins un vêtement bleu»}$.</li>
+            </ul>
+            </li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>
+            <table class="tableauvaleurs">
+                <tr>
+                    <td></td>
+                    <td>$N$</td>
+                    <td>$B$</td>
+                    <td>$R$</td>
+                </tr>
+                <tr>
+                    <td>$N$</td>
+                    <td>$(N;N)</td>
+                    <td>$(N;B)$</td>
+                    <td>$(N;R)$</td>
+                </tr>
+                <tr>
+                    <td>$B$</td>
+                    <td>$(B;N)</td>
+                    <td>$(B;B)</td>
+                    <td>$(B;R)$</td>
+                </tr>
+            </table>
+            </li>
+            <li>
+            <ul class="horizontal-list">
+                <li>$P(A)=\frac{2}{6}= \frac{1}{3}$</li>
+                <li>$P(B)=\frac{3}{6}= \frac{1}{2}$</li>
+                <li>$P(C)=\frac{2}{6}= \frac{1}{3}$</li>
+                <li>$P(D)=\frac{4}{6}= \frac{2}{3}$</li>
+            </ul>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On lance deux dés équilibrés à six faces et on calcule la somme des deux résultats.
+        <ol class="alphabetical-list">
+            <li>Dressez un tableau donnant les issues de l'univers.</li>
+            <li>Donnez la probabilité des événements suivants&nbsp;:
+            <ul class="horizontal-list">
+                <li>$A=\text{«La somme des deux dés est égale à $7$»}$.</li>
+                <li>$B=\text{«La somme des deux dés est un nombre pair»}$.</li>
+                <li>$C=\text{«La somme des deux dés est un nombre impair»}$.</li>
+            </ul>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+    <ol class="horizontal-list col-2c">
+        <li>On lance deux pièces de monnaies équilibrées. Complétez l'arbre des issues ci-contre.</li>
+        <li><div class="figure">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 110">
+                    <g name="O" class="point" x="10" y="55" stroke="none"></g>
+                    <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
+                    <g name="lA1" class="label" x="52" y="20" style="font-size:10px;">$P$</g>
+                    <g name="b2" class="vecteur" linkto="O" x="40" y="25" head="none"></g>
+                    <g name="lA2" class="label" x="52" y="75" style="font-size:10px;">.</g>
+                    <g name="A1" class="point" x="60" y="27" stroke="none"></g>
+                    <g name="A2" class="point" x="60" y="82" stroke="none"></g>
+                    <g name="B1" class="point" x="100" y="10" stroke="none"></g>
+                    <g name="B2" class="point" x="100" y="45" stroke="none"></g>
+                    <g name="B3" class="point" x="100" y="65" stroke="none"></g>
+                    <g name="B4" class="point" x="100" y="100" stroke="none"></g>
+                    <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
+                    <g name="lB1" class="label" x="100" y="3" style="font-size:10px;">.</g>
+                    <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
+                    <g name="lB2" class="label" x="100" y="37" style="font-size:10px;">.</g>
+                    <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
+                    <g name="lB3" class="label" x="100" y="58" style="font-size:10px;">.</g>
+                    <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
+                    <g name="lB4" class="label" x="100" y="92" style="font-size:10px;">.</g>
+                </svg>
+            </div>
+            </li>
+        </ol>
+        <ol class="alphabetical-list">
+            <li>On lance trois pièces de monnaie équilibrées. Dressez un arbre des issues.</li>
+            <li>Donnez la probabilité des événements suivants&nbsp;:
+            <ul class="horizontal-list">
+                <li>$A=\text{«On obtient trois piles»}$.</li>
+                <li>$B=\text{«On obtient exactement deux piles»}$.</li>
+                <li>$C=\text{«On obtient au moins une face»}$.</li>
+            </ul>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère que la probabilité d'obtenir un garçon lors d'une naissance est de $\frac{1}{2}$.
+        Quelle est la probabilité d'obtenir au moins un garçon lors de deux naissances successives ?
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Une urne contient les lettres $M$, $A$, $T$, $H$. Une seconde urne contient les lettres $Z$, $O$, $O$. On tire une lettre dans chaque urne l'une après l'autre.
+        <ol class="alphabetical-list">
+            <li>Quelle est la probabilité d'obtenir un mot conmportant une consonne suivie d'une voyelle&nbsp;?</li>
+            <li>Complétez le script en langage Python qui simule cette expérience aléatoire.
+            <pre><code class="language-py">from random import randint
+def simulation_lettres():
+    urne1 = ...
+    urne2 = ...
+    lettre1 = ...
+    lettre2 = ...
+    return ...</code></pre></li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>La probabilité d'obtenir un mot conmportant une consonne suivie d'une voyelle est $\frac{4}{7}\times\frac{3}{7}=\frac{12}{49}$.</li>
+            <li><pre><code class="language-py">from random import randint
+def simulation_lettres():
+    urne1 = ['M','A','T','H']
+    urne2 = ['Z','O','O']
+    lettre1 = urne1[randint(0,3)]
+    lettre2 = urne2[randint(0,2)]
+    return lettre1+lettre2</code></pre></li>
+        </ol>
+    </div>
+</div></main>
+  </body>
+</html>
