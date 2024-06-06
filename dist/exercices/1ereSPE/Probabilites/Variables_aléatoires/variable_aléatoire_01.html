@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Variable_aléatoire_01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Variables aléatoires réelle</div> <div>Fiche n° 01</div></header>
+<div class="encart">
+    <b>Définition :</b> Une variable aléatoire réelle généralement notée $X$ est une fonction qui associe à chaque élément d'un univers $\Omega$ un nombre réel.<br>
+    <ul style="padding-left: 1em;">
+        <li>$\{X=1\}$ est l'événement "la variable aléatoire $X$ prend la valeur 1".</li>
+        <li>On note $P(X=1)$ la probabilité de l'événement $\{X=1\}$.</li>
+        <li>$\{X\leqslant 1\}$ ets l'événement "la variable aléatoire $X$ prend une valeur inférieure ou égale à 1".</li>
+        <li>On note $P(X\leqslant 1)$ la probabilité de l'événement $\{X\leqslant 1\}$.</li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Une urne contient 3 boules rouges et 2 boules vertes. On tire deux boules simultanément. On note $X$ la variable aléatoire qui associe le nombre de boules rouges tirées.
+        <ol class="alphabetical-list">
+            <li>Résumez l'univers $\Omega$ de l'expérience aléatoire dans un tableau à double entrée.<br>
+            <i>On pourra noter $R_1$ la boule rouge n°1, $R_2$ la boule rouge n°2, $R_3$ la boule rouge n°3, $V_1$ la boule verte n°1 et $V_2$ la boule verte n°2.</i>
+            </li>
+            <li>Calculez $P(X=0)$, $P(X=1)$ et $P(X=2)$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Résumons dans un tableau les différentes issues possibles de l'expérience aléatoire :
+                <table class="tableauvaleurs">
+                    <tr>
+                        <td></td>
+                        <td>$R_1$</td>
+                        <td>$R_2$</td>
+                        <td>$R_3$</td>
+                        <td>$V_1$</td>
+                        <td>$V_2$</td>
+                    </tr>
+                    <tr>
+                        <td>$R_1$</td>
+                        <td>$\times$</td>
+                        <td>$R_1,R_2$</td>
+                        <td>$R_1,R_3$</td>
+                        <td>$R_1,V_1$</td>
+                        <td>$R_1,V_2$</td>
+                    </tr>
+                    <tr>
+                        <td>$R_2$</td>
+                        <td>$R_2,R_1$</td>
+                        <td>$\times$</td>
+                        <td>$R_2,R_3$</td>
+                        <td>$R_2,V_1$</td>
+                        <td>$R_2,V_2$</td>
+                    </tr>
+                    <tr>
+                        <td>$R_3$</td>
+                        <td>$R_3,R_1$</td>
+                        <td>$R_3,R_2$</td>
+                        <td>$\times$</td>
+                        <td>$R_3,V_1$</td>
+                        <td>$R_3,V_2$</td>
+                    </tr>
+                    <tr>
+                        <td>$V_1$</td>
+                        <td>$V_1,R_1$</td>
+                        <td>$V_1,R_2$</td>
+                        <td>$V_1,R_3$</td>
+                        <td>$\times$</td>
+                        <td>$V_1,V_2$</td>
+                    </tr>
+                    <tr>
+                        <td>$V_2$</td>
+                        <td>$V_2,R_1$</td>
+                        <td>$V_2,R_2$</td>
+                        <td>$V_2,R_3$</td>
+                        <td>$V_2,V_1$</td>
+                        <td>$\times$</td>
+                    </tr>
+                </table>
+                IL n'y a pas d'ordre donc on a 10 issues possibles, celles de la diagonale supérieure.
+            </li>
+            <li>$P(X=0) = P(\{(V_1,V_2)\}) = \frac{1}{10}$.</li>
+            <li>$P(X=1) = P(\{(R_1,V_1),(R_1,V_2),(R_2,V_1),(R_2,V_2),(R_3,V_1),(R_3,V_2)\}) = \frac{6}{10} = \frac{3}{5}$.</li>
+            <li>$P(X=2) = P(\{(R_1,R_2),(R_1,R_3),(R_2,R_3)\}) = \frac{3}{10}$.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On tire simultanément 5 cartes d'un jeu de 32 cartess. On note $X$ la variable aléatoire qui associe le nombre de rois tirés.
+        <ol class="alphabetical-list">
+            <li>Décrire les événements suivants :
+                <ul class="horizontal-list">
+                    <li>$\{X=1\}$</li>
+                    <li>$\{X \lt 2\}$</li>
+                </ul>
+            </li>
+            <li>Déterminez $P(X=5)$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>
+                <ul>
+                    <li>$\{X=1\}$ est l'événement "on tire un roi et 4 cartes non rois".</li>
+                    <li>$\{X \lt 2\}$ est l'événement "on tire 0 ou 1 roi".</li>
+                </ul>
+            </li>
+            <li>$\{X=5\}$ est l'événement "on tire 5 rois". Comme il n'y a que 4 rois dans le jeu, $P(X=5) = 0$.</li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+   <b>Définition :</b> On appelle loi de probabilité d'une variable aléatoire $X$ la donnée de l'ensemble des valeurs possibles de $X$ et des probabilités associées.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Lors d'un jeu, il est possible de perdre $\SI{1}{€}$ avec une probabilité de $\num{0,3}$, de ne rien gagner ni perdre avec une probabilité de $\num{0,4}$ et de gagner  $\SI{2}{€}$ avec une probabilité de $\num{0,3}$.<br>
+        Considérons une variable aléatoire $X$. Complétez le tableau suivant de sa loi de probabilité :
+        <table class="tableauvaleurs">
+            <tr>
+                <td>$x_i$</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>$P(X=x_i)$</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        Déterminez les probabilités suivantes :
+        <ol class="alphabetical-list horizontal-list">
+            <li>$P(X\lt 0)$.</li>
+            <li>$P(X\geqslant 0)$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <table class="tableauvaleurs">
+            <tr>
+                <td>$x_i$</td>
+                <td>$-1$</td>
+                <td>$0$</td>
+                <td>$2$</td>
+            </tr>
+            <tr>
+                <td>$P(X=x_i)$</td>
+                <td>$\num{0,3}$</td>
+                <td>$\num{0,4}$</td>
+                <td>$\num{0,3}$</td>
+            </tr>
+        </table>
+        <ol class="alphabetical-list">
+            <li>$P(X\lt 0) = P(X=-1) + P(X=0) = \num{0,3} + \num{0,4} = \num{0,7}$.</li>
+            <li>$P(X\geqslant 0) = 1 - P(X\lt 0) = 1 - \num{0,7} = \num{0,3}$.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère la loi de probabilité résumée dans le tableau suivant :
+        <table class="tableauvaleurs">
+            <tr>
+                <td>$a$</td>
+                <td>$0$</td>
+                <td>$1$</td>
+                <td>$2$</td>
+                <td>$3$</td>
+                <td>$4$</td>
+            </tr>
+            <tr>
+                <td>$P(X=a)$</td>
+                <td>$\num{0,2}$</td>
+                <td>$\num{0,3}$</td>
+                <td>$\num{0,1}$</td>
+                <td>$\num{0,2}$</td>
+                <td>$p$</td>
+            </tr>
+        </table>
+        <ol class="alphabetical-list horizontal-list">
+            <li>Calculez $p$.</li>
+            <li>Calculez $P(X= 5)$.</li>
+            <li>Calculez $P(X\geqslant 2)$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$p = 1 - \num{0,2} - \num{0,3} - \num{0,1} - \num{0,2} = \num{0,2}$.</li>
+            <li>$5$ n'est pas une valeur possible de $X$, donc $P(X=5) = 0$.</li>
+            <li>$P(X\geqslant 2) = 1 - P(X\lt 2) = 1 - P(X=0) - P(X=1) = 1 - \num{0,2} - \num{0,3} = \num{0,5}$.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère une variable aléatoire $X$ prenant les valeurs $0$ à $10$ et telle que pour $n$ de $0$ à $9$, $P(X=n) = \left(\frac{1}{2}\right)^{i+1}$.
+        Montrez que $u_n=P(X=n)$ est une suite géométrique. En déduire $P(X=10)$.
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>On a $u_{n+1} = P(X=n+1) = \left(\frac{1}{2}\right)^{n+2} = \left(\frac{1}{2}\right)^{n+1} \times \frac{1}{2} = u_n \times \frac{1}{2}$. La suite $u_n$ est donc géométrique de raison $\frac{1}{2}$ et de premier terme $\frac{1}{2}$.</li>
+            <li>La somme des termes d'une suite géométrique de raison $q$ et de premier terme $u_0$ est $S_n = u_0 \times \frac{1-q^{n+1}}{1-q}$.<br>
+            Ici, $u_0 = \frac{1}{2}$, $q = \frac{1}{2}$ et $n = 9$, donc $P(X=10) = \frac{1}{2} \times \frac{1-\left(\frac{1}{2}\right)^{10}}{1-\frac{1}{2}} = \frac{1}{2} \times \frac{1-\frac{1}{1024}}{\frac{1}{2}} = 1 - \frac{1}{1024} = \frac{1023}{1024}$.<br>
+            D'où $P(X=10) = 1-\frac{1023}{1024}= \frac{1}{1024}$.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Un jeu d'argent consiste à miser $\SI{2}{€}$ puis à tirer une carte au hasard dans un jeu de $32$ cartes :
+        <ul style="padding-left">
+            <li>si la carte est un As, on récupère $\SI{5}{€}$ ;</li>
+            <li>si la carte est une figure, on récupère $\SI{3}{€}$ ;</li>
+            <li>dans les autres cas, on perd sa mise.</li>
+        </ul>
+        On note $X$ la variable aléatoire qui associe le gain en euros.<br>
+        Dressez le tableau de la loi de probabilité de $X$.
+    </div>
+    <div class="solution">
+        <table class="tableauvaleurs">
+            <tr>
+                <td>$x_i$</td>
+                <td>$-2$</td>
+                <td>$1$</td>
+                <td>$3$</td>
+            </tr>
+            <tr>
+                <td>$P(X=x_i)$</td>
+                <td>$\frac{3}{4}$</td>
+                <td>$\frac{3}{8}$</td>
+                <td>$\frac{1}{8}$</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Le temps d'écoute d'un morceau enregistré dans un smartphone est résumé ci-dessous.
+        <table class="tableauvaleurs">
+            <tr>
+                <td>Morceau</td>
+                <td>$A$</td>
+                <td>$B$</td>
+                <td>$C$</td>
+                <td>$D$</td>
+                <td>$E$</td>
+            </tr>
+            <tr>
+                <td>Temps (min)</td>
+                <td>$2'30$</td>
+                <td>$3'$</td>
+                <td>$2'30$</td>
+                <td>$4'45$</td>
+                <td>$3'$</td>
+            </tr>
+        </table>
+        On note $X$ la variable aléatoire qui associe le temps d'écoute en minutes d'un morceau choisi au hasard.<br>
+        Dresser le tableau de la loi de probabilité de $X$.
+    </div>
+    <div class="solution">
+        <table class="tableauvaleurs">
+            <tr>
+                <td>$x_i$</td>
+                <td>$\num{2,5}$</td>
+                <td>$3$</td>
+                <td>$\num{4,45}$</td>
+            </tr>
+            <tr>
+                <td>$P(X=x_i)$</td>
+                <td>$\frac{2}{5}$</td>
+                <td>$\frac{2}{5}$</td>
+                <td>$\frac{1}{5}$</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Un sac contient les 26 lettres de l'alphabet. On tire deux lettres au hasard. On gagne $\SI{5}{€}$ par voyelle tirée et on perd $\SI{1}{€}$ par consonne tirée. On note $X$ la variable aléatoire qui associe le gain obtenu.
+        <ol class="alphabetical-list">
+            <li>Construire un arbre pondéré décrivant l'expérience aléatoire.</li>
+            <li>Déterminez la loi de probabilité de $X$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li></li>
+            <li><table class="tableauvaleurs">
+                <tr>
+                    <td>$x_i$</td>
+                    <td>$-2$</td>
+                    <td>$4$</td>
+                    <td>$10$</td>
+                </tr>
+                <tr>
+                    <td>$P(X=x_i)$</td>
+                    <td>$\frac{20}{26} \times \frac{20}{25}= \frac{10}{13}$</td>
+                    <td>$\frac{6}{26} \times \frac{20}{26} + \frac{20}{26} \times \frac{6}{25} = \frac{12}{65} + \frac{24}{65} = \frac{36}{65}$</td>
+                </tr>
+            </table></li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Définition :</b> On appelle espérance mathématique de la variable aléatoire $X$ le nombre réel $E(X)$ défini par $\tiny E(X) = x_1 \times P(X=x_1) + x_2 \times P(X=x_2) + \ldots + x_n \times P(X=x_n)$ où les $x_i$ sont les valeurs possibles de $X$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère une variable aléatoire $X$ prenant les valeurs $1$, $2$, et $3$ et telle que $P(X=1) = \num{0,2}$, $P(X=2) = \num{0,3}$, $P(X=3) = \num{0,5}$.
+        <ol class="alphabetical-list horizontal-list">
+            <li>Calculez $P(X\geqslant 2)$.</li>
+            <li>Calculez $E(X)$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$P(X\geqslant 2) = 1 - P(X\lt 2) = 1 - P(X=1) = 1 - \num{0,2} = \num{0,8}$.</li>
+            <li>$E(X) = 1 \times \num{0,2} + 2 \times \num{0,3} + 3 \times \num{0,5} = \num{0,2} + \num{0,6} + \num{1,5} = \num{2,3}$.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Une urne contient 3 boules rouges et 2 boules vertes. On tire une boule au hasard. On note $X$ la variable aléatoire qui associe le gain obtenu : si on tire une boule rouge, on perd $\SI{10}{€}$, sinon on gagne $\SI{a}{€}$.
+        Le jeu est dit équitable si l'espérance mathématique de $X$ est nulle.
+        Combien doit valoir $a$ pour que le jeu soit équitable ?
+    </div>
+    <div class="solution">
+        Pour que le jeu soit équitable, l'espérance mathématique de $X$ doit être nulle. On a $E(X) = -10 \times \frac{3}{5} + a \times \frac{2}{5} = 0$ d'où $-30 + 2a = 0$ et $2a = 30$ donc $a = 15$.<br>
+        Le gain doit donc être de $\SI{15}{€}$ pour que le jeu soit équitable.
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Dans un jeu de loterie, une roue est divisée en quatre secteurs de même angle. Un secteur rapporte $\SI{60}{€}$, un autre $\SI{10}{€}$, et les deux autres rapportent $\SI{5}{€}$. La mise est de $\SI{20}{€}$. On note $X$ la variable aléatoire qui associe le gain obtenu.
+        Le jeu est-il équitable ?
+    </div>
+    <div class="solution">
+        Pour que le jeu soit équitable, l'espérance mathématique de $X$ doit être nulle. On prend en compte la mise dans les gains. On a $E(X) = (60-20) \times \frac{1}{4} + (10 -20) \times \frac{1}{4} + (5-20) \times \frac{1}{2} = 10 \times \frac{1}{4} - 10 \times \frac{1}{4} - 15 \times \frac{1}{2} = 0$ donc le jeu est équitable.
+    </div>
+</div>
+</main>
+  </body>
+</html>
