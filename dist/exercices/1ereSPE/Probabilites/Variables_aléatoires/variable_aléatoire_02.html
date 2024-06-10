@@ -122,6 +122,52 @@
     <main><header><div>Variables aléatoires réelle</div> <div>Fiche n° 02</div></header>
 <div class="exercice">
     <div class="enonce">
+        À l'entrée d'un concert, les billets de $\SI{20}{€} sont vendus en lançant un dé équilibré à six faces. 
+        <ul>
+            <li>Si la face est $6$, le billet est gratuit.</li>
+            <li>Si la face est $5$, le billet ets demi-tarif.</li>
+            <li>Sinon le billet est vendu au tarif normal.</li>
+        </ul>
+        Que peut-on en déduire concernant la recette de ce concert sachant que $3000$ billets sont vendus ?
+    </div>
+    <div class="solution">
+        La recette de ce concert est une variable aléatoire $X$ qui associe le gain obtenu. On a :
+        <table class="tableauvaleurs">
+            <tr>
+                <td>$x_i$</td>
+                <td>$0$</td>
+                <td>$10$</td>
+                <td>$20$</td>
+            </tr>
+            <tr>
+                <td>$P(X=x_i)$</td>
+                <td>$\frac{1}{6}$</td>
+                <td>$\frac{1}{6}$</td>
+                <td>$\frac{2}{3}$</td>
+            </tr>
+        </table>
+        La recette moyenne est donc :
+        $$E(X) = 0 \times \frac{1}{6} + 10 \times \frac{1}{6} + 20 \times \frac{2}{3} = 0 + \frac{10}{6} + \frac{40}{3} = \frac{50}{3}$$
+        La recette moyenne par billet est donc de $\frac{50}{3}$ euros. Pour $3000$ billets vendus, la recette totale est donc de $3000 \times \frac{50}{3} = 50000$ euros.
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Quelle est l'espérance de la variable aléatoire $X$ qui associe le résultat d'un lancer de dé équilibré à six faces ?
+    </div>
+    <div class="solution">
+        L'espérance de la variable aléatoire associée à un lancer de dé équilibré à six faces est :
+        $$\begin{aligned}
+            E(X)&=\frac{1}{6}\times 1+\frac{1}{6}\times 2+\frac{1}{6}\times 3+\ldots +\frac{1}{6}\times 6\\
+            &=\frac{1}{6}\times (1+2+3+4+5+6)\\
+            &=\frac{1}{6}\times 21\\
+            &=3,5
+        \end{aligned}$$
+        L'espérance de $X$ est donc $3,5$.
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
         On lance deux pièces de monnaie équilibrées. On note $X$ la variable aléatoire qui associe le gain obtenu : si on obtient deux piles, alors on gagne $\SI{1}{€}$, sinon on perd $\SI{1}{€}$.
         <ol class="alphabetical-list">
             <li>Dressez un tableau de la loi de probabilité de $X$.</li>
@@ -169,6 +215,216 @@ def simulation(nb_lancers):
             gain = gain - 1
     return gain/nb_lancers</code></pre></li>
         </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Définitions :</b> Soit $X$ une variable aléatoire discrète définie sur un univers $\Omega$ et à valeurs dans $\mathbb{R}$. La <b>variance</b> de $X$ est le nombre réel positif ou nul défini par :
+    \[V(X) = E\left((X - E(X))^2\right)\]
+    où $E(X)$ est l'espérance mathématique de $X$.<br>
+    La variance est la moyenne des carrés des écarts à la moyenne.<br>
+    Elle mesure la dispersion des valeurs de $X$ autour de sa moyenne.<br>
+    La <b>racine carrée de la variance</b> est l'<b>écart-type</b> de $X$ et se note $\sigma(X)$.
+    \[\sigma(X) = \sqrt{V(X)}\]
+    L'écart-type est une mesure de la dispersion des valeurs de $X$ autour de sa moyenne.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $X$ une variable aléatoire suivant la loi de probabilité suivante :
+        <table class="tableauvaleurs">
+            <tr>
+                <td>$x_i$</td>
+                <td>$-2$</td>
+                <td>$1$</td>
+                <td>$5$</td>
+            </tr>
+            <tr>
+                <td>$P(X=x_i)$</td>
+                <td>$\num{0.3}$</td>
+                <td>$\num{0.2}$</td>
+                <td>$\num{0.5}$</td>
+            </tr>
+        </table>
+        <ol class="alphabetical-list">
+            <li>Calculez l'espérance mathématique de $X$.</li>
+            <li>Complétez l'entête des lignes du tableau suivant :
+            <table class="tableauvaleurs">
+            <tr>
+                <td>$x_i$</td>
+                <td>$-2$</td>
+                <td>$1$</td>
+                <td>$5$</td>
+            </tr>
+            <tr>
+                <td>$P(X=x_i)$</td>
+                <td>$\num{0.3}$</td>
+                <td>$\num{0.2}$</td>
+                <td>$\num{0.5}$</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>$-\num{4.1}$</td>
+                <td>$-\num{1.1}$</td>
+                <td>$\num{2.9}$</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>$\num{16.81}$</td>
+                <td>$\num{1.21}$</td>
+                <td>$\num{8.41}$</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>$\num{5.043}$</td>
+                <td>$\num{0.242}$</td>
+                <td>$\num{4.205}$</td>
+            </tr>
+            </table></li>
+            <li>En déduire la variance de $X$.</li>
+            <li>L'écart-type vaut environ $\num{3.08}$, comment a-t-il été obtenu ?</li>
+        </ol>
+        </table>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$E(X) = -2 \times \num{0.3} + 1 \times \num{0.2} + 5 \times \num{0.5} = -\num{0.6} + \num{0.2} + \num{2.5} = \num{2.1}$.</li>
+            <li><table class="tableauvaleurs">
+            <tr>
+                <td>$x_i$</td>
+                <td>$-2$</td>
+                <td>$1$</td>
+                <td>$5$</td>
+            </tr>
+            <tr>
+                <td>$P(X=x_i)$</td>
+                <td>$\num{0.3}$</td>
+                <td>$\num{0.2}$</td>
+                <td>$\num{0.5}$</td>
+            </tr>
+            <tr>
+                <td>$x_i - E(X)$</td>
+                <td>$-\num{4.1}$</td>
+                <td>$-\num{1.1}$</td>
+                <td>$\num{2.9}$</td>
+            </tr>
+            <tr>
+                <td>$\left(x_i - E(X)\right)^2$</td>
+                <td>$\num{16.81}$</td>
+                <td>$\num{1.21}$</td>
+                <td>$\num{8.41}$</td>
+            </tr>
+            <tr>
+                <td>$p_i \times \left(x_i - E(X)\right)^2$</td>
+                <td>$\num{5.043}$</td>
+                <td>$\num{0.242}$</td>
+                <td>$\num{4.205}$</td>
+            </tr>
+            </table>
+            Où $p_i$ est la probabilité de $X=x_i$.</li>
+            </li>
+            <li>$V(X) = \num{5.043} + \num{0.242} + \num{4.205} = \num{9.49}$.</li>
+            <li>L'écart-type a été obtenu en calculant la racine carrée de la variance : $\sqrt{\num{9.49}} \approx \num{3.08}$.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère la variable aléatoire $X$ suivant la loi de probabilité suivante :
+        <table class="tableauvaleurs">
+            <tr>
+                <td>$x_i$</td>
+                <td>$-2$</td>
+                <td>$0$</td>
+                <td>$3$</td>
+            </tr>
+            <tr>
+                <td>$P(X=x_i)$</td>
+                <td>$\num{0.1}$</td>
+                <td>$\num{0.6}$</td>
+                <td>$\num{0.3}$</td>
+            </tr>
+        </table>
+        L'écart-type de $X$ est environ $\num{1.62}$.
+        <ol class="alphabetical-list">
+            <li>Écrire en une seule ligne le calcul de l'espérance de $X$.</li>
+            <li>Écrire en une seule ligne le calcul de la variance de $X$ sachant que $E(X) = \num{0.7}$.</li>
+            <li>Écrire en une seule ligne le calcul de l'écart-type de $X$ sachant que $V(X) = \num{2.61}$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$E(X) = -2 \times \num{0.1} + 0 \times \num{0.6} + 3 \times \num{0.3} = -\num{0.2} + \num{0} + \num{0.9} = \num{0.7}$.</li>
+            <li>$V(X) = (-2 - \num{0.7})^2 \times \num{0.1} + (0 - \num{0.7})^2 \times \num{0.6} + (3 - \num{0.7})^2 \times \num{0.3} = \num{2.61}$.</li>
+            <li>$\sigma(X) = \sqrt{\num{2.61}} \approx \num{1.62}$.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Si $X$ est une variable aléatoire et que son écart-type est nul, que peut-on dire de $X$ ?</li>
+            <li>Si $X$ est une variable aléatoire et que $\sigma(X) = \num{0.7}$, que vaut la variance de $X$ ?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Si l'écart-type de $X$ est nul, alors $V(X) = 0$. Or, $V(X) = E\left((X - E(X))^2\right)$. Donc, $X = E(X)$.
+            Ainsi, si l'écart-type de $X$ est nul, alors $X$ est une constante.</li>
+            <li>La variance de $X$ est $\sigma(X)^2 = \num{0.7}^2 = \num{0.49}$.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère une variable aléatoire $X$ dont l'espérance est $\num{2.5}$ et l'écart-type est $\num{1.5}$.
+        <table class="tableauvaleurs">
+            <tr>
+                <td>$x_i$</td>
+                <td>$x_1$</td>
+                <td>$x_2$</td>
+                <td>$x_3$</td>
+            </tr>
+            <tr>
+                <td>$P(X=x_i)$</td>
+                <td>$p_1$</td>
+                <td>$p_2$</td>
+                <td>$p_3$</td>
+            </tr>
+        </table>
+        <ol class="alphabetical-list">
+            <li>Si on note $Y = 2X - 3$, calculez $E(Y)$</li>
+            <li>Si on note $Z = 3X + 1$, calculez $V(Z)$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>On a $E(Y) = y_1 \times p_1 + y_2 \times p_2 + y_3 \times p_3$.
+            Or $y_i=2x_i-3$. D'où $E(Y) = (2x_1-3) \times p_1 + (2x_2-3) \times p_2 + (2x_3-3) \times p_3$.<br>
+            Ou encore $E(Y) = 2 \times (x_1 \times p_1 + x_2 \times p_2 + x_3 \times p_3) - 3 \times (p_1 + p_2 + p_3)$.<br>
+            Comme $E(X) = \num{2.5}$, on a $E(Y) = 2 \times \num{2.5} - 3 \times 1 = 5 - 3 = 2$.</li>
+            <li>On a $V(Z) = E\left((Z - E(Z))^2\right)$. Or $z_i = 3x_i + 1$. D'où $V(Z) = E\left((3x - 3 \times \num{2.5} + 1)^2\right)$.<br>
+            Ou encore $V(Z) = E\left(3^2 \times (x - \num{2.5})^2\right) = 9 \times E\left((X - \num{2.5})^2\right) = 9 \times \num{1.5}^2 = 9 \times \num{2.25} = \num{20.25}$.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On souhaite écrire un programme en langage Python qui calcule l'espérance et la variance d'une variable aléatoire $X$ dont la loi de probabilité est donnée par deux listes $X$ (les valeurs de $X$) et $P$ (les probabilités associées).
+        <pre class="line-numbers"><code class="language-py">def esperance_variance(X, P):
+    E = 0
+    V = 0
+    for i in range(len(X)):
+        E = E + ...
+        V = V + ...
+    return E, V</code></pre>
+    </div>
+    <div class="solution">
+        <pre class="line-numbers"><code class="language-py">def esperance_variance(X, P):
+    E = 0
+    V = 0
+    for i in range(len(X)):
+        E = E + X[i] * P[i]
+        V = V + (X[i] - E)**2 * P[i]
+    return E, V</code></pre>
     </div>
 </div></main>
   </body>
