@@ -144,9 +144,83 @@
 </div>
 <div class="exercice">
     <div class="enonce">
-        On considère une série statistique de $4$ valeurs résumée par le tableau suivant :
+        On considère la série statistique suivante :
+        $$4-1-4-5-4-1-4-4-4-1$$
+        $$4-2-1-2-4-5-5-1-5-5$$
+        On a commencé à résumer les informations dans le tableau suivant :
         <table class="tableauvaleurs">
             <tr>
+                <td>Valeur</td>
+                <td>$1$</td>
+                <td>$2$</td>
+                <td></td>
+                <td>$5$</td>
+            </tr>
+            <tr>
+                <td>Effectif</td>
+                <td>$5$</td>
+                <td>$2$</td>
+                <td></td>
+                <td>$6$</td>
+            </tr>
+        </table>
+        <ol class="alphabetical-list">
+            <li>Combien de valeurs possède cette série ?</li>
+            <li>Combien de valeurs différentes possède cette série ?</li>
+            <li>Combien de fois la valeur $1$ apparaît-elle dans cette série ?</li>
+            <li>Complétez le tableau.</li>
+            <li>Recopiez et complétez avec les valeurs la formule de la moyenne pondérée de cette série :
+            $$\overline{x}=\frac{\ldots\times\ldots+\ldots\times\ldots+\ldots\times\ldots+\ldots\times\ldots}{\ldots}$$
+            </li>
+            <li>Calculez la moyenne de cette série de deux façons.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>La série possède $20$ valeurs.</li>
+            <li>La série possède $4$ valeurs différentes.</li>
+            <li>La valeur $1$ apparaît $5$ fois dans la série.</li>
+            <li>Le tableau complet est :
+                <table class="tableauvaleurs">
+                    <tr>
+                        <td>Valeur</td>
+                        <td>$1$</td>
+                        <td>$2$</td>
+                        <td>$4$</td>
+                        <td>$5$</td>
+                    </tr>
+                    <tr>
+                        <td>Effectif</td>
+                        <td>$5$</td>
+                        <td>$2$</td>
+                        <td>$7$</td>
+                        <td>$6$</td>
+                    </tr>
+                </table>
+            </li>
+            <li>La formule de la moyenne pondérée est :
+                $$\overline{x}=\frac{5\times1+2\times2+7\times4+6\times5}{20}$$
+            </li>
+            <li>La moyenne de cette série est $$\frac{4+1+4+5+4+1+4+4+4+1+4+2+1+2+4+5+5+1+5+5}{20}=3,35$$ On peut aussi la calculer en utilisant la formule de la moyenne pondérée :
+                $$\overline{x}=\frac{5\times1+2\times2+7\times4+6\times5}{20}=\frac{5+4+28+30}{20}=\frac{67}{20}=3,35$$
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <dv class="enonce">
+        On souhaite construire une feuille de calculs pour calculer la moyenne de la série statistique résumée par le tableau suivant :
+        <table class="tableur">
+            <tr class="header-row">
+                <td></td>
+                <td>A</td>
+                <td>B</td>
+                <td>C</td>
+                <td>D</td>
+                <td>E</td>
+            </tr>
+            <tr>
+                <td class="header-col">1</td>
                 <td>Valeur</td>
                 <td>$1$</td>
                 <td>$2$</td>
@@ -154,20 +228,28 @@
                 <td>$5$</td>
             </tr>
             <tr>
+                <td class="header-col">2</td>
                 <td>Effectif</td>
                 <td>$5$</td>
                 <td>$2$</td>
                 <td>$7$</td>
-                <td>$6$</td>
+                <td>$3$</td>
             </tr>
         </table>
-        Calculez la moyenne de cette série.
+        <ol class="alphabetical-list">
+            <li>Sur la troisième ligne, nous voudrions calculer les $n_i\times x_i$ pour chaque valeur de $i$. Quelle formule à recopier sur toute la ligne devons-nous écrire dans la cellule <code class="language-plaintext">B3</code> ?</li>
+            <li>Quelle formule devons-nous écrire dans la cellule <code class="language-plaintext">F2</code> pour obtenir la somme des valeurs de la troisième ligne ?</li>
+            <li>Quelle formule devons-nous écrire dans la cellule <code class="language-plaintext">F3</code> pour obtenir la moyenne pondérée de la série ?</li>
+            <li>Calculez à la main la moyenne de cette série.</li>
+        </ol>
     </div>
     <div class="solution">
-        La moyenne de cette série est donnée par la formule :
-        $$\overline{x}=\frac{5\times 1+2\times 2+7\times 4+6\times 5}{5+2+7+6}$$
-        $$\overline{x}=\frac{5+4+28+30}{20}=\frac{67}{20}$$
-        $$\overline{x}=\num{3,35}$$
+        <ol class="alphabetical-list">
+            <li>La formule à recopier sur toute la ligne <code class="language-plaintext">B3:E3</code> est <code class="language-plaintext">=B2*B3</code>.</li>
+            <li>La formule à écrire dans la cellule <code class="language-plaintext">F2</code> est <code class="language-plaintext">=SOMME(B3:E3)</code>.</li>
+            <li>La formule à écrire dans la cellule <code class="language-plaintext">F3</code> est <code class="language-plaintext">=SOMME(B2:E2)/F2</code>.</li>
+            <li>La moyenne de cette série est $\frac{5\times 1+2\times 2+7\times 4+3\times 5}{5+2+7+3}=\frac{5+4+28+15}{17}=\frac{52}{17}\approx 3$.</li>
+        </ol>
     </div>
 </div>
 <div class="encart">
@@ -180,28 +262,185 @@
         <table class="tableauvaleurs">
             <tr>
                 <td>Valeur</td>
-                <td>$1$</td>
-                <td>$2$</td>
                 <td>$4$</td>
-                <td>$5$</td>
+                <td>$7$</td>
+                <td>$13$</td>
+                <td>$16$</td>
             </tr>
             <tr>
                 <td>Effectif</td>
-                <td>$5$</td>
+                <td>$4$</td>
+                <td>$6$</td>
+                <td>$10$</td>
                 <td>$2$</td>
-                <td>$7$</td>
-                <td>$3$</td>
             </tr>
         </table>
-        Calculez la variance de cette série.
+        <ol class="alphabetical-list">
+            <li>Vérifiez que la moyenne $\overline{x}$ de cette série est $10$.</li>
+            <li>On souhaite calculer à la main la variance. Nous allons procéder en plusieurs étapes. Complétez le tableau suivant.
+                <table class="tableauvaleurs">
+                    <tr>
+                        <td>Valeur</td>
+                        <td>$4$</td>
+                        <td>$7$</td>
+                        <td>$13$</td>
+                        <td>$16$</td>
+                    </tr>
+                    <tr>
+                        <td>Effectif</td>
+                        <td>$4$</td>
+                        <td>$6$</td>
+                        <td>$10$</td>
+                        <td>$2$</td>
+                    </tr>
+                    <tr>
+                        <td>$x_i-\overline{x}$</td>
+                        <td>$-6$</td>
+                        <td></td>
+                        <td>$3$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$(x_i-\overline{x})^2$</td>
+                        <td>$36$</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$n_i(x_i-\overline{x})^2$</td>
+                        <td>$144$</td>
+                        <td>$54$</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </li>
+            <li>Montrez que la variance de cette série est environ égale à $16$.</li>
+        </ol>
     </div>
     <div class="solution">
-        La moyenne de cette série a été calculée précédemment : $\overline{x}=\frac{52}{17}$.
-        La variance de cette série est donnée par la formule :
-        $$V=\frac{5\times(1-\frac{52}{17})^2+2\times(2-\frac{52}{17})^2+7\times(4-\frac{52}{17})^2+3\times(5-\frac{52}{17})^2}{5+2+7+3}$$
-        $$V=\frac{5\times(\frac{17-52}{17})^2+2\times(\frac{34-52}{17})^2+7\times(\frac{68-52}{17})^2+3\times(\frac{85-52}{17})^2}{17}$$
-        $$V=\frac{5\times(-\frac{35}{17})^2+2\times(-\frac{18}{17})^2+7\times(\frac{16}{17})^2+3\times(\frac{33}{17})^2}{17}$$
-        $$V=\frac{5\times\frac{1225}{289}+2\times\frac{324}{289}+7\times\frac{256}{289}+3\times\frac{1089}{289}}{17}$$
-        $$V=\frac{6125+648+1792+3267}{289\times 17}=\frac{11732}{289\times 17}$$</main>
+        <ol class="alphabetical-list">
+            <li>La moyenne de cette série est $\frac{4\times 4+6\times 7+10\times 13+2\times 16}{4+6+10+2}=\frac{16+42+130+32}{22}=\frac{220}{22}=10$.</li>
+            <li>
+                <table class="tableauvaleurs">
+                    <tr>
+                        <td>Valeur</td>
+                        <td>$4$</td>
+                        <td>$7$</td>
+                        <td>$13$</td>
+                        <td>$16$</td>
+                    </tr>
+                    <tr>
+                        <td>Effectif</td>
+                        <td>$4$</td>
+                        <td>$6$</td>
+                        <td>$10$</td>
+                        <td>$2$</td>
+                    </tr>
+                    <tr>
+                        <td>$x_i-\overline{x}$</td>
+                        <td>$-6$</td>
+                        <td>$-3$</td>
+                        <td>$3$</td>
+                        <td>$6$</td>
+                    </tr>
+                    <tr>
+                        <td>$(x_i-\overline{x})^2$</td>
+                        <td>$36$</td>
+                        <td>$9$</td>
+                        <td>$9$</td>
+                        <td>$36$</td>
+                    </tr>
+                    <tr>
+                        <td>$n_i(x_i-\overline{x})^2$</td>
+                        <td>$144$</td>
+                        <td>$54$</td>
+                        <td>$90$</td>
+                        <td>$72$</td>
+                    </tr>
+                </table>
+            </li>
+            <li>La variance de cette série est $\frac{144+54+90+72}{4+6+10+2}=\frac{360}{22}=\frac{180}{11}\approx 16$.
+            Or $$11\times 16=176$$ et $$12\times 16=192$$ donc la variance est bien environ égale à $16$.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère une série statistique de $3$ valeurs résumée par le tableau suivant :
+        <table class="tableauvaleurs">
+            <tr>
+                <td>Valeur</td>
+                <td>$-2$</td>
+                <td>$3$</td>
+                <td>$7$</td>
+            </tr>
+            <tr>
+                <td>Effectif</td>
+                <td>$2$</td>
+                <td>$3$</td>
+                <td>$5$</td>
+            </tr>
+        </table>
+        <ol class="alphabetical-list">
+            <li>Recopiez et complétez la formule de la moyenne pondérée de cette série :
+            $$\overline{x}=\frac{\ldots\times\ldots+\ldots\times\ldots+\ldots\times\ldots}{\ldots}$$</li>
+            <li>Calculez la moyenne de cette série.</li>
+            <li>Recopiez et complétez la formule de la variance de cette série :
+            $$V=\frac{\ldots\times(\ldots-\ldots)^2+\ldots\times(\ldots-\ldots)^2+\ldots\times(\ldots-\ldots)^2}{\ldots}$$</li>
+            <li>Calculez la variance</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>La formule de la moyenne pondérée de cette série est :
+                $$\overline{x}=\frac{2\times(-2)+3\times3+5\times7}{2+3+5}$$
+            </li>
+            <li>La moyenne de cette série est $\frac{2\times(-2)+3\times3+5\times7}{2+3+5}=\frac{-4+9+35}{10}=\frac{40}{10}=4$.</li>
+            <li>La formule de la variance de cette série est :
+                $$V=\frac{2\times(-2-4)^2+3\times(3-4)^2+5\times(7-4)^2}{2+3+5}$$
+            </li>
+            <li>La variance de cette série est $\frac{2\times(-2-4)^2+3\times(3-4)^2+5\times(7-4)^2}{2+3+5}=\frac{2\times 36+3\times 1+5\times 9}{10}=\frac{72+3+45}{10}=\frac{120}{10}=12$.</li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Définition :</b> L'<strong>écart-type</strong> d'une série statistique est la racine carrée de la variance. L'écart-type est noté $\sigma$ et est donné par la formule :
+    $$\sigma=\sqrt{V}$$
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère une série statistique de $4$ valeurs résumée par le tableau suivant :
+        <table class="tableauvaleurs">
+            <tr>
+                <td>Valeur</td>
+                <td>$-2$</td>
+                <td>$-1$</td>
+                <td>$2$</td>
+                <td>$9$</td>
+            </tr>
+            <tr>
+                <td>Effectif</td>
+                <td>$2$</td>
+                <td>$3$</td>
+                <td>$4$</td>
+                <td>$1$</td>
+            </tr>
+        </table>
+        <ol class="alphabetical-list">
+            <li>Calculez la moyenne de cette série.</li>
+            <li>Calculez la variance
+            <li>Calculez l'écart-type de cette série.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>La moyenne de cette série est $\frac{2\times(-2)+3\times(-1)+4\times2+1\times9}{2+3+4+1}=\frac{-4-3+8+9}{10}=\frac{10}{10}=1$.</li>
+            <li>La variance de cette série est $\frac{2\times(-2-1)^2+3\times(-1-1)^2+4\times(2-1)^2+1\times(9-1)^2}{2+3+4+1}=\frac{2\times 9+3\times 4+4\times 1+1\times 64}{10}=\frac{18+12+4+64}{10}=\frac{98}{10}=9,8$.</li>
+            <li>L'écart-type de cette série est $\sqrt{9,8}\approx 3,13$.</li>
+        </ol>
+    </div>
+</div></main>
   </body>
 </html>
