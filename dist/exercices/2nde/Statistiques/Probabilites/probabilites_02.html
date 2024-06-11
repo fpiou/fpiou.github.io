@@ -200,7 +200,7 @@ def simulation_sixfaces(nb_lancers):
             <li>Cette commande permet de simuler $200$ lancers d'un dé à six faces et de stocker le nombre d'apparition de chaque face dans une liste.</li>
             <li>La commande <code>randint(0,5)]</code> permet de choisir un nombre aléatoire entre $0$ et $5$.</li>
             <li>Il suffit de modifier la ligne <code>faces = [0,0,0,0,0,0]</code> par <code>faces = [0,0,0,0]</code> et la ligne <code>faces[randint(0,5)] = faces[randint(0,5)]+1</code> par <code>faces[randint(0,3)] = faces[randint(0,3)]+1</code>.</li>
-            <li>Il suffit de modifier la ligne <code>faces = [0,0,0,0,0,0]</code> par <code>faces = [0,0,0,0,0,0,0,0,0,0]</code> et la ligne <code>faces[randint(0,5)] = faces[randint(0,5)]+1</code> par <code>faces[randint(0,nb_faces-1)] = faces[randint(0,nb_faces-1)]+1</code>.</li>
+            <li>Il suffit de modifier la ligne <code>faces = [0,0,0,0,0,0]</code> par <code>faces = [0,0,0,0,0,0,0,0,0,0]</code> et la ligne <code>face= randint(0,5)</code> par <code>face= randint(0,nb_faces-1)</code>.</li>
             <li><pre class="line-numbers"><code class="language-py">def frequences(faces):
     frequences = [0,0,0,0,0,0]
     total= sum(faces)

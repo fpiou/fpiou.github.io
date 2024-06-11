@@ -564,3 +564,45 @@ table.editeur td:first-child {
   border: 1px solid black;
   padding: 5px;
 }
+
+/*************************************/
+/* Tableur                           */
+/*************************************/
+/* Style pour le tableau type feuille de calcul */
+.tableur {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+.tableur td, .tableur th {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.tableur th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.tableur tr:hover {
+  background-color: #e0e0e0;
+}
+
+.tableur .header-col {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: center;
+}
+
+.tableur .header-row {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.tableur .header-row th {
+  text-align: center;
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
