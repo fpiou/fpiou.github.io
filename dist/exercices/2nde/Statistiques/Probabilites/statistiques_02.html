@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Statistiques_02.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <nav class="navbar">
+    <ul>
+        <li class="dropdown">
+            <a href="#">Cours</a>
+            <div class="dropdown-content">
+                <a href="/lessons_2nde.html">Seconde générale</a>
+                <a href="/lessons_1ereGenerale.html">Première générale</a>
+                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Exercices</a>
+            <div class="dropdown-content">
+                <a href="/exercices_2nde.html">Seconde générale</a>
+                <a href="/exercices_1ereGenerale.html">Première générale</a>
+                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Quizs</a>
+            <div class="dropdown-content">
+                <a href="/quizs_2nde.html">Seconde générale</a>
+                <a href="/quizs_1reGenerale.html">Première générale</a>
+                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+            </div>
+        </li>
+        <!-- <li class="dropdown">
+            <a href="#">Apprendre</a>
+            <div class="dropdown-content">
+                <a href=#>Apprendre à apprendre</a>
+                <a href=#>Se préparer</a>
+            </div>            
+        </li>
+        <li class="dropdown">
+            <a href="#">A propos</a>
+            <div class="dropdown-content">
+                <a href=#>Qui suis-je ?</a>
+                <a href=#>Nous contacter</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Statistiques</div> <div>Fiche n° 02</div></header>
+<div class="encart">
+    <b>Définition : </b> 
+    Considérons une série de valeurs réelles ordonnées dans l'ordre croissant.
+    <ul style="padding-left:1em;">
+        <li>On appelle premier quartile et on note $Q_1$ la plus petite valeur de la série tel qu'au moins $\SI{25}{\%}$ des valeurs sont inférieures ou égales à $Q_1$.</li>
+        <li>On appelle troisième quartile et on note $Q_3$ la plus petite valeur de la série tel qu'au moins $\SI{75}{\%}$ des valeurs sont inférieures ou égales à $Q_3$.
+    </ul>
+</div>
+<div class="encart">
+    <b>Méthode : </b>
+    <ol style="padding-letf:1em;">
+        <li>On commence par ranger les valeurs de la série dans l'ordre croissant.</li>
+        <li>On divise l'effectif total de la série par 4 pour trouver la position de $Q_1$ et on la multiplie par 3 pour trouver la position de $Q_3$.</li>
+        <li>Le quartile est un entier, on prend la valeur de la série correspondant à la position trouvée.</li>
+        <li>Si la position n'est pas un entier, on prend la valeur de la série correspondant à la position entière suivante.</li>
+    </ol>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+      On demande à neuf élèves de noter leur temps de trajet en minutes pour se rendre au lycée :
+        $$S_1 : 20 - 10 - 15 - 20 - 20 - 20 - 30 - 30 - 45$$
+      Dire si les affirmations suivantes sont vraies ou fausses :
+      <ol class="alphabetical-list">
+        <li>Au moins $\SI{25}{\%}$ des valeurs de la série sont inférieures ou égales à 15 minutes.</li>
+        <li>Au moins $\SI{75}{\%}$ des valeurs de la série sont inférieures ou égales à 30 minutes.</li> 
+        <li>Au moins $\SI{25}{\%}$ des valeurs de la série sont inférieures ou égales à 30 minutes.</li> 
+        <li>Le premier quartile est égal à 20 minutes.</li>
+        <li>Le troisième quartile est égal à 30 minutes.</li>
+      </ol>
+    </div>
+    <div class="solution">
+        <p>Attention ! Il faut d'abord ranger les valeurs de la série dans l'ordre croissant :</p>
+        $$S_1 : 10 - 15 - 20 - 20 - 20 - 20 - 30 - 30 - 45$$
+        <ol class="alphabetical-list">
+            <li><p>2 valeurs sur 9 sont inférieures ou égales à 15 minutes.</p>
+            <p>Le quart de 9 est 2,25, donc moins de $\SI{25}{\%}$ des valeurs sont inférieures ou égales à 15 minutes.</p>
+            <p>Cette affirmation est fausse.</p></li>
+            <li><p>7 valeurs sur 9 sont inférieures ou égales à 30 minutes.</p>
+            <p>Les trois quarts de 9 sont 6,75, donc plus de $\SI{75}{\%}$ des valeurs sont inférieures ou égales à 30 minutes.</p>
+            <p>Cette affirmation est vraie.</p></li>
+            <li><p>7 valeurs sur 9 sont inférieures ou égales à 30 minutes.</p>
+            <p>Les trois quarts de 9 sont 6,75, donc plus de $\SI{25}{\%}$ des valeurs sont inférieures ou égales à 30 minutes.</p>
+            <p>Cette affirmation est vraie.</p></li>
+            <li><p>Le premier quartile est la plus petite  valeur de la série correspondant à la position $\frac{9}{4} = 2,25$.</p>
+            <p>Le premier quartile est la valeur de la série correspondant à la position 3.</p>
+            <p>Le premier quartile est égal à 20 minutes.</p>
+            <p>Cette affirmation est vraie.</p></li>
+            <li><p>Le troisième quartile est la plus petite valeur de la série correspondant à la position $\frac{3 \times 9}{4} = 6,75$.</p>
+            <p>Le troisième quartile est la valeur de la série correspondant à la position 7.</p>
+            <p>Le troisième quartile est égal à 30 minutes.</p>
+            <p>Cette affirmation est vraie.</p></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez le premier et le troisième quartile des séries suivantes :
+        <ul class="horizontal-list">
+            <li>$$S_2 : 7 - 12 - 5 - 8 - 7 - 10 - 5 - 3$$</li>
+            <li>$$S_3 : 3 - 5 - 7 - 8 - 10 - 12 - 5 - 7 - 12 - 7$$</li>
+        </ul>
+    </div>
+    <div class="solution">
+        <p>Attention ! Il faut d'abord ranger les valeurs de la série dans l'ordre croissant :</p>
+        <ul class="horizontal-list">
+            <li>$$S_2 : 3 - 5 - 5 - 7 - 7 - 8 - 10 - 12$$</li>
+            <li>$$S_3 : 3 - 5 - 5 - 7 - 7 - 7 - 8 - 10 - 12 - 12$$</li>
+        </ul>
+        <p>On a $Q_1 = 5$ et $Q_3 = 8$ pour la série $S_2$.</p>
+        <p>On a $Q_1 = 5$ et $Q_3 = 10$ pour la série $S_3$.</p>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On demande aux 36 élèves d'une classe de seconde de noter leur temps de trajet en minutes pour se rendre au lycée et on obtient les quartiles suivants :
+        $$ Q_1 = 17 \qquad Q_3 = 25$$
+        Interprétez ces résultats.
+    </div>
+    <div class="solution">
+        <p>Le premier quartile est égal à 15 minutes, cela signifie qu'au moins $\SI{25}{\%}$ des élèves mettent au plus 17 minutes pour se rendre au lycée.</p>
+        <p>Le troisième quartile est égal à 25 minutes, cela signifie qu'au moins $\SI{75}{\%}$ des élèves mettent au plus 25 minutes pour se rendre au lycée.</p>
+        <p>Il y a $36$ élèves dans la classe, donc au moins $9$ élèves mettent au plus 17 minutes pour se rendre au lycée et au moins $27$ élèves mettent au plus 25 minutes pour se rendre au lycée.</p>
+    </div>
+</div>
+<div class="encart">
+    <b>Méthode : </b>
+    On considère un tableau des effectifs. Pour trouver les quartiles, on commence par calculer les effectifs cumulés croissants (ECC).
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        On demande à 50 élèves de noter leur temps de trajet en minutes pour se rendre au lycée et on obtient le tableau suivant :
+        <table class="tableauvaleurs">
+            <tr>
+                <td>Valeur</td>
+                <td>$10$</td>
+                <td>$15$</td>
+                <td>$20$</td>
+                <td>$25$</td>
+                <td>$30$</td>
+            </tr>
+            <tr>
+                <td>Effectif</td>
+                <td>$5$</td>
+                <td>$12$</td>
+                <td>$7$</td>
+                <td>$15$</td>
+                <td>$11$</td>
+            </tr>
+            <tr>
+                <td>ECC</td>
+                <td>$5$</td>
+                <td>$ $</td>
+                <td>$ $</td>
+                <td>$ $</td>
+                <td>$ $</td>
+            </tr>
+        </table>
+        <ol class="alphabetical-list">
+            <li>Complétez le tableau.</li>
+            <li>Calculez les quartiles.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>
+        <ul style="padding-left:1em;">
+            <li>On a $5 + 12 = 17$ élèves qui mettent au plus 15 minutes pour se rendre au lycée.</li>
+            <li>On a $17 + 7 = 24$ élèves qui mettent au plus 20 minutes pour se rendre au lycée.</li>
+            <li>On a $24 + 15 = 39$ élèves qui mettent au plus 25 minutes pour se rendre au lycée.</li>
+            <li>On a $39 + 11 = 50$ élèves dans la classe.</li>
+        </ul>
+        <table class="tableauvaleurs">
+            <tr>
+                <td>Valeur</td>
+                <td>$10$</td>
+                <td>$15$</td>
+                <td>$20$</td>
+                <td>$25$</td>
+                <td>$30$</td>
+            </tr>
+            <tr>
+                <td>Effectif</td>
+                <td>$5$</td>
+                <td>$12$</td>
+                <td>$7$</td>
+                <td>$15$</td>
+                <td>$11$</td>
+            </tr>
+            <tr>
+                <td>ECC</td>
+                <td>$5$</td>
+                <td>$17$</td>
+                <td>$24$</td>
+                <td>$39$</td>
+                <td>$50$</td>
+            </tr>
+        </table>
+        </li>
+            <li>
+        <ul style="padding-left:1em;">
+            <li>Le premier quartile est la valeur de la série correspondant à la position $\frac{50}{4} = 12,5$.</li>
+            <li>Le premier quartile est la valeur de la série correspondant à la position 13.</li>
+            <li>Le premier quartile est égal à 15 minutes.</li>
+            <li>Le troisième quartile est la valeur de la série correspondant à la position $\frac{3 \times 50}{4} = 37,5$.</li>
+            <li>Le troisième quartile est la valeur de la série correspondant à la position 38.</li>
+            <li>Le troisième quartile est égal à 25 minutes.</li>
+        </ul>
+        </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On utilise un tableur pour calculer les quartiles d'une série de valeurs. Voici les valeurs de la série :
+        <table class="tableur">
+            <tr class="header-row">
+                <td></td>
+                <td>A</td>
+                <td>B</td>
+                <td>C</td>
+                <td>D</td>
+                <td>E</td>
+                <td>F</td>
+            </tr>
+            <tr>
+                <td class="header-col">1</td>
+                <td>Valeur</td>
+                <td>10</td>
+                <td>12</td>
+                <td>15</td>
+                <td>20</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td class="header-col">2</td>
+                <td>Effectif</td>
+                <td>5</td>
+                <td>12</td>
+                <td>10</td>
+                <td>15</td>
+                <td>11</td>
+            </tr>
+        </table>
+        <ol class="alphabetical-list">
+            <li>Sur la troisième ligne du tableur on souhaite faire apparaitre les effectifs cumulés croissants. Quelle formule doit-on écrire dans la cellule <code class="language-plaintext">B3</code> ? dans la cellule <code class="language-plaintext">C3</code> pour la recopier ensuite ?</li>
+            <li>On écrit la formule suivante dans la cellule <code class="language-plaintext">B5</code> : <code class="language-plaintext">=ENT(F3/4)=F3/4</code>. La fonction ENT() renvoie la partie entière d'un nombre. Le signe "=" permet de tester si deux valeurs sont égales. Que va afficher le tableur dans la cellule <code class="language-plaintext">B5</code> ?</li>
+            <li>On écrit la formule suivante dans la cellule <code class="language-plaintext">C5</code> : <code class="language-plaintext">=SI(B5;ENT(F3/4);ENT(F3/4)+1)</code>. La fonction SI() permet de tester une condition. Que va afficher le tableur dans la cellule <code class="language-plaintext">C5</code> ?</li>
+            <li>Déterminez le premier quartile de la série.</li>
+            <li>Quelle formule doit-on écrire dans la cellule <code class="language-plaintext">B6</code> pour déterminer le troisième quartile ?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>
+                <ul style="padding-left:1em;">
+                    <li>On écrit la formule suivante dans la cellule <code class="language-plaintext">B3</code> : <code class="language-plaintext">=B2</code>.</li>
+                    <li>On écrit la formule suivante dans la cellule <code class="language-plaintext">C3</code> : <code class="language-plaintext">=B3+C2</code>.</li>
+                </ul>
+            </li>
+            <li>
+                <p>La formule va afficher <code class="language-plaintext">VRAI</code> si la partie décimale de <code class="language-plaintext">F3/4</code> est nulle, c'est-à-dire si <code class="language-plaintext">F3</code> est un multiple de 4.</p>
+                <p>L'effectif total de la série est 50, donc la formule va afficher <code class="language-plaintext">FAUX</code> dans la cellule <code class="language-plaintext">B5</code> car 50 n'est pas un multiple de 4.</p>
+            </li>
+            <li>
+                <p>La formule va afficher la partie entière de <code class="language-plaintext">F3/4</code> si <code class="language-plaintext">F3</code> est un multiple de 4, sinon elle va afficher la partie entière de <code class="language-plaintext">F3/4</code> augmentée de 1.</p>
+                <p>La formule va afficher 13 dans la cellule <code class="language-plaintext">C5</code> car la partie entière de <code class="language-plaintext">50/4</code> est 12.</p>
+            </li>
+            <li>
+                <p>On écrit la formule suivante dans la cellule <code class="language-plaintext">B6</code> : <code class="language-plaintext">=B2+3*C2</code>.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Définition : </b>
+    On considère une série statistique de premier quartile $Q_1$ et de troisième quartile $Q_3$. On appelle écart interquartile la différence $Q_3 - Q_1$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Après une demande à 50 élèves de noter leur temps de trajet en minutes pour se rendre au lycée, on obtient les quartiles suivants :
+        $$Q_1 = 15 \qquad Q_3 = 25$$
+        Calculez l'écart interquartile et interprétez ce résultat.
+    </div>
+    <div class="solution">
+        <p>L'écart interquartile est égal à $Q_3 - Q_1 = 25 - 15 = 10$ minutes.</p>
+        <p>Cela signifie que la durée de trajet d'environ $\SI{50}{\%}$ des élèves est comprise entre 15 et 25 minutes.</p>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On demande à 45 élèves de noter leur temps d'utilisation quotidienne d'un réseau social en heures et on obtient les effectifs suivants :
+        <table class="tableauvaleurs">
+            <tr>
+                <td>Valeur</td>
+                <td>$0$</td>
+                <td>$1$</td>
+                <td>$2$</td>
+                <td>$3$</td>
+                <td>$4$</td>
+            </tr>
+            <tr>
+                <td>Effectif</td>
+                <td>$5$
+                <td>$5$</td>
+                <td>$15$</td>
+                <td>$12$</td>
+                <td>$8$</td>
+            </tr>
+        </table>
+        <ol class="alphabetical-list">
+            <li>Calculez la moyenne de la série.</li>
+            <li>Calculez la médiane de la série.</li>
+            <li>Calculez les quartiles de la série.</li>
+            <li>Calculez l'écart interquartile de la série.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>
+                <p>La moyenne de la série est égale à $\frac{5 \times 0 + 5 \times 1 + 15 \times 2 + 12 \times 3 + 8 \times 4}{45} = \frac{0 + 5 + 30 + 36 + 32}{45} = \frac{103}{45} \approx 2,29$ heures.</p>
+            </li>
+            <li>
+                <p>La médiane de la série est la valeur de la série correspondant à la position $\frac{45 + 1}{2} = 23$.</p>
+                <p>La médiane de la série est égale à 2 heures.</p>
+            </li>
+            <li>
+                <p>Le premier quartile est la valeur de la série correspondant à la position $\frac{45}{4} = 11,25$.</p>
+                <p>Le premier quartile est la valeur de la série correspondant à la position 12.</p>
+                <p>Le premier quartile est égal à 2 heures.</p>
+                <p>Le troisième quartile est la valeur de la série correspondant à la position $\frac{3 \times 45}{4} = 33,75$.</p>
+                <p>Le troisième quartile est la valeur de la série correspondant à la position 34.</p>
+                <p>Le troisième quartile est égal à 3 heures.</p>
+            </li>
+            <li>
+                <p>L'écart interquartile est égal à $Q_3 - Q_1 = 3 - 2 = 1$ heure.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On a mesuré le temps de rétablissement (en jours) de deux groupes de patients après avoir pris deux médicaments différents, A et B. Les paramètres statistiques obtenus sont les suivants :
+        
+        <h3>Médicament A</h3>
+        <ul>
+            <li>Moyenne : 8,5 jours</li>
+            <li>Médiane : 8,5 jours</li>
+            <li>Écart-type : 2,06 jours</li>
+            <li>Écart interquartile : 3 jours</li>
+            <li>Étendue : 7 jours</li>
+        </ul>
+
+        <h3>Médicament B</h3>
+        <ul>
+            <li>Moyenne : 8,3 jours</li>
+            <li>Médiane : 7,5 jours</li>
+            <li>Écart-type : 3,6 jours</li>
+            <li>Écart interquartile : 7 jours</li>
+            <li>Étendue : 12 jours</li>
+        </ul>
+
+        Interprétez ces résultats pour comparer l'efficacité et la consistance des deux médicaments.
+    </div>
+    <div class="solution">
+        <h3>Interprétation</h3>
+        <p>
+            En comparant les moyennes, les deux médicaments semblent avoir des effets similaires sur le temps de rétablissement, avec une moyenne de 8,5 jours pour le médicament A et 8,3 jours pour le médicament B.
+        </p>
+        <p>
+            La médiane est légèrement plus faible pour le médicament B (7,5 jours) par rapport au médicament A (8,5 jours), ce qui suggère que le médicament B pourrait avoir un effet plus rapide pour au moins 50% des patients.
+        </p>
+        <p>
+            Cependant, l'écart-type du médicament B (3,6 jours) est beaucoup plus élevé que celui du médicament A (2,06 jours), indiquant une plus grande variabilité des temps de rétablissement parmi les patients prenant le médicament B.
+        </p>
+        <p>
+            De même, l'écart interquartile et l'étendue sont également plus élevés pour le médicament B (7 jours et 12 jours respectivement) par rapport au médicament A (3 jours et 7 jours respectivement), ce qui confirme une plus grande dispersion des temps de rétablissement pour le médicament B.
+        </p>
+        <p>
+            En conclusion, bien que le médicament B puisse potentiellement offrir un rétablissement plus rapide pour certains patients, il est moins consistant que le médicament A, qui présente des temps de rétablissement plus homogènes parmi les patients.
+        </p>
+    </div>
+</div>
+</main>
+  </body>
+</html>
