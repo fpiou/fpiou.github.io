@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Reels_01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Exercices</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Manipuler les nombres réels</div> <div>Fiche n° 01</div></header>
+<div class="encart">
+    <b>Définition :</b> L'ensemble des abscisses des points d'une droite graduée est l'ensemble des nombres réels que l'on note $\mathbb{R}$. On dit aussi que $\mathbb{R}$ est l'ensemble des réels et que la droite sur laquelle ils sont représentés est la droite numérique.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère la droite numérique ci-dessous d'origine $O$ et le point $A$ d'abscisse $3$.
+        <div id="figure1" class="figure">
+            <svg id="figure1" viewBox="0 0 200 80" class="quadrillage">
+                <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="5" ymax ="3" xorigine="0" yorigine="0"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" fill="black" forme ="|"></g>
+                <g class="label" linkto="O" x="-3" y="0" style="font-size: 0.8em;">O</g>
+                <g name="A" class="point labeled" repere="repere1" x="3" y="0" stroke="none"></g>
+                <g class="label" linkto="A" x="-3" y="0" style="font-size: 0.8em;">A</g>
+                <g name="B" class="point labeled" repere="repere1" x="3" y="2" stroke="none"></g>
+                <g class="label" linkto="B" x="-3" y="-15" style="font-size: 0.8em;">B</g>
+                <g name="M" class="point labeled" repere="repere1" x="sqrt(13)" y="0" stroke="none"></g>
+                <g class="label" linkto="M" x="-3" y="0" style="font-size: 0.8em;">M</g>
+                <g name="AB" class="segment" repere="repere1" linkto="A B" stroke="black" stroke-width="1"></g>
+                <g name="OB" class="segment" repere="repere1" linkto="O B" stroke="black" stroke-width="1"></g>
+                <g name="BOM" class="arc" repere="repere1" linkto="B O M" stroke="black" stroke-width="1" fill="none" stroke-dasharray="2,2"></g>
+            </svg>
+        </div>
+        Le triangle $OBA$ est rectangle en $A$ tel que $AB = 2$ et $M$ est le point d'abscisse positive tel que $OM=OB.$
+        <ol class="alphabetical-list">
+            <li>Calculez l'abscisse du point $M.$</li>
+            <li>Montrez qu'un triangle rectangle isocèle dont les côtés de l'angle droit sont de longueur $2$ a un hypoténuse de longueur&nbsp;$\sqrt{8}.$</li>
+            <li>Construisez le point $N$ d'abscisse $-\sqrt{8}.$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$OAB$ est rectangle en $A$ donc d'après le théorème de Pythagore, on a $$OA^2 + AB^2 = OB^2$$</p>
+                <p>Donc $3^2 + 2^2 = OB^2$ soit $OB^2 = 13$ et $OB = \sqrt{13}.$</p>
+                <p>Comme $OM = OB$, $M$ est le point d'abscisse $\sqrt{13}.$</p>
+            </li>
+            <li><p>Soit un triangle rectangle isocèle tel que le côté de l'angle droit est de longueur $2.$</p>
+                <p>D'après le théorème de Pythagore, on a $2^2 + 2^2 = x^2$ où $x$ est la longueur de l'hypoténuse.</p>
+                <p>Donc $4 + 4 = x^2$ soit $x^2 = 8$ et $x = \sqrt{8}.$</p>
+            </li>
+            <li>
+            <p>On construit le point $N$ d'abscisse $-\sqrt{8}$ à l'aide d'un triangle rectangle</p>
+            <div id="figure1" class="figure">
+            <svg id="figure1" viewBox="0 0 200 80"  class="quadrillage">
+                <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="5" ymax ="3" xorigine="0" yorigine="0"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" fill="black" forme ="|"></g>
+                <g class="label" linkto="O" x="-3" y="0" style="font-size: 0.8em;">O</g>
+                <g name="A" class="point" repere="repere1" x="-2" y="0" stroke="none"></g>
+                <g class="label" linkto="A" x="-3" y="0" style="font-size: 0.8em;">A</g>
+                <g name="B" class="point" repere="repere1" x="-2" y="2" stroke="none"></g>
+                <g class="label" linkto="B" x="-3" y="-15" style="font-size: 0.8em;">B</g>
+                <g name="M" class="point labeled" repere="repere1" x="-sqrt(8)" y="0" stroke="none"></g>
+                <g class="label" linkto="M" x="-3" y="0" style="font-size: 0.8em;">N</g>
+                <g name="AB" class="segment" repere="repere1" linkto="A B" stroke="black" stroke-width="1"></g>
+                <g name="OB" class="segment" repere="repere1" linkto="O B" stroke="black" stroke-width="1"></g>
+                <g name="BOM" class="arc" repere="repere1" linkto="M O B" stroke="black" stroke-width="1" fill="none" stroke-dasharray="2,2"></g>
+            </svg>
+        </div></li>
+        </ol>
+    </div>
+</div></main>
+  </body>
+</html>

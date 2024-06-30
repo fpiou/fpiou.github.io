@@ -71,48 +71,39 @@
   <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
 
   <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
     <nav class="navbar">
-    <ul>
-        <li class="dropdown">
-            <a href="#">Cours</a>
-            <div class="dropdown-content">
-                <a href="/lessons_2nde.html">Seconde générale</a>
-                <a href="/lessons_1ereGenerale.html">Première générale</a>
-                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
-            </div>
-        </li>
-        <li class="dropdown">
-            <a href="#">Exercices</a>
-            <div class="dropdown-content">
-                <a href="/exercices_2nde.html">Seconde générale</a>
-                <a href="/exercices_1ereGenerale.html">Première générale</a>
-                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
-            </div>
-        </li>
-        <li class="dropdown">
-            <a href="#">Quizs</a>
-            <div class="dropdown-content">
-                <a href="/quizs_2nde.html">Seconde générale</a>
-                <a href="/quizs_1reGenerale.html">Première générale</a>
-                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
-            </div>
-        </li>
-        <!-- <li class="dropdown">
-            <a href="#">Apprendre</a>
-            <div class="dropdown-content">
-                <a href=#>Apprendre à apprendre</a>
-                <a href=#>Se préparer</a>
-            </div>            
-        </li>
-        <li class="dropdown">
-            <a href="#">A propos</a>
-            <div class="dropdown-content">
-                <a href=#>Qui suis-je ?</a>
-                <a href=#>Nous contacter</a>
-            </div>
-        </li> -->
-    </ul>
-</nav>
+        <ul>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Exercices</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
     <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
     <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
     <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>

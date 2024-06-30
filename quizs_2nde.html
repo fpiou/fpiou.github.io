@@ -48,48 +48,39 @@
     <title>2de spécifique - Quizs</title>
 </head>
 <body>
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
     <nav class="navbar">
-    <ul>
-        <li class="dropdown">
-            <a href="#">Cours</a>
-            <div class="dropdown-content">
-                <a href="/lessons_2nde.html">Seconde générale</a>
-                <a href="/lessons_1ereGenerale.html">Première générale</a>
-                <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
-            </div>
-        </li>
-        <li class="dropdown">
-            <a href="#">Exercices</a>
-            <div class="dropdown-content">
-                <a href="/exercices_2nde.html">Seconde générale</a>
-                <a href="/exercices_1ereGenerale.html">Première générale</a>
-                <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
-            </div>
-        </li>
-        <li class="dropdown">
-            <a href="#">Quizs</a>
-            <div class="dropdown-content">
-                <a href="/quizs_2nde.html">Seconde générale</a>
-                <a href="/quizs_1reGenerale.html">Première générale</a>
-                <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
-            </div>
-        </li>
-        <!-- <li class="dropdown">
-            <a href="#">Apprendre</a>
-            <div class="dropdown-content">
-                <a href=#>Apprendre à apprendre</a>
-                <a href=#>Se préparer</a>
-            </div>            
-        </li>
-        <li class="dropdown">
-            <a href="#">A propos</a>
-            <div class="dropdown-content">
-                <a href=#>Qui suis-je ?</a>
-                <a href=#>Nous contacter</a>
-            </div>
-        </li> -->
-    </ul>
-</nav>
+        <ul>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Exercices</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
     
     <h1>2de spécifique - Quizs</h1>
     <ul><li>Algorithmie<ul><li>Python<ul><li><a href="./dist/quizs\2nde\Algorithmie\Python\algorithmie.html">algorithmie</a></li></ul></li></ul></li><li>Fonctions<ul><li>Representer<ul><li><a href="./dist/quizs\2nde\Fonctions\Representer\fonctions.html">fonctions</a></li></ul></li></ul></li><li>Geometrie<ul><li>Geometrieplane<ul><li><a href="./dist/quizs\2nde\Geometrie\Geometrieplane\pythagore.html">pythagore</a></li><li><a href="./dist/quizs\2nde\Geometrie\Geometrieplane\quadrilateres.html">quadrilateres</a></li></ul></li><li>Vecteurs<ul><li><a href="./dist/quizs\2nde\Geometrie\Vecteurs\vecteurs.html">vecteurs</a></li><li><a href="./dist/quizs\2nde\Geometrie\Vecteurs\vecteurs_00.html">vecteurs_00</a></li></ul></li></ul></li><li>Nombres<ul><li>arithmetique<ul><li><a href="./dist/quizs\2nde\Nombres\arithmetique\arithmetique.html">arithmetique</a></li></ul></li><li>calculs<ul><li><a href="./dist/quizs\2nde\Nombres\calculs\developper.html">developper</a></li><li><a href="./dist/quizs\2nde\Nombres\calculs\developper_01.html">developper_01</a></li><li><a href="./dist/quizs\2nde\Nombres\calculs\developper_02.html">developper_02</a></li><li><a href="./dist/quizs\2nde\Nombres\calculs\egalite.html">egalite</a></li><li><a href="./dist/quizs\2nde\Nombres\calculs\equations.html">equations</a></li><li><a href="./dist/quizs\2nde\Nombres\calculs\equationsproduits.html">equationsproduits</a></li><li><a href="./dist/quizs\2nde\Nombres\calculs\factoriser.html">factoriser</a></li><li><a href="./dist/quizs\2nde\Nombres\calculs\fractions.html">fractions</a></li><li><a href="./dist/quizs\2nde\Nombres\calculs\identites_remarquables.html">identites_remarquables</a></li><li><a href="./dist/quizs\2nde\Nombres\calculs\inegalites_01.html">inegalites_01</a></li><li><a href="./dist/quizs\2nde\Nombres\calculs\inegalites_02.html">inegalites_02</a></li><li><a href="./dist/quizs\2nde\Nombres\calculs\inequations.html">inequations</a></li><li><a href="./dist/quizs\2nde\Nombres\calculs\puissances.html">puissances</a></li><li><a href="./dist/quizs\2nde\Nombres\calculs\racinecarree.html">racinecarree</a></li></ul></li><li>reels<ul><li><a href="./dist/quizs\2nde\Nombres\reels\encadrement.html">encadrement</a></li><li><a href="./dist/quizs\2nde\Nombres\reels\intervalles.html">intervalles</a></li><li><a href="./dist/quizs\2nde\Nombres\reels\reels.html">reels</a></li></ul></li></ul></li></ul>

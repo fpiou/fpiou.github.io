@@ -37129,61 +37129,6 @@ var openAvantPrint = function () {
     bodyElement.style.fontSize = tailleActuelle + 4 + "px";
   };
 };
-var adapterPositionDropdown = function (event) {
-  var dropdownContent = event.currentTarget.querySelector(".dropdown-content");
-
-  // Affichez le dropdown pour pouvoir obtenir ses dimensions
-  dropdownContent.style.display = "flex";
-  dropdownContent.style.flexDirection = "column";
-
-  // Calculez la distance entre le bord droit du dropdown et le bord droit de la fenêtre
-  var overflowDistance = dropdownContent.getBoundingClientRect().right - window.innerWidth;
-
-  // Si le dropdown déborde à droite
-  if (overflowDistance > 0) {
-    // Ajustez la position du dropdown
-    // Par exemple, déplacez le dropdown vers la gauche de la distance de débordement
-    dropdownContent.style.right = overflowDistance + "px";
-  } else {
-    // Réinitialisez la position si elle a été précédemment ajustée
-    dropdownContent.style.right = "auto";
-  }
-};
-var dropdownMenusBandeau = function () {
-  var dropdowns = document.querySelectorAll(".dropdown");
-  dropdowns.forEach(dropdown => {
-    dropdown.addEventListener("click", function (event) {
-      if (event.currentTarget.classList.contains("dropdown")) {
-        // Masquer tous les dropdowns sauf celui cliqué
-        dropdowns.forEach(dropdown => {
-          if (dropdown != event.target.parentNode) {
-            dropdown.querySelector(".dropdown-content").style.display = "none";
-          }
-        });
-        // Afficher ou masquer le dropdown cliqué
-        var dropdownContent = event.currentTarget.querySelector(".dropdown-content");
-        if (dropdownContent.style.display == "flex") {
-          dropdownContent.style.display = "none";
-        } else {
-          adapterPositionDropdown(event);
-          //dropdownContent.style.display = "flex";
-        }
-      }
-    });
-    dropdown.addEventListener("mouseover", function (event) {
-      // On survole un élément dropdown
-      if (event.target.classList.contains("dropdown")) {
-        adapterPositionDropdown(event);
-      }
-    });
-    dropdown.addEventListener("mouseleave", function (event) {
-      if (event.target.classList.contains("dropdown")) {
-        var dropdownContent = event.target.querySelector(".dropdown-content");
-        dropdownContent.style.display = "none";
-      }
-    });
-  });
-};
 var taillePolice = function () {
   let bodyElement = document.body;
   let tailleInitiale = window.getComputedStyle(bodyElement).fontSize;
@@ -37334,6 +37279,85 @@ function ajusterStartol() {
     list.style.setProperty('--start', startValue - 1);
   });
 }
+function encodeId(str) {
+  return encodeURIComponent(str.trim());
+}
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  const openbtn = document.getElementById("openbtn");
+  if (sidebar.style.left === "0px" || sidebar.style.left === "") {
+    sidebar.style.left = "-250px";
+    openbtn.style.display = "block";
+    localStorage.setItem("sidebarState", "closed");
+  } else {
+    sidebar.style.left = "0";
+    openbtn.style.display = "none";
+    localStorage.setItem("sidebarState", "open");
+  }
+}
+function toggleDropdown(event) {
+  const dropdownContent = event.currentTarget.nextElementSibling;
+  const dropdownId = encodeId(event.currentTarget.textContent);
+
+  // Close all dropdowns except the one clicked
+  document.querySelectorAll('.dropdown-content').forEach(content => {
+    if (content !== dropdownContent) {
+      content.style.display = "none";
+      localStorage.setItem(encodeId(content.previousElementSibling.textContent), "closed");
+    }
+  });
+
+  // Toggle the clicked dropdown
+  if (dropdownContent.style.display === "block") {
+    dropdownContent.style.display = "none";
+    localStorage.setItem(dropdownId, "closed");
+  } else {
+    dropdownContent.style.display = "block";
+    localStorage.setItem(dropdownId, "open");
+  }
+}
+function restoreSidebarState() {
+  const sidebarState = localStorage.getItem("sidebarState");
+  const sidebar = document.getElementById("sidebar");
+  const openbtn = document.getElementById("openbtn");
+  if (sidebarState === "open") {
+    sidebar.style.left = "0";
+    openbtn.style.display = "none";
+  } else {
+    sidebar.style.left = "-250px";
+    openbtn.style.display = "block";
+  }
+  const dropdowns = document.querySelectorAll('.dropbtn');
+  dropdowns.forEach(dropbtn => {
+    const dropdownId = encodeId(dropbtn.textContent);
+    const state = localStorage.getItem(dropdownId);
+    const dropdownContent = dropbtn.nextElementSibling;
+    if (state === "open") {
+      dropdownContent.style.display = "block";
+    } else {
+      dropdownContent.style.display = "none";
+    }
+  });
+}
+function closeAllDropdowns(exceptDropdownContent) {
+  document.querySelectorAll('.dropdown-content').forEach(content => {
+    if (content !== exceptDropdownContent) {
+      content.style.display = "none";
+      localStorage.setItem(encodeId(content.previousElementSibling.textContent), "closed");
+    }
+  });
+}
+window.toggleSidebar = toggleSidebar;
+window.addEventListener("DOMContentLoaded", restoreSidebarState);
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdowns = document.querySelectorAll('.dropbtn');
+  dropdowns.forEach(dropbtn => {
+    dropbtn.addEventListener('click', toggleDropdown);
+  });
+});
+
+// Attach the function to the window object to make it globally accessible
+window.toggleSidebar = toggleSidebar;
 document.addEventListener("DOMContentLoaded", async function () {
   try {
     await chargerBacasables();
@@ -37343,6 +37367,18 @@ document.addEventListener("DOMContentLoaded", async function () {
       script.src = "/dist/prism.js";
       document.head.appendChild(script);
     }
+    restoreSidebarState();
+    const dropdowns = document.querySelectorAll('.dropbtn');
+    dropdowns.forEach(dropbtn => {
+      dropbtn.addEventListener('click', toggleDropdown);
+    });
+    const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+    dropdownLinks.forEach(link => {
+      link.addEventListener('click', function (event) {
+        closeAllDropdowns(link.parentElement);
+        toggleSidebar();
+      });
+    });
     insererEntetesBlocsLesson();
     insererEntetesBlocsExercices();
     // On teste si on est dans un contexte <meta name="quiz" content="true">
@@ -37354,7 +37390,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     convertirKatexEnMathML();
     masquerSolutionsExercices();
     ajouterSommaire();
-    dropdownMenusBandeau();
     openAvantPrint();
     taillePolice();
     colonnes();
@@ -39639,6 +39674,38 @@ var actualiserEllipse = function (ellipse) {
   ellipseSVG.setAttribute("rx", a);
   ellipseSVG.setAttribute("ry", b);
 };
+var initialiserArcsFigure = function (figure) {
+  getArcsFigure(figure).forEach(function (arc) {
+    initialiserArc(arc);
+  });
+};
+var getArcsFigure = function (figure) {
+  var arcs = document.querySelectorAll("g.arc");
+  var arcsArray = Array.from(arcs);
+  return arcsArray.filter(arc => arc.id.split("-")[0] == figure.id);
+};
+var createArc = function (arc) {
+  var linkto = arc.getAttribute("linkto").split(" ");
+  var A = arc.parentNode.querySelector("#" + linkto[0]);
+  var B = arc.parentNode.querySelector("#" + linkto[1]);
+  var C = arc.parentNode.querySelector("#" + linkto[2]);
+  var P1 = getCoordonneesPoint(A);
+  var P2 = getCoordonneesPoint(B);
+  var P3 = getCoordonneesPoint(C);
+  var a = mathjs__WEBPACK_IMPORTED_MODULE_4__.distance(P1, P2);
+  var b = mathjs__WEBPACK_IMPORTED_MODULE_4__.distance(P2, P3);
+  var x = (P1[0] + P3[0]) / 2;
+  var y = (P1[1] + P3[1]) / 2;
+  var arcSVG = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  arcSVG.setAttribute("d", "M ".concat(P1[0], " ").concat(P1[1], " A ").concat(a, " ").concat(b, " 0 0 1 ").concat(P3[0], " ").concat(P3[1]));
+  arcSVG.setAttribute("stroke", arc.getAttribute("stroke"));
+  arcSVG.setAttribute("stroke-width", arc.getAttribute("stroke-width"));
+  arcSVG.setAttribute("fill", arc.getAttribute("fill"));
+  arc.appendChild(arcSVG);
+};
+var initialiserArc = function (arc) {
+  createArc(arc);
+};
 var initialiserFigure = function (figure) {
   addQuadrillage(figure);
   addBoutonQuadrillage(figure);
@@ -39666,6 +39733,7 @@ var initialiserFigure = function (figure) {
   initilialiserIntersectionPathsFigure(figure);
   initialiserAnglesDroits(figure);
   initialiserLabels(figure);
+  initialiserArcsFigure(figure);
 };
 var getCoordonneesPoint = function (point) {
   var data = point.getAttribute("transform").split("translate(")[1].split(")")[0].split(",");

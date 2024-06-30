@@ -87,55 +87,101 @@ summary {
   height: 100vh;
 }
 
-.navbar {
-  background-color: #0c655ca8;
-  width: 100%;
+/* Bandeau */
+.sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  background-color: #333;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 20px;
 }
 
-.navbar ul {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content: space-around;
+.sidebar .closebtn {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar .navbar ul {
   list-style-type: none;
   padding: 0;
-  margin: 0;
-  width: 100%;
 }
 
-.navbar li {
-  color: white;
-  padding: 10px 20px;
+.sidebar .navbar ul li {
+  padding: 8px;
+  text-align: left;
 }
 
-.dropdown a {
+.sidebar .navbar ul li a {
   color: white;
   text-decoration: none;
-  text-align: center;
-  font-size: 17px;
+  display: block;
+  padding: 10px 15px;
+}
+
+.sidebar .navbar ul li a:hover {
+  background-color: #575757;
 }
 
 .dropdown-content {
-  display:none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  flex-direction: column;
+  display: none;
+  background-color: #414141;
+  padding-left: 20px;
 }
 
 .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
+  padding: 8px 0;
   text-decoration: none;
+  color: white;
   display: block;
 }
 
-/* Affichez le sous-menu lorsque le parent est survolé ou a la classe 'active'
+.dropdown-content a:hover {
+  background-color: #575757;
+}
+
 .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropbtn {
+  cursor: pointer;
   display: flex;
-  flex-direction: column;
-}*/
+  align-items: center;
+}
+
+.dropbtn i {
+  margin-right: 10px;
+}
+
+#openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar .navbar ul li a {font-size: 18px;}
+}
+/* Fin bandeau */
 
 /*La fonte Katex*/
 .katex {
@@ -149,33 +195,6 @@ summary {
 /* Mettre la fonte katex en gras dans une balise important ou dans un titre h1, h2, h3*/
 .important .katex, h1 .katex, h2 .katex, h3 .katex, strong .katex, b .katex, th .katex {
   font-weight: bold;
-}
-
-
-/* Formattage personnalisés */
-.responsive-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0;
-}
-
-.responsive-list li {
-  flex: 1;
-  padding: 0 10px;
-  box-sizing: border-box;
-}
-
-/* Lorsque la largeur de l'écran est inférieure à 600px, les éléments passent en colonnes */
-@media (max-width: 600px) {
-  .responsive-list {
-      flex-direction: column;
-  }
-
-  .responsive-list li {
-      margin-bottom: 20px; /* Ajout d'une marge en bas pour l'espacement entre les éléments */
-  }
 }
 
 /* Tableau de valeurs */
