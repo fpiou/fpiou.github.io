@@ -37319,6 +37319,10 @@ function toggleDropdown(event) {
 function restoreSidebarState() {
   const sidebarState = localStorage.getItem("sidebarState");
   const sidebar = document.getElementById("sidebar");
+  // S'il n'y a pas de sidebar sortir
+  if (!sidebar) {
+    return;
+  }
   const openbtn = document.getElementById("openbtn");
   if (sidebarState === "open") {
     sidebar.style.left = "0";
