@@ -4,7 +4,11 @@
       "@babel/preset-env",
       {
         "targets": {
-          "browsers": ["last 2 versions", "safari >= 12"]
+          "browsers": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+          ]
         },
         "useBuiltIns": "entry",
         "corejs": 3
