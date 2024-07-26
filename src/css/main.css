@@ -44,8 +44,6 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
-
-
 .reveal:not(.clicked)::after {
   transition: none;
 }
@@ -85,6 +83,18 @@ summary {
   /*Lorsque la div est en plein écran elle doit s'adapter à la largeur et la hauteur pour prendr le plus d'espace possible*/
   width: 100vw;
   height: 100vh;
+}
+
+/* Les div de classe quiz ont un fond blanc lorsqu'ils sont en plein écran */
+
+div.quiz.fullscreen {
+  background-color: white;
+  /* font-size: 36px; */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Bandeau */
@@ -625,4 +635,16 @@ table.editeur td:first-child {
   text-align: center;
   background-color: #f2f2f2;
   font-weight: bold;
+}
+
+#console {
+  position : fixed;
+  bottom : 0;
+  width : 100%;
+  max-height : 200px;
+  overflow-y : auto;
+  background-color : black;
+  color : white;
+  font-family : monospace;  
+  font-size : 12px;
 }

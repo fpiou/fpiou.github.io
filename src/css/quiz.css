@@ -11,6 +11,10 @@
   width:100%;
 }
 
+.quiz {
+  width:100%;
+}
+
 .quiz-button-valider {
   display:flex;
   align-items:center;

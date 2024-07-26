@@ -68,6 +68,7 @@
   .quiz-button-valider,
   button,
   nav,
+  #console,
   .introduction-quiz,
   #score {
     display: none !important;
