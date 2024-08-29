@@ -34,6 +34,14 @@
     <!--Styles personnalisés-->
     <link rel="stylesheet" href="/src/css/main.css">
 
+    <style>
+        .suivant {
+            display: none;
+        }
+        .precedent {
+            display: none;
+        }
+    </style>
 
     <!--Scripts personnalisés-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -52,36 +60,39 @@
     <button class="closebtn" onclick="toggleSidebar()">×</button>
     <nav class="navbar">
         <ul>
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
                 <div class="dropdown-content">
                     <a href="/lessons_2nde.html">Seconde</a>
                     <a href="/lessons_1ereGenerale.html">Première</a>
                     <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
                 </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Exercices</a>
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
                 <div class="dropdown-content">
                     <a href="/exercices_2nde.html">Seconde</a>
-                    <a href="/exercices_1ereGenerale.html">Première</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
                     <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
                 </div>
             </li>
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
                 <div class="dropdown-content">
                     <a href="/quizs_2nde.html">Seconde</a>
                     <a href="/quizs_1reGenerale.html">Première</a>
                     <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
                 </div>
-            </li>
+            </li> -->
         </ul>
     </nav>
 </div>
 <button id="openbtn" onclick="toggleSidebar()">☰</button>
 
     <h1>1re spécialité - Leçons</h1>
-    <ul><li>Algebre<ul><li>polynomes<ul><li><a href="./dist/lessons\1ereSPE\Algebre\polynomes\polynomes.html">polynomes</a></li></ul></li><li>suites<ul><li><a href="./dist/lessons\1ereSPE\Algebre\suites\suites.html">suites</a></li><li><a href="./dist/lessons\1ereSPE\Algebre\suites\suites_arithmetiques.html">suites_arithmetiques</a></li><li><a href="./dist/lessons\1ereSPE\Algebre\suites\suites_geometriquess.html">suites_geometriquess</a></li></ul></li></ul></li><li>Analyse<ul><li><a href="./dist/lessons\1ereSPE\Analyse\derivation.html">derivation</a></li><li><a href="./dist/lessons\1ereSPE\Analyse\derivation_01.html">derivation_01</a></li><li><a href="./dist/lessons\1ereSPE\Analyse\derivation_02.html">derivation_02</a></li></ul></li><li>Geometrie<ul><li><a href="./dist/lessons\1ereSPE\Geometrie\produitscalaire.html">produitscalaire</a></li><li><a href="./dist/lessons\1ereSPE\Geometrie\trigonometrie.html">trigonometrie</a></li></ul></li></ul>
+    <ul><li>Algebre<ul><li>polynomes<ul><li><a href="./dist/lessons\1ereSPE\Algebre\polynomes\polynomes.html">polynomes</a></li><li><a href="./dist/lessons\1ereSPE\Algebre\polynomes\second_degre_01.html">second_degre_01 Équations, fonctions polynômes du second degré</a></li></ul></li><li>suites<ul><li><a href="./dist/lessons\1ereSPE\Algebre\suites\suites.html">suites</a></li><li><a href="./dist/lessons\1ereSPE\Algebre\suites\suites_arithmetiques.html">suites_arithmetiques</a></li><li><a href="./dist/lessons\1ereSPE\Algebre\suites\suites_geometriquess.html">suites_geometriquess</a></li></ul></li></ul></li><li>Analyse<ul><li><a href="./dist/lessons\1ereSPE\Analyse\derivation.html">derivation</a></li><li><a href="./dist/lessons\1ereSPE\Analyse\derivation_01.html">derivation_01</a></li><li><a href="./dist/lessons\1ereSPE\Analyse\derivation_02.html">derivation_02</a></li></ul></li><li>Geometrie<ul><li><a href="./dist/lessons\1ereSPE\Geometrie\produitscalaire.html">produitscalaire</a></li><li><a href="./dist/lessons\1ereSPE\Geometrie\trigonometrie.html">trigonometrie</a></li></ul></li></ul>
 </body>
 </html>

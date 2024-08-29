@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Second_degre_01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+        rel="stylesheet">
+
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+        crossorigin="anonymous"
+      />
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+        integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"
+      ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <!--Styles personnalisés-->
+    
+        <link rel="stylesheet" href="/src/css/main.css">
+    
+        <link rel="stylesheet" href="/src/css/prettyLesson.css">
+    
+        <link rel="stylesheet" href="/src/css/print.css">
+    
+
+    <!--Scripts personnalisés-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+<script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+<body>
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    
+    <main>
+        <header><div>Équations, fonctions polynômes du second degré</div> <div>Leçon n°01</div></header>
+
+<div class="encart">
+    <b>Définition :</b> On dit qu'une fonction $f$ est une fonction polynôme du second degré si elle peut s'écrire sous la forme $$f(x)=ax^2+bx+c$$ où $a$, $b$ et $c$ sont des constantes.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Pour chacune des fonctions suivantes, indiquez si c'est l'expression d'une fonction polynôme du second degré en justifiant. Le cas échéant, déterminez les coefficients $a$, $b$ et $c$.
+        <ol class="horizontal-list col-2c">
+            <li>$f_1(x)=4x^2-5x+2$</p></li>
+            <li>$f_2(x)=-3x^2+7x$</li>
+            <li>$f_3(x)=\dfrac{4x^2}{5}-12$</li>
+            <li>$f_4(x)=3x^2+7-3x^2+4x$</li>
+            <li>$f_5(x)=5x(x+2)$</li>
+            <li>$f_6(x)=(x+3)(x-4)$</li>
+            <li>$f_7(x)=(x+2)^2$</li>
+            <li>$f_8(x)=(3x+7)(3x-7)$</li>
+            <li>$f_9(x)=2(x-3)^2$</li>
+            <li>$f_{10}(x)=\dfrac{10x^2+8x-3}{2}$</li>
+            <li>$f_{11}(x)=\dfrac{1}{3x^2-5x+2}$</li>
+            <li>$f_{12}(x)=-7x+6-5x^2$</li>
+            <li>$f_{13}(x)=11x\times 5x$</li>
+            <lI>$f_{14}(x)=3(2x+1)(8-x)$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul>
+            <li><p>$f_1(x)=4x^2-5x+2 = 4x^2+(-5)x+2$.</p>
+                <p>Donc $f_1$ est une fonction polynôme du second degré avec $a=4$, $b=-5$ et $c=2$.</p>
+            </li>
+            <li><p>$f_2(x)=-3x^2+7x = -3x^2+7x+0$.</p>
+                <p>Donc $f_2$ est une fonction polynôme du second degré avec $a=-3$, $b=7$ et $c=0$.</p>
+            </li>
+            <li><p>$f_3(x)=\dfrac{4x^2}{5}-12 = \dfrac{4}{5}x^2+0x-12$.</p>
+                <p>Donc $f_3$ est une fonction polynôme du second degré avec $a=\dfrac{4}{5}$, $b=0$ et $c=-12$.</p>
+            </li>
+            <li><p>$f_4(x)=3x^2+7-3x^2+4x = 4x+7$.</p>
+                <p>$f_4$ est une fonction polynôme de degré 1 car $a=0$, $b=4$ et $c=7$. On dit aussi que $f_4$ est une fonction affine.</p>
+            </li>
+            <li><p>$f_5(x)=5x(x+2) = 5x^2+10x$.</p>
+                <p>$f_5$ est une fonction polynôme du second degré avec $a=5$, $b=10$ et $c=0$.</p>
+            </li>
+            <li><p>$f_6(x)=(x+3)(x-4) = x^2-4x+3x-12 = x^2-x-12$.</p>
+                <p>$f_6$ est une fonction polynôme du second degré avec $a=1$, $b=-1$ et $c=-12$.</p>
+            </li>
+            <li><p>$f_7(x)=(x+2)^2 = x^2+4x+4$.</p>
+                <p>$f_7$ est une fonction polynôme du second degré avec $a=1$, $b=4$ et $c=4$.</p>
+            </li>
+            <li><p>$f_8(x)=(3x+7)(3x-7) = 9x^2-49$.</p>
+                <p>$f_8$ est une fonction polynôme du second degré avec $a=9$, $b=0$ et $c=-49$.</p>
+            </li>
+            <li><p>$f_9(x)=2(x-3)^2 = 2(x^2-6x+9) = 2x^2-12x+18$.</p>
+                <p>$f_9$ est une fonction polynôme du second degré avec $a=2$, $b=-12$ et $c=18$.</p>
+            </li>
+            <li><p>$f_{10}(x)=\dfrac{10x^2+8x-3}{2} = 5x^2+4x-\dfrac{3}{2}$.</p>
+                <p>$f_{10}$ est une fonction polynôme du second degré avec $a=5$, $b=4$ et $c=-\dfrac{3}{2}$.</p>
+            </li>
+            <li><p>$f_{11}(x)=\dfrac{1}{3x^2-5x+2}$.</p>
+                <p>$f_{11}$ n'est pas une fonction polynôme du second degré car le dénominateur n'est pas une constante.</p>
+            </li>    
+            <li><p>$f_{12}(x)=-7x+6-5x^2 = -5x^2-7x+6$.</p>
+                <p>$f_{12}$ est une fonction polynôme du second degré avec $a=-5$, $b=-7$ et $c=6$.</p>
+            </li>
+            <li><p>$f_{13}(x)=11x\times 5x = 55x^2$.</p>
+                <p>$f_{13}$ est une fonction polynôme du second degré avec $a=55$, $b=0$ et $c=0$.</p>
+            </li>
+            <li><p>$$
+                    \begin{align*}
+                    f_{14}(x)&=3(2x+1)(8-x)\\
+                    f_{14}(x)&=3(16x-2x^2+8-x)\\
+                    f_{14}(x)&=3(-2x^2+15x+8)\\
+                    f_{14}(x)&=-6x^2+45x+24
+                    \end{align*}
+                $$</p>
+                <p>$f_{14}$ est une fonction polynôme du second degré avec $a=-6$, $b=45$ et $c=24$.</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="encart">
+    <b>Définition :</b> Considérons une fonction $f$ polynôme du second degré. Les solutions de l'équation $f(x)=0$, si elles existent, sont appelées <i>racines</i> de $f$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez les racines des fonctions polynômes du second degré suivantes.
+        <ol class="horizontal-list col-2c">
+            <li>$f_1(x)=2(x-3)(x+4)$</li>
+            <li>$f_2(x)=5(2x-8)(x-5)$</li>
+            <li>$f_3(x)=(x-2)(7-x)$</li>
+            <li>$f_4(x)=(6x+3)(2x-1)$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul>
+            <li><p>$f_1(x)=0$ équivaut à $2(x-3)(x+4)=0$.</p>
+                <p>C'est une équation produit nul.</p>
+                <p>Or un produit est nul si et seulement si l'un des facteurs est nul.</p>
+                <p>Donc $x-3=0$ ou $x+4=0$.</p>
+                <p>Soit $x=3$ ou $x=-4$.</p>
+                <p>Donc les racines de $f_1$ sont $3$ et $-4$.</p>
+            </li>
+            <li><p>$f_2(x)=0$ équivaut à $5(2x-8)(x-5)=0$.</p>
+                <p>C'est une équation produit nul.</p>
+                <p>Or un produit est nul si et seulement si l'un des facteurs est nul.</p>
+                <p>Donc $2x-8=0$ ou $x-5=0$.</p>
+                <p>Soit $x=4$ ou $x=5$.</p>
+                <p>Donc les racines de $f_2$ sont $4$ et $5$.</p>
+            </li>
+            <li><p>$f_3(x)=0$ équivaut à $(x-2)(7-x)=0$.</p>
+                <p>C'est une équation produit nul.</p>
+                <p>Or un produit est nul si et seulement si l'un des facteurs est nul.</p>
+                <p>Donc $x-2=0$ ou $7-x=0$.</p>
+                <p>Soit $x=2$ ou $x=7$.</p>
+                <p>Donc les racines de $f_3$ sont $2$ et $7$.</p>
+            </li>
+            <li><p>$f_4(x)=0$ équivaut à $(6x+3)(2x-1)=0$.</p>
+                <p>C'est une équation produit nul.</p>
+                <p>Or un produit est nul si et seulement si l'un des facteurs est nul.</p>
+                <p>Donc $6x+3=0$ ou $2x-1=0$.</p>
+                $$
+                    \begin{align*}
+                    6x+3&=0\\
+                    6x&=-3\\
+                    x&=-\dfrac{3}{6}\\
+                    x&=-\dfrac{1}{2}
+                    \end{align*}
+                $$
+                $$
+                    \begin{align*}
+                    2x-1&=0\\
+                    2x&=1\\
+                    x&=\dfrac{1}{2}
+                    \end{align*}
+                $$
+                <p>Donc les racines de $f_4$ sont $-\dfrac{1}{2}$ et $\dfrac{1}{2}$.</p>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère les fonctions polynômes du second degré suivantes.
+        <ol class="horizontal-list col-2c">
+            <li>$f_1(x)=x^2+11x+28$</li>
+            <li>$f_2(x)=2x^2+19x+35$</li>
+            <li>$f_3(x)=x^2+x-6$</li>
+            <li>$f_4(x)=5x^2-24x+27$</li>
+        </ol>
+        <ol class="alphabetical-list">
+        <li>Déterminez des racines de ces polynômes parmi les valeurs suivantes :
+            <ol class="horizontal-list">
+                <li>$-4$</li>
+                <li>$3$</li>
+                <li>$\dfrac{9}{5}$</li>
+                <li>$7$</li>
+                <li>$-\dfrac{5}{2}$</li>
+                <li>$-2$</li>
+            </ol>
+        </li>
+        <li>Un des polynômes précédents n'a pas de racine parmi les valeurs proposées. Lequel ?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+        <li><ul>
+            <li><p>On a $f_1(x)=x^2+11x+28$.</p>
+                <p>On a $$\begin{align*}
+                        f_1(-4)&=(-4)^2+11\times(-4)+28\\
+                        f_1(-4)&=16-44+28\\
+                        f_1(-4)&=0
+                    \end{align*}$$</p>
+                <p>Donc $-4$ est une racine de $f_1$.</p>
+            </li>
+            <li><p>On a $f_2(x)=2x^2+19x+35$.</p>
+                <p>On a $$\begin{align*}
+                        f_2\left(-\dfrac{5}{2}\right)&=2\left(-\dfrac{5}{2}\right)^2+19\times\left(-\dfrac{5}{2}\right)+35\\
+                        f_2\left(-\dfrac{5}{2}\right)&=2\times\dfrac{25}{4}-\dfrac{95}{2}+35\\
+                        f_2\left(-\dfrac{5}{2}\right)&=\dfrac{25}{2}-\dfrac{95}{2}+\dfrac{70}{2}\\
+                        f_2\left(-\dfrac{5}{2}\right)&=0
+                    \end{align*}$$</p>
+                <p>Donc $-\dfrac{5}{2}$ est une racine de $f_2$.</p>
+            </li>
+            <li><p>On a $f_4(x)=5x^2-24x+27$.</p>
+                <p>On a $$\begin{align*}
+                        f_4(3)&=5\times3^2-24\times3+27\\
+                        f_4(3)&=45-72+27\\
+                        f_4(3)&=0
+                    \end{align*}$$</p>
+                <p>Donc $3$ est une racine de $f_4$.</p>
+            </li>
+            <li><p>On a $f_4(x)=5x^2-24x+27$.</p>
+                <p>On a $$\begin{align*}
+                        f_4\left(\dfrac{9}{5}\right)&=5\times\left(\dfrac{9}{5}\right)^2-24\times\dfrac{9}{5}+27\\
+                        f_4\left(\dfrac{9}{5}\right)&=5\times\dfrac{81}{25}-\dfrac{216}{5}+27\\
+                        f_4\left(\dfrac{9}{5}\right)&=\dfrac{81}{5}-\dfrac{216}{5}+\dfrac{135}{5}\\
+                        f_4\left(\dfrac{9}{5}\right)&=0
+                    \end{align*}$$</p>
+                <p>Donc $\dfrac{9}{5}$ est une racine de $f_4$.</p>
+            </li>
+        </ul></li>
+        <li><p>Le polynôme $f_3(x)=x^2+x-6$ n'a pas de racine parmi les valeurs proposées.</p></li>
+        </ol>
+    </div>
+</div>
+
+<div class="encart">
+    <b>Propriété :</b> Considérons une fonction polynôme du second degré $f(x)=ax^2+bx+c$.
+    <ul>
+        <li>$1$ est racine de $f(x)$ si et seulement si $a+b+c=0$.</li>
+        <li>$-1$ est racine de $f(x)$ si et seulement si $a-b+c=0$.</li>
+    </ul>
+    On parle dans ce cas de <i>racine évidente</i>.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez une racine évidente pour chacune des fonctions polynômes du second degré suivantes.
+        <ol class="horizontal-list col-2c">
+            <li>$f_1(x)=x^2+5x-6$</li>
+            <li>$f_2(x)=2x^2+3x+1$</li>
+            <li>$f_3(x)=-5x^2+3x+2$</li>
+            <li>$f_4(x)=-3x^2-4x-1$</li>
+            <li>$f_5(x)=4x^2-2x-2$</li>
+            <li>$f_6(x)=5x+7x^2-2$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul>
+            <li><p>On a $f_1(x)=x^2+5x-6$.</p>
+                <p>On a $a+b+c=1+5-6=0$.</p>
+                <p>Donc $1$ est racine de $f_1$.</p>
+            </li>
+            <li><p>On a $f_2(x)=2x^2+3x+1$.</p>
+                <p>On a $a-b+c=2-3+1=0$.</p>
+                <p>Donc $-1$ est racine de $f_2$.</p>
+            </li>
+            <li><p>On a $f_3(x)=-5x^2+3x+2$.</p>
+                <p>On a $a+b+c=-5+3+2=0$.</p>
+                <p>Donc $1$ est racine de $f_3$.</p>
+            </li>
+            <li><p>On a $f_4(x)=-3x^2-4x-1$.</p>
+                <p>On a $a-b+c=-3+4-1=0$.</p>
+                <p>Donc $-1$ est racine de $f_5$.</p>
+            </li>
+            <li><p>On a $f_5(x)=4x^2-2x-2$.</p>
+                <p>On a $a+b+c=4-2-2=0$.</p>
+                <p>Donc $1$ est racine de $f_4$.</p>
+            </li>
+            <li><p>On a $f_6(x)=5x+7x^2-2=7x^2+5x-2$.</p>
+                <p>On a $a-b+c=7-5-2=0$.</p>
+                <p>Donc $-1$ est racine de $f_6$.</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="encart">
+    <b>Propriété :</b> Considérons une fonction polynôme du second degré $f(x)=ax^2+bx+c$.
+    Si $f$ possède deux racines distinctes $x_1$ et $x_2$, alors $$f(x)=a(x-x_1)(x-x_2)$$
+</div>
+<div class="exercice">
+    <div class="enonce">
+    Considérons la fonction polynôme du second degré $f(x)=2x^2+2x-24$.
+        <ol class="alphabetical-list">
+            <li>Vérifiez que $3$ et $-4$ sont les racines de $f$.</li>
+            <li>En déduire la forme factorisée de $f(x)$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>On a $f(x)=2x^2+2x-24$.</p>
+                <p>On a $$\begin{align*}
+                        f(3)&=2\times3^2+2\times3-24\\
+                        f(3)&=2\times9+6-24\\
+                        f(3)&=18+6-24\\
+                        f(3)&=0
+                    \end{align*}$$</p>
+                <p>Donc $3$ est une racine de $f(x)$.</p>
+                <p>On a $$\begin{align*}
+                        f(-4)&=2\times(-4)^2+2\times(-4)-24\\
+                        f(-4)&=2\times16-8-24\\
+                        f(-4)&=32-8-24\\
+                        f(-4)&=0
+                    \end{align*}$$</p>
+                <p>Donc $-4$ est une racine de $f(x)$.</p>
+            </li>
+            <li><p>Comme $a=2$, la forme factorisée de $f(x)$ est $$f(x)=2(x-3)(x+4)$$</p>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="encart">
+    <b>Méthode :</b> Pour déterminer le signe d'une fonction polynôme du second degré ayant deux racines distinctes $x_1$ et $x_2$ avec $x_1\lt x_2$, il suffit de compléter le tableau de signe suivant&nbsp;:
+    <table class="tableausigne">
+        <tr>
+            <td>$x$</td>
+            <td>$-\infty$</td>
+            <td></td>
+            <td>$x_1$</td>
+            <td></td>
+            <td>$x_2$</td>
+            <td></td>
+            <td>$+\infty$</td>
+        </tr>
+        <tr>
+            <td>$a$</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>$x-x_1$</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>$x-x_2$</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>$f(x)$</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<div class="exercice">
+    <div class="enonce">
+    <ol class="horizontal-list">    
+        <li>$f_1(x)=5(x+4)(x-6)$</li>
+        <li>$f_2(x)=3(x+3)(x+5)$</li>
+        <li>$f_3(x)=-2(x-1)(x-2)$</li>
+        <li>$f_4(x)=-4(x-5)(x+2)$</li>
+    </ol>
+        Pour chacune des fonctions ci-dessus&nbsp;:
+        <ul style="padding-left: 2em;">
+            <li>Dressez le tableau de signes de la fonction $f$.</li>
+            <li>Déterminez le signe de $f(x)$ entre ses racines.</li>
+        </ul>
+    </div>
+    <div class="solution">
+        <ul>
+            <li><p>On a $f_1(x)=5(x+4)(x-6)=5(x-(-4))(x-6)$.</p>
+                <table class="tableausigne">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$-4$</td>
+                        <td></td>
+                        <td>$6$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$5$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x+4$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x-6$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$f(x)$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p>Donc $f_1(x)$ est négatif entre ses racines.</p>
+            </li>
+            <li><p>On a $f_2(x)=3(x+3)(x+5)=3(x-(-3))(x-(-5))$.</p>
+                <table class="tableausigne">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$-5$</td>
+                        <td></td>
+                        <td>$-3$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$3$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x+3$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x+5$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$f(x)$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p>Donc $f_2(x)$ est négatif entre ses racines.</p>
+            </li>
+            <li><p>On a $f_3(x)=-2(x-1)(x-2)$.</p>
+                <table class="tableausigne">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$1$</td>
+                        <td></td>
+                        <td>$2$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$-2$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x-1$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x-2$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$f(x)$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p>Donc $f_3(x)$ est positif entre ses racines.</p>
+            </li>
+            <li><p>On a $f_4(x)=-4(x-5)(x+2)=-4(x-5)(x-(-2))$.</p>
+                <table class="tableausigne">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$-2$</td>
+                        <td></td>
+                        <td>$5$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$-4$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x-5$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x+2$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$f(x)$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p>Donc $f_4(x)$ est positif entre ses racines.</p>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Considérons une fonction polynôme du second degré de la forme $f(x)=ax^2+bx+c$ et ayant deux racines distinctes $x_1$ et $x_2$ telles que $x_1\lt x_2$.<br>
+        Conjecturez le signe de $f(x)$ en fonction des valeurs de $a$.
+    </div>
+    <div class="solution">
+        <p>On a $f(x)=a(x-x_1)(x-x_2)$ avec $x_1\lt x_2$.</p>
+        <p>On conjecture que $f(x)$ est positif entre ses racines si $a$ est négatif, et négatif si $a$ est positif.</p>
+        <p>Dressons le tableau de signes de $f(x)$ en fonction de $a$ en notant $s$ le signe de $a$.</p>
+        <table class="tableausigne">
+            <tr>
+                <td>$x$</td>
+                <td>$-\infty$</td>
+                <td></td>
+                <td>$x_1$</td>
+                <td></td>
+                <td>$x_2$</td>
+                <td></td>
+                <td>$+\infty$</td>
+            </tr>
+            <tr>
+                <td>$a$</td>
+                <td></td>
+                <td>$s$</td>
+                <td></td>
+                <td>$s$</td>
+                <td></td>
+                <td>$s$</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>$x-x_1$</td>
+                <td></td>
+                <td>$-$</td>
+                <td>$0$</td>
+                <td>$+$</td>
+                <td></td>
+                <td>$+$</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>$x-x_2$</td>
+                <td></td>
+                <td>$-$</td>
+                <td></td>
+                <td>$-$</td>
+                <td>$0$</td>
+                <td>$+$</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>$f(x)$</td>
+                <td></td>
+                <td>$s$</td>
+                <td></td>
+                <td>$-s$</td>
+                <td></td>
+                <td>$s$</td>
+                <td></td>
+            </tr>
+        </table>
+        <p>C.q.f.d.</p>
+    </div>
+</div>
+
+<div class="encart">
+    <b>Propriété :</b> Considérons une fonction polynôme du second degré $f(x)=ax^2+bx+c$ et possédant deux racines distinctes $x_1$ et $x_2$.
+    <ul>
+        <li><i>On appelle somme des racines</i> de $f$ la quantité $x_1+x_2$ et on a&nbsp;: $$x_1+x_2=-\dfrac{b}{a}$$</li>
+        <li><i>On appelle produit des racines</i> de $f$ la quantité $x_1\times x_2$ et on a&nbsp;: $$x_1\times x_2=\dfrac{c}{a}$$</li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On se propose de démontrer les formules de la somme et du produit des racines d'une fonction polynôme du second degré.
+        <ol class="alphabetical-list">
+            <li>Recopiez et complétez les pointillés par $+$ ou $-$ en justifiant chaque étape.
+            $$
+            \begin{align*}
+            f(x)&=ax^2+bx+c\\
+            f(x)&=a(x\ldots x_1)(x\ldots x_2)\\
+            f(x)&=a(x^2\ldots x_1x\ldots x_2x\ldots x_1 x_2)\\
+            f(x)&=a(x^2\ldots (x_1\ldots x_2)x\ldots x_1 x_2)\\
+            f(x)&=ax^2\ldots a(x_1\ldots x_2)x\ldots a(x_1x_2)
+            \end{align*}
+            $$
+            </li>
+            <li>En déduire la formule de la somme des racines d'une fonction polynôme du second degré.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>On a $f(x)=ax^2+bx+c$.</p>
+                <p>Or $x_1$ et $x_2$ sont les racines de $f$.</p>
+                <p>D'où $$f(x)=a(x - x_1)(x - x_2)$$</p>
+                <p>Développons en utilisant la double distributivité.</p>
+                $$f(x)=a(x^2 - x_1x - x_2x + x_1x_2)$$
+                <p>Regroupons les termes en $x$ à l'aide d'une factorisation.</p>
+                $$f(x)=a(x^2 - (x_1 + x_2)x + x_1x_2)$$
+                <p>Développons le produit en distribuant $a$.</p>
+                $$f(x)=ax^2 - a(x_1 + x_2)x + a(x_1x_2)$$
+            </li>
+            <li><p>On a $f(x)=ax^2+bx+c$ et $f(x)=ax^2 - a(x_1 + x_2)x + a(x_1x_2)$.</p>
+                <p>En comparant terme à terme, on a $$b=-a(x_1 + x_2)$$
+                et $$c=a(x_1x_2)$$</p>
+                <p>Donc $$x_1+x_2=-\dfrac{b}{a}$$ et $$x_1x_2=\dfrac{c}{a}$$</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Déterminez la somme et le produit des racines des fonctions polynômes du second degré suivantes.
+                <ol class="horizontal-list">
+                    <li>$f_1(x)=2x^2-18x+36$</li>
+                    <li>$f_2(x)=-5x^2+25x-30$</li>
+                    <li>$f_3(x)=-3x^2-12x+63$</li>
+                </ol>
+            </li>
+            <li>Vérifiez que $3$ est une racine de ces trois fonctions polynômes, en déduire pour chacune l'autre racine puis une factorisation.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        Notons $x_1$ et $x_2$ les racines dans chaque cas.
+        <ol class="alphabetical-list">
+            <li><ul>
+                <li><p>On a $f_1(x)=2x^2-18x+36$.</p>
+                    <p>On a $a=2$, $b=-18$ et $c=36$.</p>
+                    <p>Donc $$x_1+x_2=-\dfrac{b}{a}=-\dfrac{-18}{2}=9$$ et $$x_1x_2=\dfrac{c}{a}=\dfrac{36}{2}=18$$</p>
+                </li>
+                <li><p>On a $f_2(x)=-5x^2+25x-30$.</p>
+                    <p>On a $a=-5$, $b=25$ et $c=-30$.</p>
+                    <p>Donc $$x_1+x_2=-\dfrac{b}{a}=-\dfrac{25}{-5}=5$$ et $$x_1x_2=\dfrac{c}{a}=\dfrac{-30}{-5}=6$$</p>
+                </li>
+                <li><p>On a $f_3(x)=-3x^2-12x+63$.</p>
+                    <p>On a $a=-3$, $b=-12$ et $c=63$.</p>
+                    <p>Donc $$x_1+x_2=-\dfrac{b}{a}=-\dfrac{-12}{-3}=-4$$ et $$x_1x_2=\dfrac{c}{a}=\dfrac{63}{-3}=-21$$</p>
+                </li>
+            </ul></li>
+            <li><p>On a $3$ est une racine de $f_1$, $f_2$ et $f_3$.</p>
+                <ul style="padding-left: 2em;">
+                    <li><p>On a $x_1+x_2=9$ et $x_1x_2=18$ pour $f_1$.</p></li>
+                    <p>D'où $3+x_2=9$ et $3x_2=18$.</p>
+                    <p>Dans tous les cas $x_2=6$.</p>
+                    <p>Donc $f_1(x)=2(x-3)(x-6)$.</p>
+                    </li>
+                    <li><p>On a $x_1+x_2=5$ et $x_1x_2=6$ pour $f_2$.</p></li>
+                    <p>D'où $3+x_2=5$ et $3x_2=6$.</p>
+                    <p>Dans tous les cas $x_2=2$.</p>
+                    <p>Donc $f_2(x)=-5(x-3)(x-2)$.</p>
+                    </li>
+                    <li><p>On a $x_1+x_2=4$ et $x_1x_2=-21$ pour $f_3$.</p></li>
+                    <p>D'où $3+x_2=-4$ et $3x_2=-21$.</p>
+                    <p>Dans tous les cas $x_2=-7$.</p>
+                    <p>Donc $f_3(x)=-3(x-3)(x+7)$.</p>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="encart">
+    <b>Rappel : Identités remarquables</b>
+    <ul style="horizontal-list">
+        <li>$(a+b)^2=a^2+2ab+b^2$</li>
+        <li>$(a-b)^2=a^2-2ab+b^2$</li>
+        <li>$(a+b)(a-b)=a^2-b^2$</li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+       Factorisez les fonctions polynômes du second degré suivantes à l'aide d'une identité remarquable puis en déduire les racines.
+        <ol class="horizontal-list col-2c">
+            <li>$f_1(x)=x^2+14x+49$</li>
+            <li>$f_2(x)=x^2-10x+25$</li>
+            <li>$f_3(x)=4x^2-24x+36$</li>
+            <li>$f_4(x)=-9x^2-54x-81$</li>
+            <li>$f_5(x)=x^2-16$</li>
+            <li>$f_6(x)=4x^2-36$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul>
+            <li><p>On a $f_1(x)=x^2+14x+49$.</p>
+                <p>On a $f_1(x)=(x+7)^2$.</p>
+                <p>Donc $f_1(x)=(x+7)(x+7)$.</p>
+                <p>Donc $f_1(x)=(x+7)^2$.</p>
+                <p>Donc $f_1(x)$ a une racine double $-7$.</p>
+            </li>
+            <li><p>On a $f_2(x)=x^2-10x+25$.</p>
+                <p>On a $f_2(x)=(x-5)^2$.</p>
+                <p>Donc $f_2(x)=(x-5)(x-5)$.</p>
+                <p>Donc $f_2(x)=(x-5)^2$.</p>
+                <p>Donc $f_2(x)$ a une racine double $5$.</p>
+            </li>
+            <li><p>On a $f_3(x)=4x^2-24x+36$.</p>
+                <p>On a $f_3(x)=4(x-3)^2$.</p>
+                <p>Donc $f_3(x)=4(x-3)(x-3)$.</p>
+                <p>Donc $f_3(x)=4(x-3)^2$.</p>
+                <p>Donc $f_3(x)$ a une racine double $3$.</p>
+            </li>
+            <li><p>On a $f_4(x)=-9x^2-54x-81$.</p>
+                <p>On a $f_4(x)=-9(x+3)^2$.</p>
+                <p>Donc $f_4(x)=-9(x+3)(x+3)$.</p>
+                <p>Donc $f_4(x)=-9(x+3)^2$.</p>
+                <p>Donc $f_4(x)$ a une racine double $-3$.</p>
+            </li>
+            <li><p>On a $f_5(x)=x^2-16$.</p>
+                <p>On a $f_5(x)=(x+4)(x-4)$.</p>
+                <p>Donc $f_5(x)$ a deux racines $-4$ et $4$.</p>
+            </li>
+            <li><p>On a $f_6(x)=4x^2-36$.</p>
+                <p>On a $f_6(x)=4(x+3)(x-3)$.</p>
+                <p>Donc $f_6(x)$ a deux racines $-3$ et $3$.</p>
+            </li>
+        </ul>
+    </div>
+</div>
+    </main>
+</body>
+
+</html>

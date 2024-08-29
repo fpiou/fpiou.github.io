@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>D-02.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><h1>Optimisation</h1>
+<div class="propriete">
+    La distance minimale entre deux points est la longueur du segment qui les relie.
+</div>
+<div class="exercice">
+  <div class="enonce">
+    Les droites $d$ et $e$ sont parallèles. Les points $M$ appartient à la droite $d$ et $N$ ets le projeté orthogonal de $M$ sur la droite $e$.
+    Où placer le point $M$ pour que la distance $SM+MN+NR$ soit minimale ?
+    <div id="figure3" class="figure">
+        <svg viewBox="0 0 200 170">
+            <g name="S" class="point labeled" x="40" y="20"></g>
+            <g class="label" linkto="S" y="-20" x="-5" style="font-size: 0.8em;">S</g>
+            <g name="R" class="point labeled" x="150" y="150"></g>
+            <g class="label" linkto="R" x="-5" y="0" style="font-size: 0.8em;">R</g>
+            <g name="A" class="point" x="0" y="80" visibility="hidden"></g>
+            <g name="B" class="point" x="200" y="80" visibility="hidden"></g>
+            <g name="C" class="point" x="0" y="120" visibility="hidden"></g>
+            <g name="D" class="point" x="200" y="120" visibility="hidden"></g>
+            <g name="d" class="droite labeled" linkto="A B"></g>
+            <g name="e" class="droite labeled" linkto="C D"></g>
+            <g name="M" class="point labeled translation draggable" linkto="A B A" data="0.5"></g>
+            <g class="label" linkto="M" y="-20" x="0" style="font-size: 0.8em;">M</g>
+            <!-- N est l'image du point M par la translation de vecteur AC-->
+            <g name="N" class="point labeled translation" linkto="A C M" data="1"></g>
+            <g class="label" linkto="N" y="0" x="-10" style="font-size: 0.8em;">N</g>
+            <g name="MN" class="segment" linkto="M N"></g>
+            <!-- SM et NR en pointillés-->
+            <g name="SM" class="segment" linkto="S M" stroke="red" stroke-width="2"></g>
+            <g name="NR" class="segment" linkto="N R" stroke="red" stroke-width="2"></g>
+            <g name="MN" class="segment" linkto="M N" stroke="red" stroke-width="2"></g>
+            <!-- Fin de la figure -->
+        </svg>
+    </div>
+    <div class="solution">
+        <div id="figure3" class="figure">
+            <svg viewBox="0 0 200 200">
+                <g name="S" class="point labeled" x="40" y="20"></g>
+                <g class="label" linkto="S" y="-20" x="-5" style="font-size: 0.8em;">S</g>
+                <g name="R" class="point labeled" x="150" y="150"></g>
+                <g class="label" linkto="R" x="-5" y="0" style="font-size: 0.8em;">R</g>
+                <g name="A" class="point" x="0" y="80" visibility="hidden"></g>
+                <g name="B" class="point" x="200" y="80" visibility="hidden"></g>
+                <g name="C" class="point" x="0" y="120" visibility="hidden"></g>
+                <g name="D" class="point" x="200" y="120" visibility="hidden"></g>
+                <g name="ABCD" class="polygone" linkto="A B D C" style="fill: blue; fill-opacity: 0.5"></g>
+                <!-- S' est l'image de S par la translation de vecteur AC -->
+                <g name="S1" class="point labeled translation" linkto="A C S"></g>
+                <g class="label" linkto="S1" y="-5" x="-15" style="font-size: 0.8em;">S'</g>
+                <!-- M est un point de la droite (AB)-->
+                <g name="M" class="point labeled translation draggable" linkto="A B A" data="0.5"></g>
+                <g class="label" linkto="M" y="-20" x="0" style="font-size: 0.8em;">M</g>
+                <!-- N est l'image du point M par la translation de vecteur AC-->
+                <g name="N" class="point labeled translation" linkto="A C M" data="1"></g>
+                <g class="label" linkto="N" y="0" x="-10" style="font-size: 0.8em;">N</g>
+                <g name="MN" class="segment" linkto="M N"></g>
+                <!-- SM et NR en pointillés-->
+                <g name="SM" class="segment" linkto="S M" style="stroke: blue; stroke-width: 2; stroke-dasharray: 5 5; stroke-opacity: 0.8;"></g>
+                <g name="NR" class="segment" linkto="N R" style="stroke: blue; stroke-width: 2; stroke-dasharray: 5 5; stroke-opacity: 0.8;"></g>
+                <!-- SMNS' -->
+                <g name="SMNS1" class="polygone" linkto="S M N S1" style="fill: green; fill-opacity: 0.2;"></g>
+                <!-- Vecteur SS' et MN -->
+                <g name="SS1" class="vecteur" linkto="S S1" style="stroke: red; stroke-width: 1;"></g>
+                <g name="MN" class="vecteur" linkto="M N" style="stroke: red; stroke-width: 1;"></g>
+
+                <g class="angleDroit" linkto="N M A" size="7" stroke-width="0.5"></g>
+                <g class="angleDroit" linkto="M N C" size="7" stroke-width="0.5"></g>
+                <!-- Fin de la figure -->
+            </svg>
+        </div>
+        <p>Notons $S'$ l'image de $S$ par la translation de vecteur $\overrightarrow{MN}$.</p>
+        <p>Donc $SMNS'$ est un parallelogramme.</p>
+        <p>D'où $SM=NS'$ et $SS'=MN$.</p>
+        <p>Par conséquent, minimiser $SM+MN+NR$ revient à minimiser $NS'+SS'+NR$.</p>
+        <p>Comme $SS'$ est fixe, minimiser $NS'+SS'+NR$ revient à minimiser $NS'+NR$.</p>
+        <p>Les point $S'$ et $R$ sont fixes donc le point $N$ doit être aligné avec $S'$ et $R$.</p>
+        <p>Il suffit donc de placer $N$ à l'intersection de la droite $(S'R)$ et de $(e)$.</p>
+    </div>
+  </div>
+</div>
+
+<div class="propriete">
+    La distance minimale entre un point et une droite est la longueur du projeté orthogonal de ce point sur la droite.
+</div>
+<div class="exercice">
+  <div class="enonce">
+      Soit $ABC$ un triangle rectangle en $A$. Soit $M$ un point de la droite
+      $(BC)$, $E$ le projeté orthogonal de $M$ sur $(AB)$ et $F$ le projeté
+      orthogonal de $M$ sur $(AC)$.
+    <ol class="alphabetical-list">
+      <li>Déterminez la nature du quadrilatère $MEAF$.</li>
+      <li>En déduire la position de $M$ sur $[BC]$ pour laquelle la longueur $EF$ est minimale.</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <div class="figure">
+        <svg viewBox="0 0 200 100">
+        <g name="A" class="point labeled draggable" x="40" y="20"></g>
+        <g class="label" linkto="A" y="-10" x="-10" style="font-size: 0.8em">A</g>
+        <g name="B" class="point labeled draggable" x="180" y="40"></g>
+        <g class="label" linkto="B" x="0" y="-10" style="font-size: 0.8em">B</g>
+        <!-- C est sur la perpendiculaire à (AB) passant par A-->
+        <g name="C" class="point labeled rotation draggable rapport" linkto="A B" data="90 0.5"></g>
+        <g class="label" linkto="C" y="-10" x="-10" style="font-size: 0.8em">C</g>
+        <g name="M" class="point labeled translation draggable" linkto="B C B" data="0.5"></g>
+        <g class="label" linkto="M" y="0" x="-5" style="font-size: 0.8em; color: red">M</g>
+        <g name="E" class="point labeled dilatation" linkto="A B M" data="90 0"></g>
+        <g class="label" linkto="E" y="-15" x="0" style="font-size: 0.8em; color: green">E</g>
+        <g name="F" class="point labeled dilatation" linkto="A C M" data="90 0"></g>
+        <g class="label" linkto="F" y="-10" x="-10" style="font-size: 0.8em; color: green">F</g>
+        <g name="ME" class="segment" linkto="M E"></g>
+        <g name="MF" class="segment" linkto="M F"></g>
+        <!-- Triangle ABC -->
+        <g name="ABC" class="polygone" linkto="A B C" fill="red" fill-opacity="0.1"></g>
+        <!-- Quadrilatère AEMF -->
+        <g name="AEMF" class="polygone" linkto="A E M F" fill="green" fill-opacity="0.1"></g>
+        <!-- Tracer les diagonales du rectangle en pointillés-->
+        <g name="AM" class="segment" linkto="A M" stroke-dasharray="5,5" stroke="green"></g>
+        <g name="EF" class="segment" linkto="E F" stroke-dasharray="5,5" stroke="green"></g>
+        <!-- Fin de la figure -->
+        </svg>
+    </div>
+    <ol class="alphabetical-list">
+      <li>
+        <p>Le quadrilatère $MEAF$ possède trois angles droits donc c'est un rectangle.</p>
+      </li>
+      <li>
+        <p>Les diagonales d'un rectangle sont de même longueur donc $EF=MA$.</p>
+        <p>Par conséquent, la longueur $EF$ est minimale lorsque la longueur $MA$ est minimale.</p>
+        <p>La longueur $MA$ est minimale lorsque $M$ est le projeté orthogonal de $A$ sur $(BC)$.</p>
+        <p>Donc la longueur $EF$ est minimale lorsque $M$ est le projeté orthogonal de $A$ sur $(BC)$.</p>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<h1>Calculs de volumes</h1></main>
+  </body>
+</html>

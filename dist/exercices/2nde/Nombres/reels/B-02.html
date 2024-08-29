@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>B-02.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Manipuler les nombres réels</div> <div><button class="precedent noprint" onclick="precedent()">&lt;</button>B-02<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<h1>Nombres réels</h1>
+<div class="definition">
+    La <i>droite numérique</i> est une droite graduée où chaque point est en correspondance avec un <i>nombre réel</i>.
+    L'ensemble des nombres réels est noté&nbsp;$\mathbb{R}$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Tracez la droite numérique d'unité graphique&nbsp;$\SI{3}{\cm}$ et y placer $-\frac{3}{2}$, $\frac{5}{3}$, $-\frac{2}{3}$, $\frac{34}{12}$ et approximativement $\sqrt{2}$ et $\pi$.
+    </div>
+    <div class="solution">
+        <ul style="padding-left: 1em;">
+            <li><p>$-\frac{3}{2}=-3\div 2=-\num{1.5}$</p></li>
+            <li><p>$\frac{5}{3}=1+\frac{2}{3}$</p></li>
+            <li><p>$\frac{34}{12}=\frac{17}{6}=\frac{12}{6}+\frac{5}{6}=2+\frac{5}{6}$</p></li>
+            <li><p>$\sqrt{2}\approx 1{,}41$</p></li>
+            <li><p>$\pi\approx 3{,}14$</p></li>
+        </ul>
+        <div class="figure">
+            <svg viewBox="0 0 480 80">
+                <g name="repere1" class="repere" xmin="-2" ymin="-0.5" xmax="4" ymax ="0.5" xorigine="0" yorigine="0"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.16666666666667" ypas="0.16666666666667" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" forme="|"></g>
+                <g class="label" linkto="O" x="-5" y="0" style="font-size:1rem">0</g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" forme="|"></g>
+                <g class="label" linkto="I" x="-5" y="0" style="font-size:1rem">1</g>
+                <g name="A" class="point labeled" repere="repere1" x="-1" y="0" stroke="red" forme="+"></g>
+                <g class="label" linkto="A" x="-10" y="0" style="font-size:1rem">-1</g>
+                <g name="B" class="point labeled" repere="repere1" x="-1.5" y="0" stroke="red"></g>
+                <g class="label" linkto="B" x="-7" y="0" style="font-size:1rem;height:30px">-\frac{3}{2}</g>
+                <g name="C" class="point labeled" repere="repere1" x="1.6666666666666667" y="0" stroke="red"></g>
+                <g class="label" linkto="C" x="-5" y="0" style="font-size:1rem;height:30px">\frac{5}{3}</g>
+                <g name="D" class="point labeled" repere="repere1" x="2.8333333333333335" y="0" stroke="red"></g>
+                <g class="label" linkto="D" x="-5" y="0" style="font-size:1rem;height:30px">\frac{34}{12}</g>
+                <g name="E" class="point labeled" repere="repere1" x="-0.66666666666666" y="0" stroke="red"></g>
+                <g class="label" linkto="E" x="-10" y="0" style="font-size:1rem;height:30px">-\frac{2}{3}</g>
+                <g name="F" class="point labeled" repere="repere1" x="sqrt(2)" y="0" stroke="red"></g>
+                <g class="label" linkto="F" x="-5" y="0" style="font-size:1rem;height:30px">\sqrt{2}</g>
+                <g name="G" class="point labeled" repere="repere1" x="pi" y="0" stroke="red"></g>
+                <g class="label" linkto="G" x="-5" y="0" style="font-size:1rem;height:30px">\pi</g>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<div class="propriete">
+    $$\mathbb{N}\subset \mathbb{Z}\subset \mathbb{D}\subset \mathbb{Q}\subset \mathbb{R}$$
+    <div class="figure">
+        <svg viewBox="0 0 240 100" style="width:100%;">
+            <g name="repere1" class="repere" xmin="-6" ymin="-2.5" xmax="6" ymax="2.5" xorigine="0" yorigine="0"></g>
+            
+            <g name="O" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+            <g name="N" class="ellipse" linkto="O" rx="1" ry="0.5" stroke="black" fill="none"></g>
+            <g name="Z" class="ellipse" linkto="O" rx="2" ry="1" stroke="black" fill="none"></g>
+            <g name="D" class="ellipse" linkto="O" rx="3" ry="1.5" stroke="black" fill="none"></g>
+            <g name="Q" class="ellipse" linkto="O" rx="4" ry="2" stroke="black" fill="none"></g>
+            <g name="R" class="ellipse" linkto="O" rx="5" ry="2.5" stroke="black" fill="none"></g>
+            
+            <g class="label" repere="repere1" x="0.8" y="0" style="font-size:0.5rem">$-\mathbb{N}$</g>
+            <g class="label" repere="repere1" x="1.85" y="0" style="font-size:0.5rem">$-\mathbb{Z}$</g>
+            <g class="label" repere="repere1" x="2.9" y="0" style="font-size:0.5rem">$-\mathbb{D}$</g>
+            <g class="label" repere="repere1" x="3.9" y="0" style="font-size:0.5rem">$-\mathbb{Q}$</g>
+            <g class="label" repere="repere1" x="4.95" y="0" style="font-size:0.5rem">$-\mathbb{R}$</g>
+
+            <g class="label" repere="repere1" x="0" y="0" style="font-size:0.5rem">$0$</g>
+            <g class="label" repere="repere1" x="-0.5" y="0.5" style="font-size:0.5rem">$1$</g>
+            <g class="label" repere="repere1" x="0.5" y="0.3" style="font-size:0.5rem">$2$</g>
+            
+            <g class="label" repere="repere1" x="1" y="0.7" style="font-size:0.5rem">$-5$</g>
+
+            <g class="label" repere="repere1" x="1.3" y="1.2" style="font-size:0.5rem">$-0{,}7$</g>
+            <g class="label" repere="repere1" x="2.2" y="0.7" style="font-size:0.5rem">$\frac{1}{2}$</g>
+            
+            <g class="label" repere="repere1" x="2.5" y="1.5" style="font-size:0.5rem">$\frac{1}{3}$</g>
+            <g class="label" repere="repere1" x="3" y="0.8" style="font-size:0.5rem">$-\frac{4}{7}$</g>
+
+            <g class="label" repere="repere1" x="2.8" y="1.9" style="font-size:0.5rem">$\sqrt{2}$</g>
+            <g class="label" repere="repere1" x="3.8" y="1.3" style="font-size:0.5rem">$\pi$</g>
+        </svg>
+    </div>
+</div>
+
+<div class="definition">
+    $\mathbb{N}^*$, $\mathbb{Z}^*$, $\mathbb{D}^*$, $\mathbb{Q}^*$ et $\mathbb{R}^*$ désignent les ensembles privés de $0$.
+</div>
+
+<h1>Intervalles</h1>
+<div class="definition">
+    Un <i>intervalle</i> est&nbsp;: ou bien $\mathbb{R}$, ou bien l'ensemble vide noté&nbsp;$\emptyset$, ou bien un ensemble de nombres réels compris entre deux bornes distinctes, finies ou infinies, incluses ou non incluses.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Parmi les intervalles suivants, indiquez si les bornes sont incluses ou non incluses&nbsp;:
+        <ol class="alphabetical-list">
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $-1\leqslant x\leqslant 1$}\}$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $-1\lt x\lt 1$}\}$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $-1\leqslant x\lt 1$}\}$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $-1\lt x\leqslant 1$}\}$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\geqslant 1$}\}$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\lt -1$}\}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul class="alphabetical-list">
+            <li><p>Les bornes $-1$ et $1$ sont incluses.</p></li>
+            <li><p>Les bornes $-1$ et $1$ sont non incluses.</p></li>
+            <li><p>La borne $-1$ est incluse et la borne $1$ est non incluse.</p></li>
+            <li><p>La borne $-1$ est non incluse et la borne $1$ est incluse.</p></li>
+            <li><p>La borne $1$ est incluse.</p></li>
+            <li><p>La borne $-1$ est non incluse.</p></li>
+        </ul>
+    </div>
+</div>
+
+<div class="definition">
+    Soient $a$ et $b$ deux nombres réels tel que $a\lt b$. On définit les intervalles suivants&nbsp;:
+    <ul style="padding-left: 1em;">
+        <li>$[a;b] = \{\text{$x\in\mathbb{R}$ tel que $a\leqslant x\leqslant b$}\}$
+            <div class="figure">
+                <svg viewBox="0 0 200 15" style="width:100%">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="5" ymax="1" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                    <g name="A" class="point labeled" repere="repere1" x="-3" y="0" stroke="red" forme="[" stroke-width="2" style="font-size:5pt"></g> 
+                    <g class="label" linkto="A" x="2" y="0" width="3em">\text{inclus}</g>
+                    <g name="B" class="point labeled" repere="repere1" x="2" y="0" stroke="red" forme="]" stroke-width="2" style="font-size:5pt"></g>
+                    <g class="label" linkto="B" x="-20" y="0" width="3em">\text{inclus}</g>
+                    <g name="AB" class="segment" linkto="A B" stroke="red" stroke-width="2"></g>
+                </svg>
+            </div>
+        </li>
+        <li>$]a;b[ = \{\text{$x\in\mathbb{R}$ tels que $a\lt x\lt b$}\}$
+            <div class="figure">
+                <svg viewBox="0 0 200 15" style="width:100%">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="5" ymax="1" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                    <g name="A" class="point labeled" repere="repere1" x="-3" y="0" stroke="red" forme="]" stroke-width="2" style="font-size:5pt"></g> 
+                    <g class="label" linkto="A" x="-4.7em" y="0" width="5em">\text{non inclus}</g>
+                    <g name="B" class="point labeled" repere="repere1" x="2" y="0" stroke="red" forme="[" stroke-width="2" style="font-size:5pt"></g>
+                    <g class="label" linkto="B" x="2" y="0" width="5em">\text{non inclus}</g>
+                    <g name="AB" class="segment" linkto="A B" stroke="red" stroke-width="2"></g>
+                </svg>
+            </div>
+        </li>
+        <li>$[a;b[ = \{\text{$x\in\mathbb{R}$ tels que $a\leqslant x\lt b$}\}$
+            <div class="figure">
+                <svg viewBox="0 0 200 15" style="width:100%">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="5" ymax="1" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                    <g name="A" class="point labeled" repere="repere1" x="-3" y="0" stroke="red" forme="[" stroke-width="2" style="font-size:5pt"></g> 
+                    <g class="label" linkto="A" x="2" y="0" width="3em">\text{inclus}</g>
+                    <g name="B" class="point labeled" repere="repere1" x="2" y="0" stroke="red" forme="[" stroke-width="2" style="font-size:5pt"></g>
+                    <g class="label" linkto="B" x="2" y="0" width="5em">\text{non inclus}</g>
+                    <g name="AB" class="segment" linkto="A B" stroke="red" stroke-width="2"></g>
+                </svg>
+            </div>
+        </li>
+        <li>$]a;b] = \{\text{$x\in\mathbb{R}$ tels que $a\lt x\leqslant b$}\}$
+            <div class="figure">
+                <svg viewBox="0 0 200 15" style="width:100%">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="5" ymax="1" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                    <g name="A" class="point labeled" repere="repere1" x="-3" y="0" stroke="red" forme="]" stroke-width="2" style="font-size:5pt"></g> 
+                    <g class="label" linkto="A" x="-4.7em" y="0" width="5em">\text{non inclus}</g>
+                    <g name="B" class="point labeled" repere="repere1" x="2" y="0" stroke="red" forme="]" stroke-width="2" style="font-size:5pt"></g>
+                    <g class="label" linkto="B" x="-20" y="0" width="3em">\text{inclus}</g>
+                    <g name="AB" class="segment" linkto="A B" stroke="red" stroke-width="2"></g>
+                </svg>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="definition">
+    Soit $a$ un réel. On note&nbsp;:
+    <ul style="padding-left: 1em;">
+        <li>$[a;+\infty[ = \{\text{$x\in\mathbb{R}$ tels que $x\geqslant a$}\}$
+            <div class="figure">
+                <svg viewBox="0 0 200 15" style="width:100%">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="5" ymax="1" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                    <g name="A" class="point labeled" repere="repere1" x="-3" y="0" stroke="red" forme="[" stroke-width="2" style="font-size:5pt"></g> 
+                    <g class="label" linkto="A" x="2" y="0" width="3em">\text{inclus}</g>
+                    <g name="B" class="point" repere="repere1" x="5" y="0" stroke="none"></g>
+                    <g name="AB" class="segment" linkto="A B" stroke="red" stroke-width="2"></g>
+                </svg>
+            </div>
+        </li>
+        <li>$]a;+\infty[ = \{\text{$x\in\mathbb{R}$ tels que $x\gt a$}\}$
+            <div class="figure">
+                <svg viewBox="0 0 200 15" style="width:100%">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="5" ymax="1" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                    <g name="A" class="point labeled" repere="repere1" x="-3" y="0" stroke="red" forme="]" stroke-width="2" style="font-size:5pt"></g> 
+                    <g class="label" linkto="A" x="-4.7em" y="0" width="5em">\text{non inclus}</g>
+                    <g name="B" class="point" repere="repere1" x="5" y="0" stroke="none"></g>
+                    <g name="AB" class="segment" linkto="A B" stroke="red" stroke-width="2"></g>
+                </svg>
+            </div>
+        </li>
+        <li>$]-\infty;a] = \{\text{$x\in\mathbb{R}$ tels que $x\leqslant a$}\}$
+            <div class="figure">
+                <svg viewBox="0 0 200 15" style="width:100%">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="5" ymax="1" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                    <g name="A" class="point" repere="repere1" x="-5" y="0" stroke="none"></g> 
+                    <g name="B" class="point labeled" repere="repere1" x="2" y="0" stroke="red" forme="]" stroke-width="2" style="font-size:5pt"></g>
+                    <g class="label" linkto="B" x="-20" y="0" width="5em">\text{inclus}</g>
+                    <g name="AB" class="segment" linkto="A B" stroke="red" stroke-width="2"></g>
+                </svg>
+            </div>
+        </li>
+        <li>$]-\infty;a[ = \{\text{$x\in\mathbb{R}$ tels que $x\lt a$}\}$
+            <div class="figure">
+                <svg viewBox="0 0 200 15" style="width:100%">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="5" ymax="1" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                    <g name="A" class="point" repere="repere1" x="-5" y="0" stroke="none"></g> 
+                    <g name="B" class="point labeled" repere="repere1" x="2" y="0" stroke="red" forme="[" stroke-width="2" style="font-size:5pt"></g>
+                    <g class="label" linkto="B" x="2" y="0" width="5em">\text{non inclus}</g>
+                    <g name="AB" class="segment" linkto="A B" stroke="red" stroke-width="2"></g>
+                </svg>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Donnez les intervalles correspondants aux ensembles suivants&nbsp;:
+        <ol class="alphabetical-list">
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\leqslant 3$}\}$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\geqslant -2$}\}$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $-3\leqslant x\leqslant 1$}\}$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\geqslant 0$}\}$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\lt -5$}\}$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $-1\lt x\leqslant -2$}\}$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\gt 1$}\}$</li>
+        </ol>
+        </ul>
+    </div>
+    <div class="solution">
+        <ul class="alphabetical-list">
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\leqslant 3$}\} = ]-\infty;3]$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\geqslant -2$}\} = [-2;+\infty[$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $-1\lt x\lt 2$}\} = ]-1;2[$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $-3\leqslant x\leqslant 1$}\} = [-3;1]$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\geqslant 0$}\} = [0;+\infty[$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\lt -5$}\} = ]-\infty;-5[$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $-1\lt x\leqslant -2$}\} = ]-1;-2]$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\gt 1$}\} = ]1;+\infty[$</li>
+        </ul>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        À quels ensembles de nombres correspondent les intervalles suivants&nbsp;? (répondre à l'aide d'inégalités)
+        <ol class="alphabetical-list horizontal-list col-3c">
+            <li>$[0;1]$</li>
+            <li>$]-\infty;0[$</li>
+            <li>$[2;+\infty[$</li>
+            <li>$]-1;2[$</li>
+            <li>$[-3;1[$</li>
+            <li>$]-\infty;1]$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul class="alphabetical-list">
+            <li>$[0;1] = \{\text{$x\in\mathbb{R}$ tel que $0\leqslant x\leqslant 1$}\} = \{\text{$x\in\mathbb{R}$ tel que $x\geqslant 0$ et $x\leqslant 1$}\} = [0;1]$</li>
+            <li>$]-\infty;0[ = \{\text{$x\in\mathbb{R}$ tel que $x\lt 0$}\} = \{\text{$x\in\mathbb{R}$ tel que $x\leqslant 0$}\} = ]-\infty;0[$</li>
+            <li>$[2;+\infty[ = \{\text{$x\in\mathbb{R}$ tel que $x\geqslant 2$}\} = \{\text{$x\in\mathbb{R}$ tel que $2\leqslant x$}\} = [2;+\infty[$</li>
+            <li>$]-1;2[ = \{\text{$x\in\mathbb{R}$ tel que $-1\lt x\lt 2$}\} = \{\text{$x\in\mathbb{R}$ tel que $-1\leqslant x\leqslant 2$}\} = ]-1;2[$</li>
+            <li>$[-3;1[ = \{\text{$x\in\mathbb{R}$ tel que $-3\leqslant x\lt 1$}\} = \{\text{$x\in\mathbb{R}$ tel que $-3\leqslant x$ et $x\lt 1$}\} = [-3;1[$</li>
+        </ul>
+    </div>
+</div>
+
+<div class="definition">
+    <ul style="padding-left:1em;">
+        <li>La <i>réunion de deux intervalles</i> $I$ et $J$ est l'ensemble des nombres réels qui appartiennent à $I$ ou à $J$, on la note $I\cup J$.
+        <svg id="intervalle4" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 280 120"
+            style="display:block;margin:auto;width:50%;padding:1em 0em 0em 0em;">
+            <!-- L'axe des abscisses en double -->
+            <line x1="-40" y1="0" x2="240" y2="0" stroke="black" />
+            <line x1="-40" y1="50" x2="240" y2="50" stroke="black" />
+            <!-- Surligner en rouge les intervalles -->
+            <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
+            <line x1="120" y1="50" x2="240" y2="50" stroke="red" stroke-width="2" />
+            <!-- Dessiner une graduation en $-1$, $4$ et $2$ -->
+            <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+            <line x1="120" y1="-5" x2="120" y2="5" stroke="black" />
+            <line x1="200" y1="-5" x2="200" y2="5" stroke="black" />
+            <!-- Dessiner un crochet [ à l'emplacement de la graduation de $-1$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none" />
+            <!-- Dessiner un crochet ] à l'emplacement de la graduation de $4$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                transform="translate(200,0) scale(-1,1)" />
+            <!-- Dessiner un crochet ] à l'emplacement de la graduation de $2$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                transform="translate(120,50) scale(-1,1)" />
+            <!-- Dessiner un rectangle qui surligne la réunion-->
+            <defs>
+                <pattern id="hachures" patternUnits="userSpaceOnUse" width="10" height="10">
+                <path d="M 0 0 L 10 10" stroke="black" stroke-width="1" />
+                </pattern>
+            </defs>
+            <rect x="0" y="0" width="240" height="110" style="fill:red;opacity:0.1;stroke-width:0;"
+                transform="translate(0,-30)" />
+            <rect x="0" y="0" width="240" height="110" style="fill:url(#hachures);opacity:0.5;stroke-width:0;"
+                transform="translate(0,-30)" />
+            <g>
+                <foreignObject x="0" y="0" width="120" height="90" transform="translate(68,10)">
+                    $\scriptsize I\cup J$
+                </foreignObject>
+            </g>
+        </svg>
+        </li>
+        <li>L'<i>intersection de deux intervalles</i> $I$ et $J$ est l'ensemble des nombres réels qui appartiennent à $I$ et à $J$, on la note $I\cap J$.
+        <svg id="intervalle4" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 280 120"
+            style="display:block;margin:auto;width:50%;padding:1em 0em 0em 0em;">
+            <!-- L'axe des abscisses en double -->
+            <line x1="-40" y1="0" x2="240" y2="0" stroke="black" />
+            <line x1="-40" y1="50" x2="240" y2="50" stroke="black" />
+            <!-- Surligner en rouge les intervalles -->
+            <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
+            <line x1="120" y1="50" x2="240" y2="50" stroke="red" stroke-width="2" />
+            <!-- Dessiner une graduation en $-1$, $4$ et $2$ -->
+            <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+            <line x1="120" y1="-5" x2="120" y2="5" stroke="black" />
+            <line x1="200" y1="-5" x2="200" y2="5" stroke="black" />
+            <!-- Dessiner un crochet [ à l'emplacement de la graduation de $-1$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none" />
+            <!-- Dessiner un crochet ] à l'emplacement de la graduation de $4$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                transform="translate(200,0) scale(-1,1)" />
+            <!-- Dessiner un crochet ] à l'emplacement de la graduation de $2$-->
+            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
+                transform="translate(120,50) scale(-1,1)" />
+            <!-- Dessiner un rectangle qui surligne l'intersection-->
+            <defs>
+                <pattern id="hachures" patternUnits="userSpaceOnUse" width="10" height="10">
+                <path d="M 0 0 L 10 10" stroke="black" stroke-width="1" />
+                </pattern>
+            </defs>
+            <rect x="0" y="0" width="80" height="110" style="fill:red;opacity:0.1;stroke-width:0;"
+                transform="translate(120,-30)" />
+            <rect x="0" y="0" width="80" height="110" style="fill:url(#hachures);opacity:0.5;stroke-width:0;"
+                transform="translate(120,-30)" />
+            <g>
+                <foreignObject x="0" y="0" width="120" height="90" transform="translate(117,10)">
+                    $\scriptsize I\cap J$
+                </foreignObject>
+            </g>
+        </svg>
+        </li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Donnez les intervalles correspondants aux ensembles suivants&nbsp;:
+        <ol class="alphabetical-list">
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\leqslant 3$ ou $x\geqslant 1$}\}$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\lt -2$ et $x\geqslant 1$}\}$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\leqslant 3$ et $x\gt 1$}\}$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\lt -2$ ou $x\geqslant 1$}\}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul class="alphabetical-list">
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\leqslant 3$ ou $x\geqslant 1$}\} = ]-\infty;1]\cup[3;+\infty[$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\lt -2$ et $x\geqslant 1$}\} = \emptyset$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\leqslant 3$ et $x\gt 1$}\} = [1;3[$</li>
+            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\lt -2$ ou $x\geqslant 1$}\} = ]-\infty;-2[\cup[1;+\infty[$</li>
+        </ul>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Donnez les intervalles correspondants aux ensembles suivants&nbsp;:
+        <ol class="alphabetical-list horizontal-list col-3c">
+            <li>$[-2;5]\cap[0;7]$</li>
+            <li>$]-2;5]\cup[0;7]$</li>
+            <li>$[-2;5[\cap[0;3]$</li>
+            <li>$[-2;5]\cup]0;3]$</li>
+            <li>$[-2;5]\cap[5;7]$</li>
+            <li>$[-2;3]\cap[5;7]$</li>
+            <li>$[-2;5]\cap]-4;3[$</li>
+            <li>$[-2;+\infty[\cap]-4;3[$</li>
+            <li>$]-2;+\infty[\cup[-4;3[$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul class="alphabetical-list">
+            <li>$[-2;5]\cap[0;7] = [0;5]$</li>
+            <li>$]-2;5]\cup[0;7] = ]-2;7]$</li>
+            <li>$[-2;5[\cap[0;3] = [0;3]$</li>
+            <li>$[-2;5[\cup]0;3] = [-2;5[$</li>
+            <li>$]-2;5]\cap[5;7[ = \{5\}$</li>
+            <li>$[-2;3]\cap[5;7[ = \emptyset$</li>
+            <li>$[-2;5]\cap[-4;3[ = ]-4;3[$</li>
+            <li>$[-2;+\infty[\cap]-4;3[ = [-2;3[$</li>
+            <li>$]-2;+\infty[\cup[-4;3[ = [-4;+\infty[$</li>
+        </ul>
+    </div>
+</div></main>
+  </body>
+</html>

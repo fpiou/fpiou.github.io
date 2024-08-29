@@ -225,7 +225,7 @@ div.quiz.fullscreen {
 }
 
 /* Tableau de variations */
-.tableauvariations,.tableauvariations2 {
+.tableauvariations,.tableauvariations1,.tableauvariations2 {
   width: 100%;
   text-align: center;
   border-collapse: collapse;
@@ -233,16 +233,26 @@ div.quiz.fullscreen {
   margin: 1em 0em;
   table-layout: fixed;
 }
-.tableauvariations tr:nth-child(1), .tableauvariations2 tr:nth-child(1) {
+.tableauvariations tr:nth-child(1),.tableauvariations1 tr:nth-child(1), .tableauvariations2 tr:nth-child(1) {
   border-bottom: 1px solid black;
 }
-.tableauvariations td:nth-child(1), .tableauvariations2 td:nth-child(1){
+.tableauvariations td:nth-child(1),.tableauvariations1 td:nth-child(1), .tableauvariations2 td:nth-child(1){
   border-right: 1px solid black;
 }
-.tableauvariations2 tr:nth-child(2) {
+.tableauvariations1 tr:nth-child(2),.tableauvariations2 tr:nth-child(2) {
   border-bottom: 1px solid black;
 }
-
+.tableauvariations1 tr:nth-child(n+2) td:nth-child(4),.tableauvariations2 tr:nth-child(n+2) td:nth-child(4), .tableauvariations2 tr:nth-child(n+2) td:nth-child(6) {
+  position: relative;
+}
+.tableauvariations1 tr:nth-child(n+2) td:nth-child(4)::before,.tableauvariations2 tr:nth-child(n+2) td:nth-child(4)::before, .tableauvariations2 tr:nth-child(n+2) td:nth-child(6)::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid #000000;
+}
 
 /*************************************/
 /* Tableaux de signes 2 valeurs      */
@@ -255,13 +265,13 @@ div.quiz.fullscreen {
   margin: 1em 0em;
 }
 
-/* Aligner à gauche le contenu de la deuxième colonne */
-.tableausigne tr td:nth-child(2) {
+/* Aligner à gauche le contenu de la deuxième colonne première ligne */
+.tableausigne tr:nth-child(1) td:nth-child(2) {
     text-align: left;
 }
 
-/* Aligner à droite le contenu de la dernière colonne */
-.tableausigne tr td:last-child {
+/* Aligner à droite le contenu de la dernière colonne première ligne */
+.tableausigne tr:nth-child(1) td:last-child {
     text-align: right;
 }
 
@@ -283,7 +293,8 @@ div.quiz.fullscreen {
 .tableausigne td:nth-child(1) {
   border-right: 1px solid black;
 }
-.tableausigne tr:nth-child(1) {
+
+.tableausigne tr:nth-child(n) {
   border-bottom: 1px solid black;
 }
 
@@ -404,8 +415,17 @@ div.quiz.fullscreen {
   border-left: 0px;
 }
 
-footer, header {
-  display:none;
+footer {
+  display: none;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid #aaa;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 .page-break {

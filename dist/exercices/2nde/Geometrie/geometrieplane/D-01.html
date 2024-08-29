@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>D-01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Géométrie</div> <div><button class="precedent noprint" onclick="precedent()">&lt;</button>D-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<h1>Projeté orthogonal</h1>
+<div class="definition">
+    Le projeté orthogonal d'un point $M$ sur une droite $(d)$ est le point d'intersection $H$ de la droite $(d)$ et de la perpendiculaire à $(d)$ passant par $M$.
+    <div class="figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
+            <!-- Début de la figure -->
+            
+            <!-- Projeté orthogonal de P sur (AB)  -->
+            <g name="H" class="point labeled dilatation" linkto="A B M" data="90 0" stroke="none"></g>
+
+            <!-- Droite -->
+            <g name="d" class="droite labeled" linkto="A B" stroke-width="1"></g>
+            <g name="MH" class="droite" linkto="M H" style="stroke-dasharray: 5, 5;" stroke-opacity="0.5" stroke="red"></g>
+            <!-- Point libre -->
+            <g name="A" class="point draggable noprint" x="50" y="50"></g>
+            <g name="B" class="point draggable noprint" x="150" y="70"></g>
+            <g name="M" class="point labeled  draggable" x="120" y="20"></g>
+
+            <g class="angleDroit" linkto="M H A" size="10" stroke-width="0.5"></g>
+            <!-- Fin de la figure -->
+        </svg>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div class="figure">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 160 110">
+                <!-- Début de la figure -->
+
+                <!-- Projeté orthogonal de B sur (AC)  -->
+                <g name="E" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="none"></g>
+                <g class="label" linkto="E" x="0" y="-5" style="font-size: 0.8em">E</g>
+
+                <!-- Segments -->
+                <g name="DB" class="segment" linkto="D B"></g>
+                <g name="DC" class="segment" linkto="D C"></g>
+                <g name="CE" class="segment" linkto="C E"></g>
+                <g name="BE" class="segment" linkto="B E"></g>
+                <g name="BC" class="segment" linkto="B C"></g>
+
+                <!-- Point libre -->
+                <g name="A" class="point labeled" x="70" y="100" stroke="none"></g>
+                <g class="label" linkto="A" x="-5" y="0" style="font-size: 0.8em">A</g>
+                <g name="B" class="point labeled" x="150" y="100" stroke="none"></g>
+                <g class="label" linkto="B" x="0" y="-10" style="font-size: 0.8em">B</g>
+                <g name="C" class="point labeled" x="10" y="50" stroke="none"></g>
+                <g class="label" linkto="C" x="-10" y="-10" style="font-size: 0.8em">C</g>
+                <g name="D" class="point labeled" x="10" y="100" stroke="none"></g>
+                <g class="label" linkto="D" x="-10" y="-5" style="font-size: 0.8em">D</g>
+
+                <!-- Angles droits -->
+                <g class="angleDroit" linkto="C E B" size="5"></g>
+                <g class="angleDroit" linkto="C D B" size="5"></g>
+                <!-- Fin de la figure -->
+            </svg>
+        </div>
+        Reproduisez la figure à main levée, puis indiquez les projetés orthogonaux si ce sont des points nommés. Dans le cas contraire, tracez à main levée le projeté orthogonal et lui donner un nom.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$B$ sur $(CD)$</li>
+            <li>$A$ sur $(BC)$</li>
+            <li>$C$ sur $(AB)$</li>
+            <li>$B$ sur $(AC)$</li>
+            <li>$A$ sur $(BE)$</li>
+            <li>$B$ sur $(CE)$</li>
+            <li>$E$ sur $(CA)$</li>
+            <li>$D$ sur $(BC)$</li>
+            <li>$D$ sur $(EB)$</li>
+            <li>$E$ sur $(CD)$</li>
+            <li>$E$ sur $(BC)$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Le projeté orthogonal de $B$ sur $(CD)$ est $$D$$</p></li>
+            <li><p>Le projeté orthogonal de $A$ sur $(BC)$ est $$A_1$$</p></li>
+            <li><p>Le projeté orthogonal de $C$ sur $(AB)$ est $$D$$</p></li>
+            <li><p>Le projeté orthogonal de $B$ sur $(AC)$ est $$E$$</p></li>
+            <li><p>Le projeté orthogonal de $A$ sur $(BE)$ est $$E$$</p></li>
+            <li><p>Le projeté orthogonal de $B$ sur $(CE)$ est $$E$$</p></li>
+            <li><p>Le projeté orthogonal de $E$ sur $(CA)$ est $$E$$</p></li>
+            <li><p>Le projeté orthogonal de $D$ sur $(BC)$ est $$D_1$$</p></li>
+            <li><p>Le projeté orthogonal de $D$ sur $(EB)$ est $$D_2$$</p></li>
+            <li><p>Le projeté orthogonal de $E$ sur $(CD)$ est $$E_1$$</p></li>
+            <li><p>Le projeté orthogonal de $E$ sur $(BC)$ est $$E_2$$</p></li>
+        </ol>
+        <div class="figure">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 160 150">
+                <!-- Début de la figure -->
+
+                <!-- Projeté orthogonal de B sur (AC)  -->
+                <g name="E" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="none"></g>
+                <g class="label" linkto="E" x="0" y="-5" style="font-size: 0.8em">E</g>
+                <g name="A_1" class="point labeled dilatation" linkto="B C A" data="90 0" stroke="none"></g>
+                <g class="label" linkto="A_1" x="0" y="-15" style="font-size: 0.8em">A_1</g>
+                <g name="D_1" class="point labeled dilatation" linkto="B C D" data="90 0" stroke="none"></g>
+                <g class="label" linkto="D_1" x="0" y="-15" style="font-size: 0.8em">D_1</g>
+                <g name="D_2" class="point labeled dilatation" linkto="E B D" data="90 0" stroke="none"></g>
+                <g class="label" linkto="D_2" x="0" y="0" style="font-size: 0.8em">D_2</g>
+                <g name="E_1" class="point labeled dilatation" linkto="C D E" data="90 0" stroke="none"></g>
+                <g class="label" linkto="E_1" x="-10" y="0" style="font-size: 0.8em">E_1</g>
+                <g name="E_2" class="point labeled dilatation" linkto="B C E" data="90 0" stroke="none"></g>
+                <g class="label" linkto="E_2" x="0" y="-15" style="font-size: 0.8em">E_2</g>
+
+                <!-- Segments -->
+                <g name="DB" class="segment" linkto="D B"></g>
+                <g name="DC" class="segment" linkto="D C"></g>
+                <g name="CE" class="segment" linkto="C E"></g>
+                <g name="BE" class="segment" linkto="B E"></g>
+                <g name="BC" class="segment" linkto="B C"></g>
+                <g name="AA_1" class="segment" linkto="A A_1" stroke-dasharray="2,2"></g>
+                <g name="DD_1" class="segment" linkto="D D_1" stroke-dasharray="2,2"></g>
+                <g name="DD_2" class="segment" linkto="D D_2" stroke-dasharray="2,2"></g>
+                <g name="EE_1" class="segment" linkto="E E_1" stroke-dasharray="2,2"></g>
+                <g name="EE_2" class="segment" linkto="E E_2" stroke-dasharray="2,2"></g>
+
+                <!-- Droites -->
+                <g name="BE" class="droite" linkto="B E" stroke-dasharray="2,2"></g>
+                <g name="CD" class="droite" linkto="C D" stroke-dasharray="2,2"></g>
+
+                <!-- Point libre -->
+                <g name="A" class="point labeled" x="70" y="100" stroke="none"></g>
+                <g class="label" linkto="A" x="-5" y="0" style="font-size: 0.8em">A</g>
+                <g name="B" class="point labeled" x="150" y="100" stroke="none"></g>
+                <g class="label" linkto="B" x="0" y="-10" style="font-size: 0.8em">B</g>
+                <g name="C" class="point labeled" x="10" y="50" stroke="none"></g>
+                <g class="label" linkto="C" x="-10" y="-10" style="font-size: 0.8em">C</g>
+                <g name="D" class="point labeled" x="10" y="100" stroke="none"></g>
+                <g class="label" linkto="D" x="-10" y="-5" style="font-size: 0.8em">D</g>
+
+                <!-- Angles droits -->
+                <g class="angleDroit" linkto="C E B" size="5"></g>
+                <g class="angleDroit" linkto="C D B" size="5"></g>
+                <g class="angleDroit" linkto="A A_1 C" size="5"></g>
+                <g class="angleDroit" linkto="D D_1 B" size="5"></g>
+                <g class="angleDroit" linkto="D D_2 B" size="5"></g>
+                <g class="angleDroit" linkto="E E_1 C" size="5"></g>
+                <g class="angleDroit" linkto="E E_2 B" size="5"></g>
+                <!-- Fin de la figure -->
+            </svg>
+        </div>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div class="figure">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 110">
+                <!-- Début de la figure -->
+
+                <!-- Projeté orthogonal de B sur (AC)  -->
+                <g name="D" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="none"></g>
+                <g class="label" linkto="D" x="-15" y="-10" style="font-size: 0.8em">D</g>
+                <g name="E" class="point labeled dilatation" linkto="A B D" data="90 0" stroke="none"></g>
+                <g class="label" linkto="E" x="-5" y="0" style="font-size: 0.8em">E</g>
+                <g name="F" class="point labeled dilatation" linkto="D E C" data="90 0" stroke="none"></g>
+                <g class="label" linkto="F" x="-15" y="-10" style="font-size: 0.8em">F</g>
+                
+
+                <!-- Segments -->
+                <g name="AB" class="segment" linkto="A B"></g>
+                <g name="BC" class="segment" linkto="B C"></g>
+                <g name="AC" class="segment" linkto="A C"></g>
+                <g name="BD" class="segment" linkto="B D"></g>
+                <g name="FE" class="segment" linkto="F E"></g>
+                <g name="FC" class="segment" linkto="F C"></g>
+                
+                <!-- Point libre -->
+                <g name="A" class="point labeled" x="10" y="90" stroke="none"></g>
+                <g class="label" linkto="A" x="-5" y="0" style="font-size: 0.8em">A</g>
+                <g name="B" class="point labeled" x="150" y="90" stroke="none"></g>
+                <g class="label" linkto="B" x="-5" y="0" style="font-size: 0.8em">B</g>
+                <g name="C" class="point labeled" x="150" y="10" stroke="none"></g>
+                <g class="label" linkto="C" x="0" y="-10" style="font-size: 0.8em">C</g>
+
+                <!-- Angles droits -->
+                <g class="angleDroit" linkto="B D A" size="5"></g>
+                <g class="angleDroit" linkto="A B C" size="5"></g>
+                <g class="angleDroit" linkto="F E B" size="5"></g>
+                <g class="angleDroit" linkto="C F E" size="5"></g>
+                <!-- Fin de la figure -->
+            </svg>
+        </div>
+        Les points qui semblent alignés le sont. Mêmes consignes que dans l'exercice précédent.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$C$ sur $(BD)$</li>
+            <li>$B$ sur $(AC)$</li>
+            <li>$B$ sur $(DF)$</li>
+            <li>$E$ sur $(DC)$</li>
+            <li>$D$ sur $(BC)$</li>
+            <li>$D$ sur $(AB)$</li>
+            <li>$A$ sur $(EB)$</li>
+            <li>$F$ sur $(AB)$</li>
+        </ol>
+    </div>
+</div>
+
+<div class="propriete">
+    Dans un triangle, le projeté orthogonal d'un sommet sur le côté opposé est le pied de la hauteur issue de ce sommet.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Placez dans un repère orthonormé les points $A(-3~;~2)$, $B(6~;~-1)$ et $C(-1~;~-2)$.</li>
+            <li>Déterminez par lecture graphique les coordonnées du point $D$ pied de la hauteur issue de $C$ dans le triangle $ABC$.</li>
+            <li>Déterminez par lecture graphique les coordonnées du point $E$ pied de la hauteur issue de $B$ dans le triangle $ABC$.</li>
+            <li>Déterminez par lecture graphique le point de concours des trois hauteurs du triangle $ABC$.</li>
+            <li>Notons $F$ le point d'intersection de $(AH)$ et $(BC)$. Montrez que le projeté orthogonal de $A$ sur $(BC)$ est $F$.</li>
+        </ol>
+    </div>  
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>
+                <div class="figure">
+                    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- On définit le repère -->
+                        <g name="repere1" class="repere" xmin="-10" ymin="-5" xmax="10" ymax ="5" xorigine="0" yorigine="0"></g>
+                        <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                        <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                        <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                        <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+                        <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+                        <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
+                        <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
+                        <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
+                    </svg>
+                </div>
+            </li>
+            <li>
+                <div class="figure">
+                    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- On définit le repère -->
+                        <g name="repere1" class="repere" xmin="-10" ymin="-5" xmax="10" ymax ="5" xorigine="0" yorigine="0"></g>
+                        <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                        <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                        <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                        <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+                        <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+                        <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
+                        <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
+                        <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
+                        <g name="AB" class="droite" linkto="A B" stroke="black"></g>
+                        <g name="D" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="red"></g>
+                        <g name="CD" class="segment" linkto="C D" stroke="black" stroke-dasharray="5,5"></g>
+                        <g class="angleDroit" linkto="C D A" size="10" stroke-width="0.5"></g>
+                    </svg>
+                </div>
+                <p>Les coordonnées de $D$ semblent être $(0~;~1).$</p>
+            </li>
+            <li>
+                <div class="figure">
+                    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- On définit le repère -->
+                        <g name="repere1" class="repere" xmin="-10" ymin="-5" xmax="10" ymax ="5" xorigine="0" yorigine="0"></g>
+                        <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                        <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                        <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                        <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+                        <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+                        <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
+                        <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
+                        <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
+                        <g name="AC" class="droite" linkto="A C" stroke="black"></g>
+                        <g name="E" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="red"></g>
+                        <g name="labE" class="label" linkto="E" x="-15">E</g>
+                        <g name="EB" class="segment" linkto="E B" stroke="black" stroke-dasharray="5,5"></g>
+                        <g class="angleDroit" linkto="B E C" size="10" stroke-width="0.5"></g>
+                    </svg>
+                </div>
+                <p>Les coordonnées de $E$ semblent être $(0~;~-4).$</p>
+            </li>
+            <li>
+                <div class="figure">
+                    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- On définit le repère -->
+                        <g name="repere1" class="repere" xmin="-10" ymin="-7" xmax="10" ymax ="3" xorigine="0" yorigine="0"></g>
+                        <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                        <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                        <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                        <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+                        <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+                        <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
+                        <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
+                        <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
+                        <g name="ABC" class="polygone" linkto="A B C" fill="red" fill-opacity="0.2"></g>
+                        <g name="E" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="black"></g>
+                        <g name="D" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="none"></g>
+                        <g name="labE" class="label" linkto="E" x="-15">E</g>
+                        <g name="DC" class="droite" linkto="D C"></g>
+                        <g name="BE" class="droite" linkto="B E"></g>
+                        <g name="AC" class="droite" linkto="A C" stroke-dasharray="5,5"></g>
+                        <g name="H" class="point labeled" repere="repere1" x="-2" y ="-5" stroke="red"></g>
+                    </svg>
+                </div>
+                <p>Les coordonnées de $H$ semblent être $(-2~;~-5).$</p>
+            </li>
+            <li>
+                <p>Les trois hauteurs sont concourantes en $H$.</p>
+                <p>Donc $(AH)$ est la hauteur issue de $A$ dans le triangle $ABC$.</p>
+                <p>$F$ est le projeté orthogonal de $A$ sur $(BC)$.</p>
+                <p>Donc $F$ est le point d'intersection de $(AH)$ et $(BC)$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Tracer un triangle $ABC$ rectangle en $A$ tel que $AB=\SI{3}{\cm}$ et $AC=\SI{4}{\cm}$. Notons $H$ le projeté orthogonal de $A$ sur $(BC)$.
+        <ol class="alphabetical-list">
+            <li>Calculez l'aire du triangle $ABC$.</li>
+            <li>Calculez $BC$.</li>
+            <li>Déterminez une autre manière de calculer l'aire du triangle $ABC$ pour en déduire la longueur de $AH$.</li>
+            <li>Calculez $BH$.</li>
+            <li>Calculez l'aire du triangle $AHC$.</li>
+        </ol>
+        <span style="font-size:7pt;">
+        <ul class="horizontal-list col-4c">
+            <li><i>Indications</i>&nbsp;:</li>
+            <li>$\num{2.4}\times\num{1.8}=4.32$</li>
+            <li>$\num{2.4}^2=\num{5.76}$</li>
+            <li>$\num{7.68}\div 2=\num{3.84}$</li>
+            <li>$\sqrt{\num{3.24}}=\num{1.8}$</li>
+            <li>$\sqrt{\num{10.24}}=\num{3.2}$</li>
+            <li>$12\div 5=\num{2.4}$</li>
+            <li>$\num{4.32}\div 2=\num{2.16}$</li>
+            <li>$\num{3.2}\times\num{2.4}=\num{7.68}$</li>
+        </ul>
+        </span>
+    </div>
+</div>
+
+<div class="definition">
+    La distance entre un point et une droite est la longueur du segment joignant le point à son projeté orthogonal sur la droite.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soient $[Ox)$ et $[Oy)$ deux demi-droites d'origine un point $O$ du plan et soit $A$ un point distinct de $O$ et équidistant de ces deux demi-droites. Soient $M$ et $N$ les projetés orthogonaux de $A$ sur $[Ox)$ et $[Oy)$ respectivement.
+        <ol class="alphabetical-list">
+            <li>Démontrez que $OM^2=ON^2$.</li>
+            <li>Démontrez que $(OA)$ est la bissectrice de l'angle $\widehat{MON}$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <div id="figure1" class="figure">
+            <svg
+            id="figure1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 -20 200 110"
+            >
+            <!-- Début de la figure -->
+            <!-- Points -->
+            <g name="O" class="point labeled" x="30" y="60"></g>
+            <g
+                class="label"
+                linkto="O"
+                y="-10"
+                x="-10"
+                style="font-size: 0.8em; color: red"
+            >
+                O
+            </g>
+            <g name="x" class="point" x="80" y="60" style="stroke: transparent"></g>
+            <g name="y" class="point" x="70" y="30" style="stroke: transparent"></g>
+            <g name="z" class="point" x="75" y="45" style="stroke: transparent"></g>
+            <!-- Demùi-droites -->
+            <!-- Demi-droite -->
+            <g name="Ox" class="demidroite" linkto="O x" style="stroke: green"></g>
+            <g name="Oy" class="demidroite" linkto="O y" style="stroke: green"></g>
+            <g
+                name="Oz"
+                class="demidroite"
+                linkto="O z"
+                style="
+                stroke: blue;
+                stroke-width: 2;
+                stroke-dasharray: 5 5;
+                stroke-opacity: 0.1;
+                "
+            ></g>
+            <!-- A est le point image de O par l'homothétie de centre O et de rapport 2 -->
+            <g
+                name="A"
+                class="point labeled translation draggable"
+                linkto="O z O"
+                data="2"
+            ></g>
+            <g
+                class="label"
+                linkto="A"
+                y="-10"
+                x="5"
+                style="font-size: 0.8em; color: red"
+            >
+                A
+            </g>
+            <!-- M est le projeté orthogonal de A sur Ox -->
+            <g
+                name="M"
+                class="point labeled dilatation"
+                linkto="O x A"
+                data="90 0"
+            ></g>
+            <g class="label" linkto="M" style="font-size: 0.8em; color: green">M</g>
+            <!-- N est le projeté orthogonal de A sur Oy -->
+            <g
+                name="N"
+                class="point labeled dilatation"
+                linkto="O y A"
+                data="90 0"
+            ></g>
+            <g
+                class="label"
+                linkto="N"
+                x="-10"
+                y="-15"
+                style="font-size: 0.8em; color: green"
+            >
+                N
+            </g>
+            <!-- on trace les distance aux droites AM et AN-->
+            <g name="AM" class="segment" linkto="A M"></g>
+            <g name="AN" class="segment" linkto="A N"></g>
+            <!-- Tracer les deux triangles OAM et OAN-->
+            <g
+                name="OAM"
+                class="polygone"
+                linkto="O A M"
+                fill="red"
+                fill-opacity="0.1"
+            ></g>
+            <g
+                name="OAN"
+                class="polygone"
+                linkto="O A N"
+                fill="red"
+                fill-opacity="0.1"
+            ></g>
+            <!-- Fin de la figure -->
+            </svg>
+        </div>
+        <ol class="alphabetical-list">
+            <li><p>$M$ est le projeté orthogonal de $A$ sur la droite $(Ox)$ et $N$ le projeté orthogonal de $A$ sur la droite $(Oy)$.</p>
+                <p>Donc $OAM$ et $OAN$ sont des triangles rectangles en $M$ et $N$.</p>
+                <p>D'après le théorème de Pythagore, on a $$OA^2=OM^2+AM^2$$ et
+                $$OA^2=ON^2+AN^2$$</p>
+                <p>D'où $$OM^2+AM^2=ON^2+AN^2$$</p>
+                <p>Or $AM$ est la distance de $A$ à la droite $(Ox)$ et $AN$ est la distance
+                de $A$ à la droite $(Oy)$.</p>
+                <p>Comme $A$ est équidistant de $(Ox)$ et $(Oy)$, on a $AM=AN$.</p>
+                <p>Par conséquent $OM^2=ON^2$</p>
+            </li>
+            <li>
+                <p>Comme $OM^2=ON^2$, on a $OM=ON$.</p>
+                <p>$OA$ est commun aux triangles $OAM$ et $OAN$.</p>
+                <p>De plus $AM=AN$.</p>
+                <p>Donc les triangles $OAM$ et $OAN$ sont égaux.</p>
+                <p>Or si deux triangles sont égaux, alors les angles sont deux à deux de même mesure.</p>
+                <p>Donc les angles $\widehat{OAM}$ et $\widehat{OAN}$ sont de même mesure.</p>
+                <p>Donc $(OA)$ est la bissectrice de l'angle $\widehat{MON}$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        $ABC$ est un triangle tel que $AB=\SI{8}{\cm}$, $AC=\SI{11}{\cm}$ et
+        $\widehat{BAC}=30\degree$. Le point $H$ est le projeté orthogonal de $B$ sur
+        $(AC)$.
+        <ol class="alphabetical-list">
+            <li>Calculer $BH$.</li>
+            <li>Calculer l'aire du triangle $ABC$.</li>
+            <li>Calculer la distance du point $C$ à $(AB)$.</li>
+            <li>Calculer la distance du point $C$ à $(BH)$.</li>
+        </ol>
+        <span style="font-size:7pt;"><i>Indications :</i>$sin(30\degree)=cos(60\degree)=\dfrac{1}{2}$ et $sin(60\degree)=cos(30\degree)=\dfrac{\sqrt{3}}{2}$</span>
+    </div>
+    <div class="solution">
+        <div class="figure">
+            <svg viewBox="0 -10 170 100">
+                <g name="A" class="point labeled" x="30" y="60"></g>
+                <g class="label" linkto="A" x="-10" y="-10" style="font-size: 0.8em; color: red">A</g>
+                <g name="C" class="point labeled" x="140" y="60"></g>
+                <g class="label" linkto="C" x="5" y="-10" style="font-size: 0.8em; color: red">C</g>
+                <g name="B" class="point labeled" x="99.28" y="20"></g>
+                <g class="label" linkto="B" x="-5" y="-15" style="font-size: 0.8em; color: red">B</g>
+                <g name="H" class="point labeled" x="99.28" y="60"></g>
+                <g class="label" linkto="H" x="-5" y="0" style="font-size: 0.8em; color: red">H</g>
+                <!-- Tracer les trois segments -->
+                <g name="AB" class="segment" linkto="A B"></g>
+                <g name="AC" class="segment" linkto="A C"></g>
+                <g name="BC" class="segment" linkto="B C"></g>
+                <g name="BH" class="segment" linkto="B H" style="stroke: green"></g>
+                <!-- H_1 -->
+                <g name="H_1" class="point labeled dilatation" linkto="A B C" data="90 0"></g>
+                <g class="label" linkto="H_1" x="5" y="-10" style="font-size: 0.8em; color: green">H_1</g>
+                <!-- TRacer en pointillés les segments hors du triangle-->
+                <g name="BH_1" class="segment" linkto="B H_1" style="stroke: blue; stroke-width: 2; stroke-dasharray: 5 5; stroke-opacity: 0.5;"></g>
+                <g name="CH_1" class="segment" linkto="C H_1" style="stroke: blue; stroke-width: 2; stroke-dasharray: 5 5; stroke-opacity: 0.5;"></g>
+                <!-- Triangle ABC-->
+                <g name="ABC" class="polygone" linkto="A B C" fill="red" fill-opacity="0.1"></g>
+            </svg>
+        </div>
+        <ol class="alphabetical-list">
+            <li>
+                <p>Le triangle $ABH$ est rectangle en $H$.</p>
+                <p>$\sin(\widehat{BAH})=\dfrac{BH}{AB}$</p>
+                <p>$\sin(30\degree)=\frac{BH}{8}$</p>
+                <p>$\dfrac{1}{2}=\dfrac{BH}{8}$</p>
+                <p>$BH=8\times \dfrac{1}{2}$</p>
+                <p>$BH=\SI{4}{\cm}$</p>
+            </li>
+            <li>
+                <p>$\mathcal{A}_{ABC}=\dfrac{AC\times BH}{2}$</p>
+                <p>$\mathcal{A}_{ABC}=\dfrac{11\times 4}{2}$</p>
+                <p>$\mathcal{A}_{ABC}=\SI{22}{\square\cm}$</p>
+            </li>
+            <li>
+                <p>Notons $H_1$ le projeté orthogonal de $C$ sur la droite $(AB)$.</p>
+                <p>Exprimons l'aire du triangle $ABC$ d'une manière différente.</p>
+                <p>$\mathcal{A}_{ABC}=\dfrac{AB\times CH_1}{2}$</p>
+                <p>$\mathcal{A}_{ABC}=\dfrac{8\times CH_1}{2}$</p>
+                <p>$\mathcal{A}_{ABC}=4\times CH_1$</p>
+                <p>$CH_1=\dfrac{\mathcal{A}_{ABC}}{4}$</p>
+                <p>$CH_1=\dfrac{22}{4}$</p>
+                <p>$CH_1=\SI{5.5}{\cm}$</p>
+                <p>Donc la distance du point $C$ à la droite $(AB)$ est $\SI{5.5}{\cm}$</p>
+            </li>
+            <li>
+                <p>$H$ est le projeté orthogonal de $C$ sur la droite $(BH)$.</p>
+                <p>Donc la distance du point $C$ à la droite $(BH)$ est $CH$.</p>
+                <p>Calculons $AH$.</p>
+                <p>$\cos(\widehat{BAH})=\dfrac{AH}{AB}$</p>
+                <p>$\cos(30\degree)=\dfrac{AH}{8}$</p>
+                <p>$\dfrac{\sqrt{3}}{2}=\dfrac{AH}{8}$</p>
+                <p>$AH=\dfrac{\sqrt{3}}{2}\times 8$</p>
+                <p>$AH=4\sqrt{3}$</p>
+                <p>Or $CH=AC-AH$</p>
+                <p>D'où $CH=11-4\sqrt{3}$</p>
+                <p>Donc la distance du point $C$ à la droite $(BH)$ est $11-4\sqrt{3}$ en centimètres qui est environ égal à $\SI{4.1}{\cm}$.</p>
+            </li>
+        </ol>
+  </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        $ABC$ est un triangle tel que $AB=8$, $BC=4$ et $AC=4\sqrt{3}$.
+        Soit $D$ le point de $[AC)$ tel que $AD=12$. Soit $E$ le point de $[AB)$ tel que $\widehat{AED}=\ang{60}$.
+        <ol class="alphabetical-list">
+            <li>Démontrez que $C$ est le projeté orthogonal de $B$ sur $(AD)$.</li>
+            <li>Sachant que $\cos(\ang{60})=\frac{1}{2}$, démontrez que les droites $(BC)$ et $(DE)$ sont parallèles.</li>
+            <li>Montrez que $DE=4\sqrt{3}.$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>
+                $$\begin{align*}
+                AC^2&=(4\sqrt{3})^2\\
+                AC^2&=4\sqrt{3}\times 4\sqrt{3}\\
+                AC^2&=4^2\times \sqrt{3}^2\\
+                AC^2&=16\times 3\\
+                AC^2&=48
+                \end{align*}
+                $$
+                <p>D'une part $$AB^2=8^2=64$$</p>
+                <p>D'autre part $$BC^2+AC^2=4^2+48=16+48=64$$</p>
+                <p>D'où $$AB^2=BC^2+AC^2$$</p>
+                <p>D'après la réciproque du théorème de Pythagore, le triangle $ABC$ est rectangle en $C$.</p>
+                <p>Donc $C$ est le projeté orthogonal de $B$ sur $(AD)$.</p>
+            </li>
+            <li>
+                <p>$ABC$ est rectangle en $C$ d'où&nbsp;:</p>
+                $$
+                \begin{align*}
+                \cos{\widehat{ABC}}=\frac{BC}{AB}
+                \cos{\widehat{ABC}}&=\frac{4}{8}\\
+                \cos{\widehat{ABC}}&=\frac{1}{2}\\
+                \widehat{ABC}&=\ang{60}
+                \end{align*}
+                $$
+                <p>On sait que $\widehat{AED}=\ang{60}$.</p>
+                <p>Les droites $(BC)$ et $(DE)$ coupent la droite $(AB)$ et forment des angles correspondants de même mesure.</p>
+                <p>Donc les droites $(BC)$ et $(DE)$ sont parallèles.</p>
+            </li>
+            <li>
+                <p>$A$, $C$ et $D$ sont alignés.</p>
+                <p>$A$, $B$ et $E$ sont alignés dans le même ordre.</p>
+                <p>Les droites $(BC)$ et $(DE)$ sont parallèles.</p>
+                <p>D'après le théorème de Thalès, on a&nbsp;:</p>
+                $$\frac{AC}{AD}=\frac{BC}{DE}$$
+                <p>D'où&nbsp;:</p>
+                $$\begin{align*}
+                \frac{4\sqrt{3}}{12}=\frac{4}{DE}\\
+                DE&=\frac{12}{\sqrt{3}}\\
+                DE&=\frac{4\times\left(\sqrt{3}\right)^2}{\sqrt{3}}\\
+                DE&=4\sqrt{3}
+                \end{align*}$$
+                <i>Remarque : On pouvait aussi utiliser les propriétés des striangles semblables à la place du théorème de Thalès.</i>
+            </li>
+        </ol>
+    </div>
+</div>
+</main>
+  </body>
+</html>

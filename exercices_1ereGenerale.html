@@ -34,6 +34,14 @@
     <!--Styles personnalisés-->
     <link rel="stylesheet" href="/src/css/main.css">
 
+    <style>
+        .suivant {
+            display: none;
+        }
+        .precedent {
+            display: none;
+        }
+    </style>
 
     <!--Scripts personnalisés-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -45,43 +53,46 @@
     <div id="interactivite"></div>
     <script defer src="/dist/main.bundle.js"></script>
 
-    <title>1re spécifique - Exercices</title>
+    <title>1re Mathématiques Spécifique - Fiches de cours</title>
 </head>
 <body>
     <div class="sidebar" id="sidebar">
     <button class="closebtn" onclick="toggleSidebar()">×</button>
     <nav class="navbar">
         <ul>
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
                 <div class="dropdown-content">
                     <a href="/lessons_2nde.html">Seconde</a>
                     <a href="/lessons_1ereGenerale.html">Première</a>
                     <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
                 </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Exercices</a>
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
                 <div class="dropdown-content">
                     <a href="/exercices_2nde.html">Seconde</a>
-                    <a href="/exercices_1ereGenerale.html">Première</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
                     <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
                 </div>
             </li>
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
                 <div class="dropdown-content">
                     <a href="/quizs_2nde.html">Seconde</a>
                     <a href="/quizs_1reGenerale.html">Première</a>
                     <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
                 </div>
-            </li>
+            </li> -->
         </ul>
     </nav>
 </div>
 <button id="openbtn" onclick="toggleSidebar()">☰</button>
 
-    <h1>1re spécifique - Exercices</h1>
-    En cours de construction
+    <h1>1re Mathématiques Spécifique - Fiches de cours</h1>
+    <ul><li>Information chiffrée<ul><li><a href="./dist/exercices\1ereMathSpecifique\Information chiffrée\A-01.html">A-01 Informations chiffrées</a></li><li><a href="./dist/exercices\1ereMathSpecifique\Information chiffrée\A-02.html">A-02 Informations chiffrées</a></li></ul></li></ul>
 </body>
 </html>

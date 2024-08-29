@@ -19,11 +19,12 @@
     width: 100%;
     top: 0;
     border-bottom: 1px solid #aaa;
+    font-size: normal;
   }
   body {
     width:100vw;
     max-width: 100vw;
-    padding-top: 2mm;
+    padding-top: 5mm;
   }
   body.quadrillage {
     background-image: 
@@ -43,8 +44,7 @@
   }
 
   /* Pour gagner de l'espace les formules éléments de la class .katex-display contenus dans des éléments p sont en inline-block*/
-  p span.katex-display,
-  li span.katex-display
+  p span.katex-display/*, li span.katex-display */
   {
     display: inline-block;
     margin: 0em;
@@ -70,6 +70,7 @@
   nav,
   #console,
   .introduction-quiz,
+  .sidebar,
   #score {
     display: none !important;
   }
@@ -146,6 +147,7 @@
     column-rule: 1px solid black;
     width: 100vw;
     max-width: 100vw;
+    padding-top: 5mm;
   }
   /* Empêcher le saut de page pour les les div avec la class div-formulaire */
   .quiz {
@@ -181,5 +183,11 @@
   /* Supprimer la coloration de Prism.js */
   .token {
     color: inherit !important;
+  }
+
+  /* Définitions, propriétés, remarques, methodes */
+  .header-definition,.header-propriete,.header-remarque,.header-methode {
+    background-color:transparent;
+    color: rgb(0, 0, 0);
   }
 }

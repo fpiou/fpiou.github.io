@@ -77,30 +77,33 @@
     <button class="closebtn" onclick="toggleSidebar()">×</button>
     <nav class="navbar">
         <ul>
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
                 <div class="dropdown-content">
                     <a href="/lessons_2nde.html">Seconde</a>
                     <a href="/lessons_1ereGenerale.html">Première</a>
                     <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
                 </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Exercices</a>
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
                 <div class="dropdown-content">
                     <a href="/exercices_2nde.html">Seconde</a>
-                    <a href="/exercices_1ereGenerale.html">Première</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
                     <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
                 </div>
             </li>
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
                 <div class="dropdown-content">
                     <a href="/quizs_2nde.html">Seconde</a>
                     <a href="/quizs_1reGenerale.html">Première</a>
                     <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
                 </div>
-            </li>
+            </li> -->
         </ul>
     </nav>
 </div>
@@ -112,8 +115,7 @@
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
 
-    <main><header><div>Droites - Equations de droites</div> <div>Fiche n° 01</div></header>
-<h3>Rappels</h3>
+    <main><h3>Rappels</h3>
 <div class="exercice">
     <div class="enonce">
         <div class="figure">
@@ -175,6 +177,7 @@
                 <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
                 <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
                 <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
+                <g class="label" linkto="O" x="-4" y="0" style="font-size:0.4rem;">O</g>
                 <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
                 <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
                 <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
@@ -183,7 +186,6 @@
                 <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
                 <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
                 <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
-                <g class="label" linkto="O" x="-4" y="0" style="font-size:0.7rem;">O</g>
                 <g name="A" class="point" repere="repere1" x="-6" y="3" stroke="none"></g>
                 <g name="B" class="point" repere="repere1" x="-4" y="6" stroke="none"></g>
                 <g name="u_1" class="vecteur labeled" repere="repere1" linkto="A" x="2" y="3" stroke="black" stroke-width="1"></g>
@@ -236,6 +238,7 @@
                 <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
                 <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
                 <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="transparent"></g>
+                <g class="label" linkto="O" x="-4" y="0" style="font-size:0.4rem;">O</g>
                 <g name="I" class="point" repere="repere1" x="1" y="0" stroke="none"></g>
                 <g name="J" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
                 <g name="i" class="vecteur" linkto="O I" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
@@ -244,7 +247,6 @@
                 <g name="j" class="vecteur" linkto="O J" x="-10" y="-5" stroke="black" scale="0.5" style="font-size:0.3em;"></g>
                 <g name="j" class="point labeled" repere="repere1" x="0" y="0.5" stroke="none" style="font-size:0.3em;"></g>
                 <g class="label" linkto="j" x="-5" y="-5" style="font-size:0.4rem;">\vec{j}</g>
-                <g class="label" linkto="O" x="-4" y="0" style="font-size:0.7rem;">O</g>
 
                 <!-- Points et vecteurs de l'image -->
                 <g name="A" class="point" repere="repere1" x="-1" y="4" stroke="none"></g>

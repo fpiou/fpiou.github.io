@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>F-01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Produit scalaire</div> <div><button class="precedent noprint" onclick="precedent()">&lt;</button>F-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<h1>Produit scalaire</h1>
+<div class="definition">
+    Soient $\overrightarrow{u}$ et $\overrightarrow{v}$ deux vecteurs du plan.
+    Soient $A$, $B$ et $C$ trois points du plan tels que $\overrightarrow{AB}=\overrightarrow{u}$ et $\overrightarrow{AC}=\overrightarrow{v}$. Soit $H$ le projeté orthogonal de $C$ sur $(AB)$.
+    On appelle <i>produit scalaire</i> de $\overrightarrow{u}$ par $\overrightarrow{v}$ et on note $\overrightarrow{u}\cdot\overrightarrow{v}$ le nombre réel défini par&nbsp;:
+    <ul style="padding-left: 1em;">
+        <li>$\overrightarrow{u}\cdot\overrightarrow{v}=0$ si $\overrightarrow{v}=\overrightarrow{0}$ ou $\overrightarrow{u}=\overrightarrow{0}$&nbsp;;</li>
+        <li>$\overrightarrow{u}\cdot\overrightarrow{v}=\|\overrightarrow{u}\|\times\|\overrightarrow{v}\|$ si $\overrightarrow{u}$ et $\overrightarrow{v}$ sont colinéaires et de même sens&nbsp;;</li>
+        <li>$\overrightarrow{u}\cdot\overrightarrow{v}=-\|\overrightarrow{u}\|\times\|\overrightarrow{v}\|$ si $\overrightarrow{u}$ et $\overrightarrow{v}$ sont colinéaires et de sens contraires&nbsp;;</li>
+        <li>$\overrightarrow{u}\cdot\overrightarrow{v}=\overrightarrow{AB}\cdot\overrightarrow{AH}$ dans les autres cas.</li>
+    </ul>
+    <ul class="horizontal-list">
+        <li><div class="figure">
+                <svg viewBox="-50 0 270 110" style="width:100%;">
+                    <!-- Début de la figure -->
+
+                    <!-- Projeté orthogonal de B sur (AC)  -->
+                    <g name="H" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="none"></g>
+                    <g class="label" linkto="H" x="0" y="-15" style="font-size: 1.01em">H</g>
+                    
+
+                    <!-- Segments -->
+                    <g name="u" class="vecteur labeled" linkto="A B" stroke="red" style="color:red;"></g>
+                    <g name="v" class="vecteur labeled" linkto="A C" stroke="blue" style="color:blue;"></g>
+                    <g name="CH" class="segment" linkto="C H" stroke-dasharray="5,5"></g>
+                    <!-- Point libre -->
+                    <g name="A" class="point labeled" x="10" y="90" stroke="none"></g>
+                    <g class="label" linkto="A" x="-5" y="0" style="font-size: 1.01em">A</g>
+                    <g name="B" class="point labeled" x="150" y="90" stroke="none"></g>
+                    <g class="label" linkto="B" x="-5" y="0" style="font-size: 1.01em">B</g>
+                    <g name="C" class="point labeled" x="100" y="10" stroke="none"></g>
+                    <g class="label" linkto="C" x="0" y="-10" style="font-size: 1.01em">C</g>
+
+                    <!-- Angles droits -->
+                    <g class="angleDroit" linkto="A H C" size="5"></g>
+
+                    <!-- texte -->
+                    <g class="label" x="100" y="30" style="font-size: 1.5em;" width="110">$\overrightarrow{u}\cdot\overrightarrow{v}\gt0$</g>
+                    <!-- Fin de la figure -->
+                </svg>
+            </div>
+        </li>
+        <li><div class="figure">
+                <svg viewBox="-100 0 270 110" style="width:100%;">
+                    <!-- Début de la figure -->
+
+                    <!-- Projeté orthogonal de B sur (AC)  -->
+                    <g name="H" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="none"></g>
+                    <g class="label" linkto="H" x="-10" y="0" style="font-size: 1.01em">H</g>
+                    
+
+                    <!-- Segments -->
+                    <g name="u" class="vecteur labeled" linkto="A B" stroke="red" style="color:red;"></g>
+                    <g name="v" class="vecteur labeled" linkto="A C" stroke="blue" style="color:blue;"></g>
+                    <g name="CH" class="segment" linkto="C H" stroke-dasharray="5,5"></g>
+                    <g name="AH" class="segment" linkto="A H" stroke-dasharray="5,5"></g>
+                    <!-- Point libre -->
+                    <g name="A" class="point labeled" x="10" y="90" stroke="none"></g>
+                    <g class="label" linkto="A" x="-5" y="0" style="font-size: 1.01em">A</g>
+                    <g name="B" class="point labeled" x="150" y="90" stroke="none"></g>
+                    <g class="label" linkto="B" x="-5" y="0" style="font-size: 1.01em">B</g>
+                    <g name="C" class="point labeled" x="-70" y="10" stroke="none"></g>
+                    <g class="label" linkto="C" x="-10" y="-10" style="font-size: 1.01em">C</g>
+
+                    <!-- Angles droits -->
+                    <g class="angleDroit" linkto="C H A" size="10"></g>
+
+                    <!-- texte -->
+                    <g class="label" x="10" y="30" style="font-size: 1.5em;" width="110">$\overrightarrow{u}\cdot\overrightarrow{v}\lt0$</g>
+                    <!-- Fin de la figure -->
+                </svg>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère la figure ci-dessous qui n'est pas à l'échelle mais où les points qui semblent alignés le sont vraiment.
+        <div class="figure">
+            <svg viewBox="0 40 160 110">
+                <!-- Début de la figure -->
+
+                <!-- Projeté orthogonal de B sur (AC)  -->
+                <g name="E" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="none"></g>
+                <g class="label" linkto="E" x="0" y="-5" style="font-size: 0.8em">E</g>
+
+                <!-- Segments -->
+                <g name="DB" class="segment" linkto="D B"></g>
+                <g name="DC" class="segment" linkto="D C"></g>
+                <g name="CE" class="segment" linkto="C E"></g>
+                <g name="BE" class="segment" linkto="B E"></g>
+                <g name="BC" class="segment" linkto="B C"></g>
+
+                <!-- Point libre -->
+                <g name="A" class="point labeled" x="70" y="100" stroke="none"></g>
+                <g class="label" linkto="A" x="-5" y="0" style="font-size: 0.8em">A</g>
+                <g name="B" class="point labeled" x="150" y="100" stroke="none"></g>
+                <g class="label" linkto="B" x="0" y="-10" style="font-size: 0.8em">B</g>
+                <g name="C" class="point labeled" x="10" y="50" stroke="none"></g>
+                <g class="label" linkto="C" x="-10" y="-10" style="font-size: 0.8em">C</g>
+                <g name="D" class="point labeled" x="10" y="100" stroke="none"></g>
+                <g class="label" linkto="D" x="-10" y="-5" style="font-size: 0.8em">D</g>
+
+                <!-- Angles droits -->
+                <g class="angleDroit" linkto="C E B" size="5"></g>
+                <g class="angleDroit" linkto="C D B" size="5"></g>
+
+                <!-- Longueurs -->
+                <g class="label" x="43" y="67" style="font-size: 0.7em">$5$</g>
+                <g class="label" x="37" y="97" style="font-size: 0.7em">$3$</g>
+                <g class="label" x="3" y="67" style="font-size: 0.7em">$4$</g>
+                <g class="label" x="100" y="97" style="font-size: 0.7em">$7$</g>
+                <g class="label" x="90" y="117" style="font-size: 0.7em">$6$</g>
+                <!-- Fin de la figure -->
+            </svg>
+      </div>
+      Calculez les produits scalaires suivants&nbsp;:
+        <ol class="alphabetical-list horizontal-list col-3c">
+            <li>$\overrightarrow{AC} \cdot \overrightarrow{AE}$</li>
+            <li>$\overrightarrow{AB} \cdot \overrightarrow{AC}$</li>
+            <li>$\overrightarrow{AB} \cdot \overrightarrow{DB}$</li>
+            <li>$\overrightarrow{CA} \cdot \overrightarrow{CB}$</li>
+            <li>$\overrightarrow{EA} \cdot \overrightarrow{AC}$</li>
+            <li>$\overrightarrow{AD} \cdot \overrightarrow{AC}$</li>
+            <li>$\overrightarrow{DA} \cdot \overrightarrow{BA}$</li>
+            <li>$\overrightarrow{BA} \cdot \overrightarrow{BC}$</li>
+            <li>$\overrightarrow{AC} \cdot \overrightarrow{AB}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$\overrightarrow{AC}$ et $\overrightarrow{AE}$ sont colinéaires et de sens contraires.<p>
+            <p>Donc $\overrightarrow{AC} \cdot \overrightarrow{AE}\lt0$.</p>
+            <p>Par conséquent $\overrightarrow{AC} \cdot \overrightarrow{AE}=-AC\times AE=-5\times 6=-30$.</p></li>
+
+            <li><p>Le projeté orthogonal de $C$ sur $(AB)$ est $D$.</p>
+            <p>Donc $\overrightarrow{AB} \cdot \overrightarrow{AC}=\overrightarrow{AB} \cdot \overrightarrow{AD}$.</p>
+            <p>Or $\overrightarrow{AB}$ et $\overrightarrow{AD}$ sont colinéaires et de sens contraires.</p>
+            <p>Donc $\overrightarrow{AB} \cdot \overrightarrow{AC}\lt0$.</p>
+            <p>Par conséquent $\overrightarrow{AB} \cdot \overrightarrow{AC}=-AB\times AD=-7\times 3=-21$.</p></li>
+            
+            <li><p>Les vecteurs $\overrightarrow{AB}$ et $\overrightarrow{DB}$ sont colinéaires et de même sens.</p>
+            <p>Donc $\overrightarrow{AB} \cdot \overrightarrow{DB}\gt0$.</p>
+            <p>Par conséquent $\overrightarrow{AB} \cdot \overrightarrow{DB}=AB\times DB=7\times 10=70$.</p></li>
+            
+            <li><p>Le projeté orthogonal de $B$ sur $(CA)$ est $E$.</p>
+            <p>Donc $\overrightarrow{CA} \cdot \overrightarrow{CB}=\overrightarrow{CA} \cdot \overrightarrow{CE}$.</p>
+            <p>Or $\overrightarrow{CA}$ et $\overrightarrow{CE}$ sont colinéaires et de même sens.</p>
+            <p>Donc $\overrightarrow{CA} \cdot \overrightarrow{CB}\gt0$.</p>
+            <p>Par conséquent $\overrightarrow{CA} \cdot \overrightarrow{CB}=CA\times CE=5\times 11=55$.</p></li>
+            
+            <li><p>$\overrightarrow{EA}$ et $\overrightarrow{AC}$ sont colinéaires et de même sens.</p>
+            <p>Donc $\overrightarrow{EA} \cdot \overrightarrow{AC}\gt0$.</p>
+            <p>Par conséquent $\overrightarrow{EA} \cdot \overrightarrow{AC}=EA\times AC=6\times 5=30$.</p></li>
+
+            <li><p>Le projeté orthogonal de $C$ sur $(AD)$ est $D$.</p>
+            <p>Donc $\overrightarrow{AD} \cdot \overrightarrow{AC}=\overrightarrow{AD} \cdot \overrightarrow{AD}$.</p>
+            <p>Donc $\overrightarrow{AD} \cdot \overrightarrow{AC}\gt0$.</p>
+            <p>Par conséquent $\overrightarrow{AD} \cdot \overrightarrow{AC}=AD\times AD=3\times 3=9$.</p></li>
+            
+            <li><p>Les vecteurs $\overrightarrow{DA}$ et $\overrightarrow{BA}$ sont colinéaires et de sens contraires.</p>
+            <p>Donc $\overrightarrow{DA} \cdot \overrightarrow{BA}\lt0$.</p>
+            <p>Par conséquent $\overrightarrow{DA} \cdot \overrightarrow{BA}=-DA\times BA=-3\times 7=-21$.</p></li>
+            
+            <li><p>Le projeté orthogonal de $C$ sur $(AB)$ est $D$.</p>
+            <p>Donc $\overrightarrow{BA} \cdot \overrightarrow{BC}=\overrightarrow{BA} \cdot \overrightarrow{BD}$.</p>
+            <p>Or $\overrightarrow{BA}$ et $\overrightarrow{BD}$ sont colinéaires et de même sens.</p>
+            <p>Donc $\overrightarrow{BA} \cdot \overrightarrow{BC}\gt0$.</p>
+            <p>Par conséquent $\overrightarrow{BA} \cdot \overrightarrow{BC}=BA\times BD=7\times 10=70$.</p></li>
+
+            <li><p>Le projeté orthogonal de $B$ sur $(AC)$ est $E$.</p>
+            <p>Donc $\overrightarrow{AC} \cdot \overrightarrow{AB}=\overrightarrow{AC} \cdot \overrightarrow{AE}$.</p>
+            <p>Or $\overrightarrow{AC}$ et $\overrightarrow{AE}$ sont colinéaires et de sens contraires.</p>
+            <p>Donc $\overrightarrow{AC} \cdot \overrightarrow{AB}\lt0$.</p>
+            <p>Par conséquent $\overrightarrow{AC} \cdot \overrightarrow{AB}=-AC\times AE=-5\times 6=-30$.</p></li>
+        </ol>
+    </div>
+</div>
+
+<div class="propriete">
+    Soient $\overrightarrow{u}$, $\overrightarrow{v}$ et $\overrightarrow{w}$ trois vecteurs du plan et $\lambda$ un nombre réel.
+    <ul style="padding-left: 1em;">
+        <li>Le produit scalaire est symétrique&nbsp;: $$\overrightarrow{u}\cdot\overrightarrow{v}=\overrightarrow{v}\cdot\overrightarrow{u}$$</li>
+        <li>Le produit scalaire est bilinéaire&nbsp;:
+            <ul>
+                <li>$\overrightarrow{u}\cdot(\overrightarrow{v}+\overrightarrow{w})=\overrightarrow{u}\cdot\overrightarrow{v}+\overrightarrow{u}\cdot\overrightarrow{w}$</li>
+                <li>$(\overrightarrow{u}+\overrightarrow{v})\cdot\overrightarrow{w}=\overrightarrow{u}\cdot\overrightarrow{w}+\overrightarrow{v}\cdot\overrightarrow{w}$</li>
+                <li>$(\lambda\overrightarrow{u})\cdot\overrightarrow{v}=\lambda(\overrightarrow{u}\cdot\overrightarrow{v})=\overrightarrow{u}\cdot(\lambda\overrightarrow{v})$</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABC$ un triangle tels que $AB=2$, $BC=4$ et $\overrightarrow{AB}\cdot\overrightarrow{AC}=10$. Soit $H$ le projeté orthogonal de $B$ sur $(AC)$.
+        Calculez les produits suivants en justifiant à l'aide des propriétés du produit scalaire&nbsp;:
+        <ol class="alphabetical-list horizontal-list col-3c">
+            <li>$\overrightarrow{AB}\cdot\overrightarrow{CA}$</li>
+            <li>$\overrightarrow{BA}\cdot\overrightarrow{AC}$</li>
+            <li>$\overrightarrow{CA}\cdot\overrightarrow{BA}$</li>
+            <li>$\overrightarrow{BA}\cdot\overrightarrow{BC}$</li>
+            <li>$\overrightarrow{CA}\cdot\overrightarrow{CB}$</li>
+            <li>$(\overrightarrow{AC})^2$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <div class="figure">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 10 200 55">
+                <!-- Début de la figure -->
+
+                <!-- Segments -->
+                <g name="AB" class="segment" linkto="A B"></g>
+                <g name="BC" class="segment" linkto="B C"></g>
+                <g name="AC" class="segment" linkto="A C"></g>
+                <g name="ABH" class="segment" linkto="B H" stroke-dasharray="2,2"></g>
+                
+                <!-- Point libre -->
+                <g name="A" class="point labeled" x="10" y="50" stroke="none"></g>
+                <g class="label" linkto="A" x="-5" y="0" style="font-size: 0.8em">A</g>
+                <g name="B" class="point labeled" x="10+3*50*sqrt(2)/4" y="50-3*10*sqrt(7/8)" stroke="none"></g>
+                <g class="label" linkto="B" x="-5" y="-15" style="font-size: 0.8em">B</g>
+                <g name="C" class="point labeled" x="10+3*40*sqrt(2)" y="50" stroke="none"></g>
+                <g class="label" linkto="C" x="-5" y="0" style="font-size: 0.8em">C</g>
+
+                <!-- Projeté orthogonal de B sur (AC)  -->
+                <g name="H" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="none"></g>
+                <g class="label" linkto="H" x="-3" y="0" style="font-size: 0.8em">H</g>
+
+                <!-- ANgle droit -->
+                <g class="angleDroit" linkto="A H C" size="5"></g>
+                <!-- Fin de la figure -->
+            </svg>
+        </div>
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AB}\cdot\overrightarrow{CA}&=\overrightarrow{AB}\cdot(-\overrightarrow{AC})\\
+            \overrightarrow{AB}\cdot\overrightarrow{CA}&=-\overrightarrow{AB}\cdot\overrightarrow{AC}\\
+            \overrightarrow{AB}\cdot\overrightarrow{CA}&=-10
+            \end{align*}
+            $$</li>
+            <li>$$\begin{align*}
+            \overrightarrow{BA}\cdot\overrightarrow{AC}&=(-\overrightarrow{AB})\cdot\overrightarrow{AC}\\
+            \overrightarrow{BA}\cdot\overrightarrow{AC}&=-\overrightarrow{AB}\cdot\overrightarrow{AC}\\
+            \overrightarrow{BA}\cdot\overrightarrow{AC}&=-10
+            \end{align*}
+            $$</li>
+            <li>$$\begin{align*}
+            \overrightarrow{CA}\cdot\overrightarrow{BA}&=\overrightarrow{BA}\cdot\overrightarrow{CA}\\
+            \overrightarrow{CA}\cdot\overrightarrow{BA}&=(-\overrightarrow{AB})\cdot(-\overrightarrow{AC})\\
+            \overrightarrow{CA}\cdot\overrightarrow{BA}&=\overrightarrow{AB}\cdot\overrightarrow{AC}\\
+            \overrightarrow{CA}\cdot\overrightarrow{BA}&=10
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{BA}\cdot\overrightarrow{BC}&=\overrightarrow{BA}\cdot(\overrightarrow{BA}+\overrightarrow{AC})\\
+            \overrightarrow{BA}\cdot\overrightarrow{BC}&=\overrightarrow{BA}\cdot\overrightarrow{BA}+\overrightarrow{BA}\cdot\overrightarrow{AC}\\
+            \overrightarrow{BA}\cdot\overrightarrow{BC}&=BA^2-\overrightarrow{AB}\cdot\overrightarrow{AC}\\
+            \overrightarrow{BA}\cdot\overrightarrow{BC}&=2^2-10\\
+            \overrightarrow{BA}\cdot\overrightarrow{BC}&=-6
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{CA}\cdot\overrightarrow{CB}&=(\overrightarrow{CB}+\overrightarrow{BA})\cdot\overrightarrow{CB}\\
+            \overrightarrow{CA}\cdot\overrightarrow{CB}&=\overrightarrow{CB}\cdot\overrightarrow{CB}+\overrightarrow{BA}\cdot\overrightarrow{CB}\\
+            \overrightarrow{CA}\cdot\overrightarrow{CB}&=CB^2-\overrightarrow{BA}\cdot\overrightarrow{BC}\\
+            \overrightarrow{CA}\cdot\overrightarrow{CB}&=4^2-(-6)\\
+            \overrightarrow{CA}\cdot\overrightarrow{CB}&=22
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \overrightarrow{AC}^2&=(\overrightarrow{AH}+\overrightarrow{HC})\cdot\overrightarrow{AC}\\
+            AC^2&=\overrightarrow{AH}\cdot\overrightarrow{AC}+\overrightarrow{HC}\cdot\overrightarrow{AC}\\
+            &=\overrightarrow{AH}\cdot\overrightarrow{AC}+\overrightarrow{CA}\cdot\overrightarrow{CH}\\
+            &=\overrightarrow{AB}\cdot\overrightarrow{AC}+\overrightarrow{CA}\cdot\overrightarrow{CB}\\
+            &=10+22\\
+            AC^2&=32\\
+            AC&=4\sqrt{2}
+            \end{align*}
+            $$</li>
+        </ol>
+    </div>
+</div>
+
+<h1>Orthogonalité</h1>
+<div class="definition">
+    Deux vecteurs non nuls sont dits <i>orthogonaux</i> si leurs directions sont perpendiculaires.
+    <div class="figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 0 270 110">
+            <!-- Début de la figure -->
+
+            <!-- Directions -->
+            <g name="AB" class="droite" linkto="A B" stroke-dasharray="2,2"></g>
+            <g name="A1C" class="droite" linkto="A1 C" stroke-dasharray="2,2"></g>
+            <!-- Segments -->
+            <g name="u" class="vecteur labeled" linkto="A B" stroke="red" style="color:red;" stroke-width="2"></g>
+            <g name="v" class="vecteur labeled" linkto="A1 C" stroke="blue" style="color:blue;" stroke-width="2"></g>
+            <!-- Point libre -->
+            <g transform="rotate(30, 0, 0)">
+                <g name="A" class="point" x="30" y="90" stroke="none"></g>
+                <g name="B" class="point" x="150" y="90" stroke="none"></g>
+                <g name="A1" class="point" x="10" y="70" stroke="none"></g>
+                <g name="C" class="point" x="10" y="10" stroke="none"></g>
+                <g name="H" class="point" x="10" y="90" stroke="none"></g>
+            </g>
+            <!-- Angles droits -->
+            <g class="angleDroit" linkto="C H B" size="5"></g>
+            <!-- Fin de la figure -->
+        </svg>
+    </div>
+</div>
+<div class="propriete">
+    Deux vecteurs non nuls $\overrightarrow{u}$ et $\overrightarrow{v}$ sont orthogonaux si et seulement si $\overrightarrow{u}\cdot\overrightarrow{v}=0$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère un carré $ABCD$ de centre $O$. Parmi les produits scalaires suivants, lesquels sont nuls&nbsp;? Justifiez.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$\overrightarrow{AB}\cdot\overrightarrow{AD}$</li>
+            <li>$\overrightarrow{DC}\cdot\overrightarrow{DB}$</li>	
+            <li>$\overrightarrow{OA}\cdot\overrightarrow{OB}$</li>
+            <li>$\overrightarrow{AC}\cdot\overrightarrow{OB}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$\overrightarrow{AB}$ et $\overrightarrow{AD}$ sont orthogonaux car leurs directions sont portées par deux côtés consécutifs d'un carré.</p>
+            <p>Donc $\overrightarrow{AB}\cdot\overrightarrow{AD}=0$.</p></li>
+            <li><p>$\overrightarrow{DC}$ est porté par un côté du carré.</p>
+            <p>$\overrightarrow{DB}$ est porté par une diagonale du carré.</p>
+            <p>Donc $\overrightarrow{DC}$ et $\overrightarrow{DB}$ ne sont pas orthogonaux.</p>
+            <p>Donc $\overrightarrow{DC}\cdot\overrightarrow{DB}\neq0$.</p></li>
+            <li><p>$\overrightarrow{OA}$ et $\overrightarrow{OB}$ sont orthogonaux car leurs directions sont portées par deux diagonales d'un carré.</p>
+            <p>Donc $\overrightarrow{OA}\cdot\overrightarrow{OB}=0$.</p></li>
+            <li><p>$\overrightarrow{AC}$ et $\overrightarrow{OB}$ sont orthogonaux car leurs directions sont portées par deux diagonales d'un carré.</p>
+            <p>Donc $\overrightarrow{AC}\cdot\overrightarrow{OB}=0$.</p></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        $ABCD$ est un parallélogramme. Dans chaque cas, précisez la nature de $ABCD$.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\overrightarrow{AB}\cdot\overrightarrow{AD}=0$</li>
+            <li>$\overrightarrow{AB}\cdot\overrightarrow{AC}=0$</li>
+            <li>$\overrightarrow{AC}\cdot\overrightarrow{BD}=0$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$\overrightarrow{AB}$ et $\overrightarrow{AD}$ sont orthogonaux et sont portés par deux côtés consécutifs d'un parallélogramme.</p>
+            <p>Or si un parallélogramme a deux côtés consécutifs perpendiculaires, alors c'est un rectangle.</p>
+            <p>Donc $ABCD$ est un rectangle.</p></li>
+            <li><p>$\overrightarrow{AB}$ et $\overrightarrow{AC}$ sont orthogonaux et portés respectivement par un côté et une diagonale d'un parallélogramme.</p>
+            <p>$ABCD$ est un parallélogramme, on ne peut rien dire de plus.</p></li>
+            <li><p>$\overrightarrow{AC}$ et $\overrightarrow{BD}$ sont orthogonaux et portés respectivement par deux diagonales d'un parallélogramme.</p>
+            <p>Or si un parallélogramme a ses diagonales perpendiculaires, alors c'est un losange.</p>
+            <p>Donc $ABCD$ est un losange.</p></li>
+        </ol>
+    </div>
+</div>
+
+<h1>Norme et produit scalaire</h1>
+<div class="propriete">
+    On note $\overrightarrow{u}^2$ et on appelle <i>carré scalaire</i> de $\overrightarrow{u}$ le nombre réel $\overrightarrow{u}\cdot\overrightarrow{u}$. On a&nbsp;:
+    $$\overrightarrow{u}^2=\|\overrightarrow{u}\|^2$$
+</div>
+<div class="propriete">
+    Soient $\overrightarrow{u}$ et $\overrightarrow{v}$ deux vecteurs du plan. Alors&nbsp;:
+    $$\|\overrightarrow{u}+\overrightarrow{v}\|^2=\|\overrightarrow{u}\|^2+2\overrightarrow{u}\cdot\overrightarrow{v}+\|\overrightarrow{v}\|^2$$
+    $$\|\overrightarrow{u}-\overrightarrow{v}\|^2=\|\overrightarrow{u}\|^2-2\overrightarrow{u}\cdot\overrightarrow{v}+\|\overrightarrow{v}\|^2$$
+    $$(\overrightarrow{u}+\overrightarrow{v})\cdot(\overrightarrow{u}-\overrightarrow{v})=\|\overrightarrow{u}\|^2-\|\overrightarrow{v}\|^2$$
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABCD$ un parallélogramme tel que $AB=6$, $AD=3$ et $\overrightarrow{AB}\cdot\overrightarrow{AD}=-10$.
+        Calculez.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$\|\overrightarrow{AB}+\overrightarrow{AD}\|^2$</li>
+            <li>$\|\overrightarrow{AB}-\overrightarrow{AD}\|^2$</li>
+        </ol>
+        <ol class="alphabetical-list" start="3">
+            <li>$(\overrightarrow{AB}+\overrightarrow{AD})\cdot(\overrightarrow{AB}-\overrightarrow{AD})$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            \|\overrightarrow{AB}+\overrightarrow{AD}\|^2&=\|\overrightarrow{AB}\|^2+2\overrightarrow{AB}\cdot\overrightarrow{AD}+\|\overrightarrow{AD}\|^2\\
+            \|\overrightarrow{AB}+\overrightarrow{AD}\|^2&=AB^2+2\overrightarrow{AB}\cdot\overrightarrow{AD}+AD^2\\
+            \|\overrightarrow{AB}+\overrightarrow{AD}\|^2&=6^2+2\times(-10)+3^2\\
+            \|\overrightarrow{AB}+\overrightarrow{AD}\|^2&=36-20+9\\
+            \|\overrightarrow{AB}+\overrightarrow{AD}\|^2&=25
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \|\overrightarrow{AB}-\overrightarrow{AD}\|^2&=\|\overrightarrow{AB}\|^2-2\overrightarrow{AB}\cdot\overrightarrow{AD}+\|\overrightarrow{AD}\|^2\\
+            \|\overrightarrow{AB}-\overrightarrow{AD}\|^2&=AB^2-2\overrightarrow{AB}\cdot\overrightarrow{AD}+AD^2\\
+            \|\overrightarrow{AB}-\overrightarrow{AD}\|^2&=6^2-2\times(-10)+3^2\\
+            \|\overrightarrow{AB}-\overrightarrow{AD}\|^2&=36+20+9\\
+            \|\overrightarrow{AB}-\overrightarrow{AD}\|^2&=65
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            (\overrightarrow{AB}+\overrightarrow{AD})\cdot(\overrightarrow{AB}-\overrightarrow{AD})&=\|\overrightarrow{AB}\|^2-\|\overrightarrow{AD}\|^2\\
+            (\overrightarrow{AB}+\overrightarrow{AD})\cdot(\overrightarrow{AB}-\overrightarrow{AD})&=AB^2-AD^2\\
+            (\overrightarrow{AB}+\overrightarrow{AD})\cdot(\overrightarrow{AB}-\overrightarrow{AD})&=6^2-3^2\\
+            (\overrightarrow{AB}+\overrightarrow{AD})\cdot(\overrightarrow{AB}-\overrightarrow{AD})&=36-9\\
+            (\overrightarrow{AB}+\overrightarrow{AD})\cdot(\overrightarrow{AB}-\overrightarrow{AD})&=27
+            \end{align*}
+            $$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABC$ un triangle. En utilisant le produit scalaire, démontrez que $ABC$ est rectangle en $A$ si et seulement si $BC^2=AB^2+AC^2$.
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$ABC$ est rectangle en $A$ si et seulement si $\overrightarrow{BA}\cdot\overrightarrow{AC}=0$.</p>
+            $$
+            \begin{align*}
+            BC^2&=(\overrightarrow{BA}+\overrightarrow{AC})^2\\
+            BC^2&=\overrightarrow{BA}^2+2\overrightarrow{BA}\cdot\overrightarrow{AC}+\overrightarrow{AC}^2
+            \end{align*}
+            $$
+            <p>Donc $ABC$ est rectangle en $A$ si et seulement si $BC^2=AB^2+AC^2$.</p></li>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Soient $A$, $B$ et $C$ trois points du plan. Démontrez les formules suivantes&nbsp;:
+        <ul class="alphabetical-list">
+            <li>$BC^2=AB^2+AC^2-2\overrightarrow{AB}\cdot\overrightarrow{AC}$</li>
+            <li>$AC^2=BA^2+BC^2-2\overrightarrow{BA}\cdot\overrightarrow{BC}$</li>
+            <li>$AB^2=AC^2+BC^2-2\overrightarrow{CA}\cdot\overrightarrow{CB}$</li>
+        </ul>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$$
+            \begin{align*}
+            BC^2&=\|\overrightarrow{BC}\|^2\\
+            BC^2&=(\overrightarrow{BA}-\overrightarrow{CA})^2\\
+            BC^2&=\overrightarrow{BA}^2-2\overrightarrow{BA}\cdot\overrightarrow{CA}+\overrightarrow{CA}^2\\
+            BC^2&=AB^2-2\overrightarrow{AB}\cdot\overrightarrow{AC}+AC^2
+            \end{align*}
+            $$</p></li>
+            <li><p>$$
+            \begin{align*}
+            AC^2&=\|\overrightarrow{AC}\|^2\\
+            AC^2&=(\overrightarrow{BA}-\overrightarrow{BC})^2\\
+            AC^2&=\overrightarrow{BA}^2-2\overrightarrow{BA}\cdot\overrightarrow{BC}+\overrightarrow{BC}^2\\
+            AC^2&=BA^2-2\overrightarrow{BA}\cdot\overrightarrow{BC}+BC^2
+            \end{align*}
+            $$</p></li>
+            <li><p>$$
+            \begin{align*}
+            AB^2&=\|\overrightarrow{AB}\|^2\\
+            AB^2&=(\overrightarrow{AC}-\overrightarrow{BC})^2\\
+            AB^2&=\overrightarrow{AC}^2-2\overrightarrow{AC}\cdot\overrightarrow{BC}+\overrightarrow{BC}^2\\
+            AB^2=AC^2-2\overrightarrow{CA}\cdot\overrightarrow{CB}+BC^2
+            \end{align*}
+            $$</p></li>
+        </ol>
+    </div>    
+</div></main>
+  </body>
+</html>

@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>A-01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Informations chiffrées</div> <div><button class="precedent noprint" onclick="precedent()">&lt;</button>A-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+    
+<h1>Tableaux croisés d'effectifs</h1>
+<div class="definition">
+    En statistiques, une <i>population</i> est un ensemble d'individus (personnes, animaux, plantes, choses etc.) ayant au moins une caractéristique commune. Un <i>caractère</i> est une propriété qui peut être relevée sur chaque individu de la population. Les caractères peuvent être quantitatifs (mesurables) ou qualitatifs (non mesurables).
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On s'intéresse aux participants d'une compétition sportive internationale. La population étudiée est l'ensemble des participants. Proposez des caractères quantitatifs et qualitatifs que l'on peut relever sur les participants.
+    </div>
+    <div class="solution">
+        <ul style="padding-left:1em;">
+            <li>quantitatifs : le poids, la taille, l'âge, temps de sommeil, d'entraînement etc.</li>
+            <li>qualitatifs : le sexe, la nationalité, le sport pratiqué etc.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="definition">
+    Un <i>tableau croisé d'effectifs</i> est un tableau à double entrée qui permet de croiser deux caractères d'une population.
+    Les <i>marges</i> du tableau croisé d'effectifs sont les totaux des lignes et des colonnes.
+    <ul style="padding-left:1em;">
+        <li>Valeurs possibles du caractère $A$ : $A_1, A_2, A_3, \ldots$</li>
+        <li>Valeurs possibles du caractère $B$ : $B_1, B_2, \ldots$</li>
+    </ul>
+    <table class="tableaucroise">
+        <tr><td></td><td>B1</td><td>B2</td><td>Total</td></tr>
+        <tr><td>A1</td><td>$\phantom{XXX}$</td><td>$\phantom{XXX}$</td><td>$\phantom{XXX}$</td></tr>
+        <tr><td>A2</td><td></td><td></td><td></td></tr>
+        <tr><td>A3</td><td></td><td></td><td></td></tr>
+        <tr><td>Total</td><td></td><td></td><td></td></tr>
+    </table>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Dans un lycée, une étude sur les pratiques sportives de $532$ élèves a été réalisée. $52$ filles pratiquent le football, $230$ élèves pratiquent le football, il y $195$ filles dans l'établissement, $49$ garçons pratiquent le badminton et $112$ filles pratiquent le handball.
+        <ol class="alphabetical-list">
+            <li>Indiquez la population étudiée et les caractères en précisant s'ils sont quantitatifs ou qualitatifs.</li>
+            <li>Dressez le tableau croisé d'effectifs.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Population étudiée : les élèves du lycée. Caractères : le sexe (qualitatif), le sport pratiqué (qualitatif).</li>
+            <li><table class="tableaucroise">
+                <tr>
+                    <td></td>
+                    <td>Garçon</td>
+                    <td>Fille</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Football</td>
+                    <td>$150$</td>
+                    <td>$52$</td>
+                    <td>$230$</td>
+                </tr>
+                <tr>
+                    <td>Handball</td>
+                    <td>$138$</td>
+                    <td>$112$</td>
+                    <td>$250$</td>
+                </tr>
+                <tr>
+                    <td>Badminton</td>
+                    <td>$49$</td>
+                    <td>$31$</td>
+                    <td>$80$</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>$337$</td>
+                    <td>$195$</td>
+                    <td>$532$</td>
+                </tr>
+            </table></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Dans une librairie, on interroge 150 clients sur leur achat : 90 ont acheté un roman, les autres un magazine&nbsp;; 95 n'ont pas acheté de marque-page&nbsp;; 28 ont acheté un magazine avec un marque-page.
+        <ol class="alphabetical-list">
+            <li>Indiquez la population étudiée et les caractères en précisant s'ils sont quantitatifs ou qualitatifs.</li>
+            <li>Dressez le tableau croisé d'effectifs.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Population étudiée : les clients de la librairie. Caractères : le type d'achat (qualitatif), la présence d'un marque-page (qualitatif).</li>
+            <li><table class="tableaucroise">
+                <tr>
+                    <td></td>
+                    <td>Roman</td>
+                    <td>Magazine</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Avec marque-page</td>
+                    <td>$27$</td>
+                    <td>$28$</td>
+                    <td>$55$</td>
+                </tr>
+                <tr>
+                    <td>Sans marque-page</td>
+                    <td>$63$</td>
+                    <td>$32$</td>
+                    <td>$95$</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>$90$</td>
+                    <td>$60$</td>
+                    <td>$150$</td>
+                </tr>
+            </table></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Une boutique de vêtements a réparti son stock de 700 chemises selon le type de tissu et la taille. $\frac{3}{7}$ sont en coton, les autres en lin&nbsp;; $\SI{45}{\%}$ ont une taille supérieure à $\SI{40}{\cm}$&nbsp;; parmi les chemises de plus de $\SI{40}{\cm}$, $\frac{4}{7}$ sont en lin.
+        <ol class="alphabetical-list">
+            <li>Indiquez la population étudiée et les caractères en précisant s'ils sont quantitatifs ou qualitatifs.</li>
+            <li>Dressez le tableau croisé d'effectifs.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Population étudiée : les chemises de la boutique. Caractères : le type de tissu (qualitatif), la taille (quantitatif).</li>
+            <li><table class="tableaucroise">
+                <tr>
+                    <td></td>
+                    <td>Coton</td>
+                    <td>Lin</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Taille $\leqslant \SI{40}{\cm}$</td>
+                    <td>$165$</td>
+                    <td>$220$</td>
+                    <td>$385$</td>
+                </tr>
+                <tr>
+                    <td>Taille $\gt \SI{40}{\cm}$</td>
+                    <td>$135$</td>
+                    <td>$180$</td>
+                    <td>$315$</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>$300$</td>
+                    <td>$400$</td>
+                    <td>$700$</td>
+                </tr>
+            </table></li>
+        </ol>
+    </div>
+</div>
+
+<h1>Diagrammes en barres multiples</h1>
+<div class="definition">
+    Un <i>diagramme en barres</i> est un graphique où la hauteur de chaque barre est proportionnelle à la valeur qu'elle représente. Le <i>diagrammes en barres multiples</i> permet de représenter plusieurs séries.
+    <ol class="horizontal-list col-2c">
+            <li><div class="figure">
+                <svg viewBox="0 0 220 170"  style="width:150%;">
+                    <g name="repere1" class="repere" xmin="-2" ymin="-2" xmax="9" ymax="15" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="2" stroke="black" stroke-width="1" size="5" origine></g>
+                    <g fill-opacity="0.5" fill="blue">
+                        <g class="barre" repere="repere1" x="1.75" y="0" largeur="0.5" hauteur="6"></g>
+                        <g class="barre" repere="repere1" x="3.75" y="0" largeur="0.5" hauteur="10"></g>
+                        <g class="barre" repere="repere1" x="5.75" y="0" largeur="0.5" hauteur="3"></g>
+                    </g>
+                    <g fill-opacity="0.5" fill="red">
+                        <g class="barre" repere="repere1" x="2.25" y="0" largeur="0.5" hauteur="9"></g>
+                        <g class="barre" repere="repere1" x="4.25" y="0" largeur="0.5" hauteur="4"></g>
+                        <g class="barre" repere="repere1" x="6.25" y="0" largeur="0.5" hauteur="7"></g>
+                    </g>
+                    <g class="label" repere="repere1" x="3" y="15" width="100" style="font-size:10pt;text-align:center;font-weight:bold;">Séries juxtaposées</g>
+                </svg>
+            </div>
+            </li>
+            <li><div class="figure">
+                <svg viewBox="0 0 220 170" style="width:150%;">
+                    <g name="repere1" class="repere" xmin="-2" ymin="-2" xmax="9" ymax="25" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="2" stroke="black" stroke-width="1" size="5" origine></g>
+                    <g fill-opacity="0.5" fill="blue">
+                        <g class="barre" repere="repere1" x="2" y="0" largeur="0.5" hauteur="6"></g>
+                        <g class="barre" repere="repere1" x="4" y="0" largeur="0.5" hauteur="10"></g>
+                        <g class="barre" repere="repere1" x="6" y="0" largeur="0.5" hauteur="3"></g>
+                    </g>
+                    <g fill-opacity="0.5" fill="red">
+                        <g class="barre" repere="repere1" x="2" y="6" largeur="0.5" hauteur="9"></g>
+                        <g class="barre" repere="repere1" x="4" y="10" largeur="0.5" hauteur="4"></g>
+                        <g class="barre" repere="repere1" x="6" y="3" largeur="0.5" hauteur="7"></g>
+                    </g>
+                    <g class="label" repere="repere1" x="2" y="25" width="100" style="font-size:10pt;text-align:center;font-weight:bold;">Séries cumulées</g>
+                </svg>
+            </div>
+            </li>
+        </ol>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On s'intéresse aux participants d'une compétition sportive internationale et on obtient le tableau croisé d'effectifs suivant :
+        <table class="tableaucroise">
+            <tr><td></td><td>Homme</td><td>Femme</td><td>Total</td></tr>
+            <tr><td>France</td><td>12</td><td>8</td><td>20</td></tr>
+            <tr><td>Allemagne</td><td>10</td><td>5</td><td>15</td></tr>
+            <tr><td>Italie</td><td>5</td><td>7</td><td>12</td></tr>
+            <tr><td>Total</td><td>27</td><td>20</td><td>47</td></tr>
+        </table>
+        <ol class="alphabetical-list">
+            <li>Construisez le diagramme en barres multiples qui permet, en fonction de leur nationalité, de comparer les séries par sexe en les juxtaposant.</li>
+            <li>Construisez le diagramme en barres multiples qui permet, en fonction de leur sexe, de comparer les séries par nationalité en les juxtaposant.</li>
+            <li>Construisez le diagramme en barres multiples qui permet, en fonction de leur nationalité, de comparer les séries par sexe en les cumulant.</li>
+            <li>Construisez le diagramme en barres multiples qui permet, en fonction de leur sexe, de comparer les séries par nationalité en les cumulant.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><div class="figure">
+                <svg viewBox="0 0 220 170">
+                    <g name="repere1" class="repere" xmin="-2" ymin="-2" xmax="9" ymax="15" xorigine="0" yorigine="0"></g>
+                    <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="1" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="2" stroke="black" stroke-width="1" size="5" origine></g>
+                    <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none" font-size="9pt"></g>
+                    <g class="label" linkto="O" x="-12" y="0">O</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="2" stroke="none" font-size="9pt"></g>
+                    <g class="label" linkto="J" x="-12" y="-9">2</g>
+                    <g name="A" class="point labeled" repere="repere1" x="0" y="10" stroke="none" font-size="9pt"></g>
+                    <g class="label" linkto="A" x="-15" y="-9">10</g>
+                    <g fill-opacity="0.5" fill="blue">
+                        <g class="barre" repere="repere1" x="7" y="10" largeur="0.5" hauteur="1"></g>
+                        <g class="barre" repere="repere1" x="1.75" y="0" largeur="0.5" hauteur="12"></g>
+                        <g class="barre" repere="repere1" x="3.75" y="0" largeur="0.5" hauteur="10"></g>
+                        <g class="barre" repere="repere1" x="5.75" y="0" largeur="0.5" hauteur="5"></g>
+                    </g>
+                    <g fill-opacity="0.5" fill="red">
+                        <g class="barre" repere="repere1" x="7" y="9" largeur="0.5" hauteur="1"></g>
+                        <g class="barre" repere="repere1" x="2.25" y="0" largeur="0.5" hauteur="8"></g>
+                        <g class="barre" repere="repere1" x="4.25" y="0" largeur="0.5" hauteur="5"></g>
+                        <g class="barre" repere="repere1" x="6.25" y="0" largeur="0.5" hauteur="7"></g>
+                    </g>
+                    <g style="font-size:9pt">
+                        <g class="label" repere="repere1" x="1.75" y="0">Fr</g>
+                        <g class="label" repere="repere1" x="3.75" y="0">Al</g>
+                        <g class="label" repere="repere1" x="5.75" y="0">It</g>
+                    </g>
+                    <g style="font-size:5pt">
+                        <g class="label" repere="repere1" x="-2" y="15" width="40">Nombre de partici-pants</g>
+                        <g class="label" repere="repere1" x="3" y="-1.2" width="50">Nationalité</g>
+                        <g class="label" repere="repere1" x="7.5" y="11" width="30">Hommes</g>
+                        <g class="label" repere="repere1" x="7.5" y="10" width="30">Femmes</g>
+                    </g>
+                    <g class="label" repere="repere1" x="2" y="15" width="100" style="font-size:5pt;text-align:center;font-weight:bold;">Nombres de participants selon le sexe et en fonction du pays.</g>
+                </svg>
+            </div>
+            </li>
+            <li><div class="figure">
+                <svg viewBox="0 0 220 170">
+                    <g name="repere1" class="repere" xmin="-2" ymin="-2" xmax="9" ymax="15" xorigine="0" yorigine="0"></g>
+                    <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="1" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="2" stroke="black" stroke-width="1" size="5" origine></g>
+                    <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none" font-size="9pt"></g>
+                    <g class="label" linkto="O" x="-12" y="0">O</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="2" stroke="none" font-size="9pt"></g>
+                    <g class="label" linkto="J" x="-12" y="-9">2</g>
+                    <g name="A" class="point labeled" repere="repere1" x="0" y="10" stroke="none" font-size="9pt"></g>
+                    <g class="label" linkto="A" x="-15" y="-9">10</g>
+                    <g fill-opacity="0.5" fill="blue">
+                        <g class="barre" repere="repere1" x="5.75" y="10" largeur="0.5" hauteur="1"></g>
+                        <g class="barre" repere="repere1" x="1.5" y="0" largeur="0.5" hauteur="12"></g>
+                        <g class="barre" repere="repere1" x="3.5" y="0" largeur="0.5" hauteur="8"></g>
+                    </g>
+                    <g fill-opacity="0.5" fill="red">
+                        <g class="barre" repere="repere1" x="5.75" y="9" largeur="0.5" hauteur="1"></g>
+                        <g class="barre" repere="repere1" x="2" y="0" largeur="0.5" hauteur="10"></g>
+                        <g class="barre" repere="repere1" x="4" y="0" largeur="0.5" hauteur="5"></g>                        
+                    </g>
+                    <g fill-opacity="0.5" fill="green">
+                        <g class="barre" repere="repere1" x="5.75" y="8" largeur="0.5" hauteur="1"></g>
+                        <g class="barre" repere="repere1" x="2.5" y="0" largeur="0.5" hauteur="5"></g>
+                        <g class="barre" repere="repere1" x="4.5" y="0" largeur="0.5" hauteur="7"></g>
+                    </g>
+                    <g style="font-size:9pt">
+                        <g class="label" repere="repere1" x="1.75" y="0">H</g>
+                        <g class="label" repere="repere1" x="3.75" y="0">F</g>
+                    </g>
+                    <g style="font-size:5pt">
+                        <g class="label" repere="repere1" x="-2" y="15" width="40">Nombre de partici-pants</g>
+                        <g class="label" repere="repere1" x="2.5" y="-1.2" width="50">Sexe</g>
+                        <g class="label" repere="repere1" x="6" y="11" width="30">France</g>
+                        <g class="label" repere="repere1" x="6" y="10" width="50">Allemagne</g>
+                        <g class="label" repere="repere1" x="6" y="9" width="30">Italie</g>
+                    </g>
+                    <g class="label" repere="repere1" x="2" y="15" width="100" style="font-size:5pt;text-align:center;font-weight:bold;">Nombres de participants selon le sexe et en fonction du pays.</g>
+                </svg>
+            </div>
+            </li>
+            <li><div class="figure">
+                <svg viewBox="0 0 440 270">
+                    <g name="repere1" class="repere" xmin="-2" ymin="-2" xmax="9" ymax="25" xorigine="0" yorigine="0"></g>
+                    <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="1" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="2" stroke="black" stroke-width="1" size="5" origine></g>
+                    <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none" font-size="9pt"></g>
+                    <g class="label" linkto="O" x="-12" y="0">O</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="2" stroke="none" font-size="9pt"></g>
+                    <g class="label" linkto="J" x="-12" y="-9">2</g>
+                    <g name="A" class="point labeled" repere="repere1" x="0" y="10" stroke="none" font-size="9pt"></g>
+                    <g class="label" linkto="A" x="-15" y="-9">10</g>
+                    <g name="B" class="point labeled" repere="repere1" x="0" y="20" stroke="none" font-size="9pt"></g>
+                    <g class="label" linkto="B" x="-15" y="-9">20</g>
+                    <g fill-opacity="0.5" fill="blue">
+                        <g class="barre" repere="repere1" x="5.5" y="19" largeur="0.5" hauteur="1"></g>
+                        <g class="barre" repere="repere1" x="2" y="0" largeur="0.5" hauteur="12"></g>
+                        <g class="barre" repere="repere1" x="4" y="0" largeur="0.5" hauteur="10"></g>
+                        <g class="barre" repere="repere1" x="6" y="0" largeur="0.5" hauteur="5"></g>
+                    </g>
+                    <g fill-opacity="0.5" fill="red">
+                        <g class="barre" repere="repere1" x="7.5" y="19" largeur="0.5" hauteur="1"></g>
+                        <g class="barre" repere="repere1" x="2" y="12" largeur="0.5" hauteur="8"></g>
+                        <g class="barre" repere="repere1" x="4" y="10" largeur="0.5" hauteur="5"></g>
+                        <g class="barre" repere="repere1" x="6" y="5" largeur="0.5" hauteur="7"></g>
+                    </g>
+                    <g style="font-size:9pt">
+                        <g class="label" repere="repere1" x="1.75" y="0">Fr</g>
+                        <g class="label" repere="repere1" x="3.75" y="0">Al</g>
+                        <g class="label" repere="repere1" x="5.75" y="0">It</g>
+                    </g>
+                    <g style="font-size:10pt">
+                        <g class="label" repere="repere1" x="-2" y="25" width="80">Nombre de partici-pants</g>
+                        <g class="label" repere="repere1" x="6.7" y="0" width="100">Nationalité</g>
+                        <g class="label" repere="repere1" x="5.75" y="20.5" width="60">Hommes</g>
+                        <g class="label" repere="repere1" x="7.75" y="20.5" width="60">Femmes</g>
+                    </g>
+                    <g class="label" repere="repere1" x="0.5" y="25" width="300" style="font-size:10pt;text-align:center;font-weight:bold;">Nombres de participants selon le sexe et en fonction du pays.</g>
+                </svg>
+            </div>
+            </li>
+            <li><div class="figure">
+                <svg viewBox="0 0 440 340">
+                    <g name="repere1" class="repere" xmin="-2" ymin="-2" xmax="9" ymax="32" xorigine="0" yorigine="0"></g>
+                    <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="2" stroke="black" stroke-width="1" size="5" origine></g>
+                    <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none" font-size="9pt"></g>
+                    <g class="label" linkto="O" x="-12" y="0">O</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="2" stroke="none" font-size="9pt"></g>
+                    <g class="label" linkto="J" x="-12" y="-9">2</g>
+                    <g name="A" class="point labeled" repere="repere1" x="0" y="10" stroke="none" font-size="9pt"></g>
+                    <g class="label" linkto="A" x="-15" y="-9">10</g>
+                    <g name="B" class="point labeled" repere="repere1" x="0" y="20" stroke="none" font-size="9pt"></g>
+                    <g class="label" linkto="B" x="-15" y="-9">20</g>
+                    <g fill-opacity="0.5" fill="blue">
+                        <g class="barre" repere="repere1" x="5.75" y="10.5" largeur="0.5" hauteur="1"></g>
+                        <g class="barre" repere="repere1" x="2" y="5+10" largeur="0.5" hauteur="12"></g>
+                        <g class="barre" repere="repere1" x="4" y="7+5" largeur="0.5" hauteur="8"></g>
+                    </g>
+                    <g fill-opacity="0.5" fill="red">
+                        <g class="barre" repere="repere1" x="5.75" y="8.5" largeur="0.5" hauteur="1"></g>
+                        <g class="barre" repere="repere1" x="2" y="5" largeur="0.5" hauteur="10"></g>
+                        <g class="barre" repere="repere1" x="4" y="7" largeur="0.5" hauteur="5"></g>                        
+                    </g>
+                    <g fill-opacity="0.5" fill="green">
+                        <g class="barre" repere="repere1" x="5.75" y="6.5" largeur="0.5" hauteur="1"></g>
+                        <g class="barre" repere="repere1" x="2" y="0" largeur="0.5" hauteur="5"></g>
+                        <g class="barre" repere="repere1" x="4" y="0" largeur="0.5" hauteur="7"></g>
+                    </g>
+                    <g style="font-size:9pt">
+                        <g class="label" repere="repere1" x="1.75" y="0">H</g>
+                        <g class="label" repere="repere1" x="3.75" y="0">F</g>
+                    </g>
+                    <g style="font-size:10pt">
+                        <g class="label" repere="repere1" x="-2" y="30" width="80">Nombre de partici-pants</g>
+                        <g class="label" repere="repere1" x="2.5" y="-1.2" width="100">Sexe</g>
+                        <g class="label" repere="repere1" x="6" y="12" width="60">France</g>
+                        <g class="label" repere="repere1" x="6" y="10" width="100">Allemagne</g>
+                        <g class="label" repere="repere1" x="6" y="8" width="60">Italie</g>
+                    </g>
+                    <g class="label" repere="repere1" x="0.5" y="32" width="300" style="font-size:10pt;text-align:center;font-weight:bold;">Nombres de participants selon le sexe et en fonction du pays.</g>
+                </svg>
+            </div>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On s'intéresse aux pourcentages de répartition des participants d'une compétition sportive internationale en fonction de leur nationalité et de leur sexe. On obtient les tableaux suivants :
+        <ol class="alphabetical-list horizontal-list col-2c">
+        <li><table class="tableaucroise">
+            <tr><td></td><td>Homme</td><td>Femme</td></tr>
+            <tr><td>Fr</td><td>44%</td><td>40%</td></tr>
+            <tr><td>All</td><td>37%</td><td>25%</td></tr>
+            <tr><td>It</td><td>19%</td><td>35%</td></tr>
+            <tr><td>Total</td><td>100%</td><td>100%</td></tr>
+        </table></li>
+        <li><table class="tableaucroise">
+            <tr><td></td><td>Homme</td><td>Femme</td><td>Total</td></tr>
+            <tr><td>Fr</td><td>60%</td><td>40%</td><td>100%</td></tr>
+            <tr><td>All</td><td>67%</td><td>33%</td><td>100%</td></tr>
+            <tr><td>It</td><td>42%</td><td>58%</td><td>100%</td></tr>
+        </table></li>
+        </ol>
+        <ol class="numerical-list">
+            <li>Retrouvez les calculs permettant d'obtenir ces pourcentages à partir des effectifs de l'exercice précédent.</li>
+            <li>Représentez chaque tableau par un diagramme en barres cumulées.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <table class="tableaucroise">
+            <tr><td></td><td>Homme</td><td>Femme</td><td>Total</td></tr>
+            <tr><td>France</td><td>12</td><td>8</td><td>20</td></tr>
+            <tr><td>Allemagne</td><td>10</td><td>5</td><td>15</td></tr>
+            <tr><td>Italie</td><td>5</td><td>7</td><td>12</td></tr>
+            <tr><td>Total</td><td>27</td><td>20</td><td>47</td></tr>
+        </table>
+        <ol "numerical-list">
+            <li><ol class="alphabetical-list">
+                <li><p>Les pourcentages sont obtenus en divisant chaque effectif par le total de la colonne.</p></li>
+                <li><p>Les pourcentages sont obtenus en divisant chaque effectif par le total de la ligne.</p></li>
+            </ol></li>
+            <li>
+                <ol class="alphabetical-list">            
+                    <li><div class="figure">
+                        <svg viewBox="0 0 220 160">
+                            <g name="repere1" class="repere" xmin="-2" ymin="-20" xmax="9" ymax="130" xorigine="0" yorigine="0"></g>
+                            <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="10" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="10" stroke="black" stroke-width="1" size="5" origine></g>
+                            <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none" font-size="9pt"></g>
+                            <g class="label" linkto="O" x="-12" y="0">O</g>
+                            <g name="J" class="point labeled" repere="repere1" x="0" y="50" stroke="none" font-size="9pt"></g>
+                            <g class="label" linkto="J" x="-25" y="-9" style="width:3em;">50\%</g>
+                            <g name="A" class="point labeled" repere="repere1" x="0" y="100" stroke="none" font-size="9pt"></g>
+                            <g class="label" linkto="A" x="-30" y="-9" style="width:3em;">100\%</g>
+                            <g fill-opacity="0.5" fill="blue">
+                                <g class="barre" repere="repere1" x="6" y="40" largeur="1" hauteur="10"></g>
+                                <g class="barre" repere="repere1" x="2" y="0" largeur="1" hauteur="19"></g>
+                                <g class="barre" repere="repere1" x="4" y="0" largeur="1" hauteur="35"></g>
+                            </g>
+                            <g fill-opacity="0.5" fill="red">
+                                <g class="barre" repere="repere1" x="6" y="50" largeur="1" hauteur="10"></g>
+                                <g class="barre" repere="repere1" x="2" y="19" largeur="1" hauteur="37"></g>
+                                <g class="barre" repere="repere1" x="4" y="35" largeur="1" hauteur="25"></g>
+                            </g>
+                            <g fill-opacity="0.5" fill="green">
+                                <g class="barre" repere="repere1" x="6" y="60" largeur="1" hauteur="10"></g>
+                                <g class="barre" repere="repere1" x="2" y="19+37" largeur="1" hauteur="44"></g>
+                                <g class="barre" repere="repere1" x="4" y="35+25" largeur="1" hauteur="40"></g>
+                            </g>
+
+                            <g style="font-size:9pt">
+                                <g class="label" repere="repere1" x="1.85" y="0">H</g>
+                                <g class="label" repere="repere1" x="3.85" y="0">F</g>
+                            </g>
+                            <g style="font-size:5pt">
+                                <g class="label" repere="repere1" x="7" y="0" width="30">Sexe</g>
+                                <g class="label" repere="repere1" x="6.5" y="70" width="30">France</g>
+                                <g class="label" repere="repere1" x="6.5" y="60" width="40">Allemagne</g>
+                                <g class="label" repere="repere1" x="6.5" y="50" width="30">Italie</g>
+                            </g>
+                            <g class="label" repere="repere1" x="0" y="130" width="180" style="font-size:6pt;text-align:center;font-weight:bold;">Répartitions des participants en fonction du sexe et par pays</g>
+                        </svg>
+                    </div></li>
+                    <li><div class="figure">
+                        <svg viewBox="0 0 240 160">
+                            <g name="repere1" class="repere" xmin="-2" ymin="-20" xmax="12" ymax="130" xorigine="0" yorigine="0"></g>
+                            <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="10" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="10" stroke="black" stroke-width="1" size="5" origine></g>
+                            <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none" font-size="9pt"></g>
+                            <g class="label" linkto="O" x="-12" y="0">O</g>
+                            <g name="J" class="point labeled" repere="repere1" x="0" y="50" stroke="none" font-size="9pt"></g>
+                            <g class="label" linkto="J" x="-25" y="-9" style="width:3em;">50\%</g>
+                            <g name="A" class="point labeled" repere="repere1" x="0" y="100" stroke="none" font-size="9pt"></g>
+                            <g class="label" linkto="A" x="-30" y="-9" style="width:3em;">100\%</g>
+                            
+                            <g fill-opacity="0.5" fill="blue">
+                                <g class="barre" repere="repere1" x="9" y="40" largeur="1" hauteur="10"></g>
+                                <g class="barre" repere="repere1" x="2" y="0" largeur="1" hauteur="60"></g>
+                                <g class="barre" repere="repere1" x="4" y="0" largeur="1" hauteur="67"></g>
+                                <g class="barre" repere="repere1" x="6" y="0" largeur="1" hauteur="42"></g>
+                            </g>
+                            <g fill-opacity="0.5" fill="red">
+                                <g class="barre" repere="repere1" x="9" y="50" largeur="1" hauteur="10"></g>
+                                <g class="barre" repere="repere1" x="2" y="60" largeur="1" hauteur="40"></g>
+                                <g class="barre" repere="repere1" x="4" y="67" largeur="1" hauteur="33"></g>
+                                <g class="barre" repere="repere1" x="6" y="42" largeur="1" hauteur="58"></g>
+                            </g>
+                            
+                            <g style="font-size:9pt">
+                                <g class="label" repere="repere1" x="1.5" y="0">Fr</g>
+                                <g class="label" repere="repere1" x="3.5" y="0">All</g>
+                                <g class="label" repere="repere1" x="5.5" y="0">It</g>
+                            </g>
+                            <g style="font-size:7.5pt">
+                                <g class="label" repere="repere1" x="10" y="0" width="30">Nationalité</g>
+                                <g class="label" repere="repere1" x="9.5" y="60" width="40">Femmes</g>
+                                <g class="label" repere="repere1" x="9.5" y="50" width="40">Hommes</g>
+                            </g>
+                            <g class="label" repere="repere1" x="0" y="130" width="200" style="font-size:7.5pt;text-align:center;font-weight:bold;">Répartitions des participants en fonction du pays et par sexe</g>
+                        </svg>
+                    </div></li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Construisez des diagrammes en barres avec les séries cumulées ou juxtaposées des exercices 2, 3 et 4.
+    </div>
+    <div class="solution">
+        <ol class="numerical-list" start="2">
+            <li><table class="tableaucroise">
+                <tr>
+                    <td></td>
+                    <td>Garçon</td>
+                    <td>Fille</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Football</td>
+                    <td>$150$</td>
+                    <td>$52$</td>
+                    <td>$230$</td>
+                </tr>
+                <tr>
+                    <td>Handball</td>
+                    <td>$138$</td>
+                    <td>$112$</td>
+                    <td>$250$</td>
+                </tr>
+                <tr>
+                    <td>Badminton</td>
+                    <td>$49$</td>
+                    <td>$31$</td>
+                    <td>$80$</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>$337$</td>
+                    <td>$195$</td>
+                    <td>$532$</td>
+                </tr>
+            </table>
+            <div class="figure">
+                ...
+            </div>
+            </li>
+            <li><table class="tableaucroise">
+                <tr>
+                    <td></td>
+                    <td>Roman</td>
+                    <td>Magazine</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Avec marque-page</td>
+                    <td>$27$</td>
+                    <td>$28$</td>
+                    <td>$55$</td>
+                </tr>
+                <tr>
+                    <td>Sans marque-page</td>
+                    <td>$63$</td>
+                    <td>$32$</td>
+                    <td>$95$</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>$90$</td>
+                    <td>$60$</td>
+                    <td>$150$</td>
+                </tr>
+            </table>
+            </li>
+            <li><table class="tableaucroise">
+                <tr>
+                    <td></td>
+                    <td>Coton</td>
+                    <td>Lin</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Taille $\leqslant \SI{40}{\cm}$</td>
+                    <td>$165$</td>
+                    <td>$220$</td>
+                    <td>$385$</td>
+                </tr>
+                <tr>
+                    <td>Taille $\gt \SI{40}{\cm}$</td>
+                    <td>$135$</td>
+                    <td>$180$</td>
+                    <td>$315$</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>$300$</td>
+                    <td>$400$</td>
+                    <td>$700$</td>
+                </tr>
+            </table>
+            <div class="figure">
+                ...
+            </div>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Dressez les tableaux de répartitions en pourcentages des exercices 2, 3 et 4 (deux tableaux par exercice).
+    </div>
+    <div class="solution">
+        <ol class="numerical-list" start="2">
+            <li><table class="tableaucroise">
+                <tr>
+                    <td></td>
+                    <td>Garçon</td>
+                    <td>Fille</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Football</td>
+                    <td>$150$</td>
+                    <td>$52$</td>
+                    <td>$230$</td>
+                </tr>
+                <tr>
+                    <td>Handball</td>
+                    <td>$138$</td>
+                    <td>$112$</td>
+                    <td>$250$</td>
+                </tr>
+                <tr>
+                    <td>Badminton</td>
+                    <td>$49$</td>
+                    <td>$31$</td>
+                    <td>$80$</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>$337$</td>
+                    <td>$195$</td>
+                    <td>$532$</td>
+                </tr>
+            </table>
+            <div class="tableaucroise">
+                ...
+            </div>
+            <div class="tableaucroise">
+                ...
+            </div>
+            </li>
+            <li><table class="tableaucroise">
+                <tr>
+                    <td></td>
+                    <td>Roman</td>
+                    <td>Magazine</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Avec marque-page</td>
+                    <td>$27$</td>
+                    <td>$28$</td>
+                    <td>$55$</td>
+                </tr>
+                <tr>
+                    <td>Sans marque-page</td>
+                    <td>$63$</td>
+                    <td>$32$</td>
+                    <td>$95$</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>$90$</td>
+                    <td>$60$</td>
+                    <td>$150$</td>
+                </tr>
+            </table>
+            </li>
+            <li><table class="tableaucroise">
+                <tr>
+                    <td></td>
+                    <td>Coton</td>
+                    <td>Lin</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Taille $\leqslant \SI{40}{\cm}$</td>
+                    <td>$165$</td>
+                    <td>$220$</td>
+                    <td>$385$</td>
+                </tr>
+                <tr>
+                    <td>Taille $\gt \SI{40}{\cm}$</td>
+                    <td>$135$</td>
+                    <td>$180$</td>
+                    <td>$315$</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>$300$</td>
+                    <td>$400$</td>
+                    <td>$700$</td>
+                </tr>
+            </table>
+            <div class="tableaucroise">
+                ...
+            </div>
+            <div class="tableaucroise">
+                ...
+            </div>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Construisez des diagrammes en barres des tableaux de l'exercice précédent.
+    </div>
+</div></main>
+  </body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Brique_01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><ul style="padding-left: 1em;">
+        <li>L'ensemble des nombres pairs est&nbsp;$\{2k, k\in \mathbb{N}\}$.</li>
+        <li>L'ensemble des nombres impairs est&nbsp;$\{2k + 1, k\in \mathbb{N}\}$.</li>
+    </ul>
+
+<div class="exercice">
+    <div class="enonce">
+        Soit $n$ un entier naturel.
+        <ol class="alphabetical-list">
+            <li>Démontrez que si $n$ est impair, alors $n^2$ est impair.</li>
+            <li>Que peut-on en déduire si $n^2$ est pair ?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Si $n$ est impair, alors $n = 2k + 1$ avec $k\in \mathbb{N}$.</p>
+            <p>Donc $n^2 = (2k + 1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$.</p>
+            <p>Donc $n^2$ est impair.</p></li>
+            <li><p>Si $n^2$ est pair, alors $n$ ne peut pas être impair.</p>
+            <p>Donc $n$ est pair.</p></li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Placez le plus précisément possible les points suivants dans le graphique ci-dessous&nbsp;:
+        <ol class="horizontal-list">
+            <li>$A(-2~;~3)$</li>
+            <li>$B(1~;~\frac{11}{4})$</li>
+            <li>$C(-\frac{7}{3}~;~3)$</li>
+            <li>$D(-\frac{5}{2}~;~-1)$</li>
+        </ol>
+        <div class="figure">
+            <svg viewBox="0 0 200 200">
+                <g name="repere1" class="repere" xmin="-3" ymin="-3" xmax="3.55" ymax ="3.55" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.1" ypas="0.1" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="black" stroke-width="0.2" stroke-opacity="0.7"></g>
+                <g name="quadrillage3" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="black" stroke-width="0.3"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.7"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.7"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+                <g class="label" linkto="O" x="-10" y="0" style="font-size:0.7rem">O</g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="black" forme="|"></g>
+                <g class="label" linkto="I" x="-3" y="0" style="font-size:0.7rem">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="black" forme="_"></g>
+                <g class="label" linkto="J" x="-10" y="-7" style="font-size:0.7rem">1</g>
+            </svg>
+        </div>
+    </div>
+    <div class="solution">
+        <p>On utilise les résultats suivants pour placer les points&nbsp;:</p>
+        <ul class="horizontal-list">
+            <li><p>$\frac{11}{4}=\num{2.75}$</p></li>
+            <li><p>$-\frac{7}{3}\approx -\num{2.33}$</p></li>
+            <li><p>$-\frac{5}{2}=-\num{2.5}$</p></li>
+        </ul>
+        <div class="figure">
+            <svg viewBox="0 0 200 200">
+                <g name="repere1" class="repere" xmin="-3" ymin="-3" xmax="3.55" ymax ="3.55" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.1" ypas="0.1" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="black" stroke-width="0.2" stroke-opacity="0.7"></g>
+                <g name="quadrillage3" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="black" stroke-width="0.3"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.7"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.7"></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+                <g class="label" linkto="O" x="-10" y="0" style="font-size:0.7rem">O</g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="black" forme="|"></g>
+                <g class="label" linkto="I" x="-3" y="0" style="font-size:0.7rem">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="black" forme="_"></g>
+                <g class="label" linkto="J" x="-10" y="-7" style="font-size:0.7rem">1</g>
+                <g name="A" class="point labeled" repere="repere1" x="-2" y="3" stroke="red"></g>
+                <g class="label" linkto="A" x="-5" y="0" style="font-size:1rem">A</g>
+                <g name="B" class="point labeled" repere="repere1" x="1" y="11/4" stroke="red"></g>
+                <g class="label" linkto="B" x="-5" y="0" style="font-size:1rem">B</g>
+                <g name="C" class="point labeled" repere="repere1" x="3" y="-7/3" stroke="red"></g>
+                <g class="label" linkto="C" x="-5" y="0" style="font-size:1rem">C</g>
+                <g name="D" class="point labeled" repere="repere1" x="-5/2" y="-1" stroke="red"></g>
+                <g class="label" linkto="D" x="-5" y="0" style="font-size:1rem">D</g>
+            </svg>
+        </div>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <i>Répondre aux consignes suivantes en soignant la présentation des réponses.</i>
+        <ol class="alphabetical-list">
+            <li>Représentez $[2~;~+\infty[$ sur une droite graduée.</li>
+            <li>$-2$ et $2$ appartiennent-ils à l'intervalle $]-\infty~;~2[$ ?</li>
+            <li>Représentez $]-4~;~3]$ sur une droite graduée.</li>
+            <li>$-4$ et $3$ appartiennent-ils à cet intervalle ?</li>
+            <li>Représentez l'ensemble $\{x\in\mathbb{R}~|~-5\leqslant x\lt 3\}$ sur une droite graduée.</li>
+            <li>Représentez l'ensemble $\{x\in\mathbb{R}~|~\vert x-2\vert\leqslant 3\}$ sur une droite graduée.</li>
+            <li>Caractérisez $]3~;~8[$ à l'aide de la valeur absolue.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <svg width="500" height="100">
+  <!-- Number line -->
+  <line x1="50" y1="50" x2="450" y2="50" stroke="black" />
+  <!-- Interval [2, +∞[ -->
+  <line x1="150" y1="45" x2="450" y2="45" stroke="blue" stroke-width="5" />
+  <circle cx="150" cy="50" r="5" fill="blue" />
+  <text x="140" y="70" font-size="12">2</text>
+  <text x="460" y="50" font-size="12">+∞</text>
+</svg>
+
+    </div>
+</div></main>
+  </body>
+</html>

@@ -60,35 +60,38 @@
 
 <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
 
-<body>
+<body class="melanger">
     <div class="sidebar" id="sidebar">
     <button class="closebtn" onclick="toggleSidebar()">×</button>
     <nav class="navbar">
         <ul>
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
                 <div class="dropdown-content">
                     <a href="/lessons_2nde.html">Seconde</a>
                     <a href="/lessons_1ereGenerale.html">Première</a>
                     <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
                 </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Exercices</a>
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
                 <div class="dropdown-content">
                     <a href="/exercices_2nde.html">Seconde</a>
-                    <a href="/exercices_1ereGenerale.html">Première</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
                     <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
                 </div>
             </li>
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
                 <div class="dropdown-content">
                     <a href="/quizs_2nde.html">Seconde</a>
                     <a href="/quizs_1reGenerale.html">Première</a>
                     <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
                 </div>
-            </li>
+            </li> -->
         </ul>
     </nav>
 </div>
@@ -98,7 +101,9 @@
     <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
     <button class="boutonsBandeau" id="boutonColonnes" onclick="colonne()">Colonnes</button>
     <button class="boutonsBandeau" id="boutonQuadrillage" onclick="quadrillage()">Quadrillage</button>
+    <button class="boutonsBandeau" id="boutonMethodes" onclick="methodes()">Méthodes</button>
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau boutonActive" id="boutonMelanger" onclick="melanger_quiz()">Mélanger</button>
     <button class="boutonsBandeau boutonActive" id="boutonImprimerSolutions" onclick="quiz_print_solutions()">Solutions</button>
     <button class="boutonsBandeau" id="boutonImprimerChoix" onclick="quiz_print_choices()">Choix</button>
     <div class="introduction-quiz"></div>

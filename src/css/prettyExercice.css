@@ -6,7 +6,6 @@ li {
 details {
   border: 1px solid #aaa;
   border-radius: 4px;
-  padding: 1em;
   padding: 0.5em 1em;
   margin: 1em 0em;
 }
@@ -51,4 +50,82 @@ details.indice {
 /* Empêcher le retour à la ligne des formules */
 .katex {
   white-space: nowrap;
+}
+
+/* Style dédiés aux leçons initialement */
+
+.definition {
+  background-color: rgba(255, 100, 100, 0.269);
+  padding: 0.5em 0.5em;
+  margin: 0.5em 0em;
+  border: 1px solid red;
+  border-radius: 10px;
+  break-inside: avoid;
+}
+
+.propriete {
+  background-color: rgba(100, 255, 100, 0.269);
+  padding: 0.5em 0.5em;
+  margin: 0.5em 0em;
+  border: 1px solid green;
+  border-radius: 10px;
+  break-inside: avoid;
+}
+
+.remarque {
+  background-color: rgba(100, 100, 255, 0.269);
+  padding: 0.5em 0.5em;
+  margin: 0.5em 0em;
+  border: 1px solid blue;
+  border-radius: 10px;
+  break-inside: avoid;
+}
+
+.methode {
+  background-color: rgba(42, 177, 170, 0.269);
+  padding: 0.5em 0.5em;
+  margin: 0.5em 0em;
+  border: 1px solid blue;
+  border-radius: 10px;
+  break-inside: avoid;
+}
+
+/* Entetes des définitions, propriétés, remarques, exemples */
+.header {
+  font-weight:bold;
+  margin-right: 0.5em;
+}
+
+.header-definition {
+  color:white;
+  background-color:red;
+}
+
+.header-propriete {
+  color:white;
+  background-color:green;
+}
+
+.header-remarque {
+  color:black;
+  background-color:transparent;
+  font-style:italic;
+}
+
+.header-methode {
+  color:black;
+  background-color:transparent;
+  font-style:italic;
+}
+
+.header-exemple {
+  color:black;
+  background-color:transparent;
+  font-style:italic;
+}
+
+.header-proof {
+  color:black;
+  background-color:transparent;
+  font-style:italic;
 }

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>I-01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Probabilités conditionnelles</div> <div><button class="precedent noprint" onclick="precedent()">&lt;</button>I-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<h1>Intersection et réunion</h1>
+<div class="propriete">
+    $A$ et $B$ désignent deux événements d'un même univers.
+    <div class="figure">
+        <svg viewBox="10 0 280 85" style="width:100%;">
+            <ellipse cx="65" cy="45" rx="50" ry="35" fill="none" stroke="black"></ellipse>
+            <ellipse cx="50" cy="45" rx="30" ry="20" fill="red" fill-opacity="0.2" stroke="black"></ellipse>
+            <ellipse cx="80" cy="45" rx="30" ry="20" fill="green" fill-opacity="0.2" stroke="black"></ellipse>
+            <g name="P1" class="label" x="25" y="40" style="font-size:8px;">$A\cap \overline{B}$</g>
+            <g name="P2" class="label" x="55" y="40" style="font-size:8px;">$A\cap B$</g>
+            <g name="P3" class="label" x="85" y="40" style="font-size:8px;">$\overline{A}\cap B$</g>
+            <g name="P4" class="label" x="55" y="67" style="font-size:8px;">$\overline{A}\cap \overline{B}$</g>
+            <g name="A" class="label" x="28" y="20" style="font-size:8px;">$A$</g>
+            <g name="B" class="label" x="96" y="20" style="font-size:8px;">$B$</g>
+            <g name="O" class="label" x="80" y="3" style="font-size:8px;">$\Omega$</g>
+            <foreignObject x="70" y="15" width="150%" height="160%" transform="scale(0.7)">
+                <div xmlns="http://www.w3.org/1999/xhtml">
+                    <table class="tableaucroise">
+                        <tr>
+                            <td width="25%"></td>
+                            <td>$\bold{B}$</td>
+                            <td>$\bold{\overline{B}}$</td>
+                            <td>Total</td>
+                        </tr>
+                        <tr>
+                            <td>$\bold{A}$</td>
+                            <td>$\footnotesize{P(A\cap B)}$</td>
+                            <td>$\footnotesize{P(A\cap \overline{B})}$</td>
+                            <td>$\footnotesize{P(A)}$</td>
+                        </tr>
+                        <tr>
+                            <td>$\bold{\overline{A}}$</td>
+                            <td>$\footnotesize{P(\overline{A}\cap B)}$</td>
+                            <td>$\footnotesize{P(\overline{A}\cap \overline{B})}$</td>
+                            <td>$\footnotesize{P(\overline{A})}$</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td>$\footnotesize{P(B)}$</td>
+                            <td>$\footnotesize{P(\overline{B})}$</td>
+                            <td>$1$</td>
+                        </tr>
+                    </table>
+                </div>
+            </foreignObject>
+        </svg>
+    </div>
+    <div style="text-align:center;">
+        $P(A)=P(A\cap \overline{B})+P(A\cap B)$<br>
+        $P(B)=P(A\cap B)+P(\overline{A}\cap B)$
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        $A$ et $B$ désignent deux événements d'un même univers.
+        Pour chaque case de chaque tableau, indiquez l'égalité du cours permettant de calculer la probabilité de l'événement correspondant puis déterminez la valeur de cette probabilité.
+        <ol class="alphabetical-list">
+            <li><table class="tableaucroise" width="75%" height="100px">
+                    <tr>
+                        <td width="25%"></td>
+                        <td>$\bold{B}$</td>
+                        <td>$\bold{\overline{B}}$</td>
+                        <td>Total</td>
+                    </tr>
+                    <tr>
+                        <td>$\bold{A}$</td>
+                        <td>$\num{0.1}$</td>
+                        <td></td>
+                        <td>$\num{0.35}$</td>
+                    </tr>
+                    <tr>
+                        <td>$\bold{\overline{A}}$</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>$\num{0.55}$</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </li>
+            <li><table class="tableaucroise" width="75%" height="100px">
+                    <tr>
+                        <td width="25%"></td>
+                        <td>$\bold{B}$</td>
+                        <td>$\bold{\overline{B}}$</td>
+                        <td>Total</td>
+                    </tr>
+                    <tr>
+                        <td>$\bold{A}$</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$\bold{\overline{A}}$</td>
+                        <td></td>
+                        <td>$\frac{1}{3}$</td>
+                        <td>$\frac{1}{2}$</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td></td>
+                        <td>$\frac{5}{12}$</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>
+                <table class="tableaucroise" width="75%" height="100px">
+                    <tr>
+                        <td width="25%"></td>
+                        <td>$\bold{B}$</td>
+                        <td>$\bold{\overline{B}}$</td>
+                        <td>Total</td>
+                    </tr>
+                    <tr>
+                        <td>$\bold{A}$</td>
+                        <td>$\num{0.1}$</td>
+                        <td>$\num{0.25}$</td>
+                        <td>$\num{0.35}$</td>
+                    </tr>
+                    <tr>
+                        <td>$\bold{\overline{A}}$</td>
+                        <td>$\num{0.45}$</td>
+                        <td>$\num{0.2}$</td>
+                        <td>$\num{0.65}$</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>$\num{0.55}$</td>
+                        <td>$\num{0.45}$</td>
+                        <td>$1$</td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <table class="tableaucroise" width="75%" height="100px">
+                    <tr>
+                        <td width="25%"></td>
+                        <td>$\bold{B}$</td>
+                        <td>$\bold{\overline{B}}$</td>
+                        <td>Total</td>
+                    </tr>
+                    <tr>
+                        <td>$\bold{A}$</td>
+                        <td>$\frac{5}{12}$</td>
+                        <td>$\frac{1}{12}$</td>
+                        <td>$\frac{1}{2}$</td>
+                    </tr>
+                    <tr>
+                        <td>$\bold{\overline{A}}$</td>
+                        <td>$\frac{1}{6}$</td>
+                        <td>$\frac{1}{3}$</td>
+                        <td>$\frac{1}{2}$</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>$\frac{7}{12}$</td>
+                        <td>$\frac{5}{12}$</td>
+                        <td>$1$</td>
+                    </tr>
+                </table>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        $A$ et $B$ désignent deux événements d'un univers $\Omega$.
+        On donne $P(A)=\num{0.47}$, $P(B)=\num{0.36}$ et $P(A\cap B)=\num{0.18}$.
+        Calculez.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$P(A\cap \overline{B})$</li>
+            <li>$P(\overline{A}\cap B)$</li>
+            <li>$P(\overline{A}\cap \overline{B})$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$\begin{align*}
+            P(A)&=P(A\cap B)+P(A\cap \overline{B})\\
+            \num{0.47}&=\num{0.18}+P(A\cap \overline{B})\\
+            P(A\cap \overline{B})&=\num{0.47}-\num{0.18}\\
+            P(A\cap \overline{B})&=\num{0.29}
+            \end{align*}$$</li>
+            
+            <li>$$\begin{align*}
+            P(B)&=P(A\cap B)+P(\overline{A}\cap B)\\
+            \num{0.36}&=\num{0.18}+P(\overline{A}\cap B)\\
+            P(\overline{A}\cap B)&=\num{0.36}-\num{0.18}\\
+            P(\overline{A}\cap B)&=\num{0.18}
+            \end{align*}$$</li>
+
+            <li><p>Calculons tout d'abord $P(\overline{A})$ $$P(\overline{A})=1-P(A)=1-\num{0.47}=\num{0.53}$$</p>
+            <p>D'où
+            $$\begin{align*}
+            P(\overline{A})&=P(\overline{A}\cap B)+P(\overline{A}\cap \overline{B})\\
+            \num{0.53}&=\num{0.18}+P(\overline{A}\cap \overline{B})\\
+            P(\overline{A}\cap \overline{B})&=\num{0.53}-\num{0.18}\\
+            P(\overline{A}\cap \overline{B})&=\num{0.35}
+            \end{align*}$$</p></li>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        $A$ et $B$ désignent deux événements d'un univers $\Omega$.
+        On donne $P(B)=\frac{5}{12}$, $P(\overline{A}\cap B)=\frac{1}{6}$ et $P(A\cap \overline{B})=\frac{1}{2}$.
+        Calculez.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$P(A\cap B)$</li>
+            <li>$P(A)$</li>
+            <li>$P(\overline{A}\cap \overline{B})$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$\begin{align*}
+            P(B)&=P(A\cap B)+P(\overline{A}\cap B)\\
+            \frac{5}{12}&=P(A\cap B)+\frac{1}{6}\\
+            P(A\cap B)&=\frac{5}{12}-\frac{1}{6}\\
+            P(A\cap B)&=\frac{1}{4}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            P(A)&=P(A\cap B)+P(A\cap \overline{B})\\
+            P(A)&=\frac{1}{4}+P(A\cap \overline{B})\\
+            P(A)&=\frac{1}{4}+\frac{1}{2}\\
+            P(A)&=\frac{3}{4}
+            \end{align*}$$</p></li>
+            <li><p>Calculons tout d'abord $P(\overline{A})$ $$P(\overline{A})=1-P(A)=1-\frac{3}{4}=\frac{1}{4}$$</p>
+            <p>D'où :
+            $$\begin{align*}
+            P(\overline{A})&=P(\overline{A}\cap \overline{B})+P(\overline{A}\cap B)\\
+            \frac{1}{4}&=P(\overline{A}\cap \overline{B})+\frac{1}{6}\\
+            P(\overline{A}\cap \overline{B})&=\frac{1}{4}-\frac{1}{6}\\
+            P(\overline{A}\cap \overline{B})&=\frac{1}{12}
+            \end{align*}$$</p></li>
+        </ol>
+    </div>
+</div>
+
+<div class="propriete">
+    $A$ et $B$ désignent deux événements d'un univers $\Omega$. On a :
+    $$P(A\cup B)=P(A)+P(B)-P(A\cap B)$$
+    $$P(A\cap B)=P(A)+P(B)-P(A\cup B)$$
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>On donne $P(A)=\num{0.2}$, $P(B)=\num{0.6}$ et $P(A\cup B)=\num{0.65}$. Calculez $P(A\cap \overline{B})$.</li>
+            <li>On donne $P(\overline{A}\cup\overline{B})=\frac{5}{6}$, $P(\overline{A})=\frac{1}{2}$ et $P(\overline{B})=\frac{5}{9}$. Calculez $P(A\cap B)$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+        <li><p>Calculons tout d'abord $P(A\cap B)$</p>
+        $$\begin{align*}
+        P(A\cup B)&=P(A)+P(B)-P(A\cap B)\\
+        \num{0.65}&=\num{0.2}+\num{0.6}-P(A\cap B)\\
+        P(A\cap B)&=\num{0.2}+\num{0.6}-\num{0.65}\\
+        P(A\cap B)&=\num{0.15}
+        \end{align*}$$
+        <p>$A\cap B$ et $A\cap \overline{B}$ forment une partition de $A$.</p>
+        $$\begin{align*}
+        P(A)&=P(A\cap B)+P(A\cap \overline{B})\\
+        \num{0.2}&=\num{0.15}+P(A\cap \overline{B})\\
+        P(A\cap \overline{B})&=\num{0.2}-\num{0.15}\\
+        P(A\cap \overline{B})&=\num{0.05}
+        \end{align*}$$</li>
+        <li><p>Calculons tout d'abord $P(\overline{A}\cap\overline{B})$</p>
+        $$\begin{align*}
+        P(\overline{A}\cup\overline{B})&=P(\overline{A})+P(\overline{B})-P(\overline{A}\cap\overline{B})\\
+        \frac{5}{6}&=\frac{1}{2}+\frac{5}{9}-P(\overline{A}\cap\overline{B})\\
+        P(\overline{A}\cap\overline{B})&=\frac{1}{2}+\frac{5}{9}-\frac{5}{6}\\
+        P(\overline{A}\cap\overline{B})&=\frac{2}{9}
+        \end{align*}$$
+        <p>Calculons maintenant $P(A)$</p>
+        $$P(A)=1-P(\overline{A})=1-\frac{1}{2}=\frac{1}{2}$$
+        <p>Calculons maintenant $P(A\cap \overline{B})$</p>
+        <p>$A\cap \overline{B}$ et $\overline{A}\cap \overline{B}$ forment une partition de $\overline{B}$.</p>
+        $$\begin{align*}
+        P(\overline{B})&=P(A\cap \overline{B})+P(\overline{A}\cap \overline{B})\\
+        \frac{5}{9}&=P(A\cap \overline{B})+\frac{2}{9}\\
+        P(A\cap \overline{B})&=\frac{5}{9}-\frac{2}{9}\\
+        P(A\cap \overline{B})&=\frac{1}{3}
+        \end{align*}$$
+        <p>On en déduit $P(A\cap B)$</p>
+        $$\begin{align*}
+        P(A)&=P(A\cap B)+P(A\cap \overline{B})\\
+        \frac{1}{2}&=P(A\cap B)+\frac{1}{3}\\
+        P(A\cap B)&=\frac{1}{2}-\frac{1}{3}\\
+        P(A\cap B)&=\frac{1}{6}
+        \end{align*}$$</li>
+        </ol>
+    </div>
+</div>
+
+<h1>Probabilités conditionnelles</h1>
+<div class="definition">
+    $A$ et $B$ désignent deux événements d'un univers $\Omega$. On note $P_A(B)$ la probabilité que $B$ se réalise sachant que $A$ est réalisé (&laquo; probabilité de $B$ sachant $A$&raquo;).
+    $$P_A(B)=\frac{P(A\cap B)}{P(A)}$$
+    C'est une probabilité dite conditionelle.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        $A$ et $B$ désignent deux événements d'un même univers. Les questions sont indépendantes.
+        <ol class="alphabetical-list">
+            <li>On donne $P(A\cup B)=\num{0.92}$, $P(A)=\num{0.6}$ et $P(B)=\num{0.52}$. Calculez $P_A(B)$.</li>
+            <li>On donne $P(A)=\num{0.4}$, $P(B)=\num{0.6}$ et $P_A(B)=\num{0.5}$.
+            Calculez $P(A\cap B)$.</li>
+            <li>On donne $P(A\cap B)=\frac{1}{5}$, $P(A\cap \overline{B})=\frac{1}{4}$ et $P(\overline{B})=\frac{13}{20}$. Calculez $P_{\overline{A}}(B)$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Calculons tout d'abord $P(A\cap B)$</p>
+            $$\begin{align*}
+            P(A\cup B)&=P(A)+P(B)-P(A\cap B)\\
+            \num{0.92}&=\num{0.6}+\num{0.52}-P(A\cap B)\\
+            P(A\cap B)&=\num{0.6}+\num{0.52}-\num{0.92}\\
+            P(A\cap B)&=\num{0.2}
+            \end{align*}$$
+            <p>Calculons maintenant $P_A(B)$</p>
+            $$\begin{align*}
+            P_A(B)&=\frac{P(A\cap B)}{P(A)}\\
+            P_A(B)&=\frac{\num{0.2}}{\num{0.6}}\\
+            P_A(B)&=\frac{1}{3}
+            \end{align*}$$</li>
+            
+            <li>$$\begin{align*}
+            P_A(B)&=\frac{P(A\cap B)}{P(A)}\\
+            \num{0.5}&=\frac{P(A\cap B)}{\num{0.4}}\\
+            P(A\cap B)&=\num{0.5}\times\num{0.4}\\
+            P(A\cap B)&=\num{0.2}
+            \end{align*}$$</li>
+
+            <li><p>Calculons tout d'abord $P(B)$</p>
+            $$\begin{align*}
+            P(B)&=1-P(\overline{B})\\
+            P(B)&=1-\frac{13}{20}\\
+            P(B)&=\frac{7}{20}
+            \end{align*}$$
+            <p>Calculons maintenant $P(\overline{A}\cap B)$</p>
+            $$\begin{align*}
+            P(B)&=P(\overline{A}\cap B)+P(A\cap B)\\
+            \frac{7}{20}&=P(\overline{A}\cap B)+\frac{1}{5}\\
+            P(\overline{A}\cap B)&=\frac{7}{20}-\frac{1}{5}\\
+            P(\overline{A}\cap B)&=\frac{3}{20}
+            \end{align*}$$
+            <p>Calculons maintenant $P(A)$</p>
+            $$\begin{align*}
+            P(A)&=P(A\cap B)+P(A\cap \overline{B})\\
+            P(A)&=\frac{1}{5}+\frac{1}{4}\\
+            P(A)&=\frac{9}{20}
+            \end{align*}$$
+            <p>Calculons maintenant $P(\overline{A})$</p>
+            $$\begin{align*}
+            P(\overline{A})&=1-P(A)\\
+            P(\overline{A})&=1-\frac{9}{20}\\
+            P(\overline{A})&=\frac{11}{20}
+            \end{align*}$$
+            <p>Calculons maintenant $P_{\overline{A}}(B)$</p>
+            $$\begin{align*}
+            P_{\overline{A}}(B)&=\frac{P(\overline{A}\cap B)}{P(\overline{A})}\\
+            P_{\overline{A}}(B)&=\frac{\frac{3}{20}}{\frac{11}{20}}\\
+            P_{\overline{A}}(B)&=\frac{3}{11}
+            \end{align*}$$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On choisit un jour de l'année au hasard. On appelle $A$ l'événement "le jour choisi est pluvieux" et $B$ l'événement "le jour choisi est venteux". Traduisez les informations suivantes en probabilités.
+        <ol class="alphabetical-list">
+            <li>$\SI{40}{\%}$ des jours sont des jours de pluie&nbsp;;</li>
+            <li>Trois quarts des jours de pluie sont des jours de vent fort&nbsp;;</li>
+            <li>Parmi les jours non venteux, $\SI{20}{\%}$ sont des jours de pluie&nbsp;;</li>
+            <li>$\dfrac{2}{5}$ des jours sont des jours sans pluie ni vent fort.</li>
+            <li>Il y eu du vent un huitième des jours de l'année.</li>
+            <li>Il a fait du vent sur $\SI{10}{\%}$ des jours sans pluies.</li>
+            <li>La moitié des jours sans vent sont des jours sans pluie.</li>
+            <li>Lorsqu'il y a du vent il y a $\SI{45}{\%}$ de chance qu'il pleuve.</li>
+            <li>Un cinquième des jours pluvieux sont des jours sans vent.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$P(A)=\num{0.4}$</li>
+            <li>$P_A(B)=\frac{3}{4}=\num{0.75}$</li>
+            <li>$P_{\overline{B}}(A)=\num{0.2}$</li>
+            <li>$P(\overline{A}\cap \overline{B})=\frac{2}{5}=\num{0.4}$</li>
+            <li>$P(B)=\frac{1}{8}=\num{0.125}$</li>
+            <li>$P_{\overline{A}}(B)=\num{0.1}$</li>
+            <li>$P_{\overline{B}}(\overline{A})=\num{0.5}$</li>
+            <li>$P_B(A)=\num{0.45}$</li>
+            <li>$P_A(\overline{B})=\frac{1}{5}=\num{0.2}$</li>
+        </ol>
+    </div>
+</div>
+
+<h1>Arbre pondéré</h1>
+<div class="definition">
+    Un <i>arbre des possibles</i> représente toutes les issues d'une expérience aléatoire. Un <i>arbre pondéré</i> est un arbre des possibles où chaque branche est associée à une probabilité.
+    <div class="figure" style="width:50%">
+        <svg viewBox="0 0 100 80">
+            <g name="repere1" class="repere" xmin="0" ymin="-2" xmax="5" ymax="2" xorigine="0" yorigine="0"></g>
+            <!-- <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g> -->
+            <g name="O" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+            
+            <g name="OA" class="segment" linkto="O A" stroke="black" stroke-width="1"></g>
+            <g class="label" repere="repere1" x="1-0.5" y="0.5+0.5" style="font-size:7px;">$p(A)$</g>
+            <g name="OB" class="segment" linkto="O B" stroke="black" stroke-width="1"></g>
+            <g class="label" repere="repere1" x="1-0.5" y="-0.5" style="font-size:7px;">$p(B)$</g>
+            <g name="AC" class="segment" linkto="A C" stroke="black" stroke-width="1"></g>
+            <g class="label" repere="repere1" x="3-0.5" y="1.25+0.5" style="font-size:7px;">$p_A(C)$</g>
+            <g name="AD" class="segment" linkto="A D" stroke="black" stroke-width="1"></g>   
+            <g class="label" repere="repere1" x="3-0.5" y="0.75" style="font-size:7px;">$p_A(D)$</g>
+            <g name="BE" class="segment" linkto="B E" stroke="black" stroke-width="1"></g>
+            <g class="label" repere="repere1" x="3-0.5" y="-0.25" style="font-size:7px;">$p_B(C)$</g>
+            <g name="BF" class="segment" linkto="B F" stroke="black" stroke-width="1"></g>
+            <g class="label" repere="repere1" x="3-0.5" y="-0.75-0.5" style="font-size:7px;">$p_B(D)$</g>
+
+            <g name="A" class="point" repere="repere1" x="2" y="1" stroke="none"></g>
+            <g class="rectangle" repere="repere1" x="2" y="1" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+            <g class="label" repere="repere1" x="1.8" y="1.3" style="font-size:10px;">$A$</g>
+            
+            <g name="B" class="point" repere="repere1" x="2" y="-1" stroke="none"></g>
+            <g class="rectangle" repere="repere1" x="2" y="-1" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+            <g class="label" repere="repere1" x="1.8" y="-0.7" style="font-size:10px;">$B$</g>
+            
+            <g name="C" class="point" repere="repere1" x="4" y="1.5" stroke="none"></g>
+            <g class="rectangle" repere="repere1" x="4" y="1.5" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+            <g class="label" repere="repere1" x="3.8" y="1.8" style="font-size:10px;">$C$</g>
+
+            <g name="D" class="point" repere="repere1" x="4" y="0.5" stroke="none"></g>
+            <g class="rectangle" repere="repere1" x="4" y="0.5" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+            <g class="label" repere="repere1" x="3.8" y="0.8" style="font-size:10px;">$D$</g>
+
+            <g name="E" class="point" repere="repere1" x="4" y="-0.5" stroke="none"></g>
+            <g class="rectangle" repere="repere1" x="4" y="-0.5" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+            <g class="label" repere="repere1" x="3.8" y="-0.2" style="font-size:10px;">$C$</g>
+
+            <g name="F" class="point" repere="repere1" x="4" y="-1.5" stroke="none"></g>
+            <g class="rectangle" repere="repere1" x="4" y="-1.5" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+            <g class="label" repere="repere1" x="3.8" y="-1.2" style="font-size:10px;">$D$</g>
+        </svg>
+    </div>
+</div>
+
+</main>
+  </body>
+</html>

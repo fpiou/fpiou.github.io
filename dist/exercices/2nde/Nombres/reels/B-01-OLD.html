@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>B-01-OLD.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Exercices</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><div class="definition">
+    Un nombre décimal est un nombre qui peut s'écrire sous la forme $\frac{a}{10^n}$ avec $a\in \mathbb{Z}$ et $n\in \mathbb{N}$. L'ensemble des nombres décimaux est noté $\mathbb{D}$.
+</div>
+<div class="methode">
+    Pour déterminer si un nombre est décimal, il suffit :
+    <ul style="padding-left: 1em;">
+        <li>de vérifier qu'on peut l'écrire sous forme d'une fraction dont le dénominateur est un puissance de $10$&nbsp;</li>
+        <li>ou de l'écrire sous forme irréductible et de vérifier si le dénominateur ne comporte que des $2$ et des $5$.</i></li>
+    </ul>
+    Dans le cas contraire le nombre est non décimal.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Écrivez les nombres suivants sous la forme $\frac{a}{10^n}$ avec $a\in \mathbb{Z}$ et $n\in \mathbb{N}$ :
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\dfrac{2}{5}$</li>
+            <li>$\dfrac{3}{2}$</li>
+            <li>$\dfrac{3}{4}$</li>
+            <li>$\dfrac{1}{8}$</li>
+            <li>$\dfrac{16}{50}$</li>
+        </ol>
+        <ol class="alphabetical-list horizontal-list" start="6">
+            <li>$\dfrac{9}{25}$</li>
+            <li>$\num{3.2}$</li>
+            <li>$\num{0.032}$</li>
+            <li>$\num{32}\times 10^{-3}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$\dfrac{2}{5} = \dfrac{4}{10}</p></li>
+            <li><p>$\dfrac{3}{2} = \dfrac{15}{10}$</p></li>
+            <li><p>$\dfrac{3}{4} = \dfrac{75}{100}$</p></li>
+            <li><p>$\dfrac{1}{8} = \dfrac{125}{1000}$</p></li>
+            <li><p>$\dfrac{16}{50} = \dfrac{32}{100}$</p></li>
+            <li><p>$\frac{9}{25} = \dfrac{36}{100}$</p></li>
+            <li><p>$\num{3.2} = \dfrac{32}{10}$</p></li>
+            <li><p>$\num{0.032} = \dfrac{32}{10^3}$</p></li>
+            <li><p>$\num{32}\times 10^{-3} = \dfrac{32}{10^3}$</p></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+    Montrez la nature des nombres suivants (décimal ou non décimal) :
+    <ol class="alphabetical-list horizontal-list">
+        <li>$\dfrac{3}{15}$</li>
+        <li>$\dfrac{2}{12}$</li>
+        <li>$\dfrac{5}{15}$</li>
+        <li>$\dfrac{3}{12}$</li>
+        <li>$\dfrac{9}{12}$</li>
+    </ol>
+    <ol class="alphabetical-list horizontal-list" start="5">
+        <li>$\dfrac{12}{9}$</li>
+        <li>$\dfrac{21}{14}$</li>
+        <li>$\dfrac{49}{14}$</li>
+        <li>$\dfrac{27}{54}$</li>
+        <li>$\dfrac{14}{49}$</li>
+    </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$\dfrac{3}{15} = \dfrac{1}{5}$ décimal</p></li>
+            <li><p>$\dfrac{2}{12} = \dfrac{1}{2\times 3}$ non décimal</p></li>
+            <li><p>$\dfrac{5}{15} = \dfrac{1}{3}$ non décimal</p></li>
+            <li><p>$\dfrac{3}{12} = \dfrac{1}{2^2}$ décimal</p></li>
+            <li><p>$\dfrac{9}{12} = \dfrac{3}{2^2}$ décimal</p></li>
+            <li><p>$\dfrac{12}{9} = \dfrac{4}{3}$ non décimal</p></li>
+            <li><p>$\dfrac{21}{14} = \dfrac{3}{2}$ décimal</p></li>
+            <li><p>$\dfrac{49}{14} = \dfrac{7}{2}$ décimal</p></li>
+            <li><p>$\dfrac{27}{54} = \dfrac{1}{2}$ décimal</p></li>
+            <li><p>$\dfrac{14}{49} = \dfrac{2}{7}$ non décimal</p></li>
+        </ol>
+    </div>
+</div>
+
+<div class="definition">
+    Un nombre <i>rationnel</i> est un nombre qui peut s'écrire sous la forme $\frac{a}{b}$ avec $a\in \mathbb{Z}$, $b\in \mathbb{N}$ et $b$ non nul. L'ensemble des nombres rationnels est noté $\mathbb{Q}$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Citez un nombre décimal $a$ compris entre $\frac{2}{3}$ et&nbsp;$\frac{11}{12}$.</li>
+            <li>Citez un nombre non décimal $b$ compris entre $\frac{2}{3}$ et&nbsp;$\frac{11}{12}$.</li>
+            <li>Tracez la droite numérique d'unité graphique&nbsp;$\SI{3}{\cm}$ et y placer $-\frac{3}{2}$, $\frac{5}{3}$, $-\frac{2}{3}$ et&nbsp;$\frac{34}{12}$, $a$ et $b$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Un nombre décimal compris entre $\frac{2}{3}=\frac{8}{12}$ et $\frac{11}{12}$ est $\frac{9}{12} = \frac{3}{4}$.</p></li>
+            <li><p>Un nombre non décimal compris entre $\frac{2}{3}=\frac{8}{12}$ et $\frac{11}{12}$ est $\frac{10}{12}= \frac{5}{6}$.</p></li>
+            <li><ul style="padding-left: 1em;">
+                <li><p>$-\frac{3}{2}=-3\div 2=-\num{1.5}$</p></li>
+                <li><p>$\frac{5}{3}=1+\frac{2}{3}$</p></li>
+                <li><p>$\frac{34}{12}=\frac{17}{6}=\frac{12}{6}+\frac{5}{6}=2+\frac{5}{6}$</p></li>
+            </ul>
+            <div class="figure">
+                <svg viewBox="0 0 480 80">
+                    <g name="repere1" class="repere" xmin="-2" ymin="-0.5" xmax="4" ymax ="0.5" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                    <g name="quadrillage1" class="quadrillageRepere" linkto="repere1" xpas="0.16666666666667" ypas="0.16666666666667" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                    <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="0.5"></g>
+                    <g name="O" class="point labeled" repere="repere1" x="0" y="0" forme="|"></g>
+                    <g class="label" linkto="O" x="-5" y="0" style="font-size:1rem">0</g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" forme="|"></g>
+                    <g class="label" linkto="I" x="-5" y="0" style="font-size:1rem">1</g>
+                    <g name="A" class="point labeled" repere="repere1" x="-1" y="0" stroke="red" forme="+"></g>
+                    <g class="label" linkto="A" x="-10" y="0" style="font-size:1rem">-1</g>
+                    <g name="B" class="point labeled" repere="repere1" x="-1.5" y="0" stroke="red"></g>
+                    <g class="label" linkto="B" x="-7" y="0" style="font-size:1rem;height:30px">-\frac{3}{2}</g>
+                    <g name="C" class="point labeled" repere="repere1" x="1.6666666666666667" y="0" stroke="red"></g>
+                    <g class="label" linkto="C" x="-5" y="0" style="font-size:1rem;height:30px">\frac{5}{3}</g>
+                    <g name="D" class="point labeled" repere="repere1" x="2.8333333333333335" y="0" stroke="red"></g>
+                    <g class="label" linkto="D" x="-5" y="0" style="font-size:1rem;height:30px">\frac{34}{12}</g>
+                    <g name="E" class="point labeled" repere="repere1" x="-0.66666666666666" y="0" stroke="red"></g>
+                    <g class="label" linkto="E" x="-10" y="0" style="font-size:1rem;height:30px">-\frac{2}{3}</g>
+                    <g name="F" class="point labeled" repere="repere1" x="0.75" y="0" stroke="red"></g>
+                    <g class="label" linkto="F" x="-5" y="0" style="font-size:1rem;height:30px">a</g>
+                    <g name="G" class="point labeled" repere="repere1" x="5/6" y="0" stroke="red"></g>
+                    <g class="label" linkto="G" x="-5" y="0" style="font-size:1rem;height:30px">b</g>
+                </svg>
+            </div></li>
+        </ol>
+    </div>
+</div>
+
+<div class="definition">
+    L'ensemble des abscisses des points d'une droite graduée est l'ensemble des nombres <i>réels</i>. Cet ensemble est noté $\mathbb{R}$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère la figure ci-dessous dans laquelle $ABDE$ est un carré et $BCD$ est un triangle rectangle isocèle en $C$ avec $BC=1$.
+        <div class="figure">
+            <svg viewBox="0 0 280 200">
+                <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="6" ymax ="4" xorigine="0" yorigine="0"></g>
+                <g name="A" class="point labeled" repere="repere1" x="0" y="3" stroke="red"></g>
+                <g class="label" linkto="A" x="-5" y="-20" style="font-size:1rem">A</g>
+                <g name="B" class="point labeled" repere="repere1" x="3" y="3" stroke="red"></g>
+                <g class="label" linkto="B" x="-5" y="-20" style="font-size:1rem">B</g>
+                <g name="C" class="point labeled" repere="repere1" x="4.5" y="1.5" stroke="red"></g>
+                <g class="label" linkto="C" x="0" y="-5" style="font-size:1rem">C</g>
+                <g name="D" class="point labeled" repere="repere1" x="3" y="0" stroke="red"></g>
+                <g class="label" linkto="D" x="-5" y="0" style="font-size:1rem">D</g>
+                <g name="E" class="point labeled" repere="repere1" x="0" y="0" stroke="red"></g>
+                <g class="label" linkto="E" x="-5" y="0" style="font-size:1rem">E</g>
+                <g name="ABCDE" class="polygone" linkto="A B C D E" stroke="red" fill="none"></g>
+            </svg>
+        </div>
+        <ol class="alphabetical-list">
+            <li>Calculez $AB$.</li>
+            <li>Calculez le périmètre de la figure $ABCDE$.</li>
+            <li>Calculez l'aire de la figure $ABCDE$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <div class="figure">
+            <svg viewBox="0 0 280 200">
+                <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="6" ymax ="4" xorigine="0" yorigine="0"></g>
+                <g name="A" class="point labeled" repere="repere1" x="0" y="3" stroke="red"></g>
+                <g class="label" linkto="A" x="-5" y="-20" style="font-size:1rem">A</g>
+                <g name="B" class="point labeled" repere="repere1" x="3" y="3" stroke="red"></g>
+                <g class="label" linkto="B" x="-5" y="-20" style="font-size:1rem">B</g>
+                <g name="C" class="point labeled" repere="repere1" x="4.5" y="1.5" stroke="red"></g>
+                <g class="label" linkto="C" x="0" y="-5" style="font-size:1rem">C</g>
+                <g name="D" class="point labeled" repere="repere1" x="3" y="0" stroke="red"></g>
+                <g class="label" linkto="D" x="-5" y="0" style="font-size:1rem">D</g>
+                <g name="E" class="point labeled" repere="repere1" x="0" y="0" stroke="red"></g>
+                <g class="label" linkto="E" x="-5" y="0" style="font-size:1rem">E</g>
+                <g name="ABCDE" class="polygone" linkto="A B C D E" stroke="red" fill="none"></g>
+                <g name="BD" class="segment" linkto="B D" stroke-dasharray="5,5" stroke="black"></g>
+                <g class="angleDroit" linkto="D B A" size="10" stroke-width="0.5"></g>
+                <g class="angleDroit" linkto="B A E" size="10" stroke-width="0.5"></g>
+                <g class="angleDroit" linkto="A E D" size="10" stroke-width="0.5"></g>
+                <g class="angleDroit" linkto="E D B" size="10" stroke-width="0.5"></g>
+                <g class="angleDroit" linkto="D C B" size="10" stroke-width="0.5"></g>
+                <g name="AB" class="segment codage" linkto="A B" stroke="none"></g>
+                <g name="BC" class="segment codage" linkto="B C" stroke="none"></g>
+                <g name="CD" class="segment codage" linkto="D C BC" stroke="none"></g>
+                <g name="DE" class="segment codage" linkto="E D AB" stroke="none"></g>
+                <g name="EA" class="segment codage" linkto="E A AB" stroke="none"></g>
+            </svg>
+        </div>
+        <ol class="alphabetical-list">
+            <li><p>Le triangle $BDC$ est rectangle en $D$ donc d'après le théorème de Pythagore&nbsp;:
+            $$BD^2 = BC^2 + CD^2 = 1^2 + 1^2 = 2$$
+            <p>$ABDE$ est un carré donc $AB = BD = \SI{\sqrt{2}}{u.l.}$</p></li>
+            </li>
+            <li><p>Le périmètre de la figure $ABCDE$ est&nbsp;:
+            $$AB + BC + CD + DE + EA = \sqrt{2}+1+1+\sqrt{2}+\sqrt{2}$$</p>
+            <p>Donc le périmètre $\mathscr{p}$ de la figure $ABCDE$ est&nbsp;:
+            $$\mathscr{p}=\SI{2+3\sqrt{2}}{u.l.}$$</p></li>
+            </li>
+            <li><p>Le triangle $BDC$ est rectangle en $D$ donc son aire est&nbsp;:
+            $$\frac{BC\times CD}{2} = \frac{1\times 1}{2} = \frac{1}{2}$$
+            L'aire du carré $ABDE$ est&nbsp;:
+            $$AB^2 = \sqrt{2}^2 = 2$$
+            Donc l'aire $\mathscr{A}$ de la figure $ABCDE$ est&nbsp;:
+            $$\mathscr{A}=2+\frac{1}{2} = \SI{2.5}{u.a.}$$</p></li>
+        </ol>
+    </div>
+</div>
+<div class="definition">
+    Un nombre <i>irrationnel</i> est un nombre réel qui ne peut pas s'écrire sous la forme $\frac{a}{b}$ avec $a\in \mathbb{Z}$ et $b\in \mathbb{N}$.<br>
+    $\sqrt{2}$ et $\pi$ sont des exemples de nombres irrationnels.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Voici le patron d'un cylindre de révolution formé d'un carré de côté $4$.
+        <div class="figure">
+            <svg viewBox="0 0 260 120">
+                <g name="repere1" class="repere" xmin="-4" ymin="-3" xmax="9" ymax="3" xorigine="0" yorigine="0"></g>
+                <g name="O1" class="point" repere="repere1" x="-2-2/pi" y="0" stroke="none"></g>
+                <g name="c1" class="cercle" linkto="O1" r="2/pi" stroke="red" fill="none" stroke-width="0.5"></g>
+                <g name="O2" class="point" repere="repere1" x="2+2/pi" y="0" stroke="none"></g>
+                <g name="c2" class="cercle" linkto="O2" r="2/pi" stroke="red" fill="none" stroke-width="0.5"></g>
+                <g name="A" class="point" repere="repere1" x="-2" y="2" stroke="red"></g>
+                <g name="B" class="point" repere="repere1" x="2" y="2" stroke="red"></g>
+                <g name="C" class="point" repere="repere1" x="2" y="-2" stroke="red"></g>
+                <g name="D" class="point" repere="repere1" x="-2" y="-2" stroke="red"></g>
+                <g name="ABCD" class="polygone" linkto="A B C D" stroke="red" fill="none"></g>
+
+                <g name="O1bis" class="point" repere="repere1" x="4" y="0" stroke="none"></g>
+                <g name="c1bis" class="ellipse" linkto="O1bis" rx="0.2" ry="2/pi" stroke="red" fill="none" stroke-width="0.5"></g>
+                <g name="a1" class="arc" linkto="B1 C1" rx="0.2" ry="2/pi" stroke="red" fill="none" stroke-width="0.5"></g>
+                <g name="a2" class="arc" linkto="C1 B1" rx="0.2" ry="2/pi" stroke="red" stroke-dasharray="5,5" fill="none" stroke-width="0.5"></g>
+                
+                <g name="A1" class="point" repere="repere1" x="4" y="2/pi" stroke="none"></g>
+                <g name="B1" class="point" repere="repere1" x="8" y="2/pi" stroke="none"></g>
+                <g name="C1" class="point" repere="repere1" x="8" y="-2/pi" stroke="none"></g>
+                <g name="D1" class="point" repere="repere1" x="4" y="-2/pi" stroke="none"></g>
+                <g name="AD" class="segment" linkto="A1 B1" stroke="red"></g>
+                <g name="BC" class="segment" linkto="C1 D1" stroke="red"></g>
+            </svg>
+        </div>
+        <ol class="alphabetical-list">
+            <li>Calculez le rayon du cylindre.</li>
+            <li>Calculez le volume du cylindre.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Le périmètre de la base du cylindre est $4$</p>
+            <p>Donc le rayon $r$ du cylindre vérifie&nbsp;:
+            $$2\pi r = 4$$</p>
+            <p>Donc le rayon du cylindre est&nbsp;:
+            $$r = \frac{4}{2\pi} = \frac{2}{\pi}$$</p></li>
+            <li><p>Le volume $\mathscr{V}$ du cylindre est&nbsp;:
+            $$
+            \begin{align*}
+            \mathscr{V} &= \text{Aire de la base} \times \text{hauteur}\\
+            \mathscr{V} &= \pi r^2 \times 4\\
+            \mathscr{V}&= \pi \left(\frac{2}{\pi}\right)^2 \times 4\\
+            \mathscr{V}&= \pi \times \frac{4}{\pi^2} \times 4\\
+            \mathscr{V}&= \frac{\pi \times 4 \times 4}{\pi^2}\\
+            \mathscr{V}&= \frac{16}{\pi}
+            \end{align*}
+            $$</p></li>
+        </ol>
+    </div>
+</div>
+
+<div class="propriete">
+    $\mathbb{N}\subset \mathbb{Z}\subset \mathbb{D}\subset \mathbb{Q}\subset \mathbb{R}$
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Recopiez et complétez en indiquant la lettre correspondant à chaque ensemble de nombres&nbsp;:
+        <div class="figure">
+            <svg viewBox="0 0 240 100">
+                <g name="repere1" class="repere" xmin="-6" ymin="-2.5" xmax="6" ymax="2.5" xorigine="0" yorigine="0"></g>
+                <g name="O" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+                <g name="N" class="ellipse" linkto="O" rx="1" ry="0.5" stroke="black" fill="none"></g>
+                <g name="Z" class="ellipse" linkto="O" rx="2" ry="1" stroke="black" fill="none"></g>
+                <g name="D" class="ellipse" linkto="O" rx="3" ry="1.5" stroke="black" fill="none"></g>
+                <g name="Q" class="ellipse" linkto="O" rx="4" ry="2" stroke="black" fill="none"></g>
+                <g name="R" class="ellipse" linkto="O" rx="5" ry="2.5" stroke="black" fill="none"></g>
+                <g class="label" repere="repere1" x="1" y="0" style="font-size:0.5rem">$\ldots$</g>
+                <g class="label" repere="repere1" x="2" y="0" style="font-size:0.5rem">$\ldots$</g>
+                <g class="label" repere="repere1" x="3" y="0" style="font-size:0.5rem">$\ldots$</g>
+                <g class="label" repere="repere1" x="4" y="0" style="font-size:0.5rem">$\ldots$</g>
+                <g class="label" repere="repere1" x="5" y="0" style="font-size:0.5rem">$\ldots$</g>
+            </svg>
+        </div>
+    </div>
+    <div class="solution">
+        <div class="figure">
+            <svg viewBox="0 0 240 100">
+                <g name="repere1" class="repere" xmin="-6" ymin="-2.5" xmax="6" ymax="2.5" xorigine="0" yorigine="0"></g>
+                <g name="O" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+                <g name="N" class="ellipse" linkto="O" rx="1" ry="0.5" stroke="black" fill="none"></g>
+                <g name="Z" class="ellipse" linkto="O" rx="2" ry="1" stroke="black" fill="none"></g>
+                <g name="D" class="ellipse" linkto="O" rx="3" ry="1.5" stroke="black" fill="none"></g>
+                <g name="Q" class="ellipse" linkto="O" rx="4" ry="2" stroke="black" fill="none"></g>
+                <g name="R" class="ellipse" linkto="O" rx="5" ry="2.5" stroke="black" fill="none"></g>
+                <g class="label" repere="repere1" x="1" y="0" style="font-size:0.5rem">$\mathbb{N}$</g>
+                <g class="label" repere="repere1" x="2" y="0" style="font-size:0.5rem">$\mathbb{Z}$</g>
+                <g class="label" repere="repere1" x="3" y="0" style="font-size:0.5rem">$\mathbb{D}$</g>
+                <g class="label" repere="repere1" x="4" y="0" style="font-size:0.5rem">$\mathbb{Q}$</g>
+                <g class="label" repere="repere1" x="5" y="0" style="font-size:0.5rem">$\mathbb{R}$</g>
+            </svg>
+        </div>
+    </div>
+</div></main>
+  </body>
+</html>

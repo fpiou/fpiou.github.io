@@ -77,30 +77,33 @@
     <button class="closebtn" onclick="toggleSidebar()">×</button>
     <nav class="navbar">
         <ul>
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
                 <div class="dropdown-content">
                     <a href="/lessons_2nde.html">Seconde</a>
                     <a href="/lessons_1ereGenerale.html">Première</a>
                     <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
                 </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Exercices</a>
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
                 <div class="dropdown-content">
                     <a href="/exercices_2nde.html">Seconde</a>
-                    <a href="/exercices_1ereGenerale.html">Première</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
                     <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
                 </div>
             </li>
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
                 <div class="dropdown-content">
                     <a href="/quizs_2nde.html">Seconde</a>
                     <a href="/quizs_1reGenerale.html">Première</a>
                     <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
                 </div>
-            </li>
+            </li> -->
         </ul>
     </nav>
 </div>
@@ -112,366 +115,262 @@
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
 
-    <main><div class="exercice">
-  <div class="enonce">
-    <div class="encart">
-      <b>Définition</b> : Le projeté orthogonal d'un point $M$ sur une droite $(d)$ est le point d'intersection $H$ de la droite $(d)$ et de la perpendiculaire à $(d)$ passant par $M.$
-      <div class="figure">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
-            <!-- Début de la figure -->
-            
-            <!-- Projeté orthogonal de P sur (AB)  -->
-            <g name="H" class="point labeled dilatation" linkto="A B M" data="90 0" stroke="none"></g>
-
-            <!-- Droite -->
-            <g name="AB" class="droite" linkto="A B" stroke-width="1"></g>
-            <g name="MH" class="droite" linkto="M H" style="stroke-dasharray: 5, 5;" stroke-opacity="0.5" stroke="red"></g>
-            <!-- Point libre -->
-            <g name="A" class="point draggable" x="50" y="50"></g>
-            <g name="B" class="point draggable" x="150" y="70"></g>
-            <g name="M" class="point labeled  draggable" x="120" y="20"></g>
-
-            <g class="angleDroit" linkto="M H A" size="10" stroke-width="0.5"></g>
-            <!-- Fin de la figure -->
-        </svg>
-      </div>
-    </div>
-    <div class="figure">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 160 110">
-                <!-- Début de la figure -->
-
-                <!-- Projeté orthogonal de B sur (AC)  -->
-                <g name="E" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="none"></g>
-                <g class="label" linkto="E" x="0" y="-5" style="font-size: 0.8em">E</g>
-
-                <!-- Segments -->
-                <g name="DB" class="segment" linkto="D B"></g>
-                <g name="DC" class="segment" linkto="D C"></g>
-                <g name="CE" class="segment" linkto="C E"></g>
-                <g name="BE" class="segment" linkto="B E"></g>
-                <g name="BC" class="segment" linkto="B C"></g>
-
-                <!-- Point libre -->
-                <g name="A" class="point labeled" x="70" y="100" stroke="none"></g>
-                <g class="label" linkto="A" x="-5" y="0" style="font-size: 0.8em">A</g>
-                <g name="B" class="point labeled" x="150" y="100" stroke="none"></g>
-                <g class="label" linkto="B" x="0" y="-10" style="font-size: 0.8em">B</g>
-                <g name="C" class="point labeled" x="10" y="50" stroke="none"></g>
-                <g class="label" linkto="C" x="-10" y="-10" style="font-size: 0.8em">C</g>
-                <g name="D" class="point labeled" x="10" y="100" stroke="none"></g>
-                <g class="label" linkto="D" x="-10" y="-5" style="font-size: 0.8em">D</g>
-
-                <!-- Angles droits -->
-                <g class="angleDroit" linkto="C E B" size="5"></g>
-                <g class="angleDroit" linkto="C D B" size="5"></g>
-                <!-- Fin de la figure -->
-            </svg>
-      </div>
-    <ol class="alphabetical-list">
-      <li>Indiquez le projeté orthogonal de $B$ sur $(CD).$</li>
-      <li>Indiquez le projeté orthogonal de $C$ sur $(AB).$</li>
-      <li>Indiquez le projeté orthogonal de $B$ sur $(AC).$</li>
-      <li>$E$ est le projeté orthogonal de trois points. Lesquels et sur quelles droites ?</li>
-  </div>
-</div>
+    <main>
 <div class="exercice">
-  <div class="enonce">
-    <div class="figure">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 110">
-                <!-- Début de la figure -->
-
-                <!-- Projeté orthogonal de B sur (AC)  -->
-                <g name="D" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="none"></g>
-                <g class="label" linkto="D" x="-15" y="-10" style="font-size: 0.8em">D</g>
-                <g name="E" class="point labeled dilatation" linkto="A B D" data="90 0" stroke="none"></g>
-                <g class="label" linkto="E" x="-5" y="0" style="font-size: 0.8em">E</g>
-                <g name="F" class="point labeled dilatation" linkto="D E C" data="90 0" stroke="none"></g>
-                <g class="label" linkto="F" x="-15" y="-10" style="font-size: 0.8em">F</g>
-                
-
-                <!-- Segments -->
-                <g name="AB" class="segment" linkto="A B"></g>
-                <g name="BC" class="segment" linkto="B C"></g>
-                <g name="AC" class="segment" linkto="A C"></g>
-                <g name="BD" class="segment" linkto="B D"></g>
-                <g name="FE" class="segment" linkto="F E"></g>
-                <g name="FC" class="segment" linkto="F C"></g>
-                
-                <!-- Point libre -->
-                <g name="A" class="point labeled" x="10" y="90" stroke="none"></g>
-                <g class="label" linkto="A" x="-5" y="0" style="font-size: 0.8em">A</g>
-                <g name="B" class="point labeled" x="150" y="90" stroke="none"></g>
-                <g class="label" linkto="B" x="-5" y="0" style="font-size: 0.8em">B</g>
-                <g name="C" class="point labeled" x="150" y="10" stroke="none"></g>
-                <g class="label" linkto="C" x="0" y="-10" style="font-size: 0.8em">C</g>
-
-                <!-- Angles droits -->
-                <g class="angleDroit" linkto="B D A" size="5"></g>
-                <g class="angleDroit" linkto="A B C" size="5"></g>
-                <g class="angleDroit" linkto="F E B" size="5"></g>
-                <g class="angleDroit" linkto="C F E" size="5"></g>
-                <!-- Fin de la figure -->
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Placez dans un repère orthonormé les points $A(-3~;~2)$, $B(6~;~-1)$ et $C(-1~;~-2).$</li>
+            <li>Déterminez par lecture graphique les coordonnées du point $D$ pied de la hauteur issue de $C$ dans le triangle $ABC.$</li>
+            <li>Déterminez par lecture graphique les coordonnées du point $E$ pied de la hauteur issue de $B$ dans le triangle $ABC.$</li>
+            <li>Déterminez par lecture graphique le point de concours des hauteurs du triangle $ABC.$</li>
+            <li>Placez le point $F$ projeté orthogonal du point $A$ sur $(BC).$</li>
+            <div class="encart">
+                <b>Propriété</b> : La distance d'un point à une droite est la longueur du segment joignant le point à son projeté orthogonal sur cette droite.
+            </div>
+            <li>Montrez que la distance de $C$ à $(AB)$ est $\sqrt{10}.$</li>
+            <li>Montrez que la distance de $B$ à $(AC)$ est $3\sqrt{5}.$</li>
+            <li>Montrez que $ABE$ est rectangle isocèle en $E.$</li>
+            <li>Notons $G$ le projeté orthogonal du point $E$ sur $(AB).$<br>
+            Démontrez que $G$ est le milieu de $[AB]$.</li>
+            <li>Montrez que la distance de $E$ à $(AB)$ est $\dfrac{3\sqrt{10}}{2}.$</li>
+        </ol>
+    </div>  
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><div class="figure">
+            <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- On définit le repère -->
+                <g name="repere1" class="repere" xmin="-10" ymin="-5" xmax="10" ymax ="5" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+                <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+                <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
+                <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
+                <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
             </svg>
-      </div>
-      Les points qui semblent alignés le sont. 
-      Citez tous les projetés orthogonaux que l'on peut déterminer sur cette figure.
-  </div>
-</div>
-<div class="exercice">
-  <div class="enonce">
-    <ol class="alphabetical-list">
-      <li>Placez dans un repère orthonormé les points $A(-3~;~2)$, $B(6~;~-1)$ et $C(-1~;~-2).$</li>
-      <li>Déterminez par lecture graphique les coordonnées du point $D$ projeté orthogonal du point $C$ sur $(AB).$</li>
-      <li>Déterminez par lecture graphique les coordonnées du point $E$ projeté orthogonal du point $B$ sur $(AC).$</li>
-      <li>Les hauteurs du triangle $ABC$ sont concourantes en un point $H.$ Déterminez par lecture graphique les coordonnées de ce point.</li>
-      <li>Placez le point $F$ projeté orthogonal du point $A$ sur $(BC).$</li>
-      <div class="encart">
-        <b>Propriété</b> : La distance d'un point à une droite est la longueur du segment joignant le point à son projeté orthogonal sur cette droite.
-      </div>
-      <li>Montrez que la distance de $C$ à $(AB)$ est $\sqrt{10}.$</li>
-      <li>Montrez que la distance de $B$ à $(AC)$ est $3\sqrt{5}.$</li>
-      <li>Montrez que $ABE$ est rectangle isocèle en $E.$</li>
-      <li>Notons $G$ le projeté orthogonal du point $E$ sur $(AB).$<br>
-      Démontrez que $G$ est le milieu de $[AB]$.</li>
-      <li>Montrez que la distance de $E$ à $(AB)$ est $\dfrac{3\sqrt{10}}{2}.$</li>
-    </ol>
-  </div>
-  <div class="solution">
-    <ol class="alphabetical-list">
-      <li><div class="figure">
-      <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-        <!-- On définit le repère -->
-        <g name="repere1" class="repere" xmin="-10" ymin="-5" xmax="10" ymax ="5" xorigine="0" yorigine="0"></g>
-        <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
-        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
-        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
-        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
-        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
-        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-        <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
-        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-        <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
-        <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
-        <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
-        <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
-        <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
-        <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
-      </svg>
-    </div></li>
-    <li><div class="figure">
-      <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-        <!-- On définit le repère -->
-        <g name="repere1" class="repere" xmin="-10" ymin="-5" xmax="10" ymax ="5" xorigine="0" yorigine="0"></g>
-        <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
-        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
-        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
-        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
-        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
-        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-        <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
-        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-        <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
-        <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
-        <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
-        <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
-        <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
-        <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
-        <g name="AB" class="droite" linkto="A B" stroke="black"></g>
-        <g name="D" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="red"></g>
-        <g name="CD" class="segment" linkto="C D" stroke="black" stroke-dasharray="5,5"></g>
-        <g class="angleDroit" linkto="C D A" size="10" stroke-width="0.5"></g>
-      </svg>
+            </div></li>
+            <li><div class="figure">
+            <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- On définit le repère -->
+                <g name="repere1" class="repere" xmin="-10" ymin="-5" xmax="10" ymax ="5" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+                <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+                <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
+                <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
+                <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
+                <g name="AB" class="droite" linkto="A B" stroke="black"></g>
+                <g name="D" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="red"></g>
+                <g name="CD" class="segment" linkto="C D" stroke="black" stroke-dasharray="5,5"></g>
+                <g class="angleDroit" linkto="C D A" size="10" stroke-width="0.5"></g>
+            </svg>
+            </div>
+            <p>Les coordonnées de $D$ semblent être $(0~;~1).$</p></li>
+            </li>
+            <li><div class="figure">
+            <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- On définit le repère -->
+                <g name="repere1" class="repere" xmin="-10" ymin="-5" xmax="10" ymax ="5" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+                <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+                <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
+                <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
+                <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
+                <g name="AC" class="droite" linkto="A C" stroke="black"></g>
+                <g name="E" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="red"></g>
+                <g name="labE" class="label" linkto="E" x="-15">E</g>
+                <g name="EB" class="segment" linkto="E B" stroke="black" stroke-dasharray="5,5"></g>
+                <g class="angleDroit" linkto="B E C" size="10" stroke-width="0.5"></g>
+            </svg>
+            </div></li>
+            <li><div class="figure">
+            <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- On définit le repère -->
+                <g name="repere1" class="repere" xmin="-10" ymin="-7" xmax="10" ymax ="3" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+                <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+                <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
+                <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
+                <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
+                <g name="ABC" class="polygone" linkto="A B C" fill="red" fill-opacity="0.2"></g>
+                <g name="E" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="black"></g>
+                <g name="D" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="none"></g>
+                <g name="labE" class="label" linkto="E" x="-15">E</g>
+                <g name="DC" class="droite" linkto="D C"></g>
+                <g name="BE" class="droite" linkto="B E"></g>
+                <g name="AC" class="droite" linkto="A C" stroke-dasharray="5,5"></g>
+                <g name="H" class="point labeled" repere="repere1" x="-2" y ="-5" stroke="red"></g>
+            </svg>
+            </div></li>
+            <li>
+            <p>$F$ est le projeté orthogonal de $A$ sur $(BC)$.</p>
+            <p>D'où $(AF)$ est perpendiculaire à $(BC)$.</p>
+            <p>Par conséquent $(AF)$ est la hauteur issue de $A$ dans le triangle $ABC.$</p>
+            <p>Or les hauteurs sont concourantes en $H$.</p>
+            <p>Donc $F$ est l'intersection de $(AH)$ et $(BC).$</p>
+            <div class="figure">
+            <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- On définit le repère -->
+                <g name="repere1" class="repere" xmin="-10" ymin="-7" xmax="10" ymax ="3" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+                <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+                <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
+                <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
+                <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
+                <g name="ABC" class="polygone" linkto="A B C" fill="red" fill-opacity="0.2"></g>
+                <g name="E" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="black"></g>
+                <g name="D" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="none"></g>
+                <g name="labE" class="label" linkto="E" x="-15">E</g>
+                <g name="BC" class="droite" linkto="B C"></g>
+                <g name="F" class="point labeled dilatation" linkto="B C A" data="90 0" stroke="none"></g>
+                <g name="AF" class="droite" linkto="A F" stroke-dasharray="5,5"></g>
+                <g name="H" class="point labeled" repere="repere1" x="-2" y ="-5" stroke="red"></g>
+                <g class="angleDroit" linkto="A F B" size="10" stroke-width="0.5"></g>
+            </svg>
+            </div>
+            </li>
+            <li><p>$D$ est le projeté orthogonal de $C$ sur $(AB).$</p>
+            <p>Donc la distance de $C$ à la droite $(AB)$ est égale à $CD$</p>
+            $$\begin{align*}
+            CD&=\sqrt{(0-(-1))^2+(1-(-2))^2}\\
+            CD&=\sqrt{1+9}\\
+            CD&=\sqrt{10}
+            \end{align*}$$</li>
+            <li><p>$E$ est le projeté orthogonal de $B$ sur $(AC).$</p>
+            <p>Donc la distance de $B$ à la droite $(AC)$ est égale à $BE$</p>
+            $$\begin{align*}
+            BE&=\sqrt{(0-6)^2+(-4-(-1))^2}\\
+            BE&=\sqrt{(-6)^2+(-4+1)^2}\\
+            BE&=\sqrt{(-6)^2+(-3)^2}\\
+            BE&=\sqrt{36+9}\\
+            BE&=\sqrt{45}\\
+            BE&=\sqrt{9\times 5}\\
+            BE&=3\sqrt{5}
+            \end{align*}$$</li>
+            <li><p>Calculons les longueurs des côtés du triangle $ABE.$</p>
+            $$\begin{align*}
+            AB&=\sqrt{(-3-6)^2+(2-(-1))^2}\\
+            AB&=\sqrt{(-9)^2+(2+1)^2}\\
+            AB&=\sqrt{81+3^2}\\
+            AB&=\sqrt{81+9}\\
+            AB&=\sqrt{90}\\
+            AB&=\sqrt{9\times 10}\\
+            AB&=3\sqrt{10}
+            \end{align*}$$
+            $$\begin{align*}
+            AE&=\sqrt{(-3-0)^2+(2-(-4))^2}\\
+            AE&=\sqrt{(-3)^2+(2+4)^2}\\
+            AE&=\sqrt{9+6^2}\\
+            AE&=\sqrt{9+36}\\
+            AE&=\sqrt{45}\\
+            AE&=\sqrt{9\times 5}\\
+            AE&=3\sqrt{5}
+            \end{align*}$$
+            <p>D'une part $AB^2=(3\sqrt{10})^2=90$.</p>
+            <p>D'autre part $AE^2+(BE)^2=(3\sqrt{5})^2+(3\sqrt{5})^2=45+45=90.$</p>
+            <p>D'où $AB^2=AE^2+BE^2.$</p>
+            <p>D'après la réciproque du théorème de Pythagore, $ABE$ est rectangle en $E.$</p>
+            <p>Comme $AB=AE,$ alors $ABE$ est rectangle isocèle en $E.$</p></li>
+            </li>
+            <li>
+            <div class="figure">
+            <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- On définit le repère -->
+                <g name="repere1" class="repere" xmin="-10" ymin="-7" xmax="10" ymax ="3" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+                <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+                <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
+                <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
+                <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
+                <g name="BEG" class="polygone" linkto="B E G" fill="red" fill-opacity="0.2"></g>
+                <g name="E" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="black"></g>
+                <g name="D" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="none"></g>
+                <g name="labE" class="label" linkto="E" x="-15">E</g>
+                <g name="AB" class="droite" linkto="A B"></g>
+                <g name="F" class="point labeled dilatation" linkto="B C A" data="90 0" stroke="none"></g>
+                <g name="H" class="point labeled" repere="repere1" x="-2" y ="-5" stroke="red"></g>
+                <g name="G" class="point labeled dilatation" linkto="A B E" data="90 0" stroke="none"></g>
+                <g name="labG" class="label" linkto="G" y="-15">G</g>
+                <g name="EG" class="segment" linkto="E G" stroke-dasharray="5,5"></g>
+                <g class="angleDroit" linkto="E G A" size="10" stroke-width="0.5"></g>
+            </svg>
+            </div>
+            <p>$G$ est le projeté orthogonal de $E$ sur $(AB).$</p>
+            <p>D'où $(EG)$ est la hauteur issue de $E$ dans le triangle $ABE.$</p>
+            <p>Comme $ABE$ est isocèle en $E$ alors $(EG)$ est la médiane issue de $E.$</p>
+            <p>Donc $G$ est le milieu de $[AB].$</p>
+            </li>
+            <li><p>La distance de $E$ à la droite $(AB)$ est égale à $EG.$</p>
+            <p>$G$ est le milieu de $[AB].$</p>
+            <p>D'où $BG=\dfrac{1}{2}AB=\dfrac{1}{2}\times 3\sqrt{10}=\dfrac{3\sqrt{10}}{2}.$</p>
+            <p>$BGE$ est rectangle en $G$.</p>
+            D'après le théorème de Pythagore, on a :
+            $$\begin{align*}
+            BE^2&=BG^2+EG^2\\
+            (3\sqrt{5})^2&=\left(\dfrac{3\sqrt{10}}{2}\right)^2+EG^2\\
+            9\times 5&=\dfrac{9\times 10}{4}+EG^2\\
+            45&=\dfrac{90}{4}+EG^2\\
+            EG^2&=45-\dfrac{90}{4}\\
+            EG^2&=\dfrac{180-90}{4}\\
+            EG^2&=\dfrac{90}{4}\\
+            EG&=\sqrt{\dfrac{90}{4}}\\
+            EG&=\dfrac{\sqrt{9\times 10}}{2}\\
+            EG&=\dfrac{3\sqrt{10}}{2}
+            \end{align*}$$</li>
+        </ol>
     </div>
-    <p>Les coordonnées de $D$ semblent être $(0~;~1).$</p></li>
-    </li>
-    <li><div class="figure">
-      <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-        <!-- On définit le repère -->
-        <g name="repere1" class="repere" xmin="-10" ymin="-5" xmax="10" ymax ="5" xorigine="0" yorigine="0"></g>
-        <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
-        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
-        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
-        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
-        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
-        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-        <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
-        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-        <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
-        <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
-        <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
-        <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
-        <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
-        <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
-        <g name="AC" class="droite" linkto="A C" stroke="black"></g>
-        <g name="E" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="red"></g>
-        <g name="labE" class="label" linkto="E" x="-15">E</g>
-        <g name="EB" class="segment" linkto="E B" stroke="black" stroke-dasharray="5,5"></g>
-        <g class="angleDroit" linkto="B E C" size="10" stroke-width="0.5"></g>
-      </svg>
-    </div></li>
-    <li><div class="figure">
-      <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-        <!-- On définit le repère -->
-        <g name="repere1" class="repere" xmin="-10" ymin="-7" xmax="10" ymax ="3" xorigine="0" yorigine="0"></g>
-        <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
-        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
-        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
-        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
-        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
-        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-        <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
-        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-        <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
-        <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
-        <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
-        <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
-        <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
-        <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
-        <g name="ABC" class="polygone" linkto="A B C" fill="red" fill-opacity="0.2"></g>
-        <g name="E" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="black"></g>
-        <g name="D" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="none"></g>
-        <g name="labE" class="label" linkto="E" x="-15">E</g>
-        <g name="DC" class="droite" linkto="D C"></g>
-        <g name="BE" class="droite" linkto="B E"></g>
-        <g name="AC" class="droite" linkto="A C" stroke-dasharray="5,5"></g>
-        <g name="H" class="point labeled" repere="repere1" x="-2" y ="-5" stroke="red"></g>
-      </svg>
-    </div></li>
-    <li>
-    <p>$F$ est le projeté orthogonal de $A$ sur $(BC)$.</p>
-    <p>D'où $(AF)$ est perpendiculaire à $(BC)$.</p>
-    <p>Par conséquent $(AF)$ est la hauteur issue de $A$ dans le triangle $ABC.$</p>
-    <p>Or les hauteurs sont concourantes en $H$.</p>
-    <p>Donc $F$ est l'intersection de $(AH)$ et $(BC).$</p>
-    <div class="figure">
-      <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-        <!-- On définit le repère -->
-        <g name="repere1" class="repere" xmin="-10" ymin="-7" xmax="10" ymax ="3" xorigine="0" yorigine="0"></g>
-        <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
-        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
-        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
-        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
-        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
-        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-        <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
-        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-        <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
-        <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
-        <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
-        <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
-        <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
-        <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
-        <g name="ABC" class="polygone" linkto="A B C" fill="red" fill-opacity="0.2"></g>
-        <g name="E" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="black"></g>
-        <g name="D" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="none"></g>
-        <g name="labE" class="label" linkto="E" x="-15">E</g>
-        <g name="BC" class="droite" linkto="B C"></g>
-        <g name="F" class="point labeled dilatation" linkto="B C A" data="90 0" stroke="none"></g>
-        <g name="AF" class="droite" linkto="A F" stroke-dasharray="5,5"></g>
-        <g name="H" class="point labeled" repere="repere1" x="-2" y ="-5" stroke="red"></g>
-        <g class="angleDroit" linkto="A F B" size="10" stroke-width="0.5"></g>
-      </svg>
-    </div>
-    </li>
-    <li><p>$D$ est le projeté orthogonal de $C$ sur $(AB).$</p>
-    <p>Donc la distance de $C$ à la droite $(AB)$ est égale à $CD$</p>
-    $$\begin{align*}
-    CD&=\sqrt{(0-(-1))^2+(1-(-2))^2}\\
-    CD&=\sqrt{1+9}\\
-    CD&=\sqrt{10}
-    \end{align*}$$</li>
-    <li><p>$E$ est le projeté orthogonal de $B$ sur $(AC).$</p>
-    <p>Donc la distance de $B$ à la droite $(AC)$ est égale à $BE$</p>
-    $$\begin{align*}
-    BE&=\sqrt{(0-6)^2+(-4-(-1))^2}\\
-    BE&=\sqrt{(-6)^2+(-4+1)^2}\\
-    BE&=\sqrt{(-6)^2+(-3)^2}\\
-    BE&=\sqrt{36+9}\\
-    BE&=\sqrt{45}\\
-    BE&=\sqrt{9\times 5}\\
-    BE&=3\sqrt{5}
-    \end{align*}$$</li>
-    <li><p>Calculons les longueurs des côtés du triangle $ABE.$</p>
-    $$\begin{align*}
-    AB&=\sqrt{(-3-6)^2+(2-(-1))^2}\\
-    AB&=\sqrt{(-9)^2+(2+1)^2}\\
-    AB&=\sqrt{81+3^2}\\
-    AB&=\sqrt{81+9}\\
-    AB&=\sqrt{90}\\
-    AB&=\sqrt{9\times 10}\\
-    AB&=3\sqrt{10}
-    \end{align*}$$
-    $$\begin{align*}
-    AE&=\sqrt{(-3-0)^2+(2-(-4))^2}\\
-    AE&=\sqrt{(-3)^2+(2+4)^2}\\
-    AE&=\sqrt{9+6^2}\\
-    AE&=\sqrt{9+36}\\
-    AE&=\sqrt{45}\\
-    AE&=\sqrt{9\times 5}\\
-    AE&=3\sqrt{5}
-    \end{align*}$$
-    <p>D'une part $AB^2=(3\sqrt{10})^2=90$.</p>
-    <p>D'autre part $AE^2+(BE)^2=(3\sqrt{5})^2+(3\sqrt{5})^2=45+45=90.$</p>
-    <p>D'où $AB^2=AE^2+BE^2.$</p>
-    <p>D'après la réciproque du théorème de Pythagore, $ABE$ est rectangle en $E.$</p>
-    <p>Comme $AB=AE,$ alors $ABE$ est rectangle isocèle en $E.$</p></li>
-    </li>
-    <li>
-    <div class="figure">
-      <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-        <!-- On définit le repère -->
-        <g name="repere1" class="repere" xmin="-10" ymin="-7" xmax="10" ymax ="3" xorigine="0" yorigine="0"></g>
-        <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
-        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
-        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
-        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
-        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
-        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-        <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
-        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-        <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
-        <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
-        <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
-        <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
-        <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
-        <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
-        <g name="BEG" class="polygone" linkto="B E G" fill="red" fill-opacity="0.2"></g>
-        <g name="E" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="black"></g>
-        <g name="D" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="none"></g>
-        <g name="labE" class="label" linkto="E" x="-15">E</g>
-        <g name="AB" class="droite" linkto="A B"></g>
-        <g name="F" class="point labeled dilatation" linkto="B C A" data="90 0" stroke="none"></g>
-        <g name="H" class="point labeled" repere="repere1" x="-2" y ="-5" stroke="red"></g>
-        <g name="G" class="point labeled dilatation" linkto="A B E" data="90 0" stroke="none"></g>
-        <g name="labG" class="label" linkto="G" y="-15">G</g>
-        <g name="EG" class="segment" linkto="E G" stroke-dasharray="5,5"></g>
-        <g class="angleDroit" linkto="E G A" size="10" stroke-width="0.5"></g>
-      </svg>
-    </div>
-    <p>$G$ est le projeté orthogonal de $E$ sur $(AB).$</p>
-    <p>D'où $(EG)$ est la hauteur issue de $E$ dans le triangle $ABE.$</p>
-    <p>Comme $ABE$ est isocèle en $E$ alors $(EG)$ est la médiane issue de $E.$</p>
-    <p>Donc $G$ est le milieu de $[AB].$</p>
-    </li>
-    <li><p>La distance de $E$ à la droite $(AB)$ est égale à $EG.$</p>
-    <p>$G$ est le milieu de $[AB].$</p>
-    <p>D'où $BG=\dfrac{1}{2}AB=\dfrac{1}{2}\times 3\sqrt{10}=\dfrac{3\sqrt{10}}{2}.$</p>
-    <p>$BGE$ est rectangle en $G$.</p>
-    D'après le théorème de Pythagore, on a :
-    $$\begin{align*}
-    BE^2&=BG^2+EG^2\\
-    (3\sqrt{5})^2&=\left(\dfrac{3\sqrt{10}}{2}\right)^2+EG^2\\
-    9\times 5&=\dfrac{9\times 10}{4}+EG^2\\
-    45&=\dfrac{90}{4}+EG^2\\
-    EG^2&=45-\dfrac{90}{4}\\
-    EG^2&=\dfrac{180-90}{4}\\
-    EG^2&=\dfrac{90}{4}\\
-    EG&=\sqrt{\dfrac{90}{4}}\\
-    EG&=\dfrac{\sqrt{9\times 10}}{2}\\
-    EG&=\dfrac{3\sqrt{10}}{2}
-    \end{align*}$$</li>
-    </ol>
-  </div>
 </div>
 <div class="exercice">
   <div class="enonce">

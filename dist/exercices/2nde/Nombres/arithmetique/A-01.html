@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>A-01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Multiples, diviseurs et nombres premiers</div> <div><button class="precedent noprint" onclick="precedent()">&lt;</button>A-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<h1>Les entiers</h1>
+<div class="definition">
+    Les <i>entiers naturels</i> sont les nombres entiers positifs ou nuls. L'ensemble des entiers naturels est noté&nbsp;$\mathbb{N}$.
+    <div style="text-align:center;">
+        $\mathbb{N} = \{0, 1, 2, 3, 4, 5\ldots\}$
+    </div>
+    Les <i>entiers relatifs</i> sont les nombres entiers positifs, négatifs ou nuls. L'ensemble des entiers relatifs est noté $\mathbb{Z}$.
+    <div style="text-align:center;">
+        $\mathbb{Z} = \{\ldots, -3, -2, -1, 0, 1, 2, 3, \ldots\}$
+    </div>
+    En l'absence de précision un entier est un entier relatif.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Montrez la nature de chaque nombre (entier positif, négatif ou non entier)&nbsp;:
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>l'opposé de $-7$</li>
+            <li>l'inverse de $4$</li>
+            <li>l'inverse de $\frac{2}{3}$</li>
+            <li>l'inverse de $-\frac{1}{5}$</li>
+        </ol>
+        <ol class="alphabetical-list horizontal-list" start="5">
+            <li>$(-6)\times (-2)$</li>
+            <li>$7-8$</li>
+            <li>$\dfrac{6}{2}$</li>
+            <li>$\dfrac{-12}{3}$</li>
+        </ol> 
+        <ol class="alphabetical-list horizontal-list" start="9">
+            <li>$7\times \dfrac{1}{7}$</li>
+            <li>$\dfrac{-100}{-10}$</li>
+            <li>$10^6$</li>
+            <li>$10^{-1}$</li>
+        </ol>
+        <ol class="alphabetical-list horizontal-list" start="13">
+            <li>$\sqrt{25}$</li>
+            <li>$\sqrt{50}$</li>
+            <li>$(-3)^2$</li>
+            <li>$(-2)^3$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>l'opposé de $-7$ est $7$, un entier positif.</p></li>
+            <li><p>l'inverse de $4$ est $\frac{1}{4}$
+            $$0 \lt \frac{1}{4} \lt 1$$
+            Donc $\frac{1}{4}$ n'est pas un entier.</p></li>
+            <li><p>l'inverse de $\frac{2}{3}$ est $\frac{3}{2}$
+            $$1 \lt \frac{3}{2} \lt 2$$
+            Donc $\frac{3}{2}$ n'est pas un entier.</p></li>
+            <li><p>l'inverse de $-\frac{1}{5}$ est $-5$, un entier négatif.</p></li>
+            <li><p>$-6\times (-2) = 12$, un entier positif.</p></li>
+            <li><p>$7-8 = -1$, un entier négatif.</p></li>
+            <li><p>$\dfrac{6}{2} = 3$, un entier positif.</p></li>
+            <li><p>$\dfrac{-12}{3} = -4$, un entier négatif.</p></li>
+            <li><p>$7\times \dfrac{1}{7} = 1$, un entier positif.</p></li>
+            <li><p>$\dfrac{-100}{-10} = 10$, un entier positif.</p></li>
+            <li><p>$10^6 = \num{1000000}$, un entier positif.</p></li>
+            <li><p>$10^{-1} = \frac{1}{10}$
+            $$0 \lt \frac{1}{10} \lt 1$$
+            Donc $\frac{1}{10}$ n'est pas un entier.</p></li>
+            <li><p>$\sqrt{25} = 5$, un entier positif.</p></li>
+            <li><p>$\sqrt{49} = 7$ et $\sqrt{64} = 8$ donc $\sqrt{50}$ est compris entre 7 et 8, ce n'est pas un entier.</p></li>
+            <li><p>$(-3)^2 = 9$, un entier positif.</p></li>
+            <li><p>$(-2)^3 = -8$, un entier négatif.</p></li>
+        </ol>
+    </div>
+</div>
+
+<h1>Multiples, diviseurs</h1>
+
+<div class="definition">
+    Soit $a$ et $b$ deux entiers. On dit que $a$ est un <i>multiple</i> de $b$ ou que $a$ est <i>divisible</i> par $b$ s'il existe un entier $k$ tel que $a = b \times k$. On dit alors que $b$ est un <i>diviseur</i> de $a$ ou que $b$ <i>divise</i> $a$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Construisez quatre phrases équivalentes utilisant le vocabulaire (multiple, diviseur, divisible, divise)&nbsp;:
+        <ol class="alphabetical-list horizontal-list col-3c">
+            <li>$-21$ et $7$.</li>
+            <li>$8$ et $72$.</li>
+            <li>$-3$ et $-9$.</li>
+            <li>$350$ et $-5$.</li>
+            <li>$-6$ et $18$.</li>
+            <li>$24$ et $12$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$-21$ est un multiple de $7$.</p>
+            <p>$-21$ est divisible par $7$.</p></li>
+            <p>$7$ divise $-21$.</p>
+            <p>$7$ est un diviseur de $-21$.</p>
+            </li>
+            <li><p>$8$ est un diviseur de $72$.</p>
+            <p>$72$ est un multiple de $8$.</p>
+            <p>$72$ est divisible par $8$.</p>
+            <p>$8$ divise $72$.</p>
+            </li>
+            <li><p>$-3$ est un diviseur de $-9$.</p>
+            <p>$-9$ est un multiple de $-3$.</p>
+            <p>$-9$ est divisible par $-3$.</p>
+            <p>$-3$ divise $-9$.</p>
+            </li>
+            <li><p>$350$ est un multiple de $-5$.</p>
+            <p>$350$ est divisible par $-5$.</p>
+            <p>$-5$ divise $350$.</p>
+            <p>$-5$ est un diviseur de $350$.</p>
+            </li>
+            <li><p>$-6$ est un multiple de $18$.</p>
+            <p>$-6$ est divisible par $18$.</p>
+            <p>$18$ divise $-6$.</p>
+            <p>$18$ est un diviseur de $-6$.</p>
+            </li>
+            <li><p>$24$ est un multiple de $12$.</p>
+            <p>$24$ est divisible par $12$.</p>
+            <p>$12$ divise $24$.</p>
+            <p>$12$ est un diviseur de $24$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Traduisez la phrase sous la forme d'une égalité en utilisant l'existence d'un entier $k$&nbsp;:
+        <ol class="alphabetical-list">
+            <li>$420$ est un multiple de $12$.</li>
+            <li>$-15$ divise $-240$.</li>
+            <li>$7$ est un diviseur de $931$.</li>
+            <li>$204$ est divisible par $11$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$420$ est un multiple de $12$.</p>
+            <p>Il existe un entier $k$ tel que $420 = 12 \times k$.</p>
+            </li>
+            <li><p>$-15$ divise $-240$.</p>
+            <p>Il existe un entier $k$ tel que $-240 = -15 \times k$.</p>
+            </li>
+            <li><p>$7$ est un diviseur de $931$.</p>
+            <p>Il existe un entier $k$ tel que $931 = 7 \times k$.</p>
+            </li>
+            <li><p>$204$ est divisible par $11$.</p>
+            <p>Il existe un entier $k$ tel que $204 = 11 \times k$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Traduisez quatre fois par une phrase utilisant le vocabulaire (multiple, diviseur, divisible, divise)&nbsp;: 
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$37 \times 12 = 444$</li>
+            <li>$-272=-17 \times 16$</li>
+            <li>$\frac{2944}{32}=92$</li>
+            <li>$-24=\frac{432}{-18}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$37 \times 12 = 444$</p>
+            <p>Plusieurs affirmations sont possibles&nbsp;:
+            <ul>
+                <li>$37$ est un diviseur de $444$.</li>
+                <li>$37$ divise $444$.</li>
+                <li>$444$ est un multiple de $37$.</li>
+                <li>$444$ est divisible par $37$.</li>
+                <li>$12$ est un diviseur de $444$.</li>
+                <li>$12$ divise $444$.</li>
+                <li>$444$ est un multiple de $12$.</li>
+                <li>$444$ est divisible par $12$.</li>
+            </ul>
+            </p>
+            </li>
+            <li><p>$-272=-17 \times 16$</p>
+            <p>Plusieurs affirmations sont possibles&nbsp;:
+            <ul>
+                <li>$-17$ est un diviseur de $-272$.</li>
+                <li>$-17$ divise $-272$.</li>
+                <li>$-272$ est un multiple de $-17$.</li>
+                <li>$-272$ est divisible par $-17$.</li>
+                <li>$16$ est un diviseur de $-272$.</li>
+                <li>$16$ divise $-272$.</li>
+                <li>$-272$ est un multiple de $16$.</li>
+                <li>$-272$ est divisible par $16$.</li>
+            </ul>
+            </p>
+            </li>
+            <li><p>$\frac{2944}{32}=92$</p>
+            <p>Plusieurs affirmations sont possibles&nbsp;:
+            <ul>
+                <li>$32$ est un diviseur de $2944$.</li>
+                <li>$32$ divise $2944$.</li>
+                <li>$2944$ est un multiple de $32$.</li>
+                <li>$2944$ est divisible par $32$.</li>
+                <li>$92$ est un diviseur de $2944$.</li>
+                <li>$92$ divise $2944$.</li>
+                <li>$2944$ est un multiple de $92$.</li>
+                <li>$2944$ est divisible par $92$.</li>
+            </ul>
+            </p>
+            </li>
+            <li><p>$-24=\frac{432}{-18}$</p>
+            <p>Plusieurs affirmations sont possibles&nbsp;:
+            <ul>
+                <li>$-18$ est un diviseur de $432$.</li>
+                <li>$-18$ divise $432$.</li>
+                <li>$432$ est un multiple de $-18$.</li>
+                <li>$432$ est divisible par $-18$.</li>
+                <li>$-24$ est un diviseur de $432$.</li>
+                <li>$-24$ divise $432$.</li>
+                <li>$432$ est un multiple de $-24$.</li>
+                <li>$432$ est divisible par $-24$.</li>
+            </ul>
+            </p>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        $a$ est un entier. Démontrez que la somme de deux multiples de $a$ est un multiple de $a$.
+    </div>
+    <div class="solution">
+        <p>Soit $a$ un entier.</p>
+        <p>Soient $m$ et $n$ deux multiples de $a$.</p>
+        <p>Il existe deux entiers $k$ et $k'$ tels que $m=ak$ et $n=ak'$.</p>
+        $$
+        \begin{align*}
+        m+n&=ak+ak'\\
+        m+n&=a(k+k')
+        \end{align*}
+        $$
+        <p>$k+k'$ est un entier donc $m+n$ est un multiple de $a$.</p>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Démontrez que la somme de trois entiers consécutifs est un multiple de $3$.
+    </div>
+    <div class="solution">
+        <p>Considérons trois entiers consécutifs.</p>
+        <h3>1<sup>re</sup> méthode</h3>
+        <p>Notons $n$ le deuxième entier.</p>
+        <p>Le premier entier est $n-1$ et le troisième entier est $n+1$.</p>
+        <p>La somme de ces trois entiers est $$n-1+n+n+1=3n$$ qui est un multiple de $3$.</p>
+        <h3>2<sup>e</sup> méthode</h3>
+        <p>Notons $n$ le premier entier.</p>
+        <p>Le deuxième entier est $n+1$ et le troisième entier est $n+2$.</p>
+        <p>La somme de ces trois entiers est $$n+n+1+n+2=3n+3=3(n+1)$$ qui est un multiple de $3$.</p>
+    </div>
+</div>
+
+<div class="propriete">
+    Un nombre est divisible par $3$ (respectivement par $9$) si et seulement si la somme de ses chiffres est un multiple de $3$ (respectivement de $9$). 
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez si les nombres suivants sont des multiples de $2$, de $3$, de $5$, de $9$&nbsp;:
+        <ol class="alphabetical-list horizontal-list col-3c">
+            <li>$123$</li>
+            <li>$456$</li>
+            <li>$\num{2895}$</li>
+            <li>$\num{101112}$</li>
+            <li>$\num{131418}$</li>
+            <li>$\num{161718}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>La somme des chiffres de $123$ est $1+2+3=6$ qui est un multiple de $3$. Donc $123$ est un multiple de $3$.</p>
+            <p>Le chiffre des unités de $123$ est impair donc $123$ n'est pas un multiple de $2$.</p>
+            <p>La somme des chiffres de $123$ n'est pas un multiple de $9$. Donc $123$ n'est pas un multiple de $9$.</p>
+            <p>Le chiffre des unités de $123$ n'est ni $0$ ni $5$ donc $123$ n'est pas un multiple de $5$.</p>
+            </li>
+            <li><p>La somme des chiffres de $456$ est $4+5+6=15$ qui est un multiple de $3$. Donc $456$ est un multiple de $3$.</p>
+            <p>Le chiffre des unités de $456$ est pair donc $456$ est un multiple de $2$.</p>
+            <p>La somme des chiffres de $456$ n'est pas un multiple de $9$. Donc $456$ n'est pas un multiple de $9$.</p>
+            <p>Le chiffre des unités de $456$ n'est ni $0$ ni $5$ donc $456$ n'est pas un multiple de $5$.</p>
+            </li>
+            <li><p>La somme des chiffres de $2895$ est $2+5+8+9=24$ qui est un multiple de $3$. Donc $2895$ est un multiple de $3$.</p>
+            <p>Le chiffre des unités de $2895$ est impair donc $2895$ n'est pas un multiple de $2$.</p>
+            <p>La somme des chiffres de $2895$ n'est pas un multiple de $9$. Donc $2895$ n'est pas un multiple de $9$.</p>
+            <p>Le chiffre des unités de $2895$ est un multiple de $5$ donc $2895$ est un multiple de $5$.</p>
+            </li>
+            <li><p>La somme des chiffres de $101112$ est $1+0+1+1+1+2=6$ qui est un multiple de $3$. Donc $101112$ est un multiple de $3$.</p>
+            <p>Le chiffre des unités de $101112$ est pair donc $101112$ est un multiple de $2$.</p>
+            <p>La somme des chiffres de $101112$ n'est pas un multiple de $9$. Donc $101112$ n'est pas un multiple de $9$.</p>
+            <p>Le chiffre des unités de $101112$ n'est ni $0$ ni $5$ donc $101112$ n'est pas un multiple de $5$.</p>
+            </li>
+            <li><p>La somme des chiffres de $131418$ est $1+3+1+4+1+8=18$ qui est un multiple de $3$. Donc $131418$ est un multiple de $3$.</p>
+            <p>Le chiffre des unités de $131418$ est pair donc $131418$ est un multiple de $2$.</p>
+            <p>La somme des chiffres de $131418$ est un multiple de $9$. Donc $131418$ est un multiple de $9$.</p>
+            <p>Le chiffre des unités de $131418$ n'est ni $0$ ni $5$ donc $131418$ n'est pas un multiple de $5$.</p>
+            </li>
+            <li><p>La somme des chiffres de $161718$ est $1+6+1+7+1+8=24$ qui est un multiple de $3$. Donc $161718$ est un multiple de $3$.</p>
+            <p>Le chiffre des unités de $161718$ est pair donc $161718$ est un multiple de $2$.</p>
+            <p>La somme des chiffres de $161718$ n'est pas un multiple de $9$. Donc $161718$ n'est pas un multiple de $9$.</p>
+            <p>Le chiffre des unités de $161718$ n'est ni $0$ ni $5$ donc $161718$ n'est pas un multiple de $5$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="propriete">
+    Un nombre est pair si et seulement s'il existe un entier $k$ tel que $n=2k$. Un nombre est impair si et seulement s'il existe un entier $k$ tel que $n=2k+1$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+       Montrez la parité des nombres suivants sachant que $n$ est un entier&nbsp;:
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$2n+6$</li>
+            <li>$2n+9$</li>
+            <li>$-12n$</li>
+            <li>$4n^2+2n+1$</li>
+            <li>$6n^2-8$</li>
+            <li>$2n-5$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$2n+6=2(n+3)$ est pair.</p></li>
+            <li><p>$2n+9=2(n+4)+1$ est impair.</p></li>
+            <li><p>$-12n=2\times(-6n)$ est pair.</p></li>
+            <li><p>$4n^2+2n+1=2(2n^2+n)+1$ est impair.</p></li>
+            <li><p>$6n^2-8=2(3n^2-4)$ est pair.</p></li>
+            <li><p>$2n-5=2(n-2)+1$ est impair.</p></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Démontrez les propriétés suivantes&nbsp;:
+        <ol class="alphabetical-list">
+            <li>Le carré de tout entier impair est impair.</li>
+            <li>La somme de deux entiers impairs est paire.</li>
+            <li>Le produit de deux entiers impairs est impair.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Soit $n$ un entier impair.</p>
+            <p>Il existe un entier $k$ tel que $n=2k+1$.</p>
+            $$
+            \begin{align*}
+            n^2 & = (2k+1)^2 \\
+            & = 4k^2+4k+1 \\
+            & = 2(2k^2+2k)+1
+            \end{align*}
+            $$
+            <p>$2k^2+2k$ est un entier donc $n^2$ est impair.</p>
+            <p>Donc le carré de tout entier impair est impair.</p></li>
+            <li><p>Soient $n$ et $m$ deux entiers impairs.</p>
+            <p>Il existe deux entiers $k$ et $k'$ tels que $n=2k+1$ et $m=2k'+1$.</p>
+            $$
+            \begin{align*}
+            n+m & = (2k+1)+(2k'+1) \\
+            & = 2(k+k')+2 \\
+            & = 2(k+k'+1)
+            \end{align*}
+            $$
+            <p>$k+k'+1$ est un entier donc $n+m$ est pair.</p>
+            </li>
+            <li><p>Soient $n$ et $m$ deux entiers impairs.</p>
+            <p>Il existe deux entiers $k$ et $k'$ tels que $n=2k+1$ et $m=2k'+1$.</p>
+            $$
+            \begin{align*}
+            n\times m & = (2k+1)\times (2k'+1) \\
+            & = 4kk'+2k+2k'+1 \\
+            & = 2(2kk'+k+k')+1
+            \end{align*}
+            $$
+            <p>$2kk'+k+k'$ est un entier donc $n\times m$ est impair.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<h1>Raisonnements</h1>
+
+<div class="definition">
+    Le <i>raisonnement par disjonction des cas</i> consiste à envisager toutes les possibilités pour un problème donné.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Démontrez que $n(n+1)$ est pair pour tout entier $n$ en utilisant un raisonnement par disjonction des cas.
+    </div>
+    <div class="solution">
+        <p>Soit $n$ un entier. On distingue deux cas&nbsp;:</p>
+        <ul>
+            <li><p>Si $n$ est pair, alors il existe un entier $k$ tel que $n=2k$.</p>
+            <p>Donc $n(n+1)=2k(2k+1)=2\times k(2k+1)$ est pair.</p></li>
+            <li><p>Si $n$ est impair, alors $n+1$ est pair et il existe un entier $k$ tel que $n+1=2k$.</p>
+            <p>Donc $n(n+1)=n(2k)=2\times kn$ est pair.</p>
+            <p>Autre solution&nbsp;:
+            <p>Si $n$ est impair, alors il existe une entier $k$ tel que $n=2k+1$.</p>
+            $$
+            \begin{align*}
+            n(n+1)&=n(2k+1+1)\\
+            n(n+1)&=n(2k+2)\\
+            n(n+1)&=n\times2(k+1)\\
+            n(n+1)&=2\times n(k+1)
+            \end{align*}
+            $$
+            <p>Donc $n(n+1)$ est pair.</p>
+            </li>
+            </li>
+        </ul>
+        <p>Donc $n(n+1)$ est pair pour tout entier $n$.</p>
+    </div>
+</div>
+
+<div class="definition">
+    On appelle <i>contre-exemple</i> d'une proposition un exemple qui montre que la proposition est fausse.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Donnez trois contre-exemples pour chaque proposition fausse suivante&nbsp;:
+        <ol class="alphabetical-list">
+            <li>Si $n$ est un multiple de $3$, alors $n$ est un multiple de $9$.</li>
+            <li>Si $k$ est un entier, alors $3k+1$ est impair.</li>
+            <li>Si un nombre est divisible par $2$ et par $4$, alors il est divisible par $8$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Le nombre $6$ est un multiple de $3$ mais n'est pas un multiple de $9$.</p>
+            <p>Le nombre $12$ est un multiple de $3$ mais n'est pas un multiple de $9$.</p>
+            <p>Le nombre $15$ est un multiple de $3$ mais n'est pas un multiple de $9$.</p></li>
+            <li><p>Si $k=1$, alors $3k+1=4$ est pair.</p>
+            <p>Si $k=3$, alors $3k+1=10$ est pair.</p>
+            <p>Si $k=5$, alors $3k+1=16$ est pair.</p></li>
+            </li>
+            <li><p>Le nombre $4$ est divisible par $2$ et par $4$ mais n'est pas divisible par $8$.</p>
+            <p>Le nombre $12$ est divisible par $2$ et par $4$ mais n'est pas divisible par $8$.</p>
+            <p>Le nombre $20$ est divisible par $2$ et par $4$ mais n'est pas divisible par $8$.</p></li>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="definition">
+    La <i>proposition réciproque</i>  d'une proposition donnée est la proposition obtenue en échangeant l'hypothèse avec la conclusion.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Indiquez si les propositions sont vraies ou fausses et si les propositions réciproques sont vraies ou fausses&nbsp;:
+        <ol class="alphabetical-list">
+            <li>Si un nombre est divisible par $5$, alors il est divisible par $10$.</li>
+            <li>Si un nombre est divisible par $6$, alors il est divisible par $3$ et par $2$.</li>
+            <li>Si un nombre est divisible par $12$, alors il est divisible par $6$ et par $2$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>La proposition est fausse car par exemple $5$ est divisible par $5$ mais n'est pas divisible par $10$.</p>
+            <p>La proposition réciproque est &laquo;&nbsp;Si un nombre est divisible par $10$, alors il est divisible par $5$&nbsp;&raquo;.</p>
+            <p>La proposition réciproque est vraie.</p></li>
+            <li><p>La propriété est vraie.</p>
+            <p>La proposition réciproque est &laquo;&nbsp;Si un nombre est divisible par $3$ et par $2$, alors il est divisible par $6$&nbsp;&raquo;.</p>
+            <p>La proposition réciproque est vraie.</p></li>
+            <li><p>La proposition est vraie.</p>
+            <p>La proposition réciproque est &laquo;&nbsp;Si un nombre est divisible par $6$ et par $2$, alors il est divisible par $12$&nbsp;&raquo;.</p>
+            <p>La proposition réciproque est fausse car par exemple $6$ est divisible par $6$ et par $2$ mais n'est pas divisible par $12$.</p></li>
+        </ol>
+    </div>
+</div>
+
+<div class="definition">
+    Le <i>raisonnement par l'absurde</i> consiste à supposer fausse une proposition et à en déduire une contradiction.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $n$ est un entier tel que $n^2$ est pair.
+        Démontrez par l'absurde que $n$ est pair.
+    </div>
+    <div class="solution">
+        <p>$n$ est un entier tel que $n^2$ est pair.</p>
+        <p>Supposons par l'absurde que $n$ n'est pas pair, donc $n$ est impair.</p>
+        <p>Il existe alors un entier $k$ tel que $n=2k+1$.</p>
+        $$
+        \begin{align*}
+        n^2 & = (2k+1)^2 \\
+        n^2 & = 4k^2+4k+1 \\
+        n^2 & = 2(2k^2+2k)+1
+        \end{align*}
+        $$
+        <p>On en déduit que $n^2$ est impair ce qui est une contradiction avec l'hypothèse de départ.</p>
+        <p>Donc si $n$ est un entier tel que $n^2$ est pair, alors $n$ est forcément pair.</p>
+    </div>
+</div></main>
+  </body>
+</html>

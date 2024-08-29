@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>A-02.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Second degré</div> <div><button class="precedent noprint" onclick="precedent()">&lt;</button>A-02<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div class="propriete">
+    Si $ax^2+bx+c$ est un polynôme du second degré et $\Delta$ son discriminant, alors&nbsp;:
+    $$\alpha=-\frac{b}{2a} \quad\text{et}\quad \beta=-\frac{\Delta}{4a}$$
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez $\alpha$ et $\beta$ pour les polynômes du second degré suivants. En déduire la forme canonique.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$2x^2+3x-5$</li>
+            <li>$3x^2+5x+10$</li>
+            <li>$5x^2-x+6$</li>
+            <li>$2x^2-12x+18$</li>
+            <li>$3x^2-x-4$</li>
+            <li>$x^2+2x+5$</li>
+            <li>$7x^2-14x+7$</li>
+            <li>$x^2-2x-3$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$2x^2+3x-5$$
+            $$
+            \begin{align*}
+            \alpha&=-\frac{3}{2\times2}\\
+            \alpha&=-\frac{3}{4}
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            \beta&=-\frac{3^2-4\times2\times(-5)}{4\times2}\\
+            \beta&=-\frac{9+40}{8}\\
+            \beta&=-\frac{49}{8}
+            \end{align*}
+            $$
+            <p>La forme canonique de $2x^2+3x-5$ est $2\left(x+\frac{3}{4}\right)^2-\frac{49}{8}$.</p></li>
+            </li>
+            <li>$$3x^2+5x+10$$
+            $$
+            \begin{align*}
+            \alpha&=-\frac{5}{2\times3}\\
+            \alpha&=-\frac{5}{6}
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            \beta&=-\frac{5^2-4\times3\times10}{4\times3}\\
+            \beta&=-\frac{25-120}{12}\\
+            \beta&=-\frac{95}{12}
+            \end{align*}
+            $$
+            <p>La forme canonique de $3x^2+5x+10$ est $3\left(x+\frac{5}{6}\right)^2-\frac{95}{12}$.</p></li>
+            </li>
+            <li>$$5x^2-x+6$$
+            $$
+            \begin{align*}
+            \alpha&=-\frac{-1}{2\times5}\\
+            \alpha&=\frac{1}{10}
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            \beta&=-\frac{(-1)^2-4\times5\times6}{4\times5}\\
+            \beta&=-\frac{1-120}{20}\\
+            \beta&=-\frac{119}{20}
+            \end{align*}
+            $$
+            <p>La forme canonique de $5x^2-x+6$ est $5\left(x+\frac{1}{10}\right)^2-\frac{119}{20}$.</p></li>
+            </li>
+            <li>$$2x^2-12x+18$$
+            $$
+            \begin{align*}
+            \alpha&=-\frac{-12}{2\times2}\\
+            \alpha&=-\frac{-12}{4}\\
+            \alpha&=3
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            \beta&=-\frac{(-12)^2-4\times2\times18}{4\times2}\\
+            \beta&=-\frac{144-144}{8}\\
+            \beta&=0
+            \end{align*}
+            $$
+            <p>La forme canonique de $2x^2-12x+18$ est $2\left(x-3\right)^2$.</p></li>
+            </li>
+            <li>$$3x^2-x-4$$
+            $$
+            \begin{align*}
+            \alpha&=-\frac{-1}{2\times3}\\
+            \alpha&=\frac{1}{6}
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            \beta&=-\frac{(-1)^2-4\times3\times(-4)}{4\times3}\\
+            \beta&=-\frac{1+48}{12}\\
+            \beta&=-\frac{49}{12}
+            \end{align*}
+            $$
+            <p>La forme canonique de $3x^2-x-4$ est $3\left(x+\frac{1}{6}\right)^2-\frac{49}{12}$.</p></li>
+            </li>
+            <li>$$x^2+2x+5$$
+            $$
+            \begin{align*}
+            \alpha&=-\frac{2}{2\times1}\\
+            \alpha&=-\frac{2}{2}\\
+            \alpha&=-1
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            \beta&=-\frac{2^2-4\times1\times5}{4\times1}\\
+            \beta&=-\frac{4-20}{4}\\
+            \beta&=-\frac{16}{4}\\
+            \beta&=-4
+            \end{align*}
+            $$
+            <p>La forme canonique de $x^2+2x+5$ est $\left(x+1\right)^2-4$.</p></li>
+            </li>
+            <li>$$7x^2-14x+7$$
+            $$
+            \begin{align*}
+            \alpha&=-\frac{-14}{2\times7}\\
+            \alpha&=\frac{14}{14}\\
+            \alpha&=1
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            \beta&=-\frac{(-14)^2-4\times7\times7}{4\times7}\\
+            \beta&=-\frac{196-196}{28}\\
+            \beta&=0
+            \end{align*}
+            $$
+            <p>La forme canonique de $7x^2-14x+7$ est $7\left(x-1\right)^2$.</p></li>
+            </li>
+            <li>$$x^2-2x-3$$
+            $$
+            \begin{align*}
+            \alpha&=-\frac{-2}{2\times1}\\
+            \alpha&=\frac{2}{2}\\
+            \alpha&=1
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            \beta&=-\frac{(-2)^2-4\times1\times(-3)}{4\times1}\\
+            \beta&=-\frac{4+12}{4}\\
+            \beta&=-\frac{16}{4}\\
+            \beta&=-4
+            \end{align*}
+            $$</li>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="propriete">
+    Considérons un polynôme du second degré et $\Delta$ son discriminant&nbsp;:
+    <ul style="padding-left: 1em;">
+        <li>Si $\Delta\gt 0$, alors le polynôme admet deux racines réelles distinctes.</li>
+        <li>Si $\Delta=0$, alors le polynôme admet une seule racine réelle.</li>
+        <li>Si $\Delta\lt 0$, alors le polynôme n'admet pas de racine réelle.</li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez le nombre de racines réelles des polynômes du second degré suivants en calculant leur discriminant.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$2x^2+3x-5$</li>
+            <li>$3x^2+5x+10$</li>
+            <li>$5x^2-x+6$</li>
+            <li>$2x^2-12x+18$</li>
+            <li>$3x^2-x-4$</li>
+            <li>$x^2+2x+5$</li>
+            <li>$7x^2-14x+7$</li>
+            <li>$x^2-2x-3$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            \Delta&=3^2-4\times2\times(-5)\\
+            \Delta&=9+40\\
+            \Delta&=49
+            \end{align*}
+            $$
+            <p>$\Delta\gt0$, donc $2x^2+3x-5$ admet deux racines réelles distinctes.</p></li>
+            </li>
+            <li>$$
+            \begin{align*}
+            \Delta&=5^2-4\times3\times10\\
+            \Delta&=25-120\\
+            \Delta&=-95
+            \end{align*}
+            $$
+            <p>$\Delta\lt0$, donc $3x^2+5x+10$ n'admet pas de racine réelle.</p></li>
+            </li>
+            <li>$$
+            \begin{align*}
+            \Delta&=(-1)^2-4\times5\times6\\
+            \Delta&=1-120\\
+            \Delta&=-119
+            \end{align*}
+            $$
+            <p>$\Delta\lt0$, donc $5x^2-x+6$ n'admet pas de racine réelle.</p></li>
+            </li>
+            <li>$$
+            \begin{align*}
+            \Delta&=(-12)^2-4\times2\times18\\
+            \Delta&=144-144\\
+            \Delta&=0
+            \end{align*}
+            $$
+            <p>$\Delta=0$, donc $2x^2-12x+18$ admet deux racines réelles identiques.</p></li>
+            </li>
+            <li>$$
+            \begin{align*}
+            \Delta&=(-1)^2-4\times3\times(-4)\\
+            \Delta&=1+48\\
+            \Delta&=49
+            \end{align*}
+            $$
+            <p>$\Delta\gt0$, donc $3x^2-x-4$ admet deux racines réelles distinctes.</p></li>
+            </li>
+            <li>$$
+            \begin{align*}
+            \Delta&=2^2-4\times1\times5\\
+            \Delta&=4-20\\
+            \Delta&=-16
+            \end{align*}
+            $$
+            <p>$\Delta\lt0$, donc $x^2+2x+5$ n'admet pas de racine réelle.</p></li>
+            </li>
+            <li>$$
+            \begin{align*}
+            \Delta&=(-14)^2-4\times7\times7\\
+            \Delta&=196-196\\
+            \Delta&=0
+            \end{align*}
+            $$
+            <p>$\Delta=0$, donc $7x^2-14x+7$ admet deux racines réelles identiques.</p></li>
+            </li>
+            <li>$$
+            \begin{align*}
+            \Delta&=(-2)^2-4\times1\times(-3)\\
+            \Delta&=4+12\\
+            \Delta&=16
+            \end{align*}
+            $$
+            <p>$\Delta\gt0$, donc $x^2-2x-3$ admet deux racines réelles distinctes.</p></li>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="propriete">
+    Considérons un polynôme du second degré de discriminant $\Delta\gt 0$. Les racines de ce polynôme sont données par&nbsp;:
+    $$x_1=\frac{-b-\sqrt{\Delta}}{2a}\quad\text{et}\quad x_2=\frac{-b+\sqrt{\Delta}}{2a}$$
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez les racines des polynômes du second degré suivants.
+        <ol class="alphabetical-list">
+            <li>$27x^2+27x-12$ avec $\Delta=45^2$</li>
+            <li>$64x^2+32x-5$ avec $\Delta=48^2$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            x_1&=\frac{-27-\sqrt{45^2}}{2\times27}\\
+            x_1&=\frac{-27-45}{54}\\
+            x_1&=\frac{-72}{54}\\
+            x_1&=-\frac{4}{3}
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            x_2&=\frac{-27+\sqrt{45^2}}{2\times27}\\
+            x_2&=\frac{-27+45}{54}\\
+            x_2&=\frac{18}{54}\\
+            x_2&=\frac{1}{3}
+            \end{align*}
+            $$
+            <p>Les racines de $27x^2+27x-12$ sont $x_1=-\frac{4}{3}$ et $x_2=\frac{1}{3}$.</p></li>
+            </li>
+            <li>$$
+            \begin{align*}
+            x_1&=\frac{-32-\sqrt{48^2}}{2\times64}\\
+            x_1&=\frac{-32-48}{128}\\
+            x_1&=\frac{-80}{128}\\
+            x_1&=-\frac{5}{8}
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            x_2&=\frac{-32+\sqrt{48^2}}{2\times64}\\
+            x_2&=\frac{-32+48}{128}\\
+            x_2&=\frac{16}{128}\\
+            x_2&=\frac{1}{8}
+            \end{align*}
+            $$
+            <p>Les racines de $64x^2+32x-5$ sont $x_1=-\frac{5}{8}$ et $x_2=\frac{1}{8}$.</p></li>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez les racines des polynômes du second degré suivants.
+        <ol class="alphabetical-list">
+            <li>$5x^2+3x-6$ avec $\Delta=129$</li>
+            <li>$-3x^2+7x+2$ avec $\Delta=73$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            x_1&=\frac{-3-\sqrt{129}}{2\times5}\\
+            x_1&=\frac{-3-\sqrt{129}}{10}
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            x_2&=\frac{-3+\sqrt{129}}{2\times5}\\
+            x_2&=\frac{-3+\sqrt{129}}{10}
+            \end{align*}
+            $$
+            <p>Les racines de $5x^2+3x-6$ sont $x_1=\frac{-3-\sqrt{129}}{10}$ et $x_2=\frac{-3+\sqrt{129}}{10}$.</p>
+            </li>
+            <li>$$
+            \begin{align*}
+            x_1&=\frac{-7-\sqrt{73}}{2\times(-3)}\\
+            x_1&=\frac{-7-\sqrt{73}}{-6}\\
+            x_1&=\frac{7+\sqrt{73}}{6}
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            x_2&=\frac{-7+\sqrt{73}}{2\times(-3)}\\
+            x_2&=\frac{-7+\sqrt{73}}{-6}\\
+            x_2&=\frac{7-\sqrt{73}}{6}
+            \end{align*}
+            $$
+            <p>Les racines de $-3x^2+7x+2$ sont $x_1=\frac{7+\sqrt{73}}{6}$ et $x_2=\frac{7-\sqrt{73}}{6}$.</p></li>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez les racines des polynômes du second degré suivants.
+        <ol class="alphabetical-list">
+            <li>$3x^2+2x-\frac{15}{4}$ avec $\Delta=49$</li>
+            <li>$5x^2-2x-\frac{8}{5}$ avec $\Delta=36$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            x_1&=\frac{-2-\sqrt{49}}{2\times3}\\
+            x_1&=\frac{-2-7}{6}\\
+            x_1&=\frac{-9}{6}\\
+            x_1&=-\frac{3}{2}
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            x_2&=\frac{-2+\sqrt{49}}{2\times3}\\
+            x_2&=\frac{-2+7}{6}\\
+            x_2&=\frac{5}{6}
+            \end{align*}
+            $$
+            <p>Les racines de $3x^2+2x-\frac{15}{4}$ sont $x_1=-\frac{3}{2}$ et $x_2=\frac{5}{6}$.</p></li>
+            </li>
+            <li>$$
+            \begin{align*}
+            x_1&=\frac{2-\sqrt{36}}{2\times5}\\
+            x_1&=\frac{2-6}{10}\\
+            x_1&=\frac{-4}{10}\\
+            x_1&=-\frac{2}{5}
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            x_2&=\frac{2+\sqrt{36}}{2\times5}\\
+            x_2&=\frac{2+6}{10}\\
+            x_2&=\frac{8}{10}\\
+            x_2&=\frac{4}{5}
+            \end{align*}
+            $$
+            <p>Les racines de $5x^2-2x-\frac{8}{5}$ sont $x_1=-\frac{2}{5}$ et $x_2=\frac{4}{5}$.</p></li>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<h1> Fonction polynôme du second degré</h1>
+
+<div class="definition">
+    Une <i>parabole</i> est une courbe plane symétrique par rapport à un axe et d'équation de la forme $y=ax^2+bx+c$ où $a$, $b$ et $c$ sont des constantes avec $a\neq0$.
+</div>
+
+<div class="definition">
+    Le sommet d'une parabole est le point situé à l'intersection de l'axe de symétrie et de la parabole.
+</div>
+
+<div class="propriete">
+    Si $f$ est une <i>fonction polynôme du second degré</i> de la forme $f(x)=ax^2+bx+c$, alors $f$ change de variation en $\alpha=-\frac{b}{2a}$.
+    <ul style="padding-left: 1em;">
+        <li>Si $a\gt0$, alors $f$ est décroissante sur $\left]-\infty;\alpha\right]$ et croissante sur $\left[\alpha;+\infty\right[$.
+        <div class="figure">
+            <svg viewBox="0 0 400 130" style="width:100%">
+                <g name="A1" class="point" stroke="none" x="90*4/3" y="60" scale="0.5"></g>
+                <g name="A2" class="point" stroke="none" x="160*4/3" y="100" scale="0.5"></g>
+                <g name="a" class="vecteur" linkto="A1 A2" stroke="black" scale="1"></g>
+                <g name="B1" class="point" stroke="none" x="190*4/3" y="100" scale="0.5"></g>
+                <g name="B2" class="point" stroke="none" x="260*4/3" y="60" scale="0.5"></g>
+                <g name="b" class="vecteur" linkto="B1 B2" stroke="black" scale="1"></g>
+                <foreignObject width="100%" height="100%">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="font-size:12pt;">
+                    <table class="tableauvariations">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$\alpha$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>$\phantom{-\infty}$</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>$\phantom{-\infty}$</td>
+                    </tr>
+                    <tr>
+                        <td>$f$</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>$f(\alpha)$</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </table>
+                </div>
+                </foreignObject>
+            </svg>
+        </div>        
+        </li>
+        <li>Si $a\lt0$, alors $f$ est croissante sur $\left]-\infty;\alpha\right]$ et décroissante sur $\left[\alpha;+\infty\right[$.
+        <div class="figure">
+            <svg viewBox="0 0 400 130" style="width:100%">
+                <g name="A1" class="point" stroke="none" x="90*4/3" y="100" scale="0.5"></g>
+                <g name="A2" class="point" stroke="none" x="160*4/3" y="60" scale="0.5"></g>
+                <g name="a" class="vecteur" linkto="A1 A2" stroke="black" scale="1"></g>
+                <g name="B1" class="point" stroke="none" x="190*4/3" y="60" scale="0.5"></g>
+                <g name="B2" class="point" stroke="none" x="260*4/3" y="100" scale="0.5"></g>
+                <g name="b" class="vecteur" linkto="B1 B2" stroke="black" scale="1"></g>
+                <foreignObject width="100%" height="100%">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="font-size:12pt;">
+                    <table class="tableauvariations">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$\alpha$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>$f(\alpha)$</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$f$</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>$\phantom{-\infty}$</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>$\phantom{-\infty}$</td>
+                    </tr>
+                    </table>
+                </div>
+                </foreignObject>
+            </svg>
+        </div> 
+        </li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Dressez le tableau de variations.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$\small f(x)=3x^2-12x+19$</li>
+            <li>$\small f(x)=-5x^2+10x-1$</li>
+            <li>$\small f(x)=6x^2+36x+46$</li>
+            <li>$\small f(x)=-x^2-18x-82$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            \alpha&=-\frac{-12}{2\times3}\\
+            \alpha&=2
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            f(2)&=3\times2^2-12\times2+19\\
+            f(2)&=3\times4-24+19\\
+            f(2)&=12-24+19\\
+            f(2)&=7
+            \end{align*}
+            $$
+            <p>$a=3\gt0$ donc le tableau de variations de $f(x)=3x^2-12x+19$ est&nbsp;:</p>
+            <div class="figure">
+                <svg viewBox="0 0 400 130">
+                    <g name="A1" class="point" stroke="none" x="90*4/3" y="60" scale="0.5"></g>
+                    <g name="A2" class="point" stroke="none" x="160*4/3" y="100" scale="0.5"></g>
+                    <g name="a" class="vecteur" linkto="A1 A2" stroke="black" scale="1"></g>
+                    <g name="B1" class="point" stroke="none" x="190*4/3" y="100" scale="0.5"></g>
+                    <g name="B2" class="point" stroke="none" x="260*4/3" y="60" scale="0.5"></g>
+                    <g name="b" class="vecteur" linkto="B1 B2" stroke="black" scale="1"></g>
+                    <foreignObject width="100%" height="100%">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="font-size:12pt;">
+                        <table class="tableauvariations">
+                        <tr>
+                            <td>$x$</td>
+                            <td>$-\infty$</td>
+                            <td></td>
+                            <td>$2$</td>
+                            <td></td>
+                            <td>$+\infty$</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>$\phantom{-\infty}$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$\phantom{-\infty}$</td>
+                        </tr>
+                        <tr>
+                            <td>$f$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$7$</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </table>
+                    </div>
+                    </foreignObject>
+                </svg>
+            </div>
+            </li>
+            <li>$$
+            \begin{align*}
+            \alpha&=-\frac{10}{2\times(-5)}\\
+            \alpha&=1
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            f(1)&=-5\times1^2+10\times1-1\\
+            f(1)&=-5+10-1\\
+            f(1)&=4
+            \end{align*}
+            $$
+            <p>$a=-5\lt0$ donc le tableau de variations de $f(x)=-5x^2+10x-1$ est&nbsp;:</p>
+            <div class="figure">
+                <svg viewBox="0 0 400 130">
+                    <g name="A1" class="point" stroke="none" x="90*4/3" y="100" scale="0.5"></g>
+                    <g name="A2" class="point" stroke="none" x="160*4/3" y="60" scale="0.5"></g>
+                    <g name="a" class="vecteur" linkto="A1 A2" stroke="black" scale="1"></g>
+                    <g name="B1" class="point" stroke="none" x="190*4/3" y="60" scale="0.5"></g>
+                    <g name="B2" class="point" stroke="none" x="260*4/3" y="100" scale="0.5"></g>
+                    <g name="b" class="vecteur" linkto="B1 B2" stroke="black" scale="1"></g>
+                    <foreignObject width="100%" height="100%">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="font-size:12pt;">
+                        <table class="tableauvariations">
+                        <tr>
+                            <td>$x$</td>
+                            <td>$-\infty$</td>
+                            <td></td>
+                            <td>$1$</td>
+                            <td></td>
+                            <td>$+\infty$</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$4$</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>$f$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>$\phantom{-\infty}$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$\phantom{-\infty}$</td>
+                        </tr>
+                        </table>
+                    </div>
+                    </foreignObject>
+                </svg>
+            </div>
+            </li>
+            <li>$$
+            \begin{align*}
+            \alpha&=-\frac{36}{2\times6}\\
+            \alpha&=-3
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            f(-3)&=6\times(-3)^2+36\times(-3)+46\\
+            f(-3)&=6\times9-108+46\\
+            f(-3)&=54-108+46\\
+            f(-3)&=-8
+            \end{align*}
+            $$
+            <p>$a=6\gt0$ donc le tableau de variations de $f(x)=6x^2+36x+46$ est&nbsp;:</p>
+            <div class="figure">
+                <svg viewBox="0 0 400 130">
+                    <g name="A1" class="point" stroke="none" x="90*4/3" y="60" scale="0.5"></g>
+                    <g name="A2" class="point" stroke="none" x="160*4/3" y="100" scale="0.5"></g>
+                    <g name="a" class="vecteur" linkto="A1 A2" stroke="black" scale="1"></g>
+                    <g name="B1" class="point" stroke="none" x="190*4/3" y="100" scale="0.5"></g>
+                    <g name="B2" class="point" stroke="none" x="260*4/3" y="60" scale="0.5"></g>
+                    <g name="b" class="vecteur" linkto="B1 B2" stroke="black" scale="1"></g>
+                    <foreignObject width="100%" height="100%">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="font-size:12pt;">
+                        <table class="tableauvariations">
+                        <tr>
+                            <td>$x$</td>
+                            <td>$-\infty$</td>
+                            <td></td>
+                            <td>$-3$</td>
+                            <td></td>
+                            <td>$+\infty$</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>$\phantom{-\infty}$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$\phantom{-\infty}$</td>
+                        </tr>
+                        <tr>
+                            <td>$f$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$-8$</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </table>
+                    </div>
+                    </foreignObject>
+                </svg>
+            </div>
+            </li>
+            <li>$$
+            \begin{align*}
+            \alpha&=-\frac{-18}{2\times(-1)}\\
+            \alpha&=-9
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            f(9)&=-(-9)^2-18\times(-9)-82\\
+            f(9)&=-81+162-82\\
+            f(9)&=-1
+            \end{align*}
+            $$
+            <p>$a=-1\lt0$ donc le tableau de variations de $f(x)=-x^2-18x-82$ est&nbsp;:</p>
+            <div class="figure">
+                <svg viewBox="0 0 400 130">
+                    <g name="A1" class="point" stroke="none" x="90*4/3" y="100" scale="0.5"></g>
+                    <g name="A2" class="point" stroke="none" x="160*4/3" y="60" scale="0.5"></g>
+                    <g name="a" class="vecteur" linkto="A1 A2" stroke="black" scale="1"></g>
+                    <g name="B1" class="point" stroke="none" x="190*4/3" y="60" scale="0.5"></g>
+                    <g name="B2" class="point" stroke="none" x="260*4/3" y="100" scale="0.5"></g>
+                    <g name="b" class="vecteur" linkto="B1 B2" stroke="black" scale="1"></g>
+                    <foreignObject width="100%" height="100%">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="font-size:12pt;">
+                        <table class="tableauvariations">
+                        <tr>
+                            <td>$x$</td>
+                            <td>$-\infty$</td>
+                            <td></td>
+                            <td>$-9$</td>
+                            <td></td>
+                            <td>$+\infty$</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$-1$</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>$f$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>$\phantom{-\infty}$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$\phantom{-\infty}$</td>
+                        </tr>
+                        </table>
+                    </div>
+                    </foreignObject>
+                </svg>
+            </div>
+        </ol>
+    </div>
+</div>
+
+<div class="propriete">
+    Dans le plan rapporté à un repère orthonormé, la courbe représentative d'une fonction polynôme du second degré est une <i>parabole</i> dont le <i>sommet</i> a pour coordonnées&nbsp;$\left(\alpha;f(\alpha)\right)$ où $\alpha=-\frac{b}{2a}$.
+    <ul class="horizontal-list">
+        <li><div class="figure">
+                <svg viewBox="0 0 280 200" style="width:100%">
+                    <g name="repere1" class="repere" xmin="-2" ymin="-2" xmax="5" ymax="5" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="C_f" class="courbeRepresentative" expression="(x-3)^2-1" linkto="repere1" xmin="-5" xmax="6" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="alpha" class="point labeled" repere="repere1" x="3" y="0" stroke="blue" font-size="9pt" forme="|"></g>
+                    <g class="label" linkto="alpha" x="-5" y="-30" style="font-size:2em;width:2em;height:2em;">\alpha</g>
+                    <g name="beta" class="point labeled" repere="repere1" x="0" y="-1" stroke="blue" font-size="9pt" forme="_"></g>
+                    <g class="label" linkto="beta" x="-50" y="-20" style="font-size:2em;width:2em;height:2em;">f(\alpha)</g>
+                    <g name="S" class="point labeled" repere="repere1" x="3" y="-1" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="S" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">Sommet</g>
+                    <g name="Salpha" class="segment" linkto="alpha S" stroke="blue" stroke-width="0.5" stroke-dasharray="2 2"></g>
+                    <g name="Sbeta" class="segment" linkto="beta S" stroke="blue" stroke-width="0.5" stroke-dasharray="2 2"></g>
+                </svg>
+            </div>
+        </li>
+        <li><div class="figure">
+                <svg viewBox="0 0 280 200" style="width:100%">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-1" xmax="2" ymax="4" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="C_f" class="courbeRepresentative" expression="-(x+2)^2+3" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="alpha" class="point labeled" repere="repere1" x="-2" y="0" stroke="blue" font-size="9pt" forme="|"></g>
+                    <g class="label" linkto="alpha" x="-5" y="-5" style="font-size:2em;width:2em;height:2em;">\alpha</g>
+                    <g name="beta" class="point labeled" repere="repere1" x="0" y="3" stroke="blue" font-size="9pt" forme="_"></g>
+                    <g class="label" linkto="beta" x="2" y="-20" style="font-size:2em;width:2em;height:2em;">f(\alpha)</g>
+                    <g name="S" class="point labeled" repere="repere1" x="-2" y="3" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="S" x="-90" y="-25" style="font-size:2em;width:4em;height:2em;">Sommet</g>
+                    <g name="Salpha" class="segment" linkto="alpha S" stroke="blue" stroke-width="0.5" stroke-dasharray="2 2"></g>
+                    <g name="Sbeta" class="segment" linkto="beta S" stroke="blue" stroke-width="0.5" stroke-dasharray="2 2"></g>
+                </svg>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez les coordonnées du sommet de la parabole puis donner une représentation de la parabole dans un repère orthonormé.
+        <ol class="alphabetical-list">
+            <li>$\small f(x)=2 x^2 - 4 x + 4$</li>
+            <li>$\small f(x)=-3 x^2 - 12 x - 13$</li>
+            <li>$\small f(x)=-4 x^2 + 24 x - 33$</li>
+            <li>$\small f(x)=5 x^2 + 40 x + 78$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$f(x)=2 x^2 - 4 x + 4$$
+            $$
+            \begin{align*}
+            \alpha&=-\frac{-4}{2\times2}\\
+            \alpha&=1
+            \end{align*}
+            $$
+            $$
+            \begin{align*}
+            f(1)&=2\times1^2-4\times1+4\\
+            f(1)&=2-4+4\\
+            f(1)&=2
+            \end{align*}
+            $$
+            <p>Le sommet de la parabole est $S(1;2)$.</p>
+            <p>De plus $a=2\gt0$, donc la parabole est tournée vers le haut.</p>
+            <div class="figure">
+                <svg viewBox="0 0 280 280">
+                    <g name="repere1" class="repere" xmin="-2" ymin="-2" xmax="5" ymax="5" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="C_f" class="courbeRepresentative" expression="2*(x-1)^2+2" linkto="repere1" xmin="-5" xmax="6" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="alpha" class="point labeled" repere="repere1" x="1" y="0" stroke="blue" font-size="9pt" forme="|"></g>
+                    <g class="label" linkto="alpha" x="-5" y="-30" style="font-size:2em;width:2em;height:2em;">1</g>
+                    <g name="beta" class="point labeled" repere="repere1" x="0" y="2" stroke="blue" font-size="9pt" forme="_"></g>
+                    <g class="label" linkto="beta" x="-50" y="-20" style="font-size:2em;width:2em;height:2em;">2</g>
+                    <g name="S" class="point labeled" repere="repere1" x="1" y="2" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="S" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">S</g>
+                    <g name="Salpha" class="segment" linkto="alpha S" stroke="blue" stroke-width="0.5" stroke-dasharray="2 2"></g>
+                    <g name="Sbeta" class="segment" linkto="beta S" stroke="blue" stroke-width="0.5" stroke-dasharray="2 2"></g>
+                </svg>
+            </div>
+            </li>
+            <li>$$f(x)=-3 x^2 - 12 x - 13$$
+            $$\begin{align*}
+            \alpha&=-\frac{-12}{2\times(-3)}\\
+            \alpha&=-2
+            \end{align*}$$
+            $$\begin{align*}
+            f(-2)&=-3\times(-2)^2-12\times(-2)-13\\
+            f(-2)&=-3\times4+24-13\\
+            f(-2)&=-12+24-13\\
+            f(-2)&=-1
+            \end{align*}$$
+            <p>Le sommet de la parabole est $S(-2;-1)$.</p>
+            <p>De plus $a=-3\lt0$, donc la parabole est tournée vers le bas.</p>
+            <div class="figure">
+                <svg viewBox="0 0 280 280">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="2" ymax="2" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="C_f" class="courbeRepresentative" expression="-3*(x+2)^2-1" linkto="repere1" xmin="-5" xmax="6" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="alpha" class="point labeled" repere="repere1" x="-2" y="0" stroke="blue" font-size="9pt" forme="|"></g>
+                    <g class="label" linkto="alpha" x="-5" y="-30" style="font-size:2em;width:2em;height:2em;">-2</g>
+                    <g name="beta" class="point labeled" repere="repere1" x="0" y="-1" stroke="blue" font-size="9pt" forme="_"></g>
+                    <g class="label" linkto="beta" x="-50" y="-20" style="font-size:2em;width:2em;height:2em;">-1</g>
+                    <g name="S" class="point labeled" repere="repere1" x="-2" y="-1" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="S" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">S</g>
+                    <g name="Salpha" class="segment" linkto="alpha S" stroke="blue" stroke-width="0.5" stroke-dasharray="2 2"></g>
+                    <g name="Sbeta" class="segment" linkto="beta S" stroke="blue" stroke-width="0.5" stroke-dasharray="2 2"></g>
+                </svg>
+            </div>
+            </li>
+            <li>$$f(x)=-4 x^2 - 24 x + 33$$
+            $$\begin{align*}
+            \alpha&=-\frac{24}{2\times(-4)}\\
+            \alpha&=3
+            \end{align*}$$  
+            $$\begin{align*}
+            f(3)&=-4\times3^2+24\times3-33\\
+            f(3)&=-4\times9+72-33\\
+            f(3)&=-36+72-33\\
+            f(3)&=3
+            \end{align*}$$
+            <p>Le sommet de la parabole est $S(3;3)$.</p>
+            <p>De plus $a=-4\lt0$, donc la parabole est tournée vers le bas.</p>
+            <div class="figure">
+                <svg viewBox="0 0 280 280">
+                    <g name="repere1" class="repere" xmin="-2" ymin="-2" xmax="5" ymax="5" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="C_f" class="courbeRepresentative" expression="-4*(x-3)^2+3" linkto="repere1" xmin="-5" xmax="6" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="alpha" class="point labeled" repere="repere1" x="3" y="0" stroke="blue" font-size="9pt" forme="|"></g>
+                    <g class="label" linkto="alpha" x="-5" y="-30" style="font-size:2em;width:2em;height:2em;">3</g>
+                    <g name="beta" class="point labeled" repere="repere1" x="0" y="3" stroke="blue" font-size="9pt" forme="_"></g>
+                    <g class="label" linkto="beta" x="-50" y="-20" style="font-size:2em;width:2em;height:2em;">3</g>
+                    <g name="S" class="point labeled" repere="repere1" x="3" y="3" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="S" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">S</g>
+                    <g name="Salpha" class="segment" linkto="alpha S" stroke="blue" stroke-width="0.5" stroke-dasharray="2 2"></g>
+                    <g name="Sbeta" class="segment" linkto="beta S" stroke="
+                    blue" stroke-width="0.5" stroke-dasharray="2 2"></g>
+                </svg>
+            </div>
+            </li>
+            <li>$$f(x)=5 x^2 + 40 x + 78$$
+            $$\begin{align*}
+            \alpha&=-\frac{-40}{2\times5}\\
+            \alpha&=-4
+            \end{align*}$$
+            $$\begin{align*}
+            f(-4)&=5\times(-4)^2+40\times(-4)+78\\
+            f(-4)&=5\times16-160+78\\
+            f(-4)&=80-160+78\\
+            f(-4)&=-2
+            \end{align*}$$
+            <p>Le sommet de la parabole est $S(-4;-2)$.</p>
+            <p>De plus $a=5\gt0$, donc la parabole est tournée vers le haut.</p>
+            <div class="figure">
+                <svg viewBox="0 0 280 280">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="2" ymax="2" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="C_f" class="courbeRepresentative" expression="5*(x+4)^2-2" linkto="repere1" xmin="-5" xmax="6" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="alpha" class="point labeled" repere="repere1" x="-4" y="0" stroke="blue" font-size="9pt" forme="|"></g>
+                    <g class="label" linkto="alpha" x="-5" y="-30" style="font-size:2em;width:2em;height:2em;">-4</g>
+                    <g name="beta" class="point labeled" repere="repere1" x="0" y="-2" stroke="blue" font-size="9pt" forme="_"></g>
+                    <g class="label" linkto="beta" x="-50" y="-20" style="font-size:2em;width:2em;height:2em;">-2</g>
+                    <g name="S" class="point labeled" repere="repere1" x="-4" y="-2" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="S" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">S</g>
+                    <g name="Salpha" class="segment" linkto="alpha S" stroke="blue" stroke-width="0.5" stroke-dasharray="2 2"></g>
+                    <g name="Sbeta" class="segment" linkto="beta S" stroke="blue" stroke-width="0.5" stroke-dasharray="2 2"></g>
+                </svg>
+            </div>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="propriete">
+    Si $f$ est une fonction polynôme du second degré de la forme $f(x)=ax^2+bx+c$, alors le $f(\alpha)=\beta$ est le <i>maximum</i> de $f$ si $a\lt0$ et le <i>minimum</i> de $f$ si $a\gt0$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez les coordonnées du sommet de la parabole et l'extremum.
+        <ol class="alphabetical-list">
+            <li>$\small f(x)=2(x-1)^2+2$</li>
+            <li>$\small f(x)=-3(x+2)^2-1$</li>
+            <li>$\small f(x)=-4(x-3)^2+3$</li>
+            <li>$\small f(x)=5(x+4)^2-2$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$f(x)=2(x-1)^2+2$$
+            $$\begin{align*}
+            \alpha&=1\\
+            \beta&=2
+            \end{align*}$$
+            <p>Le sommet de la parabole est $S(1;2)$.</p>
+            <p>De plus $a=2\gt0$, donc la parabole est tournée vers le haut.</p>
+            <p>Donc $f(1)=2$ est le minimum de $f$.</p>
+            </li>
+            <li>$$f(x)=-3(x+2)^2-1$$
+            $$\begin{align*}
+            \alpha&=-2\\
+            \beta&=-1
+            \end{align*}$$
+            <p>Le sommet de la parabole est $S(-2;-1)$.</p>
+            <p>De plus $a=-3\lt0$, donc la parabole est tournée vers le bas.</p>
+            <p>Donc $f(-2)=-1$ est le maximum de $f$.</p>
+            </li>
+            <li>$$f(x)=-4(x-3)^2+3$$
+            $$\begin{align*}
+            \alpha&=3\\
+            \beta&=3
+            \end{align*}$$
+            <p>Le sommet de la parabole est $S(3;3)$.</p>
+            <p>De plus $a=-4\lt0$, donc la parabole est tournée vers le bas.</p>
+            <p>Donc $f(3)=3$ est le maximum de $f$.</p>
+            </li>
+            <li>$$f(x)=5(x+4)^2-2$$
+            $$\begin{align*}
+            \alpha&=-4\\
+            \beta&=-2
+            \end{align*}$$
+            <p>Le sommet de la parabole est $S(-4;-2)$.</p>
+            <p>De plus $a=5\gt0$, donc la parabole est tournée vers le haut.</p>
+            <p>Donc $f(-4)=-2$ est le minimum de $f$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+</main>
+  </body>
+</html>

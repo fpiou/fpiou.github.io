@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Arithmetique.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main>
+
+<div class="exercice">
+    <div class="enonce">
+        Expliquez la contradiction dans la démonstration suivante puis conclure&nbsp;:<br>
+        &laquo;&nbsp;Supposons qu'il existe deux entiers naturels $a$ et $n$ tels que $\frac{1}{3}=\frac{a}{10^n}$.
+        En multipliant par $3\times 10^n$ on obtient $3\times 10^n\times\frac{1}{3}=3\times10^n\times\frac{a}{10^n}$ d'où $10^n=3a$.
+        Donc $10^n$ est un multiple de $3$.&nbsp;&raquo;
+    </div>
+    <div class="solution">
+        <p>La contradiction vient du fait que $10^n$ ne peut pas être un multiple de $3$ car la somme de ses chiffres est $1$ qui n'est pas un multiple de $3$.</p>
+        <p>Donc $\frac{1}{3}$ ne peut pas s'écrire sous la forme d'une fraction décimale.</p>
+    </div>
+</div>
+
+
+<div class="exercice">
+    <div class="enonce">
+        L'affirmation suivante est-elle vraie ou fausse ? Justifiez votre réponse.
+        <li>&laquo;&nbsp;Si $n$ est un entier non-nul, alors $6n+1$ est un nombre premier.&nbsp;&raquo;</li>
+    </div>
+    <div class="solution">
+        <p>$$n=1$$ alors $6n+1=7$ qui est un nombre premier.</p>
+        <p>$$n=2$$ alors $6n+1=13$ qui est un nombre premier.</p>
+        <p>$$n=3$$ alors $6n+1=19$ qui est un nombre premier.</p>
+        <p>$$n=4$$ alors $6n+1=25$ qui n'est pas un nombre premier.</p>
+        <p>Donc l'affirmation est fausse.</p></li>
+    </div>
+</div>
+
+
+
+
+
+<div class="exercice">
+    <div class="enonce">
+        Expliquez la contradiction dans la démonstration suivante puis conclure&nbsp;:<br>
+        &laquo;&nbsp;Supposons qu'il existe deux entiers $a$ et $b$ tels que $\frac{a}{b}$ est irréductible et $\sqrt{2} = \frac{a}{b}$.
+        En élevant au carré on en déduit que $2 = \frac{a^2}{b^2}$ d'où $a^2 = 2b^2$.
+        Ce qui signifie que $a^2$ est pair. Or si $a$ est impair, $a^2$ est impair. Donc $a$ est pair.
+        Donc il existe un entier $k$ tel que $a = 2k$.
+        En remplaçant dans l'équation $a^2 = 2b^2$ on obtient $4k^2 = 2b^2$ d'où $2k^2 = b^2$.
+        Donc $b^2$ est pair et donc $b$ est pair.&nbsp;&raquo;
+    </div>
+    <div class="solution">
+        <p>La contradiction vient du fait que l'on a supposé que $\frac{a}{b}$ est irréductible. Or on a montré que $a$ et $b$ sont pairs. Donc $\frac{a}{b}$ n'est pas irréductible.</p>
+        <p>Donc $\sqrt{2}$ ne peut pas s'écrire sous la forme d'une fraction irréductible.</p>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Trouvez trois contre-exemples à l'affirmation suivante&nbsp;:<br>
+        &laquo;&nbsp;Si $n$ est un entier, alors $\frac{2n+1}{n+2}$ est irréductible.&nbsp;&raquo;
+    </div>
+    <div class="solution">
+        <ul style="list-style-type: none;">
+            <li><p>$$n=1$$ alors $$\frac{2n+1}{n+2}=\frac{3}{3}=1$$</p></li>
+            <li><p>$$n=4$$ alors $$\frac{2n+1}{n+2}=\frac{9}{6}=\frac{3}{2}$$</p></li>
+            <li><p>$$n=7$$ alors $$\frac{2n+1}{n+2}=\frac{15}{9}=\frac{5}{3}$$</p></li>
+        </ul>
+    </div>
+</div>
+
+<div class="propriete">
+    Soient $a$ et $b$ deux entiers naturels avec $b\neq0$. 
+    <ul style="padding-left: 1em;">
+        <li>Il existe deux entiers naturels $q$ et $r$ tels que $a = bq + r$ avec $0\leqslant r \lt b$. On dit que $q$ et $r$ sont respectivement le quotient et le reste de la division euclidienne de $a$ par $b$.
+        <li>$a$ est un multiple de $b$ si et seulement si le reste de la division euclidienne de $a$ par $b$ est nul.
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On se propose de démontrer que quelque soit le nombre entier naturel $n$, $\frac{n(n+1)(2n+1)}{6}$ est un entier.
+        <ol class="alphabetical-list">
+            <li>Montrez que $n(n+1)$ est un multiple de $2$.</li>
+            <li>Quels sont les restes possibles de la division euclidienne d'un entier par $3$&nbsp;?</li>
+            <li>En déduire que si $n$ et $n+1$ ne sont pas des multiples de trois, alors $n=3k+1$ pour un certain $k$ entier.</li>
+            <li>En déduire que si $n$ et $n+1$ ne sont pas des multiples de trois, alors $2n+1$ est un multiple de $3$.</li>
+            <li>Conclure.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Soit $n$ un entier.</p>
+            <p>Si $n$ est pair, alors $n$ est un multiple de $2$.</p>
+            <p>Si $n$ est impair, alors $n+1$ est pair et donc $n(n+1)$ est un multiple de $2$.</p></li>
+            <li><p>Les restes possibles de la division euclidienne d'un entier par $3$ sont $0$, $1$ et $2$.</p></li>
+            <li><p>Supposons que le reste de la division euclidienne de $n$ par $3$ est $2$.</p>
+            <p>Alors $n=3k+2$ pour un certain entier $k$.</p>
+            <p>Donc $n+1=3k+3=3(k+1)$ est un multiple de $3$.</p>
+            <p>Par conséquent si $n$ et $n+1$ ne sont pas des multiples de $3$, le reste de la division euclidienne de $n$ par $3$ est forcément $1$.</p>
+            <p>Donc $n=3k+1$ pour un certain entier $k$.</p>
+            </li>
+            <li><p>Supposons que le reste de la division euclidienne de $n$ par $3$ est $1$.</p>
+            <p>Alors $n=3k+1$ pour un certain entier $k$.</p>
+            <p>Donc $2n+1=2(3k+1)+1=6k+2+1=6k+3=3(2k+1)$ est un multiple de $3$.</p>
+            <p>Donc $n$ et $n+1$ ne sont pas des multiples de $3$.</p></li>
+            <li><p>Donc quelque soit le nombre entier naturel $n$, $\frac{n(n+1)(2n+1)}{6}$ est un entier.</p></li>
+        </ol>
+    </div>
+</div>
+</main>
+  </body>
+</html>

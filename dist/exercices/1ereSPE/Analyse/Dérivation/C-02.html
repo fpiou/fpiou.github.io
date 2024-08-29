@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>C-02.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Dérivation</div> <div><button class="precedent noprint" onclick="precedent()">&lt;</button>C-02<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div class="propriete">
+    L'équation de la tangente à la courbe représentative de $f$ au point d'abscisse $a$ est&nbsp;:
+    <div style="text-align:center;">$y=f'(a)(x-a)+f(a)$</div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Dans chaque cas, déterminez l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $a$.
+        <ol class="alphabetical-list">
+            <li>$f(2)=1$ et $f'(2)=3$ pour $a=2$.</li>
+            <li>$f(-3)=2$ et $f'(-3)=4$ pour $a=-3$.</li>
+            <li>$f(6)=5$ et $f'(6)=-1$ pour $a=6$.</li>
+            <li>$f(\frac{1}{2})=3$ et $f'(\frac{1}{2})=2$ pour $a=\frac{1}{2}$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$y=3(x-2)+1$$
+            <p>Donc l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $2$ est $$y=3x-5$$</p></li>
+            <li>$$y=4(x+3)+2$$
+            <p>Donc l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $-3$ est $$y=4x+14$$</p></li>
+            <li>$$y=-1(x-6)+5$$
+            <p>Donc l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $6$ est $$y=-x+11$$</p></li>
+            <li>$$y=2\left(x-\frac{1}{2}\right)+3$$
+            <p>Donc l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $\frac{1}{2}$ est $$y=2x+2$$</p></li>
+        </ol>
+    </div>
+</div>
+<h1>Fonction dérivée</h1>
+<div class="definition">
+    Dire que $f$ est dérivable sur $I$ signifie que $f'(x)$ existe pour tout $x$ de $I$. La fonction qui à $x$ associe $f'(x)$ est appelée <i>fonction dérivée</i> de $f$ et est notée $f'$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $f$ la fonction qui à $x$ associe $x^2+3x-7$. On admettra que $f'(x)=2x+3$.
+        Déterminez l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse&nbsp;:
+        <ol class="alphabetical-list horizontal-list">
+            <li>$2$</li>
+            <li>$-1$</li>
+            <li>$3$</li>
+            <li>$-4$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+                \begin{align*}
+                f(2)&=2^2+3\times2-7\\
+                f(2)&=4+6-7\\
+                f(2)&=3
+                \end{align*}
+                $$
+                $$
+                \begin{align*}
+                f'(2)&=2\times2+3\\
+                f'(2)&=4+3\\
+                f'(2)&=7
+                \end{align*}
+                $$
+                <p>Une équation de la tangente à la courbe représentative de $f$ au point d'abscisse $2$ est $y=7(x-2)+3$.</p>
+                <p>Donc l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $2$ est $y=7x-11$.</p>
+            </li>
+            <li>
+                $$
+                \begin{align*}
+                f(-1)&=(-1)^2+3\times(-1)-7\\
+                f(-1)&=1-3-7\\
+                f(-1)&=-9
+                \end{align*}
+                $$
+                $$
+                \begin{align*}
+                f'(-1)&=2\times(-1)+3\\
+                f'(-1)&=-2+3\\
+                f'(-1)&=1
+                \end{align*}
+                $$
+                <p>Une équation de la tangente à la courbe représentative de $f$ au point d'abscisse $-1$ est $$y=1(x+1)-9$$</p>
+                <p>Donc l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $-1$ est $$y=x-10$$</p>
+            </li>
+            <li>
+                $$
+                \begin{align*}
+                f(3)&=3^2+3\times3-7\\
+                f(3)&=9+9-7\\
+                f(3)&=11
+                \end{align*}
+                $$
+                $$
+                \begin{align*}
+                f'(3)&=2\times3+3\\
+                f'(3)&=6+3\\
+                f'(3)&=9
+                \end{align*}
+                $$
+                <p>Une équation de la tangente à la courbe représentative de $f$ au point d'abscisse $3$ est $$y=9(x-3)+11$$</p>
+                <p>Donc l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $3$ est $$y=9x-16$$</p>
+            </li>
+            <li>
+                $$
+                \begin{align*}
+                f(-4)&=(-4)^2+3\times(-4)-7\\
+                f(-4)&=16-12-7\\
+                f(-4)&=-3
+                \end{align*}
+                $$
+                $$
+                \begin{align*}
+                f'(-4)&=2\times(-4)+3\\
+                f'(-4)&=-8+3\\
+                f'(-4)&=-5
+                \end{align*}
+                $$
+                <p>Une équation de la tangente à la courbe représentative de $f$ au point d'abscisse $-4$ est $$y=-5(x+4)-3$$</p>
+                <p>Donc l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $-4$ est $$y=-5x+17$$</p>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="propriete">
+    Les fonctions suivantes sont dérivables sur $\mathbb{R}$.<br>
+    <style>
+        .deriveesusuelles {
+            border-collapse: collapse;
+            border: 1px solid black;
+            text-align: center;
+        }
+        .deriveesusuelles td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+    <div style="display: inline-block; vertical-align: top;margin-right: 5%;">
+        <table class="deriveesusuelles">
+            <tr>
+                <td><b>$f(x)$</b></td>
+                <td><b>$f'(x)$</b></td>
+            </tr>
+            <tr>
+                <td>$m$</td>
+                <td>$0$</td>
+            </tr>
+            <tr>
+                <td>$x$</td>
+                <td>$1$</td>
+            </tr>
+        </table>
+    </div>
+    <div style="display: inline-block; vertical-align: top;margin-right: 5%;">
+        <table class="deriveesusuelles">
+            <tr>
+                <td><b>$f(x)$</b></td>
+                <td><b>$f'(x)$</b></td>
+            </tr>
+            <tr>
+                <td>$mx$</td>
+                <td>$m$</td>
+            </tr>
+            <tr>
+                <td>$mx+p$</td>
+                <td>$m$</td>
+            </tr>
+        </table>
+    </div>
+    <div style="display: inline-block; vertical-align: top;">
+        <table class="deriveesusuelles">
+            <tr>
+                <td><b>$f(x)$</b></td>
+                <td><b>$f'(x)$</b></td>
+            </tr>
+            <tr>
+                <td>$x^2$</td>
+                <td>$2x$</td>
+            </tr>
+            <tr>
+                <td>$x^3$</td>
+                <td>$3x^2$</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez les nombres dérivés des fonctions suivantes en&nbsp;$3$ et en&nbsp;$-2$.
+        <ol class="horizontal-list">
+            <li>$f_1(x)=3$</li>
+            <li>$f_2(x)=2x+1$</li>
+            <li>$f_3(x)=x^2$</li>
+            <li>$f_4(x)=x^3$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul style="padding-left: 1em;">
+            <li>$$f_1'(x)=0$$
+            <p>Donc $$f_1'(3)=0$$ et $$f_1'(-2)=0$$</p></li>
+            <li>$$f_2'(x)=2$$
+            <p>Donc $$f_2'(3)=2$$ et $$f_2'(-2)=2$$</p></li>
+            <li>$$f_3'(x)=2x$$
+            <p>Donc $$f_3'(3)=2\times3=6$$ et $$f_3'(-2)=2\times(-2)=-4$$</p></li>
+            <li>$$f_4'(x)=3x^2$$
+            <p>Donc $$f_4'(3)=3\times3^2=27$$ et $$f_4'(-2)=3\times(-2)^2=12$$</p></li>
+        </ul>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère la fonction $f$ définie par $f(x)=x^2$.
+        Déterminez l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $a$.
+        <ul class="horizontal-list">
+            <li>$a=5$</li>
+            <li>$a=-2$</li>
+            <li>$a=3$</li>
+            <li>$a=-4$</li>
+        </ul>
+    </div>
+    <div class="solution">
+        <ul style="padding-left: 1em;">
+            <li>$$f'(5)=2\times5=10$$
+            $$f(5)=5^2=25$$
+            <p>Une équation de la tangente à la courbe représentative de $f$ au point d'abscisse $5$ est $$y=10(x-5)+25$$</p>
+            <p>Donc l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $5$ est $$y=10x-25$$</p></li>
+            <li>$$f'(-2)=2\times(-2)=-4$$
+            $$f(-2)=(-2)^2=4$$
+            <p>Une équation de la tangente à la courbe représentative de $f$ au point d'abscisse $-2$ est $$y=-4(x+2)+4$$</p>
+            <p>Donc l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $-2$ est $$y=-4x+4$$</p></li>
+            <li>$$f'(3)=2\times3=6$$
+            $$f(3)=3^2=9$$
+            <p>Une équation de la tangente à la courbe représentative de $f$ au point d'abscisse $3$ est $$y=6(x-3)+9$$</p>
+            <p>Donc l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $3$ est $$y=6x-9$$</p></li>
+            <li>$$f'(-4)=2\times(-4)=-8$$
+            $$f(-4)=(-4)^2=16$$
+            <p>Une équation de la tangente à la courbe représentative de $f$ au point d'abscisse $-4$ est $$y=-8(x+4)+16$$</p>
+            <p>Donc l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $-4$ est $$y=-8x+48$$</p></li>
+        </ul>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère la fonction $f$ définie par $f(x)=x^3$.
+        Déterminez l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $a$.
+        <ul class="horizontal-list">
+            <li>$a=5$</li>
+            <li>$a=-2$</li>
+            <li>$a=3$</li>
+            <li>$a=-4$</li>
+        </ul>
+    </div>
+    <div class="solution">
+        <ul style="padding-left: 1em;">
+            <li>$$f'(5)=3\times5^2=75$$
+            $$f(5)=5^3=125$$
+            <p>Une équation de la tangente à la courbe représentative de $f$ au point d'abscisse $5$ est $$y=75(x-5)+125$$</p>
+            <p>Donc l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $5$ est $$y=75x-250$$</p></li>
+            <li>$$f'(-2)=3\times(-2)^2=12$$
+            $$f(-2)=(-2)^3=-8$$
+            <p>Une équation de la tangente à la courbe représentative de $f$ au point d'abscisse $-2$ est $$y=12(x+2)-8$$</p>
+            <p>Donc l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $-2$ est $$y=12x+32$$</p></li>
+            <li>$$f'(3)=3\times3^2=27$$
+            $$f(3)=3^3=27$$
+            <p>Une équation de la tangente à la courbe représentative de $f$ au point d'abscisse $3$ est $$y=27(x-3)+27$$</p>
+            <p>Donc l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $3$ est $$y=27x-54$$</p></li>
+            <li>$$f'(-4)=3\times(-4)^2=48$$
+            $$f(-4)=(-4)^3=-64$$
+            <p>Une équation de la tangente à la courbe représentative de $f$ au point d'abscisse $-4$ est $$y=48(x+4)-64$$</p>
+            <p>Donc l'équation réduite de la tangente à la courbe représentative de $f$ au point d'abscisse $-4$ est $$y=48x+208$$</p></li>
+        </ul>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère la fonction $f$ définie par $f(x)=x^2$.
+        Dans un repère d'unités graphiques $1$ pour $\SI{1}{\cm}$ sur l'axe des abscisses et $2$ pour $\SI{1}{\cm}$ sur l'axe des ordonnées, tracez la tangente à la courbe représentative de $f$ au point d'abscisse&nbsp;:
+        <ul class="horizontal-list">
+            <li>$a=-3$</li>
+            <li>$a=-1$</li>
+            <li>$a=2$</li>
+            <li>$a=4$</li>
+        </ul>
+    </div>
+    <div class="solution">
+        <ul style="">
+            <li><p>La tangente à la courbe représentative de $f$ au point d'abscisse $-3$ passe par le point $(-3,f(-3))=(-3,9)$ et a pour coefficient directeur $f'(-3)=2\times(-3)=-6$.</p></li>
+            <li><p>La tangente à la courbe représentative de $f$ au point d'abscisse $-1$ passe par le point $(-1,f(-1))=(-1,1)$ et a pour coefficient directeur $f'(-1)=2\times(-1)=-2$.</p></li>
+            <li><p>La tangente à la courbe représentative de $f$ au point d'abscisse $2$ passe par le point $(2,f(2))=(2,4)$ et a pour coefficient directeur $f'(2)=2\times2=4$.</p></li>
+            <li><p>La tangente à la courbe représentative de $f$ au point d'abscisse $4$ passe par le point $(4,f(4))=(4,16)$ et a pour coefficient directeur $f'(4)=2\times4=8$.</p></li>
+        </ul>
+        <div class="figure">
+            <svg viewBox="0 0 200 200">
+                <g name="repere1" class="repere" xmin="-5" ymin="-2" xmax="5" ymax="18" xorigine="0" yorigine="0"></g>
+                <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="1" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1" size="5" origine></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="2" stroke="black" stroke-width="1" size="5" origine></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="O" x="-12" y="0">O</g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="I" x="-3" y="0">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="2" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="J" x="-10" y="-7">2</g>
+                <g name="C_f" class="courbeRepresentative" expression="x^2" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="0.5" fill="transparent" pos_label="0.9" stroke-dasharray="2,2"></g>
+                <g name="M_1" class="point" repere="repere1" x="-3" y="9" stroke="blue" font-size="9pt"></g>
+                <g name="T_1" class="courbeRepresentative labeled" expression="2*(-3)*(x-(-3))+(-3)^2" linkto="repere1" xmin="-4" xmax="-2" pas="0.1" stroke="red" stroke-width="1" fill="transparent" pos_label="0.1"></g>
+                <g name="M_2" class="point" repere="repere1" x="-1" y="1" stroke="blue" font-size="9pt"></g>
+                <g name="T_2" class="courbeRepresentative labeled" expression="2*(-1)*(x-(-1))+(-1)^2" linkto="repere1" xmin="-2" xmax="0" pas="0.1" stroke="red" stroke-width="1" fill="transparent" pos_label="0.01"></g>
+                <g name="T_3" class="courbeRepresentative labeled" expression="2*2*(x-2)+2^2" linkto="repere1" xmin="1" xmax="3" pas="0.1" stroke="red" stroke-width="1" fill="transparent" pos_label="0.1"></g>
+                <g name="M_3" class="point" repere="repere1" x="2" y="4" stroke="blue" font-size="9pt"></g>
+                <g name="T_4" class="courbeRepresentative labeled" expression="2*4*(x-4)+4^2" linkto="repere1" xmin="3" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent" pos_label="0.1"></g>
+                <g name="M_4" class="point" repere="repere1" x="4" y="16" stroke="blue" font-size="9pt"></g>
+            </svg>
+        </div>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère la fonction $f$ définie par $f(x)=x^3$.
+        Dans un repère d'unités graphiques $1$ pour $\SI{1}{\cm}$ sur l'axe des abscisses et $10$ pour $\SI{1}{\cm}$ sur l'axe des ordonnées, tracez la tangente à la courbe représentative de $f$ au point d'abscisse&nbsp;:
+        <ul class="horizontal-list">
+            <li>$a=-3$</li>
+            <li>$a=-1$</li>
+            <li>$a=2$</li>
+            <li>$a=4$</li>
+        </ul>
+    </div>
+    <div class="solution">
+        <ul style="">
+            <li><p>La tangente à la courbe représentative de $f$ au point d'abscisse $-3$ passe par le point $(-3,f(-3))=(-3,-27)$ et a pour coefficient directeur $f'(-3)=3\times(-3)^2=27$.</p></li>
+            <li><p>La tangente à la courbe représentative de $f$ au point d'abscisse $-1$ passe par le point $(-1,f(-1))=(-1,-1)$ et a pour coefficient directeur $f'(-1)=3\times(-1)^2=3$.</p></li>
+            <li><p>La tangente à la courbe représentative de $f$ au point d'abscisse $2$ passe par le point $(2,f(2))=(2,8)$ et a pour coefficient directeur $f'(2)=3\times2^2=12$.</p></li>
+            <li><p>La tangente à la courbe représentative de $f$ au point d'abscisse $4$ passe par le point $(4,f(4))=(4,64)$ et a pour coefficient directeur $f'(4)=3\times4^2=48$.</p></li>
+        </ul>
+        <div class="figure">
+            <svg viewBox="0 0 200 200">
+                <g name="repere1" class="repere" xmin="-5" ymin="-30" xmax="5" ymax="70" xorigine="0" yorigine="0"></g>
+                <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="5" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1" size="5" origine></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="5" stroke="black" stroke-width="1" size="5" origine></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="O" x="-12" y="0">O</g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="I" x="-3" y="0">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="10" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="J" x="-15" y="-7">10</g>
+                <g name="C_f" class="courbeRepresentative" expression="x^3" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="0.5" fill="transparent" pos_label="0.9" stroke-dasharray="2,2"></g>
+                <g name="M_1" class="point" repere="repere1" x="-3" y="-27" stroke="blue" font-size="9pt"></g>
+                <g name="T_1" class="courbeRepresentative labeled" expression="3*(-3)^2*(x-(-3))+(-3)^3" linkto="repere1" xmin="-4" xmax="-2" pas="0.1" stroke="red" stroke-width="1" fill="transparent" pos_label="0.6"></g>
+                <g name="M_2" class="point" repere="repere1" x="-1" y="-1" stroke="blue" font-size="9pt"></g>
+                <g name="T_2" class="courbeRepresentative labeled" expression="3*(-1)^2*(x-(-1))+(-1)^3" linkto="repere1" xmin="-2" xmax="0" pas="0.1" stroke="red" stroke-width="1" fill="transparent" pos_label="0.01"></g>
+                <g name="T_3" class="courbeRepresentative labeled" expression="3*2^2*(x-2)+2^3" linkto="repere1" xmin="1" xmax="3" pas="0.1" stroke="red" stroke-width="1" fill="transparent" pos_label="0.1"></g>
+                <g name="M_3" class="point" repere="repere1" x="2" y="8" stroke="blue" font-size="9pt"></g>
+                <g name="T_4" class="courbeRepresentative labeled" expression="3*4^2*(x-4)+4^3" linkto="repere1" xmin="3" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent" pos_label="0.1"></g>
+                <g name="M_4" class="point" repere="repere1" x="4" y="64" stroke="blue" font-size="9pt"></g>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<h1>Fonctions dérivées et opérations</h1>
+<div class="propriete">
+    Soit $u$ une fonction dérivable sur un intervalle $I$ et $k$ un réel, alors&nbsp;:
+    <div style="text-align:center;">$(ku)'=k\times u'$</div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez les fonctions dérivées.
+        <ol class="horizontal-list">
+            <li>$f_1(x)=3x^2$</li>
+            <li>$f_2(x)=2x^3$</li>
+            <li>$f_3(x)=-5x^2$</li>
+            <li>$f_4(x)=-4x^3$</li>
+            <li>$f_5(x)=7x^2$</li>
+            <li>$f_6(x)=-5x^3$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul style="padding-left: 1em;">
+            <li>$$f_1'(x)=3\times 2x=6x$$</li>
+            <li>$$f_2'(x)=3\times 2x^2=6x^2$$</li>
+            <li>$$f_3'(x)=-5\times 2x=-10x$$</li>
+            <li>$$f_4'(x)=-4\times 3x^2=-12x^2$$</li>
+            <li>$$f_5'(x)=7\times 2x=14x$$</li>
+            <li>$$f_6'(x)=-5\times 3x^2=-15x^2$$</li>
+        </ul>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez les fonctions dérivées.
+        <ol class="horizontal-list">
+            <li>$f_1(x)=\frac{1}{4}x^2$</li>
+            <li>$f_2(x)=-\frac{2}{3}x^3$</li>
+            <li>$f_3(x)=\frac{5x^2}{6}$</li>
+            <li>$f_4(x)=-\frac{4x^3}{6}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul style="padding-left: 1em;">
+            <li>$$f_1'(x)=\frac{1}{4}\times 2x=\frac{1}{2}x$$</li>
+            <li>$$f_2'(x)=-\frac{2}{3}\times 3x^2=-2x^2$$</li>
+            <li>$$f_3'(x)=\frac{5}{6}\times 2x=\frac{5}{3}x$$</li>
+            <li>$$f_4'(x)=-\frac{4}{6}\times 3x^2=-2x^2$$</li>
+        </ul>
+    </div>
+</div>
+
+<div class="propriete">
+    Soit $u$ et $v$ deux fonctions dérivables sur un intervalle $I$ et $k$ une constante, alors&nbsp;:
+    <div style="text-align:center;">$(u+v)'=u'+v' \quad \text{et} \quad (u-v)'=u'-v'$</div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez les fonctions dérivées.
+        <ol class="horizontal-list">
+            <li>$f_1(x)=4x^2+2x$</li>
+            <li>$f_2(x)=9x^2-5$</li>
+            <li>$f_3(x)=7x^3+3x^2$</li>
+            <li>$f_4(x)=-6x^3+2x$</li>
+            <li>$f_5(x)=-3x^2+2x$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul style="padding-left: 1em;">
+            <li>$$f_1'(x)=4\times 2x+2=8x+2$$</li>
+            <li>$$f_2'(x)=9\times 2x=18x$$</li>
+            <li>$$f_3'(x)=7\times 3x^2+3\times 2x=21x^2+6x$$</li>
+            <li>$$f_4'(x)=-6\times 3x^2+2=-18x^2+2$$</li>
+            <li>$$f_5'(x)=-3\times 2x+2=-6x+2$$</li>
+        </ul>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez les fonctions dérivées.
+        <ol class="horizontal-list">
+            <li>$f_1(x)=x^3-2x+7$</li>
+            <li>$f_2(x)=-3x^3+4x^2-5$</li>
+            <li>$f_3(x)=2x^3-3x^2+4x$</li>
+            <li>$f_4(x)=-5x^3+3x-4$</li>
+            <li>$f_5(x)=7x^3-2x^2+5$</li>
+            <li>$f_6(x)=-4x^3+4x^2-9x$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul style="padding-left: 1em;">
+            <li>$$f_1'(x)=3x^2-2$$</li>
+            <li>$$f_2'(x)=-3\times 3x^2+4\times 2x=-9x^2+8x$$</li>
+            <li>$$f_3'(x)=2\times 3x^2-3\times 2x+4=6x^2-6x+4$$</li>
+            <li>$$f_4'(x)=-5\times 3x^2+3=-15x^2+3$$</li>
+            <li>$$f_5'(x)=7\times 3x^2-2\times 2x=21x^2-4x$$</li>
+            <li>$$f_6'(x)=-4\times 3x^2+4\times 2x-9=-12x^2+8x-9$$</li>
+        </ul>
+    </div>
+</div>
+
+<h1>Application de la dérivation</h1>
+<div class="propriete">
+    Soit $f$ une fonction dérivable sur un intervalle $I$. Si sur $I$, $f$ est&nbsp;:
+    <ul style="padding-left: 1em;">
+        <li>croissante, alors $f'$ est positive sur $I$&nbsp;;</li>
+        <li>décroissante, alors $f'$ est négative sur $I$.</li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Dans chaque cas, recopiez et complétez le signe de la fonction dérivée&nbsp;$f'$ de la fonction&nbsp;$f$&nbsp;; puis écrire les valeurs connues de&nbsp;$f$.
+        <ol class="alphabetical-list">
+            <li><div class="figure">
+                <svg viewBox="0 0 400 150" style="width:80%;">
+                    <g name="A1" class="point" stroke="none" x="70*4/3" y="80" scale="0.5"></g>
+                    <g name="A2" class="point" stroke="none" x="120*4/3" y="120" scale="0.5"></g>
+                    <g name="a" class="vecteur" linkto="A1 A2" stroke="black" scale="1"></g>
+                    <g name="B1" class="point" stroke="none" x="140*4/3" y="120" scale="0.5"></g>
+                    <g name="B2" class="point" stroke="none" x="190*4/3" y="80" scale="0.5"></g>
+                    <g name="b" class="vecteur" linkto="B1 B2" stroke="black" scale="1"></g>
+                    <g name="C1" class="point" stroke="none" x="220*4/3" y="80" scale="0.5"></g>
+                    <g name="C2" class="point" stroke="none" x="270*4/3" y="120" scale="0.5"></g>
+                    <g name="c" class="vecteur" linkto="C1 C2" stroke="black" scale="1"></g>
+                    <foreignObject width="100%" height="100%">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="font-size:12pt;">
+                        <table class="tableauvariations2">
+                        <tr>
+                            <td>$x$</td>
+                            <td>$-4$</td>
+                            <td></td>
+                            <td>$-1$</td>
+                            <td></td>
+                            <td>$2$</td>
+                            <td></td>
+                            <td>$4{,}5$</td>
+                        </tr>
+                        <tr>
+                            <td>$f'(x)$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>$-5$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$12$</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>$f$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$-15$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$7$</td>
+                        </tr>
+                        </table>
+                    </div>
+                    </foreignObject>
+                </svg>
+            </div></li>
+        </ol>
+        <ol class="alphabetical-list horizontal-list col-2c" start="2">
+            <li><div class="figure">
+                <svg viewBox="0 0 400 150" style="width:150%;">
+                    <g name="A1" class="point" stroke="none" x="70*4/3" y="120" scale="0.5"></g>
+                    <g name="A2" class="point" stroke="none" x="120*4/3" y="80" scale="0.5"></g>
+                    <g name="a" class="vecteur" linkto="A1 A2" stroke="black" scale="1"></g>
+                    <g name="B1" class="point" stroke="none" x="140*4/3" y="80" scale="0.5"></g>
+                    <g name="B2" class="point" stroke="none" x="190*4/3" y="120" scale="0.5"></g>
+                    <g name="b" class="vecteur" linkto="B1 B2" stroke="black" scale="1"></g>
+                    <g name="C1" class="point" stroke="none" x="220*4/3" y="120" scale="0.5"></g>
+                    <g name="C2" class="point" stroke="none" x="270*4/3" y="80" scale="0.5"></g>
+                    <g name="c" class="vecteur" linkto="C1 C2" stroke="black" scale="1"></g>
+                    <foreignObject width="100%" height="100%">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="font-size:12pt;">
+                        <table class="tableauvariations2">
+                        <tr>
+                            <td>$x$</td>
+                            <td>$-4$</td>
+                            <td></td>
+                            <td>$-2$</td>
+                            <td></td>
+                            <td>$1$</td>
+                            <td></td>
+                            <td>$4{,}5$</td>
+                        </tr>
+                        <tr>
+                            <td>$f'(x)$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$-5$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$2$</td>
+                        </tr>
+                        <tr>
+                            <td>$f$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>$-12$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$-7$</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </table>
+                    </div>
+                    </foreignObject>
+                </svg>
+            </div></li>
+            <li><div class="figure">
+                <svg viewBox="0 0 400 150" style="width:150%;">
+                    <g name="A1" class="point" stroke="none" x="70*4/3" y="80" scale="0.5"></g>
+                    <g name="A2" class="point" stroke="none" x="120*4/3" y="100" scale="0.5"></g>
+                    <g name="a" class="vecteur" linkto="A1 A2" stroke="black" scale="1"></g>
+                    <g name="B1" class="point" stroke="none" x="140*4/3" y="100" scale="0.5"></g>
+                    <g name="B2" class="point" stroke="none" x="190*4/3" y="120" scale="0.5"></g>
+                    <g name="b" class="vecteur" linkto="B1 B2" stroke="black" scale="1"></g>
+                    <g name="C1" class="point" stroke="none" x="220*4/3" y="120" scale="0.5"></g>
+                    <g name="C2" class="point" stroke="none" x="270*4/3" y="80" scale="0.5"></g>
+                    <g name="c" class="vecteur" linkto="C1 C2" stroke="black" scale="1"></g>
+                    <foreignObject width="100%" height="100%">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="font-size:12pt;">
+                        <table class="tableauvariations2">
+                        <tr>
+                            <td>$x$</td>
+                            <td>$-4$</td>
+                            <td></td>
+                            <td>$-1$</td>
+                            <td></td>
+                            <td>$2$</td>
+                            <td></td>
+                            <td>$4{,}5$</td>
+                        </tr>
+                        <tr>
+                            <td>$f'(x)$</td>
+                            <td></td>
+                            <td></td>
+                            <td>$0$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>$10$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$15$</td>
+                        </tr>
+                        <tr>
+                            <td>$f$</td>
+                            <td></td>
+                            <td></td>
+                            <td>$2$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$-7$</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </table>
+                    </div>
+                    </foreignObject>
+                </svg>
+            </div></li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><div class="figure">
+                <svg viewBox="0 0 400 150">
+                    <g name="A1" class="point" stroke="none" x="70*4/3" y="80" scale="0.5"></g>
+                    <g name="A2" class="point" stroke="none" x="120*4/3" y="120" scale="0.5"></g>
+                    <g name="a" class="vecteur" linkto="A1 A2" stroke="black" scale="1"></g>
+                    <g name="B1" class="point" stroke="none" x="140*4/3" y="120" scale="0.5"></g>
+                    <g name="B2" class="point" stroke="none" x="190*4/3" y="80" scale="0.5"></g>
+                    <g name="b" class="vecteur" linkto="B1 B2" stroke="black" scale="1"></g>
+                    <g name="C1" class="point" stroke="none" x="220*4/3" y="80" scale="0.5"></g>
+                    <g name="C2" class="point" stroke="none" x="270*4/3" y="120" scale="0.5"></g>
+                    <g name="c" class="vecteur" linkto="C1 C2" stroke="black" scale="1"></g>
+                    <foreignObject width="100%" height="100%">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="font-size:12pt;">
+                        <table class="tableauvariations2">
+                        <tr>
+                            <td>$x$</td>
+                            <td>$-4$</td>
+                            <td></td>
+                            <td>$-1$</td>
+                            <td></td>
+                            <td>$2$</td>
+                            <td></td>
+                            <td>$4{,}5$</td>
+                        </tr>
+                        <tr>
+                            <td>$f'(x)$</td>
+                            <td></td>
+                            <td>$-$</td>
+                            <td>$0$</td>
+                            <td>$+$</td>
+                            <td>$0$</td>
+                            <td>$-$</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>$-5$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$12$</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>$f$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$-15$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$7$</td>
+                        </tr>
+                        </table>
+                    </div>
+                    </foreignObject>
+                </svg>
+            </div></li>
+            <li><div class="figure">
+                <svg viewBox="0 0 400 150">
+                    <g name="A1" class="point" stroke="none" x="70*4/3" y="120" scale="0.5"></g>
+                    <g name="A2" class="point" stroke="none" x="120*4/3" y="80" scale="0.5"></g>
+                    <g name="a" class="vecteur" linkto="A1 A2" stroke="black" scale="1"></g>
+                    <g name="B1" class="point" stroke="none" x="140*4/3" y="80" scale="0.5"></g>
+                    <g name="B2" class="point" stroke="none" x="190*4/3" y="120" scale="0.5"></g>
+                    <g name="b" class="vecteur" linkto="B1 B2" stroke="black" scale="1"></g>
+                    <g name="C1" class="point" stroke="none" x="220*4/3" y="120" scale="0.5"></g>
+                    <g name="C2" class="point" stroke="none" x="270*4/3" y="80" scale="0.5"></g>
+                    <g name="c" class="vecteur" linkto="C1 C2" stroke="black" scale="1"></g>
+                    <foreignObject width="100%" height="100%">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="font-size:12pt;">
+                        <table class="tableauvariations2">
+                        <tr>
+                            <td>$x$</td>
+                            <td>$-4$</td>
+                            <td></td>
+                            <td>$-2$</td>
+                            <td></td>
+                            <td>$1$</td>
+                            <td></td>
+                            <td>$4{,}5$</td>
+                        </tr>
+                        <tr>
+                            <td>$f'(x)$</td>
+                            <td></td>
+                            <td>$+$</td>
+                            <td>$0$</td>
+                            <td>$-$</td>
+                            <td>$0$</td>
+                            <td>$+$</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$-5$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$2$</td>
+                        </tr>
+                        <tr>
+                            <td>$f$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>$-12$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$-7$</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </table>
+                    </div>
+                    </foreignObject>
+                </svg>
+            </div></li>
+            <li><div class="figure">
+                <svg viewBox="0 0 400 150">
+                    <g name="A1" class="point" stroke="none" x="70*4/3" y="80" scale="0.5"></g>
+                    <g name="A2" class="point" stroke="none" x="120*4/3" y="100" scale="0.5"></g>
+                    <g name="a" class="vecteur" linkto="A1 A2" stroke="black" scale="1"></g>
+                    <g name="B1" class="point" stroke="none" x="140*4/3" y="100" scale="0.5"></g>
+                    <g name="B2" class="point" stroke="none" x="190*4/3" y="120" scale="0.5"></g>
+                    <g name="b" class="vecteur" linkto="B1 B2" stroke="black" scale="1"></g>
+                    <g name="C1" class="point" stroke="none" x="220*4/3" y="120" scale="0.5"></g>
+                    <g name="C2" class="point" stroke="none" x="270*4/3" y="80" scale="0.5"></g>
+                    <g name="c" class="vecteur" linkto="C1 C2" stroke="black" scale="1"></g>
+                    <foreignObject width="100%" height="100%">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="font-size:12pt;">
+                        <table class="tableauvariations2">
+                        <tr>
+                            <td>$x$</td>
+                            <td>$-4$</td>
+                            <td></td>
+                            <td>$-1$</td>
+                            <td></td>
+                            <td>$2$</td>
+                            <td></td>
+                            <td>$4{,}5$</td>
+                        </tr>
+                        <tr>
+                            <td>$f'(x)$</td>
+                            <td></td>
+                            <td>$-$</td>
+                            <td>$0$</td>
+                            <td>$-$</td>
+                            <td>$0$</td>
+                            <td>$+$</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>$10$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$15$</td>
+                        </tr>
+                        <tr>
+                            <td>$f$</td>
+                            <td></td>
+                            <td></td>
+                            <td>$2$</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>$-7$</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </table>
+                    </div>
+                    </foreignObject>
+                </svg>
+            </div></li>
+        </ol>
+    </div>
+</div></main>
+  </body>
+</html>

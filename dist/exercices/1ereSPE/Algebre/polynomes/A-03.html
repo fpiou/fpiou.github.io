@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>A-03.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Second degré</div> <div><button class="precedent noprint" onclick="precedent()">&lt;</button>A-03<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div class="propriete">
+    Si $f$ est une fonction polynôme du second degré de la forme $f(x)=ax^2+bx+c$, alors sa parabole admet un axe de symétrie d'équation $x=\alpha$ où $\alpha=-\frac{b}{2a}$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        $A$ est un point de la parabole et $S$ son sommet. Tracez la parabole de $A$ à son symétrique par rapport à l'axe de symétrie de la parabole.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$S(1;2)$ et $A(2;3)$</li>
+            <li>$S(-2;-1)$ et $A(1;0)$</li>
+            <li>$S(3;3)$ et $A(5;2)$</li>
+            <li>$S(-4;-2)$ et $A(0;-1)$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$S(1;2) \quad\text{ et }\quad A(2;3)$$
+            <p>L'axe de symétrie de la parabole est $x=1$.</p>
+            <p>Le symétrique de $A$ par rapport à l'axe de symétrie est $B(0;3)$.</p>
+            <div class="figure">
+                <svg viewBox="0 0 280 280">
+                    <g name="repere1" class="repere" xmin="-2" ymin="-2" xmax="5" ymax="5" xorigine="0" yorigine="0"></g>
+                    <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="black" font-size="9pt" forme="|"></g>
+                    <g class="label" linkto="I" x="-3" y="0">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="black" font-size="9pt" forme="_"></g>
+                    <g class="label" linkto="J" x="-10" y="-10">1</g>
+                    
+                    <g name="C_f" class="courbeRepresentative" expression="(3-2)/(2-1)^2*(x-1)^2+2" linkto="repere1" xmin="0" xmax="2" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                    
+                    <g name="S" class="point labeled" repere="repere1" x="1" y="2" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="S" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">S</g>
+                    <g name="A" class="point labeled" repere="repere1" x="2" y="3" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="A" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">A</g>
+                    <g name="B" class="point labeled" repere="repere1" x="0" y="3" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="B" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">B</g>
+                </svg>
+            </div>
+            </li>
+            <li>$$S(-2;-1) \quad\text{ et }\quad A(1;0)$$
+            <p>L'axe de symétrie de la parabole est $x=-2$.</p>
+            <p>Le symétrique de $A$ par rapport à l'axe de symétrie est $B(-5;0)$.</p>
+            <div class="figure">
+                <svg viewBox="0 0 280 280">
+                    <g name="repere1" class="repere" xmin="-6" ymin="-2" xmax="1" ymax="5" xorigine="0" yorigine="0"></g>
+                    <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="black" font-size="9pt" forme="|"></g>
+                    <g class="label" linkto="I" x="-3" y="0">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="black" font-size="9pt" forme="_"></g>
+                    <g class="label" linkto="J" x="-10" y="-10">1</g>
+                    
+                    <g name="C_f" class="courbeRepresentative" expression="(0+1)/(1+2)^2*(x+2)^2-1" linkto="repere1" xmin="-5" xmax="1" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="S" class="point labeled" repere="repere1" x="-2" y="-1" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="S" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">S</g>
+                    <g name="A" class="point labeled" repere="repere1" x="1" y="0" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="A" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">A</g>
+                    <g name="B" class="point labeled" repere="repere1" x="-5" y="0" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="B" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">B</g>
+                </svg>
+            </div>
+            </li>
+            <li>$$S(3;3) \quad\text{ et }\quad A(5;2)$$
+            <p>L'axe de symétrie de la parabole est $x=3$.</p>
+            <p>Le symétrique de $A$ par rapport à l'axe de symétrie est $B(1;2)$.</p>
+            <div class="figure">
+                <svg viewBox="0 0 280 280">
+                    <g name="repere1" class="repere" xmin="-2" ymin="-2" xmax="6" ymax="5" xorigine="0" yorigine="0"></g>
+                    <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="black" font-size="9pt" forme="|"></g>
+                    <g class="label" linkto="I" x="-3" y="0">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="black" font-size="9pt" forme="_"></g>
+                    <g class="label" linkto="J" x="-10" y="-10">1</g>
+                    
+                    <g name="C_f" class="courbeRepresentative" expression="(2-3)/(5-3)^2*(x-3)^2+3" linkto="repere1" xmin="1" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="S" class="point labeled" repere="repere1" x="3" y="3" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="S" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">S</g>
+                    <g name="A" class="point labeled" repere="repere1" x="5" y="2" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="A" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">A</g>
+                    <g name="B" class="point labeled" repere="repere1" x="1" y="2" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="B" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">B</g>
+                </svg>
+            </div>
+            </li>
+            <li>$$S(-4;-2) \quad\text{ et }\quad A(0;-1)$$
+            <p>L'axe de symétrie de la parabole est $x=-4$.</p>
+            <p>Le symétrique de $A$ par rapport à l'axe de symétrie est $B(-8;-1)$.</p>
+            <div class="figure">
+                <svg viewBox="0 0 440 280">
+                    <g name="repere1" class="repere" xmin="-10" ymin="-4" xmax="1" ymax="3" xorigine="0" yorigine="0"></g>
+                    <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="black" font-size="9pt" forme="|"></g>
+                    <g class="label" linkto="I" x="-3" y="0">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="black" font-size="9pt" forme="_"></g>
+                    <g class="label" linkto="J" x="-10" y="-10">1</g>
+                    
+                    <g name="C_f" class="courbeRepresentative" expression="(-1+2)/(0+4)^2*(x+4)^2-2" linkto="repere1" xmin="-8" xmax="0" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                    <g name="S" class="point labeled" repere="repere1" x="-4" y="-2" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="S" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">S</g>
+                    <g name="A" class="point labeled" repere="repere1" x="0" y="-1" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="A" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">A</g>
+                    <g name="B" class="point labeled" repere="repere1" x="-8" y="-1" stroke="blue" font-size="9pt"></g>
+                    <g class="label" linkto="B" x="-20" y="0" style="font-size:2em;width:4em;height:2em;">B</g>
+                </svg>
+            </div>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="propriete">
+    Soit $f$ une fonction polynôme du second degré de la forme $f(x)=ax^2+bx+c$. Les solutions de l'équation $f(x)=0$ sont les racines du polynôme $ax^2+bx+c$ et sont les abscisses des points d'intersection de la parabole représentative de $f$ avec l'axe des abscisses.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Pour chacune des paraboles et par lecture graphique, déterminez combien de racines possède le polynôme du second degré et en donner les valeurs.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li><div class="figure">
+                <svg viewBox="0 0 200 200" style="width:100%">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax="5" xorigine="0" yorigine="0"></g>
+                    <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="black" font-size="9pt" forme="|"></g>
+                    <g class="label" linkto="I" x="-3" y="0">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="black" font-size="9pt" forme="_"></g>
+                    <g class="label" linkto="J" x="-10" y="-10">1</g>
+                    
+                    <g name="C_f" class="courbeRepresentative" expression="(x-3)(x+2)/2" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                </svg>
+            </div></li>
+            <li><div class="figure">
+                <svg viewBox="0 0 200 200" style="width:100%">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax="5" xorigine="0" yorigine="0"></g>
+                    <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="black" font-size="9pt" forme="|"></g>
+                    <g class="label" linkto="I" x="-3" y="0">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="black" font-size="9pt" forme="_"></g>
+                    <g class="label" linkto="J" x="-10" y="-10">1</g>
+                    
+                    <g name="C_f" class="courbeRepresentative" expression="-(x-1)(x-2)" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                </svg>
+            </div></li>
+            <li><div class="figure">
+                <svg viewBox="0 0 200 200" style="width:100%">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax="5" xorigine="0" yorigine="0"></g>
+                    <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="black" font-size="9pt" forme="|"></g>
+                    <g class="label" linkto="I" x="-3" y="0">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="black" font-size="9pt" forme="_"></g>
+                    <g class="label" linkto="J" x="-10" y="-10">1</g>
+                    
+                    <g name="C_f" class="courbeRepresentative" expression="(x+3)(x+3)" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                </svg>
+            </div></li>
+            <li><div class="figure">
+                <svg viewBox="0 0 200 200" style="width:100%">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax="5" xorigine="0" yorigine="0"></g>
+                    <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="black" font-size="9pt" forme="|"></g>
+                    <g class="label" linkto="I" x="-3" y="0">1</g>
+                    <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="black" font-size="9pt" forme="_"></g>
+                    <g class="label" linkto="J" x="-10" y="-10">1</g>
+                    
+                    <g name="C_f" class="courbeRepresentative" expression="(x+4)(x-8)/12" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                </svg>
+            </div></li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>La parabole coupe l'axe des abscisses en deux points d'abscisses $-2$ et $3$.</p>
+            <p>$f(x)$ possède donc deux racines $-2$ et $3$.</p></li>
+            <li><p>La parabole coupe l'axe des abscisses en deux points d'abscisses $1$ et $2$.</p>
+            <p>$f(x)$ possède donc deux racines $1$ et $2$.</p></li>
+            <li><p>La parabole touche l'axe des abscisses en un point d'abscisse $-3$.</p>
+            <p>$f(x)$ possède donc une racine double $-3$.</p></li>
+            <li><p>La parabole coupe l'axe des abscisses en deux points.</p>
+            <p>Le point visible a pour abscisse $-4$.</p>
+            <p>Le sommet de la parabole a pour abscisse $2$</p>
+            <p>Or la parabole est symétrique par rapport à la droite d'équation $x=2$.</p>
+            <p>Donc la parabole coupe l'axe des abscisses en deux points d'abscisses $-4$ et $8$.</p>
+            <p>Donc $f(x)$ possède deux racines $-4$ et $8$.</p></li>
+        </ol>
+    </div>
+</div>
+
+<div class="propriete">
+    Le signe d'une fonction polynôme du second degré définie par $f(x)=ax^2+bx+c$ dépend du signe de $a$ et du signe du discriminant $\Delta$ du polynôme $ax^2+bx+c$.
+    <ul style="padding-left: 1em;">
+        <li>Si $\Delta\gt 0$, alors $f$ est d'abord du signe de $a$ sur $]-\infty;x_1]$ puis change de signe sur $[x_1;x_2]$ et redevient du signe de $a$ sur $[x_2;+\infty[$ où $x_1$ et $x_2$ sont les racines du polynôme telles que $x_1\lt x_2$.</li>
+        <li>Si $\Delta\leqslant 0$, alors $f$ est du signe de&nbsp;$a$.</li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>$f(x)=5(x+4)(x-6)$</li>
+            <li>$f(x)=3(x+3)(x+5)$</li>
+            <li>$f(x)=-2(x-1)(x-2)$</li>
+            <li>$f(x)=-4(x-5)(x+2)$</li>
+        </ol>
+        Déterminez le signe de $f$ en fonction de $x$, vérifiez à l'aide du tableau ci-dessous.
+        <!-- Diminuer la hauteur des lignes du tableau -->
+        <table class="tableausigne" style="width:95%">
+            <tr style="padding:0;">
+                <td>$x$</td>
+                <td>$-\infty$</td>
+                <td></td>
+                <td>$x_1$</td>
+                <td></td>
+                <td>$x_2$</td>
+                <td></td>
+                <td>$+\infty$</td>
+            </tr>
+            <tr>
+                <td>$a$</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>$x-x_1$</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>$x-x_2$</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>$f(x)$</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="solution">
+        <ul>
+            <li><p>On a $f_1(x)=5(x+4)(x-6)=5(x-(-4))(x-6)$.</p>
+            <p>$a=5\gt 0$ donc $f_1$ est positif en $-\infty$ puis négatif sur $[-4;6]$ et redevient positif ensuite.</p>
+                <table class="tableausigne">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$-4$</td>
+                        <td></td>
+                        <td>$6$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$5$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x+4$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x-6$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$f(x)$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </li>
+            <li><p>On a $f_2(x)=3(x+3)(x+5)=3(x-(-3))(x-(-5))$.</p>
+            <p>$a=3\gt 0$ donc $f_2$ est positif en $-\infty$ puis négatif sur $[-5;-3]$ et redevient positif ensuite.</p>
+                <table class="tableausigne">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$-5$</td>
+                        <td></td>
+                        <td>$-3$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$3$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x+3$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x+5$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$f(x)$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </li>
+            <li><p>On a $f_3(x)=-2(x-1)(x-2)$.</p>
+            <p>$a=-2\lt 0$ donc $f_3$ est négatif en $-\infty$ puis positif sur $[1;2]$ et redevient négatif ensuite.</p>
+                <table class="tableausigne">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$1$</td>
+                        <td></td>
+                        <td>$2$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$-2$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x-1$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x-2$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$f(x)$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </li>
+            <li><p>On a $f_4(x)=-4(x-5)(x+2)=-4(x-5)(x-(-2))$.</p>
+            <p>$a=-4\lt 0$ donc $f_4$ est négatif en $-\infty$ puis positif sur $[-2;5]$ et redevient négatif ensuite.</p>
+                <table class="tableausigne">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-\infty$</td>
+                        <td></td>
+                        <td>$-2$</td>
+                        <td></td>
+                        <td>$5$</td>
+                        <td></td>
+                        <td>$+\infty$</td>
+                    </tr>
+                    <tr>
+                        <td>$-4$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x-5$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$x+2$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td>$0$</td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$f(x)$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                        <td>$-$</td>
+                        <td></td>
+                        <td>$+$</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Analysez la parabole représentant une fonction polynôme du second degré pour déterminer le signe du discriminant $\Delta$ et du coefficient $a$.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li><div class="figure">
+                <svg viewBox="0 0 200 200" style="width:70%">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax="5" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    
+                    <g name="C_f" class="courbeRepresentative" expression="(x+3)(x-2)/5" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                </svg>
+            </div></li>
+            <li><div class="figure">
+                <svg viewBox="0 0 200 200" style="width:70%">
+                    <g name="repere1" class="repere" xmin="-5" ymin="-9" xmax="5" ymax="1" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    
+                    <g name="C_f" class="courbeRepresentative" expression="-(x-1)^2/3-2" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                </svg>
+            </div></li>
+            <li><div class="figure">
+                <svg viewBox="0 0 200 200" style="width:70%">
+                    <g name="repere1" class="repere" xmin="-9" ymin="-5" xmax="1" ymax="5" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    
+                    <g name="C_f" class="courbeRepresentative" expression="-(x+8)^2/4+10" linkto="repere1" xmin="-9" xmax="1" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                </svg>
+            </div></li>
+            <li><div class="figure">
+                <svg viewBox="0 0 200 200" style="width:70%">
+                    <g name="repere1" class="repere" xmin="-1" ymin="-2" xmax="9" ymax="8" xorigine="0" yorigine="0"></g>
+                    <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                    
+                    <g name="C_f" class="courbeRepresentative" expression="(x-5)^2/4+1" linkto="repere1" xmin="-1" xmax="9" pas="0.1" stroke="red" stroke-width="1" fill="transparent"></g>
+                </svg>
+            </div></li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$\Delta\gt 0$ car la parabole coupe l'axe des abscisses en deux points.</p>
+            <p>$f$ est au-dessus de l'axe des abscisses avant son premier point d'intersection donc $a\gt 0$.</p></li>
+            </li><p>$\Delta\lt 0$ car la parabole ne coupe pas l'axe des abscisses.</p>
+            <p>$f$ est négative car en-dessous de l'axe des abscisses donc $a\lt 0$.</p></li>
+            <li><p>$\Delta\gt 0$ car la parabole coupe l'axe des abscisses en deux points.</p>
+            <p>$f$ est en-dessous de l'axe des abscisses avant son premier point d'intersection donc $a\lt 0$.</p></li>
+            <li><p>$\Delta\lt 0$ car la parabole ne coupe pas l'axe des abscisses.</p>
+            <p>$f$ est au-dessus de l'axe des abscisses donc $a\gt 0$.</p></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Résoudre les inéquations suivantes.
+        <ol class="alphabetical-list">
+            <li>$-2(x-1)(x-2)\geqslant 0$</li>
+            <li>$-5(x-6)(x+3)\lt 0$</li>
+            <li>$3(x+3)(x+5)\leqslant 0$</li>
+            <li>$4(x+7)(x-9)\gt 0$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Notons $f(x)=-2(x-1)(x-2)$.</p>
+            <p>$f$ est une fonction polynôme du second degré possédant deux racines $1$ et $2$.</p>
+            <p>Son coefficient $a=-2\lt 0$.</p>
+            <p>Donc $f$ est négatif sur $]-\infty;1]$, positif sur $[1;2]$ et redevient négatif sur $[2;+\infty[$.</p>
+            <p>Donc l'ensemble des solutions de l'inéquation $-2(x-1)(x-2)\geqslant 0$ ets $[1;2]$.</p></li>
+            <li><p>Notons $f(x)=-5(x-6)(x+3)$.</p>
+            <p>$f$ est une fonction polynôme du second degré possédant deux racines $6$ et $-3$.</p>
+            <p>Son coefficient $a=-5\lt 0$.</p>
+            <p>Donc $f$ est négatif sur $]-\infty;-3]$, positif sur $[-3;6]$ et redevient négatif sur $[6;+\infty[$.</p>
+            <p>Donc l'ensemble des solutions de l'inéquation $-5(x-6)(x+3)\lt 0$ est $]-\infty;-3[\cup]6;+\infty[$.</p></li>
+            <li><p>Notons $f(x)=3(x+3)(x+5)$.</p>
+            <p>$f$ est une fonction polynôme du second degré possédant deux racines $-3$ et $-5$.</p>
+            <p>Son coefficient $a=3\gt 0$.</p>
+            <p>Donc $f$ est positif sur $]-\infty;-5]$, négatif sur $[-5;-3]$ et redevient positif sur $[-3;+\infty[$.</p>
+            <p>Donc l'ensemble des solutions de l'inéquation $3(x+3)(x+5)\leqslant 0$ est $[-5;-3]$.</p></li>
+            <li><p>Notons $f(x)=4(x+7)(x-9)$.</p>
+            <p>$f$ est une fonction polynôme du second degré possédant deux racines $-7$ et $9$.</p>
+            <p>Son coefficient $a=4\gt 0$.</p>
+            <p>Donc $f$ est positif sur $]-\infty;-7]$, négatif sur $[-7;9]$ et redevient positif sur $[9;+\infty[$.</p>
+            <p>Donc l'ensemble des solutions de l'inéquation $4(x+7)(x-9)\gt 0$ est $]-\infty;-7[\cup]9;+\infty[$.</p></li>
+        </ol>
+    </div>
+</div>
+
+<h1>Équation du second degré</h1>
+
+<div class="methode">
+    Pour résoudre une <i>équation du second degré</i> de la forme $$ax^2+bx+c=0$$ avec $a\neq0$ on peut suivre les étapes suivantes&nbsp;:
+    <ol style="padding-left: 1em;">
+        <li>Factorisation immédiate ou identité remarquable.</li>
+        <li>Racine évidente, produit et somme des racines.</li>
+        <li>Sinon, calcul du discriminant.</li>
+    </ol>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Ramener les équations suivantes sous la forme $ax^2+bx+c=0$ puis résoudre l'équation.
+        <ol class="alphabetical-list">
+            <li>$x^2-4x+4=12$</li>
+            <li>$2x^2-3x=5x$</li>
+            <li>$x^2+2x+1=3x^2-5x+2$</li>
+            <li>$3x^2-2x=x+9$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>On a $x^2-4x+4=12$.</p>
+            <p>On ramène l'équation sous la forme $x^2-4x-8=0$.</p>
+            <p>On a $a=1$, $b=-4$ et $c=-8$.</p>
+            <p>Le discriminant est $\Delta=16+32=48$.</p>
+            <p>Les solutions de l'équation sont $x=\frac{4\pm\sqrt{48}}{2}=\frac{4\pm 4\sqrt{3}}{2}=2\pm 2\sqrt{3}$.</p></li>
+            <li><p>On a $2x^2-3x=5x$.</p>
+            <p>On ramène l'équation sous la forme $2x^2-8x=0$.</p>
+            <p>On a $a=2$, $b=-8$ et $c=0$.</p>
+            <p>Les solutions de l'équation sont $x=0$ et $x=4$.</p></li>
+            <li><p>On a $x^2+2x+1=3x^2-5x+2$.</p>
+            <p>On ramène l'équation sous la forme $2x^2-7x+1=0$.</p>
+            <p>On a $a=2$, $b=-7$ et $c=1$.</p>
+            <p>Le discriminant est $\Delta=49-8=41$.</p>
+            <p>Les solutions de l'équation sont $x=\frac{7\pm\sqrt{41}}{4}=\frac{7\pm\sqrt{41}}{4}$.</p></li>
+            <li><p>On a $3x^2-2x=x+9$.</p>
+            <p>On ramène l'équation sous la forme $3x^2-3x-9=0$.</p>
+            <p>On a $a=3$, $b=-3$ et $c=-9$.</p>
+            <p>Le discriminant est $\Delta=9+108=117$.</p>
+            <p>Les solutions de l'équation sont $x=\frac{3\pm\sqrt{117}}{6}=\frac{3\pm\sqrt{117}}{6}=\frac{1\pm\sqrt{13}}{2}$.</p></li>
+        </ol>
+    </div>
+</div>
+</main>
+  </body>
+</html>

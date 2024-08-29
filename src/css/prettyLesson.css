@@ -33,7 +33,7 @@
 /* Entetes des définitions, propriétés, remarques, exemples */
 .header {
   font-weight:bold;
-  padding:0em 1em;
+  padding:0em 0.5em;
 }
 
 .header-definition {

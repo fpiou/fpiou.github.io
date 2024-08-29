@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>A-02.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Multiples, diviseurs et nombres premiers</div> <div><button class="precedent noprint" onclick="precedent()">&lt;</button>A-02<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<h1>Nombres premiers</h1>
+<div class="definition">
+    On dit qu'un nombre entier naturel  est un <i>nombre premier</i> (ou est <i>premier</i>) s'il admet exactement deux diviseurs&nbsp;: $1$ et lui-même.<br>
+    <i>Liste des nombres premiers inférieurs à $30$</i>&nbsp;:
+    <div style="text-align:center">$2$, $3$, $5$, $7$, $11$, $13$, $17$, $19$, $23$, $29$</div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Justifez chacune des propositions.
+        <ol class="alphabetical-list">
+            <li>$0$ n'est pas un nombre premier.</li>
+            <li>$1$ n'est pas un nombre premier.</li>
+            <li>$77$ n'est pas un nombre premier.</li>
+            <li>$111$ n'est pas un nombre premier.</li>
+            <li>$2$ est le seul nombre premier pair.</li>
+            <li>Le produit de deux nombres premiers n'est pas un nombre premier.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Tout nombre non-nul est un diviseur de $0$.</p>
+            <p>Donc $0$ n'est pas un nombre premier.</p></li>
+            <li><p>Le nombre $1$ n'a qu'un seul diviseur&nbsp;: lui-même.</p>
+            <p>Donc $1$ n'est pas un nombre premier.</p></li>
+            <li><p>Le nombre $77$ admet les diviseurs $1$, $7$, $11$ et $77$.</p>
+            <p>Donc $77$ n'est pas un nombre premier.</p></li>
+            <li><p>Le nombre $111$ est divisible par $3$ car la somme de ses chiffres est un multiple de $3$.</p>
+            <p>$111$ est donc divisible par au moins trois diviseurs&nbsp;: $1$, $3$ et $111$.</p>
+            <p>Donc $111$ n'est pas un nombre premier.</p></li>
+            <li><p>Soit $n$ un nombre pair plus grand que $2$.</p>
+            <p>Alors $n$ est divisible par au moins trois diviseurs&nbsp;: $1$, $2$ et $n$.</p>
+            <p>Donc $n$ n'est pas un nombre premier.</p></li>
+            <li><p>Soient $p$ et $q$ deux nombres premiers.</p>
+            <p>Alors $pq$ est divisible par au moins trois diviseurs&nbsp;: $1$, $p$ et $pq$.</p>
+            <p>Donc $pq$ n'est pas un nombre premier.</p></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Montrez que la proposition suivante est fausse&nbsp;: &laquo;&nbsp;Si $n$ est un entier naturel non nul, alors $6n+1$ est un nombre premier.&nbsp;&raquo;
+    </div>
+    <div class="solution">
+        <p>Il suffit de trouver un contre-exemple.</p>
+        <p>On a $6n+1=7$ pour $n=1$.</p>
+        <p>On a $6n+1=13$ pour $n=2$.</p>
+        <p>On a $6n+1=19$ pour $n=3$.</p>
+        <p>On a $6n+1=25$ pour $n=4$.</p>
+        <p>$25$ n'est pas un nombre premier car il est divisible par au moins trois diviseurs&nbsp;: $1$, $5$ et $25$.</p>
+        <p>Donc la proposition est fausse.</p>
+    </div>
+</div>
+
+<div class="propriete">
+    Tout entier naturel $n$ plus grand ou égal à $2$ est soit premier, soit le produit de nombres premiers. Cette décomposition est unique à l'ordre près des facteurs.
+</div>
+<div class="methode">
+    Pour décomposer un nombre en produit de facteurs premiers, on peut procéder de plusieurs manières &nbsp;:
+    <ul style="padding-left: 1em;">
+        <li>On peut diviser successivement par les nombres premiers dans l'ordre croissant en s'arrêtant lorsque le quotient est égal à $1$.</li>
+        <li>On décompose en deux facteurs si c'est possible, puis on recommence avec chacun des facteurs jusqu'à obtenir des nombres premiers.</li>
+        <li>On peut aussi chercher des diviseurs en utilisant les critères de divisibilité.</li>
+    </ul>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Décomposez les nombres suivants en produit de facteurs premiers.
+        <ol class="horizontal-list">
+            <li>$51$</li>
+            <li>$58$</li>
+            <li>$65$</li>
+            <li>$87$</li>
+            <li>$95$</li>
+        </ol>
+        <ol class="horizontal-list">
+            <li>$18$</li>
+            <li>$28$</li>
+            <li>$45$</li>
+            <li>$75$</li>
+            <li>$98$</li>
+        </ol>
+        <ol class="horizontal-list">
+            <li>$165$</li>
+            <li>$231$</li>
+            <li>$275$</li>
+            <li>$154$</li>
+        </ol>
+        <ol class="horizontal-list">
+            <li>$40$</li>
+            <li>$60$</li>
+            <li>$100$</li>
+            <li>$140$</li>
+            <li>$580$</li>
+        </ol>
+        <ol class="horizontal-list">
+            <li>$24$</li>
+            <li>$36$</li>
+            <li>$54$</li>
+            <li>$56$</li>
+            <li>$81$</li>
+        </ol>
+        <ol class="horizontal-list">
+            <li>$32$</li>
+            <li>$48$</li>
+            <li>$72$</li>
+            <li>$108$</li>
+            <li>$162$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="horizontal-list">
+            <li>$51 = 3 \times 17$</li>
+            <li>$58 = 2 \times 29$</li>
+            <li>$65 = 5 \times 13$</li>
+            <li>$87 = 3 \times 29$</li>
+            <li>$95 = 5 \times 19$</li>
+        </ol>
+        <ol class="horizontal-list">
+            <li>$18 = 2 \times 3^2$</li>
+            <li>$28 = 2^2 \times 7$</li>
+            <li>$45 = 3^2 \times 5$</li>
+            <li>$75 = 3 \times 5^2$</li>
+            <li>$98 = 2 \times 7^2$</li>
+        </ol>
+        <ol class="horizontal-list">
+            <li>$165 = 3 \times 5 \times 11$</li>
+            <li>$231 = 3 \times 7 \times 11$</li>
+            <li>$275 = 5^2 \times 11$</li>
+            <li>$154 = 2 \times 7 \times 11$</li>
+        </ol>
+        <ol class="horizontal-list">
+            <li>$40 = 2^3 \times 5$</li>
+            <li>$60 = 2^2 \times 3 \times 5$</li>
+            <li>$100 = 2^2 \times 5^2$</li>
+            <li>$140 = 2^2 \times 5 \times 7$</li>
+            <li>$580 = 2^2 \times 5 \times 29$</li>
+        </ol>
+        <ol class="horizontal-list">
+            <li>$24 = 2^3 \times 3$</li>
+            <li>$36 = 2^2 \times 3^2$</li>
+            <li>$54 = 2 \times 3^3$</li>
+            <li>$56 = 2^3 \times 7$</li>
+            <li>$81 = 3^4$</li>
+        </ol>
+        <ol class="horizontal-list">
+            <li>$32 = 2^5$</li>
+            <li>$48 = 2^4 \times 3$</li>
+            <li>$72 = 2^3 \times 3^2$</li>
+            <li>$108 = 2^2 \times 3^3$</li>
+            <li>$162 = 2 \times 3^4$</li>
+        </ol>
+    </div>
+</div>
+
+<div class="methode">
+    Pour dresser la liste des diviseurs d'un nombre, on peut procéder de la manière suivante&nbsp;:
+    <ol style="padding-left: 1em;">
+        <li>On décompose le nombre en produit de facteurs premiers.</li>
+        <li>On écrit tous les diviseurs possibles en combinant les facteurs premiers.</li>
+    </ol>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Donnez la liste des diviseurs de chacun des nombres suivants.
+        <ol class="horizontal-list">
+            <li>$6$</li>
+            <li>$8$</li>
+            <li>$10$</li>
+            <li>$15$</li>
+            <li>$4$</li>
+            <li>$9$</li>
+            <li>$25$</li>
+            <li>$49$</li>
+            <li>$12$</li>
+            <li>$18$</li>
+            <li>$20$</li>
+            <li>$45$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol style="list-style-type: none;">
+            <li>Liste des diviseurs de $6$&nbsp;: $1$, $2$, $3$, $6$</li>
+            <li>Liste des diviseurs de $8$&nbsp;: $1$, $2$, $4$, $8$</li>
+            <li>Liste des diviseurs de $10$&nbsp;: $1$, $2$, $5$, $10$</li>
+            <li>Liste des diviseurs de $15$&nbsp;: $1$, $3$, $5$, $15$</li>
+        </ol>
+        <ol style="list-style-type: none;">
+            <li>Liste des diviseurs de $4$&nbsp;: $1$, $2$, $4$</li>
+            <li>Liste des diviseurs de $9$&nbsp;: $1$, $3$, $9$</li>
+            <li>Liste des diviseurs de $25$&nbsp;: $1$, $5$, $25$</li>
+            <li>Liste des diviseurs de $49$&nbsp;: $1$, $7$, $49$</li>
+        </ol>
+        <ol style="list-style-type: none;">
+            <li>Liste des diviseurs de $12$&nbsp;: $1$, $2$, $3$, $4$, $6$, $12$</li>
+            <li>Liste des diviseurs de $18$&nbsp;: $1$, $2$, $3$, $6$, $9$, $18$</li>
+            <li>Liste des diviseurs de $20$&nbsp;: $1$, $2$, $4$, $5$, $10$, $20$</li>
+            <li>Liste des diviseurs de $45$&nbsp;: $1$, $3$, $5$, $9$, $15$, $45$</li>
+        </ol>
+    </div>
+</div>
+
+<div class="methode">
+    Pour déterminer le plus grand diviseur commun de deux nombres, on peut procéder de deux manières&nbsp;:
+    <ul style="padding-left: 1em;">
+        <li>On dresse la liste des diviseurs de chaque nombre pour déterminer les diviseurs communs.</li>
+        <li>On décompose les nombres en produit de facteurs premiers pour déterminer le plus grand diviseur commun.</li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Quel est le plus grand diviseur commun des nombres suivants&nbsp;?
+        <ol class="horizontal-list">
+            <li>$12$ et $18$</li>
+            <li>$20$ et $30$</li>
+            <li>$24$ et $36$</li>
+            <li>$45$ et $75$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="horizontal-list">
+            <li>Les diviseurs de $12$ sont $1$, $2$, $3$, $4$, $6$ et $12$ et les diviseurs de $18$ sont $1$, $2$, $3$, $6$, $9$ et $18$.
+            <p>Le plus grand diviseur commun de $12$ et $18$ est $6$.</p></li>
+            <li>Les diviseurs de $20$ sont $1$, $2$, $4$, $5$, $10$ et $20$ et les diviseurs de $30$ sont $1$, $2$, $3$, $5$, $6$, $10$, $15$ et $30$.
+            <p>Le plus grand diviseur commun de $20$ et $30$ est $10$.</p></li>
+            <li>Les diviseurs de $24$ sont $1$, $2$, $3$, $4$, $6$, $8$, $12$ et $24$ et les diviseurs de $36$ sont $1$, $2$, $3$, $4$, $6$, $9$, $12$, $18$ et $36$.
+            <p>Le plus grand diviseur commun de $24$ et $36$ est $12$.</p></li>
+            <li>Les diviseurs de $45$ sont $1$, $3$, $5$, $9$, $15$, $45$ et les diviseurs de $75$ sont $1$, $3$, $5$, $15$, $25$, $75$.
+            <p>Le plus grand diviseur commun de $45$ et $75$ est $15$.</p></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Quel est le plus grand diviseur commun des nombres suivants&nbsp;?
+        <ol class="alphabetical-list">
+            <li>$2^3\times3^2\times5$ et $2^2\times3^3\times7$</li>
+            <li>$3^4\times5^2\times7$ et $2^3\times3^3\times5$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Il suffit de regarder les exposants des nombres premiers communs aux deux nombres&nbsp;:</p>
+            <p>Le plus grand diviseur commun de $2^3\times3^2\times5$ et $2^2\times3^3\times7$ est $2^2\times3^2$.</p></li>
+            <li><p>Il suffit de regarder les exposants des nombres premiers communs aux deux nombres&nbsp;:</p>
+            <p>Le plus grand diviseur commun de $3^4\times5^2\times7$ et $2^3\times3^3\times5$ est $3^3\times5$.</p></li>
+        </ol>
+    </div>
+</div>
+
+<div class="methode">
+    Pour déterminer le plus petit multiple commun de deux nombres, on peut procéder de la manière suivante&nbsp;: on regarde un par un les multiples de l'un des deux nombres ( de préférence le plus grand) jusqu'à trouver un multiple commun à l'autre nombre.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Quel est le plus petit multiple commun non nul des nombres suivants&nbsp;?
+        <ol class="alphabetical-list horizontal-list">
+            <li>$12$ et $18$</li>
+            <li>$20$ et $30$</li>
+            <li>$24$ et $36$</li>
+            <li>$45$ et $75$</li>
+        </ol>
+        <ol class="alphabetical-list horizontal-list" start="5">
+            <li>$8$ et $10$</li>
+            <li>$12$ et $15$</li>
+            <li>$18$ et $20$</li>
+            <li>$24$ et $30$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="horizontal-list">
+            <li><p>Regardons un par un les multiples du plus grand des deux nombres&nbsp;:</p>
+            <p>$18$ n'est pas un multiple de $12$.</p>
+            <p>$36$ est un multiple de $12$.</p>
+            <p>Donc le plus petit multiple commun non nul de $12$ et $18$ est $36$.</p></li>
+            <li><p>Regardons un par un les multiples du plus grand des deux nombres&nbsp;:</p>
+            <p>$30$ n'est pas un multiple de $20$.</p>
+            <p>$60$ est un multiple de $20$.</p>
+            <p>Donc le plus petit multiple commun non nul de $20$ et $30$ est $60$.</p></li>
+            <li><p>Regardons un par un les multiples du plus grand des deux nombres&nbsp;:</p>
+            <p>$36$ n'est pas un multiple de $24$.</p>
+            <p>$72$ est un multiple de $24$.</p>
+            <p>Donc le plus petit multiple commun non nul de $24$ et $36$ est $72$.</p></li>
+            <li><p>Regardons un par un les multiples du plus grand des deux nombres&nbsp;:</p>
+            <p>$75$ n'est pas un multiple de $45$.</p>
+            <p>$90$ est un multiple de $45$.</p>
+            <p>Donc le plus petit multiple commun non nul de $45$ et $75$ est $90$.</p></li>
+        </ol>
+        <ol class="horizontal-list">
+            <li><p>Regardons un par un les multiples du plus grand des deux nombres&nbsp;:</p>
+            <p>$10$ n'est pas un multiple de $8$.</p>
+            <p>$20$ n'est pas un multiple de $8$.</p>
+            <p>$30$ n'est pas un multiple de $8$.</p>
+            <p>$40$ est un multiple de $8$.</p>
+            <p>Donc le plus petit multiple commun non nul de $8$ et $10$ est $40$.</p></li>
+            <li><p>Regardons un par un les multiples du plus grand des deux nombres&nbsp;:</p>
+            <p>$15$ n'est pas un multiple de $12$.</p>
+            <p>$30$ est un multiple de $12$.</p>
+            <p>Donc le plus petit multiple commun non nul de $12$ et $15$ est $30$.</p></li>
+            <li><p>Regardons un par un les multiples du plus grand des deux nombres&nbsp;:</p>
+            <p>$20$ n'est pas un multiple de $18$.</p>
+            <p>$40$ est un multiple de $18$.</p>
+            <p>Donc le plus petit multiple commun non nul de $18$ et $20$ est $40$.</p></li>
+            <li><p>Regardons un par un les multiples du plus grand des deux nombres&nbsp;:</p>
+            <p>$30$ n'est pas un multiple de $24$.</p>
+            <p>$60$ est un multiple de $24$.</p>
+            <p>Donc le plus petit multiple commun non nul de $24$ et $30$ est $60$.</p></li>
+        </ol>
+    </div>
+</div>      
+
+<h1>Fractions irréductibles</h1>
+
+<div class="definition">
+    Une fraction est dite irréductible si le plus grand diviseur commun de son numérateur et de son dénominateur est $1$.
+</div>
+<div class="methode">
+    Pour démontrer qu'une fraction est irréductible, il suffit de montrer que le numérateur et le dénominateur n'ont pas de diviseur premier commun dans leurs décompositions en produits de facteurs premiers.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Montrez que les fractions suivantes sont irréductibles.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\dfrac{45}{154}$</li>
+            <li>$\dfrac{75}{98}$</li>
+            <li>$\dfrac{40}{81}$</li>
+            <li>$\dfrac{87}{140}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$$45=3^2\times5$$ et $$154=2\times7\times11$$</p>
+            <p>Les nombres $45$ et $154$ n'ont pas de diviseur commun. Donc la fraction $\frac{45}{154}$ est irréductible.</p></li>
+            <li><p>$$75=3\times5^2$$ et $$98=2\times7^2$$</p>
+            <p>Les nombres $75$ et $98$ n'ont pas de diviseur commun. Donc la fraction $\frac{75}{98}$ est irréductible.</p></li>
+            <li><p>$$40=2^3\times5$$ et $$81=3^4$$</p>
+            <p>Les nombres $40$ et $81$ n'ont pas de diviseur commun. Donc la fraction $\frac{40}{81}$ est irréductible.</p></li>
+            <li><p>$$87=3\times29$$ et $$140=2^2\times5\times7$$</p>
+            <p>Les nombres $87$ et $140$ n'ont pas de diviseur commun. Donc la fraction $\frac{87}{140}$ est irréductible.</p></li>
+        </ol>
+    </div>
+</div>
+<div class="methode">
+    <ul style="padding-left: 1em;">
+        <li>Pour additionner ou soustraire deux fractions, il suffit de les réduire au même dénominateur.</li>
+        <li>Pour multiplier deux fractions, il suffit de multiplier les numérateurs entre eux et les dénominateurs entre eux.</li>
+        <li>Pour diviser une fraction par une autre, il suffit de multiplier la première fraction par l'inverse de la seconde.</li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Écrire les résultats des calculs suivants sous forme de fractions irréductibles.
+        <ul class="horizontal-list col-2c">
+            <li>$$A=\frac{49}{51}\times\frac{45}{14}$$</li>
+            <li>$$B=\frac{57}{125}\div\frac{27}{50}$$</li>
+            <li>$$C=\frac{51}{49}+\frac{9}{14}$$</li>
+            <li>$$D=\frac{23}{25}-\frac{11}{15}$$</li>
+        </ul>
+    </div>
+    <div class="solution">
+        <ul>
+            <li>$$
+            \begin{align*}
+            A &= \frac{49}{51}\times\frac{45}{14}\\
+            A &= \frac{7^2}{3\times17}\times\frac{3^2\times5}{2\times7}\\
+            A &= \frac{7^2\times3^2\times5}{2\times3\times7\times17}\\
+            A &= \frac{5\times7}{2\times17}\\
+            A &= \frac{35}{34}
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            B &= \frac{57}{125}\div\frac{27}{50}\\
+            B &= \frac{57}{125}\times\frac{50}{27}\\
+            B &= \frac{3\times19}{5^3}\times\frac{2\times5^2}{3^3}\\
+            B &= \frac{3\times19\times2\times5^2}{5^3\times3^3}\\
+            B &= \frac{3\times19\times2}{3^2\times5}\\
+            B &= \frac{2\times19}{3\times5}\\
+            B &= \frac{38}{15}
+            \end{align*}
+            <li>$$
+            \begin{align*}
+            C &= \frac{51}{49}+\frac{9}{14}\\
+            C &= \frac{51}{7^2}+\frac{9}{2\times 7}\\
+            C &= \frac{51\times 2}{2\times 7^2}+\frac{9\times 7}{2\times 7^2}\\
+            C &= \frac{102+63}{2\times 7^2}\\
+            C &= \frac{165}{98}
+            \end{align*}
+            $$</li>
+            <li>$$
+            D &= \frac{23}{25}-\frac{11}{15}\\
+            D &= \frac{23\times 3}{25\times 3}-\frac{11\times 5}{15\times 5}\\
+            D &= \frac{69}{75}-\frac{55}{75}\\
+            D &= \frac{69-55}{75}\\
+            D &= \frac{14}{75}
+            \end{align*}
+            $$</li>
+        </ul>
+    </div>
+</div>
+</main>
+  </body>
+</html>
