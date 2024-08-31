@@ -174,7 +174,7 @@
             </svg>
         </div>
         Reproduisez la figure à main levée, puis indiquez les projetés orthogonaux si ce sont des points nommés. Dans le cas contraire, tracez à main levée le projeté orthogonal et lui donner un nom.
-        <ol class="alphabetical-list horizontal-list col-2c">
+        <ol class="alphabetical-list horizontal-list col-3c" style="font-size:0.9em;">
             <li>$B$ sur $(CD)$</li>
             <li>$A$ sur $(BC)$</li>
             <li>$C$ sur $(AB)$</li>
@@ -299,7 +299,7 @@
             </svg>
         </div>
         Les points qui semblent alignés le sont. Mêmes consignes que dans l'exercice précédent.
-        <ol class="alphabetical-list horizontal-list col-2c">
+        <ol class="alphabetical-list horizontal-list col-3c" style="font-size:0.9em;">
             <li>$C$ sur $(BD)$</li>
             <li>$B$ sur $(AC)$</li>
             <li>$B$ sur $(DF)$</li>
@@ -314,41 +314,97 @@
 
 <div class="propriete">
     Dans un triangle, le projeté orthogonal d'un sommet sur le côté opposé est le pied de la hauteur issue de ce sommet.
+    <div class="figure">
+        <svg viewBox="0 0 460 150" style="width:100%;">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-1" ymin="-0.5" xmax="10" ymax ="3" xorigine="0" yorigine="0"></g>
+            <!-- <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g> -->
+            <g name="A" class="point labeled draggable" repere="repere1" x="0" y="2" stroke="red"></g>
+            <g class="label" linkto="A" x="-15" y="-15" style="font-size:1rem;">A</g>
+            <g name="B" class="point labeled draggable" repere="repere1" x="4" y="2.5" stroke="red"></g>
+            <g class="label" linkto="B" x="5" y="-15" style="font-size:1rem;">B</g>
+            <g name="C" class="point labeled draggable" repere="repere1" x="0.75" y="0" stroke="red"></g>
+            <g class="label" linkto="C" x="-5" y="0" style="font-size:1rem;">C</g>
+            <g name="ABC"  class="polygone" linkto="A B C" fill="red" fill-opacity="0.2"></g>
+            
+            <g name="H_1" class="point labeled dilatation" linkto="A B C" data="90 0" stroke="none"></g>
+            <g class="label" linkto="H_1" x="-5" y="-20" style="font-size:1rem;">H_1</g>
+            <g name="CH_1" class="segment" linkto="C H_1" stroke="black" stroke-dasharray="3,3"></g>
+            <g name="H_2" class="point labeled dilatation" linkto="A C B" data="90 0" stroke="none"></g>
+            <g class="label" linkto="H_2" x="-20" y="-10" style="font-size:1rem;">H_2</g>
+            <g name="BH_2" class="segment" linkto="B H_2" stroke="black" stroke-dasharray="2,2"></g>
+            <g name="H_3" class="point labeled dilatation" linkto="C B A" data="90 0" stroke="none"></g>
+            <g class="label" linkto="H_3" x="5" y="-10" style="font-size:1rem;">H_3</g>
+            <g name="AH_3" class="segment" linkto="A H_3" stroke="black" stroke-dasharray="2,2"></g>
+
+            <!-- ANgles -->
+            <g class="angleDroit" linkto="C H_1 A" size="7"></g>
+            <g class="angleDroit" linkto="B H_2 C" size="7"></g>
+            <g class="angleDroit" linkto="A H_3 B" size="7"></g>
+
+            <g name="D" class="point labeled" repere="repere1" x="5" y="0" stroke="red"></g>
+            <g class="label" linkto="D" x="-15" y="-15" style="font-size:1rem;">D</g>
+            <g name="E" class="point labeled" repere="repere1" x="9" y="0" stroke="red"></g>
+            <g class="label" linkto="E" x="5" y="-15" style="font-size:1rem;">E</g>
+            <g name="F" class="point labeled" repere="repere1" x="5.75" y="1" stroke="red"></g>
+            <g class="label" linkto="F" x="-5" y="-20" style="font-size:1rem;">F</g>
+            <g name="DEF"  class="polygone" linkto="D E F" fill="red" fill-opacity="0.2"></g>
+
+            <g name="H_4" class="point labeled dilatation" linkto="D E F" data="90 0" stroke="none"></g>
+            <g class="label" linkto="H_4" x="-5" y="0" style="font-size:1rem;">H_4</g>
+            <g name="FH_4" class="droite" linkto="F H_4" stroke="black" stroke-dasharray="3,3"></g>
+            <g name="H_5" class="point labeled dilatation" linkto="D F E" data="90 0" stroke="none"></g>
+            <g class="label" linkto="H_5" x="0" y="-20" style="font-size:1rem;">H_5</g>
+            <g name="EH_5" class="droite" linkto="E H_5" stroke="black" stroke-dasharray="2,2"></g>
+            <g name="H_6" class="point labeled dilatation" linkto="F E D" data="90 0" stroke="none"></g>
+            <g class="label" linkto="H_6" x="-25" y="-10" style="font-size:1rem;">H_6</g>
+            <g name="DH_6" class="droite" linkto="D H_6" stroke="black" stroke-dasharray="2,2"></g>
+            <g name="EH_6" class="segment" linkto="E H_6" stroke="black" stroke-dasharray="2,2"></g>
+            <g name="DH_5" class="segment" linkto="D H_5" stroke="black" stroke-dasharray="2,2"></g>
+
+            <!-- ANgles -->
+            <g class="angleDroit" linkto="F H_4 D" size="7"></g>
+            <g class="angleDroit" linkto="E H_5 F" size="7"></g>
+            <g class="angleDroit" linkto="E H_6 D" size="7"></g>
+            <!-- Fin de la figure -->
+        </svg>
+    </div>
 </div>
 <div class="exercice">
     <div class="enonce">
+        Placez dans un repère orthonormé $A(-3~;~2)$, $B(6~;~-1)$ et $C(-1~;~-2)$ et déterminez dans le triangle $ABC$, par lecture graphique, les coordonnées&nbsp;:
         <ol class="alphabetical-list">
-            <li>Placez dans un repère orthonormé les points $A(-3~;~2)$, $B(6~;~-1)$ et $C(-1~;~-2)$.</li>
-            <li>Déterminez par lecture graphique les coordonnées du point $D$ pied de la hauteur issue de $C$ dans le triangle $ABC$.</li>
-            <li>Déterminez par lecture graphique les coordonnées du point $E$ pied de la hauteur issue de $B$ dans le triangle $ABC$.</li>
-            <li>Déterminez par lecture graphique le point de concours des trois hauteurs du triangle $ABC$.</li>
-            <li>Notons $F$ le point d'intersection de $(AH)$ et $(BC)$. Montrez que le projeté orthogonal de $A$ sur $(BC)$ est $F$.</li>
+            <li>du pied de la hauteur issue de $C$&nbsp;;</li>
+            <li>du pied de la hauteur issue de $B$&nbsp;;</li>
+            <li>du point de concours des trois hauteurs.</li>
         </ol>
-    </div>  
+    </div>
     <div class="solution">
+        <div class="figure">
+            <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- On définit le repère -->
+                <g name="repere1" class="repere" xmin="-10" ymin="-5" xmax="10" ymax ="5" xorigine="0" yorigine="0"></g>
+                <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
+                <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
+                <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
+                <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
+                <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
+                <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
+                <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
+            </svg>
+        </div>
         <ol class="alphabetical-list">
-            <li>
-                <div class="figure">
-                    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-                        <!-- On définit le repère -->
-                        <g name="repere1" class="repere" xmin="-10" ymin="-5" xmax="10" ymax ="5" xorigine="0" yorigine="0"></g>
-                        <g name="quadrillage2" class="quadrillageRepere" linkto="repere1" xpas="1" ypas="1" stroke="gray" stroke-width="0.7"></g>
-                        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
-                        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
-                        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1"></g>
-                        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1"></g>
-                        <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none"></g>
-                        <g class="label" linkto="I" x="-3" y="0" style="font-size:0.8rem;">1</g>
-                        <g name="J" class="point labeled" repere="repere1" x="0" y="1" stroke="none"></g>
-                        <g class="label" linkto="J" x="-10" y="-10" style="font-size:0.8rem;">1</g>
-                        <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
-                        <g class="label" linkto="O" x="-12" y="0" style="font-size:0.8rem;">O</g>
-                        <g name="A" class="point labeled" repere="repere1" x="-3" y="2" stroke="red"></g>
-                        <g name="B" class="point labeled" repere="repere1" x="6" y="-1" stroke="red"></g>
-                        <g name="C" class="point labeled" repere="repere1" x="-1" y="-2" stroke="red"></g>
-                    </svg>
-                </div>
-            </li>
             <li>
                 <div class="figure">
                     <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
@@ -374,7 +430,7 @@
                         <g class="angleDroit" linkto="C D A" size="10" stroke-width="0.5"></g>
                     </svg>
                 </div>
-                <p>Les coordonnées de $D$ semblent être $(0~;~1).$</p>
+                <p>Les coordonnées du pied de la hauteur issue de $C$ semblent être $(0~;~1).$</p>
             </li>
             <li>
                 <div class="figure">
@@ -402,7 +458,7 @@
                         <g class="angleDroit" linkto="B E C" size="10" stroke-width="0.5"></g>
                     </svg>
                 </div>
-                <p>Les coordonnées de $E$ semblent être $(0~;~-4).$</p>
+                <p>Les coordonnées du pied de la hauteur issue de $B$ semblent être $(0~;~-4).$</p>
             </li>
             <li>
                 <div class="figure">
@@ -433,20 +489,14 @@
                         <g name="H" class="point labeled" repere="repere1" x="-2" y ="-5" stroke="red"></g>
                     </svg>
                 </div>
-                <p>Les coordonnées de $H$ semblent être $(-2~;~-5).$</p>
-            </li>
-            <li>
-                <p>Les trois hauteurs sont concourantes en $H$.</p>
-                <p>Donc $(AH)$ est la hauteur issue de $A$ dans le triangle $ABC$.</p>
-                <p>$F$ est le projeté orthogonal de $A$ sur $(BC)$.</p>
-                <p>Donc $F$ est le point d'intersection de $(AH)$ et $(BC)$.</p>
+                <p>Les coordonnées du point de concours des trois hauteurs semblent être $(-2~;~-5)$</p>
             </li>
         </ol>
     </div>
 </div>
 <div class="exercice">
     <div class="enonce">
-        Tracer un triangle $ABC$ rectangle en $A$ tel que $AB=\SI{3}{\cm}$ et $AC=\SI{4}{\cm}$. Notons $H$ le projeté orthogonal de $A$ sur $(BC)$.
+        Tracez un triangle $ABC$ rectangle en $A$ tel que $AB=\SI{3}{\cm}$ et $AC=\SI{4}{\cm}$. Notons $H$ le projeté orthogonal de $A$ sur $(BC)$.
         <ol class="alphabetical-list">
             <li>Calculez l'aire du triangle $ABC$.</li>
             <li>Calculez $BC$.</li>
@@ -471,7 +521,32 @@
 </div>
 
 <div class="definition">
+    La distance entre un point et une droite est la longueur du plus court segment joignant le point à la droite.
+</div>
+<div class="propriete">
     La distance entre un point et une droite est la longueur du segment joignant le point à son projeté orthogonal sur la droite.
+    <div class="figure">
+        <svg viewBox="0 0 160 50" style="width:60%;">
+            <!-- On définit le repère -->
+            <g name="repere1" class="repere" xmin="-1" ymin="-0.5" xmax="3" ymax ="1" xorigine="0" yorigine="0"></g>
+            <g name="A" class="point labeled draggable" repere="repere1" x="0" y="0.5" stroke="red"></g>
+            <g class="label" linkto="A" x="-15" y="-15" style="font-size:1rem;">A</g>
+            <g name="B" class="point draggable" repere="repere1" x="2" y="0.5" stroke="none"></g>
+            <g class="label" linkto="B" x="5" y="-15" style="font-size:1rem;">B</g>
+            <g name="C" class="point draggable" repere="repere1" x="0.75" y="0" stroke="none"></g>
+            <g class="label" linkto="C" x="-5" y="0" style="font-size:1rem;">C</g>
+            
+            <g name="H" class="point dilatation" linkto="C B A" data="90 0" stroke="none"></g>
+            <g class="label" linkto="H" x="5" y="-10" style="font-size:1rem;">H</g>
+            <g name="AH" class="segment" linkto="A H" stroke="black" stroke-dasharray="2,2"></g>
+            <g name="d" class="droite labeled" linkto="B C" stroke="black" pos_label="0.2"></g>
+            <!-- ANgle -->
+            <g class="angleDroit" linkto="A H C" size="7"></g>
+
+            <!-- TExte -->
+            <g class="label" repere="repere1" x="-1" y="0.4" style="font-size:0.5rem;" width="40">distance de $A$ à $d$</g>
+        </svg>
+    </div>
 </div>
 <div class="exercice">
     <div class="enonce">
@@ -608,10 +683,10 @@
         $\widehat{BAC}=30\degree$. Le point $H$ est le projeté orthogonal de $B$ sur
         $(AC)$.
         <ol class="alphabetical-list">
-            <li>Calculer $BH$.</li>
-            <li>Calculer l'aire du triangle $ABC$.</li>
-            <li>Calculer la distance du point $C$ à $(AB)$.</li>
-            <li>Calculer la distance du point $C$ à $(BH)$.</li>
+            <li>Calculez $BH$.</li>
+            <li>Calculez l'aire du triangle $ABC$.</li>
+            <li>Calculez la distance du point $C$ à $(AB)$.</li>
+            <li>Calculez la distance du point $C$ à $(BH)$.</li>
         </ol>
         <span style="font-size:7pt;"><i>Indications :</i>$sin(30\degree)=cos(60\degree)=\dfrac{1}{2}$ et $sin(60\degree)=cos(30\degree)=\dfrac{\sqrt{3}}{2}$</span>
     </div>
@@ -713,7 +788,7 @@
                 <p>$ABC$ est rectangle en $C$ d'où&nbsp;:</p>
                 $$
                 \begin{align*}
-                \cos{\widehat{ABC}}=\frac{BC}{AB}
+                \cos{\widehat{ABC}}&=\frac{BC}{AB}\\
                 \cos{\widehat{ABC}}&=\frac{4}{8}\\
                 \cos{\widehat{ABC}}&=\frac{1}{2}\\
                 \widehat{ABC}&=\ang{60}

@@ -59,6 +59,7 @@
   }
 
   /* Ne pas imprimer */
+  .selectionneur,
   .solution,
   .indice,
   /* .background-figure, */
