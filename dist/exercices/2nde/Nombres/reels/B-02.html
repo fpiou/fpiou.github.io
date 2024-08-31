@@ -115,7 +115,7 @@
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
 
-    <main><header><div>Manipuler les nombres réels</div> <div><button class="precedent noprint" onclick="precedent()">&lt;</button>B-02<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+    <main><header class="brouillon"><div>Manipuler les nombres réels</div> <div><button class="precedent noprint" onclick="precedent()">&lt;</button>B-02<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
 
 <h1>Nombres réels</h1>
 <div class="definition">
@@ -166,8 +166,8 @@
 <div class="propriete">
     $$\mathbb{N}\subset \mathbb{Z}\subset \mathbb{D}\subset \mathbb{Q}\subset \mathbb{R}$$
     <div class="figure">
-        <svg viewBox="0 0 240 100" style="width:100%;">
-            <g name="repere1" class="repere" xmin="-6" ymin="-2.5" xmax="6" ymax="2.5" xorigine="0" yorigine="0"></g>
+        <svg viewBox="0 0 140 70" style="width:80%;">
+            <g name="repere1" class="repere" xmin="-1" ymin="-1" xmax="6" ymax="2.5" xorigine="0" yorigine="0"></g>
             
             <g name="O" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
             <g name="N" class="ellipse" linkto="O" rx="1" ry="0.5" stroke="black" fill="none"></g>
@@ -206,34 +206,11 @@
 
 <h1>Intervalles</h1>
 <div class="definition">
-    Un <i>intervalle</i> est&nbsp;: ou bien $\mathbb{R}$, ou bien l'ensemble vide noté&nbsp;$\emptyset$, ou bien un ensemble de nombres réels compris entre deux bornes distinctes, finies ou infinies, incluses ou non incluses.
+    Un intervalle de nombres réels est une portion de droite numérique : la droite toute entière, un segment ou une demi-droite.
+    L'ensemble vide note $\emptyset$ est aussi un intervalle.
 </div>
-<div class="exercice">
-    <div class="enonce">
-        Parmi les intervalles suivants, indiquez si les bornes sont incluses ou non incluses&nbsp;:
-        <ol class="alphabetical-list">
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $-1\leqslant x\leqslant 1$}\}$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $-1\lt x\lt 1$}\}$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $-1\leqslant x\lt 1$}\}$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $-1\lt x\leqslant 1$}\}$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\geqslant 1$}\}$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\lt -1$}\}$</li>
-        </ol>
-    </div>
-    <div class="solution">
-        <ul class="alphabetical-list">
-            <li><p>Les bornes $-1$ et $1$ sont incluses.</p></li>
-            <li><p>Les bornes $-1$ et $1$ sont non incluses.</p></li>
-            <li><p>La borne $-1$ est incluse et la borne $1$ est non incluse.</p></li>
-            <li><p>La borne $-1$ est non incluse et la borne $1$ est incluse.</p></li>
-            <li><p>La borne $1$ est incluse.</p></li>
-            <li><p>La borne $-1$ est non incluse.</p></li>
-        </ul>
-    </div>
-</div>
-
 <div class="definition">
-    Soient $a$ et $b$ deux nombres réels tel que $a\lt b$. On définit les intervalles suivants&nbsp;:
+    Notation pour les intervalles bornés&nbsp;: ($a$ et $b$ sont des réels tels que $a\lt b$)
     <ul style="padding-left: 1em;">
         <li>$[a;b] = \{\text{$x\in\mathbb{R}$ tel que $a\leqslant x\leqslant b$}\}$
             <div class="figure">
@@ -289,8 +266,51 @@
         </li>
     </ul>
 </div>
+<div class="exercice">
+    <div class="enonce">
+        On considère les intervalles suivants&nbsp;:
+        <ol class="horizontal-list">
+            <li>$[-2;3]$</li>
+            <li>$]3;5[$</li>
+            <li>$[-1;3[$</li>
+            <li>$[3;6[$</li>
+        </ol>
+        Pour chaque nombre de la liste suivante, indiquez à quel(s) intervalle(s) il appartient&nbsp;:
+        <ol class="alphabetical-list horizontal-list col-4c">
+            <li style="line-height: 3em;">$\sqrt{2}$</li>
+            <li style="line-height: 3em;">$3$</li>
+            <li style="line-height: 3em;">$-1$</li>
+            <li style="line-height: 3em;">$\dfrac{7}{2}$</li>
+            <li style="line-height: 3em;">$\dfrac{-1}{2}$</li>
+            <li style="line-height: 3em;">$\dfrac{26}{5}$</li>
+            <li style="line-height: 3em;">$\dfrac{23}{12}$</li>
+            <li style="line-height: 3em;">$\dfrac{19}{6}$</li>
+            <li style="line-height: 3em;">$\dfrac{5}{2}$</li>
+            <li style="line-height: 3em;">$\dfrac{8}{3}$</li>
+            <li style="line-height: 3em;">$5$</li>
+            <li style="line-height: 3em;">$\pi$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$\sqrt{2}\in[-2;3[$ et $\sqrt{2}\in[-1;3[$</li>
+            <li>$3\in[-2;3]$ et $3\in[3;6[$</li>
+            <li>$-1\in[-2;3]$ et $-1\in[-1;3[$</li>
+            <li>$\dfrac{7}{2}\in[3;6[$ et $\dfrac{7}{2}\in]3;5[$</li>
+            <li>$\dfrac{-1}{2}\in[-2;3]$ et $\dfrac{-1}{2}\in[-1;3[$</li>
+            <li>$\dfrac{26}{5}\in[3;6[$</li>
+            <li>$\dfrac{23}{12}\in[-2;3[$ et $\dfrac{23}{12}\in[-1;3[$</li>
+            <li>$\dfrac{19}{6}\in[3;6[$ et $\dfrac{19}{6}\in]3;5[$</li>
+            <li>$\dfrac{5}{2}\in[-2;3[$ et $\dfrac{5}{2}\in[-1;3[$</li>
+            <li>$\dfrac{8}{3}\in[-2;3[$ et $\dfrac{8}{3}\in[-1;3[$</li>
+            <li>$5\in[3;6[$</li>
+            <li>$\pi\in[3;6[$ et $\pi\in]3;5[$</li>
+        </ol>
+    </div>
+</div>
+
 <div class="definition">
-    Soit $a$ un réel. On note&nbsp;:
+    Notation pour les intervalles non bornés&nbsp;: ($a$ est un réel)
     <ul style="padding-left: 1em;">
         <li>$[a;+\infty[ = \{\text{$x\in\mathbb{R}$ tels que $x\geqslant a$}\}$
             <div class="figure">
@@ -344,51 +364,29 @@
 </div>
 <div class="exercice">
     <div class="enonce">
-        Donnez les intervalles correspondants aux ensembles suivants&nbsp;:
-        <ol class="alphabetical-list">
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\leqslant 3$}\}$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\geqslant -2$}\}$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $-3\leqslant x\leqslant 1$}\}$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\geqslant 0$}\}$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\lt -5$}\}$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $-1\lt x\leqslant -2$}\}$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\gt 1$}\}$</li>
-        </ol>
-        </ul>
-    </div>
-    <div class="solution">
-        <ul class="alphabetical-list">
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\leqslant 3$}\} = ]-\infty;3]$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\geqslant -2$}\} = [-2;+\infty[$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $-1\lt x\lt 2$}\} = ]-1;2[$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $-3\leqslant x\leqslant 1$}\} = [-3;1]$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\geqslant 0$}\} = [0;+\infty[$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\lt -5$}\} = ]-\infty;-5[$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $-1\lt x\leqslant -2$}\} = ]-1;-2]$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\gt 1$}\} = ]1;+\infty[$</li>
-        </ul>
-    </div>
-</div>
-<div class="exercice">
-    <div class="enonce">
-        À quels ensembles de nombres correspondent les intervalles suivants&nbsp;? (répondre à l'aide d'inégalités)
-        <ol class="alphabetical-list horizontal-list col-3c">
-            <li>$[0;1]$</li>
-            <li>$]-\infty;0[$</li>
-            <li>$[2;+\infty[$</li>
-            <li>$]-1;2[$</li>
-            <li>$[-3;1[$</li>
-            <li>$]-\infty;1]$</li>
+        Indiquez sur quel intervalle de nombres sont définies les fonctions suivantes&nbsp;:
+        <ol class="horizontal-list">
+            <li style="line-height: 3em;">$f_1(x)=\sqrt{x}$</li>
+            <li style="line-height: 3em;">$f_2(x)=\sqrt{-7x}$</li>
+            <li style="line-height: 3em;">$f_3=\sqrt{x+3}$</li>
+            <li style="line-height: 3em;">$f_4(x)=\sqrt{x-\frac{4}{3}}$</li>
+            <li style="line-height: 3em;">$f_5(x)=\sqrt{7-x}$</li>
+            <li style="line-height: 3em;">$f_6(x)=\sqrt{\num{8.1}+x}$</li>
+            <li style="line-height: 3em;">$f_7(x)=\sqrt{-2+x}$</li>
+            <li style="line-height: 3em;">$f_8(x)=\sqrt{-5-x}$</li>
         </ol>
     </div>
     <div class="solution">
-        <ul class="alphabetical-list">
-            <li>$[0;1] = \{\text{$x\in\mathbb{R}$ tel que $0\leqslant x\leqslant 1$}\} = \{\text{$x\in\mathbb{R}$ tel que $x\geqslant 0$ et $x\leqslant 1$}\} = [0;1]$</li>
-            <li>$]-\infty;0[ = \{\text{$x\in\mathbb{R}$ tel que $x\lt 0$}\} = \{\text{$x\in\mathbb{R}$ tel que $x\leqslant 0$}\} = ]-\infty;0[$</li>
-            <li>$[2;+\infty[ = \{\text{$x\in\mathbb{R}$ tel que $x\geqslant 2$}\} = \{\text{$x\in\mathbb{R}$ tel que $2\leqslant x$}\} = [2;+\infty[$</li>
-            <li>$]-1;2[ = \{\text{$x\in\mathbb{R}$ tel que $-1\lt x\lt 2$}\} = \{\text{$x\in\mathbb{R}$ tel que $-1\leqslant x\leqslant 2$}\} = ]-1;2[$</li>
-            <li>$[-3;1[ = \{\text{$x\in\mathbb{R}$ tel que $-3\leqslant x\lt 1$}\} = \{\text{$x\in\mathbb{R}$ tel que $-3\leqslant x$ et $x\lt 1$}\} = [-3;1[$</li>
-        </ul>
+        <ol class="horizontal-list">
+            <li><p>$f_1(x)=\sqrt{x}$ est définie sur $$[0;+\infty[$$</p></li>
+            <li><p>$f_2(x)=\sqrt{-7x}$ est définie sur $$]-\infty;0]$$</p></li>
+            <li><p>$f_3(x)=\sqrt{x+3}$ est définie sur $$[-3;+\infty[$$</p></li>
+            <li><p>$f_4(x)=\sqrt{x-\frac{4}{3}}$ est définie sur $$[\frac{4}{3};+\infty[$$</p></li>
+            <li><p>$f_5(x)=\sqrt{7-x}$ est définie sur $$]-\infty;7]$$</p></li>
+            <li><p>$f_6(x)=\sqrt{\num{8.1}+x}$ est définie sur $$[-\num{8.1};+\infty[$$</p></li>
+            <li><p>$f_7(x)=\sqrt{-2+x}$ est définie sur $$[2;+\infty[$$</p></li>
+            <li><p>$f_8(x)=\sqrt{-5-x}$ est définie sur $$]-\infty;-5]$$</p></li>
+        </ol>
     </div>
 </div>
 
@@ -401,33 +399,27 @@
             <line x1="-40" y1="0" x2="240" y2="0" stroke="black" />
             <line x1="-40" y1="50" x2="240" y2="50" stroke="black" />
             <!-- Surligner en rouge les intervalles -->
-            <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
-            <line x1="120" y1="50" x2="240" y2="50" stroke="red" stroke-width="2" />
-            <!-- Dessiner une graduation en $-1$, $4$ et $2$ -->
-            <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
-            <line x1="120" y1="-5" x2="120" y2="5" stroke="black" />
-            <line x1="200" y1="-5" x2="200" y2="5" stroke="black" />
-            <!-- Dessiner un crochet [ à l'emplacement de la graduation de $-1$-->
-            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none" />
-            <!-- Dessiner un crochet ] à l'emplacement de la graduation de $4$-->
-            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
-                transform="translate(200,0) scale(-1,1)" />
-            <!-- Dessiner un crochet ] à l'emplacement de la graduation de $2$-->
-            <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
-                transform="translate(120,50) scale(-1,1)" />
-            <!-- Dessiner un rectangle qui surligne la réunion-->
+            <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="8" />
+            <line x1="120" y1="50" x2="240" y2="50" stroke="red" stroke-width="8" />
+            
             <defs>
                 <pattern id="hachures" patternUnits="userSpaceOnUse" width="10" height="10">
                 <path d="M 0 0 L 10 10" stroke="black" stroke-width="1" />
                 </pattern>
             </defs>
-            <rect x="0" y="0" width="240" height="110" style="fill:red;opacity:0.1;stroke-width:0;"
-                transform="translate(0,-30)" />
-            <rect x="0" y="0" width="240" height="110" style="fill:url(#hachures);opacity:0.5;stroke-width:0;"
-                transform="translate(0,-30)" />
+            <g transform="translate(0,5)">
+                <rect x="0" y="0" width="240" height="40" style="fill:red;opacity:0.1;stroke-width:0;"/>
+                <rect x="0" y="0" width="240" height="40" style="fill:url(#hachures);opacity:0.5;stroke-width:0;"/>
+            </g>
             <g>
-                <foreignObject x="0" y="0" width="120" height="90" transform="translate(68,10)">
+                <foreignObject x="0" y="0" width="120" height="90" transform="translate(80,0)" style="font-size:2rem;">
                     $\scriptsize I\cup J$
+                </foreignObject>
+                <foreignObject x="0" y="0" width="120" height="90" transform="translate(100,-32)" style="font-size:1.5rem;">
+                    $I$
+                </foreignObject>
+                <foreignObject x="0" y="0" width="120" height="90" transform="translate(200,50)" style="font-size:1.5rem;">
+                    $J$
                 </foreignObject>
             </g>
         </svg>
@@ -439,33 +431,37 @@
             <line x1="-40" y1="0" x2="240" y2="0" stroke="black" />
             <line x1="-40" y1="50" x2="240" y2="50" stroke="black" />
             <!-- Surligner en rouge les intervalles -->
-            <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="2" />
-            <line x1="120" y1="50" x2="240" y2="50" stroke="red" stroke-width="2" />
-            <!-- Dessiner une graduation en $-1$, $4$ et $2$ -->
-            <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
+            <line x1="0" y1="0" x2="200" y2="0" stroke="red" stroke-width="8" />
+            <line x1="120" y1="50" x2="240" y2="50" stroke="red" stroke-width="8" />
+            
+            <!-- <line x1="0" y1="-5" x2="0" y2="5" stroke="black" />
             <line x1="120" y1="-5" x2="120" y2="5" stroke="black" />
             <line x1="200" y1="-5" x2="200" y2="5" stroke="black" />
-            <!-- Dessiner un crochet [ à l'emplacement de la graduation de $-1$-->
             <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none" />
-            <!-- Dessiner un crochet ] à l'emplacement de la graduation de $4$-->
             <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
                 transform="translate(200,0) scale(-1,1)" />
-            <!-- Dessiner un crochet ] à l'emplacement de la graduation de $2$-->
             <path id="crochet" d="M 0,0 m 5,-5 l -5,0 l 0,10 l 5,0" stroke-width="2" stroke="red" fill="none"
-                transform="translate(120,50) scale(-1,1)" />
+                transform="translate(120,50) scale(-1,1)" /> -->
+            
             <!-- Dessiner un rectangle qui surligne l'intersection-->
             <defs>
                 <pattern id="hachures" patternUnits="userSpaceOnUse" width="10" height="10">
                 <path d="M 0 0 L 10 10" stroke="black" stroke-width="1" />
                 </pattern>
             </defs>
-            <rect x="0" y="0" width="80" height="110" style="fill:red;opacity:0.1;stroke-width:0;"
-                transform="translate(120,-30)" />
-            <rect x="0" y="0" width="80" height="110" style="fill:url(#hachures);opacity:0.5;stroke-width:0;"
-                transform="translate(120,-30)" />
+            <g transform="translate(120,5)">
+                <rect x="0" y="0" width="80" height="40" style="fill:red;opacity:0.1;stroke-width:0;"/>
+                <rect x="0" y="0" width="80" height="40" style="fill:url(#hachures);opacity:0.5;stroke-width:0;"/>
+            </g>
             <g>
-                <foreignObject x="0" y="0" width="120" height="90" transform="translate(117,10)">
+                <foreignObject x="0" y="0" width="120" height="90" transform="translate(125)" style="font-size:2rem;">
                     $\scriptsize I\cap J$
+                </foreignObject>
+                <foreignObject x="0" y="0" width="120" height="90" transform="translate(100,-32)" style="font-size:1.5rem;">
+                    $I$
+                </foreignObject>
+                <foreignObject x="0" y="0" width="120" height="90" transform="translate(200,50)" style="font-size:1.5rem;">
+                    $J$
                 </foreignObject>
             </g>
         </svg>
@@ -474,20 +470,24 @@
 </div>
 <div class="exercice">
     <div class="enonce">
-        Donnez les intervalles correspondants aux ensembles suivants&nbsp;:
-        <ol class="alphabetical-list">
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\leqslant 3$ ou $x\geqslant 1$}\}$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\lt -2$ et $x\geqslant 1$}\}$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\leqslant 3$ et $x\gt 1$}\}$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\lt -2$ ou $x\geqslant 1$}\}$</li>
+        Indiquez à quel ensemble de nombres réels correspond chacune des expressions suivantes en utilisant les notations des intervalles&nbsp;:
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$x\leqslant 3$ ou $x\geqslant 1$</li>
+            <li>$x\lt -2$ et $x\geqslant 1$</li>
+            <li>$x\leqslant 3$ et $x\gt 1$</li>
+            <li>$x\lt -2$ ou $x\geqslant 1$</li>
         </ol>
     </div>
     <div class="solution">
         <ul class="alphabetical-list">
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\leqslant 3$ ou $x\geqslant 1$}\} = ]-\infty;1]\cup[3;+\infty[$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\lt -2$ et $x\geqslant 1$}\} = \emptyset$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\leqslant 3$ et $x\gt 1$}\} = [1;3[$</li>
-            <li>$\{\text{$x\in\mathbb{R}$ tel que $x\lt -2$ ou $x\geqslant 1$}\} = ]-\infty;-2[\cup[1;+\infty[$</li>
+            <li>$$x\leqslant 3$ ou $x\geqslant 1$$
+            $$x\in]-\infty;1]\cup[3;+\infty[$$</li>
+            <li>$$x\lt -2$ et $x\geqslant 1$$
+            $x\in \emptyset$</li>
+            <li>$$x\leqslant 3$ et $x\gt 1$$
+            $$x\in [1;3[$$</li>
+            <li>$$x\lt -2$ ou $x\geqslant 1$$
+            $$x\in ]-\infty;-2[\cup[1;+\infty[$$</li>
         </ul>
     </div>
 </div>

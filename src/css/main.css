@@ -426,8 +426,13 @@ header {
   border-bottom: 1px solid #aaa;
   font-size: 1.5em;
   font-weight: bold;
+  background-color: #f0f0f0;
 }
 
+header.brouillon {
+  color:red;
+  background-color: white;
+}
 .page-break {
   page-break-after: always;
 }
