@@ -433,6 +433,9 @@ header.brouillon {
   color:red;
   background-color: white;
 }
+.header-niveau {
+  font-size: 0.5rem;
+}
 .page-break {
   page-break-after: always;
 }
