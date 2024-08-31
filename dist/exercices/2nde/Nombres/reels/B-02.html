@@ -115,7 +115,7 @@
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
 
-    <main><header class="brouillon"><div>Manipuler les nombres réels</div> <div><button class="precedent noprint" onclick="precedent()">&lt;</button>B-02<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+    <main><header><div>Manipuler les nombres réels</div> <div><button class="precedent noprint" onclick="precedent()">&lt;</button>B-02<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
 
 <h1>Nombres réels</h1>
 <div class="definition">
@@ -132,7 +132,7 @@
             <li><p>$\frac{5}{3}=1+\frac{2}{3}$</p></li>
             <li><p>$\frac{34}{12}=\frac{17}{6}=\frac{12}{6}+\frac{5}{6}=2+\frac{5}{6}$</p></li>
             <li><p>$\sqrt{2}\approx 1{,}41$</p></li>
-            <li><p>$\pi\approx 3{,}14$</p></li>
+            <li><p>$\pi\approx \num{3.14}$</p></li>
         </ul>
         <div class="figure">
             <svg viewBox="0 0 480 80">
@@ -202,6 +202,107 @@
 
 <div class="definition">
     $\mathbb{N}^*$, $\mathbb{Z}^*$, $\mathbb{D}^*$, $\mathbb{Q}^*$ et $\mathbb{R}^*$ désignent les ensembles privés de $0$.
+</div>
+
+<div class="propriete">
+    Ajouter ou soustraire deux nombres réels par un même nombre ne change pas l'ordre.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Indiquez pour chaque inégalité, l'intervalle auquel appartient $x$.
+        <ol class="alphabetical-list horizontal-list col-3c">
+            <li>$x-2\lt 3$</li>
+            <li>$x+4\geqslant -9$</li>
+            <li>$8\geqslant x-3$</li>
+            <li>$x+5\gt 6$</li>
+            <li>$6-x\lt 2$</li>
+            <li>$-2+x\leqslant -5$</li>
+            <li>$-3-x\gt -7$</li>
+            <li>$-3\leqslant -5+x$</li>
+            <li>$6-x\lt 4$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="horizontal-list">
+            <li>$$
+            \begin{align*}
+                x-2&\lt 3\\
+                x&\lt 3+2\\
+                x&\lt 5
+            \end{align*}    
+            $$
+            $$x\in]-\infty;5[$$</li>
+            <li>$$
+            \begin{align*}
+                x+4&\geqslant -9\\
+                x&\geqslant -9-4\\
+                x&\geqslant -13
+            \end{align*}
+            $$
+            $$x\in[-13;+\infty[$$</li>
+            <li>$$
+            \begin{align*}
+                8&\geqslant x-3\\
+                8+3&\geqslant x\\
+                11&\geqslant x\\
+                x&\leqslant 11
+            <li>$$
+            \begin{align*}
+                x+5&\gt 6\\
+                x&\gt 6-5\\
+                x&\gt 1
+            \end{align*}
+            $$
+            $$x\in]1;+\infty[$$</li>
+            <li>$$
+            \begin{align*}
+                6-x&\lt 2\\
+                6&\lt 2+x\\
+                6-2&\lt x\\
+                4&\lt x\\
+                x&\gt 4
+            \end{align*}
+            $$
+            $$x\in]4;+\infty[$$</li>
+            <li>$$
+            \begin{align*}
+                -2+x&\leqslant -5\\
+                x&\leqslant -5+2\\
+                x&\leqslant -3
+            \end{align*}
+            $$
+            $$x\in]-\infty;-3]$$</li>
+            <li>$$
+            \begin{align*}
+                -3-x&\gt -7\\
+                -3&\gt -7+x\\
+                -3+7&\gt x\\
+                4&\gt x\\
+                x&\lt 4
+            \end{align*}
+            $$
+            $$x\in]-\infty;4[$$</li>
+            <li>$$
+            \begin{align*}
+                -3&\leqslant -5+x\\
+                -3+5&\leqslant x\\
+                2&\leqslant x\\
+                x&\geqslant 2
+            \end{align*}
+            $$
+            $$x\in[2;+\infty[$$</li>
+            <li>$$
+            \begin{align*}
+                6-x&\lt 4\\
+                6&\lt 4+x\\
+                6-4&\lt x\\
+                2&\lt x\\
+                x&\gt 2
+            \end{align*}
+            $$
+            $$x\in]2;+\infty[$$</li>
+        </ol>
+    </div>
 </div>
 
 <h1>Intervalles</h1>
@@ -366,25 +467,25 @@
     <div class="enonce">
         Indiquez sur quel intervalle de nombres sont définies les fonctions suivantes&nbsp;:
         <ol class="horizontal-list">
-            <li style="line-height: 3em;">$f_1(x)=\sqrt{x}$</li>
+            <li style="line-height: 3em;">$f_1(x)=\dfrac{1}{\sqrt{x}}$</li>
             <li style="line-height: 3em;">$f_2(x)=\sqrt{-7x}$</li>
-            <li style="line-height: 3em;">$f_3=\sqrt{x+3}$</li>
-            <li style="line-height: 3em;">$f_4(x)=\sqrt{x-\frac{4}{3}}$</li>
-            <li style="line-height: 3em;">$f_5(x)=\sqrt{7-x}$</li>
+            <li style="line-height: 3em;">$f_3=\dfrac{1}{\sqrt{x+3}}$</li>
+            <li style="line-height: 3em;">$f_4(x)=\dfrac{1}{\sqrt{7-x}}$</li>
+            <li style="line-height: 3em;">$f_5(x)=\sqrt{x-\frac{4}{3}}$</li>
             <li style="line-height: 3em;">$f_6(x)=\sqrt{\num{8.1}+x}$</li>
-            <li style="line-height: 3em;">$f_7(x)=\sqrt{-2+x}$</li>
+            <li style="line-height: 3em;">$f_7(x)=\dfrac{1}{\sqrt{-2+x}}$</li>
             <li style="line-height: 3em;">$f_8(x)=\sqrt{-5-x}$</li>
         </ol>
     </div>
     <div class="solution">
         <ol class="horizontal-list">
-            <li><p>$f_1(x)=\sqrt{x}$ est définie sur $$[0;+\infty[$$</p></li>
+            <li><p>$f_1(x)=\sqrt{x}$ est définie sur $$]0;+\infty[$$</p></li>
             <li><p>$f_2(x)=\sqrt{-7x}$ est définie sur $$]-\infty;0]$$</p></li>
-            <li><p>$f_3(x)=\sqrt{x+3}$ est définie sur $$[-3;+\infty[$$</p></li>
-            <li><p>$f_4(x)=\sqrt{x-\frac{4}{3}}$ est définie sur $$[\frac{4}{3};+\infty[$$</p></li>
-            <li><p>$f_5(x)=\sqrt{7-x}$ est définie sur $$]-\infty;7]$$</p></li>
+            <li><p>$f_3(x)=\sqrt{x+3}$ est définie sur $$]-3;+\infty[$$</p></li>
+            <li><p>$f_4(x)=\sqrt{7-x}$ est définie sur $$]-\infty;7[$$</p></li>
+            <li><p>$f_5(x)=\sqrt{x-\frac{4}{3}}$ est définie sur $$[\frac{4}{3};+\infty[$$</p></li>
             <li><p>$f_6(x)=\sqrt{\num{8.1}+x}$ est définie sur $$[-\num{8.1};+\infty[$$</p></li>
-            <li><p>$f_7(x)=\sqrt{-2+x}$ est définie sur $$[2;+\infty[$$</p></li>
+            <li><p>$f_7(x)=\sqrt{-2+x}$ est définie sur $$]2;+\infty[$$</p></li>
             <li><p>$f_8(x)=\sqrt{-5-x}$ est définie sur $$]-\infty;-5]$$</p></li>
         </ol>
     </div>
@@ -470,54 +571,43 @@
 </div>
 <div class="exercice">
     <div class="enonce">
-        Indiquez à quel ensemble de nombres réels correspond chacune des expressions suivantes en utilisant les notations des intervalles&nbsp;:
-        <ol class="alphabetical-list horizontal-list col-2c">
-            <li>$x\leqslant 3$ ou $x\geqslant 1$</li>
-            <li>$x\lt -2$ et $x\geqslant 1$</li>
-            <li>$x\leqslant 3$ et $x\gt 1$</li>
-            <li>$x\lt -2$ ou $x\geqslant 1$</li>
-        </ol>
-    </div>
-    <div class="solution">
-        <ul class="alphabetical-list">
-            <li>$$x\leqslant 3$ ou $x\geqslant 1$$
-            $$x\in]-\infty;1]\cup[3;+\infty[$$</li>
-            <li>$$x\lt -2$ et $x\geqslant 1$$
-            $x\in \emptyset$</li>
-            <li>$$x\leqslant 3$ et $x\gt 1$$
-            $$x\in [1;3[$$</li>
-            <li>$$x\lt -2$ ou $x\geqslant 1$$
-            $$x\in ]-\infty;-2[\cup[1;+\infty[$$</li>
-        </ul>
-    </div>
-</div>
-<div class="exercice">
-    <div class="enonce">
-        Donnez les intervalles correspondants aux ensembles suivants&nbsp;:
-        <ol class="alphabetical-list horizontal-list col-3c">
+        On considère les ensembles suivants&nbsp;:
+        <ol class="horizontal-list">
             <li>$[-2;5]\cap[0;7]$</li>
             <li>$]-2;5]\cup[0;7]$</li>
             <li>$[-2;5[\cap[0;3]$</li>
             <li>$[-2;5]\cup]0;3]$</li>
-            <li>$[-2;5]\cap[5;7]$</li>
-            <li>$[-2;3]\cap[5;7]$</li>
             <li>$[-2;5]\cap]-4;3[$</li>
             <li>$[-2;+\infty[\cap]-4;3[$</li>
             <li>$]-2;+\infty[\cup[-4;3[$</li>
         </ol>
+        <ol class="alphabetical-list">
+            <li>Déterminez dans chaque cas si $3$ appartient à l'ensemble réunion ou intersection.</li>
+            <li>Tracez schématiquement les intervalles sur deux droites numériques et en déduire, si possible,  un intervalle correspondant à l'union ou l'intersection.</li>
+        </ol>
     </div>
     <div class="solution">
-        <ul class="alphabetical-list">
-            <li>$[-2;5]\cap[0;7] = [0;5]$</li>
-            <li>$]-2;5]\cup[0;7] = ]-2;7]$</li>
-            <li>$[-2;5[\cap[0;3] = [0;3]$</li>
-            <li>$[-2;5[\cup]0;3] = [-2;5[$</li>
-            <li>$]-2;5]\cap[5;7[ = \{5\}$</li>
-            <li>$[-2;3]\cap[5;7[ = \emptyset$</li>
-            <li>$[-2;5]\cap[-4;3[ = ]-4;3[$</li>
-            <li>$[-2;+\infty[\cap]-4;3[ = [-2;3[$</li>
-            <li>$]-2;+\infty[\cup[-4;3[ = [-4;+\infty[$</li>
+        <ol class="alphabetical-list">
+            <li><ul>
+            <li>$$3\in[-2;5]\cap[0;7]$$</li>
+            <li>$$3\in]-2;5]\cup[0;7]$$</li>
+            <li>$$3\in[-2;5[\cap[0;3]$$</li>
+            <li>$$3\in[-2;5]\cup]0;3]$$</li>
+            <li>$$3\notin[-2;5]\cap]-4;3[$$</li>
+            <li>$$3\in[-2;+\infty[\cap]-4;3[$$</li>
+            <li>$$3\in]-2;+\infty[\cup[-4;3[$$</li>
+            </ul></li>
+            <li><ul class="horizontal-list">
+            <li>$$[-2;5]\cap[0;7] = [0;5]$$</li>
+            <li>$$]-2;5]\cup[0;7] = ]-2;7]$$</li>
+            <li>$$[-2;5[\cap[0;3] = [0;3]$$</li>
+            <li>$$[-2;5[\cup]0;3] = [-2;5[$$</li>
+            <li>$$[-2;5]\cap[-4;3[ = ]-4;3[$$</li>
+            <li>$$[-2;+\infty[\cap]-4;3[ = [-2;3[$$</li>
+            <li>$$]-2;+\infty[\cup[-4;3[ = [-4;+\infty[$$</li>
         </ul>
+        </ol>
+        
     </div>
 </div></main>
   </body>
