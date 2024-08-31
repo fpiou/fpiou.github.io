@@ -21,6 +21,10 @@
     border-bottom: 1px solid #aaa;
     font-size: normal;
   }
+  /* Si le body ne contient pas class deuxcolonnes alors header est display none */
+  body:not(.deuxcolonnes) header {
+    display: none;
+  }
   body {
     width:100vw;
     max-width: 100vw;
