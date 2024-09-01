@@ -63,6 +63,7 @@
   }
 
   /* Ne pas imprimer */
+  .video,
   .selectionneur,
   .solution,
   .indice,

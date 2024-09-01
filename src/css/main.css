@@ -1,4 +1,5 @@
 /* Fonte commune */
+
 html {
   font-family: 'Source Code Pro';
   display: flex;
@@ -675,4 +676,12 @@ table.editeur td:first-child {
   color : white;
   font-family : monospace;  
   font-size : 12px;
+}
+
+.video iframe {
+  max-width: 90%;
+}
+.video {
+  display: flex;
+  justify-content: center;
 }
