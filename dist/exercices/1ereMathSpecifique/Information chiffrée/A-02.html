@@ -54,6 +54,8 @@
     
     <link rel="stylesheet" href="/src/css/prettyExercice.css" />
     
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
     <link rel="stylesheet" href="/src/css/print.css" />
     
 
@@ -114,7 +116,179 @@
     <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
 
     <main><header class="brouillon"><div>Informations chiffrées</div><div class="header-niveau">Première Mathématiques spécifiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>A-02<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
-    
-</main>
+
+<h1>Diagrammes circulaires</h1>
+<div class="definition">
+    <div style="display:flex">
+        <div style="display:flex;align-items:center;width:70%;text-align:justify;"> Dans un diagramme circulaire l'angle du secteur (ou de la couronne) est proportionnel à la valeur qu'il représente.</div>
+        <div style="display:flex;align-items:center;width:30%;"><div class="figure">
+            <svg viewBox="0 0 200 200" style="width:90%">
+                <g name="repere1" class="repere" xmin="-3.1" ymin="-3.1" xmax="3.1" ymax="3.1" xorigine="0" yorigine="0"></g>
+                <g stroke="black" stroke-width="0.5" fill-opacity="0.5">
+                    <g name="s1" class="secteur" repere="repere1" x="0" y="0" r="2" largeur="0.8"  start="0" angle="60" fill="red"></g>
+                    <g name="s2" class="secteur" repere="repere1" x="0" y="0" r="2" largeur="0.8"  start="60" angle="100" fill="blue"></g>
+                    <g name="s3" class="secteur" repere="repere1" x="0" y="0" r="2" largeur="0.8"  start="160" angle="200" fill="green"></g>
+                    <g name="s4" class="secteur" repere="repere1" x="0" y="0" r="1" largeur="0.8"  start="360" angle="90" fill="red"></g>
+                    <g name="s5" class="secteur" repere="repere1" x="0" y="0" r="1" largeur="0.8"  start="450" angle="100" fill="blue"></g>
+                    <g name="s6" class="secteur" repere="repere1" x="0" y="0" r="1" largeur="0.8"  start="550" angle="170" fill="green"></g>
+                </g>
+            </svg>
+        </div></div>
+    </div>      
+</div>
+<div class="exercice">
+    <div class="enonce">
+        La répartition des âges par sexe dans le gouvernement français de 2022 était la suivante&nbsp;:
+       <table class="tableaucroise">
+                <tr>
+                    <td></td>
+                    <td>[20;40[</td>
+                    <td>[40;60[</td>
+                    <td>[60;80[</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Femme</td>
+                    <td>$4$</td>
+                    <td>$12$</td>
+                    <td>$5$</td>
+                    <td>$21$</td>
+                </tr>
+                <tr>
+                    <td>Homme</td>
+                    <td>$5$</td>
+                    <td>$13$</td>
+                    <td>$3$</td>
+                    <td>$21$</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>$9$</td>
+                    <td>$25$</td>
+                    <td>$8$</td>
+                    <td>$42$</td>
+                </tr>
+            </table></li>
+        Représentez cette répartition par un diagramme circulaire.
+    </div>
+    <div class="solution">
+        <p>Il y a $4$ femmes entre $20$ et $40$ ans sur $21$ femmes.</p>
+        <p>D'où le secteur correspondant a pour angle $\frac{4}{21}\times \ang{360}$</p>
+        $$\frac{4}{21}\times \ang{360}\approx\ang{69}$$
+        <p>On obtient le diagramme suivant en faisant de même pour les autres secteurs.</p>
+        <div class="figure">
+            <svg viewBox="0 0 200 200" style="width:90%">
+                <g name="repere1" class="repere" xmin="-3.1" ymin="-3.1" xmax="3.1" ymax="3.1" xorigine="0" yorigine="0"></g>
+                <g stroke="black" stroke-width="0.5" fill-opacity="0.5">
+                    <g name="s1" class="secteur" repere="repere1" x="0" y="0" r="1" largeur="0.8"  start="0" angle="5/21*360" fill="red"></g>
+                    <g name="s2" class="secteur" repere="repere1" x="0" y="0" r="1" largeur="0.8"  start="5/21*360" angle="13/21*360" fill="blue"></g>
+                    <g name="s3" class="secteur" repere="repere1" x="0" y="0" r="1" largeur="0.8"  start="18/21*360" angle="3/21*360" fill="green"></g>
+                    
+                    <g name="s4" class="secteur" repere="repere1" x="0" y="0" r="2" largeur="0.8"  start="0" angle="4/21*360" fill="red"></g>
+                    <g name="s5" class="secteur" repere="repere1" x="0" y="0" r="2" largeur="0.8"  start="4/21*360" angle="12/21*360" fill="blue"></g>
+                    <g name="s6" class="secteur" repere="repere1" x="0" y="0" r="2" largeur="0.8"  start="16/21*360" angle="5/21*360" fill="green"></g>
+                </g>
+                <g style="font-size:0.8rem;">
+                    <g class="label" repere="repere1" x="0" y="0" r="1.5" angle="3/21*360" width="50">$[20;40[$</g>
+                    <g class="label" repere="repere1" x="0" y="0" r="2.5" angle="10/21*360" width="50">$[40;60[$</g>
+                    <g class="label" repere="repere1" x="0" y="0" r="1.5" angle="19/21*360" width="50">$[60;80[$</g>
+                    <g class="label" repere="repere1" x="0" y="0" r="3.25" angle="100" width="50">Femme</g>
+                    <g class="label" repere="repere1" x="0" y="0" r="1.1" angle="120" width="50">Homme</g>
+                </g>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<h1>Nuages de points</h1>
+<div class="definition">
+    <div style="display:flex">
+        <div style="display:flex;align-items:center;width:70%;text-align:justify;"> Dans un nuage de points, chaque point est associé à une paire de valeurs.</div>
+        <div style="display:flex;align-items:center;width:30%;"><div class="figure">
+            <svg viewBox="0 0 200 100" style="width:90%">
+                <g name="repere1" class="repere" xmin="-1" ymin="-100" xmax="9" ymax ="1000" xorigine="0" yorigine="0"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="c1" class="nuagePoints" expression="3*2^x" repere="repere1" xmin="0" xmax="8" pas="1" stroke="red" stroke-width="0.5"></g>
+                <g name="c1bis" class="courbeRepresentative" expression="3*2^x" linkto="repere1" xmin="0" xmax="8" pas="0.1" stroke="red" stroke-width="0.4" stroke-dasharray="1,1"></g>
+                <g name="c3" class="nuagePoints" datax="0;1;2;3;4;5;6;7;8" datay="500;200;400;100;300;200;400;700;700" repere="repere1" stroke="green" stroke-width="0.5" forme="x"></g>
+            </svg>
+        </div>
+        </div>
+    </div>
+</div>
+<div class="video">
+    <iframe src="https://ladigitale.dev/digiview/inc/video.php?videoId=VToM7Y5iKUw&vignette=https://i.ytimg.com/vi/VToM7Y5iKUw/hqdefault.jpg&debut=0&fin=238&largeur=16&hauteur=9" allow="autoplay; fullscreen" frameborder="0" width="700" height="394"></iframe>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Le département marketing d'un supermarché souhaite analyser l'efficacité des promotions mensuelles sur le volume des ventes. Les données suivantes représentent le pourcentage de réduction appliqué durant chaque mois et le volume des ventes correspondant, en milliers d'euros.
+        <table class="tableaucroise">
+            <tr>
+                <th>Mesure</th>
+                <th>Jan</th>
+                <th>Fév</th>
+                <th>Mar</th>
+                <th>Avr</th>
+                <th>Mai</th>
+                <th>Juin</th>
+            </tr>
+            <tr>
+                <td>Réduction (%)</td>
+                <td>5</td>
+                <td>10</td>
+                <td>4</td>
+                <td>8</td>
+                <td>12</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>Ventes (milliers d'euros)</td>
+                <td>120</td>
+                <td>180</td>
+                <td>110</td>
+                <td>160</td>
+                <td>210</td>
+                <td>140</td>
+            </tr>
+        </table>
+        <ol class="alphabetical-list">
+            <li>Représentez les ventes en fonction des réductions par un nuage de points dans lequel les axes se coupent à $\SI{3}{\%}$ pour les réductions et à $100$ milliers d'euros pour les ventes.</li>
+            <li>Quelle est la nature de la relation entre les deux variables&nbsp;?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <p>On obtient le nuage de points suivant&nbsp;:</p>
+        <div class="figure">
+            <svg viewBox="0 0 280 140" style="width:90%">
+                <g name="repere1" class="repere" xmin="0" ymin="80" xmax="13" ymax ="220" xorigine="3" yorigine="100"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1" size="5" origine></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="10" stroke="black" stroke-width="1" size="5" origine></g>
+                
+                <g name="J1" class="point labeled" repere="repere1" x="3" y="100" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="J1" x="-20" y="-8">100</g>
+                <g name="J2" class="point labeled" repere="repere1" x="3" y="200" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="J2" x="-20" y="-8">200</g>
+                
+                <g name="I1" class="point labeled" repere="repere1" x="4" y="100" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="I1" x="-5" y="0">4</g>
+                <g name="I2" class="point labeled" repere="repere1" x="10" y="100" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="I2" x="-5" y="0">10</g>
+                <g name="A" class="point labeled" repere="repere1" x="0" y="10" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="A" x="-15" y="-9">10</g>
+                <g name="n1" class="nuagePoints" repere="repere1" datax="5;10;4;8;12;6" datay="120;180;110;160;210;140" stroke="blue" stroke-width="0.5" forme="x"></g>
+                <!-- Titres -->
+                <g style="font-size:0.5rem;">
+                    <g class="label" repere="repere1" x="10.5" y="100" width="60">Ventes  en milliers €</g>
+                    <g class="label" repere="repere1" x="0" y="200" width="50">Réduction en %</g>
+                </g>
+            </svg>
+        </div>
+        <p>On observe que les points sont plus ou moins alignés.</p>
+        <p>On peut donc supposer qu'il y a une relation linéaire entre les deux variables.</p>
+    </div>
+</div></main>
   </body>
 </html>
