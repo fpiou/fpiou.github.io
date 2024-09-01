@@ -679,9 +679,22 @@ table.editeur td:first-child {
 }
 
 .video iframe {
-  max-width: 90%;
+  max-width: 500px;
+  max-height: 285px;
 }
 .video {
   display: flex;
   justify-content: center;
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
+.geogebra iframe {
+  width: 100%;
+}
+.geogebra {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0 auto;
 }
