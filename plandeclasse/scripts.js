@@ -29,6 +29,11 @@ function addEmptyDesk() {
     emptyDeskDiv.textContent = 'Bureau vide';
     emptyDeskDiv.draggable = true;
 
+    // Ajouter un événement pour supprimer le bureau vide quand on clique dessus
+    emptyDeskDiv.addEventListener('dblclick', function() {
+        classroomDiv.removeChild(emptyDeskDiv);
+    });
+
     // Ajouter le bureau vide au début du conteneur
     classroomDiv.insertBefore(emptyDeskDiv, classroomDiv.firstChild);
     enableDragAndDrop(); // Pour permettre de déplacer le bureau vide
@@ -118,8 +123,34 @@ function displayClassroom(students) {
         classroomDiv.appendChild(studentDiv);
     });
 
+    completeWithEmptyDesks(); // Compléter avec des bureaux vides si nécessaire
     updateGridLayout();
     enableDragAndDrop();
+}
+
+function completeWithEmptyDesks() {
+    const classroomDiv = document.getElementById('classroom');
+    const columns = document.getElementById('columnsInput').value || 4;
+    const totalDesks = classroomDiv.children.length;
+
+    // Calculer le nombre de bureaux nécessaires pour compléter
+    const remainder = totalDesks % columns;
+    const desksToAdd = remainder === 0 ? 0 : columns - remainder;
+
+    for (let i = 0; i < desksToAdd; i++) {
+        const emptyDeskDiv = document.createElement('div');
+        emptyDeskDiv.className = 'student empty-desk';
+        emptyDeskDiv.textContent = 'Bureau vide';
+        emptyDeskDiv.draggable = true;
+
+        // Ajouter un événement pour supprimer le bureau vide quand on double-clique dessus
+        emptyDeskDiv.addEventListener('dblclick', function() {
+            classroomDiv.removeChild(emptyDeskDiv);
+        });
+
+        // Ajouter le bureau vide au début du conteneur
+        classroomDiv.insertBefore(emptyDeskDiv, classroomDiv.firstChild);
+    }
 }
 
 
