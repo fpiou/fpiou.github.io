@@ -89,28 +89,35 @@ function enableDragAndDrop() {
     let dragged = null;
 
     studentsDivs.forEach(studentDiv => {
+        studentDiv.setAttribute('draggable', true);
+
         studentDiv.addEventListener('dragstart', function(event) {
             dragged = this;
-            setTimeout(() => this.style.display = 'none', 0);
+            dragged.style.opacity = "0.5"; // Make the original element semi-transparent
+            event.dataTransfer.setData('text/html', this.innerHTML); // Store the HTML content of the dragged element
         });
 
         studentDiv.addEventListener('dragend', function(event) {
-            setTimeout(() => this.style.display = 'flex', 0);
+            dragged.style.opacity = "1"; // Reset the opacity of the original element
             dragged = null;
         });
 
         studentDiv.addEventListener('dragover', function(event) {
-            event.preventDefault();
+            event.preventDefault(); // Necessary to allow a drop
+            event.dataTransfer.dropEffect = "move";
         });
 
         studentDiv.addEventListener('drop', function(event) {
             event.preventDefault();
             if (dragged && this !== dragged) {
-                this.parentNode.insertBefore(dragged, this);
+                // Swap the HTML content of the dragged element and the drop target
+                let temp = this.innerHTML;
+                this.innerHTML = dragged.innerHTML;
+                dragged.innerHTML = temp;
             }
         });
 
-        // New: Open modal on click
+        // Open modal on click
         studentDiv.addEventListener('click', function() {
             openModal(this.textContent);
         });
@@ -141,6 +148,7 @@ window.addEventListener('click', function(event) {
         closeModal();
     }
 });
+
 
 function randomizeSeats() {
     const classroomDiv = document.getElementById('classroom');
