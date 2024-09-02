@@ -117,11 +117,11 @@
 
     <main><header><div>Dérivation</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>C-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
 
-<i style="font-size:9pt;">Dans cette leçon $f$ est une fonction définie sur un intervalle $I$&nbsp;; $a$ est un réel de $I$ et $h$ est un réel non nul tel que $a+h$ soit dans $I$.</i>
+<i style="font-size:1em;">Dans cette leçon $f$ est une fonction définie sur un intervalle $I$&nbsp;; $a$ est un réel de $I$ et $h$ est un réel non nul tel que $a+h$ soit dans $I$.</i>
 <h1>Taux de variation</h1>
 <div class="definition">
-    Le taux de variation de la fonction $f$ entre $a$ et $a+h$ est le nombre&nbsp;:<br>
-    <div style="text-align:center;">$\dfrac{f(a+h)-f(a)}{h}$</div>
+    Le <i>taux de variation</i> (ou taux d'accroissement)de la fonction $f$ entre $a$ et $a+h$ est le nombre&nbsp;:<br>
+    <div style="text-align:center;">$$\dfrac{f(a+h)-f(a)}{h}$$</div>
     C'est aussi la pente de la sécante à la courbe représentative de $f$ passant par les points d'abscisses $a$ et $a+h$.
     <div class="figure">
         <svg viewBox="0 0 280 160">
@@ -156,10 +156,13 @@
         </svg>
     </div>
 </div>
+<div class="video">
+    <iframe src="https://ladigitale.dev/digiview/inc/video.php?videoId=UmT0Gov6yyE&vignette=https://i.ytimg.com/vi/UmT0Gov6yyE/hqdefault.jpg&debut=30&fin=160&largeur=16&hauteur=9" allow="autoplay; fullscreen" frameborder="0" width="700" height="394"></iframe>
+</div>
 <div class="exercice">
     <div class="enonce">
     <ol class="alphabetical-list">
-        <li>En utilisant la définition du taux de variation, montrez que le taux de variation de la fonction carré $f: x\longmapsto x^2$ entre $a$ et $a+h$ est&nbsp;$2a+h$.</li>
+        <li>Montrez que le taux de variation de la fonction carré $f: x\longmapsto x^2$ entre $a$ et $a+h$ est&nbsp;$2a+h$.</li>
         <li>Calculez la pente de la sécante à la courbe représentative de $f$ passant par les points d'abscisses $2$ et $\num{2.1}$.
     </ol>
     </div>
@@ -184,7 +187,7 @@
 </div>
 <div class="exercice">
     <div class="enonce">
-       En utilisant la définition du taux de variation, montrez que le taux de variation d'une fonction affine entre deux réels $a$ et $a+h$ est la pente de la droite représentative de cette fonction.
+       Montrez que le taux de variation d'une fonction affine entre deux réels $a$ et $a+h$ est la pente de la droite représentative de cette fonction.
     </div>
     <div class="solution">
         <p>Soit $f$ une fonction affine de la forme $f: x\longmapsto mx+p$.
@@ -204,7 +207,7 @@
 <div class="exercice">
     <div class="enonce">
         <ol class="alphabetical-list">
-            <li>En utilisant la définition du taux de variation, montrez que le taux de variation de la fonction inverse $f: x\longmapsto \frac{1}{x}$ entre $a$ et $a+h$ est&nbsp;$-\frac{1}{a(a+h)}$.</li>
+            <li>Montrez que le taux de variation de la fonction inverse $f: x\longmapsto \frac{1}{x}$ entre $a$ et $a+h$ est&nbsp;$-\frac{1}{a(a+h)}$.</li>
             <li>Montrez que la pente de la sécante à la courbe représentative de $f$ passant par les points d'abscisses $2$ et $\num{2.1}$ est $-\frac{5}{21}$.</li>
         </ol>
     </div>
@@ -236,7 +239,7 @@
 <div class="exercice">
     <div class="enonce">
         <ol class="alphabetical-list">
-            <li>En utilisant la définition du taux de variation, montrez que le taux de variation de la fonction racine carrée $f: x\longmapsto \sqrt{x}$ entre $a$ et $a+h$ est&nbsp;$\frac{1}{\sqrt{a+h}+\sqrt{a}}$.
+            <li>Montrez que le taux de variation de la fonction racine carrée $f: x\longmapsto \sqrt{x}$ entre $a$ et $a+h$ est&nbsp;$\frac{1}{\sqrt{a+h}+\sqrt{a}}$.
             </li>
             <li>Montrez que la pente de la sécante à la courbe représentative de $f$ passant par les points d'abscisses $4$ et $9$ est $\num{0.2}$.</li>
         </ol>
@@ -270,7 +273,7 @@
 <div class="exercice">
     <div class="enonce">
         <ol class="alphabetical-list">
-            <li>En utilisant la définition du taux de variation, montrez que le taux de variation de la fonction cube $f: x\longmapsto x^3$ entre $a$ et $a+h$ est&nbsp;$3a^2+3ah+h^2$.
+            <li>Montrez que le taux de variation de la fonction cube $f: x\longmapsto x^3$ entre $a$ et $a+h$ est&nbsp;$3a^2+3ah+h^2$.
         <br><i>Indication&nbsp;: $(a+b)^3=(a+b)(a+b)^2$.</i></li>
             <li>Montrez que la pente de la sécante à la courbe représentative de $f$ passant par les points d'abscisses $2$ et $2.1$ est $\num{12.61}$.</li>
         </ol>
@@ -307,58 +310,61 @@
 <h1>Nombre dérivé</h1>
 <div class="definition">
     On appelle nombre dérivé de $f$ en $a$ et on note $f'(a)$ le nombre&nbsp;:
-    <div style="text-align:center;">$f'(a)=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}$</div>
-    $\lim_{h\to 0}$ signifie que l'on regarde ce que vaut le taux de variation de $f$ entre $a$ et $a+h$ lorsque $h$ tend vers $0$.
+    <div style="text-align:center;">$$f'(a)=\lim\limits_{h\to 0}\frac{f(a+h)-f(a)}{h}$$</div>
+    $\lim\limits_{h\to 0}$ signifie que l'on fait tendre $h$ vers $0$.
+</div>
+<div class="video">
+    <iframe src="https://ladigitale.dev/digiview/inc/video.php?videoId=UmT0Gov6yyE&vignette=https://i.ytimg.com/vi/UmT0Gov6yyE/hqdefault.jpg&debut=161&fin=597&largeur=16&hauteur=9" allow="autoplay; fullscreen" frameborder="0" width="700" height="394"></iframe>
 </div>
 <div class="exercice">
     <div class="enonce">
         <ol class="alphabetical-list">
-            <li>$f$ est la fonction carré qui à $x$ associe $x^2$. Vérifiez que $f'(3)=\lim_{h\to 0}6+h$. En déduire $f'(3)$.</li>
-            <li>$f$ est la fonction cube qui à $x$ associe $x^3$. Vérifiez que $f'(2)=\lim_{h\to 0}12+6h+h^2$. En déduire $f'(2)$.</li>
-            <li>$f$ est la fonction racine carrée qui à $x$ associe $\sqrt{x}$. Vérifiez que $f'(5)=\lim_{h\to 0}\frac{1}{\sqrt{5+h}+\sqrt{5}}$. En déduire $f'(5)$.</li>
-            <li>$f$ est la fonction inverse qui à $x$ associe $\frac{1}{x}$. Vérifiez que $f'(6)=\lim_{h\to 0}-\frac{1}{6(6+h)}$. En déduire $f'(6)$.</li>
+            <li>$f$ est la fonction carré. Vérifiez que $f'(3)=\lim\limits_{h\to 0}(6+h)$. En déduire $f'(3)$.</li>
+            <li>$f$ est la fonction cube. Vérifiez que $f'(2)=\lim\limits_{h\to 0}(12+6h+h^2)$. En déduire $f'(2)$.</li>
+            <li>$f$ est la fonction racine carrée. Vérifiez que $f'(5)=\lim\limits_{h\to 0}\left(\frac{1}{\sqrt{5+h}+\sqrt{5}}\right)$. En déduire $f'(5)$.</li>
+            <li>$f$ est la fonction inverse. Vérifiez que $f'(6)=\lim\limits_{h\to 0}\left(-\frac{1}{6(6+h)}\right)$. En déduire $f'(6)$.</li>
         </ol>
     </div>
     <div class="solution">
         <ol class="alphabetical-list">
             <li>$$
             \begin{align*}
-            f'(3)&=\lim_{h\to 0}\frac{f(3+h)-f(3)}{h}\\
-            f'(3)&=\lim_{h\to 0}\frac{(3+h)^2-3^2}{h}\\
-            f'(3)&=\lim_{h\to 0}\frac{9+6h+h^2-9}{h}\\
-            f'(3)&=\lim_{h\to 0}\frac{6h+h^2}{h}\\
-            f'(3)&=\lim_{h\to 0}6+h\\
+            f'(3)&=\lim\limits_{h\to 0}\frac{f(3+h)-f(3)}{h}\\
+            f'(3)&=\lim\limits_{h\to 0}\frac{(3+h)^2-3^2}{h}\\
+            f'(3)&=\lim\limits_{h\to 0}\frac{9+6h+h^2-9}{h}\\
+            f'(3)&=\lim\limits_{h\to 0}\frac{6h+h^2}{h}\\
+            f'(3)&=\lim\limits_{h\to 0}6+h\\
             f'(3)&=6
             \end{align*}
             $$</li>
             <li>$$
             \begin{align*}
-            f'(2)&=\lim_{h\to 0}\frac{f(2+h)-f(2)}{h}\\
-            f'(2)&=\lim_{h\to 0}\frac{(2+h)^3-2^3}{h}\\
-            f'(2)&=\lim_{h\to 0}\frac{8+12h+6h^2+h^3-8}{h}\\
-            f'(2)&=\lim_{h\to 0}\frac{12h+6h^2+h^3}{h}\\
-            f'(2)&=\lim_{h\to 0}12+6h+h^2\\
+            f'(2)&=\lim\limits_{h\to 0}\frac{f(2+h)-f(2)}{h}\\
+            f'(2)&=\lim\limits_{h\to 0}\frac{(2+h)^3-2^3}{h}\\
+            f'(2)&=\lim\limits_{h\to 0}\frac{8+12h+6h^2+h^3-8}{h}\\
+            f'(2)&=\lim\limits_{h\to 0}\frac{12h+6h^2+h^3}{h}\\
+            f'(2)&=\lim\limits_{h\to 0}12+6h+h^2\\
             f'(2)&=12
             \end{align*}
             $$</li>
             <li>$$
             \begin{align*}
-            f'(5)&=\lim_{h\to 0}\frac{f(5+h)-f(5)}{h}\\
-            f'(5)&=\lim_{h\to 0}\frac{\sqrt{5+h}-\sqrt{5}}{h}\\
-            f'(5)&=\lim_{h\to 0}\frac{\sqrt{5+h}-\sqrt{5}}{h}\times\frac{\sqrt{5+h}+\sqrt{5}}{\sqrt{5+h}+\sqrt{5}}\\
-            f'(5)&=\lim_{h\to 0}\frac{5+h-5}{h(\sqrt{5+h}+\sqrt{5})}\\
-            f'(5)&=\lim_{h\to 0}\frac{h}{h(\sqrt{5+h}+\sqrt{5})}\\
-            f'(5)&=\lim_{h\to 0}\frac{1}{\sqrt{5+h}+\sqrt{5}}\\
+            f'(5)&=\lim\limits_{h\to 0}\frac{f(5+h)-f(5)}{h}\\
+            f'(5)&=\lim\limits_{h\to 0}\frac{\sqrt{5+h}-\sqrt{5}}{h}\\
+            f'(5)&=\lim\limits_{h\to 0}\frac{\sqrt{5+h}-\sqrt{5}}{h}\times\frac{\sqrt{5+h}+\sqrt{5}}{\sqrt{5+h}+\sqrt{5}}\\
+            f'(5)&=\lim\limits_{h\to 0}\frac{5+h-5}{h(\sqrt{5+h}+\sqrt{5})}\\
+            f'(5)&=\lim\limits_{h\to 0}\frac{h}{h(\sqrt{5+h}+\sqrt{5})}\\
+            f'(5)&=\lim\limits_{h\to 0}\frac{1}{\sqrt{5+h}+\sqrt{5}}\\
             f'(5)&=\frac{1}{2\sqrt{5}}
             \end{align*}
             $$</li>
             <li>$$
             \begin{align*}
-            f'(6)&=\lim_{h\to 0}\frac{f(6+h)-f(6)}{h}\\
-            f'(6)&=\lim_{h\to 0}\frac{\frac{1}{6+h}-\frac{1}{6}}{h}\\
-            f'(6)&=\lim_{h\to 0}\frac{\frac{6-(6+h)}{6(6+h)}}{h}\\
-            f'(6)&=\lim_{h\to 0}\frac{-h}{6(6+h)h}\\
-            f'(6)&=\lim_{h\to 0}-\frac{1}{6(6+h)}\\
+            f'(6)&=\lim\limits_{h\to 0}\frac{f(6+h)-f(6)}{h}\\
+            f'(6)&=\lim\limits_{h\to 0}\frac{\frac{1}{6+h}-\frac{1}{6}}{h}\\
+            f'(6)&=\lim\limits_{h\to 0}\frac{\frac{6-(6+h)}{6(6+h)}}{h}\\
+            f'(6)&=\lim\limits_{h\to 0}\frac{-h}{6(6+h)h}\\
+            f'(6)&=\lim\limits_{h\to 0}-\frac{1}{6(6+h)}\\
             f'(6)&=-\frac{1}{36}
             \end{align*}
             $$</li>
@@ -435,7 +441,6 @@
     <div class="enonce">
         $f$ est une fonction définie sur $\mathbb{R}$ telle que $f(0)=1$, $f(2)=-2$, $f(4)=-3$, $f(6)=-2$, $f'(0)=-2$, $f'(2)=-1$, $f'(4)=0$ et $f'(6)=1$.<br>
         Placez les points d'abscisses $0$, $2$, $4$ et $6$ de la courbe représentative de $f$ et ses tangentes aux mêmes points.
-        Tracez une allure possible de la courbe représentative de $f$.
     </div>
     <div class="solution">
         <div class="figure">
@@ -448,15 +453,15 @@
                 <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
                 <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none"></g>
                 <g class="label" linkto="O" x="-15" y="0">O</g>
-                <g name="A" class="point" repere="repere1" x="0" y="1" stroke="none"></g>
-                <g name="B" class="point" repere="repere1" x="2" y="-2" stroke="none"></g>
-                <g name="C" class="point" repere="repere1" x="4" y="-3" stroke="none"></g>
-                <g name="D" class="point" repere="repere1" x="6" y="-2" stroke="none"></g>
                 <g name="T_1" class="courbeRepresentative labeled" expression="-2x+1" linkto="repere1" xmin="-0.5" xmax="0.75" pas="0.1" stroke="blue" stroke-width="1" fill="transparent" pos_label="0.1"></g>
                 <g name="T_2" class="courbeRepresentative labeled" expression="-1(x-2)+(-2)" linkto="repere1" xmin="1" xmax="3" pas="0.1" stroke="green" stroke-width="1" fill="transparent" pos_label="0.99"></g>
-                <g name="T_3" class="courbeRepresentative labeled" expression="0(x-4)+(-3)" linkto="repere1" xmin="3" xmax="5" pas="0.1" stroke="purple" stroke-width="1" fill="transparent" pos_label="0.95"></g>
+                <g name="T_3" class="courbeRepresentative labeled" expression="0(x-4)+(-3.5)" linkto="repere1" xmin="3" xmax="5" pas="0.1" stroke="purple" stroke-width="1" fill="transparent" pos_label="0.95"></g>
                 <g name="T_4" class="courbeRepresentative labeled" expression="1(x-6)+(-2)" linkto="repere1" xmin="5" xmax="7" pas="0.1" stroke="orange" stroke-width="1" fill="transparent" pos_label="0.9"></g>
-                <g name="c1" class="pathPointsControls" controls="A:-2 B:-1 C:0 D:1" linkto="A B C D" stroke="red" stroke-width="1.5" fill="transparent"></g>
+                <!-- <g name="c1" class="pathPointsControls" controls="A:-2 B:-1 C:0 D:1" linkto="A B C D" stroke="red" stroke-width="1.5" fill="transparent"></g> -->
+                <g name="A" class="point" repere="repere1" x="0" y="1" stroke="black"></g>
+                <g name="B" class="point" repere="repere1" x="2" y="-2" stroke="black"></g>
+                <g name="C" class="point" repere="repere1" x="4" y="-3.5" stroke="black"></g>
+                <g name="D" class="point" repere="repere1" x="6" y="-2" stroke="black"></g>
             </svg>
         </div>
     </div>
