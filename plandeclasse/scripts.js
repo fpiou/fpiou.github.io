@@ -29,7 +29,8 @@ function addEmptyDesk() {
     emptyDeskDiv.textContent = 'Bureau vide';
     emptyDeskDiv.draggable = true;
 
-    classroomDiv.appendChild(emptyDeskDiv);
+    // Ajouter le bureau vide au début du conteneur
+    classroomDiv.insertBefore(emptyDeskDiv, classroomDiv.firstChild);
     enableDragAndDrop(); // Pour permettre de déplacer le bureau vide
 }
 
