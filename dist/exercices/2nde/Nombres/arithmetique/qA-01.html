@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>QA-01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header class="brouillon"><div>Multiples, diviseurs et nombres premiers</div><div class="header-niveau">Seconde Générale et Technologique</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>qA-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Qu'est-ce qu'un entier naturel ?</li>
+            <li>Pouvez-vous donner un exemple de nombre entier relatif ?</li>
+            <li>Quelle est la différence entre un entier naturel et un entier relatif ?</li>
+            <li>Que signifie dire qu'un nombre est un multiple d'un autre ?</li>
+            <li>Comment reconnaît-on un diviseur d'un nombre ?</li>
+            <li>Si je dis que 15 est divisible par 5, que cela signifie-t-il ?</li>
+            <li>Pouvez-vous expliquer pourquoi 17 est un nombre premier ?</li>
+            <li>Est-ce que 18 est un nombre premier ? Pourquoi ou pourquoi pas ?</li>
+            <li>Quelle est la propriété principale des nombres premiers ?</li>
+            <li>Comment pouvez-vous déterminer si un nombre est divisible par 3 ?</li>
+        </ol>
+    </div>
+</div>
+<div class="reponse">
+    <ol class="alphabetical-list">
+        <li>Un entier naturel est un nombre entier positif ou nul.</li>
+        <li>Par exemple, -3, 0, 4.</li>
+        <li>Les entiers naturels sont toujours positifs ou nuls, tandis que les entiers relatifs peuvent être négatifs, positifs ou nuls.</li>
+        <li>Un nombre est un multiple d'un autre s'il peut être exprimé comme le produit de ce nombre par un entier.</li>
+        <li>Un nombre est un diviseur d'un autre s'il divise ce nombre sans laisser de reste.</li>
+        <li>Cela signifie que 15 peut être divisé par 5 sans reste, donc 5 est un diviseur de 15.</li>
+        <li>Parce que 17 n'a que deux diviseurs : 1 et 17.</li>
+        <li>Non, car 18 a plus de deux diviseurs, par exemple 1, 2, 3, 6, 9, 18.</li>
+        <li>Un nombre premier n'a que deux diviseurs, 1 et lui-même.</li>
+        <li>Un nombre est divisible par 3 si la somme de ses chiffres est un multiple de 3.</li>
+    </ol>
+</div></main>
+  </body>
+</html>

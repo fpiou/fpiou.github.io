@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Video-01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header class="brouillon"><div>Cigales et nombres premiers</div><div class="header-niveau">Seconde Générale et Technologique</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>video-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<h1>Quand les insectes utilisent les nombres premiers pour survivre !</h1>
+<div class="video">
+    <iframe src="https://ladigitale.dev/digiview/inc/video.php?videoId=KKEjo7_6k0U&vignette=https://i.ytimg.com/vi/KKEjo7_6k0U/hqdefault.jpg&debut=0&fin=526&largeur=16&hauteur=9" allow="autoplay; fullscreen" frameborder="0" width="700" height="394" loading="lazy"></iframe>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Qu'est-ce qu'un nombre premier ? Donnez des exemples de nombres premiers mentionnés dans la vidéo.</li>
+            <li>Pourquoi le choix d'un nombre premier comme cycle de vie est-il mathématiquement avantageux pour les cigales ?</li>
+            <li>Comment les diviseurs d'un nombre influencent-ils la fréquence des rencontres entre les cigales et leurs parasites ?</li>
+            <li>Expliquez pourquoi un cycle de vie basé sur un nombre non premier augmenterait les risques pour les cigales.</li>
+            <li>Si une cigale a un cycle de vie de 6 ans, combien de fois rencontrerait-elle un parasite avec un cycle de vie de 2 ans ? Utilisez les notions de diviseurs pour expliquer.</li>
+            <li>Pourquoi le nombre 17 est-il particulièrement efficace pour réduire les rencontres avec les parasites de cycle de vie 2 ans ou 3 ans ?</li>
+            <li>Calculez la fréquence des rencontres entre une cigale ayant un cycle de vie de 17 ans et un parasite ayant un cycle de vie de 4 ans. Pourquoi cela démontre-t-il l'avantage d'un cycle basé sur un nombre premier ?</li>
+            <li>En quoi le concept de multiples est-il crucial pour comprendre la stratégie des cigales utilisant des nombres premiers pour leur cycle de vie ?</li>
+            <li>Que se passerait-il si une cigale avait un cycle de vie de 15 ans, et un parasite un cycle de vie de 5 ans ? Utilisez les notions de diviseurs pour répondre.</li>
+            <li>Expliquez pourquoi les cycles de vie basés sur les nombres premiers 13 et 17 permettent une meilleure survie des cigales en termes de théorie des nombres.</li>
+        </ol>
+    </div>
+</div>
+<div class="reponse">
+        <ol class="alphabetical-list">
+            <li>Un nombre premier est un nombre qui n'a que deux diviseurs : 1 et lui-même. Exemples : 13 et 17.</li>
+            <li>Parce qu'un nombre premier a peu de diviseurs, ce qui réduit la probabilité que le cycle de vie de la cigale coïncide avec celui de ses parasites.</li>
+            <li>Plus un nombre a de diviseurs, plus il est probable que le cycle de vie de la cigale coïncide avec celui de ses parasites, augmentant ainsi les chances de rencontre.</li>
+            <li>Un cycle de vie non premier a plus de diviseurs, ce qui signifie que la cigale rencontrerait les parasites plus fréquemment.</li>
+            <li>Elle rencontrerait le parasite tous les 6 ans, car 6 est divisible par 2, donc à chaque sortie de la cigale, le parasite est aussi présent.</li>
+            <li>Parce que 17 n'est divisible ni par 2 ni par 3, ce qui signifie que les rencontres avec ces parasites sont beaucoup moins fréquentes, seulement tous les 34 ans ou 51 ans respectivement.</li>
+            <li>Les rencontres auraient lieu tous les 68 ans, car le plus petit multiple commun entre 17 et 4 est 68. Cela montre que les nombres premiers permettent d'espacer les rencontres.</li>
+            <li>Les multiples déterminent les points où les cycles se croisent. Si une cigale utilise un nombre premier, il y a moins de croisements, donc moins de rencontres avec les parasites.</li>
+            <li>La cigale rencontrerait le parasite tous les 15 ans, car 15 est divisible par 5, ce qui augmente le risque pour la cigale.</li>
+            <li>Les nombres premiers ont moins de diviseurs, ce qui signifie que les cycles de vie des cigales utilisant ces nombres se croisent moins souvent avec ceux des parasites, réduisant ainsi les risques de rencontres fatales.</li>
+        </ol>
+    </div></main>
+  </body>
+</html>
