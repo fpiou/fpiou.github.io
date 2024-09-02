@@ -106,8 +106,38 @@ function enableDragAndDrop() {
                 this.parentNode.insertBefore(dragged, this);
             }
         });
+
+        // New: Open modal on click
+        studentDiv.addEventListener('click', function() {
+            openModal(this.textContent);
+        });
     });
 }
+
+// Function to open the modal
+function openModal(content) {
+    const modal = document.getElementById("tableModal");
+    const modalText = document.getElementById("modalText");
+    modalText.textContent = content;
+    modal.style.display = "flex";
+}
+
+// Function to close the modal
+function closeModal() {
+    const modal = document.getElementById("tableModal");
+    modal.style.display = "none";
+}
+
+// Close the modal when the user clicks on the close button
+document.getElementById("closeModal").addEventListener('click', closeModal);
+
+// Close the modal when the user clicks outside the modal content
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById("tableModal");
+    if (event.target === modal) {
+        closeModal();
+    }
+});
 
 function randomizeSeats() {
     const classroomDiv = document.getElementById('classroom');
