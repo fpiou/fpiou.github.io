@@ -76,10 +76,6 @@ function addEmptyDesk() {
     emptyDeskDiv.textContent = 'Bureau vide';
     emptyDeskDiv.draggable = true;
 
-    emptyDeskDiv.addEventListener('dblclick', function() {
-        classroomDiv.removeChild(emptyDeskDiv);
-    });
-
     classroomDiv.insertBefore(emptyDeskDiv, classroomDiv.firstChild);
     enableDragAndDrop();
 }
@@ -88,8 +84,9 @@ function enableDragAndDrop() {
     const studentsDivs = document.querySelectorAll('.student');
     let dragged = null;
 
-    studentsDivs.forEach(studentDiv => {
+    studentsDivs.forEach((studentDiv, index) => {
         studentDiv.setAttribute('draggable', true);
+        studentDiv.setAttribute('data-id', index); // Assign a unique ID to each table
 
         studentDiv.addEventListener('dragstart', function(event) {
             dragged = this;
@@ -99,6 +96,14 @@ function enableDragAndDrop() {
 
         studentDiv.addEventListener('dragend', function(event) {
             dragged.style.opacity = "1"; // Reset the opacity of the original element
+            const classroomDiv = document.getElementById('classroom');
+            const rect = classroomDiv.getBoundingClientRect();
+            const x = event.clientX;
+            const y = event.clientY;
+
+            if (x < rect.left || x > rect.right || y > rect.bottom || y < rect.top) {
+                dragged.parentNode.removeChild(dragged);
+            }
             dragged = null;
         });
 
@@ -110,26 +115,57 @@ function enableDragAndDrop() {
         studentDiv.addEventListener('drop', function(event) {
             event.preventDefault();
             if (dragged && this !== dragged) {
-                // Swap the HTML content of the dragged element and the drop target
                 let temp = this.innerHTML;
                 this.innerHTML = dragged.innerHTML;
                 dragged.innerHTML = temp;
             }
         });
 
-        // Open modal on click
+        // Single click to open the modal
         studentDiv.addEventListener('click', function() {
-            openModal(this.textContent);
+            openModal(this.textContent, this);
         });
     });
 }
 
-// Function to open the modal
-function openModal(content) {
+function openModal(content, studentDiv) {
     const modal = document.getElementById("tableModal");
     const modalText = document.getElementById("modalText");
+
+    // Display the content as plain text
     modalText.textContent = content;
+    modalText.setAttribute('data-id', studentDiv.getAttribute('data-id')); // Store the ID of the studentDiv
+
     modal.style.display = "flex";
+}
+
+function enableEditingInModal() {
+    const modalText = document.getElementById("modalText");
+    const studentDivId = modalText.getAttribute('data-id');
+    const studentDiv = document.querySelector(`.student[data-id="${studentDivId}"]`);
+    const currentName = modalText.textContent.trim();
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = currentName;
+    input.style.width = '100%';
+    input.style.textAlign = 'center';
+
+    modalText.innerHTML = '';
+    modalText.appendChild(input);
+    input.focus();
+
+    input.addEventListener('blur', function() {
+        updateTableName(studentDiv, input.value.trim());
+        closeModal();
+    });
+
+    input.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            updateTableName(studentDiv, input.value.trim());
+            closeModal();
+        }
+    });
 }
 
 // Function to close the modal
@@ -138,7 +174,7 @@ function closeModal() {
     modal.style.display = "none";
 }
 
-// Close the modal when the user clicks on the close button
+document.getElementById("modalText").addEventListener('dblclick', enableEditingInModal);
 document.getElementById("closeModal").addEventListener('click', closeModal);
 
 // Close the modal when the user clicks outside the modal content
@@ -149,6 +185,41 @@ window.addEventListener('click', function(event) {
     }
 });
 
+function editTableName(studentDiv) {
+    const currentName = studentDiv.textContent.trim();
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = currentName === 'Bureau vide' ? '' : currentName; // Default to empty if it's an empty desk
+    input.style.width = '100%';
+    input.style.textAlign = 'center';
+
+    // Replace the content with the input field
+    studentDiv.innerHTML = '';
+    studentDiv.appendChild(input);
+    input.focus();
+
+    // Handle input field's events
+    input.addEventListener('blur', function() {
+        updateTableName(studentDiv, input.value.trim());
+    });
+
+    input.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            updateTableName(studentDiv, input.value.trim());
+        }
+    });
+}
+
+function updateTableName(studentDiv, newName) {
+    if (newName) {
+        studentDiv.textContent = newName;
+        studentDiv.classList.remove('empty-desk');
+    } else {
+        studentDiv.textContent = 'Bureau vide';
+        studentDiv.classList.add('empty-desk');
+    }
+    enableDragAndDrop(); // Re-enable drag and drop functionality
+}
 
 function randomizeSeats() {
     const classroomDiv = document.getElementById('classroom');
@@ -211,9 +282,7 @@ function completeWithEmptyDesks() {
         emptyDeskDiv.textContent = 'Bureau vide';
         emptyDeskDiv.draggable = true;
 
-        emptyDeskDiv.addEventListener('dblclick', function() {
-            classroomDiv.removeChild(emptyDeskDiv);
-        });
+        
 
         classroomDiv.insertBefore(emptyDeskDiv, classroomDiv.firstChild);
     }
@@ -305,11 +374,7 @@ function loadSelectedPlan() {
             deskDiv.textContent = deskData.content;
             deskDiv.draggable = true;
 
-            if (deskData.isEmpty) {
-                deskDiv.addEventListener('dblclick', function() {
-                    classroomDiv.removeChild(deskDiv);
-                });
-            }
+            
 
             classroomDiv.appendChild(deskDiv);
         });
