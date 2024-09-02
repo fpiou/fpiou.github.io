@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+
+#classroom {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.student {
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    cursor: move;
+    height:70px;
+    /* Aligner verticalement */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-desk {
+    background-color: #d3d3d3;
+    border-style: dashed;
+}
+
+#titleInput {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+/* Impression */
+@media print {
+    @page {
+        size: A4 landscape;
+        margin-top: 5mm;
+        margin-bottom: 5mm;
+    }
+    button,input,.noprint {
+        display: none;
+    }
+    #titleInput {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
