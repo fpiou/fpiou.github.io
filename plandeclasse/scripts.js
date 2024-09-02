@@ -5,11 +5,49 @@ document.getElementById('addDeskButton').addEventListener('click', addEmptyDesk)
 document.getElementById('savePlanButton').addEventListener('click', saveCurrentPlan);
 document.getElementById('renamePlanButton').addEventListener('click', renameSelectedPlan);
 document.getElementById('deletePlanButton').addEventListener('click', deleteSelectedPlan);
+document.getElementById('exportPlansButton').addEventListener('click', exportPlans);
+document.getElementById('importPlansButton').addEventListener('click', importPlans);
 
-// Automatically load the selected plan when the dropdown changes
-document.getElementById('savedPlansSelect').addEventListener('change', loadSelectedPlan);
+document.getElementById('importPlansFileInput').addEventListener('change', handleImportFile, false);
 
 let students = [];
+
+function exportPlans() {
+    const savedPlans = localStorage.getItem("savedPlans") || "[]";
+    const blob = new Blob([savedPlans], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'plans_de_classe.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+function handleImportFile(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        try {
+            const importedPlans = JSON.parse(event.target.result);
+            if (Array.isArray(importedPlans)) {
+                localStorage.setItem("savedPlans", JSON.stringify(importedPlans));
+                updateSavedPlansSelect();
+                alert('Plans de classe importés avec succès!');
+            } else {
+                alert('Le fichier n\'est pas au format correct.');
+            }
+        } catch (e) {
+            alert('Erreur lors de l\'importation des plans de classe.');
+        }
+    };
+    reader.readAsText(file);
+}
+
+function importPlans() {
+    document.getElementById('importPlansFileInput').click();
+}
 
 function handleFileSelect(event) {
     const file = event.target.files[0];

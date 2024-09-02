@@ -19,11 +19,16 @@
     <button id="randomizeButton">Répartir au hasard</button>
     <button id="addDeskButton">Ajouter un bureau vide</button>
     <button id="savePlanButton">Sauvegarder le plan de classe</button>
-    
-    <h2 class="noprint">Charger un plan de classe</h2>
+
+    <h2 class="noprint">Gestion des plans de classe</h2>
     <select id="savedPlansSelect" class="noprint"></select>
+    <button id="loadPlanButton" class="noprint">Charger le plan sélectionné</button>
     <button id="renamePlanButton" class="noprint">Renommer</button>
     <button id="deletePlanButton" class="noprint">Supprimer</button>
+    <br><br>
+    <button id="exportPlansButton" class="noprint">Exporter les plans de classe</button>
+    <input type="file" id="importPlansFileInput" class="noprint" accept=".json" />
+    <button id="importPlansButton" class="noprint">Importer des plans de classe</button>
     
     <h2 id="classroomTitle"></h2>
     <div id="classroom"></div>
