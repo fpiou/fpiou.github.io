@@ -63,6 +63,7 @@
   }
 
   /* Ne pas imprimer */
+  .geogebra,
   .video,
   .selectionneur,
   .solution,

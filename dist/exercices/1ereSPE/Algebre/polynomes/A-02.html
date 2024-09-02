@@ -117,9 +117,58 @@
 
     <main><header><div>Second degré</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>A-02<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
 
+<h1>Discriminant</h1>
+<div class="definition">
+    On appelle <i>discriminant</i> du polynôme du second degré $ax^2+bx+c$ le nombre
+    <div class="equation">$\Delta=b^2-4ac$</div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez le discriminant des polynômes du second degré suivants.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$2x^2-3x+1$</li>
+            <li>$3x^2+5x-2$</li>
+            <li>$4x^2-4x+1$</li>
+            <li>$x^2+3x+3$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$
+            \begin{align*}
+            \Delta&=(-3)^2-4\times2\times1\\
+            \Delta&=9-8\\
+            \Delta&=1
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \Delta&=5^2-4\times3\times(-2)\\
+            \Delta&=25+24\\
+            \Delta&=49
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \Delta&=(-4)^2-4\times4\times1\\
+            \Delta&=16-16\\
+            \Delta&=0
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            \Delta&=3^2-4\times1\times3\\
+            \Delta&=9-12\\
+            \Delta&=-3
+            \end{align*}
+            $$</li>
+        </ol>
+    </div>
+</div>
+
 <div class="propriete">
     Si $ax^2+bx+c$ est un polynôme du second degré et $\Delta$ son discriminant, alors&nbsp;:
-    $$\alpha=-\frac{b}{2a} \quad\text{et}\quad \beta=-\frac{\Delta}{4a}$$
+    <div class="equation">$\alpha=-\frac{b}{2a} \quad\text{et}\quad \beta=-\frac{\Delta}{4a}$</div>
 </div>
 <div class="exercice">
     <div class="enonce">
@@ -376,7 +425,7 @@
 
 <div class="propriete">
     Considérons un polynôme du second degré de discriminant $\Delta\gt 0$. Les racines de ce polynôme sont données par&nbsp;:
-    $$x_1=\frac{-b-\sqrt{\Delta}}{2a}\quad\text{et}\quad x_2=\frac{-b+\sqrt{\Delta}}{2a}$$
+    <div class="equation">$x_1=\frac{-b-\sqrt{\Delta}}{2a}\quad\text{et}\quad x_2=\frac{-b+\sqrt{\Delta}}{2a}$</div>
 </div>
 <div class="exercice">
     <div class="enonce">
@@ -519,8 +568,7 @@
     </div>
 </div>
 
-<h1> Fonction polynôme du second degré</h1>
-
+<h1>Variations</h1>
 <div class="definition">
     Une <i>parabole</i> est une courbe plane symétrique par rapport à un axe et d'équation de la forme $y=ax^2+bx+c$ où $a$, $b$ et $c$ sont des constantes avec $a\neq0$.
 </div>
@@ -903,6 +951,7 @@
     </div>
 </div>
 
+<h1>Sommet</h1>
 <div class="propriete">
     Dans le plan rapporté à un repère orthonormé, la courbe représentative d'une fonction polynôme du second degré est une <i>parabole</i> dont le <i>sommet</i> a pour coordonnées&nbsp;$\left(\alpha;f(\alpha)\right)$ où $\alpha=-\frac{b}{2a}$.
     <ul class="horizontal-list">
@@ -1080,62 +1129,6 @@
             </li>
         </ol>
     </div>
-</div>
-
-<div class="propriete">
-    Si $f$ est une fonction polynôme du second degré de la forme $f(x)=ax^2+bx+c$, alors le $f(\alpha)=\beta$ est le <i>maximum</i> de $f$ si $a\lt0$ et le <i>minimum</i> de $f$ si $a\gt0$.
-</div>
-<div class="exercice">
-    <div class="enonce">
-        Déterminez les coordonnées du sommet de la parabole et l'extremum.
-        <ol class="alphabetical-list">
-            <li>$\small f(x)=2(x-1)^2+2$</li>
-            <li>$\small f(x)=-3(x+2)^2-1$</li>
-            <li>$\small f(x)=-4(x-3)^2+3$</li>
-            <li>$\small f(x)=5(x+4)^2-2$</li>
-        </ol>
-    </div>
-    <div class="solution">
-        <ol class="alphabetical-list">
-            <li>$$f(x)=2(x-1)^2+2$$
-            $$\begin{align*}
-            \alpha&=1\\
-            \beta&=2
-            \end{align*}$$
-            <p>Le sommet de la parabole est $S(1;2)$.</p>
-            <p>De plus $a=2\gt0$, donc la parabole est tournée vers le haut.</p>
-            <p>Donc $f(1)=2$ est le minimum de $f$.</p>
-            </li>
-            <li>$$f(x)=-3(x+2)^2-1$$
-            $$\begin{align*}
-            \alpha&=-2\\
-            \beta&=-1
-            \end{align*}$$
-            <p>Le sommet de la parabole est $S(-2;-1)$.</p>
-            <p>De plus $a=-3\lt0$, donc la parabole est tournée vers le bas.</p>
-            <p>Donc $f(-2)=-1$ est le maximum de $f$.</p>
-            </li>
-            <li>$$f(x)=-4(x-3)^2+3$$
-            $$\begin{align*}
-            \alpha&=3\\
-            \beta&=3
-            \end{align*}$$
-            <p>Le sommet de la parabole est $S(3;3)$.</p>
-            <p>De plus $a=-4\lt0$, donc la parabole est tournée vers le bas.</p>
-            <p>Donc $f(3)=3$ est le maximum de $f$.</p>
-            </li>
-            <li>$$f(x)=5(x+4)^2-2$$
-            $$\begin{align*}
-            \alpha&=-4\\
-            \beta&=-2
-            \end{align*}$$
-            <p>Le sommet de la parabole est $S(-4;-2)$.</p>
-            <p>De plus $a=5\gt0$, donc la parabole est tournée vers le haut.</p>
-            <p>Donc $f(-4)=-2$ est le minimum de $f$.</p>
-            </li>
-        </ol>
-    </div>
-</div>
-</main>
+</div></main>
   </body>
 </html>

@@ -118,12 +118,67 @@
     <main><header><div>Second degré</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>A-03<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
 
 <div class="propriete">
+    Si $f$ est une fonction polynôme du second degré de la forme $f(x)=ax^2+bx+c$, alors $f(\alpha)=\beta$ est le <i>maximum</i> de $f$ si $a\lt0$ et le <i>minimum</i> de $f$ si $a\gt0$.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez les coordonnées du sommet de la parabole et l'extremum.
+        <ol class="alphabetical-list horizontal-list col-2c" style="font-size:0.7rem;">
+            <li>$\small f(x)=2(x-1)^2+2$</li>
+            <li>$\small f(x)=-3(x+2)^2-1$</li>
+            <li>$\small f(x)=-4(x-3)^2+3$</li>
+            <li>$\small f(x)=5(x+4)^2-2$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$f(x)=2(x-1)^2+2$$
+            $$\begin{align*}
+            \alpha&=1\\
+            \beta&=2
+            \end{align*}$$
+            <p>Le sommet de la parabole est $S(1;2)$.</p>
+            <p>De plus $a=2\gt0$, donc la parabole est tournée vers le haut.</p>
+            <p>Donc $f(1)=2$ est le minimum de $f$.</p>
+            </li>
+            <li>$$f(x)=-3(x+2)^2-1$$
+            $$\begin{align*}
+            \alpha&=-2\\
+            \beta&=-1
+            \end{align*}$$
+            <p>Le sommet de la parabole est $S(-2;-1)$.</p>
+            <p>De plus $a=-3\lt0$, donc la parabole est tournée vers le bas.</p>
+            <p>Donc $f(-2)=-1$ est le maximum de $f$.</p>
+            </li>
+            <li>$$f(x)=-4(x-3)^2+3$$
+            $$\begin{align*}
+            \alpha&=3\\
+            \beta&=3
+            \end{align*}$$
+            <p>Le sommet de la parabole est $S(3;3)$.</p>
+            <p>De plus $a=-4\lt0$, donc la parabole est tournée vers le bas.</p>
+            <p>Donc $f(3)=3$ est le maximum de $f$.</p>
+            </li>
+            <li>$$f(x)=5(x+4)^2-2$$
+            $$\begin{align*}
+            \alpha&=-4\\
+            \beta&=-2
+            \end{align*}$$
+            <p>Le sommet de la parabole est $S(-4;-2)$.</p>
+            <p>De plus $a=5\gt0$, donc la parabole est tournée vers le haut.</p>
+            <p>Donc $f(-4)=-2$ est le minimum de $f$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="propriete">
     Si $f$ est une fonction polynôme du second degré de la forme $f(x)=ax^2+bx+c$, alors sa parabole admet un axe de symétrie d'équation $x=\alpha$ où $\alpha=-\frac{b}{2a}$.
 </div>
 <div class="exercice">
     <div class="enonce">
         $A$ est un point de la parabole et $S$ son sommet. Tracez la parabole de $A$ à son symétrique par rapport à l'axe de symétrie de la parabole.
-        <ol class="alphabetical-list horizontal-list col-2c">
+        <ol class="alphabetical-list horizontal-list col-2c" style="font-size:0.7rem;">
             <li>$S(1;2)$ et $A(2;3)$</li>
             <li>$S(-2;-1)$ et $A(1;0)$</li>
             <li>$S(3;3)$ et $A(5;2)$</li>
@@ -233,6 +288,7 @@
     </div>
 </div>
 
+<h1>Parabole et racine</h1>
 <div class="propriete">
     Soit $f$ une fonction polynôme du second degré de la forme $f(x)=ax^2+bx+c$. Les solutions de l'équation $f(x)=0$ sont les racines du polynôme $ax^2+bx+c$ et sont les abscisses des points d'intersection de la parabole représentative de $f$ avec l'axe des abscisses.
 </div>
@@ -316,6 +372,7 @@
     </div>
 </div>
 
+<h1>Signe</h1>
 <div class="propriete">
     Le signe d'une fonction polynôme du second degré définie par $f(x)=ax^2+bx+c$ dépend du signe de $a$ et du signe du discriminant $\Delta$ du polynôme $ax^2+bx+c$.
     <ul style="padding-left: 1em;">
@@ -325,15 +382,15 @@
 </div>
 <div class="exercice">
     <div class="enonce">
-        <ol class="alphabetical-list">
+        <ol class="alphabetical-list horizontal-list col-2c" style="font-size:0.6rem;">
             <li>$f(x)=5(x+4)(x-6)$</li>
             <li>$f(x)=3(x+3)(x+5)$</li>
             <li>$f(x)=-2(x-1)(x-2)$</li>
             <li>$f(x)=-4(x-5)(x+2)$</li>
         </ol>
-        Déterminez le signe de $f$ en fonction de $x$, vérifiez à l'aide du tableau ci-dessous.
+        Déterminez le signe de $f$ en fonction de $x$, vérifiez à l'aide d'un tableau de signe du produit.
         <!-- Diminuer la hauteur des lignes du tableau -->
-        <table class="tableausigne" style="width:95%">
+        <!-- <table class="tableausigne" style="width:95%">
             <tr style="padding:0;">
                 <td>$x$</td>
                 <td>$-\infty$</td>
@@ -384,7 +441,7 @@
                 <td></td>
                 <td></td>
             </tr>
-        </table>
+        </table> -->
     </div>
     <div class="solution">
         <ul>
@@ -669,7 +726,7 @@
 <div class="exercice">
     <div class="enonce">
         Résoudre les inéquations suivantes.
-        <ol class="alphabetical-list">
+        <ol class="alphabetical-list horizontal-list col-2c" style="font-size:0.7rem;">
             <li>$-2(x-1)(x-2)\geqslant 0$</li>
             <li>$-5(x-6)(x+3)\lt 0$</li>
             <li>$3(x+3)(x+5)\leqslant 0$</li>
@@ -703,9 +760,8 @@
 </div>
 
 <h1>Équation du second degré</h1>
-
 <div class="methode">
-    Pour résoudre une <i>équation du second degré</i> de la forme $$ax^2+bx+c=0$$ avec $a\neq0$ on peut suivre les étapes suivantes&nbsp;:
+    Résoudre une <i>équation du second degré</i> de la forme <div class="equation">$ax^2+bx+c=0$</div> avec $a\neq0$&nbsp;:
     <ol style="padding-left: 1em;">
         <li>Factorisation immédiate ou identité remarquable.</li>
         <li>Racine évidente, produit et somme des racines.</li>
@@ -716,7 +772,7 @@
 <div class="exercice">
     <div class="enonce">
         Ramener les équations suivantes sous la forme $ax^2+bx+c=0$ puis résoudre l'équation.
-        <ol class="alphabetical-list">
+        <ol class="alphabetical-list horizontal-list col-2c" style="font-size:0.7rem;">
             <li>$x^2-4x+4=12$</li>
             <li>$2x^2-3x=5x$</li>
             <li>$x^2+2x+1=3x^2-5x+2$</li>

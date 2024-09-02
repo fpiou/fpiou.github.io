@@ -115,7 +115,7 @@
 
     <main><header><div>Second degré</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>A-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
 
-<h1>Introduction</h1>
+<h1 class="noprint">Introduction</h1>
 <div class="geogebra">
     <iframe scrolling="no" title="Angry Birds Modellierung" src="https://www.geogebra.org/material/iframe/id/SBXXXFqT/width/1113/height/514/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="1113px" height="100px" allow="fullscreen"> </iframe>
 </div>
@@ -123,7 +123,12 @@
 <h1>Polynôme du second degré</h1>
 
 <div class="definition">
-    On appelle <i>polynôme du second degré</i> toute expression pouvant s'écrire sous la forme développée réduite $$ax^2+bx+c$$ où $a$, $b$ et $c$ sont des réels avec $a\neq0$.
+    On appelle <i>polynôme du second degré</i> toute expression pouvant s'écrire sous la forme développée réduite
+    <div class="equation">$ax^2+bx+c$</div>
+    où $a$, $b$ et $c$ sont des réels avec $a\neq0$.
+</div>
+<div class="video">
+    <iframe src="https://ladigitale.dev/digiview/inc/video.php?videoId=WVYWdN13kPE&vignette=https://i.ytimg.com/vi/WVYWdN13kPE/hqdefault.jpg&debut=39&fin=211&largeur=16&hauteur=9" allow="autoplay; fullscreen" frameborder="0" width="700" height="394"></iframe>
 </div>
 <div class="exercice">
     <div class="enonce">
@@ -199,284 +204,9 @@
     </div>
 </div>
 
-<div class="definition">
-    On appelle <i>racine</i> du polynome du second degré $ax^2+bx+c$ toute solution de l'équation $$ax^2+bx+c=0$$
-</div>
-<div class="exercice">
-    <div class="enonce">
-        Déterminez les racines.
-        <ol class="alphabetical-list horizontal-list col-2c">
-            <li>$2(x-3)(x+4)$</li>
-            <li>$5(2x-8)(x-5)$</li>
-            <li>$(x-2)(7-x)$</li>
-            <li>$(6x+3)(2x-1)$</li>
-        </ol>
-    </div>
-    <div class="solution">
-        <ul>
-            <li><p>$2(x-3)(x+4)=0$ est une équation produit nul.</p>
-                <p>Or un produit est nul si et seulement si l'un des facteurs est nul.</p>
-                <p>Donc $x-3=0$ ou $x+4=0$.</p>
-                <p>Soit $x=3$ ou $x=-4$.</p>
-                <p>Donc les racines de $2(x-3)(x+4)$ sont $3$ et $-4$.</p>
-            </li>
-            <li><p>$5(2x-8)(x-5)=0$ est une équation produit nul.</p>
-                <p>Or un produit est nul si et seulement si l'un des facteurs est nul.</p>
-                <p>Donc $2x-8=0$ ou $x-5=0$.</p>
-                <p>Soit $x=4$ ou $x=5$.</p>
-                <p>Donc les racines de $5(2x-8)(x-5)$ sont $4$ et $5$.</p>
-            </li>
-            <li><p>$(x-2)(7-x)=0$ est une équation produit nul.</p>
-                <p>Or un produit est nul si et seulement si l'un des facteurs est nul.</p>
-                <p>Donc $x-2=0$ ou $7-x=0$.</p>
-                <p>Soit $x=2$ ou $x=7$.</p>
-                <p>Donc les racines de $(x-2)(7-x)$ sont $2$ et $7$.</p>
-            </li>
-            <li><p>(6x+3)(2x-1) est une équation produit nul.</p>
-                <p>Or un produit est nul si et seulement si l'un des facteurs est nul.</p>
-                <p>Donc $6x+3=0$ ou $2x-1=0$.</p>
-                $$
-                    \begin{align*}
-                    6x+3&=0\\
-                    6x&=-3\\
-                    x&=-\dfrac{3}{6}\\
-                    x&=-\dfrac{1}{2}
-                    \end{align*}
-                $$
-                $$
-                    \begin{align*}
-                    2x-1&=0\\
-                    2x&=1\\
-                    x&=\dfrac{1}{2}
-                    \end{align*}
-                $$
-                <p>Donc les racines de $(6x+3)(2x-1)$ sont $-\dfrac{1}{2}$ et $\dfrac{1}{2}$.</p>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="exercice">
-    <div class="enonce">
-        Déterminez une racine évidente.
-        <ol class="alphabetical-list horizontal-list col-2c">
-            <li>$3x^2-6x$</li>
-            <li>$5x^2-4x-1$</li>
-            <li>$5x^2+4x-1$</li>
-            <li>$x^2+3x-10$</li>
-        </ol>
-    </div>
-    <div class="solution">
-        <ul>
-            <li>$0$ est une racine évidente de $3x^2-6x$.</li>
-            <li>$1$ est une racine évidente de $5x^2-4x-1$.</li>
-            <li>$-1$ est une racine évidente de $5x^2+4x-1$.</li>
-            <li>$2$ est une racine évidente de $x^2+3x-10$.</li>
-        </ul>
-    </div>
-</div>
-
+<h1>Forme canonique</h1>
 <div class="propriete">
-    Si un polynôme du second degré $ax^2+bx+c$ admet deux racines distinctes $x_1$ et $x_2$, alors il peut s'écrire sous la <i>forme factorisée</i> suivante $$a(x-x_1)(x-x_2)$$
-</div>
-<div class="exercice">
-    <div class="enonce">
-        Ecrivez le polynôme sous forme factorisée.
-        <ol class="alphabetical-list">
-            <li>Les racines de $7x^2+7x-42$ sont $-3$ et $2$.</li>
-            <li>Les racines de $-3x^2+3x+6$ sont $-1$ et $2$.</li>
-            <li>Les racines de $x^2-9x+20$ sont $4$ et $5$.</li>
-            <li>Les racines de $2x^2-5x-3$ sont $3$ et $-\dfrac{1}{2}$.</li>
-        </ol>
-    </div>
-    <div class="solution">
-        <ul>
-            <li><p>Le polynôme $7x^2+7x-42$ admet les racines $-3$ et $2$.</p>
-                <p>On a $a=7$, $b=7$ et $c=-42$.</p>
-                <p>Donc il peut s'écrire sous la forme factorisée $7(x+3)(x-2)$.</p>
-            </li>
-            <li><p>Le polynôme $-3x^2+3x+6$ admet les racines $-1$ et $2$.</p>
-                <p>On a $a=-3$, $b=3$ et $c=6$.</p>
-                <p>Donc il peut s'écrire sous la forme factorisée $-3(x+1)(x-2)$.</p>
-            </li>
-            <li><p>Le polynôme $x^2-9x+20$ admet les racines $4$ et $5$.</p>
-                <p>On a $a=1$, $b=-9$ et $c=20$.</p>
-                <p>Donc il peut s'écrire sous la forme factorisée $(x-4)(x-5)$.</p>
-            </li>
-            <li><p>Le polynôme $2x^2-5x-3$ admet les racines $3$ et $-\dfrac{1}{2}$.</p>
-                <p>On a $a=2$, $b=-5$ et $c=-3$.</p>
-                <p>Donc il peut s'écrire sous la forme factorisée $2(x-3)\left(x+\dfrac{1}{2}\right)$.</p>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="exercice">
-    <div class="enonce">
-        Déterminez la forme $a(x-x_1)(x-x_2)$.
-        <ol class="alphabetical-list horizontal-list col-2c">
-            <li>$(3x+9)(x-5)$</li>
-            <li>$(x+8)(5x-10)$</li>
-            <li>$(7-x)(x-3)$</li>
-            <li>$(x+4)(-x-8)$</li>
-            <li>$(2x+4)(3x-6)$</li>
-            <li>$7(4x-8)(x-3)$</li>
-        </ol>
-    </div>
-    <div class="solution">
-        <ol class="alphabetical-list">
-            <li>$$(3x+9)(x-5)=3(x+3)(x-5)$$</li>
-            <li>$$(x+8)(5x-10)=(x+8)\times 5(x-2)=5(x+8)(x-2)$$</li>
-            <li>$$(7-x)(x-3)=-(x-7)(x-3)$$</li>
-            <li>$$(x+4)(-x-8)=-(x+4)(x+8)$$</li>
-            <li>$$(2x+4)(3x-6)=2(x+2)\times 3(x-2)=6(x+2)(x-2)$$</li>
-            <li>$$7(4x-8)(x-3)=7\times 4(x-2)(x-3)=28(x-2)(x-3)$$</li>
-        </ol>
-    </div>
-</div>
-<div class="exercice">
-    <div class="enonce">
-        Déterminez la forme $a(x-x_1)(x-x_2)$.
-        <ol class="alphabetical-list horizontal-list col-2c">
-            <li>$3x^2-6x$</li>
-            <li>$-5x^2+35x$</li>
-            <li>$3x^2-147$</li>
-            <li>$-2x^2+6$</li>
-        </ol>
-        <ol class="alphabetical-list" start="5">
-            <li>$(x-3)(2x+7)+(x-3)(3-x)$</li>
-            <li>$(2x-5)(x+6)-(x+6)(x-5)$</li>
-        </ol>
-    </div>
-    <div class="solution">
-        <ol class="alphabetical-list">
-            <li>$$3x^2-6x=3x(x-2)$$</li>
-            <li>$$-5x^2+35x=-5x(x-7)$$</li>
-            <li>$$3x^2-147=3(x-7)(x+7)$$</li>
-            <li>$$-2x^2+6=-2(x+3)(x-3)$$</li>
-            <li>$$
-            \begin{align*}
-            (2x-5)(x+6)-(x+6)(x-5)&=(x+6)(2x-5-(x+5))\\
-            (2x-5)(x+6)-(x+6)(x-5)&=(x+6)(2x-5-x-5)\\
-            (2x-5)(x+6)-(x+6)(x-5)&=(x+6)(x-10)
-            \end{align*}
-            $$</li>
-            <li>$$
-            \begin{align*}
-            (x-3)(2x+7)+(x-3)(3-x)&=(x-3)(2x+7-x-3)\\
-            (x-3)(2x+7)+(x-3)(3-x)&=(x-3)(x+4)
-            \end{align*}
-            $$</li>
-        </ol>
-    </div>
-</div>
-
-<div class="propriete">
-    Si un polynôme du second degré $ax^2+bx+c$ admet une seule racine appelée <i>racine double</i> $x_0$, alors il peut s'écrire sous la <i>forme factorisée</i> suivante $$a(x-x_0)^2$$
-</div>
-<div class="exercice">
-    <div class="enonce">
-        Les polynômes du second degré suivants possèdent une racine double. Factorisez par $a$ puis utilisez une identité remarquable pour les écrire sous la forme factorisée.
-        <ol class="alphabetical-list horizontal-list col-2c">
-            <li>$7x^2-42x+63$</li>
-            <li>$-2x^2+8x-8$.</li>
-            <li>$5x^2+40x+80$</li>
-            <li>$-3x^2-6x-3$</li>
-        </ol>
-    </div>
-    <div class="solution">
-        <ol class="alphabetical-list">
-            <li>$$
-            \begin{align*}
-            7x^2-42x+63&=7(x^2-6x+9)\\
-            7x^2-42x+63&=7(x^2-2\times3x+3^2)\\
-            7x^2-42x+63&=7(x-3)^2
-            \end{align*}
-            $$</li>
-            <li>$$
-            \begin{align*}
-            -2x^2+8x-8&=-2(x^2-4x+4)\\
-            -2x^2+8x-8&=-2(x^2-2\times2x+2^2)\\
-            -2x^2+8x-8&=-2(x-2)^2
-            \end{align*}
-            $$</li>
-            <li>$$
-            \begin{align*}
-            5x^2+40x+80&=5(x^2+8x+16)\\
-            5x^2+40x+80&=5(x^2+2\times4x+4^2)\\
-            5x^2+40x+80&=5(x+4)^2
-            \end{align*}
-            $$</li>
-            <li>$$
-            \begin{align*}
-            -3x^2-6x-3&=-3(x^2+2x+1)\\
-            -3x^2-6x-3&=-3(x^2+2x+1^2)\\
-            -3x^2-6x-3&=-3(x+1)^2
-            \end{align*}
-            $$</li>
-        </ol>
-    </div>
-</div>
-            
-<div class="propriete">
-    Si un polynôme du second degré $ax^2+bx+c$ admet deux racines alors&nbsp;:
-    <ul style="padding-left: 1em;">
-        <li>la somme des racines est $-\frac{b}{a}$</li>
-        <li>le produit des racines est $\frac{c}{a}$</li>
-    </ul>
-</div>
-<div class="exercice">
-    <div class="enonce">
-        Les racines des polynômes du second degré suivants sont entières. Déterminez les racines en utilisant le produit et la somme des racines.
-        <ol class="alphabetical-list horizontal-list col-2c">
-            <li>$2x^2-10x+12$</li>
-            <li>$3x^2-3x-60$</li>
-            <li>$x^2+10x+21$</li>
-            <li>$-x^2-5x+24$</li>
-        </ol>
-    </div>
-    <div class="solution">
-        <ol class="alphabetical-list">
-            <li><p>On a $a=2$, $b=-10$ et $c=12$.</p>
-                <p>Le produit des racines du polynôme est $\frac{12}{2}=6$.</p>
-                $$6=1\times6=2\times3$$
-                $$6=(-1)\times(-6)=(-2)\times(-3)$$
-                <p>La somme des racines du polynôme est $-\frac{-10}{2}=5$.</p>
-                <p>$1+6=7$ et $2+3=5$.</p>
-                <p>$-1-6=-7$, $-2-3=-5$.</p>
-                <p>Donc les racines de $2x^2-10x+12$ sont $2$ et $3$.</p>
-            </li>
-            <li><p>On a $a=3$, $b=-3$ et $c=-60$.</p>
-                <p>Le produit des racines du polynôme est $\frac{-60}{3}=-20$.</p>
-                $$-20=1\times(-20)=2\times(-10)=4\times(-5)$$
-                $$-20=(-1)\times20=(-2)\times10=(-4)\times5$$
-                <p>La somme des racines du polynôme est $-\frac{-3}{3}=1$.</p>
-                <p>$1+(-20)=-19$, $2+(-10)=-8$ et $4+(-5)=-1$.</p>
-                <p>$-1+20=19$, $-2+10=8$ et $-4+5=1$.</p>
-                <p>Donc les racines de $3x^2-3x-60$ sont $-4$ et $5$.</p>
-            </li>
-            <li><p>On a $a=1$, $b=10$ et $c=21$.</p>
-                <p>Le produit des racines du polynôme est $\frac{21}{1}=21$.</p>
-                $$21=1\times21=3\times7$$
-                $$21=(-1)\times(-21)=(-3)\times(-7)$$
-                <p>La somme des racines du polynôme est $-\frac{10}{1}=-10$.</p>
-                <p>$1+21=22$ et $3+7=10$.</p>
-                <p>$-1-21=-22$ et $-3-7=-10$.</p>
-                <p>Donc les racines de $x^2+10x+21$ sont $-3$ et $-7$.</p>
-            </li>
-            <li><p>On a $a=-1$, $b=-5$ et $c=24$.</p>
-                <p>Le produit des racines du polynôme est $\frac{24}{-1}=-24$.</p>
-                $$-24=1\times(-24)=2\times(-12)=3\times(-8)=4\times(-6)$$
-                $$-24=(-1)\times24=(-2)\times12=(-3)\times8=(-4)\times6$$
-                <p>La somme des racines du polynôme est $-\frac{-5}{-1}=-5$.</p>
-                <p>$1+(-24)=-23$, $2+(-12)=-10$, $3+(-8)=-5$ et $4+(-6)=-2$.</p>
-                <p>$-1+24=23$, $-2+12=10$, $-3+8=5$ et $-4+6=2$.</p>
-                <p>Donc les racines de $-x^2-10x+24$ sont $3$ et $-8$.</p>
-            </li>
-        </ol>
-    </div>
-</div>
-
-<div class="propriete">
-    Tout polynôme du second degré $ax^2+bx+c$ peut s'écrire sous la forme dite <i>canonique</i> $$a\left(x-\alpha\right)^2+\beta$$ où $\alpha$ et $\beta$ sont des réels.
+    Tout polynôme du second degré $ax^2+bx+c$ peut s'écrire sous la forme dite <i>canonique</i> <div class="equation">$a\left(x-\alpha\right)^2+\beta$</div> où $\alpha$ et $\beta$ sont des réels.
 </div>
 <div class="exercice">
     <div class="enonce">
@@ -586,51 +316,292 @@
     </div>
 </div>
 
+<h1>Racine</h1>
 <div class="definition">
-    On appelle <i>discriminant</i> du polynôme du second degré $ax^2+bx+c$ le nombre $$\Delta=b^2-4ac$$
+    On appelle <i>racine</i> du polynome du second degré $ax^2+bx+c$ toute solution de l'équation <div class="equation">$ax^2+bx+c=0$</div>
+</div>
+<div class="video">
+    <iframe src="https://ladigitale.dev/digiview/inc/video.php?videoId=KoMyPeLRTWg&vignette=https://i.ytimg.com/vi/KoMyPeLRTWg/hqdefault.jpg&debut=0&fin=415&largeur=16&hauteur=9" allow="autoplay; fullscreen" frameborder="0" width="700" height="394"></iframe>
 </div>
 <div class="exercice">
     <div class="enonce">
-        Calculez le discriminant des polynômes du second degré suivants.
+        Déterminez les racines.
         <ol class="alphabetical-list horizontal-list col-2c">
-            <li>$2x^2-3x+1$</li>
-            <li>$3x^2+5x-2$</li>
-            <li>$4x^2-4x+1$</li>
-            <li>$x^2+3x+3$</li>
+            <li>$2(x-3)(x+4)$</li>
+            <li>$5(2x-8)(x-5)$</li>
+            <li>$(x-2)(7-x)$</li>
+            <li>$(6x+3)(2x-1)$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul>
+            <li><p>$2(x-3)(x+4)=0$ est une équation produit nul.</p>
+                <p>Or un produit est nul si et seulement si l'un des facteurs est nul.</p>
+                <p>Donc $x-3=0$ ou $x+4=0$.</p>
+                <p>Soit $x=3$ ou $x=-4$.</p>
+                <p>Donc les racines de $2(x-3)(x+4)$ sont $3$ et $-4$.</p>
+            </li>
+            <li><p>$5(2x-8)(x-5)=0$ est une équation produit nul.</p>
+                <p>Or un produit est nul si et seulement si l'un des facteurs est nul.</p>
+                <p>Donc $2x-8=0$ ou $x-5=0$.</p>
+                <p>Soit $x=4$ ou $x=5$.</p>
+                <p>Donc les racines de $5(2x-8)(x-5)$ sont $4$ et $5$.</p>
+            </li>
+            <li><p>$(x-2)(7-x)=0$ est une équation produit nul.</p>
+                <p>Or un produit est nul si et seulement si l'un des facteurs est nul.</p>
+                <p>Donc $x-2=0$ ou $7-x=0$.</p>
+                <p>Soit $x=2$ ou $x=7$.</p>
+                <p>Donc les racines de $(x-2)(7-x)$ sont $2$ et $7$.</p>
+            </li>
+            <li><p>(6x+3)(2x-1) est une équation produit nul.</p>
+                <p>Or un produit est nul si et seulement si l'un des facteurs est nul.</p>
+                <p>Donc $6x+3=0$ ou $2x-1=0$.</p>
+                $$
+                    \begin{align*}
+                    6x+3&=0\\
+                    6x&=-3\\
+                    x&=-\dfrac{3}{6}\\
+                    x&=-\dfrac{1}{2}
+                    \end{align*}
+                $$
+                $$
+                    \begin{align*}
+                    2x-1&=0\\
+                    2x&=1\\
+                    x&=\dfrac{1}{2}
+                    \end{align*}
+                $$
+                <p>Donc les racines de $(6x+3)(2x-1)$ sont $-\dfrac{1}{2}$ et $\dfrac{1}{2}$.</p>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="video">
+    <iframe src="https://ladigitale.dev/digiview/inc/video.php?videoId=XurkOaKNxz8&vignette=https://i.ytimg.com/vi/XurkOaKNxz8/hqdefault.jpg&debut=0&fin=250&largeur=16&hauteur=9" allow="autoplay; fullscreen" frameborder="0" width="700" height="394"></iframe>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez une racine évidente.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$3x^2-6x$</li>
+            <li>$5x^2-4x-1$</li>
+            <li>$5x^2+4x-1$</li>
+            <li>$x^2+3x-10$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul>
+            <li>$0$ est une racine évidente de $3x^2-6x$.</li>
+            <li>$1$ est une racine évidente de $5x^2-4x-1$.</li>
+            <li>$-1$ est une racine évidente de $5x^2+4x-1$.</li>
+            <li>$2$ est une racine évidente de $x^2+3x-10$.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="propriete">
+    Si un polynôme du second degré $ax^2+bx+c$ admet deux racines alors&nbsp;:
+    <ul style="padding-left: 1em;">
+        <li>la somme des racines est $-\frac{b}{a}$</li>
+        <li>le produit des racines est $\frac{c}{a}$</li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Les racines des polynômes du second degré suivants sont entières. Déterminez les racines en utilisant le produit et la somme des racines.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$2x^2-10x+12$</li>
+            <li>$3x^2-3x-60$</li>
+            <li>$x^2+10x+21$</li>
+            <li>$-x^2-5x+24$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>On a $a=2$, $b=-10$ et $c=12$.</p>
+                <p>Le produit des racines du polynôme est $\frac{12}{2}=6$.</p>
+                $$6=1\times6=2\times3$$
+                $$6=(-1)\times(-6)=(-2)\times(-3)$$
+                <p>La somme des racines du polynôme est $-\frac{-10}{2}=5$.</p>
+                <p>$1+6=7$ et $2+3=5$.</p>
+                <p>$-1-6=-7$, $-2-3=-5$.</p>
+                <p>Donc les racines de $2x^2-10x+12$ sont $2$ et $3$.</p>
+            </li>
+            <li><p>On a $a=3$, $b=-3$ et $c=-60$.</p>
+                <p>Le produit des racines du polynôme est $\frac{-60}{3}=-20$.</p>
+                $$-20=1\times(-20)=2\times(-10)=4\times(-5)$$
+                $$-20=(-1)\times20=(-2)\times10=(-4)\times5$$
+                <p>La somme des racines du polynôme est $-\frac{-3}{3}=1$.</p>
+                <p>$1+(-20)=-19$, $2+(-10)=-8$ et $4+(-5)=-1$.</p>
+                <p>$-1+20=19$, $-2+10=8$ et $-4+5=1$.</p>
+                <p>Donc les racines de $3x^2-3x-60$ sont $-4$ et $5$.</p>
+            </li>
+            <li><p>On a $a=1$, $b=10$ et $c=21$.</p>
+                <p>Le produit des racines du polynôme est $\frac{21}{1}=21$.</p>
+                $$21=1\times21=3\times7$$
+                $$21=(-1)\times(-21)=(-3)\times(-7)$$
+                <p>La somme des racines du polynôme est $-\frac{10}{1}=-10$.</p>
+                <p>$1+21=22$ et $3+7=10$.</p>
+                <p>$-1-21=-22$ et $-3-7=-10$.</p>
+                <p>Donc les racines de $x^2+10x+21$ sont $-3$ et $-7$.</p>
+            </li>
+            <li><p>On a $a=-1$, $b=-5$ et $c=24$.</p>
+                <p>Le produit des racines du polynôme est $\frac{24}{-1}=-24$.</p>
+                $$-24=1\times(-24)=2\times(-12)=3\times(-8)=4\times(-6)$$
+                $$-24=(-1)\times24=(-2)\times12=(-3)\times8=(-4)\times6$$
+                <p>La somme des racines du polynôme est $-\frac{-5}{-1}=-5$.</p>
+                <p>$1+(-24)=-23$, $2+(-12)=-10$, $3+(-8)=-5$ et $4+(-6)=-2$.</p>
+                <p>$-1+24=23$, $-2+12=10$, $-3+8=5$ et $-4+6=2$.</p>
+                <p>Donc les racines de $-x^2-10x+24$ sont $3$ et $-8$.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<h1>Forme factorisée</h1>
+<div class="propriete">
+    Si un polynôme du second degré $ax^2+bx+c$ admet deux racines distinctes $x_1$ et $x_2$, alors il peut s'écrire sous la <i>forme factorisée</i> suivante
+    <div class="equation">$a(x-x_1)(x-x_2)$</div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Ecrivez le polynôme sous forme factorisée.
+        <ol class="alphabetical-list">
+            <li>Les racines de $7x^2+7x-42$ sont $-3$ et $2$.</li>
+            <li>Les racines de $-3x^2+3x+6$ sont $-1$ et $2$.</li>
+            <li>Les racines de $x^2-9x+20$ sont $4$ et $5$.</li>
+            <li>Les racines de $2x^2-5x-3$ sont $3$ et $-\dfrac{1}{2}$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ul>
+            <li><p>Le polynôme $7x^2+7x-42$ admet les racines $-3$ et $2$.</p>
+                <p>On a $a=7$, $b=7$ et $c=-42$.</p>
+                <p>Donc il peut s'écrire sous la forme factorisée $7(x+3)(x-2)$.</p>
+            </li>
+            <li><p>Le polynôme $-3x^2+3x+6$ admet les racines $-1$ et $2$.</p>
+                <p>On a $a=-3$, $b=3$ et $c=6$.</p>
+                <p>Donc il peut s'écrire sous la forme factorisée $-3(x+1)(x-2)$.</p>
+            </li>
+            <li><p>Le polynôme $x^2-9x+20$ admet les racines $4$ et $5$.</p>
+                <p>On a $a=1$, $b=-9$ et $c=20$.</p>
+                <p>Donc il peut s'écrire sous la forme factorisée $(x-4)(x-5)$.</p>
+            </li>
+            <li><p>Le polynôme $2x^2-5x-3$ admet les racines $3$ et $-\dfrac{1}{2}$.</p>
+                <p>On a $a=2$, $b=-5$ et $c=-3$.</p>
+                <p>Donc il peut s'écrire sous la forme factorisée $2(x-3)\left(x+\dfrac{1}{2}\right)$.</p>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez la forme $a(x-x_1)(x-x_2)$.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$(3x+9)(x-5)$</li>
+            <li>$(x+8)(5x-10)$</li>
+            <li>$(7-x)(x-3)$</li>
+            <li>$(x+4)(-x-8)$</li>
+            <li>$(2x+4)(3x-6)$</li>
+            <li>$7(4x-8)(x-3)$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$(3x+9)(x-5)=3(x+3)(x-5)$$</li>
+            <li>$$(x+8)(5x-10)=(x+8)\times 5(x-2)=5(x+8)(x-2)$$</li>
+            <li>$$(7-x)(x-3)=-(x-7)(x-3)$$</li>
+            <li>$$(x+4)(-x-8)=-(x+4)(x+8)$$</li>
+            <li>$$(2x+4)(3x-6)=2(x+2)\times 3(x-2)=6(x+2)(x-2)$$</li>
+            <li>$$7(4x-8)(x-3)=7\times 4(x-2)(x-3)=28(x-2)(x-3)$$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez la forme $a(x-x_1)(x-x_2)$.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$3x^2-6x$</li>
+            <li>$-5x^2+35x$</li>
+            <li>$3x^2-147$</li>
+            <li>$-2x^2+6$</li>
+        </ol>
+        <ol class="alphabetical-list" start="5">
+            <li>$(x-3)(2x+7)+(x-3)(3-x)$</li>
+            <li>$(2x-5)(x+6)-(x+6)(x-5)$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$3x^2-6x=3x(x-2)$$</li>
+            <li>$$-5x^2+35x=-5x(x-7)$$</li>
+            <li>$$3x^2-147=3(x-7)(x+7)$$</li>
+            <li>$$-2x^2+6=-2(x+3)(x-3)$$</li>
+            <li>$$
+            \begin{align*}
+            (2x-5)(x+6)-(x+6)(x-5)&=(x+6)(2x-5-(x+5))\\
+            (2x-5)(x+6)-(x+6)(x-5)&=(x+6)(2x-5-x-5)\\
+            (2x-5)(x+6)-(x+6)(x-5)&=(x+6)(x-10)
+            \end{align*}
+            $$</li>
+            <li>$$
+            \begin{align*}
+            (x-3)(2x+7)+(x-3)(3-x)&=(x-3)(2x+7-x-3)\\
+            (x-3)(2x+7)+(x-3)(3-x)&=(x-3)(x+4)
+            \end{align*}
+            $$</li>
+        </ol>
+    </div>
+</div>
+
+<div class="propriete">
+    Si un polynôme du second degré $ax^2+bx+c$ admet une seule racine appelée <i>racine double</i> $x_0$, alors il peut s'écrire sous la <i>forme factorisée</i> suivante
+    <div class="equation">$a(x-x_0)^2$</div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Les polynômes du second degré suivants possèdent une racine double. Factorisez par $a$ puis utilisez une identité remarquable pour les écrire sous la forme factorisée.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$7x^2-42x+63$</li>
+            <li>$-2x^2+8x-8$.</li>
+            <li>$5x^2+40x+80$</li>
+            <li>$-3x^2-6x-3$</li>
         </ol>
     </div>
     <div class="solution">
         <ol class="alphabetical-list">
             <li>$$
             \begin{align*}
-            \Delta&=(-3)^2-4\times2\times1\\
-            \Delta&=9-8\\
-            \Delta&=1
+            7x^2-42x+63&=7(x^2-6x+9)\\
+            7x^2-42x+63&=7(x^2-2\times3x+3^2)\\
+            7x^2-42x+63&=7(x-3)^2
             \end{align*}
             $$</li>
             <li>$$
             \begin{align*}
-            \Delta&=5^2-4\times3\times(-2)\\
-            \Delta&=25+24\\
-            \Delta&=49
+            -2x^2+8x-8&=-2(x^2-4x+4)\\
+            -2x^2+8x-8&=-2(x^2-2\times2x+2^2)\\
+            -2x^2+8x-8&=-2(x-2)^2
             \end{align*}
             $$</li>
             <li>$$
             \begin{align*}
-            \Delta&=(-4)^2-4\times4\times1\\
-            \Delta&=16-16\\
-            \Delta&=0
+            5x^2+40x+80&=5(x^2+8x+16)\\
+            5x^2+40x+80&=5(x^2+2\times4x+4^2)\\
+            5x^2+40x+80&=5(x+4)^2
             \end{align*}
             $$</li>
             <li>$$
             \begin{align*}
-            \Delta&=3^2-4\times1\times3\\
-            \Delta&=9-12\\
-            \Delta&=-3
+            -3x^2-6x-3&=-3(x^2+2x+1)\\
+            -3x^2-6x-3&=-3(x^2+2x+1^2)\\
+            -3x^2-6x-3&=-3(x+1)^2
             \end{align*}
             $$</li>
         </ol>
     </div>
-</div></main>
+</div>
+
+</main>
   </body>
 </html>
