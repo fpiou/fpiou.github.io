@@ -16,12 +16,16 @@
     <br><br>
 
     <input type="file" id="csvFileInput" accept=".csv" />
-    <!-- UN champ pour saisir le titre -->
     <button id="randomizeButton">Répartir au hasard</button>
     <button id="addDeskButton">Ajouter un bureau vide</button>
+    <button id="savePlanButton">Sauvegarder le plan de classe</button>
     
+    <h2 class="noprint">Charger un plan de classe</h2>
+    <select id="savedPlansSelect" class="noprint"></select>
+    <button id="renamePlanButton" class="noprint">Renommer</button>
+    <button id="deletePlanButton" class="noprint">Supprimer</button>
     
-    
+    <h2 id="classroomTitle"></h2>
     <div id="classroom"></div>
 
     <script src="scripts.js"></script>

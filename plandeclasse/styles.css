@@ -1,3 +1,4 @@
+/* styles.css */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -17,11 +18,11 @@ body {
     border-radius: 5px;
     text-align: center;
     cursor: move;
-    height:70px;
-    /* Aligner verticalement */
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1.3em;
 }
 
 .empty-desk {
@@ -34,14 +35,14 @@ body {
     margin-bottom: 10px;
     text-align: center;
 }
-/* Impression */
+
 @media print {
     @page {
         size: A4 landscape;
         margin-top: 5mm;
         margin-bottom: 5mm;
     }
-    button,input,.noprint {
+    button, input, .noprint {
         display: none;
     }
     #titleInput {
