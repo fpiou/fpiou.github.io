@@ -88,9 +88,4 @@ body {
     button, input, .noprint {
         display: none;
     }
-    #titleInput {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 }

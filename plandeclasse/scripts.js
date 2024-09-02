@@ -247,23 +247,53 @@ function saveCurrentPlan() {
     let savedPlans = JSON.parse(localStorage.getItem("savedPlans") || "[]");
 
     const existingPlanIndex = savedPlans.findIndex(plan => plan.name === title);
+    const savedPlansSelect = document.getElementById('savedPlansSelect');
+    let selectedPlanIndex = savedPlansSelect.selectedIndex;
 
     if (existingPlanIndex !== -1) {
         if (!confirm(`Un plan de classe avec ce titre existe déjà. Voulez-vous le remplacer ?`)) {
             return;
         }
         savedPlans[existingPlanIndex] = { name: title, desks: desks };
+        selectedPlanIndex = existingPlanIndex; // Keep the selection on the replaced plan
     } else {
         savedPlans.push({ name: title, desks: desks });
+        selectedPlanIndex = savedPlans.length - 1; // Set to the newly added plan
     }
 
     localStorage.setItem("savedPlans", JSON.stringify(savedPlans));
     updateSavedPlansSelect();
+
+    // Restore the selected plan after updating the list
+    savedPlansSelect.selectedIndex = selectedPlanIndex;
+}
+
+function updateSavedPlansSelect() {
+    const savedPlans = JSON.parse(localStorage.getItem("savedPlans") || "[]");
+    const savedPlansSelect = document.getElementById('savedPlansSelect');
+    const previousSelection = savedPlansSelect.selectedIndex;
+
+    savedPlansSelect.innerHTML = '';
+    savedPlans.forEach((plan, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = plan.name;
+        savedPlansSelect.appendChild(option);
+    });
+
+    if (savedPlans.length > 0) {
+        savedPlansSelect.selectedIndex = previousSelection >= 0 && previousSelection < savedPlans.length 
+                                         ? previousSelection 
+                                         : 0;
+        loadSelectedPlan();
+    }
 }
 
 function loadSelectedPlan() {
     const savedPlans = JSON.parse(localStorage.getItem("savedPlans") || "[]");
-    const selectedPlanIndex = document.getElementById('savedPlansSelect').selectedIndex;
+    const savedPlansSelect = document.getElementById('savedPlansSelect');
+    const selectedPlanIndex = savedPlansSelect.selectedIndex;
+    
     if (savedPlans[selectedPlanIndex]) {
         const classroomDiv = document.getElementById('classroom');
         classroomDiv.innerHTML = '';
@@ -290,6 +320,9 @@ function loadSelectedPlan() {
         
         updateGridLayout();
         enableDragAndDrop();
+
+        // Ensure the dropdown remains on the selected plan
+        savedPlansSelect.selectedIndex = selectedPlanIndex;
     }
 }
 
@@ -329,42 +362,6 @@ function deleteSelectedPlan() {
             document.getElementById('titleInput').value = '';
             updateClassroomTitle();
         }
-    }
-}
-
-function updateSavedPlansSelect() {
-    const savedPlans = JSON.parse(localStorage.getItem("savedPlans") || "[]");
-    const savedPlansSelect = document.getElementById('savedPlansSelect');
-    savedPlansSelect.innerHTML = '';
-    savedPlans.forEach((plan, index) => {
-        const option = document.createElement('option');
-        option.value = index;
-        option.textContent = plan.name;
-        savedPlansSelect.appendChild(option);
-    });
-
-    // Automatically load the first plan if any exist
-    if (savedPlans.length > 0) {
-        savedPlansSelect.selectedIndex = 0; // Select the first plan
-        loadSelectedPlan(); // Load the selected plan
-    }
-}
-
-function updateSavedPlansSelect() {
-    const savedPlans = JSON.parse(localStorage.getItem("savedPlans") || "[]");
-    const savedPlansSelect = document.getElementById('savedPlansSelect');
-    savedPlansSelect.innerHTML = '';
-    savedPlans.forEach((plan, index) => {
-        const option = document.createElement('option');
-        option.value = index;
-        option.textContent = plan.name;
-        savedPlansSelect.appendChild(option);
-    });
-
-    // Automatically load the first plan if any exist
-    if (savedPlans.length > 0) {
-        savedPlansSelect.selectedIndex = 0; // Select the first plan
-        loadSelectedPlan(); // Load the selected plan
     }
 }
 
