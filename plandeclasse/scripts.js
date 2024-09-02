@@ -10,6 +10,9 @@ document.getElementById('importPlansButton').addEventListener('click', importPla
 
 document.getElementById('importPlansFileInput').addEventListener('change', handleImportFile, false);
 
+// Automatically load the selected plan when the dropdown changes
+document.getElementById('savedPlansSelect').addEventListener('change', loadSelectedPlan);
+
 let students = [];
 
 function exportPlans() {
@@ -305,19 +308,37 @@ function renameSelectedPlan() {
 }
 
 function deleteSelectedPlan() {
-    const savedPlans = JSON.parse(localStorage.getItem("savedPlans") || "[]");
+    const savedPlans = JSON.parse(getCookie("savedPlans") || "[]");
     const selectedPlanIndex = document.getElementById('savedPlansSelect').selectedIndex;
 
     if (savedPlans[selectedPlanIndex]) {
         const confirmed = confirm(`Êtes-vous sûr de vouloir supprimer le plan de classe "${savedPlans[selectedPlanIndex].name}" ?`);
         if (confirmed) {
             savedPlans.splice(selectedPlanIndex, 1);
-            localStorage.setItem("savedPlans", JSON.stringify(savedPlans));
+            setCookie("savedPlans", JSON.stringify(savedPlans), 365);
             updateSavedPlansSelect();
             document.getElementById('classroom').innerHTML = '';
             document.getElementById('titleInput').value = '';
             updateClassroomTitle();
         }
+    }
+}
+
+function updateSavedPlansSelect() {
+    const savedPlans = JSON.parse(localStorage.getItem("savedPlans") || "[]");
+    const savedPlansSelect = document.getElementById('savedPlansSelect');
+    savedPlansSelect.innerHTML = '';
+    savedPlans.forEach((plan, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = plan.name;
+        savedPlansSelect.appendChild(option);
+    });
+
+    // Automatically load the first plan if any exist
+    if (savedPlans.length > 0) {
+        savedPlansSelect.selectedIndex = 0; // Select the first plan
+        loadSelectedPlan(); // Load the selected plan
     }
 }
 
