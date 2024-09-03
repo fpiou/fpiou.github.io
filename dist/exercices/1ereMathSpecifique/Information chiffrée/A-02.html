@@ -115,7 +115,7 @@
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
 
-    <main><header class="brouillon"><div>Informations chiffrées</div><div class="header-niveau">Première Mathématiques spécifiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>A-02<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+    <main><header><div>Informations chiffrées</div><div class="header-niveau">Première Mathématiques spécifiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>A-02<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
 
 <h1>Diagrammes circulaires</h1>
 <div class="definition">
@@ -139,7 +139,7 @@
 <div class="exercice">
     <div class="enonce">
         La répartition des âges par sexe dans le gouvernement français de 2022 était la suivante&nbsp;:
-       <table class="tableaucroise">
+    <table class="tableaucroise">
                 <tr>
                     <td></td>
                     <td>[20;40[</td>
@@ -222,7 +222,7 @@
 </div>
 <div class="exercice">
     <div class="enonce">
-        Le département marketing d'un supermarché souhaite analyser l'efficacité des promotions mensuelles sur le volume des ventes. Les données suivantes représentent le pourcentage de réduction appliqué durant chaque mois et le volume des ventes correspondant, en milliers d'euros.
+        Le département marketing d'un supermarché souhaite analyser l'efficacité des promotions mensuelles sur le volume des ventes. Les données suivantes représentent le pourcentage de réduction appliqué durant chaque mois, le volume des ventes correspondant en milliers d'euros, ainsi que le nombre de jours de pluie enregistrés chaque mois.
         <table class="tableaucroise">
             <tr>
                 <th>Mesure</th>
@@ -251,26 +251,47 @@
                 <td>210</td>
                 <td>140</td>
             </tr>
+            <tr>
+                <td>Jours de pluie</td>
+                <td>10</td>
+                <td>5</td>
+                <td>15</td>
+                <td>8</td>
+                <td>12</td>
+                <td>11</td>
+            </tr>
         </table>
         <ol class="alphabetical-list">
+            <ol class="alphabetical-list">
             <li>Représentez les ventes en fonction des réductions par un nuage de points dans lequel les axes se coupent à $\SI{3}{\%}$ pour les réductions et à $100$ milliers d'euros pour les ventes.</li>
             <li>Quelle est la nature de la relation entre les deux variables&nbsp;?</li>
+            <li>Représentez les jours de pluie en fonction des réductions par un nuage de points sur le même graphique en ajoutant un axe des ordonnées à droite. Qu'observez-vous&nbsp;?</li>
         </ol>
     </div>
     <div class="solution">
         <p>On obtient le nuage de points suivant&nbsp;:</p>
         <div class="figure">
-            <svg viewBox="0 0 280 140" style="width:90%">
-                <g name="repere1" class="repere" xmin="0" ymin="80" xmax="13" ymax ="220" xorigine="3" yorigine="100"></g>
+            <svg viewBox="0 0 320 140" style="width:90%">
+                <g name="repere1" class="repere" xmin="0" ymin="80" xmax="16" ymax ="220" xorigine="3" yorigine="100"></g>
+                <g name="repere2" class="repere" xmin="0" ymin="3" xmax="16" ymax ="17" xorigine="13" yorigine="5"></g>
                 <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="0.5"></g>
                 <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="0.5"></g>
+                <g name="AxeY2" class="axe ordonnees" linkto="repere2" stroke="black" stroke-width="0.5"></g>
                 <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1" size="5" origine></g>
                 <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="10" stroke="black" stroke-width="1" size="5" origine></g>
+                <g name="GraduationsY2" class="graduationsAxe" linkto="AxeY2" pas="1" stroke="black" stroke-width="1" size="5" origine></g>
                 
-                <g name="J1" class="point labeled" repere="repere1" x="3" y="100" stroke="none" font-size="9pt"></g>
-                <g class="label" linkto="J1" x="-20" y="-8">100</g>
-                <g name="J2" class="point labeled" repere="repere1" x="3" y="200" stroke="none" font-size="9pt"></g>
-                <g class="label" linkto="J2" x="-20" y="-8">200</g>
+                <g name="J11" class="point labeled" repere="repere1" x="3" y="100" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="J11" x="-20" y="-8">100</g>
+                <g name="J12" class="point labeled" repere="repere1" x="3" y="200" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="J12" x="-20" y="-8">200</g>
+                
+                <g name="J21" class="point labeled" repere="repere2" x="13" y="5" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="J21" x="5" y="-8">5</g>
+                <g name="J22" class="point labeled" repere="repere2" x="13" y="10" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="J22" x="5" y="-8">10</g>
+                <g name="J23" class="point labeled" repere="repere2" x="13" y="15" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="J23" x="5" y="-8">15</g>
                 
                 <g name="I1" class="point labeled" repere="repere1" x="4" y="100" stroke="none" font-size="9pt"></g>
                 <g class="label" linkto="I1" x="-5" y="0">4</g>
@@ -278,17 +299,23 @@
                 <g class="label" linkto="I2" x="-5" y="0">10</g>
                 <g name="A" class="point labeled" repere="repere1" x="0" y="10" stroke="none" font-size="9pt"></g>
                 <g class="label" linkto="A" x="-15" y="-9">10</g>
+                
                 <g name="n1" class="nuagePoints" repere="repere1" datax="5;10;4;8;12;6" datay="120;180;110;160;210;140" stroke="blue" stroke-width="0.5" forme="x"></g>
+                
+                <g name="n2" class="nuagePoints" repere="repere2" datax="5;10;4;8;12;6" datay="10;5;15;8;12;11" stroke="red" stroke-width="0.5" forme="x"></g>
+                
                 <!-- Titres -->
                 <g style="font-size:0.5rem;">
-                    <g class="label" repere="repere1" x="10.5" y="100" width="60">Ventes  en milliers €</g>
-                    <g class="label" repere="repere1" x="0" y="200" width="50">Réduction en %</g>
+                    <g class="label" repere="repere1" x="14" y="100" width="50">Réduction en %</g>
+                    <g class="label" repere="repere1" x="0" y="200" width="50">Ventes  en milliers €</g>
                 </g>
             </svg>
         </div>
         <p>On observe que les points sont plus ou moins alignés.</p>
         <p>On peut donc supposer qu'il y a une relation linéaire entre les deux variables.</p>
+        <p>En revanche, les points représentant les jours de pluie en fonction des réductions ne montrent pas de relation claire, ce qui indique que ces deux variables ne semblent pas corrélées.</p>
     </div>
-</div></main>
+</div>
+</main>
   </body>
 </html>
