@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>T-01B.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header class="brouillon"><div>Test</div><div class="header-niveau">1re Spécialité Mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>T-01B<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div copy="3">
+<div class="deuxcolonnes" style="font-size:1.2em;">
+
+<h1>Test 05/09</h1>
+<div class="exercice">
+    <div class="enonce">
+        Développez $(6x+4)^2$.
+    </div>
+    <div class="solution">
+        $(6x+4)^2 = 36x^2+48x+16$
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Résolvez l'équation $(x+5)(8x-2)=0$.
+    </div>
+    <div class="solution">
+        $x+5=0$ ou $8x-2=0$<br>
+        $x=-5$ ou $x=\frac{1}{4}$
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Dressez le tableau de signes de la fonction $f(x)=(x+4)(x-5)$.
+    </div>
+    <div class="solution">
+        <table class="tableausigne">
+            <tr>
+                <td>$x$</td>
+                <td>$-\infty$</td>
+                <td></td>
+                <td>$-4$</td>
+                <td></td>
+                <td>$5$</td>
+                <td></td>
+                <td>$+\infty$</td>
+            </tr>
+            <tr>
+                <td>$x+4$</td>
+                <td></td>
+                <td>$-$</td>
+                <td>$0$</td>
+                <td>$+$</td>
+                <td></td>
+                <td>$+$</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>$x-5$</td>
+                <td></td>
+                <td>$-$</td>
+                <td></td>
+                <td>$-$</td>
+                <td>$0$</td>
+                <td>$+$</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>$f(x)$</td>
+                <td></td>
+                <td>$+$</td>
+                <td></td>
+                <td>$-$</td>
+                <td></td>
+                <td>$+$</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <div style="display:flex">
+            <div style="align-items:left;width:50%;text-align:justify;">
+                Reproduisez une figure identique et tracez le projeté orthogonal de $B$ sur $(AC)$. Nommez-le $H$.
+            </div>
+            <div style="width:50%;display:flex;justify-content:center;">
+                <div class="figure">
+                    <svg viewBox="0 0 160 100" style="width:100%;">
+                        <g name="repere1" class="repere" xmin="1" ymin="4" xmax="9" ymax="9" xorigine="0" yorigine="0"></g>
+                        <g name="A" class="point labeled" repere="repere1" x="2" y="8" stroke="black" ></g>
+                        <g class="label" linkto="A" x="-10" y="-10">A</g>
+                        <g name="B" class="point labeled" repere="repere1" x="8" y="5" stroke="black" ></g>
+                        <g name="C" class="point labeled" repere="repere1" x="5" y="5" stroke="black" ></g>
+                        <g name="ABC" class="polygone" linkto="A B C" fill="red" fill-opacity="0.3"></g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="solution">
+        <div class="figure">
+            <svg viewBox="0 0 200 200">
+                <g name="repere1" class="repere" xmin="1" ymin="2" xmax="9" ymax="9" xorigine="0" yorigine="0"></g>
+                <g name="A" class="point labeled" repere="repere1" x="2" y="8" stroke="black" ></g>
+                <g class="label" linkto="A" x="-10" y="-10">A</g>
+                <g name="B" class="point labeled" repere="repere1" x="8" y="5" stroke="black" ></g>
+                <g name="C" class="point labeled" repere="repere1" x="5" y="5" stroke="black" ></g>
+                <g name="ABC" class="polygone" linkto="A B C" fill="red" fill-opacity="0.3"></g>
+                <g name="H" class="point labeled dilatation" linkto="A C B" data="90 0" repere="repere1" x="5" y="8" stroke="black" ></g>
+                <g class="label" linkto="H" x="-5" y="0">H</g>
+                <g class="segment" linkto="B H" stroke="black" stroke-dasharray="2,2"></g>
+                <g class="segment" linkto="A H" stroke="black" stroke-dasharray="2,2"></g>
+                <g class="angleDroit" linkto="A H C" fill="black" fill-opacity="0.3"></g>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        La hauteur issue de $B$ dans le triangle $ABC$ est de $\SI{6}{\cm}$ et le côté $[AC]$ mesure $\SI{7}{\cm}$. Calculez l'aire du triangle $ABC$.
+    </div>
+    <div class="solution">
+        $Aire = \frac{1}{2} \times 6 \times 7 = \SI{21}{\cm^2}$
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Dressez le tableau de variation de la fonction représentée.
+        <div class="figure">
+            <svg viewBox="0 0 200 120">
+                <g name="repere1" class="repere" xmin="-5" ymin="-10" xmax="5" ymax="40" xorigine="0" yorigine="0"></g>
+                <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="5" stroke="gray" stroke-width="0.2" stroke-opacity="0.5"></g>
+                <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1" size="5" origine></g>
+                <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+                <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="5" stroke="black" stroke-width="1" size="5" origine></g>
+                <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="O" x="-12" y="0">O</g>
+                <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="I" x="-3" y="0">1</g>
+                <g name="J" class="point labeled" repere="repere1" x="0" y="10" stroke="none" font-size="9pt"></g>
+                <g class="label" linkto="J" x="-15" y="-7">10</g>
+                
+                <g name="A" class="point" repere="repere1" x="-4" y="20" stroke="none" font-size="9pt"></g>
+                <g name="B" class="point" repere="repere1" x="-1" y="-5" stroke="none" font-size="9pt"></g>
+                <g name="C" class="point" repere="repere1" x="2" y="35" stroke="none" font-size="9pt"></g>
+                <g name="D" class="point" repere="repere1" x="4.5" y="10" stroke="none" font-size="9pt"></g>
+                <g name="c1" class="pathPointsControls" controls="A:0 B:0 C:0 D:0" linkto="A B C D" stroke="red" troke-width="1" fill="transparent"></g>
+            </svg>
+        </div>
+    </div>
+    <div class="solution">
+        <div class="figure">
+            <svg viewBox="0 0 400 150">
+                <g name="A1" class="point" stroke="none" x="70*4/3" y="60" scale="0.5"></g>
+                <g name="A2" class="point" stroke="none" x="120*4/3" y="100" scale="0.5"></g>
+                <g name="a" class="vecteur" linkto="A1 A2" stroke="black" scale="1"></g>
+                <g name="B1" class="point" stroke="none" x="140*4/3" y="100" scale="0.5"></g>
+                <g name="B2" class="point" stroke="none" x="190*4/3" y="60" scale="0.5"></g>
+                <g name="b" class="vecteur" linkto="B1 B2" stroke="black" scale="1"></g>
+                <g name="C1" class="point" stroke="none" x="220*4/3" y="60" scale="0.5"></g>
+                <g name="C2" class="point" stroke="none" x="270*4/3" y="100" scale="0.5"></g>
+                <g name="c" class="vecteur" linkto="C1 C2" stroke="black" scale="1"></g>
+                <foreignObject width="100%" height="100%">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="font-size:12pt;">
+                    <table class="tableauvariations">
+                    <tr>
+                        <td>$x$</td>
+                        <td>$-4$</td>
+                        <td></td>
+                        <td>$-1$</td>
+                        <td></td>
+                        <td>$2$</td>
+                        <td></td>
+                        <td>$4{,}5$</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>$20$</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>$35$</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$f$</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>$-5$</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>$10$</td>
+                    </tr>
+                    </table>
+                </div>
+                </foreignObject>
+            </svg>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+</main>
+  </body>
+</html>

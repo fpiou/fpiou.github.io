@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Pourcentages_05.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><div class="exercice">
+    <div class="enonce">
+        <div class="encart">
+            Considérons deux hausses successives, respectivement de coefficient multiplicateur $C_1$ et $C_2$.
+            $$Q_0~\overset{\nearrow \SI{x_1}{\%}}{\underset{\times C_1}{\xrightarrow{\hspace{1.5cm}}}}~Q_1~\overset{\nearrow \SI{x_2}{\%}}{\underset{\times C_2}{\xrightarrow{\hspace{1.5cm}}}}~Q_2$$
+            Et considérons l'évolution globale de ces deux hausses.
+            $$Q_0~\overset{\nearrow \SI{x}{\%}}{\underset{\times C}{\xrightarrow{\hspace{4cm}}}}~Q_2$$
+            On a alors :
+            $$C = C_1 \times C_2$$
+            Cette propriété est vraie pour deux baisses successives
+            ou pour une hausse suivie d'une baisse ou d'une baisse suivie d'une hausse.
+            Mais on ne peut pas additionner les pourcentages $x_1$ et $x_2$ pour obtenir $x$ !
+        </div>
+        Complétez les schémas dans les exemples suivants :<br>
+        
+        <b>Situation a</b>
+        $$Q_0~\overset{\large\nearrow \SI{\ldots}{\%}}{\underset{\times \num{1,1}}{\xrightarrow{\hspace{2cm}}}}~Q_1~\overset{\large\nearrow \SI{\ldots}{\%}}{\underset{\times \num{1,2}}{\xrightarrow{\hspace{2cm}}}}~Q_2$$
+        $$Q_0~\overset{\large\nearrow \SI{\ldots}{\%}}{\underset{\large\times \ldots}{\xrightarrow{\hspace{4.8cm}}}}~Q_2$$
+        <b>Situation b</b>
+        $$Q_0~\overset{\large\searrow \SI{\ldots}{\%}}{\underset{\times \num{0.4}}{\xrightarrow{\hspace{2cm}}}}~Q_1~\overset{\large\searrow \SI{\ldots}{\%}}{\underset{\times \num{0.9}}{\xrightarrow{\hspace{2cm}}}}~Q_2$$
+        $$Q_0~\overset{\large\searrow \SI{\ldots}{\%}}{\underset{\large\times \ldots}{\xrightarrow{\hspace{4.8cm}}}}~Q_2$$
+        <b>Situation c</b>
+        $$Q_0~\overset{\large\nearrow \SI{\ldots}{\%}}{\underset{\times \num{1.3}}{\xrightarrow{\hspace{2cm}}}}~Q_1~\overset{\large\searrow \SI{\ldots}{\%}}{\underset{\times \num{0.8}}{\xrightarrow{\hspace{2cm}}}}~Q_2$$
+        $$Q_0~\overset{\large\ldots\ldots\si{\%}}{\underset{\large\times \ldots}{\xrightarrow{\hspace{4.8cm}}}}~Q_2$$
+        <b>Situation d</b>
+        $$Q_0~\overset{\large\nearrow \SI{\ldots}{\%}}{\underset{\times \num{1.4}}{\xrightarrow{\hspace{2cm}}}}~Q_1~\overset{\large\searrow \SI{\ldots}{\%}}{\underset{\times \num{0.7}}{\xrightarrow{\hspace{2cm}}}}~Q_2$$
+        $$Q_0~\overset{\large\ldots\ldots\si{\%}}{\underset{\large\times \ldots}{\xrightarrow{\hspace{4.8cm}}}}~Q_2$$
+        <b>Situation e</b>
+        $$Q_0~\overset{\large\searrow \SI{\ldots}{\%}}{\underset{\times \num{0.8}}{\xrightarrow{\hspace{2cm}}}}~Q_1~\overset{\large\nearrow \SI{\ldots}{\%}}{\underset{\times \num{1.3}}{\xrightarrow{\hspace{2cm}}}}~Q_2$$
+        $$Q_0~\overset{\large\ldots\ldots\si{\%}}{\underset{\large\times \ldots}{\xrightarrow{\hspace{4.8cm}}}}~Q_2$$
+        <b>Situation f</b>
+        $$Q_0~\overset{\large\searrow \SI{\ldots}{\%}}{\underset{\times \num{0.7}}{\xrightarrow{\hspace{2cm}}}}~Q_1~\overset{\large\nearrow \SI{\ldots}{\%}}{\underset{\times \num{1.25}}{\xrightarrow{\hspace{2cm}}}}~Q_2$$
+        $$Q_0~\overset{\large\ldots\ldots\si{\%}}{\underset{\large\times \ldots}{\xrightarrow{\hspace{4.8cm}}}}~Q_2$$
+    </div>
+    <div class="solution">
+            <b>Situation a</b>
+            $$Q_0~\overset{\nearrow \SI{10}{\%}}{\underset{\times \num{1,1}}{\xrightarrow{\hspace{2cm}}}}~Q_1~\overset{\nearrow \SI{20}{\%}}{\underset{\times \num{1,2}}{\xrightarrow{\hspace{2cm}}}}~Q_2$$
+            $$Q_0~\overset{\nearrow \SI{32}{\%}}{\underset{\times \num{1,32}}{\xrightarrow{\hspace{4.8cm}}}}~Q_2$$
+            <b>Situation b</b>
+            $$Q_0~\overset{\searrow \SI{60}{\%}}{\underset{\times \num{0.4}}{\xrightarrow{\hspace{2cm}}}}~Q_1~\overset{\searrow \SI{10}{\%}}{\underset{\times \num{0.9}}{\xrightarrow{\hspace{2cm}}}}~Q_2$$
+            $$Q_0~\overset{\searrow \SI{64}{\%}}{\underset{\times \num{0,36}}{\xrightarrow{\hspace{4.8cm}}}}~Q_2$$
+            <b>Situation c</b>
+            $$Q_0~\overset{\nearrow \SI{30}{\%}}{\underset{\times \num{1,3}}{\xrightarrow{\hspace{2cm}}}}~Q_1~\overset{\searrow \SI{20}{\%}}{\underset{\times \num{0,8}}{\xrightarrow{\hspace{2cm}}}}~Q_2$$
+            $$Q_0~\overset{\nearrow \SI{4}{\%}}{\underset{\times \num{1.04}}{\xrightarrow{\hspace{4.8cm}}}}~Q_2$$
+            <b>Situation d</b>
+            $$Q_0~\overset{\nearrow \SI{40}{\%}}{\underset{\times \num{1,4}}{\xrightarrow{\hspace{2cm}}}}~Q_1~\overset{\searrow \SI{30}{\%}}{\underset{\times \num{0,7}}{\xrightarrow{\hspace{2cm}}}}~Q_2$$
+            $$Q_0~\overset{\searrow \SI{2}{\%}}{\underset{\times \num{0,98}}{\xrightarrow{\hspace{4.8cm}}}}~Q_2$$
+            <b>Situation e</b>
+            $$Q_0~\overset{\searrow \SI{20}{\%}}{\underset{\times \num{0,8}}{\xrightarrow{\hspace{2cm}}}}~Q_1~\overset{\nearrow \SI{30}{\%}}{\underset{\times \num{1,3}}{\xrightarrow{\hspace{2cm}}}}~Q_2$$
+            $$Q_0~\overset{\nearrow \SI{4}{\%}}{\underset{\times \num{1,04}}{\xrightarrow{\hspace{4.8cm}}}}~Q_2$$
+            <b>Situation f</b>
+            $$Q_0~\overset{\searrow \SI{30}{\%}}{\underset{\times \num{0,7}}{\xrightarrow{\hspace{2cm}}}}~Q_1~\overset{\nearrow \SI{25}{\%}}{\underset{\times \num{1,25}}{\xrightarrow{\hspace{2cm}}}}~Q_2$$
+            $$Q_0~\overset{\searrow \SI{12.5}{\%}}{\underset{\times \num{0,875}}{\xrightarrow{\hspace{4.8cm}}}}~Q_2$$
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère une baisse de $\SI{20}{\%}$ suivie d'une hausse de $\SI{25}{\%}$.
+        <ol class="alphabetical-list">
+            <li>Calculez le coefficient multiplicateur global pour une baisse de $\SI{20}{\%}$ suivie d'une hausse de $\SI{20}{\%}$.</li>
+            <li>Calculez le coefficient multiplicateur global pour une baisse de $\SI{20}{\%}$ suivie d'une hausse de $\SI{25}{\%}$.</li>
+            <li>Déduire des deux questions précédentes, sans calculs, si une baisse de $\SI{20}{\%}$ suivie d'une hausse de $\SI{24}{\%}$ est une hausse ou une baisse.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Une baisse de $\SI{20}{\%}$ est une multiplication par $\num{0.8}$ et une hausse de $\SI{20}{\%}$ est une multiplication par $1,2$. Le coefficient multiplicateur global est donc $\num{0.8} \times 1,2 = 0,96$.</li>
+            <li>Une baisse de $\SI{20}{\%}$ est une multiplication par $\num{0.8}$ et une hausse de $\SI{25}{\%}$ est une multiplication par $1,25$. Le coefficient multiplicateur global est donc $\num{0.8} \times 1,25 = 1$.</li>
+            <li>Une baisse de $\SI{20}{\%}$ n'est pas compensée par une hausse de $\SI{20}{\%}$, elle est compensée à partir d'une hausse de $\SI{25}{\%}$. Donc une baisse de $\SI{20}{\%}$ suivie d'une hausse de $\SI{24}{\%}$ est une baisse.</li>
+        </ol>
+    </div>
+</div></main>
+  </body>
+</html>

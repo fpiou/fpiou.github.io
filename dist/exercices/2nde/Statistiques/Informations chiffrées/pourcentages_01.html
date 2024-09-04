@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Pourcentages_01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><div class="question">
+    <div class="enonce">
+        <div class="encart">
+            Calculer $\SI{t}{\%}$ d'une quantité $Q$ revient à multiplier cette quantité par $\dfrac{t}{100}$.
+            $$\SI{t }{\%} \text{ de }Q =  Q \times \dfrac{t}{100}$$
+        </div>
+        <style>
+        .montableau {
+            width: 100%;
+            text-align: center;
+            border-collapse: collapse;
+            border: 1px solid black;
+            margin: 1em 0em;
+            table-layout: fixed;
+        }
+        .montableau tr td {
+            border: 1px solid black;
+        }
+        </style>
+        <ol class="alphabetical-list">
+        <li>Recopiez et complétez le tableau suivant en donnant le coefficient multiplicateur pour obtenir le pourcentage indiqué.
+        <table class="montableau">
+            <tbody>
+                <tr>
+                    <td>$\SI{83}{\%}$</td>
+                    <td>$\SI{80}{\%}$</td>
+                    <td>$\SI{3}{\%}$</td>
+                    <td>$\SI{8.3}{\%}$</td>
+                    <td>$\SI{0.3}{\%}$</td>
+                    <td>$\SI{183}{\%}$</td>
+                    <td>$\SI{830}{\%}$</td>
+                </tr>
+                <tr>
+                    <td>$\times\num{0.83}$</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <li>Recopiez et complétez le tableau suivant en donnant le pourcentage correspondant au coefficient multiplicateur indiqué.
+        <table class="montableau">
+            <tbody>
+                <tr>
+                    <td>$\times\num{0.713}$</td>
+                    <td>$\times\num{4.7}$</td>
+                    <td>$\times\num{0.4}$</td>
+                    <td>$\times\num{0.0008}$</td>
+                    <td>$\times\num{0.02}$</td>
+                    <td>$\times\num{10}$</td>
+                </tr>
+                <tr>
+                    <td>$\phantom{\SI{71.3}{\%}}$</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        </li>
+        </ol>
+    </div>
+    <div class="solution">
+        <table class="montableau">
+            <tbody>
+                <tr>
+                    <td>$\SI{83}{\%}$</td>
+                    <td>$\SI{80}{\%}$</td>
+                    <td>$\SI{3}{\%}$</td>
+                    <td>$\SI{8.3}{\%}$</td>
+                    <td>$\SI{0.3}{\%}$</td>
+                    <td>$\SI{183}{\%}$</td>
+                    <td>$\SI{830}{\%}$</td>
+                </tr>
+                <tr>
+                    <td>$\times\num{0.83}$</td>
+                    <td>$\times\num{0.8}$</td>
+                    <td>$\times\num{0.03}$</td>
+                    <td>$\times\num{0.083}$</td>
+                    <td>$\times\num{0.003}$</td>
+                    <td>$\times\num{1.83}$</td>
+                    <td>$\times\num{8.3}$</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="montableau">
+            <tbody>
+                <tr>
+                    <td>$\times\num{0.713}$</td>
+                    <td>$\times\num{4.7}$</td>
+                    <td>$\times\num{0.4}$</td>
+                    <td>$\times\num{0.0008}$</td>
+                    <td>$\times\num{0.02}$</td>
+                    <td>$\times\num{10}$</td>
+                </tr>
+                <tr>
+                    <td>$\SI{71.3}{\%}$</td>
+                    <td>$\SI{0.047}{\%}$</td>
+                    <td>$\SI{40}{\%}$</td>
+                    <td>$\SI{0.08}{\%}$</td>
+                    <td>$\SI{2}{\%}$</td>
+                    <td>$\SI{1000}{\%}$</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Calculez $\SI{27}{\%}$ de $300.$</li>
+            <li>Calculez $\SI{40}{\%}$ de $650.$</li>
+        </ol>
+        Dans les deux consignes suivantes on utilisera que $4\times 25=100.$
+        <ol class="alphabetical-list" start="3">
+            <li>Calculez $\SI{76}{\%}$ de $250.$</li>
+            <li>Calculez $\SI{32}{\%}$ de $\num{2.5}.$</li>
+        </ol>
+        Dans les consignes suivantes on utilisera que calculer $\SI{10}{\%}$ d'une quantité revient à diviser cette quantité par $10.$
+        <ol class="alphabetical-list" start="5">
+            <li>Calculez $\SI{15}{\%}$ de $244.$</li>
+            <li>Calculez $\SI{5}{\%}$ de $400.$</li>
+            <li>Calculez $\SI{50}{\%}$ de $1200.$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$\SI{27}{\%} \text{ de }300 = 300 \times \num{0.27} = 81$$</li>
+            <li>$$\SI{40}{\%} \text{ de }650 = 650 \times \num{0.4} = 260$$</li>
+            <li>$76=38\times 2= 19\times 4.$ Donc $$\SI{76}{\%} \text{ de }250 = 250 \times \num{0.76} = 190$$</li>
+            <li>$$\SI{32}{\%} \text{ de }\num{2.5} = \num{2.5} \times \dfrac{32}{100} = 0.8$$</li>
+            <li>$$\SI{15}{\%} \text{ de }244 = 244 \times \dfrac{15}{100} = 36.6$$</li>
+            <li>$$\SI{5}{\%} \text{ de }400 = 400 \times \dfrac{5}{100} = 20$$</li>
+            <li>$$\SI{50}{\%} \text{ de }1200 = 1200 \times \dfrac{50}{100} = 600$$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+    <div class="encart">
+        Soit $A$ une partie d'un ensemble $E.$<br>
+        Désignons par $n_A$ le nombre d'éléments de $A$ et par $n_E$ le nombre d'éléments de $E.$<br>
+        La proportion d'éléments de $E$ parmi ceux de $A$ est le quotient $p=\dfrac{n_A}{n_E}.$
+    </div>
+    Voici trois situations possibles :
+    <ol class="alphabetical-list">
+        <li>
+            <div style="display:flex;flex-direction:row;">
+                <div style="flex:75%">
+                On suppose $n_A=14$ et $n_E=46.$<br>
+                On se propose de déterminer ci-contre la proportion d'éléments de $A$ parmi ceux de $E.$
+                </div>
+                <div style="flex:25%;text-align:center;">
+                $$\begin{align*}
+                    p&=\dfrac{n_A}{n_E}\\
+                    p&=\dfrac{14}{46}\\
+                    p&=\dfrac{7}{23}
+                \end{align*}$$
+                </div>
+            </div>
+            Donc si $A$ contient $14$ éléments et que $E$ contient $46$ éléments, alors la proportion d'éléments de $A$ parmi ceux de $E$ est $\dfrac{7}{23}.$
+        </li>
+        <li>
+            <div style="display:flex;flex-direction:row;">
+                <div style="flex:75%">
+                On suppose $n_E=45$ et $p=\dfrac{3}{5}.$<br>
+                On se propose de déterminer ci-contre le nombre d'éléments de $A.$
+                </div>
+                <div style="flex:25%;text-align:center;">
+                $$\begin{align*}
+                    p&=\dfrac{n_A}{n_E}\\
+                    \dfrac{3}{5}&=\dfrac{n_A}{45}\\
+                    n_A&=\dfrac{3}{5}\times 45\\
+                    n_A&=\dfrac{3}{5}\times 5\times 9\\
+                    n_A&=27
+                \end{align*}$$
+                </div>
+            </div>
+            Donc si $E$ contient $45$ éléments et que $A$ contient $\dfrac{3}{5}$ des éléments de $E,$ alors $A$ contient $27$ éléments.
+        </li>
+        <li>
+            <div style="display:flex;flex-direction:row;">
+                <div style="flex:75%">
+                On suppose $n_A=30$ et $p=\dfrac{6}{11}.$<br>
+                On se propose de déterminer ci-contre le nombre d'éléments de $E.$
+                </div>
+                <div style="flex:25%;text-align:center;">
+                $$\begin{align*}
+                    p&=\dfrac{n_A}{n_E}\\
+                    \dfrac{6}{11}&=\dfrac{30}{n_E}\\
+                    n_E&=\dfrac{30}{\dfrac{6}{11}}\\
+                    n_E&=\dfrac{30\times 11}{6}\\
+                    n_E&=55
+                \end{align*}$$
+                </div>
+            </div>
+            Donc si $A$ contient $30$ éléments et que la proportion d'éléments de $A$ parmi ceux de $E$ est $\dfrac{6}{11},$ alors $E$ contient $55$ éléments.
+        </li>
+    </ol>
+    </ol>
+    Dans chaque situation, calculez la valeur manquante.<br>
+        <i>On écrira une phrase réponse dans chaque cas.</i>
+        <ol class="alphabetical-list">
+            <li>$n_A=12$ et $n_E=20.$</li>
+            <li>$n_A=15$ et $n_E=25.$</li>
+            <li>$n_E=30$ et $p=\SI{70}{\%}$</li>
+            <li>$n_E=42$ et $p=\dfrac{5}{6}.$</li>
+            <li>$n_A=18$ et $p=\dfrac{3}{5}.$</li>
+            <li>$n_A=45$ et $p=\num{0.15}.$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$\begin{align*}
+                p&=\dfrac{n_A}{n_E}\\
+                p&=\dfrac{12}{20}\\
+                p&=\dfrac{3}{5}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+                p&=\dfrac{n_A}{n_E}\\
+                p&=\dfrac{15}{25}\\
+                p&=\dfrac{3}{5}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+                p&=\dfrac{n_A}{n_E}\\
+                \dfrac{70}{100}&=\dfrac{n_A}{30}\\
+                n_A&=\dfrac{70}{100}\times 30\\
+                n_A&=21
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+                p&=\dfrac{n_A}{n_E}\\
+                \dfrac{5}{6}&=\dfrac{n_A}{42}\\
+                n_A&=35
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+                p&=\dfrac{n_A}{n_E}\\
+                \dfrac{3}{5}&=\dfrac{18}{n_E}\\
+                n_E&=30
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+                p&=\dfrac{n_A}{n_E}\\
+                \num{0.15}&=\dfrac{45}{n_E}\\
+                n_E&=300
+            \end{align*}$$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On considère les deux situations suivantes :
+        <ul>
+            <li>$\SI{75}{\%}$ des employés de l'entreprise partent en vacances en juillet.</li>
+            <li>$\SI{60}{\%}$ des employés partant en vacances en juillet choisissent le bord de mer pour destination.</li>
+        </ul>
+        Pour chaque diagramme ci-dessous, détermine ce qu'il représente en lui donnant un titre et des légendes pour chaque secteur.
+        <ol class="alphabetical-list horizontal-list">
+            <li>
+                <div id="figure23" class="figure">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                        <g name="d1" class="diagrammeCirculaire" linkto="O" parametres="coeffDistanceEtiquette:1.2,afficherNoms:1,departAngle:90,r:80">
+                            ;
+                            ;60
+                            ;40
+                        </g>
+                    </svg>
+                </div>
+            </li>
+            <li>
+                <div id="figure23" class="figure">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                        <g name="d1" class="diagrammeCirculaire" linkto="O" parametres="coeffDistanceEtiquette:1.2,afficherNoms:1,departAngle:90,r:80">
+                            ;
+                            ;75
+                            ;25
+                        </g>
+                    </svg>
+                </div>
+            </li>
+            <li>
+                <div id="figure23" class="figure">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                        <g name="d1" class="diagrammeCirculaire" linkto="O" parametres="coeffDistanceEtiquette:1.2,afficherNoms:1,departAngle:90,r:80">
+                            ;
+                            ;45
+                            ;55
+                        </g>
+                    </svg>
+                </div>
+            </li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Le premier diagramme représente la répartition des employés de l'entreprise qui partent en vacances en juillet en fonction de la destination.
+            <ul>
+                <li>Le grand secteur représente la proportion d'employés partant en bord de mer parmi ceux partant en vacances en juillet.</li>
+                <li>Le petit secteur représente la proportion d'employés partant ailleurs qu'en bord de mer parmi ceux partant en vacances en juillet.</li>
+            </ul>
+            </li>
+            <li>Le deuxième diagramme représente la répartition des employés de l'entreprise en fonction du mois de départ en vacances.
+            <ul>
+                <li>Le grand secteur représente la proportion d'employés partant en juillet.</li>
+                <li>Le petit secteur représente la proportion d'employés partant un autre mois.</li>
+            </ul>
+            </li>
+            <li>Le troisième diagramme représente la répartition des employés de l'entreprise en fonction de qui part en vacances en juillet au bord de mer ou non.
+            <ul>
+                <li>Le grand secteur représente la proportion d'employés n'ayant pas choisi de partir au bord de mer au mois de juillet. Ils peuvent donc être parti un autre mois ou être parti en juillet mais ailleurs qu'au bord de mer.</li>
+                <li>Le petit secteur représente la proportion d'employés partant au bord de mer au mois de juillet.</li>
+            </li>
+        </ol>
+    </div>
+</div></main>
+  </body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Pourcentages_04.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><div class="exercice">
+    <div class="enonce">
+    Pour effectuer le calcul $\num{0.23}\times 50$, on peut effectuer le calcul $23\times 5 = 115$ puis effectuer les opérations permettant de revenir au résultat initial en suivant le schéma suivant :
+        $$\begin{CD}
+            \num{0.23} @.\times @.50 @.@.=@. \num{11.5} @.\\
+            @V {\tiny\times 100} VV @. @V {\tiny\div 10} VV @.@. @A {\tiny\div 100\times 10} AA @A=\div 10 AA\\
+            23 @.\times @. 5 @.@.=@. \num{115} @.
+            \end{CD}$$
+        Calculez en reproduisant le schéma précédent :
+        <ol class="alphabetical-list horizontal-list col-3c">
+            <li>$\num{4.8}\times \num{2000}$</li>
+            <li>$\num{0.012}\times 70$</li>
+            <li>$\num{0.003}\times 500$</li>
+            <li>$\num{0.15}\times\num{0.003}$</li>
+            <li>$\num{1.35}\times\num{0.2}$</li>
+            <li>$\num{4000}\times\num{12.1}$</li>
+            <li>$\num{1200}\times\num{0.03}$</li>
+            <li>$\num{500}\times\num{0.12}$</li>
+            <li>$\footnotesize\num{32000}\times\num{0.002}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$\begin{CD}
+            \num{4.8} @.\times @.\num{2000} @.@.=@. \num{9600} @.\\
+            @V {\tiny\times 10} VV @. @V {\tiny\div 1000} VV @.@. @A {\tiny\div 10\times 1000} AA @A=\times 100AA\\
+            48 @.\times @. 2 @.@.=@. \num{96} @.
+            \end{CD}$$</li>
+            <li>$$\begin{CD}
+            \num{0.012} @.\times @.70 @.@.=@. \num{0.84} @.\\
+            @V {\tiny\times 1000} VV @. @V {\tiny\div 10} VV @.@. @A {\tiny\times 10\div 1000} AA @A=\div 100 AA\\
+            12 @.\times @. 7 @.@.=@. \num{84} @.
+            \end{CD}$$</li>
+            <li>$$\begin{CD}
+            \num{0.003} @.\times @.500 @.@.=@. \num{1.5} @.\\
+            @V {\tiny\times 1000} VV @. @V {\tiny\div 100} VV @.@. @A {\tiny\div 1000\times 100} AA @A=\div 10 AA\\
+            3 @.\times @. 5 @.@.=@. \num{15} @.
+            \end{CD}$$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez en utilisant le modèle suivant :
+        <div class="equation">
+        $$\begin{align*}
+        \num{1.1}\times 32 &= 32+\num{0.1}\times 32\\
+        &= 32+\num{3.2}\\
+        \num{1.1}\times 32 &= \num{35.2}
+        \end{align*}$$
+        </div>
+        <ol class="alphabetical-list horizontal-list col-3c">
+            <li>$\num{1.1}\times 54$</li>
+            <li>$\num{1.2}\times 21$</li>
+            <li>$\num{2.1}\times 18$</li>
+            <li>$\num{1.3}\times 13$</li>
+            <li>$\num{2.4}\times 12$</li>
+            <li>$\num{1.2}\times \num{4100}$</li>
+            <li>$\num{1.01}\times 243$</li>
+            <li>$\num{1.02}\times 122$</li>
+            <li>$\num{1.03}\times 211$</li>
+            <li>$\num{1.02}\times 81$</li>
+            <li>$\num{1.03}\times 42$</li>
+            <li>$\num{2.01}\times \num{1600}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$\begin{align*}
+            \num{1.1}\times 54 &= 54+\num{0.1}\times 54\\
+            &= 54+\num{5.4}\\
+            \num{1.1}\times 54 &= \num{59.4}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{1.2}\times 21 &= 21+\num{0.2}\times 21\\
+            &= 21+\num{4.2}\\
+            \num{1.2}\times 21 &= \num{25.2}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{2.1}\times 18 &= 2\times 18+\num{0.1}\times 18\\
+            &= 36+\num{1.8}\\
+            \num{2.1}\times 18 &= \num{37.8}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{1.3}\times 13 &= 13+\num{0.3}\times 13\\
+            &= 13+\num{3.9}\\
+            \num{1.3}\times 13 &= \num{16.9}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{2.4}\times 12 &= 2\times 12+\num{0.4}\times 12\\
+            &= 24+\num{4.8}\\
+            \num{2.4}\times 12 &= \num{28.8}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{1.2}\times \num{4100} &= \num{4100}+\num{0.2}\times \num{4100}\\
+            &= \num{4100}+\num{820}\\
+            \num{1.2}\times \num{4100} &= \num{4920}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{1.01}\times 243 &= 243+\num{0.01}\times 243\\
+            &= 243+\num{2.43}\\
+            \num{1.01}\times 243 &= \num{245.43}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{1.02}\times 122 &= 122+\num{0.02}\times 122\\
+            &= 122+\num{2.44}\\
+            \num{1.02}\times 122 &= \num{124.44}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{1.03}\times 211 &= 211+\num{0.03}\times 211\\
+            &= 211+\num{6.33}\\
+            \num{1.03}\times 211 &= \num{217.33}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{1.02}\times 81 &= 81+\num{0.02}\times 81\\
+            &= 81+\num{1.62}\\
+            \num{1.02}\times 81 &= \num{82.62}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{1.03}\times 42 &= 42+\num{0.03}\times 42\\
+            &= 42+\num{1.26}\\
+            \num{1.03}\times 42 &= \num{43.26}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{2.01}\times \num{1600} &= 2\times \num{1600}+\num{0.01}\times \num{1600}\\
+            &= \num{3200}+\num{16}\\
+            \num{2.01}\times \num{1600} &= \num{3216}
+            \end{align*}$$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez en utilisant le modèle suivant :
+        <div class="equation">
+        $$\begin{align*}
+        \num{0.95}\times 14 &= 14-\num{0.05}\times 14\\
+        &= 14-\num{0.7}\\
+        \num{0.95}\times 14 &= \num{13.3}
+        \end{align*}$$
+        </div>
+        <ol class="alphabetical-list horizontal-list col-3c">
+            <li>$\num{0.99}\times 120$</li>
+            <li>$\num{0.9}\times 45$</li>
+            <li>$\num{0.8}\times 36$</li>
+            <li>$\num{0.98}\times 17$</li>
+            <li>$\num{0.75}\times 280$</li>
+            <li>$\num{0.92}\times \num{2.1}$</li>
+            <li>$\num{0.88}\times \num{5000}$</li>
+            <li>$\scriptsize\num{0.999}\times \num{135000}$</li>
+            <li>$\num{0.997}\times \num{15}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$\begin{align*}
+            \num{0.99}\times 120 &= 120-\num{0.01}\times 120\\
+            &= 120-\num{1.2}\\
+            \num{0.99}\times 120 &= \num{118.8}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{0.9}\times 45 &= 45-\num{0.1}\times 45\\
+            &= 45-\num{4.5}\\
+            \num{0.9}\times 45 &= \num{40.5}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{0.8}\times 36 &= 36-\num{0.2}\times 36\\
+            &= 36-\num{7.2}\\
+            \num{0.8}\times 36 &= \num{28.8}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{0.98}\times 17 &= 17-\num{0.02}\times 17\\
+            &= 17-\num{0.34}\\
+            \num{0.98}\times 17 &= \num{16.66}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{0.75}\times 280 &= 280-\num{0.25}\times 280\\
+            &= 280-\num{70}\\
+            \num{0.75}\times 280 &= \num{210}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{0.92}\times \num{2.1} &= \num{2.1}-\num{0.08}\times \num{2.1}\\
+            &= \num{2.1}-\num{0.168}\\
+            \num{0.92}\times \num{2.1} &= \num{1.932}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{0.88}\times \num{5000} &= \num{5000}-\num{0.12}\times \num{5000}\\
+            &= \num{5000}-\num{600}\\
+            \num{0.88}\times \num{5000} &= \num{4400}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{0.999}\times \num{135000} &= \num{135000}-\num{0.001}\times \num{135000}\\
+            &= \num{135000}-\num{135}\\
+            \num{0.999}\times \num{135000} &= \num{134865}
+            \end{align*}$$</li>
+            <li>$$\begin{align*}
+            \num{0.997}\times 15 &= 15-\num{0.003}\times 15\\
+            &= 15-\num{0.045}\\
+            \num{0.997}\times 15 &= \num{14.955}
+            \end{align*}$$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Complétez chacun des schémas suivants.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$110~\overset{\searrow \SI{18}{\%}}{\underset{\times\ldots}{\xrightarrow{\hspace{1.5cm}}}}~\ldots$</li>
+            <li>$110~\overset{\nearrow \SI{9}{\%}}{\underset{\times\ldots}{\xrightarrow{\hspace{1.5cm}}}}~\ldots$</li>
+            <li>$45~\overset{\SI{\ldots}{\%}}{\underset{\times\num{1.1}}{\xrightarrow{\hspace{1.5cm}}}}~\ldots$</li>
+            <li>$19~\overset{\SI{\ldots}{\%}}{\underset{\times\num{0.98}}{\xrightarrow{\hspace{1.5cm}}}}~\ldots$</li>
+            <li>$87~\overset{\nearrow \SI{200}{\%}}{\underset{\times\ldots}{\xrightarrow{\hspace{1.5cm}}}}~\ldots$</li>
+            <li>$\num{8.2}~\overset{\SI{\ldots}{\%}}{\underset{\times\num{0.3}}{\xrightarrow{\hspace{1.5cm}}}}~\ldots$</li>
+            <li>$\num{5400}~\overset{\searrow \SI{0.3}{\%}}{\underset{\times\ldots}{\xrightarrow{\hspace{1.5cm}}}}~\ldots$</li>
+            <li>$\num{56}~\overset{\SI{\ldots}{\%}}{\underset{\times\num{0.75}}{\xrightarrow{\hspace{1.5cm}}}}~\ldots$</li>
+            <li>$150~\overset{\ldots}{\underset{\times\ldots}{\xrightarrow{\hspace{1.5cm}}}}~\num{195}$</li>
+            <li>$640~\overset{\ldots}{\underset{\times\ldots}{\xrightarrow{\hspace{1.5cm}}}}~\num{576}$</li>
+            <li>$12~\overset{\ldots}{\underset{\times\ldots}{\xrightarrow{\hspace{1.5cm}}}}~\num{14.4}$</li>
+            <li>$200~\overset{\ldots}{\underset{\times\ldots}{\xrightarrow{\hspace{1.5cm}}}}~\num{196}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$110~\overset{\searrow \SI{18}{\%}}{\underset{\times\num{0.82}}{\xrightarrow{\hspace{1.5cm}}}}~\num{90.2}$</li>
+            <li>$110~\overset{\nearrow \SI{9}{\%}}{\underset{\times\num{1.09}}{\xrightarrow{\hspace{1.5cm}}}}~\num{119.9}$</li>
+            <li>$45~\overset{\nearrow\SI{10}{\%}}{\underset{\times\num{1.1}}{\xrightarrow{\hspace{1.5cm}}}}~\num{49.5}$</li>
+            <li>$19~\overset{\searrow\SI{2}{\%}}{\underset{\times\num{0.98}}{\xrightarrow{\hspace{1.5cm}}}}~\num{18.62}$</li>
+            <li>$87~\overset{\nearrow \SI{200}{\%}}{\underset{\times\num{3}}{\xrightarrow{\hspace{1.5cm}}}}~261$</li>
+            <li>$\num{8.2}~\overset{\searrow\SI{70}{\%}}{\underset{\times\num{0.3}}{\xrightarrow{\hspace{1.5cm}}}}~\num{5.74}$</li>
+            <li>$\num{5400}~\overset{\searrow \SI{0.3}{\%}}{\underset{\times\num{0.997}}{\xrightarrow{\hspace{1.5cm}}}}~\num{5383.8}$</li>
+            <li>$\num{56}~\overset{\searrow \SI{25}{\%}}{\underset{\times\num{0.75}}{\xrightarrow{\hspace{1.5cm}}}}~42$</li>
+            <li>$150~\overset{\nearrow\SI{30}{\%}}{\underset{\times\num{1.3}}{\xrightarrow{\hspace{1.5cm}}}}~\num{195}$</li>
+            <li>$640~\overset{\searrow\SI{10}{\%}}{\underset{\times\num{0.9}}{\xrightarrow{\hspace{1.5cm}}}}~\num{576}$</li>
+            <li>$12~\overset{\nearrow\SI{20}{\%}}{\underset{\times\num{1.2}}{\xrightarrow{\hspace{1.5cm}}}}~\num{14.4}$</li>
+            <li>$200~\overset{\searrow\SI{2}{\%}}{\underset{\times\num{0.98}}{\xrightarrow{\hspace{1.5cm}}}}~\num{196}$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Une entreprise conditionne du sucre par paquets de $\SI{1}{\kg}$ vendus $\SI{1.2}{€}$ l'unité. Elle vend chaque mois $\SI{900}{\t}$ de sucre. ELle décide de diminuer de $\SI{25}{\%}$ la contenance des paquets et de $\SI{20}{\%}$ le prix d'un paquet.
+        <ol class="alphabetical-list">
+            <li>Combien de paquets vend-elle chaque mois avant ces modifications ?</li>
+            <li>Combien de paquets vend-elle chaque mois après ces modifications ?</li>
+            <li>Déterminer le taux d'évolution du prix au kilogramme de sucre entre avant et après les modifications.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Avant les modifications, chaque paquet contient $\SI{1}{\kg}$ de sucre. $\SI{1}{\t}=\SI{1000}{\kg}$, donc l'entreprise vend $\num{900000}$ paquets de sucre chaque mois.</li>
+            <li>Une baisse de $\SI{25}{\%}$ revient à multiplier par $0,75$. Après les modifications, chaque paquet contient $\SI{0.75}{\kg}$ de sucre. L'entreprise vend donc $\dfrac{\num{900000}}{\num{0.75}} = \num{1200000}$ paquets de sucre chaque mois.</li>
+            <li>Une baisse de $\SI{20}{\%}$ revient à multiplier par $0,8$. Le prix au kilogramme de sucre avant les modifications est de $\dfrac{\num{1.2}}{1} = \num{1.2}$. Le prix au kilogramme de sucre après les modifications est de $\dfrac{\num{1.2}\times 0,8}{0,75} = \num{1.28}$. Le taux d'évolution est donc de $\dfrac{\num{1.28}-\num{1.2}}{\num{1.2}} \approx \num{0.0667}$, soit environ $\SI{6.67}{\%}$ d'augmentation du prix au kilogramme de sucre.</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <p>Un magasin de vêtements a vendu $1200$ articles en 2010, $1500$ articles en 2011 et $600$ articles en 2012. Quel est le pourcentage d'augmentation des ventes entre 2010 et 2011 ? Entre 2011 et 2012 ? Entre 2010 et 2012 ?</p>
+    </div>
+    <div class="solution">
+        <p>$$\dfrac{1500}{1200}=1,25$$</p>
+        <p>Le pourcentage d'augmentation des ventes entre 2010 et 2011 est de 25%.</p>
+        <p>$$\dfrac{600}{1500}=0,4$$</p>
+        <p>Le pourcentage de diminution des ventes entre 2011 et 2012 est de 60%.</p>
+        <p>$$\dfrac{600}{1200}=0,5$$</p>
+        <p>Le pourcentage de diminution des ventes entre 2010 et 2012 est de 50%.</p>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Une chaîne hotelière proposait $3000$ chambres en 2019, puis $\SI{20}{\%}$ de chambres en moins en 2020 et enfin au cours de l'année suivante une hausse de $\SI{15}{\%}$.
+        <ol class="alphabetical-list">
+            <li>Combien de chambres proposait-elle chaque année ?</li>
+            <li>Quel est le taux d'évolution du nombre de chambres entre 2019 et 2021 ?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Effectuer une baisse de $\SI{20}{\%}$ revient à multiplier par $0,8$. Effectuer une hausse de $\SI{15}{\%}$ revient à multiplier par $1,15$. On a donc :
+                <ul>
+                    <li>En 2020 : $3000 \times 0,8 = 2400$ chambres</li>
+                    <li>En 2021 : $2400 \times 1,15 = 2760$ chambres</li>
+                </ul>
+            </li>
+            <li>Calculer le coefficient multiplicateur revient à multiplier les coefficients multiplicateurs de chaque année. On a donc :
+                $$0,8 \times 1,15 = 0,92$$
+                Le taux d'évolution est donc de $\num{0,92}-1 = -\num{0,08}$, soit $\SI{8}{\%}$ de baisse du nombre de chambres entre 2019 et 2021.
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Un logement possédait un loyer mensuel de $\SI{700}{€}$ en 2021 qui s'élevait à $\SI{735}{€}$ en 2022. En 2023 il a subit le même taux d'évolution qu'entre 2021 et 2022. En 2024, le nouveau propriétaire a décidé de baisser le loyer de $\SI{10}{\%}$. Le loyer est-il revenu à son niveau de 2021 ?
+    </div>
+    <div class="solution">
+        Le taux d'évolution entre 2021 et 2022 est de $\dfrac{735}{700} = 1,05$. Le taux d'évolution entre 2021 et 2023 est donc de $1,05\times 1,05 = 1,1025$, soit une augmentation de $\SI{10,25}{\%}$.
+        
+    </div>
+</div>
+
+<!-- $\underset{\text{initiale}}{Q_0}~\overset{\nearrow \SI{t}{\%}}{\underset{\times\left(1+\frac{t}{100}\right)}{\xrightarrow{\hspace{1.5cm}}}}~\underset{\text{finale}}{Q}$ --></main>
+  </body>
+</html>
