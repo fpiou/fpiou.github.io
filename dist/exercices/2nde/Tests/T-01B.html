@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>T-01B.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header class="brouillon"><div>Test</div><div class="header-niveau">Seconde Générale et Technologique</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>T-01B<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div copy="3">
+<div class="deuxcolonnes" style="font-size:1.1em;">
+<h1>Test 04/09</h1>
+<div class="exercice">
+    <div class="enonce">
+        Dans le triangle $ABC$ rectangle en $A$, donnez les formules pour $\cos(\widehat{ABC})$, $\sin(\widehat{ABC})$ et $\tan(\widehat{ABC})$.
+    </div>
+    <div class="solution">
+        On a $\cos(\widehat{ABC}) = \frac{AB}{BC}$, $\sin(\widehat{ABC}) = \frac{AC}{BC}$ et $\tan(\widehat{ABC}) = \frac{AC}{AB}$
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Quelle est la nature du nombre $\frac{-100}{-10}$&nbsp?
+    </div>
+    <div class="solution">
+        $\frac{-100}{-10} = 10$<br>
+        Le nombre $\frac{-100}{-10}$ est un nombre entier positif.
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Sachant que $12\times 13=156$, construire deux propositions vraies qui décrivent cette égalité (vocabulaire : multiple, diviseur, divisible, divise, produit, facteur).
+    </div>
+    <div class="solution">
+        <p>$156$ est le produit de deux facteurs $12$ et $13$.</p>
+        <p>$12$ et $13$ sont des diviseurs de $156$.</p>
+        <p>$156$ est un multiple de $12$ et de $13$.</p>
+        <p>$12$ et $13$ sont des nombres qui divisent $156$.</p>
+        <p>$156$ est divisible par $12$ et par $13$.</p>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Décomposez $18$ en produit de facteurs premiers.
+    </div>
+    <div class="solution">
+        <p>$18=2\times 3\times 3$</p>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Calculez $\sqrt{12^2}$.
+    </div>
+    <div class="solution">
+        <p>$\sqrt{12^2}=12$</p>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Calculez $\SI{4}{\%}$ de $250$.
+    </div>
+    <div class="solution">
+        <p>$\SI{4}{\%} \times 250 = 4\times 250\div 100 = 10$</p>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Un triangle $ABC$ rectangle en $A$ a pour longueur d'hypoténuse $7$ et pour longueur de l'un des côtés de l'angle droit $4$. Calculer la longueur de l'autre côté de l'angle droit.
+    </div>
+    <div class="solution">
+        <p>On utilise le théorème de Pythagore : $BC^2 = AB^2 + AC^2$</p>
+        <p>On a $BC^2 = 7^2 - 4^2 = 49 - 16 = 33$</p>
+        <p>Donc $BC = \sqrt{33}$</p>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <div style="display:flex">
+            <div style="display:flex;align-items:center;width:60%;text-align:justify;">
+            On considère l'algorithme ci-contre. Quelles sont les valeurs des variables C et D à la fin de l'exécution de cet algorithme&nbsp;?
+            </div>
+            <div style="width:auto;margin-left:20px">
+<pre>
+Affecter 6 à la variable C
+Affecter 4 à la variable D
+Affecter C+D à la variable C
+Affecter C-D à la variable D
+</pre>
+            </div>
+        </div>
+    <div class="solution">
+        <p>On a $C=6+4=10$ et $D=10-4=6$</p>
+    </div>
+</div>
+</div>
+</div></main>
+  </body>
+</html>
