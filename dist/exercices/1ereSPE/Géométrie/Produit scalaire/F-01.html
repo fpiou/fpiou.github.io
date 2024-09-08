@@ -115,21 +115,22 @@
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
 
-    <main><header class="brouillon"><div>Produit scalaire</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>F-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+    <main><header><div>Produit scalaire</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>F-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<h1 class="noprint">Produit scalaire</h1>
+<div class="video">
+    <iframe src="https://ladigitale.dev/digiview/inc/video.php?videoId=3Pw3rCIrKkc&vignette=https://i.ytimg.com/vi/3Pw3rCIrKkc/hqdefault.jpg&debut=0&fin=291&largeur=16&hauteur=9" allow="autoplay; fullscreen" frameborder="0" width="700" height="394"></iframe>
+</div>
 
 <h1>Produit scalaire</h1>
 <div class="definition">
     Soient $\overrightarrow{u}$ et $\overrightarrow{v}$ deux vecteurs du plan.
     Soient $A$, $B$ et $C$ trois points du plan tels que $\overrightarrow{AB}=\overrightarrow{u}$ et $\overrightarrow{AC}=\overrightarrow{v}$. Soit $H$ le projeté orthogonal de $C$ sur $(AB)$.
     On appelle <i>produit scalaire</i> de $\overrightarrow{u}$ par $\overrightarrow{v}$ et on note $\overrightarrow{u}\cdot\overrightarrow{v}$ le nombre réel défini par&nbsp;:
-    <ul style="padding-left: 1em;">
-        <li>$\overrightarrow{u}\cdot\overrightarrow{v}=0$ si $\overrightarrow{v}=\overrightarrow{0}$ ou $\overrightarrow{u}=\overrightarrow{0}$&nbsp;;</li>
-        <li>$\overrightarrow{u}\cdot\overrightarrow{v}=\|\overrightarrow{u}\|\times\|\overrightarrow{v}\|$ si $\overrightarrow{u}$ et $\overrightarrow{v}$ sont colinéaires et de même sens&nbsp;;</li>
-        <li>$\overrightarrow{u}\cdot\overrightarrow{v}=-\|\overrightarrow{u}\|\times\|\overrightarrow{v}\|$ si $\overrightarrow{u}$ et $\overrightarrow{v}$ sont colinéaires et de sens contraires&nbsp;;</li>
-        <li>$\overrightarrow{u}\cdot\overrightarrow{v}=\overrightarrow{AB}\cdot\overrightarrow{AH}$ dans les autres cas.</li>
-    </ul>
     <ul class="horizontal-list">
-        <li><div class="figure">
+        <li>
+        $$\overrightarrow{u}\cdot\overrightarrow{v}=AB\times AH$$
+        <div class="figure">
                 <svg viewBox="-50 0 270 110" style="width:100%;">
                     <!-- Début de la figure -->
 
@@ -154,12 +155,14 @@
                     <g class="angleDroit" linkto="A H C" size="5"></g>
 
                     <!-- texte -->
-                    <g class="label" x="100" y="30" style="font-size: 1.5em;" width="110">$\overrightarrow{u}\cdot\overrightarrow{v}\gt0$</g>
+                    <g class="label" x="100" y="30" style="font-size: 1.5em;" width="110">$\overrightarrow{u}\cdot\overrightarrow{v}\geqslant0$</g>
                     <!-- Fin de la figure -->
                 </svg>
             </div>
         </li>
-        <li><div class="figure">
+        <li>
+        $$\overrightarrow{u}\cdot\overrightarrow{v}=-AB\times AH$$
+        <div class="figure">
                 <svg viewBox="-100 0 270 110" style="width:100%;">
                     <!-- Début de la figure -->
 
@@ -185,7 +188,7 @@
                     <g class="angleDroit" linkto="C H A" size="10"></g>
 
                     <!-- texte -->
-                    <g class="label" x="10" y="30" style="font-size: 1.5em;" width="110">$\overrightarrow{u}\cdot\overrightarrow{v}\lt0$</g>
+                    <g class="label" x="10" y="30" style="font-size: 1.5em;" width="110">$\overrightarrow{u}\cdot\overrightarrow{v}\leqslant0$</g>
                     <!-- Fin de la figure -->
                 </svg>
             </div>
@@ -237,13 +240,13 @@
         <ol class="alphabetical-list horizontal-list col-3c">
             <li>$\overrightarrow{AC} \cdot \overrightarrow{AE}$</li>
             <li>$\overrightarrow{AB} \cdot \overrightarrow{AC}$</li>
-            <li>$\overrightarrow{AB} \cdot \overrightarrow{DB}$</li>
+            <li>$\overrightarrow{BA} \cdot \overrightarrow{BD}$</li>
             <li>$\overrightarrow{CA} \cdot \overrightarrow{CB}$</li>
-            <li>$\overrightarrow{EA} \cdot \overrightarrow{AC}$</li>
+            <li>$\overrightarrow{EA} \cdot \overrightarrow{EC}$</li>
             <li>$\overrightarrow{AD} \cdot \overrightarrow{AC}$</li>
             <li>$\overrightarrow{DA} \cdot \overrightarrow{BA}$</li>
             <li>$\overrightarrow{BA} \cdot \overrightarrow{BC}$</li>
-            <li>$\overrightarrow{AC} \cdot \overrightarrow{AB}$</li>
+            <li>$\overrightarrow{CD} \cdot \overrightarrow{CA}$</li>
         </ol>
     </div>
     <div class="solution">
@@ -258,9 +261,9 @@
             <p>Donc $\overrightarrow{AB} \cdot \overrightarrow{AC}\lt0$.</p>
             <p>Par conséquent $\overrightarrow{AB} \cdot \overrightarrow{AC}=-AB\times AD=-7\times 3=-21$.</p></li>
             
-            <li><p>Les vecteurs $\overrightarrow{AB}$ et $\overrightarrow{DB}$ sont colinéaires et de même sens.</p>
-            <p>Donc $\overrightarrow{AB} \cdot \overrightarrow{DB}\gt0$.</p>
-            <p>Par conséquent $\overrightarrow{AB} \cdot \overrightarrow{DB}=AB\times DB=7\times 10=70$.</p></li>
+            <li><p>Les vecteurs $\overrightarrow{BA}$ et $\overrightarrow{BD}$ sont colinéaires et de même sens.</p>
+            <p>Donc $\overrightarrow{BA} \cdot \overrightarrow{BD}\gt0$.</p>
+            <p>Par conséquent $\overrightarrow{BA} \cdot \overrightarrow{BD}=BA\times BD=7\times 10=70$.</p></li>
             
             <li><p>Le projeté orthogonal de $B$ sur $(CA)$ est $E$.</p>
             <p>Donc $\overrightarrow{CA} \cdot \overrightarrow{CB}=\overrightarrow{CA} \cdot \overrightarrow{CE}$.</p>
@@ -268,18 +271,18 @@
             <p>Donc $\overrightarrow{CA} \cdot \overrightarrow{CB}\gt0$.</p>
             <p>Par conséquent $\overrightarrow{CA} \cdot \overrightarrow{CB}=CA\times CE=5\times 11=55$.</p></li>
             
-            <li><p>$\overrightarrow{EA}$ et $\overrightarrow{AC}$ sont colinéaires et de même sens.</p>
-            <p>Donc $\overrightarrow{EA} \cdot \overrightarrow{AC}\gt0$.</p>
-            <p>Par conséquent $\overrightarrow{EA} \cdot \overrightarrow{AC}=EA\times AC=6\times 5=30$.</p></li>
+            <li><p>$\overrightarrow{EA}$ et $\overrightarrow{EC}$ sont colinéaires et de même sens.</p>
+            <p>Donc $\overrightarrow{EA} \cdot \overrightarrow{EC}\gt0$.</p>
+            <p>Par conséquent $\overrightarrow{EA} \cdot \overrightarrow{EC}=EA\times EC=6\times 11=66$.</p></li>
 
             <li><p>Le projeté orthogonal de $C$ sur $(AD)$ est $D$.</p>
             <p>Donc $\overrightarrow{AD} \cdot \overrightarrow{AC}=\overrightarrow{AD} \cdot \overrightarrow{AD}$.</p>
             <p>Donc $\overrightarrow{AD} \cdot \overrightarrow{AC}\gt0$.</p>
             <p>Par conséquent $\overrightarrow{AD} \cdot \overrightarrow{AC}=AD\times AD=3\times 3=9$.</p></li>
             
-            <li><p>Les vecteurs $\overrightarrow{DA}$ et $\overrightarrow{BA}$ sont colinéaires et de sens contraires.</p>
-            <p>Donc $\overrightarrow{DA} \cdot \overrightarrow{BA}\lt0$.</p>
-            <p>Par conséquent $\overrightarrow{DA} \cdot \overrightarrow{BA}=-DA\times BA=-3\times 7=-21$.</p></li>
+            <li><p>Les vecteurs $\overrightarrow{AD}$ et $\overrightarrow{AB}$ sont colinéaires et de sens contraires.</p>
+            <p>Donc $\overrightarrow{AD} \cdot \overrightarrow{AB}\lt0$.</p>
+            <p>Par conséquent $\overrightarrow{AD} \cdot \overrightarrow{AB}=-AD\times AB=-3\times 7=-21$.</p></li>
             
             <li><p>Le projeté orthogonal de $C$ sur $(AB)$ est $D$.</p>
             <p>Donc $\overrightarrow{BA} \cdot \overrightarrow{BC}=\overrightarrow{BA} \cdot \overrightarrow{BD}$.</p>
@@ -287,11 +290,10 @@
             <p>Donc $\overrightarrow{BA} \cdot \overrightarrow{BC}\gt0$.</p>
             <p>Par conséquent $\overrightarrow{BA} \cdot \overrightarrow{BC}=BA\times BD=7\times 10=70$.</p></li>
 
-            <li><p>Le projeté orthogonal de $B$ sur $(AC)$ est $E$.</p>
-            <p>Donc $\overrightarrow{AC} \cdot \overrightarrow{AB}=\overrightarrow{AC} \cdot \overrightarrow{AE}$.</p>
-            <p>Or $\overrightarrow{AC}$ et $\overrightarrow{AE}$ sont colinéaires et de sens contraires.</p>
-            <p>Donc $\overrightarrow{AC} \cdot \overrightarrow{AB}\lt0$.</p>
-            <p>Par conséquent $\overrightarrow{AC} \cdot \overrightarrow{AB}=-AC\times AE=-5\times 6=-30$.</p></li>
+            <li><p>Le projeté orthogonal de $A$ sur $(CD)$ est $D$.</p>
+            <p>Donc $\overrightarrow{CD} \cdot \overrightarrow{CA}=\overrightarrow{CD} \cdot \overrightarrow{CD}$.</p>
+            <p>Donc $\overrightarrow{CD} \cdot \overrightarrow{CA}\gt0$.</p>
+            <p>Par conséquent $\overrightarrow{CD} \cdot \overrightarrow{CA}=CD\times CD=4\times 4=16$.</p></li>
         </ol>
     </div>
 </div>
@@ -299,15 +301,42 @@
 <div class="propriete">
     Soient $\overrightarrow{u}$, $\overrightarrow{v}$ et $\overrightarrow{w}$ trois vecteurs du plan et $\lambda$ un nombre réel.
     <ul style="padding-left: 1em;">
-        <li>Le produit scalaire est symétrique&nbsp;: $$\overrightarrow{u}\cdot\overrightarrow{v}=\overrightarrow{v}\cdot\overrightarrow{u}$$</li>
-        <li>Le produit scalaire est bilinéaire&nbsp;:
-            <ul>
-                <li>$\overrightarrow{u}\cdot(\overrightarrow{v}+\overrightarrow{w})=\overrightarrow{u}\cdot\overrightarrow{v}+\overrightarrow{u}\cdot\overrightarrow{w}$</li>
-                <li>$(\overrightarrow{u}+\overrightarrow{v})\cdot\overrightarrow{w}=\overrightarrow{u}\cdot\overrightarrow{w}+\overrightarrow{v}\cdot\overrightarrow{w}$</li>
-                <li>$(\lambda\overrightarrow{u})\cdot\overrightarrow{v}=\lambda(\overrightarrow{u}\cdot\overrightarrow{v})=\overrightarrow{u}\cdot(\lambda\overrightarrow{v})$</li>
-            </ul>
+        <li>Symétrie&nbsp;: $$\overrightarrow{u}\cdot\overrightarrow{v}=\overrightarrow{v}\cdot\overrightarrow{u}$$</li>
+        <li>Linéarité&nbsp;:
+            $$(\lambda\overrightarrow{u})\cdot\overrightarrow{v}=\lambda(\overrightarrow{u}\cdot\overrightarrow{v})=\overrightarrow{u}\cdot(\lambda\overrightarrow{v})$$
+            $$\overrightarrow{u}\cdot(\overrightarrow{v}+\overrightarrow{w})=\overrightarrow{u}\cdot\overrightarrow{v}+\overrightarrow{u}\cdot\overrightarrow{w}$$
         </li>
     </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABC$ un triangle tels que $AB=2$, $BC=4$ et $\overrightarrow{AB}\cdot\overrightarrow{AC}=10$.
+        Calculez en utilisant les propriétés du produit scalaire&nbsp;:
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$\overrightarrow{AC}\cdot\overrightarrow{AB}$</li>
+            <li>$\overrightarrow{BA}\cdot\overrightarrow{AC}$</li>
+            <li>$\overrightarrow{BA}\cdot\overrightarrow{CA}$</li>
+            <li>$\overrightarrow{CA}\cdot\overrightarrow{AB}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Par symétrie du produit scalaire&nbsp;:</p>
+            <p>$$\overrightarrow{AC}\cdot\overrightarrow{AB}=\overrightarrow{AB}\cdot\overrightarrow{AC}=10$$</p></li>
+            <li>
+            $$\overrightarrow{BA}\cdot\overrightarrow{AC}=(-\overrightarrow{AB})$$
+            <p>Par linéarité du produit scalaire&nbsp;:</p>
+            <p>$$\overrightarrow{BA}\cdot\overrightarrow{AC}=-\overrightarrow{AB}\cdot\overrightarrow{AC}=-10$$</p></li>
+            <li>$$\overrightarrow{BA}\cdot\overrightarrow{CA}=\left(-\overrightarrow{AB}\right)\cdot\left(-\overrightarrow{AC}\right)$$
+            <p>Par linéarité du produit scalaire&nbsp;:</p>
+            <p>$$\overrightarrow{BA}\cdot\overrightarrow{CA}=\overrightarrow{AB}\cdot\overrightarrow{AC}=10$$</p></li>
+            <li><p>Par symétrie du produit scalaire&nbsp;:</p>
+            <p>$$\overrightarrow{CA}\cdot\overrightarrow{AB}=\overrightarrow{AB}\cdot\overrightarrow{CA}$$</p>
+            $$\overrightarrow{CA}\cdot\overrightarrow{AB}=\overrightarrow{AB}\cdot\left(-\overrightarrow{AC}\right)$$
+            <p>Par linéarité du produit scalaire&nbsp;:</p>
+            $$\overrightarrow{CA}\cdot\overrightarrow{AB}=-\overrightarrow{AB}\cdot\overrightarrow{AC}=-10$$</li>
+        </ol>
+    </div>
 </div>
 <div class="exercice">
     <div class="enonce">
