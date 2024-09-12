@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>K-01A.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../main.bundle.js"></script><script defer src="../../trinomes.bundle.js"></script><script defer src="../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>16/09 Sujet A</div><div class="header-niveau">Khôlle PCSI</div></header>
+
+<div style="font-size:1.3em;">
+
+<div class="exercice">
+    <div class="enonce">
+        <b>Questions de cours</b><br>
+        <ol class="alphabetical-list">
+            <li>Définition d'une fonction majorée.</li>
+            <li>Définition d'une fonction croissante.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Une fonction \( f : I \to \mathbb{R} \) est dite majorée sur \( I \) si il existe un réel \( M \) tel que pour tout \( x \in I \), \( f(x) \leq M \).</li>
+            <li>Une fonction \( f : I \to \mathbb{R} \) est dite croissante sur \( I \) si pour tout \( x, y \in I \) tels que \( x \leq y \), on a \( f(x) \leq f(y) \).</li>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <b>Négation de propositions</b><br>
+        <ol class="alphabetical-list">
+            <li>Donnez la négation de la proposition suivante&nbsp;: $$f\text{ paire} \implies f(0) = 0$$</li>
+            <li>La négation est-elle vraie ? Justifiez.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>La négation est : "$f\text{ paire} \land f(0) \neq 0$."</li>
+            <li>La négation est vraie. Par exemple, la fonction \( f(x) = x^2+1 \) est paire et \( f(0) = 1 \).</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <b>Somme des \( n \) premiers entiers</b><br>
+        Montrer par récurrence que pour tout \( n \in \mathbb{N} \), on a&nbsp;:
+        $$ S_n = 1 + 2 + 3 + \dots + n = \frac{n(n+1)}{2}. $$
+    </div>
+    <div class="solution">
+        <strong>Initialisation&nbsp;:</strong> Pour \( n = 1 \), on a&nbsp;:  
+        $$ S_1 = 1 = \frac{1(1+1)}{2} = 1, $$  
+        donc la propriété est vraie pour \( n = 1 \).</br>
+        
+        <strong>Hérédité&nbsp;:</strong> Supposons que la propriété est vraie pour un certain \( n \in \mathbb{N} \), c'est-à-dire&nbsp;:
+        $$ S_n = \frac{n(n+1)}{2}. $$  
+        Montrons qu'elle est vraie pour \( n+1 \). On a&nbsp;:
+        $$ S_{n+1} = 1 + 2 + \dots + n + (n+1) = S_n + (n+1). $$  
+        En utilisant l'hypothèse de récurrence&nbsp;:
+        $$ S_{n+1} = \frac{n(n+1)}{2} + (n+1) = \frac{n(n+1) + 2(n+1)}{2} = \frac{(n+1)(n+2)}{2}. $$  
+        Donc, la propriété est vraie pour \( n+1 \).</p>
+    
+        <strong>Conclusion&nbsp;:</strong> Par récurrence, la formule est vraie pour tout \( n \in \mathbb{N} \).
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <b>Détermination du domaine, des limites et de la dérivée</b><br>
+        Soit \( f(x) = \ln(3 - x^2) \).<br>
+        <ol class="alphabetical-list">
+            <li>Déterminer l'ensemble de définition de \( f \).</li>
+            <li>Calculer les limites de \( f \) aux bornes de son ensemble de définition.</li>
+            <li>Calculer la dérivée de \( f \).</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><strong>Ensemble de définition&nbsp;:</strong>  
+            La fonction \( \ln(u) \) est définie lorsque \( u \gt 0 \). Il faut donc résoudre \( 3 - x^2 \gt 0 \), soit&nbsp;:
+            $$ -\sqrt{3} \lt x \lt \sqrt{3}. $$
+            L'ensemble de définition de \( f \) est donc $$ D_f = ]-\sqrt{3}, \sqrt{3}[. $$
+
+            <li><strong>Limites aux bornes&nbsp;:</strong><br>
+            - Lorsque \( x \to \sqrt{3}^- \), \( 3 - x^2 \to 0^+ \), donc \( f(x) \to -\infty \).<br>
+            - Lorsque \( x \to -\sqrt{3}^+ \), \( 3 - x^2 \to 0^+ \), donc \( f(x) \to -\infty \).<br>
+            - Lorsque \( x \to 0 \), \( f(x) = \ln(3 - 0) = \ln(3) \). Donc, \( f(0) = \ln(3) \).
+            <li><strong>Dérivée&nbsp;:</strong>
+            $$ f'(x) = \frac{-2x}{3 - x^2}. $$
+        </ol>
+    </div>
+</div>
+
+</div></main>
+  </body>
+</html>
