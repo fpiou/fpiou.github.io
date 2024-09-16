@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>K-01C.xml</title>
+    <title>Pb-01.xml</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="viewport"
@@ -68,7 +68,7 @@
 
     <!-- Marqueurs pour les figures en SVG-->
     <div id="interactivite"></div>
-  <script defer src="../../main.bundle.js"></script><script defer src="../../trinomes.bundle.js"></script><script defer src="../../geometrie.bundle.js"></script></head>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
 
   <body class="deuxcolonnes">
     <div class="sidebar" id="sidebar">
@@ -113,92 +113,18 @@
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
 
-    <main><header><div>16/09 Sujet C</div><div class="header-niveau">Khôlle PCSI</div></header>
+    <main><header><div>Second degré</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>P-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
 
-<div style="font-size:1.3em;">
-
-<div class="exercice">
-    <div class="enonce">
-        <b>Questions de cours</b><br>
-        <ol class="alphabetical-list">
-            <li>Définition d'une fonction périodique</li>
-            <li>Définition d'une fonction admettant un minimum</li>
-        </ol>
-    </div>
-    <div class="solution">
-        <ol class="alphabetical-list">
-            <li>Une fonction \( f : \mathbb{R} \to \mathbb{R} \) est dite périodique s'il existe un réel \( T \gt 0 \) tel que pour tout \( x \in \mathbb{R} \), \( f(x + T) = f(x) \).</li>
-            <li>Une fonction \( f : I \to \mathbb{R} \) admet un minimum en \( x_0 \in I \) si pour tout \( x \in I \), \( f(x) \geq f(x_0) \).</li>
-        </ol>
-    </div>
-</div>
+<div copy="8">
+<div class="nocolonnes" style="font-size:1.1em;">
 
 <div class="exercice">
     <div class="enonce">
-        <b>Négation de propositions</b><br>
-        Sur chacun des exemples suivants, écrire \( \neg P \).<br>
-        En justifiant, déterminer si \( P \) est vraie ou fausse.
-        <ol class="alphabetical-list">
-            <li> \( P : \forall n \in \mathbb{N}, n^2 \leq 4 \)</li>
-            <li> \( P : \exists n \in \mathbb{N}, 3n = 7 \)</li>
-            <li> \( P : \forall x \in \mathbb{R}, x^2 = 4 \implies x = 2 \)</li>
-        </ol>
-    </div>
-    <div class="sol">
-        <ol class="alphabetical-list">
-            <li> \( \neg P : \exists n \in \mathbb{N}, n^2 \gt 4 \) — \( P \) est fausse car \( n = 3 \) vérifie \( n^2 \gt 4 \).</li>
-            <li> \( \neg P : \forall n \in \mathbb{N}, 3n \neq 7 \) — \( P \) est fausse car aucun \( n \in \mathbb{N} \) ne vérifie \( 3n = 7 \).</li>
-            <li> \( \neg P : \exists x \in \mathbb{R}, x^2 = 4 \land x \neq 2 \) — \( P \) est fausse car \( x = -2 \) vérifie \( x^2 = 4 \), mais \( x \neq 2 \).</li>
-        </ol>
+        Dans une société spécialisée dans la fabrication de claviers mécaniques sur mesure, le coût de production d'un clavier est de 30 euros. L'entreprise a constaté que si $p$ représente le prix de vente d'un clavier, alors le nombre de claviers vendus peut être exprimé par la formule $350-5p$. De plus, les coûts fixes liés à la production et à l'administration de l'entreprise s'élèvent à 700 euros. Déterminez le bénéfice maximal que l'entreprise peut espérer réaliser.
     </div>
 </div>
 
-<div class="exercice">
-    <div class="enonce">
-        <b>Produit des \( n \) premiers entiers<b><br>
-        Montrer par récurrence que pour tout \( n \in \mathbb{N} \), on a :
-        $$ 2 \times 4 \times 6 \times \dots \times 2n = 2^n \times n!. $$
-    </div>
-    <div class="sol">
-        <strong>Initialisation :</strong> Pour \( n = 1 \), on a :  
-        $$ 2 = 2^1 \times 1! = 2, $$  
-        donc la propriété est vraie pour \( n = 1 ).<br>
-        
-        <strong>Hérédité :</strong> Supposons que la propriété est vraie pour un certain \( n \in \mathbb{N} \), c'est-à-dire :
-        $$ 2 \times 4 \times \dots \times 2n = 2^n \times n!. $$  
-        Montrons qu'elle est vraie pour \( n+1 ). On a :
-        $$ 2 \times 4 \times \dots \times 2n \times 2(n+1) = (2^n \times n!) \times 2(n+1). $$  
-        Simplifions :
-        $$ = 2^n \times n! \times 2(n+1) = 2^{n+1} \times (n+1)!. $$  
-        Donc, la propriété est vraie pour \( n+1 ).<br>
-        
-        <strong>Conclusion :</strong> Par récurrence, la formule est vraie pour tout \( n \in \mathbb{N} ).
-    </div>
 </div>
-
-<div class="exercice">
-    <div class="enonce">
-        <b>Détermination du domaine, des limites et de la dérivée</b><br>
-        Soit \( f(x) = \ln(1 + e^{-x}) \ ).<br>
-        <ol class="alphabetical-list">
-            <li>Déterminer l'ensemble de définition de \( f \ ).</li>
-            <li>Calculer les limites de \( f \ ) en \( +\infty \ ) et en \( -\infty \ ).
-            <li>Calculer la dérivée de \( f \ ).
-        </ol>
-    </div>
-    <div class="solution">
-        <ol class="alphabetical-list">
-            <li><strong>Ensemble de définition :</strong>  
-            La fonction \( \ln(u) \) est définie lorsque \( u \gt 0 \). Or \( 1 + e^{-x} \gt 0 \) pour tout \( x \in \mathbb{R} \), donc l'ensemble de définition de \( f \ ) est \( D_f = \mathbb{R} \ ).
-            <li><strong>Limites :</strong><br>
-            - Lorsque \( x \to +\infty \ ), \( e^{-x} \to 0 \ ), donc \( f(x) \to \ln(1) = 0 \ ).<br>
-            - Lorsque \( x \to -\infty \ ), \( e^{-x} \to +\infty \ ), donc \( f(x) \to +\infty \ ).
-            <li><strong>Dérivée :</strong><br>
-            \( f'(x) = \frac{-e^{-x}}{1 + e^{-x}} = -\frac{1}{1 + e^x} \ ).
-        </ol>
-    </div>
-</div>
-
 </div></main>
   </body>
 </html>
