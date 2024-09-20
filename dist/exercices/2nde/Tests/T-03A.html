@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>T-03A.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header class="brouillon"><div>Test</div><div class="header-niveau">Seconde Générale et Technologique</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>T-03A<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<style>
+.exercice {
+    margin-bottom: 1em;
+}
+.numerical-list li {
+    margin-top: 0.7em;
+}
+.reponse {
+    border-bottom: 1px dotted black;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    width: 95%;
+}
+</style>
+<div copy="3">
+<div class="nocolonnes" style="font-size:1.15em;">
+
+<div class="exercice">
+    <div class="enonce">
+        <b>Questions de cours</b>
+        <ol class="numerical-list">
+            <li>Comment se note l'ensemble des entiers relatifs&nbsp;?</li>
+            <li>Vrai ou faux&nbsp;? &laquo;Un entier positif appartient à l'ensemble des entiers relatifs.&raquo;</li>
+            <li>Qu'est-ce qu'une proposition réciproque&nbsp;?</li>
+            <li>Vrai ou faux&nbsp;? &laquo;Il suffit d'un exemple pour prouver qu'une propriété est vraie.&raquo;</li>
+            <li>On choisit un nombre impair. Comment note-t-on ce nombre&nbsp;?</li>
+            <li>Vrai ou faux&nbsp;? &laquo;Diviser par un nombre non nul revient à multiplier par son inverse.&raquo;</li>
+            <li>Tracez un repère orthonormé à main levée et donnez le nom de ses axes.</li>
+        </ol>
+
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$\mathbb{Z}$</li>
+            <li>Vrai</li>
+            <li>La proposition obtenue en échangeant l'hypothèse et la conclusion d'une proposition.</li>
+            <li>Faux</li>
+            <li>$2k+1$ avec $k$ entier</li>
+            <li>Vrai</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Donnez la liste des diviseurs de $105=3\times 5\times 7$.
+    </div>
+    <div class="solution">
+        $1$, $3$, $5$, $7$, $15$, $21$, $35$ et $105$
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Montrez que $2n^2+8$ est un nombre pair.
+    </div>
+    <div class="solution">
+        $2n^2+8=2(n^2+4)$ est un multiple de $2$.
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Calculez $A=\dfrac{26}{9}\times \dfrac{15}{28}$. Donnez le résultat sous forme irréductible.
+    </div>
+    <div class="solution">
+        $$\begin{align*}
+        A&=\dfrac{26}{9}\times \dfrac{15}{28}\\
+        A&=\dfrac{2\times 13}{3\times 3}\times \dfrac{3\times 5}{2\times 2\times 7}\\
+        A&=\dfrac{2\times 13\times 3\times 5}{3\times 3\times 2\times 2\times 7}\\
+        A&=\dfrac{13\times 5}{3\times 2\times 7}\\
+        A&=\dfrac{65}{42}
+        \end{align*}$$
+    </div>
+</div>
+
+</div>
+</div></main>
+  </body>
+</html>

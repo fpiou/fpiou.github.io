@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>T-03B.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header class="brouillon"><div>Test</div><div class="header-niveau">Seconde Générale et Technologique</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>T-03B<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<style>
+.exercice {
+    margin-bottom: 1em;
+}
+.numerical-list li {
+    margin-top: 0.5em;
+}
+.reponse {
+    border-bottom: 1px dotted black;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    width: 95%;
+}
+</style>
+<div copy="3">
+<div class="nocolonnes" style="font-size:1.1em;">
+
+<div class="exercice">
+    <div class="enonce">
+        <b>Questions de cours</b>
+        <ol class="numerical-list">
+            <li>Vrai ou faux&nbsp;? &laquo;Un entier strictement négatif appartient à l'ensemble des entiers naturels.&raquo;</li>
+            <li>Donnez le critère de divisibilité par 3.</li>
+            <li>Vrai ou faux&nbsp;? &laquo;Les multiples d'un nombre non nul sont plus grands que ce nombre.&raquo;</li>
+            <li>Donnez la liste des nombres premiers compris entre $10$ et $20$.</li>
+            <li>Qu'est-ce qu'une fraction irréductible&nbsp;?</li>
+            <li>Vrai ou faux&nbsp;? &laquo;Pour multiplier deux fractions il suffit de réduire les fractions au même dénominateur&raquo;.</li>
+            <li>Donnez une identité remarquable.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Faux</li>
+            <li>La somme des chiffres d'un nombre est divisible par 3.</li>
+            <li>Vrai</li>
+            <li>$11$, $13$, $17$ et $19$</li>
+            <li>Une fraction est irréductible si le plus grand diviseur commun de son numérateur et de son dénominateur est 1.</li>
+            <li>Faux</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Donnez la liste des diviseurs de $66=2\times 3 \times 11$.
+    </div>
+    <div class="solution">
+        $1$, $2$, $3$, $6$, $11$, $22$ et $66$
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Montrez que $2n+5$ est un nombre impair.
+    </div>
+    <div class="solution">
+        $2n+5=2(n+2)+1$ est un multiple de $2$ auquel on ajoute $1$.
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Calculez $A=\dfrac{28}{9}\times \dfrac{21}{22}$. Donnez le résultat sous forme irréductible.
+    </div>
+    <div class="solution">
+        $$\begin{align*}
+        A&=\dfrac{28}{9}\times \dfrac{21}{22}\\
+        A&=\dfrac{2\times 2\times 7}{3\times 3}\times \dfrac{3\times 7}{2\times 11}\\
+        A&=\dfrac{2\times 2\times 7\times 3\times 7}{3\times 3\times 2\times 11}\\
+        A&=\dfrac{2\times 7}{3\times 11}\\
+        A&=\dfrac{14}{33}
+        \end{align*}$$
+    </div>
+</div>
+
+</div>
+</div></main>
+  </body>
+</html>

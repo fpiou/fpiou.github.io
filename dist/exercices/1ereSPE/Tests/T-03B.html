@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>T-03B.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header class="brouillon"><div>Test</div><div class="header-niveau">1re Spécialité Mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>T-03B<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div copy="3">
+<div class="nocolonnes" style="font-size:1.2em;">
+
+<div class="exercice">
+    <div class="enonce">
+        <b>Questions de cours</b>
+        <ol class="numerical-list">
+            <li>Vrai ou faux&nbsp;? &laquo;Un polynôme du second degré admet toujours deux racines réelles.&raquo;</li>
+            <li>Donnez la formule des coordonnées du sommet d'une parabole.</li>
+            <li>Vrai ou faux&nbsp;? &laquo;Un polynôme du second degré admet toujours une forme canonique.&raquo;</li>
+            <li>Donnez la formule du produit des racines d'un polynôme du second degré ayant deux racines réelles distinctes.</li>
+            <li>Quelles sont les variations de la fonction $f(x)=ax^2+bx+c$ si $a\lt0$&nbsp;?</li>
+            <li>Vrai ou faux&nbsp;? &laquo;Un polynôme du second degré admet un axe de symétrie vertical.&raquo;</li>
+            <li>Donnez la formule de la distance entre deux points du plan dans un repère orthonormé.</li>
+            <li>Quelle est la forme canonique d'un polynôme du second degré&nbsp;?</li>
+            <li>Quelle est la forme factorisée d'un polynôme du second degré ayant une racine double&nbsp;?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="numerical-list">
+            <li>faux</li>
+            <li>$x_s=-\frac{b}{2a}$ et $y_s=f(x_s)$</li>
+            <li>faux</li>
+            <li>$r_1r_2=\frac{c}{a}$</li>
+            <li>$f$ est croissante sur $]-\infty;-b/2a[$ et décroissante sur $]-b/2a;+\infty[$</li>
+            <li>vrai</li>
+            <li>$y=a(x-x_s)^2+y_s$</li>
+        </ol>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Déterminez les racines réelles de $P(x)=x^2-12x+35$ sachant qu'elles sont entières.
+    </div>
+    <div class="solution">
+        Les racines de $P$ sont $5$ et $7$. En effet, $5+7=12$ et $5\times7=35$.
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Calculez le minimum de $f(x)=2x^2-8x+7$.
+    </div>
+    <div class="solution">
+        $a\gt0$ donc $f$ admet un minimum en $x_s=-\frac{b}{2a}=2$ et $f(2)=-1$.<br>
+        Donc le minimum de $f$ est $-1$.
+    </div>
+</div>
+
+</div>
+</div></main>
+  </body>
+</html>
