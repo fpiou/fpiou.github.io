@@ -72,15 +72,6 @@ details.indice {
   break-inside: avoid;
 }
 
-.remarque {
-  background-color: rgba(100, 100, 255, 0.269);
-  padding: 0.5em 0.5em;
-  margin: 0.5em 0em;
-  border: 1px solid blue;
-  border-radius: 10px;
-  break-inside: avoid;
-}
-
 .methode {
   background-color: rgba(42, 177, 170, 0.269);
   padding: 0.5em 0.5em;

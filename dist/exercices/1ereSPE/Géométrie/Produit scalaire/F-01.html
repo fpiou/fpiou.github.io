@@ -466,6 +466,16 @@
 <div class="propriete">
     Deux vecteurs non nuls $\overrightarrow{u}$ et $\overrightarrow{v}$ sont orthogonaux si et seulement si $\overrightarrow{u}\cdot\overrightarrow{v}=0$.
 </div>
+<div class="remarque">
+    <ul>
+        <li>La valeur absolue du déterminant de deux vecteurs est l'aire du parallélogramme formé par ces deux vecteurs.<br>
+        $\overrightarrow{u}$ et $\overrightarrow{v}$ sont donc colinéaires si et seulement si cette aire est nulle.<br>
+        Autrement dit, $\overrightarrow{u}$ et $\overrightarrow{v}$ sont colinéaires si et seulement si $\det(\overrightarrow{u},\overrightarrow{v})=0$.</li>
+        <li>La valeur absolue du produit scalaire de deux vecteurs est l'aire d'un rectangle formé par le premier vecteur et l'image par une rotation d'angle droit dans le sens direct de la projection orthogonale du second vecteur sur le premier vecteur.<br>
+        $\overrightarrow{u}$ et $\overrightarrow{v}$ sont donc orthogonaux si et seulement si cette aire est nulle.<br>
+        Autrement dit, $\overrightarrow{u}$ et $\overrightarrow{v}$ sont orthogonaux si et seulement si $\overrightarrow{u}\cdot\overrightarrow{v}=0$.</li>
+    </ul>
+</div>
 <div class="exercice">
     <div class="enonce">
         On considère un carré $ABCD$ de centre $O$. Parmi les produits scalaires suivants, lesquels sont nuls&nbsp;? Justifiez.
@@ -524,6 +534,30 @@
     $$\|\overrightarrow{u}+\overrightarrow{v}\|^2=\|\overrightarrow{u}\|^2+2\overrightarrow{u}\cdot\overrightarrow{v}+\|\overrightarrow{v}\|^2$$
     $$\|\overrightarrow{u}-\overrightarrow{v}\|^2=\|\overrightarrow{u}\|^2-2\overrightarrow{u}\cdot\overrightarrow{v}+\|\overrightarrow{v}\|^2$$
     $$(\overrightarrow{u}+\overrightarrow{v})\cdot(\overrightarrow{u}-\overrightarrow{v})=\|\overrightarrow{u}\|^2-\|\overrightarrow{v}\|^2$$
+</div>
+<div class="exemple">
+    Ces propriétés permettent de montrer qu'un parallélogramme est un rectangle si et seulement si ses diagonales sont de même longueur.<br>
+
+    En effet deux vecteurs $\overrightarrow{u}$ et $\overrightarrow{v}$ forment un parallélogramme dans lequel $\overrightarrow{u}+\overrightarrow{v}$ et $\overrightarrow{u}-\overrightarrow{v}$ sont les diagonales.<br>
+
+    Or les diagonales sont de même longueur si et seulement si $\|\overrightarrow{u}+\overrightarrow{v}\|=\|\overrightarrow{u}-\overrightarrow{v}\|$.<br>
+
+    D'après les propriétés précédentes, cela revient à dire que $2\overrightarrow{u}\cdot\overrightarrow{v}=-2\overrightarrow{u}\cdot\overrightarrow{v}$, c'est-à-dire $\overrightarrow{u}\cdot\overrightarrow{v}=0$.<br>
+</div>
+<div class="exemple">
+    Le produit scalaire $\left(\overrightarrow{u}+\overrightarrow{v}\right)\cdot\left(\overrightarrow{u}-\overrightarrow{v}\right)$ correspond au produit scalaire des vecteurs formés par les diagonales du parallélogramme lui-même formé par $\overrightarrow{u}$ et $\overrightarrow{v}$.<br>
+    Ainsi on montre qu'un parallélogramme est un losange si et seulement si ce produit scalaire est nul, autrement dit si et seulement si les diagonales sont perpendiculaires.
+</div>
+<div class="exemple">
+    Exprimons le produit scalaire de deux vecteurs $\overrightarrow{u}$ et $\overrightarrow{v}$ en fonction de leurs normes et de la norme de leur somme.
+    $$\begin{align*}
+    \|(\overrightarrow{u}+\overrightarrow{v})\|^2&=\|\overrightarrow{u}\|^2+2\overrightarrow{u}\cdot\overrightarrow{v}+\|\overrightarrow{v}\|^2\\
+    2\overrightarrow{u}\cdot\overrightarrow{v}&=\|(\overrightarrow{u}+\overrightarrow{v})\|^2-\|\overrightarrow{u}\|^2-\|\overrightarrow{v}\|^2\\
+    \overrightarrow{u}\cdot\overrightarrow{v}&=\frac{1}{2}\left(\|(\overrightarrow{u}+\overrightarrow{v})\|^2-\|\overrightarrow{u}\|^2-\|\overrightarrow{v}\|^2\right)
+    \end{align*}$$
+    On montre ainsi que le produit scalaire de deux vecteurs est nul si et seulement si la norme de leur somme est égale à la somme de leurs normes. Ce qui correspond à la relation de Pythagore dans un triangle rectangle.<br>
+
+    On montre de même que le produit scalaire de deux vecteurs est nul si et seulement si la norme de leur différence est égale à la somme de leurs normes. Ce qui correspond à la relation de Pythagore dans un triangle rectangle.
 </div>
 <div class="exercice">
     <div class="enonce">

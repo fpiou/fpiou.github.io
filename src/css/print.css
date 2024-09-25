@@ -63,6 +63,7 @@
   }
 
   /* Ne pas imprimer */
+  .remarque,
   .exemple,
   .demonstration,
   .quizsenligne,
