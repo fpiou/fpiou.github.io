@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>T-04B.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><!-- <header class="brouillon"><div>Test</div><div class="header-niveau">Seconde Générale et Technologique</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>T-04B<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header> -->
+
+<style>
+.exercice {
+    margin-bottom: 1em;
+}
+.numerical-list li {
+    margin-top: 0.7em;
+}
+.reponse {
+    border-bottom: 1px dotted black;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    width: 95%;
+}
+</style>
+<div copy="2">
+<div class="nocolonnes" style="font-size:1.04em;">
+
+<div class="exercice">
+    <div class="enonce">
+        <b>Questions de cours</b>
+        <ol class="numerical-list">
+            <li>Que signifie qu'un point $A$ est équidistant de deux points $B$ et $C$&nbsp;?</li>
+            <li>Quelle est la conclusion de la réciproque du théorème de Pythagore&nbsp;?</li>
+            <li>Citez l'inégalité triangulaire pour trois points $D$, $E$ et $F$ du plan.</li>
+            <li>Quelle est la définition du sinus d'un angle aigu dans un triangle rectangle&nbsp;?</li>
+            <li>Par quel coefficient faut-il multiplier une quantité lors d'une baisse de $30\%$&nbsp;?</li>
+            <li>Tracez un triangle $DEF$ quelconque puis placez le projeté orthogonal $H$ de $E$ sur $(DF)$.</li>
+            <li>$45=9\times 5$. Construisez une phrase avec le mot &laquo;&nbsp;diviseur&nbsp;&raquo; pour décrire cette égalité.</li>
+            <li>Vrai ou faux&nbsp;? Une homothétie de rapport $2$ conserve les longueurs.</li>
+            <li>Quelle est la formule du périmètre d'un cercle de rayon $r$&nbsp;?</li>
+            <li>Que désigne chacune des notations suivantes : $(OK)$, $[OK]$, $OK$ et $[OK)$&nbsp;?</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <div style="display:flex">
+            <div style="display:flex;align-items:center;width:60%;text-align:justify;">
+            On considère l'algorithme ci-contre. Quelles sont les valeurs des variables A et B à la fin de l'exécution de cet algorithme&nbsp;?
+            </div>
+            <div style="width:auto;margin-left:20px">
+<pre style="border:1px solid black;padding:0.5em;">
+Affecter 9 à la variable A
+Affecter 3 à la variable B
+Affecter A-2*B à la variable A
+Affecter A+B à la variable B
+</pre>
+            </div>
+    </div>
+    <div class="solution">
+        <p>On a $A=9-2\times 3=3$ et $B=3+3=6$</p>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Résoudre les équations suivantes&nbsp;:
+        <ol class="alphabetical-list horizontal-list">
+            <li>$3x+5=4x-3$</li>
+            <li>$\dfrac{7x}{3}=2$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$$\begin{align*}
+            3x+5&=4x-3\\
+            5&=x-3\\
+            8&=x
+            \end{align*}$$
+            $$\begin{align*}
+            La solution est $x=8$.</li>
+            <li>$$\begin{align*}
+            \dfrac{7x}{3}&=2\\
+            7x&=6\\
+            x&=\dfrac{6}{7}
+            \end{align*}$$
+            La solution est $x=\dfrac{6}{7}$.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Un article coûtait $70$€, il a subit une baisse de $10\%$ puis une hausse de $20\%$. Quel est son nouveau prix&nbsp;?
+    </div>
+</div>
+
+</div>
+</div></main>
+  </body>
+</html>
