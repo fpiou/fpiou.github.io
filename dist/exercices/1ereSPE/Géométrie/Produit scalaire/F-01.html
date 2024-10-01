@@ -545,8 +545,22 @@
     D'après les propriétés précédentes, cela revient à dire que $2\overrightarrow{u}\cdot\overrightarrow{v}=-2\overrightarrow{u}\cdot\overrightarrow{v}$, c'est-à-dire $\overrightarrow{u}\cdot\overrightarrow{v}=0$.<br>
 </div>
 <div class="exemple">
-    Le produit scalaire $\left(\overrightarrow{u}+\overrightarrow{v}\right)\cdot\left(\overrightarrow{u}-\overrightarrow{v}\right)$ correspond au produit scalaire des vecteurs formés par les diagonales du parallélogramme lui-même formé par $\overrightarrow{u}$ et $\overrightarrow{v}$.<br>
-    Ainsi on montre qu'un parallélogramme est un losange si et seulement si ce produit scalaire est nul, autrement dit si et seulement si les diagonales sont perpendiculaires.
+    On se propose de démontrer la propriété suivante à l'aide des propriétés du produit scalaire.
+    <!-- Le paramètre de style pour obtenir l'italique est : style="font-style: italic;" -->
+    <div style="text-align: center;font-style:italic;padding:1em;">Propriété : Si un parallélogramme a ses diagonales perpendiculaires, alors c'est un losange.</div>
+    Soit $ABCD$ un parallélogramme tel que $(AC)\perp(BD)$. On note $O$ le point d'intersection des diagonales.<br>
+    On a&nbsp;: $$\overrightarrow{AC}\cdot\overrightarrow{BD}=0.$$
+    Or
+    $$\begin{align*}
+    \overrightarrow{AC}\cdot\overrightarrow{BD}&=\left(\overrightarrow{AB}+\overrightarrow{AD}\right)\cdot\left(\overrightarrow{AB}-\overrightarrow{AD}\right)\\
+    \overrightarrow{AC}\cdot\overrightarrow{BD}&=AB^2-AD^2
+    \end{align*}$$
+    Ainsi $AB^2-AD^2=0$ ou encore $(AB+AD)(AB-AD)=0.$<br>
+    Or un produit est nul si et seulement si l'un des facteurs est nul.<br>
+    $AB+AD\gt0$ car $ABCD$ est un parallélogramme.<br>
+    Donc $AB-AD=0$ et $AB=AD$.<br>
+    Or si un parallélogramme a deux côtés consécutifs de même longueur, alors c'est un losange.<br>
+    Donc $ABCD$ est un losange.
 </div>
 <div class="exemple">
     Exprimons le produit scalaire de deux vecteurs $\overrightarrow{u}$ et $\overrightarrow{v}$ en fonction de leurs normes et de la norme de leur somme.
@@ -654,7 +668,7 @@
             AB^2&=\|\overrightarrow{AB}\|^2\\
             AB^2&=(\overrightarrow{AC}-\overrightarrow{BC})^2\\
             AB^2&=\overrightarrow{AC}^2-2\overrightarrow{AC}\cdot\overrightarrow{BC}+\overrightarrow{BC}^2\\
-            AB^2=AC^2-2\overrightarrow{CA}\cdot\overrightarrow{CB}+BC^2
+            AB^2&=AC^2-2\overrightarrow{CA}\cdot\overrightarrow{CB}+BC^2
             \end{align*}
             $$</p></li>
         </ol>
