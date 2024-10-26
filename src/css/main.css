@@ -712,3 +712,6 @@ table.editeur td:first-child {
   margin: 0 auto;
   padding: 0 auto;
 }
+#nbQuestions {
+  padding: 0.1em 0.5em;
+}
