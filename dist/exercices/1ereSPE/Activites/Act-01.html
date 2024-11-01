@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Act-01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Coût marginal et coût moyen</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>Pb-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<h1>Introduction</h1>
+Dans le contexte de la production industrielle, les entreprises cherchent à optimiser leurs coûts pour maximiser leur rentabilité. L'analyse de la production et des coûts permet d'étudier l'impact de la quantité produite sur les coûts, en particulier grâce aux concepts de coût marginal et de coût moyen. Le coût marginal représente le coût supplémentaire pour produire une unité de plus, tandis que le coût moyen correspond au coût de production par unité produite.
+
+<!-- Ce problème explore comment la dérivation aide à optimiser le coût moyen de production en identifiant la quantité produite qui minimise ce coût. -->
+
+<h1>Étude de cas</h1>
+Dans une entreprise, le coût de fabrication en euros de $x$ tonnes de peinture est donnée par la fonction $C$ définie par
+$$C(x)=0.001x^3-\num{1.1}x^2+500x+600.$$
+
+<h2>Résultats préléminaires</h2>
+<ol class="numerical-list">
+    <li>Montrez que $(a+b)^3=a^3+3a^2b+3ab^2+b^3$ en développant $(a+b)(a+b)^2$.</li>
+    On considère les fonctions $f$ polynômiales de degré 3 de la forme $f(x) = ax^3 + bx^2 + cx + d$ où $a$, $b$, $c$ et $d$ sont des constantes réelles.
+    <li>Montrez que $f(x+1)-f(x)=3ax^2+(3a+2b)x+(a+b+c)$.</li>
+    <li>Montrez que $\left[f(x+1)-f(x)\right]-f'(x)=a(3x+1)+b$.</li>
+    On considère la fonction $f$ définie par $f_1(x)=x^3$ tracée ci-dessous.
+    <div class="figure">
+        <svg viewBox="0 0 120 100" style="width:70%">
+            <g name="repere1" class="repere" xmin="-1" ymin="-10" xmax="5" ymax="40" xorigine="0" yorigine="0"></g>
+            <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="5" stroke="gray" stroke-width="0.2"></g>
+            <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1" size="5" origine></g>
+            <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+            <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="5" stroke="black" stroke-width="1" size="5" origine></g>
+            <g name="O" class="point labeled" repere="repere1" x="0" y="0" stroke="none" font-size="9pt"></g>
+            <g class="label" linkto="O" x="-12" y="0">O</g>
+            <g name="I" class="point labeled" repere="repere1" x="1" y="0" stroke="none" font-size="9pt"></g>
+            <g class="label" linkto="I" x="-3" y="0">1</g>
+            <g name="J" class="point labeled" repere="repere1" x="0" y="10" stroke="none" font-size="9pt"></g>
+            <g class="label" linkto="J" x="-15" y="-7">10</g>
+            <g name="C_f" class="courbeRepresentative" expression="x^3" linkto="repere1" xmin="0" xmax="5" pas="0.1" stroke="blue" stroke-width="1" fill="transparent" pos_label="0.9"></g>
+            <!-- <g name="M_1" class="point" repere="repere1" x="2" y="2^3" stroke="blue" font-size="9pt"></g>
+            <g name="T_1" class="courbeRepresentative" expression="3*2^2*(x-2)+2^3" linkto="repere1" xmin="0" xmax="5" pas="0.1" stroke="red" stroke-width="0.5" fill="transparent" pos_label="0.1"></g> -->
+        </svg>
+    </div>
+    <li>Tracez la tangente à la courbe de $f_1$ au point d'abscisse 2.</li>
+    <li>Tracez la sécante à la courbe de $f_1$ passant par les points d'abscisses 2 et 3.</li>
+    <li>Calculez la différence entre le taux de variation de $f_1$ entre 2 et 3 et la pente de la tangente à la courbe de $f_1$ en 2.</li>
+    <li>Utilisez la question c. pour retrouver ce résultat. Expliquez.</li>
+    <li>Que se passe-t-il entre la tangente à la courbe de $f$ en $x$ et la sécante à la courbe de $f$ passant par les points d'abscisses $x$ et $x+1$ si on rapproche les valeurs de $a$ et $b$ de $0$&nbsp;? Justifiez.</li>
+    <li>On admet que toute fonction $g$ de la forme $g(x)=\dfrac{u(x)}{v(x)}$ où $u$ et $v$ sont des fonctions définies et dérivables sur un intervalle $I$ a pour dérivée $g'(x)=\dfrac{u'(x)v(x)-u(x)v'(x)}{v(x)^2}$.<br>
+    Montrez que la dérivée de la fonction $g(x)=\dfrac{4x^3}{3x^2+5}$ est $g'(x)=\dfrac{12x^2(x^2+5)}{(3x^2+5)^2}$.</li>
+</ol>
+
+<h2>Coût marginal et coût moyen</h2>
+<ol class="numerical-list">
+    <li>Calculez $C(100)$. Que représente ce nombre pour l'entreprise&nbsp;?</li>
+    <li>Calculez le <i>coût marginal</i> de la production au rang $100$, c'est-à-dire le coût supplémentaire pour passer d'une production de $100$ tonnes à une production de $101$ tonnes.</li>
+    <li>Calculez le <i>coût moyen</i> de la production au rang $100$, c'est-à-dire le coût moyen par tonne de peinture produite à partir de $100$ tonnes.</li>
+    <li>En comparant le coût moyen et le coût marginal pour une production de 100 tonnes, l'entreprise réduit-elle ses coûts en produisant une tonne supplémentaire&nbsp;? Justifiez.</li>
+</ol>
+
+<h2>Utilisation de la dérivée</h2>
+<ol class="numerical-list">
+    <li>Donnez la définition de la dérivée de la fonction $C$ en $x$.</li>
+    <li>Déterminez $C'(x)$. Quelle est l'unité de $C'(x)$&nbsp;?</li>
+    <li>Calculez $C'(100)$. Que peut-on remarquer&nbsp;?</li>
+    <li>Déterminez $\dfrac{C(x)}{x}$. Que représente ce nombre pour l'entreprise&nbsp;?</li>
+    <li>Calculez $C'(200)$ et $\dfrac{C(200)}{200}$. Cela indique-t-il une tendance à la baisse ou à la hausse des coûts moyens avec l'augmentation de la production&nbsp;?</li>
+    <li>L'entreprise minimise-t-elle son coût moyen de production en produisant 700 tonnes de peinture&nbsp;? Justifiez.</li>
+</ol>
+
+<h2>Minimisation</h2>
+L'entreprise souhaite minimiser son coût moyen de production en prenant pour coût marginal la dérivée de la fonction $C$.
+<ol class="numerical-list">
+    <li>Calculez la dérivée de la fonction $\dfrac{C(x)}{x}$ définie sur $I=\left]0;+\infty\right[$.</li>
+    <li>Pour quelle valeur de $x$ la dérivée de la fonction $\dfrac{C(x)}{x}$ s'annule-t-elle&nbsp;?</li>
+    <li>Calculez le coût moyen minimal. Justifiez.</li>
+    <li>Quelle est la production optimale pour l'entreprise&nbsp;?</li>
+</ol>
+
+<h2>Pour aller plus loin</h2>
+Démontrez que le coût moyen est optimal lorsque le coût marginal est égal au coût moyen.</main>
+  </body>
+</html>
