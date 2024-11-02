@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>M-01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Algorithmie</div><div class="header-niveau">Seconde Générale et Technologique</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>M-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<h1>Algorithmie</h1>
+<div class="definition">
+    Un algorithme est une suite finie et non ambiguë d'opérations ou d'instructions permettant de résoudre un problème ou d'obtenir un résultat. Chaque opération ou instruction est effectuée dans un ordre précis.
+</div>
+<h1>Les affectations</h1>
+<div class="definition">
+    En algorithmie, l'affectation consiste à donner une valeur à une variable. En langage Python, on utilise le signe égal <code>=</code> pour affecter une valeur à une variable.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div style="display:flex;justify-content:space-between;vertical-align:center;">
+            <div style="width:40%">
+<pre class="line-numbers"><code class="language-py">a=2
+b=3
+a=a+b
+b=a*b</code></pre>
+        </div>
+        <div style="width:60%;padding:1em;">
+            <ol class="alphabetical-list">
+                <li>Quelles sont les valeurs de <code>a</code> et <code>b</code> après l'exécution de ce code ?<br>
+                Recopie et complète le tableau ci-dessous pour justifier.</li>
+            </ol>
+        </div>
+    </div>
+        <table class="tableauvaleurs">
+            <tr>
+                <th>Ligne n°</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+            </tr>
+            <tr>
+                <td><code>a</code></td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+            </tr>
+            <tr>
+                <td><code>b</code></td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+            </tr>
+        </table>
+    </div>
+    <ol class="alphabetical-list" start="2">
+        <li>Même consigne en échangeant les deux dernières lignes du code.</li>
+        <li>Que se passe-t-il si on échange les deux premières lignes du code ?</li>
+        <li>Que se passe-t-il si on échange les lignes 2 et 3 du code ?</li>
+    </ol>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><table class="tableauvaleurs">
+                <tr>
+                    <th>Ligne n°</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                </tr>
+                <tr>
+                    <td><code>a</code></td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>5</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td><code>b</code></td>
+                    <td></td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>15</td>
+                </tr>
+            </table>
+            <p>Après l'exécution de ce code, la valeur de <code>a</code> est 5 et la valeur de <code>b</code> est 15.</p></li>
+            <p>Le script devient :
+<pre class="line-numbers"><code class="language-py">a=2
+b=3
+b=a*b
+a=a+b</code></pre></p>
+            <li><table class="tableauvaleurs">
+                <tr>
+                    <th>Ligne n°</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                </tr>
+                <tr>
+                    <td><code>a</code></td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td><code>b</code></td>
+                    <td></td>
+                    <td>3</td>
+                    <td>6</td>
+                    <td>6</td>
+                </tr>
+            </table>
+            <p>Après l'exécution de ce code, la valeur de <code>a</code> est 8 et la valeur de <code>b</code> est 6.</p></li>
+            <li><p>Le code devient :
+<pre class="line-numbers"><code class="language-py">b=3
+a=2
+a=a+b
+b=a*b</code></pre></p>
+            <p>Les valeurs de <code>a</code> et <code>b</code> sont inchangées.</p></li>
+            <li><p>Le code devient :
+<pre class="line-numbers"><code class="language-py">a=2
+a=a+b
+b=3
+b=a*b</code></pre></p>
+            <p>Si on échange les lignes 2 et 3 du code, le code ne fonctionne plus car on ne peut pas affecter une valeur à <code>a</code> à la ligne 2 si <code>b</code> n'a pas encore été défini.</p></li>
+        </ol>
+    </div>
+</div>
+<h1>Les variables</h1>
+<div class="definition">
+    En python, les valeurs peuvent être de différents types : <code>int</code> (entier), <code>float</code> (flottant), <code>str</code> (chaîne de caractères) et <code>bool</code> (booléen).
+</div>
+<div class="exercice">
+    <div class="enonce"><b>Opérations arithmétiques</b><br>
+    Pour chacune des variables suivantes, indique sa valeur et son type.
+    <ol class="horizontal-list col-4c">
+<li><code>a=2</code></li>
+<li><code>b=5.0</code></li>
+<li><code>c=1.5+1.5</code></li>
+<li><code>c=6/3</code></li>
+<li><code>d=6.0/2</code></li>
+<li><code>e=7/4</code></li>
+<li><code>f=23//4</code></li>
+<li><code>g=23%4</code></li>
+<li><code>h=7**2</code></li>
+<li><code>i=2*2**3*5</code></li>
+<li><code style="font-size:0.85em;">j=(2*2)**3*5</code></li>
+<li><code>k=-2**3</code></li>
+   </ol>
+</div>
+    <div class="solution">
+        <ol class="horizontal-list col-4c">
+<li><pre><code class="language-py">&#62;&#62;&#62; a=2
+&#62;&#62;&#62; a
+2
+&#62;&#62;&#62; type(a)
+&#60;class 'int'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; b=5.0
+&#62;&#62;&#62; b
+5.0
+&#62;&#62;&#62; type(b)
+&#60;class 'float'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; c=1.5+1.5
+&#62;&#62;&#62; c
+3.0
+&#62;&#62;&#62; type(c)
+&#60;class 'float'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; c=6/3
+&#62;&#62;&#62; c
+2.0
+&#62;&#62;&#62; type(c)
+&#60;class 'float'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; d=6.0/2
+&#62;&#62;&#62; d
+3.0
+&#62;&#62;&#62; type(d)
+&#60;class 'float'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; e=7/4
+&#62;&#62;&#62; e
+1.75
+&#62;&#62;&#62; type(e)
+&#60;class 'float'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; f=23//4
+&#62;&#62;&#62; f
+5
+&#62;&#62;&#62; type(f)
+&#60;class 'int'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; g=23%4
+&#62;&#62;&#62; g
+3
+&#62;&#62;&#62; type(g)
+&#60;class 'int'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; h=7**2
+&#62;&#62;&#62; h
+49
+&#62;&#62;&#62; type(h)
+&#60;class 'int'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; i=2*2**3*5
+&#62;&#62;&#62; i
+80
+&#62;&#62;&#62; type(i)
+&#60;class 'int'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; j=(2*2)**3*5
+&#62;&#62;&#62; j
+320
+&#62;&#62;&#62; type(j)
+&#60;class 'int'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; k=-2**3
+&#62;&#62;&#62; k
+-8
+&#62;&#62;&#62; type(k)
+&#60;class 'int'&#62;</code></pre></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce"><b>Chaînes de caractères</b><br>
+    Pour chacune des variables suivantes, indique sa valeur et son type.
+    <ol class="horizontal-list col-4c">
+<li><code>a="Bon"+"jour"</code></li>
+<li><code>b=2*"bon"</code></li>
+<li><code>c="2"+"3"</code></li>
+<li><code>d="2"*3</code></li>
+</ol>
+</div>
+    <div class="solution">
+        <ol class="horizontal-list col-4c">
+<li><pre><code class="language-py">&#62;&#62;&#62; a="Bon"+"jour"
+&#62;&#62;&#62; a
+'Bonjour'
+&#62;&#62;&#62; type(a)
+&#60;class 'str'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; b=2*"bon"
+&#62;&#62;&#62; b
+'bonbon'
+&#62;&#62;&#62; type(b)
+&#60;class 'str'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; c="2"+"3"
+&#62;&#62;&#62; c
+'23'
+&#62;&#62;&#62; type(c)
+&#60;class 'str'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; d="2"*3
+&#62;&#62;&#62; d
+'222'
+&#62;&#62;&#62; type(d)
+&#60;class 'str'&#62;</code></pre></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce"><b>Booléens</b><br>
+    Pour chacune des variables suivantes, indique sa valeur et son type.
+    <ol class="horizontal-list col-4c">
+<li><code>a=2==3</code></li>
+<li><code>b=2!=3</code></li>
+<li><code>c=2&lt;3</code></li>
+<li><code>d=2&gt;3</code></li>
+<li><code>e=2&lt;=3</code></li>
+<li><code>f=2&gt;=3</code></li>
+<li><code>g=2==2.0</code></li>
+<li><code>h=0.2+0.1==0.3</code></li>
+<li><code>i="2"*3==6</code></li>
+<li><code>j="2"*3=="2*3"</code></li>
+<li><code>k="2"*3==222</code></li>
+<li><code>l="2*3==6"</code></li>
+</ol>
+</div>
+    <div class="solution">
+        <ol class="horizontal-list col-4c">
+<li><pre><code class="language-py">&#62;&#62;&#62; a=2==3
+&#62;&#62;&#62; a
+False
+&#62;&#62;&#62; type(a)
+&#60;class 'bool'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; b=2!=3
+&#62;&#62;&#62; b
+True
+&#62;&#62;&#62; type(b)
+&#60;class 'bool'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; c=2&lt;3
+&#62;&#62;&#62; c
+True
+&#62;&#62;&#62; type(c)
+&#60;class 'bool'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; d=2&gt;3
+&#62;&#62;&#62; d
+False
+&#62;&#62;&#62; type(d)
+&#60;class 'bool'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; e=2&lt;=3
+&#62;&#62;&#62; e
+True
+&#62;&#62;&#62; type(e)
+&#60;class 'bool'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; f=2&gt;=3
+&#62;&#62;&#62; f
+False
+&#62;&#62;&#62; type(f)
+&#60;class 'bool'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; g=2==2.0
+&#62;&#62;&#62; g
+True
+&#62;&#62;&#62; type(g)
+&#60;class 'bool'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; h=0.2+0.1==0.3
+&#62;&#62;&#62; h
+False
+&#62;&#62;&#62; type(h)
+&#60;class 'bool'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; i="2"*3==6
+&#62;&#62;&#62; i
+False
+&#62;&#62;&#62; type(i)
+&#60;class 'bool'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; j="2"*3=="2*3"
+&#62;&#62;&#62; j
+False
+&#62;&#62;&#62; type(j)
+&#60;class 'bool'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; k="2"*3==222
+&#62;&#62;&#62; k
+False
+&#62;&#62;&#62; type(k)
+&#60;class 'bool'&#62;</code></pre></li>
+<li><pre><code class="language-py">&#62;&#62;&#62; l="2*3==6"
+&#62;&#62;&#62; l
+"2*3==6"
+&#62;&#62;&#62; type(l)
+&#60;class 'str'&#62;</code></pre></li>
+        </ol>
+    </div>
+</div>
+
+<h1>Les boucles</h1>
+<div class="definition">
+    En Python, une boucle <code>for i in range(n)</code> répète un bloc d'instructions <code>n</code> fois.
+<pre class="line-numbers"><code class="language-py">for i in range(n):
+    Instruction 1
+    Instruction 2
+    ...
+Instructions effectuées après la boucle
+</code></pre>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div style="display:flex;justify-content:space-between;vertical-align:center;">
+            <div style="padding:1em;width:50%">
+                <ol class="alphabetical-list">
+                    <li>Recopiez et complétez le tableau des valeurs de  <code>a</code> et <code>b</code> au cours de l'exécution du programme ci-contre.</li>
+                </ol>
+            </div>
+            <div style="width:50%">
+<pre class="line-numbers"><code class="language-py">a,b = 0,1
+for i in range(3):
+    a=a+1
+    b=b*a</code></pre>
+            </div>
+        </div>
+        <table class="tableauvaleurs">
+            <tr>
+                <th>ligne n°</th>
+                <th>1</th>
+                <th>2<br>i=0</th>
+                <th>3<br>i=0</th>
+                <th>4<br>i=0</th>
+                <th>2<br>i=1</th>
+                <th>3<br>i=1</th>
+                <th>4<br>i=1</th>
+                <th>2<br>i=2</th>
+                <th>3<br>i=2</th>
+                <th>4<br>i=2</th>
+            </tr>
+            <tr>
+                <td><code>a</code></td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+            </tr>
+            <tr>
+                <td><code>b</code></td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+            </tr>
+        </table>
+        <ol class="alphabetical-list" start="2">
+            <li>On remplace range(3) par range(4), quelles sont les valeurs de <code>a</code> et <code>b</code> à la fin du script&nbsp;?</li>
+            <li>On inverse les lignes 3 et 4 du programme, que se passe-t-il&nbsp;?</li>
+            <li><div style="display:flex;justify-content:space-between;vertical-align:center;">
+                <div style="padding:1em;width:50%">
+            Le programme ci-contre donne-t-il le même résultat pour&nbsp;<code>b</code>&nbsp;? Justifiez.</div>
+                <div style="width:50%"> 
+<pre class="line-numbers"><code class="language-py">b=1
+for i in range(4):
+    b=b*(i+1)</code></pre>
+                </div>
+            </div></li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><table class="tableauvaleurs">
+                <tr>
+                    <th>ligne n°</th>
+                    <th>1</th>
+                    <th>2<br>i=0</th>
+                    <th>3<br>i=0</th>
+                    <th>4<br>i=0</th>
+                    <th>2<br>i=1</th>
+                    <th>3<br>i=1</th>
+                    <th>4<br>i=1</th>
+                    <th>2<br>i=2</th>
+                    <th>3<br>i=2</th>
+                    <th>4<br>i=2</th>
+                </tr>
+                <tr>
+                    <td><code>a</code></td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td><code>b</code></td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>6</td>
+                </tr>
+            </table></li>
+            <li><pre class="line-numbers"><code class="language-py">a,b = 0,1
+for i in range(4):
+    a=a+1
+    b=b*a</code></pre>
+            <table class="tableauvaleurs">
+                <tr>
+                    <th>ligne n°</th>
+                    <th>1</th>
+                    <th>2<br>i=0</th>
+                    <th>3<br>i=0</th>
+                    <th>4<br>i=0</th>
+                    <th>2<br>i=1</th>
+                    <th>3<br>i=1</th>
+                    <th>4<br>i=1</th>
+                    <th>2<br>i=2</th>
+                    <th>3<br>i=2</th>
+                    <th>4<br>i=2</th>
+                    <th>2<br>i=3</th>
+                    <th>3<br>i=3</th>
+                    <th>4<br>i=3</th>
+                </tr>
+                <tr>
+                    <td><code>a</code></td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td><code>b</code></td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>6</td>
+                    <td>6</td>
+                    <td>6</td>
+                    <td>24</td>
+                </tr>
+            </table></li>
+            <li><pre class="line-numbers"><code class="language-py">a,b = 0,1
+for i in range(4):
+    b=b*a
+    a=a+1</code></pre>
+            <table class="tableauvaleurs">
+                <tr>
+                    <th>ligne n°</th>
+                    <th>1</th>
+                    <th>2<br>i=0</th>
+                    <th>3<br>i=0</th>
+                    <th>4<br>i=0</th>
+                    <th>2<br>i=1</th>
+                    <th>3<br>i=1</th>
+                    <th>4<br>i=1</th>
+                    <th>2<br>i=2</th>
+                    <th>3<br>i=2</th>
+                    <th>4<br>i=2</th>
+                    <th>2<br>i=3</th>
+                    <th>3<br>i=3</th>
+                    <th>4<br>i=3</th>
+                </tr>
+                <tr>
+                    <td><code>a</code></td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td><code>b</code></td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+            </table>
+            <p>On remarque que la valeur finale de <code>a</code> reste inchangée mais que la valeur de <code>b</code> est nulle.</p></li>
+            <li>
+<pre class="line-numbers"><code class="language-py">b=1
+for i in range(4):
+    b=b*(i+1)</code></pre>
+            <table class="tableauvaleurs">
+                <tr>
+                    <th>ligne n°</th>
+                    <th>1</th>
+                    <th>2<br>i=0</th>
+                    <th>3<br>i=0</th>
+                    <th>2<br>i=1</th>
+                    <th>3<br>i=1</th>
+                    <th>2<br>i=2</th>
+                    <th>3<br>i=2</th>
+                    <th>2<br>i=3</th>
+                    <th>3<br>i=3</th>
+                </tr>
+                <tr>
+                    <td><code>b</code></td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>6</td>
+                    <td>6</td>
+                    <td>24</td>
+                </tr>
+            </table>
+            <p>La variable <code>b</code> prend les mêmes valeurs que dans le premier programme car <code>a</code> et <code>i+1</code> sont équivalents.</p></li>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="definition">
+    En Python, une boucle <code>while condition</code> répète un bloc d'instructions tant qu'une <code>condition</code> est vraie.
+<pre class="line-numbers"><code class="language-py">while condition:
+    Instruction 1
+    Instruction 2
+    ...
+Instructions effectuées après la boucle
+</code></pre>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        On reprend l'algorithme précédent mais on remplace la boucle <code>for</code> par une boucle <code>while</code> pour déterminer le seuil de <code>a</code> à partir duquel <code>b</code> dépasse $\num{1000000}$.
+        <div style="display:flex;justify-content:space-between;vertical-align:center;">
+            <div style="padding:1em;width:50%">
+                <ol class="alphabetical-list">
+                    <li>Construisez et complétez le tableau des valeurs de  <code>a</code> et <code>b</code> au cours de l'exécution du programme ci-contre.</li>
+                </ol>
+            </div>
+            <div style="width:50%">
+<pre class="line-numbers"><code class="language-py">a,b = 0,1
+while b&lt;=1000000:
+    a=a+1
+    b=b*a</code></pre>
+            </div>
+        </div>
+        <ol class="alphabetical-list" start="2">
+            <li>Quel est le seuil pour dépasser $10^6$&nbsp;?</li>
+            <li>Quel ets le seuil pour dépasser $10^9$&nbsp;?</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>
+            <table class="tableauvaleurs">
+                <tr>
+                    <th>ligne n°</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>2</th>
+                </tr>
+                <tr>
+                    <td><code>a</code></td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>4</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td><code>b</code></td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>6</td>
+                    <td>6</td>
+                    <td>6</td>
+                    <td>24</td>
+                    <td>24</td>
+                </tr>
+            </table>
+            <table class="tableauvaleurs">
+                <tr>
+                    <th>ligne n°</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>2</th>
+                    <th>3</th>
+                </tr>
+                <tr>
+                    <td><code>a</code></td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>6</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>7</td>
+                    <td>7</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td><code>b</code></td>
+                    <td>24</td>
+                    <td>120</td>
+                    <td>120</td>
+                    <td>120</td>
+                    <td>720</td>
+                    <td>720</td>
+                    <td>720</td>
+                    <td>5040</td>
+                    <td>5040</td>
+                    <td>5040</td>
+                </tr>
+            </table>
+            <table class="tableauvaleurs">
+                <tr>
+                    <th>ligne n°</th>
+                    <th>4</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>2</th>
+                </tr>
+                <tr>
+                    <td><code>a</code></td>
+                    <td>8</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>9</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>10</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td><code>b</code></td>
+                    <td>40320</td>
+                    <td>40320</td>
+                    <td>40320</td>
+                    <td>362880</td>
+                    <td>362880</td>
+                    <td>362880</td>
+                    <td>3628800</td>
+                    <td>3628800</td>
+                </tr>
+            </table>
+            <p>Le seuil pour dépasser $10^6$ est $10$.</p></li>
+            <li>Le seuil pour dépasser $10^9$ est $13$.</li>
+        </ol>
+    </div>
+</div>
+
+
+</main>
+  </body>
+</html>
