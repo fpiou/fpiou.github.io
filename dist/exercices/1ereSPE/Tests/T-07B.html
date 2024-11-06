@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>T-07B.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header class="brouillon"><div>Test</div><div class="header-niveau">1re Spécialité Mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>T-07B<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div copy="3">
+<div class="nocolonnes" style="font-size:11pt;">
+
+<div class="exercice">
+    <div class="enonce">
+        <b>Questions de cours</b>
+        <ol class="numerical-list">
+            <li>$ADEH$ est un carré de côté $1$ et de centre $G$.<br><b>Vrai/Faux&nbsp;?</b> $\overrightarrow{DE}\cdot\overrightarrow{GD}=-\dfrac{1}{2}\overrightarrow{DE}\cdot\overrightarrow{DH}$. Justifiez.</li>
+            <li>Expliquez le signe d'une fonction polynomiale du second degré en fonction de $a$ et de $\Delta$.</li>
+            <li><b>Vrai/Faux&nbsp;?</b><br>Le produit des racines de $P(x)=-x^2-10x+12$ est $-12$.Justifiez.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="numerical-list">
+            <li>Vrai</li>
+            <li>Propriété 4 du cours de la fiche $A-03$.</li>
+            <li>Faux</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Résoudre l'inéquation suivante $$-5(x-6)(x+3)\lt 0$$</li>
+    </div>
+    <div class="solution">
+        <p>Notons $f(x)=-5(x-6)(x+3)$.</p>
+        <p>$f$ est une fonction polynôme du second degré possédant deux racines $6$ et $-3$.</p>
+        <p>Son coefficient $a=-5\lt 0$.</p>
+        <p>Donc $f$ est négatif sur $]-\infty;-3]$, positif sur $[-3;6]$ et redevient négatif sur $[6;+\infty[$.</p>
+        <p>Donc l'ensemble des solutions de l'inéquation $-5(x-6)(x+3)\lt 0$ est $]-\infty;-3[\cup]6;+\infty[$.</p>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Soit $ABCD$ un parallélogramme tel que $AB=6$, $AD=3$ et $\overrightarrow{AB}\cdot\overrightarrow{AD}=-10$.
+        Calculez $\|\overrightarrow{AB}-\overrightarrow{AD}\|^2.$
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+    Déterminez une forme simplifiée du taux de variation de la fonction carré $f: x\longmapsto x^2$ entre $a$ et $a+h$.
+    </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Le taux de variation de $f$ entre $a$ et $a+h$ est&nbsp;:
+                $$
+                \begin{align*}
+                \frac{f(a+h)-f(a)}{h}&=\frac{(a+h)^2-a^2}{h}&&\text{définition}\\
+                &=\frac{a^2+2ah+h^2-a^2}{h}&&\text{développement}\\
+                &=\frac{2ah+h^2}{h}&&\text{réduction}\\
+                &=\frac{h(2a+h)}{h}&&\text{factorisation}\\
+                \frac{f(a+h)-f(a)}{h}&=2a+h&&\text{simplification}
+                \end{align*}
+                $$</p>
+            </li>
+        </ol>
+    </div>
+</div>
+</div>
+</div></main>
+  </body>
+</html>
