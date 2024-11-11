@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>T-06A.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header class="brouillon"><div>Test</div><div class="header-niveau">Seconde Générale et Technologique</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>T-06A<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<style>
+.exercice {
+    margin-bottom: 1em;
+}
+.numerical-list li {
+    margin-top: 0.7em;
+}
+.reponse {
+    border-bottom: 1px dotted black;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    width: 95%;
+}
+</style>
+<div copy="2">
+<div class="nocolonnes" style="font-size:1.04em;">
+
+<div class="exercice">
+    <div class="enonce">
+        <b>Questions de cours</b>
+        Justifiez chacune des affirmations.
+        <ol class="numerical-list">
+            <li>$8$ est un multiple de $16.$</li>
+            <li>$\frac{-100}{-10}$ est un nombre entier positif.</li>
+            <li>$ABC$ est un triangle rectangle en $A$ tel que $BC=7$ et $\widehat{ABC}=\ang{37}$, alors $AC=7\cos(\ang{37})$.</li>
+            <li>$\sqrt{49}\in\mathbb{N}$.</li>
+            <li>$842633$ est divisible par $3$.</li>
+            <li>$57$ est un nombre premier.</li>
+            <li>$\sqrt{\num{0.64}}=\num{0.08}$.</li>
+            <li>Une proportion d'élèves pratiquant le Golf est de $\frac{3}{10}$.
+            Cela correspond à $\SI{0.3}{\%}$</li>
+            <li>$\SI{5}{\%}$ de $200$= $5\times 2$.</li>
+            <li>En langage Python, l'instruction <code>a=a+b</code> signifie que $b=0$.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="numerical-list">
+            <li>Faux, $8$ est un diviseur de $16$ et non un multiple.</li>
+            <li>Vrai, $\frac{-100}{-10}=10$.</li>
+            <li>Faux, $AC=7\sin(\ang{37})$.</li>
+            <li>Vrai, $\sqrt{64}=8\in\mathbb{N}$.</li>
+            <li>Faux, $8+4+2+6+3+3=26$ n'est pas divisible par $3$.</li>
+            <li>Faux, $57=3\times19$.</li>
+            <li>Faux car $\num{0.08}\times\num{0.08}=\dfrac{8}{100}\times \dfrac{8}{100}=\dfrac{64}{10000}=\num{0.0064}$.</li>
+            <li>Faux, $\frac{3}{10}=\frac{30}{100}$ correspond à $\SI{30}{\%}$.</li>
+            <li>Vrai, $\SI{5}{\%}$ de $200$ est $\dfrac{5}{100}\times200=5\times\dfrac{200}{100}=5\times2$.</li>
+            <li>Faux, l'instruction <code>a=a+b</code> signifie que <code>a</code> prend la valeur de <code>a+b</code>.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Démontrez que la somme de deux multiples de $7$ est un multiple de $7$.
+    </div>
+    <div class="solution">
+        Soient $a$ et $b$ deux multiples de $7$. Il existe donc deux entiers $k$ et $l$ tels que $a=7k$ et $b=7l$. La somme de $a$ et $b$ est donc $a+b=7k+7l=7(k+l)$, qui est un multiple de $7$. Donc la somme de deux multiples de $7$ est un multiple de $7$.
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Calculez $\dfrac{26}{9}\div\dfrac{28}{15}$.
+    </div>
+    <div class="solution">
+        $$\begin{align*}
+        \dfrac{26}{9}\div\dfrac{28}{15} &= \dfrac{26}{9}\times\dfrac{15}{28} \\
+        &= \dfrac{26\times15}{9\times28} \\
+        &= \dfrac{2\times13\times3\times5}{3\times3\times7\times 2\times2} \\
+        &= \dfrac{13\times5}{7\times6} \\
+        &= \dfrac{65}{42}.
+        \end{align*}$$
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        $ABC$ est un triangle d'aire $\SI{20}{\cm^2}$ et tel que $AB=\SI{10}{\cm}$ et $AC=\SI{5}{\cm}$. Calculez la hauteur issue de $C$.
+    </div>
+    <div class="solution">
+        L'aire d'un triangle est donnée par la formule $\frac{base\times hauteur}{2}$.<br>
+        $$\begin{align*}
+        \matchcal{A}(ABC)&=\frac{AB\times h_C}{2}\\
+        20&=\frac{10\times h_C}{2}\\
+        20&=5\times h_C\\
+        h_C&=4.
+        \end{align*}$$
+        La hauteur issue de $C$ est donc de $\SI{4}{\cm}$.
+    </div>
+</div>
+
+</div>
+</div></main>
+  </body>
+</html>
