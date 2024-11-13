@@ -115,7 +115,9 @@
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
 
-    <main><header class="brouillon"><div>Dérivation</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>C-03<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+    <main><header><div>Dérivation</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>C-03<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div class="deuxcolonnes" style="font-size:1.03em;">
 
 <div class="exercice">
     <div class="enonce">
@@ -1007,14 +1009,138 @@
         <ol class="alphabetical-list">
             <li>$f(x) = x^3 -27x + 18$</li>
             <li>$f(x) = -x^3 + 3x^2 -9$</li>
-            <li>Une fonction $f$ de degré 3 tel que la dérivée est une fonction de degré 2 ayant au moins 1 comme racine : $f(x) = x^3 - 3x^2 + 3x - 1$</li>
+            <li>$f(x) = x^3 - 3x^2 + 3x - 1$</li>
         </ol>
         <i>Indication : dérivez la fonction puis factorisez $f'(x)$. Utilisez le tableau de signe de $f'(x)$ pour déterminer les variations de $f$. Il y a deux valeurs où $f$ admet un extremum local.</i>
     </div>
     <div class="solution">
-        ...
+        <ol class="alphabetical-list">
+            <li>
+                <ol class="numerical-list">
+                    <li>Déterminons la fonction dérivée :
+                    $$f'(x) = 3x^2 - 27$$</li>
+                    <li>C'est un polynôme du second degré. Déterminons ses racines :
+                    <p>$f'(x)$ admet deux racines&nbsp;: $-3$ et $3$.</p>
+                    <p>Le coefficient $a=3$ du trinôme est positif.</p>
+                    <p>On en déduit le tableau de signe suivant :</p>
+                    <table class="tableauvariations2">
+                        <tr>
+                            <td>$x$</td>
+                            <td>$-\infty$</td>
+                            <td></td>
+                            <td>$-3$</td>
+                            <td></td>
+                            <td>$3$</td>
+                            <td></td>
+                            <td>$+\infty$</td>
+                        </tr>
+                        <tr>
+                            <td>$f'(x)$</td>
+                            <td></td>
+                            <td>$+$</td>
+                            <td>$0$</td>
+                            <td>$-$</td>
+                            <td>$0$</td>
+                            <td>$+$</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    </li>
+                    <li><p>Déterminons les valeurs de la fonction en $-3$ et $3$ :</p>
+                    $$
+                    \begin{align*}
+                        f(-3) & = (-3)^3 - 27 \times (-3) + 18 \\
+                        f(-3) & = -27 + 81 + 18 \\
+                        f(-3) & = 72
+                    \end{align*}
+                    $$
+                    $$
+                    \begin{align*}
+                        f(3) & = 3^3 - 27 \times 3 + 18 \\
+                        f(3) & = 27 - 81 + 18 \\
+                        f(3) & = -36
+                    \end{align*}
+                    $$
+                    <div class="figure">
+                        <svg viewBox="0 0 400 150">
+                            <g name="A1" class="point" stroke="none" x="70*4/3" y="120" scale="0.5"></g>
+                            <g name="A2" class="point" stroke="none" x="120*4/3" y="80" scale="0.5"></g>
+                            <g name="a" class="vecteur" linkto="A1 A2" stroke="black" scale="1"></g>
+                            <g name="B1" class="point" stroke="none" x="140*4/3" y="80" scale="0.5"></g>
+                            <g name="B2" class="point" stroke="none" x="190*4/3" y="120" scale="0.5"></g>
+                            <g name="b" class="vecteur" linkto="B1 B2" stroke="black" scale="1"></g>
+                            <g name="C1" class="point" stroke="none" x="220*4/3" y="120" scale="0.5"></g>
+                            <g name="C2" class="point" stroke="none" x="270*4/3" y="80" scale="0.5"></g>
+                            <g name="c" class="vecteur" linkto="C1 C2" stroke="black" scale="1"></g>
+                            <foreignObject width="100%" height="100%">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="font-size:12pt;">
+                                <table class="tableauvariations2">
+                                <tr>
+                                    <td>$x$</td>
+                                    <td>$-\infty$</td>
+                                    <td></td>
+                                    <td>$-3$</td>
+                                    <td></td>
+                                    <td>$3$</td>
+                                    <td></td>
+                                    <td>$+\infty$</td>
+                                </tr>
+                                <tr>
+                                    <td>$f'(x)$</td>
+                                    <td></td>
+                                    <td>$+$</td>
+                                    <td>$0$</td>
+                                    <td>$-$</td>
+                                    <td>$0$</td>
+                                    <td>$+$</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>$72$</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>$f(x)$</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>$-36$</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                </table>
+                            </div>
+                            </foreignObject>
+                        </svg>
+                    </div></li>
+                </ol>
+            </li>
+        </ol>                        
     </div>
 </div>
-</main>
+<div class="exercice">
+    <div class="enonce">
+        Une fonction continue est de manière intuitive une fonction dont la représentation graphique peut être tracée sans lever le crayon. En admettant que les fonctions polynômes sont des fonctions continues, déterminez le nombre minimum de solutions de l'équation $f(x) = 0$ pour les fonctions de l'exercice précédent.
+    <div>
+</div>
+
+</div></main>
   </body>
 </html>
