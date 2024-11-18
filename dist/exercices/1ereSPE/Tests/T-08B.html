@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>T-08A.xml</title>
+    <title>T-08B.xml</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="viewport"
@@ -113,7 +113,7 @@
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
 
-    <main><header class="brouillon"><div>Test</div><div class="header-niveau">1re Spécialité Mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>T-08A<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+    <main><header class="brouillon"><div>Test</div><div class="header-niveau">1re Spécialité Mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>T-08B<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
 
 <div copy="1">
 <div class="nocolonnes" style="font-size:12pt;">
@@ -122,12 +122,6 @@
     <div class="enonce">
         <b>Questions de cours : Répondre à six questions au choix.</b>
         <ol class="numerical-list">
-            <li>Donnez la formule du discriminant d'un polynôme du second degré de la forme $ax^2+bx+c$.</li>
-            <li>Résumez dans un tableau les variations d'un polynôme du second degré de la forme $ax^2+bx+c$ où $a\gt 0$.</li>
-            <li>Donnez une formule de l'abscisse du sommet de la courbe d'une fonction polynomiale du second degré de la forme $ax^2+bx+c$.</li>
-            <li>Donnez la formule du produit des racines d'un polynôme du second degré de la forme $ax^2+bx+c$.</li>
-            <li>Donnez la formule de la somme des racines d'un polynôme du second degré de la forme $ax^2+bx+c$.</li>
-            <li>Donnez la forme factorisée d'un polynôme du second degré de la forme $ax^2+bx+c$ où $x_1$ et $x_2$ sont les racines.</li>
             <li>Donnez l'identité remarquable $\|\overrightarrow{u}-\overrightarrow{v}\|^2$.</li>
             <li>Donnez l'identité remarquable $(\overrightarrow{u}+\overrightarrow{v})\cdot(\overrightarrow{u}-\overrightarrow{v})$.</li>
             <li>Donnez les propriétés du produit scalaire.</li>
@@ -136,11 +130,54 @@
             <li>Donnez la formule de la dérivée de la somme de deux fonctions $u$ et $v$ dérivables.</li>
             <li>Donnez la formule de l'équation de la tangente en $a$ de la courbe d'une fonction $f$ dérivable en $a$.</li>
             <li>Donnez la formule du taux de variation d'une fonction $f$ entre $a$ et $a+h$.</li>
+            <li>Donnez la formule du discriminant d'un polynôme du second degré de la forme $ax^2+bx+c$.</li>
+            <li>Résumez dans un tableau les variations d'un polynôme du second degré de la forme $ax^2+bx+c$ où $a\gt 0$.</li>
+            <li>Donnez une formule de l'abscisse du sommet de la courbe d'une fonction polynomiale du second degré de la forme $ax^2+bx+c$.</li>
+            <li>Donnez la formule du produit des racines d'un polynôme du second degré de la forme $ax^2+bx+c$.</li>
+            <li>Donnez la formule de la somme des racines d'un polynôme du second degré de la forme $ax^2+bx+c$.</li>
+            <li>Donnez la forme factorisée d'un polynôme du second degré de la forme $ax^2+bx+c$ où $x_1$ et $x_2$ sont les racines.</li>
         </ol>
     </div>
 </div>
 
 <h3>Exercices bonus (au choix)</h3>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez les racines réelles de $P(x)=x^2-15x+26$ sachant qu'elles sont entières.
+    </div>
+    <div class="solution">
+        Les racines de $P$ sont $2$ et $13$. En effet, $2+13=15$ et $2\times13=26$.
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez le minimum de $f(x)=3x^2-12x+7$ en utilisant les coordonnées du sommet.
+    </div>
+    <div class="solution">
+        $a\gt0$ donc $f$ admet un minimum en $x_s=-\frac{b}{2a}=2$ et $f(2)=-5$.<br>
+        Donc le minimum de $f$ est $-5$.
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Factorisez le polynôme $P(x)=x^2-8x+16$ à l'aide d'une identité remarquable.
+    </div>
+    <div class="solution">
+        C'est une identité remarquable&nbsp;: $P(x)=(x-4)^2$
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez l'équation réduite de la tangente à la courbe de $f:x\longmapsto 2x^2-3x+1$ en $x=3$.
+    </div>
+    <div class="solution">
+        La fonction dérivée de $f$ est $f'(x)=4x-3$.<br>
+        On a $f'(3)=9$ et $f(3)=10$.<br>
+        Donc une équation de la tangente est $y=9(x-3)+10$.<br>
+        Donc l'équation réduite de la tangente est $y=9x-17$.        
+    </div>
+</div>
+
 <div class="exercice">
     <div class="enonce">
         Résoudre l'inéquation $$-2(x-1)(x-2)\geqslant 0$$
@@ -187,42 +224,6 @@
                 $$</p>
             </li>
         </ol>
-    </div>
-</div>
-<div class="exercice">
-    <div class="enonce">
-        Déterminez les racines réelles de $P(x)=x^2-15x+26$ sachant qu'elles sont entières.
-    </div>
-    <div class="solution">
-        Les racines de $P$ sont $2$ et $13$. En effet, $2+13=15$ et $2\times13=26$.
-    </div>
-</div>
-<div class="exercice">
-    <div class="enonce">
-        Calculez le minimum de $f(x)=3x^2-12x+7$ en utilisant les coordonnées du sommet.
-    </div>
-    <div class="solution">
-        $a\gt0$ donc $f$ admet un minimum en $x_s=-\frac{b}{2a}=2$ et $f(2)=-5$.<br>
-        Donc le minimum de $f$ est $-5$.
-    </div>
-</div>
-<div class="exercice">
-    <div class="enonce">
-        Factorisez le polynôme $P(x)=x^2-8x+16$ à l'aide d'une identité remarquable.
-    </div>
-    <div class="solution">
-        C'est une identité remarquable&nbsp;: $P(x)=(x-4)^2$
-    </div>
-</div>
-<div class="exercice">
-    <div class="enonce">
-        Déterminez l'équation réduite de la tangente à la courbe de $f:x\longmapsto 2x^2-3x+1$ en $x=3$.
-    </div>
-    <div class="solution">
-        La fonction dérivée de $f$ est $f'(x)=4x-3$.<br>
-        On a $f'(3)=9$ et $f(3)=10$.<br>
-        Donc une équation de la tangente est $y=9(x-3)+10$.<br>
-        Donc l'équation réduite de la tangente est $y=9x-17$.  
     </div>
 </div>
 </div></main>
