@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>T-04A.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header class="brouillon"><div>Test</div><div class="header-niveau">1re Mathématiques spécifiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>T-04A<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div copy="1">
+<div class="nocolonnes" style="font-size:12pt;">
+
+<div class="exercice">
+    <div class="enonce">
+        <b>Questions de cours :</b>
+        On choisit un jour de l'année au hasard et on considère les événements suivants :
+        <ul style="pading-left:1em;">
+            <li>$A=\text{&laquo; Le jour choisi est pluvieux &raquo;}$</li>
+            <li>$B=\text{&laquo; Le jour choisi est venteux &raquo;}$</li>
+        </ul>
+        <ol class="alphabetical-list">
+            <li>Décrire par une phrase l'événement $\overline{A}\cap B$.</li>
+            <hr style="border-top:1px dashed; margin:2em 0em 0em 0em;"><br>
+            <li>Décrire par une phrase la probabilité $P_B(A)=\num{0.6}$.</li>
+            <hr style="border-top:1px dashed; margin:2em 0em 0em 0em;"><br>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Le jour choisi n'est pas pluvieux et est venteux.</li>
+            <li>La probabilité que le jour choisi soit pluvieux sachant qu'il est venteux est de $\num{0.6}$.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <b>Questions de cours :</b>
+        On considère deux événements $A$ et $B$ d'un même univers tels que $P(A\cap \overline{B})=\num{0,1}$, $P(B)=\num{0,7}$ et $P(A)=\num{0,4}$.
+        <ol class="alphabetical-list">
+            <li>Complétez le tableau de probabilités croisées de $A$ et $B$ en indiquant d'une couleur les données et d'une autre couleur les valeurs obtenues par calcul (sans détailler les calculs).</li>
+            <div style="text-align:center;width:10cm;"><table style="height:3cm;" class="tableauvaleurs">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table></div>
+            <li>Complétez:  $$P(\overline{B})=\ldots\qquad P(\overline{A}\cap B)=\ldots \qquad P(a\cup B)=\ldots$$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><table style="height:3cm;" class="tableauvaleurs">
+                <tr>
+                    <td></td>
+                    <td>$B$</td>
+                    <td>$\overline{B}$</td>
+                    <td>Totaux</td>
+                </tr>
+                <tr>
+                    <td>$A$</td>
+                    <td>$\color{red}\num{0.3}$</td>
+                    <td>$\num{0.1}$</td>
+                    <td>$\num{0.4}$</td>
+                </tr>
+                <tr>
+                    <td>$\overline{A}$</td>
+                    <td>$\color{red}\num{0.4}$</td>
+                    <td>$\color{red}\num{0.2}$</td>
+                    <td>$\num{0.6}$</td>
+                </tr>
+                <tr>
+                    <td>Totaux</td>
+                    <td>$\num{0.7}$</td>
+                    <td>$\color{red}\num{0.3}$</td>
+                    <td>$\color{red}\num{1}$
+                </tr>
+            </table></li>
+            <li>$P(\overline{B})=\num{0.3}$ et $P(\overline{A}\cap B)=\num{0.4}$ et $P(A\cup B)=\num{0.8}$</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+    <b>Questions de cours :</b>
+        On considère deux événements $A$ et $B$ d'un même univers tels que $P_A(\overline{B})=\num{0,1}$, $P(\overline{A})=\num{0,7}$ et $P_{\overline{A}}(B)=\num{0,4}$.
+        <ol class="alphabetical-list">
+            <li>Complétez l'arbre pondéré ci-dessous en indiquant d'une couleur les données et d'une autre couleur les valeurs obtenues par calcul (sans détailler les calculs).</li>
+            <div class="figure" style="width:50%">
+                <svg viewBox="0 0 100 80">
+                    <g name="repere1" class="repere" xmin="0" ymin="-2" xmax="5" ymax="2" xorigine="0" yorigine="0"></g>
+                    <g name="O" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+                    
+                    <g name="OA" class="segment" linkto="O A" stroke="black" stroke-width="1"></g>
+                    <!-- <g class="label" repere="repere1" x="1-0.5" y="0.5+0.5" style="font-size:7px;">$p(A)$</g> -->
+                    <g name="OB" class="segment" linkto="O B" stroke="black" stroke-width="1"></g>
+                    <!-- <g class="label" repere="repere1" x="1-0.5" y="-0.5" style="font-size:7px;">$p(B)$</g> -->
+                    <g name="AC" class="segment" linkto="A C" stroke="black" stroke-width="1"></g>
+                    <!-- <g class="label" repere="repere1" x="3-0.5" y="1.25+0.5" style="font-size:7px;">$p_A(C)$</g> -->
+                    <g name="AD" class="segment" linkto="A D" stroke="black" stroke-width="1"></g>   
+                    <!-- <g class="label" repere="repere1" x="3-0.5" y="0.75" style="font-size:7px;">$p_A(D)$</g> -->
+                    <g name="BE" class="segment" linkto="B E" stroke="black" stroke-width="1"></g>
+                    <!-- <g class="label" repere="repere1" x="3-0.5" y="-0.25" style="font-size:7px;">$p_B(E)$</g> -->
+                    <g name="BF" class="segment" linkto="B F" stroke="black" stroke-width="1"></g>
+                    <!-- <g class="label" repere="repere1" x="3-0.5" y="-0.75-0.5" style="font-size:7px;">$p_B(F)$</g> -->
+
+                    <g name="A" class="point" repere="repere1" x="2" y="1" stroke="none"></g>
+                    <g class="rectangle" repere="repere1" x="2" y="1" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+                    <!-- <g class="label" repere="repere1" x="1.8" y="1.3" style="font-size:10px;">$A$</g> -->
+                    
+                    <g name="B" class="point" repere="repere1" x="2" y="-1" stroke="none"></g>
+                    <g class="rectangle" repere="repere1" x="2" y="-1" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+                    <!-- <g class="label" repere="repere1" x="1.8" y="-0.7" style="font-size:10px;">$B$</g> -->
+                    
+                    <g name="C" class="point" repere="repere1" x="4" y="1.5" stroke="none"></g>
+                    <g class="rectangle" repere="repere1" x="4" y="1.5" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+                    <!-- <g class="label" repere="repere1" x="3.8" y="1.8" style="font-size:10px;">$C$</g> -->
+
+                    <g name="D" class="point" repere="repere1" x="4" y="0.5" stroke="none"></g>
+                    <g class="rectangle" repere="repere1" x="4" y="0.5" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+                    <!-- <g class="label" repere="repere1" x="3.8" y="0.8" style="font-size:10px;">$D$</g> -->
+
+                    <g name="E" class="point" repere="repere1" x="4" y="-0.5" stroke="none"></g>
+                    <g class="rectangle" repere="repere1" x="4" y="-0.5" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+                    <!-- <g class="label" repere="repere1" x="3.8" y="-0.2" style="font-size:10px;">$C$</g> -->
+
+                    <g name="F" class="point" repere="repere1" x="4" y="-1.5" stroke="none"></g>
+                    <g class="rectangle" repere="repere1" x="4" y="-1.5" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+                    <!-- <g class="label" repere="repere1" x="3.8" y="-1.2" style="font-size:10px;">$D$</g> -->
+                </svg>
+            </div>
+            <li>Complétez : $$P(A\cap \overline{B})=\ldots \qquad P(\overline{A}\cap \overline{B})=\ldots\qquad P(\overline{B})=\ldots$$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>Complétez l'arbre pondéré ci-dessous en indiquant d'une couleur les données et d'une autre couleur les valeurs obtenues par calcul (sans détailler les calculs).</li>
+            <div class="figure" style="width:50%">
+                <svg viewBox="0 0 100 80">
+                    <g name="repere1" class="repere" xmin="0" ymin="-2" xmax="5" ymax="2" xorigine="0" yorigine="0"></g>
+                    <g name="O" class="point" repere="repere1" x="0" y="0" stroke="none"></g>
+                    
+                    <g name="OA" class="segment" linkto="O A" stroke="black" stroke-width="1"></g>
+                    <g class="label" repere="repere1" x="1-0.5" y="0.5+0.5" style="font-size:7px;">$\color{red}\num{0.3}$</g>
+                    <g name="OB" class="segment" linkto="O B" stroke="black" stroke-width="1"></g>
+                    <g class="label" repere="repere1" x="1-0.5" y="-0.5" style="font-size:7px;">$\num{0.7}$</g>
+                    <g name="AC" class="segment" linkto="A C" stroke="black" stroke-width="1"></g>
+                    <g class="label" repere="repere1" x="3-0.5" y="1.25+0.5" style="font-size:7px;">$\color{red}\num{0.9}$</g>
+                    <g name="AD" class="segment" linkto="A D" stroke="black" stroke-width="1"></g>   
+                    <g class="label" repere="repere1" x="3-0.5" y="0.75" style="font-size:7px;">$\num{0.1}$</g>
+                    <g name="BE" class="segment" linkto="B E" stroke="black" stroke-width="1"></g>
+                    <g class="label" repere="repere1" x="3-0.5" y="-0.25" style="font-size:7px;">$\num{0.4}$</g>
+                    <g name="BF" class="segment" linkto="B F" stroke="black" stroke-width="1"></g>
+                    <g class="label" repere="repere1" x="3-0.5" y="-0.75-0.5" style="font-size:7px;">$\color{red}\num{0.6}$</g>
+
+                    <g name="A" class="point" repere="repere1" x="2" y="1" stroke="none"></g>
+                    <g class="rectangle" repere="repere1" x="2" y="1" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+                    <g class="label" repere="repere1" x="1.8" y="1.3" style="font-size:10px;">$A$</g>
+                    
+                    <g name="B" class="point" repere="repere1" x="2" y="-1" stroke="none"></g>
+                    <g class="rectangle" repere="repere1" x="2" y="-1" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+                    <g class="label" repere="repere1" x="1.8" y="-0.7" style="font-size:10px;">$\overline{A}$</g>
+                    
+                    <g name="C" class="point" repere="repere1" x="4" y="1.5" stroke="none"></g>
+                    <g class="rectangle" repere="repere1" x="4" y="1.5" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+                    <g class="label" repere="repere1" x="3.8" y="1.8" style="font-size:10px;">$B$</g>
+
+                    <g name="D" class="point" repere="repere1" x="4" y="0.5" stroke="none"></g>
+                    <g class="rectangle" repere="repere1" x="4" y="0.5" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+                    <g class="label" repere="repere1" x="3.8" y="0.8" style="font-size:10px;">$\overline{B}$</g>
+
+                    <g name="E" class="point" repere="repere1" x="4" y="-0.5" stroke="none"></g>
+                    <g class="rectangle" repere="repere1" x="4" y="-0.5" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+                    <g class="label" repere="repere1" x="3.8" y="-0.2" style="font-size:10px;">$B$</g>
+
+                    <g name="F" class="point" repere="repere1" x="4" y="-1.5" stroke="none"></g>
+                    <g class="rectangle" repere="repere1" x="4" y="-1.5" ancre="centre" largeur="0.5" hauteur="0.5" fill="white"></g>
+                    <g class="label" repere="repere1" x="3.8" y="-1.2" style="font-size:10px;">$\overline{B}$</g>
+                </svg>
+            </div>
+            <li>$P(A\cap \overline{B})=\num{0.03}$ et $P(\overline{A}\cap \overline{B})=\num{0.42}$</li>
+            <li>$P(\overline{B})=\num{0.45}$.</li>
+        </ol>
+    </div>
+</div>
+
+</div>
+</div></main>
+  </body>
+</html>
