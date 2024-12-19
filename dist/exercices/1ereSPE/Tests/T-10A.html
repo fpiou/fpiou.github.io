@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>T-10A.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header class="brouillon"><div>Test</div><div class="header-niveau">1re Spécialité Mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>T-10A<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div copy="1">
+<div class="nocolonnes" style="font-size:11pt;">
+
+<div class="exercice">
+    <div class="enonce">
+        <b>Questions de cours :</b>
+        <ol class="alphabetical-list">
+            <li>Complétez le tableau suivant :<br>
+            <table class="tableauvaleurs">
+                <tr>
+                    <td>Nature de la suite</td>
+                    <td>Forme explicite</td>
+                    <td>Récurrence</td>
+                    <td>Raison</td>
+                    <td>Premier terme</td>
+                </tr>
+                <tr style="height:5em;">
+                    <td>Arithmétique</td>
+                    <td></td>
+                    <td></td>
+                    <td>$r=9$</td>
+                    <td>$u_0=5$</td>
+                </tr>
+                <tr style="height:5em;">
+                    <td>Géométrique</td>
+                    <td></td>
+                    <td></td>
+                    <td>$q=7$</td>
+                    <td>$v_0=2$</td>
+                </tr>
+            </table>
+            </li>
+            <li>Calculez les trois premiers termes de la suite définie par $u_0=1$ et $u_{n+1}=2u_n+1$ pour tout entier naturel $n$.</li>
+            <li>Calculez les trois premiers termes de la suite définie par $v_n=n^2+1$ pour tout entier naturel $n$.</li>
+            <li>Pour chaque suite, indiquez si elle semble arithmétique, géométrique ou ni l'un ni l'autre. Justifiez.
+                <ul>
+                    <li>$u_0=\num{0.5} \quad u_1=\num{1.5} \quad u_2=\num{4.5} \quad u_3=\num{13.5}$</li>
+                    <li>$v_0=1, \quad v_1=2, \quad v_2=5, \quad v_3=10$</li>
+                    <li>$w_0=6, \quad w_1=\num{4.3}, \quad w_2=\num{2.6}, \quad w_3=\num{0.9}$</li>
+                </ul>
+            </li>
+            <li>Pour chaque suite arithmétique ou géométrique de la question précédente, écrivez la forme explicite de la suite.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Une maladie touche $\num{0.2}~\%$ d'une population.
+        Un laboratoire propose un test afin de dépister cette maladie.
+        Lorsqu'un individu est atteint par la maladie, le test est positif dans $\num{95}~\%$ des cas. Lorsqu'un individu est sain, le test est positif dans $\num{2}~\%$ des cas. On choisit au hasard un individu dans la population et on lui fait passer le test. On note :
+        <ul>
+            <li>$M$ l'événement "l'individu est atteint par la maladie",</li>
+            <li>$T$ l'événement "le test est positif".</li>
+        </ul>
+        Calculer la probabilité que le test soit positif.
+    </div>
+    <div class="solution">
+        <b>Solution :</b>
+        <ul>
+            <li>On a $P(M)=\num{0.002}$, $P_M(T)=\num{0.95}$ et $P_{\overline{M}}(T)=\num{0.02}$.</li>
+            <li>On cherche $P(T)$.</li>
+            <li>On a $P(T)=P(M)P_M(T)+P(\overline{M})P_{\overline{M}}(T)$.</li>
+            <li>Donc $P(T)=\num{0.002}\times\num{0.95}+\num{0.998}\times\num{0.02}=\num{0.0219}$.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Résoudre l'inéquation $3x^2+6x-90\lt 15$.
+    </div>
+    <div class="solution">
+        <b>Solution :</b>
+        <ul>
+            <li>On cherche les solutions de l'équation $3x^2+6x-90=15$.</li>
+            <li>On a $3x^2+6x-105=0$.</li>
+            <li>Donc $x^2+2x-35=0$.</li>
+            <li>Donc $(x+7)(x-5)=0$.</li>
+            <li>Donc $x=-7$ ou $x=5$.</li>
+            <li>Donc les solutions de l'inéquation sont $-7\lt x\lt 5$.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Dans un carré \(ABCD\) de côté 6, on construit le milieu \(I\) du segment \([AB]\)
+            et les points \(J\) et \(K\) tels que :
+
+            \[
+            \overrightarrow{A K} = \tfrac{1}{4}\overrightarrow{A D}
+            \quad \text{et} \quad
+            \overrightarrow{C J} = \tfrac{1}{4}\overrightarrow{C B}.
+            \]
+        <div style="text-align:center;">
+            <img src="\src\exercices\1ereSPE\Tests\image.png" alt="Construction géométrique" width="150px">
+        </div>
+        
+            Démontrez que les droites \((D I)\) et \((J K)\) sont perpendiculaires.
+        
+    </div>
+    <div class="solution">
+        
+    </div>
+</div>
+</div></main>
+  </body>
+</html>
