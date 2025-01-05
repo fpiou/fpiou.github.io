@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>B-01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Suites numériques</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>B-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<h1>Généralités</h1>
+
+<div class="definition">
+    Une suite numérique $u$ est une fonction définie sur $\mathbb{N}$ à valeurs dans $\mathbb{R}$.
+    $$\begin{array}{crcl}
+        u: &\mathbb{N} & \longrightarrow & \mathbb{R} \\
+        &n & \longmapsto & u(n)
+    \end{array}$$
+    On note $u_n$ la valeur de $u$ en $n$. Autrement dit $$u_n = u(n)$$
+    Les premiers termes de la suite $u$ sont donc $u_0$, $u_1$, $u_2$, $u_3$, $\ldots$.<br>
+    La suite $u$ se note $(u_n)$, ou $(u_n)_{n\in\mathbb{N}}$, ou encore $(u_n)_{n\geqslant 1}$ si elle commence à l'indice 1.
+</div>
+
+<div class="definition">
+    Une suite numérique $u$ est définie par une formule explicite si on peut exprimer $u_n$ en fonction de $n$.
+</div>
+<div class="exercice">
+  <div class="enonce">
+    Chaque suite $u$ suivante est définie pour tout entier naturel $n$. Calculez les 4 premiers termes.
+    <ol class="alphabetical-list horizontal-list col-2c">
+      <li>$u_n = 2n + 1$</li>
+      <li>$u_n = 3n^2 - 2n + 1$</li>
+      <li>$u_n = 2^n$</li>
+      <li>$u_n = \frac{1}{n+1}$</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li>$$\begin{array}{l}
+        u_0 = 2\times0 + 1 = 1, \\
+        u_1 = 2\times1 + 1 = 3, \\
+        u_2 = 2\times2 + 1 = 5, \\
+        u_3 = 2\times3 + 1 = 7.
+      \end{array}$$</li>
+      <li>$$\begin{array}{l}
+        u_0 = 3\times0^2 - 2\times0 + 1 = 1, \\
+        u_1 = 3\times1^2 - 2\times1 + 1 = 2, \\
+        u_2 = 3\times2^2 - 2\times2 + 1 = 9 - 4 + 1 = 6, \\
+        u_3 = 3\times3^2 - 2\times3 + 1 = 27 - 6 + 1 = 22.
+      \end{array}$$</li>
+      <li>$$\begin{array}{l}
+        u_0 = 2^0 = 1, \\
+        u_1 = 2^1 = 2, \\
+        u_2 = 2^2 = 4, \\
+        u_3 = 2^3 = 8.
+      \end{array}$$</li>
+      <li>$$\begin{array}{l}
+        u_0 = \frac{1}{0+1} = 1, \\
+        u_1 = \frac{1}{1+1} = \frac{1}{2}, \\
+        u_2 = \frac{1}{2+1} = \frac{1}{3}, \\
+        u_3 = \frac{1}{3+1} = \frac{1}{4}.
+      \end{array}$$</li>
+    </ol>
+  </div>
+</div>
+
+<div class="definition">
+    Une suite numérique $u$ est définie par récurrence si on peut exprimer $u_{n+1}$ en fonction de $u_n$. On donne le premier terme $u_0$ et la relation de récurrence.
+</div>
+
+<div class="exercice">
+  <div class="enonce">
+    Chaque suite $u$ suivante est définie par récurrence pour tout entier naturel $n$. Calculez les 4 premiers termes.
+    <ol class="alphabetical-list horizontal-list col-2c">
+      <li>$$\left\{\begin{array}{l}
+        u_0=-5 \\
+        u_{n+1}=u_n+2
+      \end{array}\right.$$</li>
+      <li>$$\left\{\begin{array}{l}
+        u_0=\num{0.5} \\
+        u_{n+1}=2u_n
+      \end{array}\right.$$</li>
+      <li>$$\left\{\begin{array}{l}
+        u_0=-2 \\
+        u_{n+1}=u_n^2
+      \end{array}\right.$$</li>
+      <li>$$\left\{\begin{array}{l}
+        u_0=1 \\
+        u_{n+1}=4u_n+1
+      \end{array}\right.$$</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li>$$\begin{array}{l}
+        u_0 = -5, \\
+        u_1 = u_0 + 2 = -5 + 2 = -3, \\
+        u_2 = u_1 + 2 = -3 + 2 = -1, \\
+        u_3 = u_2 + 2 = -1 + 2 = 1.
+      \end{array}$$</li>
+      <li>$$\begin{array}{l}
+        u_0 = \num{0.5}, \\
+        u_1 = 2u_0 = 2\times\num{0.5} = 1, \\
+        u_2 = 2u_1 = 2\times1 = 2, \\
+        u_3 = 2u_2 = 2\times2 = 4.
+      \end{array}$$</li>
+      <li>$$\begin{array}{l}
+        u_0 = -2, \\
+        u_1 = u_0^2 = (-2)^2 = 4, \\
+        u_2 = u_1^2 = 4^2 = 16, \\
+        u_3 = u_2^2 = 16^2 = 256.
+      \end{array}$$</li>
+      <li>$$\begin{array}{l}
+        u_0 = 1, \\
+        u_1 = 4u_0 + 1 = 4\times1 + 1 = 5, \\
+        u_2 = 4u_1 + 1 = 4\times5 + 1 = 21, \\
+        u_3 = 4u_2 + 1 = 4\times21 + 1 = 85.
+      \end{array}$$</li>
+    </ol>
+  </div>
+</div>
+
+<h1>Suites particulières</h1>
+
+<div class="definition">
+    Une suite $u$ est arithmétique s'il existe un réel $r$ appelé raison tel que pour tout entier naturel $n$, $u_{n+1}=u_n+r$.
+</div>
+<div class="propriete">
+    La formule explicite d'une suite arithmétique de raison $r$ et de premier terme $u_0$ est $$u_n=u_0+nr$$
+</div>
+<div class="propriete">
+    La formule explicite d'une suite arithmétique de raison $r$ et de premier terme $u_1$ est $$u_n=u_1+(n-1)r$$
+</div>
+
+<div class="definition">
+    Une suite géométrique est une suite numérique $u$ telle qu'il existe un réel $q$ appelé raison tel que pour tout entier naturel $n$, $u_{n+1}=q\times u_n$.
+</div>
+<div class="propriete">
+    La formule explicite d'une suite géométrique de raison $q$ et de premier terme $u_0$ est $$u_n=u_0q^n$$
+</div>
+
+<div class="propriete">
+  <ul style="padding-left: 1em;">
+    <li>Une suite est arithmétique de raison $r$ si et seulement si pour tout entier naturel $n$, $$u_{n+1}-u_{n}=r$$</li>
+    <li>Si $u_n\neq0$, une suite est géométrique de raison $q$ si et seulement si pour tout entier naturel $n$, $$\frac{u_{n+1}}{u_n}=q$$</li>
+  </ul>
+</div>
+
+<div class="exercice">
+  <div class="enonce">
+    <p>Déterminez si chaque suite ci-dessous est arithmétique, géométrique ou ni l'un ni l'autre. Si elle est arithmétique ou géométrique, indiquez sa raison et donnez sa formule explicite.</p>
+    <ol class="alphabetical-list horizontal-list col-2c">
+      <li>$u_n = 5n + 2$</li>
+      <li>$u_n = 3 \cdot 2^n$</li>
+      <li>$u_n = (-1)^n$</li>
+      <li>$u_n = n^2 + 1$</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li>$$\begin{align*}
+        u_{n+1}-u_n &= (5(n+1) + 2) - (5n + 2) \\
+        u_{n+1}-u_n &= 5n + 5 + 2 - 5n - 2 \\
+        u_{n+1}-u_n &= 5
+      \end{align*}$$
+      La suite est donc arithmétique de raison $r=5$ et de premier terme $u_0=2$.
+      </li>
+      <li>$$\begin{align*>
+        \frac{u_{n+1}}{u_n} &= \frac{3 \cdot 2^{n+1}}{3 \cdot 2^n} \\
+        \frac{u_{n+1}}{u_n} &= \frac{2^{n+1}}{2^n} \\
+        \frac{u_{n+1}}{u_n} &= 2
+      \end{align*}$$
+      <p>La suite est donc géométrique de raison $q=2$ et de premier terme $u_0=3$.</p>
+      </li>
+      <li>$$\begin{align*>
+        \frac{u_{n+1}}{u_n} &= \frac{(-1)^{n+1}}{(-1)^n} \\
+        \frac{u_{n+1}}{u_n} &= -1
+      </end{align*}$$
+      <p>La suite est donc géométrique de raison $q=-1$ et de premier terme $u_0=1$.</p>
+      </li>
+      <li>$$\begin{align*>
+        u_{n+1}-u_n &= ((n+1)^2 + 1) - (n^2 + 1) \\
+        u_{n+1}-u_n &= n^2 + 2n + 1 + 1 - n^2 - 1 \\
+        u_{n+1}-u_n &= 2n
+      \end{align*}$$
+      <p>La suite n'est pas arithmétique car la différence n'est pas constante.</p>
+      <p>En effet $u_1 - u_0 = 2$, $u_2 - u_1 = 4$, $u_3 - u_2 = 6$, ...</p>
+      $$\begin{align*>
+        \frac{u_{n+1}}{u_n} &= \frac{(n+1)^2 + 1}{n^2 + 1} \\
+        \frac{u_{n+1}}{u_n} &= \frac{n^2 + 2n + 1 + 1}{n^2 + 1} \\
+        \frac{u_{n+1}}{u_n} &= \frac{n^2 + 2n + 2}{n^2 + 1}
+      \end{align*}$$
+      <p>La suite n'est pas géométrique car le quotient n'est pas constant.</p>
+      <p>En effet $\frac{u_1}{u_0} = 2$, $\frac{u_2}{u_1} = \frac{6}{4} = \frac{3}{2}$, $\frac{u_3}{u_2} = \frac{10}{6} = \frac{5}{3}$, ...
+      </p>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<div class="exercice">
+  <div class="enonce">
+    <p>Les suites suivantes sont définies par récurrence. Déterminez si elles sont arithmétiques ou géométriques, puis donnez leur formule explicite.</p>
+    <ol class="alphabetical-list horizontal-list col-2c">
+      <li>$$\left\{\begin{array}{l}
+        u_0=10 \\[6pt]
+        u_{n+1}=u_n-3
+      \end{array}\right.$$</li>
+      <li>$$\left\{\begin{array}{l}
+        u_0=2 \\[6pt]
+        u_{n+1}=5u_n
+      \end{array}\right.$$</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li>$$\begin{align*}
+        u_{n+1}-u_n &= (u_n-3) - u_n \\
+        u_{n+1}-u_n &= -3
+      \end{align*}$$
+      <p>La suite est donc arithmétique de raison $r=-3$ et de premier terme $u_0=10$.</p>
+      <p>La formule explicite de la suite est $u_n = 10 - 3n$.</p>
+      </li>
+      <li>$$\begin{align*}
+        \frac{u_{n+1}}{u_n} &= \frac{5u_n}{u_n} \\
+        \frac{u_{n+1}}{u_n} &= 5
+      \end{align*}$$
+      <p>La suite est donc géométrique de raison $q=5$ et de premier terme $u_0=2$.</p>
+      <p>La formule explicite de la suite est $u_n = 2 \times 5^n$.</p>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<div class="exercice">
+  <div class="enonce">
+    Considérons les suites $(u_n)$ et $(v_n)$ définies pour tout entier naturel $n$ par :
+    <ol class="horizontal-list">
+      <li>$u_n = 5-n$</li> 
+      <li>$$\left\{\begin{array}{l}
+        v_0=2 \\[6pt]
+        v_{n+1}=5-v_n
+      \end{array}\right.$$</li>
+    </ol>
+    Déterminez si elles sont arithmétiques ou non.
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li>$$\begin{align*}
+        u_{n+1}-u_n &= (5-(n+1)) - (5-n) \\
+        u_{n+1}-u_n &= 5-n-1 - 5+n \\
+        u_{n+1}-u_n &= -1
+      \end{align*}$$
+      <p>La suite $u$ est donc arithmétique de raison $r=-1$ et de premier terme $u_0=5$.</p>
+      </li>
+      <li><p>Calculons les premiers termes de la suite $v$ :</p>
+      $$\begin{array}{l}
+        v_0 = 2, \\
+        v_1 = 5 - v_0 = 5 - 2 = 3, \\
+        v_2 = 5 - v_1 = 5 - 3 = 2, \\
+        v_3 = 5 - v_2 = 5 - 2 = 3.
+      \end{array}$$
+      <p>La suite $v$ n'est pas arithmétique car la différence n'est pas constante.</p>
+      <p>En effet $v_1 - v_0 = 3 - 2 = 1$, $v_2 - v_1 = 2 - 3 = -1$, $v_3 - v_2 = 3 - 2 = 1$, ...</p>
+      <p>La suite $v$ n'est pas géométrique car le quotient n'est pas constant.</p>
+      <p>En effet $\frac{v_1}{v_0} = \frac{3}{2}$, $\frac{v_2}{v_1} = \frac{2}{3}$, $\frac{v_3}{v_2} = \frac{3}{2}$, ...</p>
+    </ol>
+  </div>
+</div>
+</main>
+  </body>
+</html>
