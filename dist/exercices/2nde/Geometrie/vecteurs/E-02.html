@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>E-02.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Géométrie</div><div class="header-niveau">Seconde Générale et Technologique</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>E-02<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div class="propriete">
+    Deux vecteurs sont égaux si et seulement si ils ont la même direction, le même sens et la même longueur.
+</div>
+<div class="exercice">
+    <div class="enonce">
+        <div class="figure">
+            <svg viewBox="0 0 150 70">
+                <g name="repere1" class="repere" xmin="0" ymin="0" xmax="15" ymax="7" xorigine="0" yorigine="0"></g>
+                <g name="ABCD" class="polygone" linkto="A B C D" fill="red" fill-opacity="0.3" stroke="red" stroke-width="1"></g>
+                <g name="A" class="point draggable labeled" repere="repere1" x="7" y="2" stroke="none"></g>
+                <g class="label" linkto="A" x="-10" y="0">I</g>
+                <g name="B" class="point draggable labeled" repere="repere1" x="12" y="3" stroke="none"></g>
+                <g class="label" linkto="B" x="0" y="0">J</g>
+                <g name="C" class="point rotation labeled" linkto="B A" data="40 1"></g>
+                <g class="label" linkto="C" x="0" y="-15">B</g>
+                <g name="D" class="point translation labeled" linkto="B A C" stroke="none"></g>
+                <g class="label" linkto="D" x="-15" y="-10">C</g>
+            </svg>
+        </div>
+        $IJBC$ est un losange. Les affirmations suivantes sont-elles vraies ou fausses&nbsp;? Justifiez.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$IJ=IC$</li>
+            <li>$\overrightarrow{IJ}=\overrightarrow{IC}$</li>
+            <li>$IJ=CB$</li>
+            <li>$\overrightarrow{IJ}=\overrightarrow{CB}$</li>
+        </ol>
+    </div>
+</div>
+
+<div class="definition">
+    Soit $A$ un point du plan. Le vecteur nul, noté $\overrightarrow{0}$, est le vecteur qui a pour origine et pour extrémité le point $A$. On a donc $\overrightarrow{AA}=\overrightarrow{0}$.
+</div>
+
+<div class="propriete">
+    Soient $A$, $B$ et $C$ trois points du plan. On a&nbsp;:
+    $$\overrightarrow{AB} + \overrightarrow{BC}=\overrightarrow{AC}$$
+    Cette relation est appelée la relation de Chasles.
+</div>
+
+<div class="propriete">
+    Deux vecteurs sont dits opposés si leur somme est le vecteur nul. Autrement dit, deux vecteurs $\overrightarrow{u}$ et $\overrightarrow{v}$ sont opposés si et seulement si $\overrightarrow{u} + \overrightarrow{v} = \overrightarrow{0}$.
+</div>
+
+<div class="propriete">
+    Soient $A$ et $B$ deux points du plan. Les vecteurs $\overrightarrow{AB}$ et $\overrightarrow{BA}$ sont opposés.
+
+    En effet, on a $\overrightarrow{AB} + \overrightarrow{BA} = \overrightarrow{AA} = \overrightarrow{0}$.
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Réduire les sommes vectorielles suivantes quand c'est possible&nbsp;:
+        <ol class="alphabetical-list horizontal-list col-3c">
+            <li>$\overrightarrow{IP}+\overrightarrow{RI}$</li>
+            <li>$\overrightarrow{AT}+\overrightarrow{TI}$</li>
+            <li>$\overrightarrow{EF}+\overrightarrow{IE}$</li>
+            <li>$\overrightarrow{GA}-\overrightarrow{GF}$</li>
+            <li>$\overrightarrow{MA}+\overrightarrow{AM}$</li>
+            <li>$\overrightarrow{AJ}+\overrightarrow{AJ}$</li>
+            <li>$\overrightarrow{AE}+\overrightarrow{AF}$</li>
+            <li>$\overrightarrow{IE}-\overrightarrow{IE}$</li>
+            <li>$\overrightarrow{AB}-\overrightarrow{BA}$</li>
+        </ol>
+        <ol class="alphabetical-list horizontal-list col-2c" start="10">
+            <li>$-\overrightarrow{DF}-\overrightarrow{ED}$</li>
+            <li>$\overrightarrow{ET}+\overrightarrow{FI}+\overrightarrow{IE}$</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        $ABCD$ est un parallélogramme. Montrez que $\overrightarrow{AB}+\overrightarrow{AD}=\overrightarrow{AC}$.
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Montrez que si $\overrightarrow{EF}+\overrightarrow{EH}=\overrightarrow{EG}$, alors $EFGH$ est un parallélogramme.
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        $ABC$ est un triangle quelconque et $I$ et $J$ sont les milieux respectifs de $[AB]$ et $[AC]$.
+        <div id="figure3" class="figure">
+            <svg id="figure3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 100">
+                <!-- Début de la figure -->
+                <g name="A" class="point labeled draggable" x="20" y="70" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="A" x="-10" y="-10">A</g>
+                <g name="B" class="point labeled draggable" x="120" y="80" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="B" x="0" y="0">B</g>
+                <g name="C" class="point labeled draggable" x="70" y="20" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="C" x="0" y="-15">C</g>
+                <g name="ABC" class="polygone" linkto="A B C" style="fill:green;fill-opacity:0.1;"></g>
+                <g name="I" class="point labeled translation" linkto="A B A" data="0.5" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="I" x="-5" y="0">I</g>
+                <g name="J" class="point labeled translation" linkto="C A C" data="0.5" style="font-size:0.8rem;"></g>
+                <g class="label" linkto="J" x="-15" y="-10">J</g>
+                <g name="IJ" class="segment" linkto="I J" stroke="blue"></g>
+            </svg>
+        </div>
+        <ol class="alphabetical-list">
+            <li>Montrez que $\overrightarrow{BA}=2\overrightarrow{IA}$.</li>
+            <li>Montrez que $\overrightarrow{AC}=2\overrightarrow{AJ}$.</li>
+            <li>En déduire que $\overrightarrow{BC}=2\overrightarrow{IJ}$.</li>            
+            <li>QUe peut-on en déduire sur $(IJ)$ et $(BC)$ ? sur $IJ$ et $BC$ ?</li>
+            <li>Soit $K$ le milieu de $[BC]$. Montrez que $IJKB$ est un parallelogramme.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        $ABCD$ est un quadrilatère. $I$, $J$, $K$ et $L$ sont les milieux respectifs des côtés $[AB],$ $[BC],$
+            $[CD]$ et $[DA].$ Montrez que $IJKL$ est un parallélogramme.
+    </div>
+    <div id="figure3" class="figure">
+        <svg id="figure3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 100">
+            <!-- Début de la figure -->
+            <g name="A" class="point labeled draggable" x="20" y="70" style="font-size:0.8rem;"></g>
+            <g class="label" linkto="A" x="-10" y="-10">A</g>
+            <g name="B" class="point labeled draggable" x="120" y="80" style="font-size:0.8rem;"></g>
+            <g class="label" linkto="B" x="0" y="0">B</g>
+            <g name="C" class="point labeled draggable" x="120" y="30" style="font-size:0.8rem;"></g>
+            <g class="label" linkto="C" x="0" y="-15">C</g>
+            <g name="D" class="point labeled draggable" x="70" y="20" style="font-size:0.8rem;"></g>
+            <g class="label" linkto="D" x="0" y="-15">D</g>
+            <g name="ABCD" class="polygone" linkto="A B C D" style="fill:green;fill-opacity:0.1;"></g>
+            <g name="I" class="point labeled translation" linkto="A B A" data="0.5" style="font-size:0.8rem;"></g>
+            <g class="label" linkto="I" x="-5" y="0">I</g>
+            <g name="J" class="point labeled translation" linkto="B C B" data="0.5" style="font-size:0.8rem;"></g>
+            <g class="label" linkto="J" x="0" y="-10">J</g>
+            <g name="K" class="point labeled translation" linkto="C D C" data="0.5" style="font-size:0.8rem;"></g>
+            <g class="label" linkto="K" x="-5" y="-15">K</g>
+            <g name="L" class="point labeled translation" linkto="D A D" data="0.5" style="font-size:0.8rem;"></g>
+            <g class="label" linkto="L" x="-15" y="-10">L</g>
+            <g name="IJKL" class="polygone" linkto="I J K L" style="fill:blue;fill-opacity:0.1;"></g>
+        </svg>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        $k$ est un réel non nul.
+        $O$, $A$, $B$, $M$ et $N$ sont des points du plan tels que $\overrightarrow{OM}=k\overrightarrow{OA}$ et $\overrightarrow{ON}=k\overrightarrow{OB}$.
+        <ol class="alphabetical-list">
+            <li>Montrez que $\overrightarrow{MN}=k\overrightarrow{AB}$.</li>
+            <li>Que peut-on dire si $k=1$ ? $k=2$ ? $k=-1$ ?</li>
+        </ol>
+    </div>
+</div>
+
+
+<!-- <div class="propriete">
+    <ul style="padding-left: 1em;">
+        <li>Si $ABCD$ est un parallélogramme, alors $\overrightarrow{AB}+\overrightarrow{AD}=\overrightarrow{AC}$.</li>
+        <div class="figure">
+            <svg viewBox="0 0 150 100">
+                <g name="repere1" class="repere" xmin="0" ymin="0" xmax="15" ymax="10" xorigine="0" yorigine="0"></g>
+                <g name="A" class="point draggable labeled" repere="repere1" x="2" y="2" stroke="none"></g>
+                <g class="label" linkto="A" x="-10" y="0">A</g>
+                <g name="B" class="point draggable labeled" repere="repere1" x="10" y="3" stroke="none"></g>
+                <g class="label" linkto="B" x="0" y="0">B</g>
+                <g name="C" class="point draggable labeled" repere="repere1" x="12" y="8" stroke="none"></g>
+                <g class="label" linkto="C" x="0" y="-10">C</g>
+                <g name="D" class="point translation labeled" linkto="B A C" stroke="none"></g>
+                <g class="label" linkto="D" x="-15" y="-10">D</g>
+                <g class="vecteur" linkto="A B" stroke="blue"></g>
+                <g class="vecteur" linkto="A C" stroke="red"></g>
+                <g class="vecteur" linkto="A D" stroke="blue"></g>
+                <g class="segment" linkto="D C" stroke="black" stroke-dasharray="2,2"></g>
+                <g class="segment" linkto="B C" stroke="black" stroke-dasharray="2,2"></g>
+            </svg>
+        </div>
+        <li>Si $\overrightarrow{AB}+\overrightarrow{AD}=\overrightarrow{AC}$, alors $ABCD$ est un parallélogramme.</li>
+    </ul>
+</div>
+ -->
+</main>
+  </body>
+</html>
