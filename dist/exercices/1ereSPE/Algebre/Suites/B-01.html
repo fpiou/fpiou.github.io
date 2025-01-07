@@ -113,11 +113,11 @@
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
 
-    <main><header><div>Suites numériques</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>B-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+    <main><header class="brouillon"><div>Suites numériques</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>B-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
 
 <h1>Généralités</h1>
 
-<div class="definition">
+<div class="definition noprint">
     Une suite numérique $u$ est une fonction définie sur $\mathbb{N}$ à valeurs dans $\mathbb{R}$.
     $$\begin{array}{crcl}
         u: &\mathbb{N} & \longrightarrow & \mathbb{R} \\
@@ -128,7 +128,7 @@
     La suite $u$ se note $(u_n)$, ou $(u_n)_{n\in\mathbb{N}}$, ou encore $(u_n)_{n\geqslant 1}$ si elle commence à l'indice 1.
 </div>
 
-<div class="definition">
+<div class="definition noprint">
     Une suite numérique $u$ est définie par une formule explicite si on peut exprimer $u_n$ en fonction de $n$.
 </div>
 <div class="exercice">
@@ -171,7 +171,7 @@
   </div>
 </div>
 
-<div class="definition">
+<div class="definition noprint">
     Une suite numérique $u$ est définie par récurrence si on peut exprimer $u_{n+1}$ en fonction de $u_n$. On donne le premier terme $u_0$ et la relation de récurrence.
 </div>
 
@@ -229,24 +229,24 @@
 
 <h1>Suites particulières</h1>
 
-<div class="definition">
+<div class="definition noprint">
     Une suite $u$ est arithmétique s'il existe un réel $r$ appelé raison tel que pour tout entier naturel $n$, $u_{n+1}=u_n+r$.
 </div>
-<div class="propriete">
+<div class="propriete noprint">
     La formule explicite d'une suite arithmétique de raison $r$ et de premier terme $u_0$ est $$u_n=u_0+nr$$
 </div>
-<div class="propriete">
+<div class="propriete noprint">
     La formule explicite d'une suite arithmétique de raison $r$ et de premier terme $u_1$ est $$u_n=u_1+(n-1)r$$
 </div>
 
-<div class="definition">
+<div class="definition noprint">
     Une suite géométrique est une suite numérique $u$ telle qu'il existe un réel $q$ appelé raison tel que pour tout entier naturel $n$, $u_{n+1}=q\times u_n$.
 </div>
-<div class="propriete">
+<div class="propriete noprint">
     La formule explicite d'une suite géométrique de raison $q$ et de premier terme $u_0$ est $$u_n=u_0q^n$$
 </div>
 
-<div class="propriete">
+<div class="propriete noprint">
   <ul style="padding-left: 1em;">
     <li>Une suite est arithmétique de raison $r$ si et seulement si pour tout entier naturel $n$, $$u_{n+1}-u_{n}=r$$</li>
     <li>Si $u_n\neq0$, une suite est géométrique de raison $q$ si et seulement si pour tout entier naturel $n$, $$\frac{u_{n+1}}{u_n}=q$$</li>
@@ -255,7 +255,7 @@
 
 <div class="exercice">
   <div class="enonce">
-    <p>Déterminez si chaque suite ci-dessous est arithmétique, géométrique ou ni l'un ni l'autre. Si elle est arithmétique ou géométrique, indiquez sa raison et donnez sa formule explicite.</p>
+    <p>Déterminez si chaque suite ci-dessous est arithmétique, géométrique ou ni l'une ni l'autre. Si elle est arithmétique ou géométrique, indiquez sa raison et son premier terme.</p>
     <ol class="alphabetical-list horizontal-list col-2c">
       <li>$u_n = 5n + 2$</li>
       <li>$u_n = 3 \times 2^n$</li>
@@ -374,6 +374,289 @@
     </ol>
   </div>
 </div>
-</main>
+
+<h1>Sens de variation</h1>
+<h2 class="noprint">Définitions</h2>
+<div class="definition noprint">
+    Une suite est <i>croissante</i> si pour tout entier naturel $n$, on a $$u_{n+1} \geqslant u_n.$$
+    Une suite est dite <i>strictement croissante</i> si pour tout entier naturel $n$, on a $$u_{n+1} \gt u_n.$$
+</div>
+<div class="definition noprint">
+    Une suite est <i>décroissante</i> si pour tout entier naturel $n$, on a $$u_{n+1} \leqslant u_n.$$
+    Une suite est dite <i>strictement décroissante</i> si pour tout entier naturel $n$, on a $$u_{n+1} \lt u_n.$$
+</div>
+<div class="definition noprint">
+    Une suite est <i>constante</i> si pour tout entier naturel $n$, on a $$u_{n+1} = u_n.$$
+</div>
+<div class="definition noprint">
+    On dit qu'une suite est <i>croissante</i> à partir d'un certain rang $n_0$ si pour tout entier naturel $n \geqslant n_0$, on a $u_{n+1} \geqslant u_n$.<br>
+    On définit de manière semblable les notions de suite <i>strictement croissante</i>, <i>décroissante</i>, <i>strictement décroissante</i> et <i>constante</i> à partir d'un certain rang $n_0$.
+</div>
+<div class="definition noprint">
+    Une suite est dite <i>monotone</i> (ou <i>monotone à partir d'un certain rang</i>) si elle est croissante, strictement croissante, décroissante, strictement décroissante ou constante.
+</div>
+<h2 class="noprint">Étudier $u_{n+1}-u_n$</h2>
+<div class="propriete noprint">
+  Si pour tout entier naturel $n$ (ou à partir d'un certain rang), on a $$u_{n+1}-u_n \geqslant 0,$$ alors la suite $(u_n)$ est croissante.
+</div>
+<div class="propriete noprint">
+  Si pour tout entier naturel $n$ (ou à partir d'un certain rang), on a $$u_{n+1}-u_n \gt 0,$$ alors la suite $(u_n)$ est strictement croissante. 
+</div>
+<div class="propriete noprint">
+  Si pour tout entier naturel $n$ (ou à partir d'un certain rang), on a $$u_{n+1}-u_n \leqslant 0,$$ alors la suite $(u_n)$ est décroissante.
+</div>
+<div class="propriete noprint">
+  Si pour tout entier naturel $n$ (ou à partir d'un certain rang), on a $$u_{n+1}-u_n \lt 0,$$ alors la suite $(u_n)$ est strictement décroissante.
+</div>
+<div class="propriete noprint">
+  Si pour tout entier naturel $n$ (ou à partir d'un certain rang), on a $$u_{n+1}-u_n = 0,$$ alors la suite $(u_n)$ est constante.
+</div>
+<h2 class="noprint">Étudier $\dfrac{u_{n+1}}{u_n}$</h2>
+<div class="propriete noprint">
+  Si pour tout entier naturel $n$ (ou à partir d'un certain rang), on a $$u_n\gt 0\qquad\text{ et }\qquad\dfrac{u_{n+1}}{u_n} \geqslant 1,$$ alors la suite $(u_n)$ est croissante.
+</div>
+<div class="propriete noprint">
+  Si pour tout entier naturel $n$ (ou à partir d'un certain rang), on a $$u_n\gt 0\qquad\text{ et }\qquad\dfrac{u_{n+1}}{u_n} \gt 1,$$ alors la suite $(u_n)$ est strictement croissante.
+</div>
+<div class="propriete noprint">
+  Si pour tout entier naturel $n$ (ou à partir d'un certain rang), on a $$u_n\gt 0\qquad\text{ et }\qquad\dfrac{u_{n+1}}{u_n} \leqslant 1,$$ alors la suite $(u_n)$ est décroissante.
+</div>
+<div class="propriete noprint">
+  Si pour tout entier naturel $n$ (ou à partir d'un certain rang), on a $$u_n\gt 0\qquad\text{ et }\qquad\dfrac{u_{n+1}}{u_n} \lt 1,$$ alors la suite $(u_n)$ est strictement décroissante.
+</div>
+<div class="propriete noprint">
+  Si pour tout entier naturel $n$ (ou à partir d'un certain rang), on a $$u_n\gt 0\qquad\text{ et }\qquad\dfrac{u_{n+1}}{u_n} = 1,$$ alors la suite $(u_n)$ est constante.
+</div>
+<h2 class="noprint">Exercices</h2>
+<div class="methode noprint">
+  Pour déterminer le sens de variation d'une suite $(u_n)$ (on dit aussi étudier la <i>monotonie</i> de la suite), on peut commencer par calculer les premiers termes de la suite et observer les variations de la suite. Si l'on souhaite démontrer ensuite la monotonie on peut :
+  <ul style="padding-left: 1em;">
+    <li>Calculer $u_{n+1}-u_n$ pour tout entier naturel $n$ (ou à partir d'un certain rang $n_0$) et étudier le signe de cette différence.</li>
+    <li>Calculer $\dfrac{u_{n+1}}{u_n}$ pour tout entier naturel $n$ (ou à partir d'un certain rang $n_0$) et étudier le signe de ce quotient.</li>
+    <li>Si la suite est définie par une formule explicite de la forme $u_n=f(n)$, alors les variations de la suite peuvent être étudiées en étudiant les variations de la fonction $f$.</li>
+  </ul>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    Pour chacune des suites ci-dessous, déterminez le sens de variation en étudiant le signe de la différence $u_{n+1}-u_n$.  <ol class="alphabetical-list horizontal-list col-2c">
+      <li>$u_n = 2n+1$</li>
+      <li>$u_n = 3-2n$</li>
+      <li>$u_n = 5n-6$</li>
+      <li>$u_n = 2n^2-3n$</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list horizontal-list">
+      <li>$$\begin{align*}
+        u_{n+1}-u_n &= 2(n+1)+1 - (2n+1)\\
+        u_{n+1}-u_n &= 2n+2+1 - 2n-1\\
+        u_{n+1}-u_n &= 2
+      \end{align*}$$
+      <p>$u_{n+1}-u_n$ est strictement positif pour tout entier naturel $n$, donc la suite $(u_n)$ est strictement croissante.</p></li>
+      <li>$$\begin{align*}
+        u_{n+1}-u_n &= 3-2(n+1) - (3-2n)\\
+        u_{n+1}-u_n &= 3-2n-2 - 3+2n\\
+        u_{n+1}-u_n &= -2
+      \end{align*}$$
+      <p>$u_{n+1}-u_n$ est strictement négatif pour tout entier naturel $n$, donc la suite $(u_n)$ est strictement décroissante.</p></li>
+      <li>$$\begin{align*}
+        u_{n+1}-u_n &= 5(n+1)-6 - (5n-6)\\
+        u_{n+1}-u_n &= 5n+5-6 - 5n+6\\
+        u_{n+1}-u_n &= 5
+      \end{align*}$$
+      <p>$u_{n+1}-u_n$ est strictement positif pour tout entier naturel $n$, donc la suite $(u_n)$ est strictement croissante.</p></li>
+      <li>$$\begin{align*}
+        u_{n+1}-u_n &= 2(n+1)^2-3(n+1) - (2n^2-3n)\\
+        u_{n+1}-u_n &= 2(n^2+2n+1)-3n-3 - 2n^2+3n\\
+        u_{n+1}-u_n &= 2n^2+4n+2-3n-3 - 2n^2+3n\\
+        u_{n+1}-u_n &= 4n-1
+      \end{align*}$$
+      <p>De plus, à partir de $n=1$, on a $4n-1 \geqslant 3$, donc la suite $(u_n)$ est croissante à partir de $n=1$.</p></li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    Pour chacune des suites de l'exercice précédent, déterminez la fonction $f$ telle que $u_n=f(n)$ et étudiez le sens de variation de la suite en étudiant les variations de la fonction&nbsp;$f$.
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list horizontal-list">
+      <li><p>Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=2x+1$.</p>
+      <p>La fonction $f$ est une fonction affine de coefficient directeur $2$ strictement positif, donc la suite $(u_n)$ est strictement croissante.</p></li>
+      <li><p>Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=3-2x$.</p>
+      <p>La fonction $f$ est une fonction affine de coefficient directeur $-2$ strictement négatif, donc la suite $(u_n)$ est strictement décroissante.</p></li>
+      <li><p>Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=5x-6$.</p>
+      <p>La fonction $f$ est une fonction affine de coefficient directeur $5$ strictement positif, donc la suite $(u_n)$ est strictement croissante.</p></li>
+      <li><p>Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=2x^2-3x$.</p>
+      <p>La fonction $f$ est une fonction polynomiale de degré $2$ dont le coefficient dominant $a=2$ est strictement positif.</p>
+      <p>Calculons l'abscisse du sommet de la parabole : $$\alpha=-\dfrac{b}{2a}=-\dfrac{-3}{2\times 2}=\dfrac{3}{4}.$$</p>
+      <p>$f$ est croissante sur $\left[\dfrac{3}{4},+\infty\right[$, donc la suite $(u_n)$ est croissante à partir de $n=1$.</p></li>
+    </ol>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    Pour chacune des suites ci-dessous, déterminez le sens de variation en étudiant le quotient $\dfrac{u_{n+1}}{u_n}$ (on admettra que $u_n\gt 0$).
+    <ol class="alphabetical-list horizontal-list col-3c">
+      <li>$u_n = 3^n$</li>
+      <li>$u_n = \dfrac{1}{2^n}$</li>
+      <li>$u_n = \dfrac{1}{n+1}$</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list horizontal-list">
+      <li>$$\begin{align*}
+        \dfrac{u_{n+1}}{u_n} &= \dfrac{3^{n+1}}{3^n}\\
+        \dfrac{u_{n+1}}{u_n} &= 3
+      \end{align*}$$
+      <p>Le quotient $\dfrac{u_{n+1}}{u_n}$ est égal à $3$ qui est strictement supérieur à $1$ pour tout entier naturel $n$, donc la suite $(u_n)$ est strictement croissante.</p></li>
+      <li>$$\begin{align*}
+        \dfrac{u_{n+1}}{u_n} &= \dfrac{\dfrac{1}{2^{n+1}}}{\dfrac{1}{2^n}}\\
+        \dfrac{u_{n+1}}{u_n} &= \dfrac{1}{2^{n+1}}\times\dfrac{2^n}{1}\\
+        \dfrac{u_{n+1}}{u_n} &= \dfrac{2^n}{2^{n+1}}\\
+        \dfrac{u_{n+1}}{u_n} &= \dfrac{1}{2}
+      \end{align*}$$
+      <p>Le quotient $\dfrac{u_{n+1}}{u_n}$ est égal à $\dfrac{1}{2}$ qui est strictement inférieur à $1$ pour tout entier naturel $n$, donc la suite $(u_n)$ est strictement décroissante.</p></li>
+      <li>$$\begin{align*}
+        \dfrac{u_{n+1}}{u_n} &= \dfrac{\dfrac{1}{n+2}}{\dfrac{1}{n+1}}\\
+        \dfrac{u_{n+1}}{u_n} &= \dfrac{1}{n+2}\times\dfrac{n+1}{1}\\
+        \dfrac{u_{n+1}}{u_n} &= \dfrac{n+1}{n+2}
+      \end{align*}$$
+      <p>Le quotient $\dfrac{u_{n+1}}{u_n}$ est égal à $\dfrac{n+1}{n+2}$ qui est strictement inférieur à $1$ pour tout entier naturel $n$ car $n+1\lt n+2$, donc la suite $(u_n)$ est strictement décroissante.</p></li>
+    </ol>
+  </div>
+</div>
+<h1>Limite d'une suite</h1>
+<h2 class="noprint">Limite finie</h2>
+<div class="definition noprint">
+    On dit qu'une suite $(u_n)$ a pour limite $l\in\mathbb{R}$ lorsque $n$ tend vers l'infini si les termes de la suite sont aussi proches de $l$ que l'on veut à partir d'un certain rang. On note :
+    $$\lim_{n\to\infty}u_n=l$$
+</div>
+<div class="exercice">
+  <div class="enonce">
+    On considère la suite $(u_n)$ définie pour tout entier naturel $n$ par $u_n = \dfrac{3n-1}{n}$.
+    <ol class="alphabetical-list">
+      <li>À l'aide de la calculatrice, conjecturez une valeur pour la limite de la suite $(u_n)$ lorsque $n$ tend vers l'infini.</li>
+      <li>Simplifiez $\left|\dfrac{3n-1}{n}-3\right|$. En déduire si on peut rendre $\left|\dfrac{3n-1}{n}-3\right|$ aussi petit que l'on veut en prenant $n$ suffisamment grand.</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li>On peut conjecturer que la limite de la suite $(u_n)$ est $3$.</li>
+      <li>$$\begin{align*}
+        \left|\dfrac{3n-1}{n}-3\right| &= \left|\dfrac{3n-1-3n}{n}\right|\\
+        \left|\dfrac{3n-1}{n}-3\right| &= \left|\dfrac{-1}{n}\right|\\
+        \left|\dfrac{3n-1}{n}-3\right| &= \dfrac{1}{n}
+      \end{align*}$$
+      <p>On peut rendre $\dfrac{1}{n}$ aussi petit que l'on veut en prenant $n$ suffisamment grand, donc les termes de la suite $(u_n)$ sont aussi proches de $3$ que l'on veut à partir d'un certain rang.</p>
+    </ol>
+  </div>
+</div>
+<h2 class="noprint">Limite infinie</h2>
+<div class="definition noprint">
+  On dit qu'une suite $(u_n)$ a pour limite $+\infty$ (respectivement $-infty$) lorsque $n$ tend vers l'infini si les termes de la suite deviennent aussi grands (respectivement petits) que l'on veut à partir d'un certain rang. On note :
+  $$\lim_{n\to\infty}u_n=+\infty\qquad\text{ou}\qquad\lim_{n\to\infty}u_n=-\infty$$
+</div>
+
+<div class="exercice">
+  <div class="enonce">
+    On considère la suite $(u_n)$ définie pour tout entier naturel $n$ par $u_n = 2n+5$.
+    <ol class="alphabetical-list">
+      <li>À partir de quel rang $n_0$ peut-on affirmer que $u_n\geqslant 100$ ? $u_n\geqslant 1000$ ?</li>
+      <li>Quelle est la limite de la suite $(u_n)$ lorsque $n$ tend vers l'infini ?</li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li>$$\begin{align*}
+        2n+5 &\geqslant 100\\
+        2n &\geqslant 95\\
+        n &\geqslant \num{47.5}
+      \end{align*}$$
+      <p>On peut affirmer que $u_n\geqslant 100$ à partir de $n_0=48$.</p>
+      <p>$$\begin{align*}
+        2n+5 &\geqslant 1000\\
+        2n &\geqslant 995\\
+        n &\geqslant \num{497.5}
+      \end{align*}$$
+      <p>On peut affirmer que $u_n\geqslant 1000$ à partir de $n_0=498$.</p></li>
+      <li><p>La suite peut être rendue aussi grande que l'on veut en prenant $n$ suffisamment grand, donc la limite de la suite $(u_n)$ est $+\infty$.</li>
+    </ol>
+  </div>
+</div>
+<h2 class="noprint">Exercices</h2>
+<div class="exercice">
+  <div class="enonce">
+    Déterminez le seuil $n_0$ et la limite de la suite $(u_n)$ lorsque $n$ tend vers l'infini pour chacune des suites ci-dessous.
+    <ol class="alphabetical-list">
+      <li>$u_n = 3-2n$, seuil à partir duquel $u_n\leqslant -101$.
+      <br><i>Indication: résoudre une inéquation.</i>
+      </li>
+      <li>$u_n = 5n^2-6n+1$, seuil à partir duquel $u_n\geqslant \num{49401}$.
+      <br><i>Indication : résoudre une inéquation du second degré.</i>
+      </li>
+      <li>$u_n = -2^n$, seuil à partir duquel $u_n\leqslant -1000$
+      <br><i>Indication : utiliser la calculatrice pour déterminer le seuil.</i></li>
+    </ol>
+  </div>
+  <div class="solution">
+    <ol class="alphabetical-list">
+      <li>$$\begin{align*}
+        3-2n &\leqslant -101\\
+        -2n &\leqslant -104\\
+        n &\geqslant 52
+      \end{align*}$$
+      <p>On peut affirmer que $u_n\leqslant -101$ à partir de $n_0=52$.</p>
+      <p>La suite peut être rendue aussi petite que l'on veut en prenant $n$ suffisamment grand, donc la limite de la suite $(u_n)$ est $-\infty$.</p></li>
+      <li>
+      <p>$$\begin{align*}
+        5n^2-6n+1 &\geqslant \num{49401}\\
+        5n^2-6n - \num{49400} &\geqslant 0
+      \end{align*}$$
+      <p>On peut résoudre cette inéquation en utilisant le discriminant de l'équation $5n^2-6n - \num{49400} = 0$ : $\Delta = 6^2 - 4\times5\times(-\num{49400}) = \num{988036}$
+      <p>Les solutions de l'équation sont $n_1 = \dfrac{6 - \sqrt{\num{988036}}}{10} = -\num{98.8}$ et $n_2 = \dfrac{6 + \sqrt{\num{988036}}}{10} = \num{100}$.</p>
+      <p>Le trinôme est positif pour $n\leqslant -\num{98.8}$ et pour $n\geqslant \num{100}$, donc $u_n\geqslant \num{49401}$ à partir de $n_0=100$.</p>
+      <p>On peut affirmer que $u_n\geqslant \num{49401}$ à partir de $n_0=100$.</p>
+      <p>La suite peut être rendue aussi grande que l'on veut en prenant $n$ suffisamment grand, donc la limite de la suite $(u_n)$ est $+\infty$.</p></li>
+      <li>$$\begin{align*}
+        -2^n &\leqslant -1000\\
+        n &\geqslant 10
+      \end{align*}$$
+      <p>On peut affirmer que $u_n\leqslant -1000$ à partir de $n_0=10$
+      car $-2^{9} = -512$ et $-2^{10} = -1024$.</p>
+      <p>La suite peut être rendue aussi petite que l'on veut en prenant $n$ suffisamment grand, donc la limite de la suite $(u_n)$ est $-\infty$.</p></li>
+    </ol>
+  </div>
+  <div class="exercice">
+    <div class="enonce">
+      Considérons la suite $(u_n)$ définie par $u_0=1$ et $u_{n+1} = \sqrt{2u_n}$.
+      <ol class="alphabetical-list">
+        <li>Conjecturez une limite $l$ quand $n$ tend vers l'infini à l'aide de la calculatrice.</li>
+        <li>Complétez le programme Python suivant pour déterminer le seuil $n_0$ à partir duquel $|u_n-l| \lt 10^{-3}$.<br>
+      <pre class="line-numbers"><code class="language-py">from math import sqrt
+u=...
+n=...
+l= ...
+while abs(u-l) ... 10**(-3):
+    u=...
+    n=...</code></pre>
+      </li>
+      </ol>
+    </div>
+    <div class="solution">
+      <ol class="alphabetical-list">
+        <li>On peut conjecturer que la limite de la suite $(u_n)$ est $2$.</li>
+        <li><pre class="line-numbers"><code class="language-py">from math import sqrt
+u=1
+n=0
+l= 2
+while abs(u-l) >= 10**(-3):
+    u=sqrt(2*u)
+    n=n+1</code></pre>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div></main>
   </body>
 </html>
