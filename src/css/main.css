@@ -468,13 +468,17 @@ ol.horizontal-list, ul.horizontal-list {
   padding: 0;
   display: flex;
   flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante si nécessaire */
+  
+  /*Ajout récent*/
+  align-items: center; /* Centrer verticalement les éléments */
+  justify-content: space-around; /* Centrer horizontalement les éléments */
 }
 
-ol.horizontal-list li, ul.horizontal-list li {
-  flex: 1; /* Permet aux éléments de la liste de s'ajuster automatiquement */
+/* ol.horizontal-list li, ul.horizontal-list li {
+  flex: 1;
   padding: 0 5px;
   box-sizing: border-box;
-}
+}*/
 
 /* Classe pour deux colonnes */
 .horizontal-list.col-2c li {
