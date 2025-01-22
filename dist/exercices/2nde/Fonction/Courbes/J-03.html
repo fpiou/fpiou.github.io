@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>J-03.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header class="brouillon"><div>Fonctions</div><div class="header-niveau">Seconde Générale et Technologique</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>J-03<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+On considère la représentation graphique des fonctions suivantes :
+    $$f(x) = -\frac{1}{10}x^{3} + \frac{21}{40}x^{2} + \frac{9}{10}x - \frac{69}{40}$$
+    $$g(x) = -x^{2} - \frac{13}{2}x - \frac{15}{2}$$
+    $$h(x) = \frac{5}{4}x - \frac{3}{4}$$
+<div class="figure">
+    <svg viewBox="0 0 200 200" style="width: 100%;">
+        <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax="5" xorigine="0" yorigine="0"></g>
+        <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1" size="5" origine></g>
+        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1" size="5" origine></g>
+        <g name="O" class="point" repere="repere1" x="0" y="0" stroke="none" font-size="7pt"></g>
+        
+        <g name="I-4" class="point labeled" repere="repere1" x="-4" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I-4" x="-5" y="0">-4</g>
+        <g name="I-3" class="point labeled" repere="repere1" x="-3" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I-3" x="-5" y="0">-3</g>
+        <g name="I-2" class="point labeled" repere="repere1" x="-2" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I-2" x="-5" y="0">-2</g>
+        <g name="I-1" class="point labeled" repere="repere1" x="-1" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I-1" x="-5" y="0">-1</g>
+        <g name="I1" class="point labeled" repere="repere1" x="1" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I1" x="-3" y="0">1</g>
+        <g name="I2" class="point labeled" repere="repere1" x="2" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I2" x="-3" y="0">2</g>
+        <g name="I3" class="point labeled" repere="repere1" x="3" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I3" x="-3" y="0">3</g>
+        <g name="I4" class="point labeled" repere="repere1" x="4" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I4" x="-3" y="0">4</g>
+        
+
+        <g name="J-4" class="point labeled" repere="repere1" x="0" y="-4" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J-4" x="-15" y="-6">-4</g>
+        <g name="J-3" class="point labeled" repere="repere1" x="0" y="-3" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J-3" x="-15" y="-6">-3</g>
+        <g name="J-2" class="point labeled" repere="repere1" x="0" y="-2" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J-2" x="-15" y="-6">-2</g>
+        <g name="J-1" class="point labeled" repere="repere1" x="0" y="-1" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J-1" x="-15" y="-6">-1</g>
+        <g name="J1" class="point labeled" repere="repere1" x="0" y="1" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J1" x="-12" y="-6">1</g>
+        <g name="J2" class="point labeled" repere="repere1" x="0" y="2" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J2" x="-12" y="-6">2</g>
+        <g name="J3" class="point labeled" repere="repere1" x="0" y="3" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J3" x="-12" y="-6">3</g>
+        <g name="J4" class="point labeled" repere="repere1" x="0" y="4" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J4" x="-12" y="-6">4</g>
+
+        <g name="A" class="point labeled" repere="repere1" x="-3" y="3" stroke="black" font-size="7pt"></g>
+        <g name="B" class="point labeled" repere="repere1" x="-1.5" y="-1.5/4*5-0.75" stroke="black" font-size="7pt"></g>
+        <g name="C" class="point labeled" repere="repere1" x="3" y="3" stroke="black" font-size="7pt"></g>
+        
+        <g name="C_f" class="courbeRepresentative labeled" expression="-1/10*x^3 + 21/40*x^2 + 9/10*x^1 - 69/40" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="0.5" fill="transparent" pos_label="0.9" style="font-size: 7pt;"></g>
+        <g name="C_g" class="courbeRepresentative labeled" expression="-1*x^2 - 13/2*x^1 - 15/2" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="0.5" fill="transparent" pos_label="0.1" style="font-size: 7pt;"></g>
+        <g name="C_h" class="courbeRepresentative labeled" expression="5/4*x^1 - 3/4" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="green" stroke-width="0.5" fill="transparent" pos_label="0.25" style="font-size: 7pt;"></g>
+    </svg>
+</div>
+
+<h3>Fonction $h$</h3>
+<div class="exercice">
+    <div class="enonce">
+        Dressez le tableau de valeurs de la fonction $h$ entre $-4$ et $4$ avec un pas de $1$ à l'aide de la calculatrice.
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Dressez le tableau de valeurs de la fonction $h$ entre $-4$ et $4$ avec un pas de $1$ à l'aide de la calculatrice.</li>
+            <li>Quelle est la nature de la fonction $h$&nbsp;? DOnnez-en les caractéristiques (coefficient directeur, ordonnée à l'origine).</li>
+            <li>La fonction $h$ est-elle une fonction linéaire&nbsp;? Justifiez votre réponse.</li>
+            <li>Interprétez en termes d'image l'ordonnée à l'origine de la fonction $h$.</li>
+            <li>Quelle est la nature de la courbe représentative de la fonction $h$, justifiez.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Déterminez les coordonnées du point $B$ par lecture graphique. Interprétez en termes d'image.</li>
+            <li>Déterminez les coordonnées du point $C$ par lecture graphique. Interprétez en termes d'image.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Déterminez par un calcul à la main les coordonnées du point $C$ sachant que son abscisse est $3$.</li>
+            <li>Déterminez par un calcul à la calculatrice les coordonnées du point $B$ sachant que son abscisse est $-\num{1.5}$.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <li>Déterminez par lecture graphique l'antécédent de $-3$ par la fonction $h$.</li>
+        <li>Déterminez par un calcul à la main l'antécédent de $-3$ par la fonction $h$.</li>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alpahabetical-list">
+            <li>Résoudre par lecture graphique l'équation $h(x) \leqslant 0$.</li>
+            <li>Résoudre par lecture graphique l'inéquation $h(x) \gt 2$.</li>
+        </ol>
+    </div>
+</div>
+
+<!-- //////////////////////////////////////////////// -->
+
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Résoudre par un calcul à la main l'équation $h(x) \leqslant 0$.</li>
+            <li>Résoudre par un calcul à la main l'inéquation $h(x) \gt 2$.</li>
+        </ol>
+    </div>
+</div>
+
+<h3>Fonction $f$</h3>
+<div class="exercice">
+    <div class="enonce">
+        Dressez le tableau de valeurs de la fonction $f$ entre $-4$ et $4$ avec un pas de $1$ à l'aide de la calculatrice.
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Calculez l'image de $-2$ par la fonction $f$. Interprétez graphiquement.</li>
+            <li>Calculez l'image de $7$ par la fonction $f$. Interprétez graphiquement.</li>
+            <li>La courbe représentative de $f$ coupe l'axe des ordonnées en un point. Déterminez ses coordonnées puis interprétez en termes d'image.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <li>Déterminez deux antécédents de $2$ par lecture graphique.</li>
+        <li>Utilisez la calculatrice pour une précision à $10^{-2}$ près pour ces antécédents de $2$.</li>
+        <li>Déterminez un antécédent plus grand que $5$ de $2$ à l'aide de la calculatrice puis conclure sachant qu'il n'existe pas d'autres antécédents de $2$.</li>
+    </div>
+</div>
+
+<h3>La fonction $g$</h3>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Déterminez une solution $h(x)=g(x)$ par lecture graphique, vérifiez à la calculatrice.
+            Une autre solution plus petite que $-5$ est possible. Déterminez cette solution à l'aide de la calculatrice.</li>
+            <li>Déterminez l'ensemble des solutions de l'inéquation $h(x) \lt g(x)$ par lecture graphique.</li>
+        </ol>
+    </div>
+</div></main>
+  </body>
+</html>

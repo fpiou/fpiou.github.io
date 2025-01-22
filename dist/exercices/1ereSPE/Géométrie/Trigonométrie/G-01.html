@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>G-01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Trigonométrie</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>G-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<h1>Degré et radians</h1>
+<div class="exercice">
+    <div class="enonce">
+    Quelle est la mesure en degrés des angles ci-dessous&nbsp;?
+    <ol class="alphabetical-list horizontal-list">
+        <li>$2\pi$</li>
+        <li>$\pi$</li>
+        <li>$\frac{\pi}{2}$</li>
+        <li>$\frac{\pi}{3}$</li>
+        <li>$\frac{2\pi}{3}$</li>
+        <li>$\frac{\pi}{4}$</li>
+        <li>$\frac{3\pi}{4}$</li>
+        <li>$\frac{\pi}{6}$</li>
+        <li>$\frac{5\pi}{6}$</li>
+    </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list horizontal-list">
+            <li>360°</li>
+            <li>180°</li>
+            <li>90°</li>
+            <li>60°</li>
+            <li>120°</li>
+            <li>45°</li>
+            <li>135°</li>
+            <li>30°</li>
+            <li>150°</li>
+        </ol>
+    </div>
+</div>
+
+<h1>Cercle trigonométrique</h1>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez l'angle compris dans $]-\pi;\pi]$  associés (en radians) à chacun des points par une symétrie par rapport à l'axe des abscisses, puis par rapport à l'axe des ordonnées puis par rapport à l'origine.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\frac{\pi}{6}$</li>
+            <li>$\frac{\pi}{4}$</li>
+            <li>$\frac{\pi}{3}$</li>
+            <li>$\frac{\pi}{2}$</li>
+            <li>$\frac{2\pi}{3}$</li>
+            <li>$\frac{3\pi}{4}$</li>
+            <li>$\frac{5\pi}{6}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\frac{5\pi}{6}$, $-\frac{5\pi}{6}$, $-\frac{\pi}{6}$</li>
+            <li>$\frac{3\pi}{4}$, $-\frac{3\pi}{4}$, $-\frac{\pi}{4}$</li>
+            <li>$\frac{2\pi}{3}$, $-\frac{2\pi}{3}$, $-\frac{\pi}{3}$</li>
+            <li>$\frac{\pi}{2}$, $-\frac{\pi}{2}$, $-\frac{\pi}{2}$</li>
+            <li>$\frac{\pi}{3}$, $-\frac{\pi}{3}$, $-\frac{2\pi}{3}$</li>
+            <li>$\frac{\pi}{4}$, $-\frac{\pi}{4}$, $-\frac{3\pi}{4}$</li>
+            <li>$\frac{\pi}{6}$, $-\frac{\pi}{6}$, $-\frac{5\pi}{6}$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez l'angle compris dans $[0;2\pi[$  associés (en radians) à chacun des points par une symétrie par rapport à l'axe des abscisses, puis par rapport à l'axe des ordonnées puis par rapport à l'origine.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\frac{\pi}{6}$</li>
+            <li>$\frac{\pi}{4}$</li>
+            <li>$\frac{\pi}{3}$</li>
+            <li>$\frac{\pi}{2}$</li>
+            <li>$\frac{2\pi}{3}$</li>
+            <li>$\frac{3\pi}{4}$</li>
+            <li>$\frac{5\pi}{6}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\frac{5\pi}{6}$, $\frac{11\pi}{6}$, $\frac{\pi}{6}$</li>
+            <li>$\frac{3\pi}{4}$, $\frac{5\pi}{4}$, $\frac{7\pi}{4}$</li>
+            <li>$\frac{2\pi}{3}$, $\frac{4\pi}{3}$, $\frac{\pi}{3}$</li>
+            <li>$\frac{\pi}{2}$, $\frac{3\pi}{2}$, $\frac{\pi}{2}$</li>
+            <li>$\frac{\pi}{3}$, $\frac{5\pi}{3}$, $\frac{2\pi}{3}$</li>
+            <li>$\frac{\pi}{4}$, $\frac{7\pi}{4}$, $\frac{3\pi}{4}$</li>
+            <li>$\frac{\pi}{6}$, $\frac{11\pi}{6}$, $\frac{5\pi}{6}$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Quelle est la mesure principale des angles suivants exprimés en radians&nbsp;?
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\frac{3\pi}{2}$</li>
+            <li>$\frac{5\pi}{2}$</li>
+            <li>$-\frac{5\pi}{2}$</li>
+            <li>$\frac{5\pi}{4}$</li>
+            <li>$-\frac{7\pi}{4}$</li>
+            <li>$\frac{4\pi}{3}$</li>
+            <li>$-\frac{7\pi}{3}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list horizontal-list">
+            <li>$-\frac{\pi}{2}$</li>
+            <li>$5\frac{\pi}{2}$</li>
+            <li>$-\frac{\pi}{2}$</li>
+            <li>$-\frac{3\pi}{4}$</li>
+            <li>$\frac{\pi}{4}$</li>
+            <li>$-\frac{2\pi}{3}$</li>
+            <li>$-\frac{\pi}{3}$</li>
+        </ol>
+    </div>
+</div>
+<h1>$]-\pi;\pi]$</h1>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez la mesure principale de l'angle correspondand à chacun des points suivants en radians en visualisant sur le cercle trigonométrique.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\frac{\pi}{2}+\pi$</li>
+            <li>$\frac{\pi}{3}+\pi$</li>
+            <li>$\frac{2\pi}{3}+\pi$</li>
+            <li>$\frac{\pi}{4}+\pi$</li>
+            <li>$\frac{3\pi}{4}+\pi$</li>
+            <li>$\frac{\pi}{6}+\pi$</li>
+            <li>$\frac{5\pi}{6}+\pi$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list horizontal-list">
+            <li>$-\frac{\pi}{2}$</li>
+            <li>$-2\frac{\pi}{3}$</li>
+            <li>$-\frac{\pi}{3}$</li>
+            <li>$-\frac{3\pi}{4}$</li>
+            <li>$-\frac{\pi}{4}$</li>
+            <li>$-\frac{5\pi}{6}$</li>
+            <li>$-\frac{\pi}{6}$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez la mesure principale de l'angle correspondand à chacun des points suivants en radians en visualisant sur le cercle trigonométrique.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\pi-\frac{\pi}{3}$</li>
+            <li>$\pi-\frac{\pi}{6}$</li>
+            <li>$\pi-\frac{\pi}{4}$</li>
+            <li>$\pi-\frac{2\pi}{3}$</li>
+            <li>$\pi-\frac{3\pi}{4}$</li>
+            <li>$\pi-\frac{5\pi}{6}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\frac{2\pi}{3}$</li>
+            <li>$\frac{5\pi}{6}$</li>
+            <li>$\frac{3\pi}{4}$</li>
+            <li>$\frac{\pi}{3}$</li>
+            <li>$\frac{\pi}{4}$</li>
+            <li>$\frac{\pi}{6}$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez la mesure principale de l'angle correspondand à chacun des points suivants en radians en visualisant sur le cercle trigonométrique.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\frac{\pi}{3}+\frac{\pi}{2}$</li>
+            <li>$\frac{\pi}{6}+\frac{\pi}{2}$</li>
+            <li>$\frac{\pi}{4}+\frac{\pi}{2}$</li>
+            <li>$\frac{2\pi}{3}+\frac{\pi}{2}$</li>
+            <li>$\frac{3\pi}{4}+\frac{\pi}{2}$</li>
+            <li>$\frac{5\pi}{6}+\frac{\pi}{2}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\frac{5\pi}{6}$</li>
+            <li>$\frac{2\pi}{3}$</li>
+            <li>$\frac{3\pi}{4}$</li>
+            <li>$-\frac{5\pi}{3}$</li>
+            <li>$-\frac{3\pi}{4}$</li>
+            <li>$-\frac{2\pi}{3}$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez la mesure principale de l'angle correspondand à chacun des points suivants en radians en visualisant sur le cercle trigonométrique.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\frac{\pi}{2}-\frac{\pi}{3}$</li>
+            <li>$\frac{\pi}{2}-\frac{\pi}{6}$</li>
+            <li>$\frac{\pi}{2}-\frac{\pi}{4}$</li>
+            <li>$\frac{3\pi}{2}-\frac{\pi}{3}$</li>
+            <li>$\frac{3\pi}{2}-\frac{\pi}{6}$</li>
+            <li>$\frac{3\pi}{2}-\frac{\pi}{4}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\frac{\pi}{6}$</li>
+            <li>$\frac{\pi}{3}$</li>
+            <li>$\frac{\pi}{4}$</li>
+            <li>$-\frac{5\pi}{6}$</li>
+            <li>$-\frac{2\pi}{3}$</li>
+            <li>$-\frac{3\pi}{4}$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez le cosinus et le sinus de chacun des angles suivants puis recommencez en prenant leurs opposés.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\frac{\pi}{6}$</li>
+            <li>$\frac{\pi}{4}$</li>
+            <li>$\frac{\pi}{3}$</li>
+            <li>$\frac{\pi}{2}$</li>
+            <li>$\frac{2\pi}{3}$</li>
+            <li>$\frac{3\pi}{4}$</li>
+            <li>$\frac{5\pi}{6}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$\cos\left(\frac{\pi}{6}\right)=\frac{\sqrt{3}}{2}$, $\sin\left(\frac{\pi}{6}\right)=\frac{1}{2}$</li>
+            <li>$\cos\left(\frac{\pi}{4}\right)=\frac{\sqrt{2}}{2}$, $\sin\left(\frac{\pi}{4}\right)=\frac{\sqrt{2}}{2}$</li>
+            <li>$\cos\left(\frac{\pi}{3}\right)=\frac{1}{2}$, $\sin\left(\frac{\pi}{3}\right)=\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos\left(\frac{\pi}{2}\right)=0$, $\sin\left(\frac{\pi}{2}\right)=1$</li>
+            <li>$\cos\left(\frac{2\pi}{3}\right)=-\frac{1}{2}$, $\sin\left(\frac{2\pi}{3}\right)=\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos\left(\frac{3\pi}{4}\right)=-\frac{\sqrt{2}}{2}$, $\sin\left(\frac{3\pi}{4}\right)=\frac{\sqrt{2}}{2}$</li>
+            <li>$\cos\left(\frac{5\pi}{6}\right)=-\frac{\sqrt{3}}{2}$, $\sin\left(\frac{5\pi}{6}\right)=\frac{1}{2}$</li>
+        </ol>
+        Avec les opposés&nbsp;:
+        <ol class="alphabetical-list">
+            <li>$\cos\left(-\frac{\pi}{6}\right)=\frac{\sqrt{3}}{2}$, $\sin\left(-\frac{\pi}{6}\right)=-\frac{1}{2}$</li>
+            <li>$\cos\left(-\frac{\pi}{4}\right)=\frac{\sqrt{2}}{2}$, $\sin\left(-\frac{\pi}{4}\right)=-\frac{\sqrt{2}}{2}$</li>
+            <li>$\cos\left(-\frac{\pi}{3}\right)=\frac{1}{2}$, $\sin\left(-\frac{\pi}{3}\right)=-\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos\left(-\frac{\pi}{2}\right)=0$, $\sin\left(-\frac{\pi}{2}\right)=-1$</li>
+            <li>$\cos\left(-\frac{2\pi}{3}\right)=-\frac{1}{2}$, $\sin\left(-\frac{2\pi}{3}\right)=-\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos\left(-\frac{3\pi}{4}\right)=-\frac{\sqrt{2}}{2}$, $\sin\left(-\frac{3\pi}{4}\right)=-\frac{\sqrt{2}}{2}$</li>
+            <li>$\cos\left(-\frac{5\pi}{6}\right)=-\frac{\sqrt{3}}{2}$, $\sin\left(-\frac{5\pi}{6}\right)=-\frac{1}{2}$</li>
+    </div>
+</div>
+<h1>$[0;2\pi[$</h1>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez la mesure de l'angle dans l'intervalle $[0;2\pi[$ correspondant à chacun des points suivants.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$-\pi$</li>
+            <li>$\frac{-\pi}{2}$</li>
+            <li>$-\frac{\pi}{4}$</li>
+            <li>$-\frac{\pi}{3}$</li>
+            <li>$-\frac{\pi}{6}$</li>
+            <li>$-\frac{2\pi}{3}$</li>
+            <li>$-\frac{3\pi}{4}$</li>
+            <li>$-\frac{5\pi}{6}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\pi$</li>
+            <li>$\frac{3\pi}{2}$</li>
+            <li>$\frac{7\pi}{4}$</li>
+            <li>$\frac{5\pi}{3}$</li>
+            <li>$\frac{11\pi}{6}$</li>
+            <li>$\frac{4\pi}{3}$</li>
+            <li>$\frac{5\pi}{4}$</li>
+            <li>$\frac{7\pi}{6}$</li>
+        </ol>
+    </div>
+</div>
+
+<h1>Cosinus et sinus</h1>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez le cosinus et le sinus de chacun des angles puis recommencez en prenant leurs opposés.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\frac{3\pi}{2}$</li>
+            <li>$\frac{5\pi}{2}$</li>
+            <li>$-\frac{5\pi}{2}$</li>
+            <li>$\frac{5\pi}{4}$</li>
+            <li>$-\frac{7\pi}{4}$</li>
+            <li>$\frac{4\pi}{3}$</li>
+            <li>$-\frac{7\pi}{3}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$\cos\left(\frac{3\pi}{2}\right)=0$, $\sin\left(\frac{3\pi}{2}\right)=-1$</li>
+            <li>$\cos\left(\frac{5\pi}{2}\right)=0$, $\sin\left(\frac{5\pi}{2}\right)=1$</li>
+            <li>$\cos\left(-\frac{5\pi}{2}\right)=0$, $\sin\left(-\frac{5\pi}{2}\right)=-1$</li>
+            <li>$\cos\left(\frac{5\pi}{4}\right)=-\frac{\sqrt{2}}{2}$, $\sin\left(\frac{5\pi}{4}\right)=-\frac{\sqrt{2}}{2}$</li>
+            <li>$\cos\left(-\frac{7\pi}{4}\right)=\frac{\sqrt{2}}{2}$, $\sin\left(-\frac{7\pi}{4}\right)=\frac{\sqrt{2}}{2}$</li>
+            <li>$\cos\left(\frac{4\pi}{3}\right)=-\frac{1}{2}$, $\sin\left(\frac{4\pi}{3}\right)=-\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos\left(-\frac{7\pi}{3}\right)=\frac{1}{2}$, $\sin\left(-\frac{7\pi}{3}\right)=\frac{\sqrt{3}}{2}$</li>
+        </ol>
+        Avec les opposés :
+        <ol class="alphabetical-list">
+            <li>$\cos\left(-\frac{3\pi}{2}\right)=0$, $\sin\left(-\frac{3\pi}{2}\right)=1$</li>
+            <li>$\cos\left(-\frac{5\pi}{2}\right)=0$, $\sin\left(-\frac{5\pi}{2}\right)=-1$</li>
+            <li>$\cos\left(\frac{5\pi}{2}\right)=0$, $\sin\left(\frac{5\pi}{2}\right)=1$</li>
+            <li>$\cos\left(-\frac{5\pi}{4}\right)=-\frac{\sqrt{2}}{2}$, $\sin\left(-\frac{5\pi}{4}\right)=\frac{\sqrt{2}}{2}$</li>
+            <li>$\cos\left(\frac{7\pi}{4}\right)=\frac{\sqrt{2}}{2}$, $\sin\left(\frac{7\pi}{4}\right)=-\frac{\sqrt{2}}{2}$</li>
+            <li>$\cos\left(-\frac{4\pi}{3}\right)=-\frac{1}{2}$, $\sin\left(-\frac{4\pi}{3}\right)=\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos\left(\frac{7\pi}{3}\right)=\frac{1}{2}$, $\sin\left(\frac{7\pi}{3}\right)=-\frac{\sqrt{3}}{2}$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez le cosinus et le sinus de chacun des angles suivants.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\frac{\pi}{2}+\pi$</li>
+            <li>$\frac{\pi}{3}+\pi$</li>
+            <li>$\frac{2\pi}{3}+\pi$</li>
+            <li>$\frac{\pi}{4}+\pi$</li>
+            <li>$\frac{3\pi}{4}+\pi$</li>
+            <li>$\frac{\pi}{6}+\pi$</li>
+            <li>$\frac{5\pi}{6}+\pi$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\cos\left(\frac{\pi}{2}+\pi\right)=0$, $\sin\left(\frac{\pi}{2}+\pi\right)=-1$</li>
+            <li>$\cos\left(\frac{\pi}{3}+\pi\right)=-\frac{1}{2}$, $\sin\left(\frac{\pi}{3}+\pi\right)=-\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos\left(\frac{2\pi}{3}+\pi\right)=-\frac{1}{2}$, $\sin\left(\frac{2\pi}{3}+\pi\right)=\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos\left(\frac{\pi}{4}+\pi\right)=-\frac{\sqrt{2}}{2}$, $\sin\left(\frac{\pi}{4}+\pi\right)=-\frac{\sqrt{2}}{2}$</li>
+            <li>$\cos\left(\frac{3\pi}{4}+\pi\right)=\frac{\sqrt{2}}{2}$, $\sin\left(\frac{3\pi}{4}+\pi\right)=-\frac{\sqrt{2}}{2}$</li>
+            <li>$\cos\left(\frac{\pi}{6}+\pi\right)=\frac{\sqrt{3}}{2}$, $\sin\left(\frac{\pi}{6}+\pi\right)=-\frac{1}{2}$</li>
+            <li>$\cos\left(\frac{5\pi}{6}+\pi\right)=-\frac{\sqrt{3}}{2}$, $\sin\left(\frac{5\pi}{6}+\pi\right)=\frac{1}{2}$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez le cosinus et le sinus de chacun des angles suivants.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\pi-\frac{\pi}{3}$</li>
+            <li>$\pi-\frac{\pi}{6}$</li>
+            <li>$\pi-\frac{\pi}{4}$</li>
+            <li>$\pi-\frac{2\pi}{3}$</li>
+            <li>$\pi-\frac{3\pi}{4}$</li>
+            <li>$\pi-\frac{5\pi}{6}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\cos\left(\pi-\frac{\pi}{3}\right)=-\frac{1}{2}$, $\sin\left(\pi-\frac{\pi}{3}\right)=\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos\left(\pi-\frac{\pi}{6}\right)=-\frac{\sqrt{3}}{2}$, $\sin\left(\pi-\frac{\pi}{6}\right)=\frac{1}{2}$</li>
+            <li>$\cos\left(\pi-\frac{\pi}{4}\right)=-\frac{\sqrt{2}}{2}$, $\sin\left(\pi-\frac{\pi}{4}\right)=\frac{\sqrt{2}}{2}$</li>
+            <li>$\cos\left(\pi-\frac{2\pi}{3}\right)=\frac{1}{2}$, $\sin\left(\pi-\frac{2\pi}{3}\right)=-\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos\left(\pi-\frac{3\pi}{4}\right)=\frac{\sqrt{2}}{2}$, $\sin\left(\pi-\frac{3\pi}{4}\right)=-\frac{\sqrt{2}}{2}$</li>
+            <li>$\cos\left(\pi-\frac{5\pi}{6}\right)=\frac{\sqrt{3}}{2}$, $\sin\left(\pi-\frac{5\pi}{6}\right)=-\frac{1}{2}$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez le cosinus et le sinus de chacun des angles suivants.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\frac{\pi}{3}+\frac{\pi}{2}$</li>
+            <li>$\frac{\pi}{6}+\frac{\pi}{2}$</li>
+            <li>$\frac{\pi}{4}+\frac{\pi}{2}$</li>
+            <li>$\frac{2\pi}{3}+\frac{\pi}{2}$</li>
+            <li>$\frac{3\pi}{4}+\frac{\pi}{2}$</li>
+            <li>$\frac{5\pi}{6}+\frac{\pi}{2}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\cos\left(\frac{\pi}{3}+\frac{\pi}{2}\right)=-\frac{1}{2}$, $\sin\left(\frac{\pi}{3}+\frac{\pi}{2}\right)=\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos\left(\frac{\pi}{6}+\frac{\pi}{2}\right)=\frac{\sqrt{3}}{2}$, $\sin\left(\frac{\pi}{6}+\frac{\pi}{2}\right)=\frac{1}{2}$</li>
+            <li>$\cos\left(\frac{\pi}{4}+\frac{\pi}{2}\right)=\frac{\sqrt{2}}{2}$, $\sin\left(\frac{\pi}{4}+\frac{\pi}{2}\right)=\frac{\sqrt{2}}{2}$</li>
+            <li>$\cos\left(\frac{2\pi}{3}+\frac{\pi}{2}\right)=\frac{1}{2}$, $\sin\left(\frac{2\pi}{3}+\frac{\pi}{2}\right)=\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos\left(\frac{3\pi}{4}+\frac{\pi}{2}\right)=\frac{\sqrt{2}}{2}$, $\sin\left(\frac{3\pi}{4}+\frac{\pi}{2}\right)=\frac{\sqrt{2}}{2}$</li>
+            <li>$\cos\left(\frac{5\pi}{6}+\frac{\pi}{2}\right)=-\frac{\sqrt{3}}{2}$, $\sin\left(\frac{5\pi}{6}+\frac{\pi}{2}\right)=\frac{1}{2}$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Déterminez le cosinus et le sinus de chacun des angles suivants.
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\frac{\pi}{2}-\frac{\pi}{3}$</li>
+            <li>$\frac{\pi}{2}-\frac{\pi}{6}$</li>
+            <li>$\frac{\pi}{2}-\frac{\pi}{4}$</li>
+            <li>$\frac{3\pi}{2}-\frac{\pi}{3}$</li>
+            <li>$\frac{3\pi}{2}-\frac{\pi}{6}$</li>
+            <li>$\frac{3\pi}{2}-\frac{\pi}{4}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list horizontal-list">
+            <li>$\cos\left(\frac{\pi}{2}-\frac{\pi}{3}\right)=\frac{1}{2}$, $\sin\left(\frac{\pi}{2}-\frac{\pi}{3}\right)=\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos\left(\frac{\pi}{2}-\frac{\pi}{6}\right)=\frac{\sqrt{3}}{2}$, $\sin\left(\frac{\pi}{2}-\frac{\pi}{6}\right)=\frac{1}{2}$</li>
+            <li>$\cos\left(\frac{\pi}{2}-\frac{\pi}{4}\right)=\frac{\sqrt{2}}{2}$, $\sin\left(\frac{\pi}{2}-\frac{\pi}{4}\right)=\frac{\sqrt{2}}{2}$</li>
+            <li>$\cos\left(\frac{3\pi}{2}-\frac{\pi}{3}\right)=-\frac{1}{2}$, $\sin\left(\frac{3\pi}{2}-\frac{\pi}{3}\right)=-\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos\left(\frac{3\pi}{2}-\frac{\pi}{6}\right)=-\frac{\sqrt{3}}{2}$, $\sin\left(\frac{3\pi}{2}-\frac{\pi}{6}\right)=-\frac{1}{2}$</li>
+            <li>$\cos\left(\frac{3\pi}{2}-\frac{\pi}{4}\right)=-\frac{\sqrt{2}}{2}$, $\sin\left(\frac{3\pi}{2}-\frac{\pi}{4}\right)=-\frac{\sqrt{2}}{2}$</li>
+        </ol>
+    </div>
+</div>
+<h1>Équations et inéquations</h1>
+<div class="exercice">
+    <div class="enonce">
+        Résoudre les équations suivantes dans $]-\pi;\pi]$.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$\cos(x)=\frac{\sqrt{3}}{2}$</li>
+            <li>$\sin(x)=\frac{1}{2}$</li>
+            <li>$\cos(x)=-\frac{1}{2}$</li>
+            <li>$\sin(x)=-\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos(x)=\frac{\sqrt{2}}{2}$</li>
+            <li>$\sin(x)=-\frac{\sqrt{2}}{2}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$x=\frac{\pi}{6}$</li>
+            <li>$x=\frac{\pi}{6}$, $x=\frac{5\pi}{6}$</li>
+            <li>$x=\frac{2\pi}{3}$, $x=\frac{4\pi}{3}$</li>
+            <li>$x=-\frac{5\pi}{6}$, $x=\frac{5\pi}{6}$</li>
+            <li>$x=\frac{\pi}{4}$, $x=-\frac{\pi}{4}$</li>
+            <li>$x=\frac{3\pi}{4}$, $x=-\frac{3\pi}{4}$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Résoudre les équations dans $[0;2\pi[$.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$\cos(x)=\frac{\sqrt{3}}{2}$</li>
+            <li>$\sin(x)=\frac{1}{2}$</li>
+            <li>$\cos(x)=-\frac{1}{2}$</li>
+            <li>$\sin(x)=-\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos(x)=\frac{\sqrt{2}}{2}$</li>
+            <li>$\sin(x)=-\frac{\sqrt{2}}{2}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$x=\frac{\pi}{6}$, $x=\frac{11\pi}{6}$</li>
+            <li>$x=\frac{\pi}{6}$, $x=\frac{5\pi}{6}$</li>
+            <li>$x=\frac{2\pi}{3}$, $x=\frac{4\pi}{3}$</li>
+            <li>$x=\frac{5\pi}{6}$, $x=\frac{7\pi}{6}$</li>
+            <li>$x=\frac{\pi}{4}$, $x=\frac{7\pi}{4}$</li>
+            <li>$x=\frac{3\pi}{4}$, $x=\frac{5\pi}{4}$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Résoudre les inéquations suivantes dans $]-\pi;\pi]$.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$\cos(x)\geqslant\frac{\sqrt{3}}{2}$</li>
+            <li>$\sin(x)\leqslant\frac{1}{2}$</li>
+            <li>$\cos(x)\leqslant-\frac{1}{2}$</li>
+            <li>$\sin(x)\geqslant-\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos(x)\geqslant\frac{\sqrt{2}}{2}$</li>
+            <li>$\sin(x)\leqslant-\frac{\sqrt{2}}{2}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$x\in\left[-\frac{\pi}{6};\frac{\pi}{6}\right]\cup\left[\frac{11\pi}{6};\frac{13\pi}{6}\right]$</li>
+            <li>$x\in\left[-\frac{\pi}{6};\frac{\pi}{6}\right]\cup\left[\frac{5\pi}{6};\frac{7\pi}{6}\right]$</li>
+            <li>$x\in\left[\frac{2\pi}{3};\frac{4\pi}{3}\right]$</li>
+            <li>$x\in\left[-\frac{5\pi}{6};-\frac{3\pi}{6}\right]\cup\left[\frac{5\pi}{6};\frac{7\pi}{6}\right]$</li>
+            <li>$x\in\left[\frac{\pi}{4};\frac{7\pi}{4}\right]$</li>
+            <li>$x\in\left[\frac{3\pi}{4};\frac{5\pi}{4}\right]$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Résoudre les inéquations dans $[0;2\pi[$.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$\cos(x)\geqslant\frac{\sqrt{3}}{2}$</li>
+            <li>$\sin(x)\leqslant\frac{1}{2}$</li>
+            <li>$\cos(x)\leqslant-\frac{1}{2}$</li>
+            <li>$\sin(x)\geqslant-\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos(x)\geqslant\frac{\sqrt{2}}{2}$</li>
+            <li>$\sin(x)\leqslant-\frac{\sqrt{2}}{2}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$x\in\left[0;\frac{\pi}{6}\right]\cup\left[\frac{11\pi}{6};2\pi\right]$</li>
+            <li>$x\in\left[0;\frac{\pi}{6}\right]\cup\left[\frac{5\pi}{6};\frac{7\pi}{6}\right]$</li>
+            <li>$x\in\left[\frac{2\pi}{3};\frac{4\pi}{3}\right]$</li>
+            <li>$x\in\left[\frac{5\pi}{6};\frac{7\pi}{6}\right]$</li>
+            <li>$x\in\left[\frac{\pi}{4};\frac{7\pi}{4}\right]$</li>
+            <li>$x\in\left[\frac{3\pi}{4};\frac{5\pi}{4}\right]$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Résoudre les inéquations dans $]-\pi;\pi]$.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$\cos(x)\leqslant\frac{\sqrt{3}}{2}$</li>
+            <li>$\sin(x)\geqslant\frac{1}{2}$</li>
+            <li>$\cos(x)\geqslant-\frac{1}{2}$</li>
+            <li>$\sin(x)\leqslant-\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos(x)\leqslant\frac{\sqrt{2}}{2}$</li>
+            <li>$\sin(x)\geqslant-\frac{\sqrt{2}}{2}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$x\in\left]-\frac{\pi}{6};\frac{\pi}{6}\right[\cup\left]\frac{11\pi}{6};\frac{13\pi}{6}\right[$</li>
+            <li>$x\in\left]-\frac{\pi}{6};\frac{\pi}{6}\right[\cup\left]\frac{5\pi}{6};\frac{7\pi}{6}\right[$</li>
+            <li>$x\in\left]\frac{2\pi}{3};\frac{4\pi}{3}\right[$</li>
+            <li>$x\in\left]-\frac{5\pi}{6};-\frac{3\pi}{6}\right[\cup\left]\frac{5\pi}{6};\frac{7\pi}{6}\right[$</li>
+            <li>$x\in\left]\frac{\pi}{4};\frac{7\pi}{4}\right[$</li>
+            <li>$x\in\left]\frac{3\pi}{4};\frac{5\pi}{4}\right[$</li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Résoudre les inéquations dans $[0;2\pi[$.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$\cos(x)\leqslant\frac{\sqrt{3}}{2}$</li>
+            <li>$\sin(x)\geqslant\frac{1}{2}$</li>
+            <li>$\cos(x)\geqslant-\frac{1}{2}$</li>
+            <li>$\sin(x)\leqslant-\frac{\sqrt{3}}{2}$</li>
+            <li>$\cos(x)\leqslant\frac{\sqrt{2}}{2}$</li>
+            <li>$\sin(x)\geqslant-\frac{\sqrt{2}}{2}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li>$x\in\left]0;\frac{\pi}{6}\right[\cup\left]\frac{11\pi}{6};2\pi\right[$</li>
+            <li>$x\in\left]0;\frac{\pi}{6}\right[\cup\left]\frac{5\pi}{6};\frac{7\pi}{6}\right[$</li>
+            <li>$x\in\left]\frac{2\pi}{3};\frac{4\pi}{3}\right[$</li>
+            <li>$x\in\left]\frac{5\pi}{6};\frac{7\pi}{6}\right[$</li>
+            <li>$x\in\left]\frac{\pi}{4};\frac{7\pi}{4}\right[$</li>
+            <li>$x\in\left]\frac{3\pi}{4};\frac{5\pi}{4}\right[$</li>
+        </ol>
+    </div>
+</div>
+</main>
+  </body>
+</html>

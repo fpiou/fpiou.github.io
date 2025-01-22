@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>C-01 copy.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header class="brouillon"><div>Calcul littéral</div><div class="header-niveau">Seconde Générale et Technologique</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>C-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div class="exercice">
+  <div class="enonce">
+    <p>Résoudre l'équation suivante : $$7(x+3)=9x-5.$$</p>
+  </div>
+  <div class="solution">
+    <p>On commence par développer le membre de gauche.</p>
+    $$\begin{align*} 7(x+3)&=9x-5\\ 7x+21&=9x-5 \end{align*}$$
+    <p>On regroupe les termes en $x$ dans le membre de gauche.</p>
+    $$\begin{align*} 7x+21&=9x-5\\ 7x-9x&=-5-21\\ -2x&=-26 \end{align*}$$
+    <p>On divise par $-2$.</p>
+    $$\begin{align*} -2x&=-26\\ \frac{-2x}{-2}&=\frac{-26}{-2}\\ x&=13
+    \end{align*}$$
+    <p>On vérifie que $x=13$ est bien solution de l'équation.</p>
+    <p>D'une part, $$7(x+3)=7(13+3)=7\times 16=112.$$</p>
+    <p>D'autre part, $$9x-5=9\times 13-5=117-5=112.$$</p>
+    <p>On a bien $7(x+3)=9x-5$ pour $x=13$.</p>
+    <p>Donc $x=13$ est bien solution de l'équation.</p>
+  </div>
+</div>
+<div class="exercice">
+  <div class="enonce">
+    <p>Résoudre l'équation suivante : $$(4x+3)(7x-5)=0.$$</p>
+  </div>
+  <div class="solution">
+    <p>On reconnait une équation produit-nul.</p>
+    <p>Or un produit est nul si et seulement si l'un des facteurs est nul.</p>
+    <p>Donc $(4x+3)(7x-5)=0$ si et seulement si $4x+3=0$ ou $7x-5=0$.</p>
+    <p>On résout chacune de ces équations.</p>
+    $$\begin{align*} 4x+3&=0&&\text{ ou }&7x-5&=0\\ 4x&=-3&&\text{ ou
+    }&&7x&=5\\ x&=-\frac{3}{4}&&&x&=\frac{5}{7} \end{align*}$$
+    <p>
+      Donc les solutions de l'équation sont $-\frac{3}{4}$ et $\frac{5}{7}$.
+    </p>
+  </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+      <p>Résoudre l'équation suivante : $$\frac{7x+3}{4x-5}=0.$$</p>
+    </div>
+    <div class="solution">
+      <p>On reconnait une équation quotient-nul.</p>
+      <p>Or un quotient est nul si et seulement si le numérateur est nul et le
+      dénominateur non nul.</p>
+      <p>Donc $\frac{7x+3}{4x-5}=0$ si et seulement si $7x+3=0$ et $4x-5\neq
+      0$.</p>
+      <p>On détermine les valeurs interdites.</p>
+        $$\begin{align*} 4x-5&=0\\ 4x&=5\\ x&=\frac{5}{4} \end{align*}$$
+        <p>Donc $x=\frac{5}{4}$ est valeur interdite.</p>
+        <p>On résout l'équation sans le dénominateur.</p>
+        $$\begin{align*} 7x+3&=0\\ 7x&=-3\\ x&=-\frac{3}{7} \end{align*}$$
+        <p>$-\frac{3}{7}$ n'est pas valeur interdite.</p>
+        <p>Donc les solutions de l'équation sont $-\frac{3}{7}$.</p>
+    </div>
+</div>
+
+<h1>Puissances</h1>
+<div class="propriete">
+    Soit $a\in \mathbb{R^*}$ et $m,n\in \mathbb{Z}$. Alors :
+    $$a^m\times a^n = a^{m+n}\quad\quad\frac{a^m}{a^n} = a^{m-n}\quad\quad (a^m)^n = a^{m\times n}$$
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Écrivez les résultats des expressions suivantes sous forme d'une puissance :
+        <ol class="alphabetical-list horizontal-list col-3c">
+            <li>$5^3\times 5^4$</li>
+            <li>$5\times 5^2$</li>
+            <li>$(-5)^2\times (-5)^6$</li>
+            <li>$5^2\times 5^{-6}$</li>
+            <li>$\frac{5^6}{5^2}$</li>
+            <li>$\frac{5^2}{5^6}$</li>
+            <li>$\frac{5^{-2}}{5^6}$</li>
+            <li>$\frac{5^6}{5^{-2}}$</li>
+            <li>$\frac{5^{-6}}{5^{-2}}$</li>
+            <li>$(5^2)^3$</li>
+            <li>$5^{2^3}$</li>
+            <li>$(5^3)^2$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$5^3\times 5^4 = 5^{3+4} = 5^7$</p></li>
+            <li><p>$5\times 5^2 = 5^{1+2} = 5^3$</p></li>
+            <li><p>$(-5)^2\times (-5)^6 = (-5)^{2+6} = (-5)^8$</p></li>
+            <li><p>$5^2\times 5^{-6} = 5^{2-6} = 5^{-4}$</p></li>
+            <li><p>$\frac{5^6}{5^2} = 5^{6-2} = 5^4$</p></li>
+            <li><p>$\frac{5^2}{5^6} = 5^{2-6} = 5^{-4}$</p></li>
+            <li><p>$\frac{5^{-2}}{5^6} = 5^{-2-6} = 5^{-8}$</p></li>
+            <li><p>$\frac{5^6}{5^{-2}} = 5^{6-(-2)} = 5^8$</p></li>
+            <li><p>$\frac{5^{-6}}{5^{-2}} = 5^{-6-(-2)} = 5^{-4}$</p></li>
+            <li><p>$(5^2)^3 = 5^{2\times 3} = 5^6$</p></li>
+            <li><p>$5^{2^3} = 5^{2\times 2\times 2} = 5^8$</p></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Écrivez les résultats sous la forme d'une puissance :
+        <ol class="alphabetical-list horizontal-list col-3c">
+            <li>$2^{9}\times 4^8$</li>
+            <li>$8^4\times 2^{8}$</li>
+            <li>$2^5\times 16^3$</li>
+            <li>$32^3\times 2^{7}$</li>
+            <li>$2^{3}\times 64^5$</li>
+            <li>$128^2\times 2^{7}$</li>
+            <li>$2^{10}\times 256^4$</li>
+            <li>$512^3\times 2^{9}$</li>
+            <li>$2^{8}\times 1024^2$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$2^{9}\times 4^8 = 2^{9}\times (2^2)^8 = 2^{9}\times 2^{16} = 2^{9+16} = 2^{25}$</p></li>
+            <li><p>$8^4\times 2^{8} = (2^3)^4\times 2^{8} = 2^{3\times 4}\times 2^{8} = 2^{12}\times 2^{8} = 2^{12+8} = 2^{20}$</p></li>
+            <li><p>$2^5\times 16^3 = 2^5\times (2^4)^3 = 2^5\times 2^{12} = 2^{5+12} = 2^{17}$</p></li>
+            <li><p>$32^3\times 2^{7} = (2^5)^3\times 2^{7} = 2^{5\times 3}\times 2^{7} = 2^{15}\times 2^{7} = 2^{15+7} = 2^{22}$</p></li>
+            <li><p>$2^{3}\times 64^5 = 2^{3}\times (2^6)^5 = 2^{3}\times 2^{30} = 2^{3+30} = 2^{33}$</p></li>
+            <li><p>$128^2\times 2^{7} = (2^7)^2\times 2^{7} = 2^{7\times 2}\times 2^{7} = 2^{14}\times 2^{7} = 2^{14+7} = 2^{21}$</p></li>
+            <li><p>$2^{10}\times 256^4 = 2^{10}\times (2^8)^4 = 2^{10}\times 2^{32} = 2^{10+32} = 2^{42}$</p></li>
+            <li><p>$512^3\times 2^{9} = (2^9)^3\times 2^{9} = 2^{9\times 3}\times 2^{9} = 2^{27}\times 2^{9} = 2^{27+9} = 2^{36}$</p></li>
+            <li><p>$2^{8}\times 1024^2 = 2^{8}\times (2^{10})^2 = 2^{8}\times 2^{20} = 2^{8+20} = 2^{28}$</p></li>
+        </ol>
+    </div>
+</div>
+
+<div class="propriete">
+    Soit $a\in \mathbb{R^*}$, $b\in \mathbb{R^*}$ et $n\in \mathbb{Z}$. Alors :
+    $$a^n\times b^n = (a\times b)^n\quad\quad \frac{a^n}{b^n} = \left(\frac{a}{b}\right)^n$$
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez en utilisant les propriétés sur les opérations avec les puissances.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$-2^4\times 5^4$</li>
+            <li>$2^{-3}\times 5^{-3}$</li>
+            <li>$(-5)^4\times 2^4$</li>
+            <li>$(-2)^3\times (-5)^3$</li>
+            <li>$(-5)^3\times 2^3$</li>
+            <li>$(-5)^{-4}\times (-2)^{-4}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$-2^4\times 5^4 = -(2\times 5)^4 = -10^4=-\num{10000}$</p></li>
+            <li><p>$2^{-3}\times 5^{-3} = (2\times 5)^{-3} = 10^{-3}=\num{0.001}$</p></li>
+            <li><p>$(-5)^4\times 2^4 = (-5\times 2)^4 = (-10)^4 = \num{10000}$</p></li>
+            <li><p>$(-2)^3\times (-5)^3 = (-2\times (-5))^3 = 10^3 = \num{1000}$</p></li>
+            <li><p>$(-5)^3\times 2^3 = (-5\times 2)^3 = (-10)^3 = -\num{1000}$</p></li>
+            <li><p>$(-5)^{-4}\times (-2)^{-4} = (-5\times (-2))^{-4} = 10^{-4}=\num{0.0001}$</p></li>
+        </ol>
+    </div>
+</div>
+<div class="exercice">
+    <div class="enonce">
+        Calculez en utilisant les propriétés sur les opérations avec les puissances.
+        <ol class="alphabetical-list horizontal-list col-4c">
+            <li>$\frac{81^2}{9^2}$</li>
+            <li>$\frac{9^2}{27^2}$</li>
+            <li>$\frac{3^4}{9^4}$</li>
+            <li>$\frac{27^4}{9^4}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$\frac{81^2}{9^2} = \left(\frac{81}{9}\right)^2 = \left(9\right)^2 = 81$</p></li>
+            <li><p>$\frac{9^2}{81^2} = \left(\frac{9}{81}\right)^2 = \left(\frac{1}{9}\right)^2 = \frac{1}{81}$</p></li>
+            <li><p>$\frac{3^4}{9^4} = \left(\frac{3}{9}\right)^4 = \left(\frac{1}{3}\right)^4 = \frac{1}{81}$</p></li>
+            <li><p>$\frac{27^4}{9^4} = \left(\frac{27}{9}\right)^4 = 3^4 = 81$</p></li>
+        </ol>
+    </div>
+</div>
+
+<h1>Écriture fractionnaire</h1>
+<div class="video">
+    <iframe src="https://ladigitale.dev/digiview/inc/video.php?videoId=Id_udNTKsqI&vignette=https://i.ytimg.com/vi/Id_udNTKsqI/hqdefault.jpg&debut=0&fin=325&largeur=16&hauteur=9" allow="autoplay; fullscreen" frameborder="0" width="700" height="394"></iframe>
+</div></main>
+  </body>
+</html>

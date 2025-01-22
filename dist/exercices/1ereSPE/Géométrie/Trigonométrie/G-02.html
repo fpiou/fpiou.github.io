@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>G-02.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Trigonométrie</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>G-02<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div copy="2">
+<div class="deuxcolonnes">
+<h1>Résoudre une inéquation</h1>
+On se propose de résoudre les inéquations suivantes.
+
+<h3>$\cos(x)\geqslant -\frac{1}{2}$  sur l'intervalle $]-\pi;\pi]$</h3>
+<ol class="numerical-list" style="break-inside: avoid;">
+    <li>Déterminons les points du cercle trigonométrique ayant pour abscisse $-\frac{1}{2}$.
+    Ces points sont associés à des angles dont la cosinus est égal à $-\frac{1}{2}$.
+    Nous trouvons deux points $A$ et $B$ associés respectivement aux angles $-\frac{2\pi}{3}$ et $\frac{2\pi}{3}$.</li>
+    <li>L'ensemble des solutions de l'équation est l'ensemble des angles associés aux points situés sur un des deux arcs de cercle reliants $A$ et $B$. Pour déterminer lequel des deux arcs, partons par exemple du point $A$ et déplaçons-nous sur le cercle de manière à augmenter le cosinus de l'angle pour qu'il soit plus grand que $-\frac{1}{2}$. Nous trouvons que l'arc de cercle reliant $A$ et $B$ est le grand arc de cercle en se déplaçant dans le sens direct (ou trigonométrique).</li>
+    <li>Donc l'ensemble des solutions de l'inéquation est l'intervalle $\left]-\frac{2\pi}{3};\frac{2\pi}{3}\right]$.</li>
+</ol>
+
+<h3>$\sin(x)\lt \frac{\sqrt{2}}{2}$  sur l'intervalle $]-\pi;\pi]$</h3>
+<ol class="numerical-list">
+    <li>Déterminons les points du cercle trigonométrique ayant pour ordonnée $\frac{\sqrt{2}}{2}$.
+    Ces points sont associés à des angles dont la sinus est égal à $\frac{\sqrt{2}}{2}$.
+    Nous trouvons deux points $A$ et $B$ associés respectivement aux angles $\frac{\pi}{4}$ et $\frac{3\pi}{4}$.</li>
+    <li>L'ensemble des solutions de l'équation est l'ensemble des angles associés aux points situés sur un des deux arcs de cercle reliants $A$ et $B$. Pour déterminer lequel des deux arcs, partons par exemple du point $A$ et déplaçons-nous sur le cercle de manière à diminuer le sinus de l'angle pour qu'il soit plus petit que $\frac{\sqrt{2}}{2}$. Nous trouvons que l'arc de cercle reliant $A$ et $B$ est le grand arc de cercle en se déplaçant dans le sens indirect.</li>
+    <li>Donc l'ensemble des solutions de l'inéquation est l'intervalle $\left]-\pi;\frac{\pi}{4}\right[\cup\left]\frac{3\pi}{4};\pi\right]$.</li>
+</ol>
+</div>
+</div></main>
+  </body>
+</html>

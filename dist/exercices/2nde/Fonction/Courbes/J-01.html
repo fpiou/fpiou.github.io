@@ -54,6 +54,8 @@
     
     <link rel="stylesheet" href="/src/css/prettyExercice.css" />
     
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
     <link rel="stylesheet" href="/src/css/print.css" />
     
 
@@ -113,32 +115,161 @@
     <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
     <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
 
-    <main><header class="brouillon"><div>Fonctions - Courbes</div><div class="header-niveau">Seconde Générale et Technologique</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>J-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+    <main><header class="brouillon"><div>Fonctions</div><div class="header-niveau">Seconde Générale et Technologique</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>J-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
 
-<h1>Fonction</h1>
-<div class="definition">
-    Soit $\mathcal{D}$ un ensemble de nombres réels. Une fonction $f$ définie sur $\mathcal{D}$ est une application qui à tout nombre $x$ de $\mathcal{D}$ associe un unique nombre $y$.
+<div class="figure">
+    <svg viewBox="0 0 200 200">
+        <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax="5" xorigine="0" yorigine="0"></g>
+        <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1" size="5" origine></g>
+        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1" size="5" origine></g>
+        <g name="O" class="point" repere="repere1" x="0" y="0" stroke="none" font-size="7pt"></g>
+        
+        <g name="I-4" class="point labeled" repere="repere1" x="-4" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I-4" x="-5" y="0">-4</g>
+        <g name="I-3" class="point labeled" repere="repere1" x="-3" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I-3" x="-5" y="0">-3</g>
+        <g name="I-2" class="point labeled" repere="repere1" x="-2" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I-2" x="-5" y="0">-2</g>
+        <g name="I-1" class="point labeled" repere="repere1" x="-1" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I-1" x="-5" y="0">-1</g>
+        <g name="I1" class="point labeled" repere="repere1" x="1" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I1" x="-3" y="0">1</g>
+        <g name="I2" class="point labeled" repere="repere1" x="2" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I2" x="-3" y="0">2</g>
+        <g name="I3" class="point labeled" repere="repere1" x="3" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I3" x="-3" y="0">3</g>
+        <g name="I4" class="point labeled" repere="repere1" x="4" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I4" x="-3" y="0">4</g>
+        
+
+        <g name="J-4" class="point labeled" repere="repere1" x="0" y="-4" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J-4" x="-15" y="-6">-4</g>
+        <g name="J-3" class="point labeled" repere="repere1" x="0" y="-3" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J-3" x="-15" y="-6">-3</g>
+        <g name="J-2" class="point labeled" repere="repere1" x="0" y="-2" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J-2" x="-15" y="-6">-2</g>
+        <g name="J-1" class="point labeled" repere="repere1" x="0" y="-1" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J-1" x="-15" y="-6">-1</g>
+        <g name="J1" class="point labeled" repere="repere1" x="0" y="1" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J1" x="-12" y="-6">1</g>
+        <g name="J2" class="point labeled" repere="repere1" x="0" y="2" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J2" x="-12" y="-6">2</g>
+        <g name="J3" class="point labeled" repere="repere1" x="0" y="3" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J3" x="-12" y="-6">3</g>
+        <g name="J4" class="point labeled" repere="repere1" x="0" y="4" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J4" x="-12" y="-6">4</g>
+
+        <g name="A" class="point labeled" repere="repere1" x="1" y="-1" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="A" x="5" y="-5">A</g>
+        <g name="B" class="point labeled" repere="repere1" x="-2.5" y="-3.625" stroke="black" font-size="7pt"></g>
+        <g class="label" linkto="B" x="5" y="-5">B</g>
+        
+        <g name="C_f" class="courbeRepresentative labeled" expression="1/10*x^3 - 1/36*x^2 - 131/60*x^1 + 10/9" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="blue" stroke-width="0.5" fill="transparent" pos_label="0.8" style="font-size: 7pt;"></g>
+        <g name="C_g" class="courbeRepresentative labeled" expression="11/20*x^2 + 17/20*x^1 - 12/5" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="red" stroke-width="0.5" fill="transparent" pos_label="0.8" style="font-size: 7pt;"></g>
+        <g name="C_h" class="courbeRepresentative labeled" expression="3/4*x^1 - 7/4" linkto="repere1" xmin="-5" xmax="5" pas="0.1" stroke="green" stroke-width="0.5" fill="transparent" pos_label="0.9" style="font-size: 7pt;"></g>
+    </svg>
+</div>
+
+<h2>La fonction $h$</h2>
+$$h(x) = \frac{3}{4}x - \frac{7}{4}$$
+
+<h3>Tableau de valeurs</h3>
+<div class="exercice">
+    <div class="enonce">
+        La calculatrice permet d'obtenir le tableau de valeurs de la fonction $h$ pour les valeurs de $x$ comprises entre $-4$ et $4$ avec un pas de $1$.
+        <table class="tableauvaleurs">
+            <tr>
+                <td>$x$</td>
+                <td>$-4$</td>
+                <td>$-3$</td>
+                <td>$-2$</td>
+                <td>$-1$</td>
+                <td>$0$</td>
+                <td>$1$</td>
+                <td>$2$</td>
+                <td>$3$</td>
+                <td>$4$</td>
+            </tr>
+            <tr>
+                <td>$h(x)$</td>
+                <td>$-\num{4.75}$</td>
+                <td>$-4$</td>
+                <td>$-\num{3.25}$</td>
+                <td>$-\num{2.5}$</td>
+                <td>$-\num{1.75}$</td>
+                <td>$-1$</td>
+                <td>$-\num{0.25}$</td>
+                <td>$\num{0.5}$</td>
+                <td>$\num{1.25}$</td>
+            </tr>
+        </table>
+    </div>
 </div>
 <div class="exercice">
     <div class="enonce">
-        Considérons les fonctions suivantes, donnez leur ensemble de définition&nbsp; en éliminant les valeurs interdites.
-        <ol class="horizontal-list">
-            <li>$f_1:x\mapsto \frac{1}{x}$</li>
-            <li>$f_2:x\mapsto \sqrt{x}$</li>
-            <li>$f_3:x\mapsto \frac{1}{x-1}$</li>
-            <li>$f_4:x\mapsto \sqrt{x-1}$</li>
-            <li>$f_5:x\mapsto \frac{1}{(x+1)(x-3)}$</li>
-            <li>$f_6:x\mapsto \sqrt{x+3}$</li>
+        <ol class="alphabetical-list">
+            <li>La fonction $h$ est une fonction affine de la forme $ax+b$ où $a=\frac{3}{4}$ et $b=-\frac{7}{4}$. Le coefficient directeur de la droite représentative de $h$ est $a=\frac{3}{4}$ et son ordonnée à l'origine est $b=-\frac{7}{4}$.</li>
+            <li>La fonction affine $h$ n'est pas une fonction linéaire car son ordonnée à l'origine est différente de $0$. Graphiquement cela se traduit par le fait que la droite représentative de $h$ ne passe pas par l'origine du repère.</li>
+            <li>L'ordonnée à l'origine de la droite représentative de $h$ est&nbsp;$-\frac{7}{4}$ ce qui signifie que l'image de $0$ par la fonction $h$ est&nbsp;$-\frac{7}{4}$. Autrement dit&nbsp;$h(0)=-\frac{7}{4}$.</li>
+            <li>La courbe représentative d'une fonction affine est une droite. Donc la courbe représentative de $h$ est une droite.</li>
         </ol>
     </div>
-    <div class="solution">
-        <ol>
-            <li>$\mathcal{D}_{f_1}=\mathbb{R}^*$</li>
-            <li>$\mathcal{D}_{f_2}=[0,+\infty[$</li>
-            <li>$\mathcal{D}_{f_3}=\mathbb{R}\setminus\{1\}$</li>
-            <li>$\mathcal{D}_{f_4}=[1,+\infty[$</li>
-            <li>$\mathcal{D}_{f_5}=\mathbb{R}\setminus\{-1,3\}$</li>
-            <li>$\mathcal{D}_{f_6}=[-3,+\infty[$</li>
+</div>
+
+<h3>Image</h3>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Par lecture graphique on trouve que la droite représentative de la fonction $h$ passe par le point $A$ de coordonnées $(1;-1)$.
+            Donc l'image de $1$ par la fonction $h$ semble être $-1$.
+            </li>
+            <li>Par lecture graphique on trouve que la droite représentative de la fonction $h$ passe par le point $B$ de coordonnées $(-2.5;-3.6)$. Donc l'image de $-2.5$ par la fonction $h$ semble être $-3.6$.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Vérifions que l'image de $1$ par la fonction $h$ est bien $-1$ en calculant $h(1)$&nbsp;:
+            $$\begin{align*}
+            h(1)&= \frac{3}{4} \times 1 - \frac{7}{4} \\
+            h(1)&= \frac{3}{4} - \frac{7}{4} \\
+            h(1)&= -\frac{4}{4} = -1
+            \end{align*}$$
+            </li>
+            <li>La calculatrice donne $h(-\num{2.5})=-\num{3.625}$. L'image de $-\num{2.5}$ par la fonction $h$ est $-\num{3.625}$. Le point de coordonnées $(\num{-2.5};\num{-3.625})$ appartient à la droite représentative de $h$. Il s'agit du point $B$ sur le graphique.</li>
+        </ol>
+    </div>
+</div>
+
+<h3>Antécédent</h3>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Par lecture graphique on trouve que la droite représentative de la fonction $h$ passe par le point $A$ de coordonnées $(-3;-4)$. Donc un antécédent de $-4$ par la fonction $h$ semble être $-3$.</li>
+            <li>Vérifions que c'est le seul antécédent de $-4$ par la fonction $h$ en résolvant l'équation $h(x)=-4$&nbsp;:
+            $$\begin{align*}
+            h(x)&= -4 \\
+            \frac{3}{4}x - \frac{7}{4}&= -4 \\
+            3x - 7&= -16 &&\text{en multipliant par 4} \\
+            3x&= -9 &&\text{en ajoutant 7} \\
+            x&= -3 &&\text{en divisant par 3}
+            \end{align*}$$
+            L'unique antécédent de $-4$ par la fonction $h$ est donc $-3$.</li>
+        </ol>
+    </div>
+</div>
+
+<h3>Inéquation</h3>
+<div class="exercice">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Les abscisses des points de la droite représentative de $h$ situés au-dessus de l'axe des abscisses sont les solutions de l'inéquation $h(x) \gt 0$. L'ensemble des solutions de l'inéquation $h(x) \gt 0$ semble donc être l'intervalle $]\num{2.3};+\infty[$.</li>
+            <li>Les abscisses des points de la droite représentative de $h$ situés en dessous de la droite horizontale passant par le point $(0;1)$ sont les solutions de l'inéquation $h(x) \leqslant 1$. L'ensemble des solutions de l'inéquation $h(x) \leqslant 1$ semble donc être l'intervalle $]-\infty;\num{3.7}]$.</li>
         </ol>
     </div>
 </div></main>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>K-01.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../main.bundle.js"></script><script defer src="../../../trinomes.bundle.js"></script><script defer src="../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header class="brouillon"><div>Listes en Python</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>K-01<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div class="exercice">
+    <div class="enonce">
+        Complétez les colonnes.
+        <table class="tableauvaleurs">
+            <tr><td>Instruction</td><td>Contenu de <code class="language-py">L</code></td></tr>
+            <tr><td><code class="language-py">L = []</code></td><td></td></tr>
+            <tr><td><code class="language-py">L.append(0)</code></td><td></td></tr>
+            <tr><td><code class="language-py">L.append(1)</code></td><td></td></tr>
+            <tr><td><code class="language-py">L.append(2)</code></td><td></td></tr>
+            <tr><td><code class="language-py">L.append(0)</code></td><td></td></tr>
+            <tr><td><code class="language-py">L.remove(0)</code></td><td></td></tr>
+            <tr><td><code class="language-py">L.remove(0)</code></td><td></td></tr>
+        </table>
+    </div>
+    <div class="solution">
+        <table class="tableauvaleurs">
+            <tr><td>Instruction</td><td>Contenu de <code class="language-py">L</code></td></tr>
+            <tr><td><code class="language-py">L = []</code></td><td>[]</td></tr>
+            <tr><td><code class="language-py">L.append(0)</code></td><td>[0]</td></tr>
+            <tr><td><code class="language-py">L.append(1)</code></td><td>[0,1]</td></tr>
+            <tr><td><code class="language-py">L.append(2)</code></td><td>[0,1,2]</td></tr>
+            <tr><td><code class="language-py">L.append(0)</code></td><td>[0,1,2,0]</td></tr>
+            <tr><td><code class="language-py">L.remove(0)</code></td><td>[1,2,0]</td></tr>
+            <tr><td><code class="language-py">L.remove(0)</code></td><td>[1,2]</td></tr>
+        </table>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Complétez les colonnes.
+        <table class="tableauvaleurs">
+            <tr><td>Instruction</td><td>Contenu de <code class="language-py">L</code></td><td>Variable <code class="language-py">i</code></td></tr>
+            <tr><td><code class="language-py">L = []</code></td><td></td><td></td></tr>
+            <tr><td><code class="language-py">i = 0</code></td><td></td><td></td></tr>
+            <tr><td><code class="language-py">L.append(i)</code></td><td></td><td></td></tr>
+            <tr><td><code class="language-py">i = i + 1</code></td><td></td><td></td></tr>
+            <tr><td><code class="language-py">L.append(i)</code></td><td></td><td></td></tr>
+            <tr><td><code class="language-py">i = i + 1</code></td><td></td><td></td></tr>
+            <tr><td><code class="language-py">L.append(i)</code></td><td></td><td></td></tr>
+        </table>
+    </div>
+    <div class="solution">
+        <table class="tableauvaleurs">
+            <tr><td>Instruction</td><td>Contenu de <code class="language-py">L</code></td><td>Variable <code class="language-py">i</code></td></tr>
+            <tr><td><code class="language-py">L = []</code></td><td>[]</td><td></td></tr>
+            <tr><td><code class="language-py">i = 0</code></td><td>[]</td><td>0</td></tr>
+            <tr><td><code class="language-py">L.append(i)</code></td><td>[0]</td><td>0</td></tr>
+            <tr><td><code class="language-py">i = i + 1</code></td><td>[0]</td><td>1</td></tr>
+            <tr><td><code class="language-py">L.append(i)</code></td><td>[0,1]</td><td>1</td></tr>
+            <tr><td><code class="language-py">i = i + 1</code></td><td>[0,1]</td><td>2</td></tr>
+            <tr><td><code class="language-py">L.append(i)</code></td><td>[0,1,2]</td><td>2</td></tr>
+        </table>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        <div style="display:flex;">
+            <div style="width:50%">Le code ci-contre effectue le même enchaînement d'instructions que le code précédent.</div>
+            <div style="width:50%"><pre class="line-numbers"><code class="language-py">L = []
+for i in range(3):
+    L.append(i)</code></pre></div>
+        </div>
+        Le code <code class="language-py">for i in range(3):</code> peut se traduire par : &laquo; Répéter 3 fois les instructions suivantes en faisant démarrer la variable <code class="language-py">i</code> à 0, puis en ajoutant 1 à <code>i</code> à chaque itération. &raquo;<br>
+        Pour chaque programme suivant, indiquer le contenu de la liste <code class="language-py">L</code> après exécution du programme.
+        <table>
+            <tr>
+                <td><pre class="line-numbers"><code class="language-py">L = []
+for i in range(4):
+    L.append(i)</code></pre></td>
+                <td><pre class="line-numbers"><code class="language-py">L = []
+for i in range(3):
+    L.append(i+1)</code></pre></td>
+            </tr>
+            <tr>
+                <td><pre class="line-numbers"><code class="language-py">L = []
+for i in range(3):
+    L.append(2*i)</code></pre></td>
+                <td><pre class="line-numbers"><code class="language-py">L = []
+for i in range(4):
+    L.append(3-i)</code></pre></td>
+            </tr>
+        </table>
+    </div>
+    <div class="solution">
+        <table>
+            <tr>
+                <td><pre class="line-numbers"><code class="language-py">L = []  
+for i in range(4):
+    L.append(i)</code></pre>
+    <code class="language-py">L = [0,1,2,3]</code>
+    </td>
+                <td><pre class="line-numbers"><code class="language-py">L = []
+for i in range(3):
+    L.append(i+1)</code></pre>
+    <code class="language-py">L = [1,2,3]</code>
+    </td>
+            </tr>
+            <tr>
+                <td><pre class="line-numbers"><code class="language-py">L = []
+for i in range(3):
+    L.append(2*i)</code></pre>
+    <code class="language-py">L = [0,2,4]</code>
+    </td>
+                <td><pre class="line-numbers"><code class="language-py">L = []
+for i in range(4):
+    L.append(3-i)</code></pre>
+    <code class="language-py">L = [3,2,1,0]</code>
+    </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Dans chaque cas, écrire un programme utilisant une boucle <code class="language-py">for</code> qui génère la liste <code class="language-py">L</code> des ...
+        <ol class="alphabetical-list">
+            <li>entiers de 5 à 9 inclus.</li>
+            <li>entiers de 0 à 10 inclus.</li>
+            <li>entiers de 10 à 0 inclus.</li>
+            <li>entiers pairs de 0 à 10 inclus.</li>
+            <li>entiers impairs de 0 à 10 inclus.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li> Entiers de 5 à 9 inclus :
+            <pre class="line-numbers"><code class="language-py">L= []
+for i in range(5):
+    L.append(i+5)</code></pre></li>
+            <li> Entiers de 0 à 10 inclus :
+            <pre class="line-numbers"><code class="language-py">L= []
+for i in range(11):
+    L.append(i)</code></pre></li>
+            <li> Entiers de 10 à 0 inclus :
+            <pre class="line-numbers"><code class="language-py">L= []
+for i in range(11):
+    L.append(10-i)</code></pre></li>
+            <li> Entiers pairs de 0 à 10 inclus :
+            <pre class="line-numbers"><code class="language-py">L= []
+for i in range(6):
+    L.append(2*i)</code></pre></li>
+            <li> Entiers impairs de 0 à 10 inclus :
+            <pre class="line-numbers"><code class="language-py">L= []
+for i in range(5):
+    L.append(2*i+1)</code></pre></li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Déterminez la variable <code class="language-py">S</code> à la fin de l'exécution de chaque programme.
+        <table>
+            <tr>
+                <td><pre class="line-numbers"><code class="language-py">S = 0
+L = []
+for i in range(5):
+    L.append(i)
+    S = S + i</code></pre></td>
+                <td><pre class="line-numbers"><code class="language-py">S = 0
+L = []
+for i in range(10):
+    L.append(i)
+    S = S + i</code></pre></td>
+            </tr>
+        </table>
+    </div>
+    <div class="solution">
+        <table>
+            <tr>
+                <td><pre class="line-numbers"><code class="language-py">S = 0
+L = []
+for i in range(5):
+    L.append(i)
+    S = S + i</code></pre>
+    <code class="language-py">S = 0 + 0 + 1 + 2 + 3 + 4 = 10</code>
+    </td>
+                <td><pre class="line-numbers"><code class="language-py">S = 0
+L = []
+for i in range(10):
+    L.append(i)
+    S = S + i</code></pre>
+    <code class="language-py">S = 0 + 0 + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 = 45</code>
+    </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Écrivez un programme qui crée la liste et la somme :
+        <ol class="alphabetical-list">
+            <li>des entiers de 0 à 100 inclus&nbsp;</li>
+            <li>des entiers pairs de 0 à 100 inclus&nbsp;</li>
+            <li>des carrés parfaits de 0 à 100 inclus&nbsp;</li>
+            <li>des cubes parfaits de 0 à 100 inclus.</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li> La somme des entiers de 0 à 100 inclus :
+            <pre class="line-numbers"><code class="language-py">L=[]
+S = 0
+for i in range(101):
+    L.append(i)
+    S = S + i</code></pre></li>
+            <li> La somme des entiers pairs de 0 à 100 inclus :
+            <pre class="line-numbers"><code class="language-py">L=[]
+S = 0
+for i in range(51):
+    L.append(2*i)
+    S = S + 2*i</code></pre></li>
+            <li> La somme des carrés parfaits de 0 à 100 inclus :
+            <pre class="line-numbers"><code class="language-py">L=[]
+S = 0
+for i in range(11):
+    L.append(i**2)
+    S = S + i**2</code></pre></li>
+            <li> La somme des cubes parfaits de 0 à 100 inclus :
+            <pre class="line-numbers"><code class="language-py">L=[]
+S = 0
+for i in range(5):
+    L.append(i**3)
+    S = S + i**3</code></pre></li>
+        </ol>
+    </div>
+</div></main>
+  </body>
+</html>

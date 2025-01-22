@@ -306,13 +306,91 @@
         </ol>
     </div>
 </div>
-<div class="exercice">
-    <div class="enonce">
-        <div class="encart">
-            $A$ et $B$ désignent deux événements d'un univers $\Omega$.
-            On peut modéliser les probabilités conditionnelles par un arbre pondéré.
-            <div class="figure">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 110">
+<div class="propriete">
+    $A$ et $B$ désignent deux événements d'un univers $\Omega$.
+    On peut modéliser les probabilités conditionnelles par un arbre pondéré.
+    <div class="figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 110">
+            <g name="O" class="point" x="10" y="55" stroke="none"></g>
+            <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
+            <g name="lb1" class="label" x="20" y="30" style="font-size:8px;">$p(A)$</g>
+            <g name="lA1" class="label" x="52" y="20" style="font-size:10px;">$A$</g>
+            <g name="b2" class="vecteur" linkto="O" x="40" y="25" head="none"></g>
+            <g name="lb2" class="label" x="20" y="70" style="font-size:8px;">$p(\overline{A})$</g>
+            <g name="lA2" class="label" x="52" y="75" style="font-size:10px;">$\overline{A}$</g>
+            <g name="A1" class="point" x="60" y="27" stroke="none"></g>
+            <g name="A2" class="point" x="60" y="82" stroke="none"></g>
+            <g name="B1" class="point" x="100" y="10" stroke="none"></g>
+            <g name="B2" class="point" x="100" y="45" stroke="none"></g>
+            <g name="B3" class="point" x="100" y="65" stroke="none"></g>
+            <g name="B4" class="point" x="100" y="100" stroke="none"></g>
+            <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
+            <g name="lb11" class="label" x="70" y="5" style="font-size:8px;">$p_A(B)$</g>
+            <g name="lB1" class="label" x="100" y="3" style="font-size:10px;">$B$</g>
+            <g name="lB1p" class="label" x="150" y="3" style="font-size:8px;">$p(A\cap B)=p(A)\times p_A(B)$</g>
+            <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
+            <g name="lb12" class="label" x="70" y="40" style="font-size:8px;">$p_A(\overline{B})$</g>
+            <g name="lB2" class="label" x="100" y="37" style="font-size:10px;">$\overline{B}$</g>
+            <g name="lB2p" class="label" x="150" y="37" style="font-size:8px;">$p(A\cap \overline{B})=p(A)\times p_A(\overline{B})$</g>
+            <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
+            <g name="lb21" class="label" x="70" y="60" style="font-size:8px;">$p_{\overline{A}}(B)$</g>
+            <g name="lB3" class="label" x="100" y="58" style="font-size:10px;">$B$</g>
+            <g name="lB3p" class="label" x="150" y="58" style="font-size:8px;">$p(\overline{A}\cap B)=p(\overline{A})\times p_{\overline{A}}(B)$</g>
+            <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
+            <g name="lb22" class="label" x="70" y="95" style="font-size:8px;">$p_{\overline{A}}(\overline{B})$</g>
+            <g name="lB4" class="label" x="100" y="92" style="font-size:10px;">$\overline{B}$</g>
+            <g name="lB4p" class="label" x="150" y="92" style="font-size:8px;">$p(\overline{A}\cap \overline{B})=p(\overline{A})\times p_{\overline{A}}(\overline{B})$</g>
+        </svg>
+    </div>
+    <ul style="padding:10px;">
+        <li>La somme des probabilités des branches issues d'un même nœud est égale à 1.<br>
+        Par exemple, $p(A)+p(B)+p(C)=1$.
+        <div class="figure">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 20 120 70">
+                <g name="O" class="point" x="10" y="55" stroke="none"></g>
+                <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
+                <g name="lb1" class="label" x="20" y="30" style="font-size:8px;">$p(A)$</g>
+                <g name="lA1" class="label" x="52" y="20" style="font-size:10px;">$A$</g>
+                <g name="b2" class="vecteur" linkto="O" x="40" y="0" head="none"></g>
+                <g name="lb2" class="label" x="30" y="45" style="font-size:8px;">$p(B)$</g>
+                <g name="lA2" class="label" x="52" y="50" style="font-size:10px;">$B$</g>
+                <g name="b3" class="vecteur" linkto="O" x="40" y="25" head="none"></g>
+                <g name="lb3" class="label" x="20" y="70" style="font-size:8px;">$p(C)$</g>
+                <g name="lA3" class="label" x="52" y="80" style="font-size:10px;">$C$</g>
+            </svg>
+        </div>
+        </li>
+        <li>La probabilité d'un chemin est le produit des probabilités des branches qui le composent.<br>
+        Par exemple, $p(A\cap \overline{B})=p(A)\times p_A(\overline{B})$.
+        <div class="figure">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 0 200 110">
+                    <g name="O" class="point" x="10" y="55" stroke="none"></g>
+                    <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
+                    <g name="lb1" class="label" x="20" y="30" style="font-size:8px;">$p(A)$</g>
+                    <g name="lA1" class="label" x="52" y="20" style="font-size:10px;">$A$</g>
+                    <g name="b2" class="vecteur" linkto="O" x="40" y="25" head="none"></g>
+                    <g name="A1" class="point" x="60" y="27" stroke="none"></g>
+                    <g name="A2" class="point" x="60" y="82" stroke="none"></g>
+                    <g name="B1" class="point" x="100" y="10" stroke="none"></g>
+                    <g name="B2" class="point" x="100" y="45" stroke="none"></g>
+                    <g name="B3" class="point" x="100" y="65" stroke="none"></g>
+                    <g name="B4" class="point" x="100" y="100" stroke="none"></g>
+                    <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
+                    <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
+                    <g name="lb12" class="label" x="70" y="40" style="font-size:8px;">$p_A(\overline{B})$</g>
+                    <g name="lB2" class="label" x="100" y="37" style="font-size:10px;">$\overline{B}$</g>
+                    <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
+                    <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
+                    <g name="c1" class="segment" linkto="O A1" stroke="red" stroke-width="5" opacity="0.2"></g>
+                    <g name="c1b" class="segment" linkto="A1 B2" stroke="red" stroke-width="5" opacity="0.2"></g>
+                </svg>
+            </div>
+        </li>
+        <li>La somme des probabilités des chemins qui mènent à un même événement est égale à la probabilité de cet événement.<br>
+        Par exemple, 
+        $\footnotesize{p(B)=p(A\cap B)+p(\overline{A}\cap B)=p(A)\times p_A(B)+p(\overline{A})\times p_{\overline{A}}(B)}$.</li>
+        <div class="figure">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 0 200 110">
                     <g name="O" class="point" x="10" y="55" stroke="none"></g>
                     <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
                     <g name="lb1" class="label" x="20" y="30" style="font-size:8px;">$p(A)$</g>
@@ -329,100 +407,22 @@
                     <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
                     <g name="lb11" class="label" x="70" y="5" style="font-size:8px;">$p_A(B)$</g>
                     <g name="lB1" class="label" x="100" y="3" style="font-size:10px;">$B$</g>
-                    <g name="lB1p" class="label" x="150" y="3" style="font-size:8px;">$p(A\cap B)=p(A)\times p_A(B)$</g>
                     <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
-                    <g name="lb12" class="label" x="70" y="40" style="font-size:8px;">$p_A(\overline{B})$</g>
-                    <g name="lB2" class="label" x="100" y="37" style="font-size:10px;">$\overline{B}$</g>
-                    <g name="lB2p" class="label" x="150" y="37" style="font-size:8px;">$p(A\cap \overline{B})=p(A)\times p_A(\overline{B})$</g>
                     <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
                     <g name="lb21" class="label" x="70" y="60" style="font-size:8px;">$p_{\overline{A}}(B)$</g>
                     <g name="lB3" class="label" x="100" y="58" style="font-size:10px;">$B$</g>
-                    <g name="lB3p" class="label" x="150" y="58" style="font-size:8px;">$p(\overline{A}\cap B)=p(\overline{A})\times p_{\overline{A}}(B)$</g>
                     <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
-                    <g name="lb22" class="label" x="70" y="95" style="font-size:8px;">$p_{\overline{A}}(\overline{B})$</g>
-                    <g name="lB4" class="label" x="100" y="92" style="font-size:10px;">$\overline{B}$</g>
-                    <g name="lB4p" class="label" x="150" y="92" style="font-size:8px;">$p(\overline{A}\cap \overline{B})=p(\overline{A})\times p_{\overline{A}}(\overline{B})$</g>
+                    <g name="c1" class="segment" linkto="O A1" stroke="red" stroke-width="5" opacity="0.2"></g>
+                    <g name="c1b" class="segment" linkto="A1 B1" stroke="red" stroke-width="5" opacity="0.2"></g>
+                    <g name="c2" class="segment" linkto="O A2" stroke="blue" stroke-width="5" opacity="0.2"></g>
+                    <g name="c2b" class="segment" linkto="A2 B3" stroke="blue" stroke-width="5" opacity="0.2"></g>
                 </svg>
             </div>
-            <ul style="padding:10px;">
-                <li>La somme des probabilités des branches issues d'un même nœud est égale à 1.<br>
-                Par exemple, $p(A)+p(B)+p(C)=1$.
-                <div class="figure">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 20 120 70">
-                        <g name="O" class="point" x="10" y="55" stroke="none"></g>
-                        <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
-                        <g name="lb1" class="label" x="20" y="30" style="font-size:8px;">$p(A)$</g>
-                        <g name="lA1" class="label" x="52" y="20" style="font-size:10px;">$A$</g>
-                        <g name="b2" class="vecteur" linkto="O" x="40" y="0" head="none"></g>
-                        <g name="lb2" class="label" x="30" y="45" style="font-size:8px;">$p(B)$</g>
-                        <g name="lA2" class="label" x="52" y="50" style="font-size:10px;">$B$</g>
-                        <g name="b3" class="vecteur" linkto="O" x="40" y="25" head="none"></g>
-                        <g name="lb3" class="label" x="20" y="70" style="font-size:8px;">$p(C)$</g>
-                        <g name="lA3" class="label" x="52" y="80" style="font-size:10px;">$C$</g>
-                    </svg>
-                </div>
-                </li>
-                <li>La probabilité d'un chemin est le produit des probabilités des branches qui le composent.<br>
-                Par exemple, $p(A\cap \overline{B})=p(A)\times p_A(\overline{B})$.
-                <div class="figure">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 0 200 110">
-                            <g name="O" class="point" x="10" y="55" stroke="none"></g>
-                            <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
-                            <g name="lb1" class="label" x="20" y="30" style="font-size:8px;">$p(A)$</g>
-                            <g name="lA1" class="label" x="52" y="20" style="font-size:10px;">$A$</g>
-                            <g name="b2" class="vecteur" linkto="O" x="40" y="25" head="none"></g>
-                            <g name="A1" class="point" x="60" y="27" stroke="none"></g>
-                            <g name="A2" class="point" x="60" y="82" stroke="none"></g>
-                            <g name="B1" class="point" x="100" y="10" stroke="none"></g>
-                            <g name="B2" class="point" x="100" y="45" stroke="none"></g>
-                            <g name="B3" class="point" x="100" y="65" stroke="none"></g>
-                            <g name="B4" class="point" x="100" y="100" stroke="none"></g>
-                            <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
-                            <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
-                            <g name="lb12" class="label" x="70" y="40" style="font-size:8px;">$p_A(\overline{B})$</g>
-                            <g name="lB2" class="label" x="100" y="37" style="font-size:10px;">$\overline{B}$</g>
-                            <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
-                            <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
-                            <g name="c1" class="segment" linkto="O A1" stroke="red" stroke-width="5" opacity="0.2"></g>
-                            <g name="c1b" class="segment" linkto="A1 B2" stroke="red" stroke-width="5" opacity="0.2"></g>
-                        </svg>
-                    </div>
-                </li>
-                <li>La somme des probabilités des chemins qui mènent à un même événement est égale à la probabilité de cet événement.<br>
-                Par exemple, 
-                $\footnotesize{p(B)=p(A\cap B)+p(\overline{A}\cap B)=p(A)\times p_A(B)+p(\overline{A})\times p_{\overline{A}}(B)}$.</li>
-                <div class="figure">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 0 200 110">
-                            <g name="O" class="point" x="10" y="55" stroke="none"></g>
-                            <g name="b1" class="vecteur" linkto="O" x="40" y="-25" head="none"></g>
-                            <g name="lb1" class="label" x="20" y="30" style="font-size:8px;">$p(A)$</g>
-                            <g name="lA1" class="label" x="52" y="20" style="font-size:10px;">$A$</g>
-                            <g name="b2" class="vecteur" linkto="O" x="40" y="25" head="none"></g>
-                            <g name="lb2" class="label" x="20" y="70" style="font-size:8px;">$p(\overline{A})$</g>
-                            <g name="lA2" class="label" x="52" y="75" style="font-size:10px;">$\overline{A}$</g>
-                            <g name="A1" class="point" x="60" y="27" stroke="none"></g>
-                            <g name="A2" class="point" x="60" y="82" stroke="none"></g>
-                            <g name="B1" class="point" x="100" y="10" stroke="none"></g>
-                            <g name="B2" class="point" x="100" y="45" stroke="none"></g>
-                            <g name="B3" class="point" x="100" y="65" stroke="none"></g>
-                            <g name="B4" class="point" x="100" y="100" stroke="none"></g>
-                            <g name="b11" class="vecteur" linkto="A1" x="40" y="-17" head="none"></g>
-                            <g name="lb11" class="label" x="70" y="5" style="font-size:8px;">$p_A(B)$</g>
-                            <g name="lB1" class="label" x="100" y="3" style="font-size:10px;">$B$</g>
-                            <g name="b12" class="vecteur" linkto="A1" x="40" y="17" head="none"></g>
-                            <g name="b21" class="vecteur" linkto="A2" x="40" y="-17" head="none"></g>
-                            <g name="lb21" class="label" x="70" y="60" style="font-size:8px;">$p_{\overline{A}}(B)$</g>
-                            <g name="lB3" class="label" x="100" y="58" style="font-size:10px;">$B$</g>
-                            <g name="b22" class="vecteur" linkto="A2" x="40" y="17" head="none"></g>
-                            <g name="c1" class="segment" linkto="O A1" stroke="red" stroke-width="5" opacity="0.2"></g>
-                            <g name="c1b" class="segment" linkto="A1 B1" stroke="red" stroke-width="5" opacity="0.2"></g>
-                            <g name="c2" class="segment" linkto="O A2" stroke="blue" stroke-width="5" opacity="0.2"></g>
-                            <g name="c2b" class="segment" linkto="A2 B3" stroke="blue" stroke-width="5" opacity="0.2"></g>
-                        </svg>
-                    </div>
-                </li>
-            </ul>
-        </div>
+        </li>
+    </ul>
+</div>
+<div class="exercice">
+    <div class="enonce">
         <ol class="alphabetical-list">
             <li>Recopiez et complétez l'arbre pondéré ci-dessous.
             <div class="figure">
