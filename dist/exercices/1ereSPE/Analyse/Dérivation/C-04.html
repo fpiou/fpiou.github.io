@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>C-04.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Dérivation</div><div class="header-niveau">Première Spécialité mathématiques</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>C-04<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div class="exercice">
+    <div class="enonce">
+        Donnez une condition sur $x$ pour que la fonction soit définie. En déduire le domaine de définition de la fonction.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$f(x) = \dfrac{1}{x+2}$</li>
+            <li>$f(x) = \sqrt{x-1}$</li>
+            <li>$f(x) = \dfrac{1}{x^2-1}$</li>
+            <li>$f(x) = \sqrt{(x-1)(x+2)}$</li>
+            <li>$f(x) = \sqrt{x-1}\sqrt{x+2}$</li>
+            <li>$f(x) = \dfrac{1}{x^2+1}$</li>
+            <li>$f(x) = \dfrac{1}{\sqrt{x}}$</li>
+            <li>$f(x) = \dfrac{1}{x^2}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>Pour que $f(x) = \dfrac{1}{x+2}$ soit définie, le dénominateur $x+2$ ne doit pas être égal à zéro, car la division par zéro est impossible en mathématiques.</p>
+            $$\begin{align*}
+            x+2 &\neq 0\\
+            x &\neq -2
+            \end{align*}$$
+            <p>Cela signifie que $x$ ne peut pas être $-2$. Donc le domaine de définition de $f$ est tous les nombres réels sauf $-2$, noté $\mathbb{R}\setminus\{-2\}$. Cela signifie que $x$ peut être n'importe quel nombre réel sauf $-2$.</p></li>
+            <li><p>Pour que $f(x) = \sqrt{x-1}$ soit définie, l'expression sous la racine carrée $x-1$ doit être positive ou nulle, car on ne peut pas prendre la racine carrée d'un nombre négatif.</p>
+            $$\begin{align*}
+            x-1 &\geqslant 0\\
+            x &\geqslant 1
+            \end{align*}$$
+            <p>Cela signifie que $x$ doit être supérieur ou égal à $1$. Donc le domaine de définition de $f$ est $[1;+\infty[$, ce qui signifie tous les nombres réels supérieurs ou égaux à $1$.</p></li>
+            <li><p>Pour que $f(x) = \dfrac{1}{x^2-1}$ soit définie, le dénominateur $x^2-1$ ne doit pas être égal à zéro, car la division par zéro est impossible.</p>
+            $$\begin{align*}
+            x^2-1 &\neq 0\\
+            (x-1)(x+1) &\neq 0
+            \end{align*}$$
+            <p>Cela signifie que $x$ ne peut pas être $1$ ou $-1$. Donc le domaine de définition de $f$ est tous les nombres réels sauf $1$ et $-1$, noté $\mathbb{R}\setminus\{-1;1\}$.</p></li>
+            <li><p>Pour que $f(x) = \sqrt{(x-1)(x+2)}$ soit définie, l'expression sous la racine carrée $(x-1)(x+2)$ doit être positive ou nulle, car on ne peut pas prendre la racine carrée d'un nombre négatif.</p>
+            $$\begin{align*}
+            (x-1)(x+2) &\geqslant 0
+            \end{align*}$$
+            <p>Cela signifie que $x$ doit être dans les intervalles où le produit $(x-1)(x+2)$ est positif ou nul. Donc le domaine de définition de $f$ est $]-\infty;-2]\cup[1;+\infty[$, ce qui signifie tous les nombres réels inférieurs ou égaux à $-2$ et supérieurs ou égaux à $1$.</p></li>
+            <li><p>Pour que $f(x) = \sqrt{x-1}\sqrt{x+2}$ soit définie, les deux expressions sous les racines carrées $x-1$ et $x+2$ doivent être positives ou nulles, car on ne peut pas prendre la racine carrée d'un nombre négatif.</p>
+            $$\begin{align*}
+            x-1 &\geqslant 0\\
+            x &\geqslant 1
+            \end{align*}$$
+            $$\begin{align*}
+            x+2 &\geqslant 0\\
+            x &\geqslant -2
+            \end{align*}$$
+            <p>Cela signifie que $x$ doit être supérieur ou égal à $1$. Donc le domaine de définition de $f$ est $[1;+\infty[$, ce qui signifie tous les nombres réels supérieurs ou égaux à $1$.</p></li>
+            <li><p>Pour que $f(x) = \dfrac{1}{x^2+1}$ soit définie, le dénominateur $x^2+1$ ne doit pas être égal à zéro. Cependant, $x^2+1$ est toujours positif pour tout $x$ réel, car un carré est toujours positif et $x^2+1$ est toujours supérieur à $1$.</p>
+            $$\begin{align*}
+            x^2+1 &\neq 0
+            \end{align*}$$
+            <p>Cela signifie que $x$ peut être n'importe quel nombre réel. Donc le domaine de définition de $f$ est tous les nombres réels, noté $\mathbb{R}$.</p></li>
+            <li><p>Pour que $f(x) = \dfrac{1}{\sqrt{x}}$ soit définie, l'expression sous la racine carrée $x$ doit être positive ou nulle, et le dénominateur $\sqrt{x}$ ne doit pas être égal à zéro.</p>
+            $$\begin{align*}
+            x &\geqslant 0
+            \end{align*}$$
+            <p>Cela signifie que $x$ doit être supérieur ou égal à $0$. Donc le domaine de définition de $f$ est $[0;+\infty[$, ce qui signifie tous les nombres réels supérieurs ou égaux à $0$.</p></li>
+            <li><p>Pour que $f(x) = \dfrac{1}{x^2}$ soit définie, le dénominateur $x^2$ ne doit pas être égal à zéro, car la division par zéro est impossible.</p>
+            $$\begin{align*}
+            x^2 &\neq 0
+            \end{align*}$$
+            <p>Cela signifie que $x$ ne peut pas être $0$. Donc le domaine de définition de $f$ est tous les nombres réels sauf $0$, noté $\mathbb{R}\setminus\{0\}$.</p></li>
+        </ol>
+    </div>
+</div>
+
+<h3>Dérivées usuelles</h3>
+<div class="exercice">
+    <div class="enonce">
+        Donnez le domaine de définition de la fonction, le domaine de dérivabilité de la fonction et la dérivée de la fonction.
+        <ol class="alphabetical-list horizontal-list col-3c">
+            <li>$f(x) = 4$</li>
+            <li>$f(x) = x$</li>
+            <li>$f(x) = x^2$</li>
+            <li>$f(x) = x^3$</li>
+            <li>$f(x) = \sqrt{x}$</li>
+            <li>$f(x) = \dfrac{1}{x}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>La fonction $f(x) = 4$ est une fonction constante.</p>
+                <p><strong>Domaine de définition :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction est dérivable partout.</p>
+                <p><strong>Dérivée :</strong> La dérivée d'une constante est $0$. Donc, $f'(x) = 0$.</p></li>
+            <li><p>La fonction $f(x) = x$ est la fonction identité.</p>
+                <p><strong>Domaine de définition :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction est dérivable partout.</p>
+                <p><strong>Dérivée :</strong> La dérivée de $x$ est $1$. Donc, $f'(x) = 1$.</p></li>
+            <li><p>La fonction $f(x) = x^2$ est la fonction carrée.</p>
+                <p><strong>Domaine de définition :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction est dérivable partout.</p>
+                <p><strong>Dérivée :</strong> La dérivée de $x^2$ est $2x$. Donc, $f'(x) = 2x$.</p></li>
+            <li><p>La fonction $f(x) = x^3$ est la fonction cubique.</p>
+                <p><strong>Domaine de définition :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction est dérivable partout.</p>
+                <p><strong>Dérivée :</strong> La dérivée de $x^3$ est $3x^2$. Donc, $f'(x) = 3x^2$.</p></li>
+            <li><p>La fonction $f(x) = \sqrt{x}$ est la fonction racine carrée.</p>
+                <p><strong>Domaine de définition :</strong> Tous les nombres réels positifs ou nuls, noté $[0;+\infty[$. La fonction est définie pour $x \geq 0$.</p>
+                <p><strong>Domaine de dérivabilité :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction n'est pas dérivable en $x = 0$.</p>
+                <p><strong>Dérivée :</strong> La dérivée de $\sqrt{x}$ est $\frac{1}{2\sqrt{x}}$. Donc, $f'(x) = \frac{1}{2\sqrt{x}}$.</p></li>
+            <li><p>La fonction $f(x) = \dfrac{1}{x}$ est la fonction inverse.</p>
+                <p><strong>Domaine de définition :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction est définie pour tout $x \neq 0$.</p>
+                <p><strong>Domaine de dérivabilité :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée :</strong> La dérivée de $\dfrac{1}{x}$ est $-\dfrac{1}{x^2}$. Donc, $f'(x) = -\dfrac{1}{x^2}$.</p></li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Donnez le domaine de dérivabilité de la fonction.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$f(x) = \dfrac{1}{x+2}$</li>
+            <li>$f(x) = \sqrt{x-1}$</li>
+            <li>$f(x) = \dfrac{1}{x^2-1}$</li>
+            <li>$f(x) = \sqrt{(x-1)(x+2)}$</li>
+            <li>$f(x) = \sqrt{x-1}\sqrt{x+2}$</li>
+            <li>$f(x) = \dfrac{1}{x^2+1}$</li>
+            <li>$f(x) = \dfrac{1}{\sqrt{x}}$</li>
+            <li>$f(x) = \dfrac{1}{x^2}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>La fonction $f(x) = \dfrac{1}{x+2}$ est dérivable partout où elle est définie, sauf aux points où le dénominateur est zéro.</p>
+                <p><strong>Domaine de définition :</strong> Tous les nombres réels sauf $-2$, noté $\mathbb{R}\setminus\{-2\}$. La fonction n'est pas définie en $x = -2$ car la division par zéro est impossible.</p>
+                <p><strong>Domaine de dérivabilité :</strong> Tous les nombres réels sauf $-2$, noté $\mathbb{R}\setminus\{-2\}$. La fonction est dérivable partout où elle est définie.</p></li>
+            <li><p>La fonction $f(x) = \sqrt{x-1}$ est dérivable partout où elle est définie, sauf aux points où le radicande est nul.</p>
+                <p><strong>Domaine de définition :</strong> Tous les nombres réels supérieurs ou égaux à $1$, noté $[1;+\infty[$. La fonction est définie pour $x \geq 1$.</p>
+                <p><strong>Domaine de dérivabilité :</strong> Tous les nombres réels strictement supérieurs à $1$, noté $]1;+\infty[$. La fonction n'est pas dérivable en $x = 1$ car la dérivée de $\sqrt{x-1}$ tend vers l'infini.</p></li>
+            <li><p>La fonction $f(x) = \dfrac{1}{x^2-1}$ est dérivable partout où elle est définie, sauf aux points où le dénominateur est zéro.</p>
+                <p><strong>Domaine de définition :</strong> Tous les nombres réels sauf $1$ et $-1$, noté $\mathbb{R}\setminus\{-1;1\}$. La fonction n'est pas définie en $x = 1$ et $x = -1$ car la division par zéro est impossible.</p>
+                <p><strong>Domaine de dérivabilité :</strong> Tous les nombres réels sauf $1$ et $-1$, noté $\mathbb{R}\setminus\{-1;1\}$. La fonction est dérivable partout où elle est définie.</p></li>
+            <li><p>La fonction $f(x) = \sqrt{(x-1)(x+2)}$ est dérivable partout où elle est définie, sauf aux points où le radicande est nul.</p>
+                <p><strong>Domaine de définition :</strong> Tous les nombres réels où $(x-1)(x+2) \geq 0$, noté $]-\infty;-2]\cup[1;+\infty[$. La fonction est définie pour $x \leq -2$ ou $x \geq 1$.</p>
+                <p><strong>Domaine de dérivabilité :</strong> Tous les nombres réels strictement supérieurs à $1$ et strictement inférieurs à $-2$, noté $]-\infty;-2[\cup]1;+\infty[$. La fonction n'est pas dérivable en $x = 1$ et $x = -2$ car la dérivée tend vers l'infini.</p></li>
+            <li><p>La fonction $f(x) = \sqrt{x-1}\sqrt{x+2}$ est dérivable partout où elle est définie, sauf aux points où les radicandes sont nuls.</p>
+                <p><strong>Domaine de définition :</strong> Tous les nombres réels supérieurs ou égaux à $1$, noté $[1;+\infty[$. La fonction est définie pour $x \geq 1$.</p>
+                <p><strong>Domaine de dérivabilité :</strong> Tous les nombres réels strictement supérieurs à $1$, noté $]1;+\infty[$. La fonction n'est pas dérivable en $x = 1$ car la dérivée tend vers l'infini.</p></li>
+            <li><p>La fonction $f(x) = \dfrac{1}{x^2+1}$ est dérivable partout où elle est définie.</p>
+                <p><strong>Domaine de définition :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction est dérivable partout.</p></li>
+            <li><p>La fonction $f(x) = \dfrac{1}{\sqrt{x}}$ est dérivable partout où elle est définie, sauf aux points où le radicande est nul.</p>
+                <p><strong>Domaine de définition :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction est définie pour $x > 0$.</p>
+                <p><strong>Domaine de dérivabilité :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction est dérivable partout où elle est définie.</p></li>
+            <li><p>La fonction $f(x) = \dfrac{1}{x^2}$ est dérivable partout où elle est définie, sauf aux points où le dénominateur est zéro.</p>
+                <p><strong>Domaine de définition :</strong> Tous les nombres réels sauf $0$, noté $\mathbb{R}\setminus\{0\}$. La fonction n'est pas définie en $x = 0$ car la division par zéro est impossible.</p>
+                <p><strong>Domaine de dérivabilité :</strong> Tous les nombres réels sauf $0$, noté $\mathbb{R}\setminus\{0\}$. La fonction est dérivable partout où elle est définie.</p></li>
+        </ol>
+    </div>
+</div>
+
+<h3>Opérations sur les dérivées</h3>
+<div class="exercice">
+    <div class="enonce">
+        Les fonctions suivantes sont sous la forme $f=ku$ où $k$ est une constante et $u$ une fonction usuelle. Déterminez $k$ et $u$. Donnez le domaine de définition de la fonction $u$, son domaine de dérivabilité et sa dérivée. Enfin, donnez le domaine de définition de la fonction $f$, son domaine de dérivabilité et sa dérivée.
+        <ol class="alphabetical-list horizontal-list col-3c">
+            <li>$f(x) = 2x$</li>
+            <li>$f(x) = 5x^2$</li>
+            <li>$f(x) = -4x^3$</li>
+            <li>$f(x) = \dfrac{4}{x}$</li>
+            <li>$f(x) = 2\sqrt{x}$</li>
+            <li>$f(x) = -\dfrac{1}{x}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$f(x) = 2x$ avec $k=2$ et $u(x)=x$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=2x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=2x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = 2u'(x) = 2$.</p></li>
+            <li><p>$f(x) = 5x^2$ avec $k=5$ et $u(x)=x^2$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 2x$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=5x^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=5x^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = 5u'(x) = 10x$.</p></li>
+            <li><p>$f(x) = -4x^3$ avec $k=-4$ et $u(x)=x^3$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^3$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^3$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 3x^2$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=-4x^3$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=-4x^3$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = -4u'(x) = -12x^2$.</p></li>
+            <li><p>$f(x) = \dfrac{4}{x}$ avec $k=4$ et $u(x)=\dfrac{1}{x}$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $u(x)=\dfrac{1}{x}$ est définie pour tout $x \neq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $u(x)=\dfrac{1}{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = -\dfrac{1}{x^2}$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $f(x)=\dfrac{4}{x}$ est définie pour tout $x \neq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $f(x)=\dfrac{4}{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = 4u'(x) = -\dfrac{4}{x^2}$.</p></li>
+            <li><p>$f(x) = 2\sqrt{x}$ avec $k=2$ et $u(x)=\sqrt{x}$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels positifs ou nuls, noté $[0;+\infty[$. La fonction $u(x)=\sqrt{x}$ est définie pour $x \geq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $u(x)=\sqrt{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = \frac{1}{2\sqrt{x}}$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels positifs ou nuls, noté $[0;+\infty[$. La fonction $f(x)=2\sqrt{x}$ est définie pour $x \geq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $f(x)=2\sqrt{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = 2u'(x) = \frac{1}{\sqrt{x}}$.</p></li>
+            <li><p>$f(x) = -\dfrac{1}{x}$ avec $k=-1$ et $u(x)=\dfrac{1}{x}$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $u(x)=\dfrac{1}{x}$ est définie pour tout $x \neq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $u(x)=\dfrac{1}{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = -\dfrac{1}{x^2}$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $f(x)=-\dfrac{1}{x}$ est définie pour tout $x \neq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $f(x)=-\dfrac{1}{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = -u'(x) = \dfrac{1}{x^2}$.</p></li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Les fonctions suivantes sont sous la forme $f=u+v$ où $u$ et $v$ sont des fonctions. Donnez les domaines de définition des fonctions $u$ et $v$, les domaines de dérivabilité des fonctions $u$ et $v$, les dérivées des fonctions $u$ et $v$, le domaine de définition de la fonction $f$, son domaine de dérivabilité et sa dérivée.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$f(x) = x^2 + 3x$</li>
+            <li>$f(x) = x^3 - 2x^2$</li>
+            <li>$f(x) = 2x^2 + 3x + 1$</li>
+            <li>$f(x) = x^2 + 2\sqrt{x}$</li>
+            <li>$f(x) = 5x^3 - \dfrac{3}{x}$</li>
+            <li>$f(x) = -\sqrt{x} + \dfrac{1}{x}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$f(x) = x^2 + 3x$ avec $u(x)=x^2$ et $v(x)=3x$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 2x$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=3x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=3x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = 3$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=x^2 + 3x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=x^2 + 3x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x) + v'(x) = 2x + 3$.</p></li>
+            <li><p>$f(x) = x^3 - 2x^2$ avec $u(x)=x^3$ et $v(x)=-2x^2$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^3$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^3$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 3x^2$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=-2x^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=-2x^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = -4x$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=x^3 - 2x^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=x^3 - 2x^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x) + v'(x) = 3x^2 - 4x$.</p></li>
+            <li><p>$f(x) = 2x^2 + 3x + 1$ avec $u(x)=2x^2$ et $v(x)=3x+1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=2x^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=2x^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 4x$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=3x+1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=3x+1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = 3$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=2x^2 + 3x + 1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=2x^2 + 3x + 1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x) + v'(x) = 4x + 3$.</p></li>
+            <li><p>$f(x) = x^2 + 2\sqrt{x}$ avec $u(x)=x^2$ et $v(x)=2\sqrt{x}$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 2x$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels positifs ou nuls, noté $[0;+\infty[$. La fonction $v(x)=2\sqrt{x}$ est définie pour $x \geq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $v(x)=2\sqrt{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = \frac{1}{\sqrt{x}}$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels positifs ou nuls, noté $[0;+\infty[$. La fonction $f(x)=x^2 + 2\sqrt{x}$ est définie pour $x \geq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $f(x)=x^2 + 2\sqrt{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x) + v'(x) = 2x + \frac{1}{\sqrt{x}}$.</p></li>
+            <li><p>$f(x) = 5x^3 - \dfrac{3}{x}$ avec $u(x)=5x^3$ et $v(x)=-\dfrac{3}{x}$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=5x^3$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=5x^3$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 15x^2$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $v(x)=-\dfrac{3}{x}$ est définie pour tout $x \neq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $v(x)=-\dfrac{3}{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = \dfrac{3}{x^2}$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $f(x)=5x^3 - \dfrac{3}{x}$ est définie pour tout $x \neq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $f(x)=5x^3 - \dfrac{3}{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x) + v'(x) = 15x^2 + \dfrac{3}{x^2}$.</p></li>
+            <li><p>$f(x) = -\sqrt{x} + \dfrac{1}{x}$ avec $u(x)=-\sqrt{x}$ et $v(x)=\dfrac{1}{x}$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels positifs ou nuls, noté $[0;+\infty[$. La fonction $u(x)=-\sqrt{x}$ est définie pour $x \geq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $u(x)=-\sqrt{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = -\frac{1}{2\sqrt{x}}$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $v(x)=\dfrac{1}{x}$ est définie pour tout $x \neq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $v(x)=\dfrac{1}{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = -\dfrac{1}{x^2}$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $f(x)=-\sqrt{x} + \dfrac{1}{x}$ est définie pour $x > 0$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $f(x)=-\sqrt{x} + \dfrac{1}{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x) + v'(x) = -\frac{1}{2\sqrt{x}} - \dfrac{1}{x^2}$.</p></li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Les fonctions suivantes sont sous la forme $f=u v$ où $u$ et $v$ sont des fonctions. Donnez les domaines de définition des fonctions $u$ et $v$, les domaines de dérivabilité des fonctions $u$ et $v$, les dérivées des fonctions $u$ et $v$, le domaine de définition de la fonction $f$, son domaine de dérivabilité et sa dérivée.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$f(x) = 3x$</li>
+            <li>$f(x) = 4x\times x$</li>
+            <li>$f(x) = x^2\times x$</li>
+            <li>$f(x) = 5x^2\times 3x^2$</li>
+            <li>$f(x) = x^3\times x$</li>
+            <li>$f(x) = (x+1)(2x-1)$</li>
+            <li>$f(x) = (1-x^2)(3x+1)$</li>
+            <li>$f(x)= x\sqrt{x}$</li>
+            <li>$f(x) = x\times \dfrac{1}{x}$</li>
+            <li>$f(x) = x^2\times \sqrt{x}$</li>
+            <li>$f(x) = x^3\times \dfrac{1}{x}$</li>
+            <li>$f(x) = \sqrt{x}\times \dfrac{1}{x}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$f(x) = 3x$ avec $u(x)=3$ et $v(x)=x$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=3$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=3$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 0$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=3x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=3x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x)v(x) + u(x)v'(x) = 3$.</p></li>
+            <li><p>$f(x) = 4x\times x$ avec $u(x)=4x$ et $v(x)=x$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=4x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=4x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 4$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=4x\times x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=4x\times x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x)v(x) + u(x)v'(x) = 4x + 4x = 8x$.</p></li>
+            <li><p>$f(x) = x^2\times x$ avec $u(x)=x^2$ et $v(x)=x$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 2x$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=x^2\times x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=x^2\times x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x)v(x) + u(x)v'(x) = 2x^2 + x^2 = 3x^2$.</p></li>
+            <li><p>$f(x) = 5x^2\times 3x^2$ avec $u(x)=5x^2$ et $v(x)=3x^2$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=5x^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=5x^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 10x$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=3x^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=3x^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = 6x$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=5x^2\times 3x^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=5x^2\times 3x^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x)v(x) + u(x)v'(x) = 10x \times 3x^2 + 5x^2 \times 6x = 60x^3$.</p></li>
+            <li><p>$f(x) = x^3\times x$ avec $u(x)=x^3$ et $v(x)=x$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^3$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^3$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 3x^2$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=x^3\times x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=x^3\times x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x)v(x) + u(x)v'(x) = 3x^2 \times x + x^3 \times 1 = 4x^3$.</p></li>
+            <li><p>$f(x) = (x+1)(2x-1)$ avec $u(x)=x+1$ et $v(x)=2x-1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x+1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x+1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=2x-1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=2x-1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = 2$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=(x+1)(2x-1)$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=(x+1)(2x-1)$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x)v(x) + u(x)v'(x) = 1 \times (2x-1) + (x+1) \times 2 = 4x$.</p></li>
+            <li><p>$f(x) = (1-x^2)(3x+1)$ avec $u(x)=1-x^2$ et $v(x)=3x+1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=1-x^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=1-x^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = -2x$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=3x+1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=3x+1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = 3$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=(1-x^2)(3x+1)$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=(1-x^2)(3x+1)$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x)v(x) + u(x)v'(x) = -2x(3x+1) + (1-x^2) \times 3 = -9x^2 - 2x + 3$.</p></li>
+            <li><p>$f(x)= x\sqrt{x}$ avec $u(x)=x$ et $v(x)=\sqrt{x}$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels positifs ou nuls, noté $[0;+\infty[$. La fonction $v(x)=\sqrt{x}$ est définie pour $x \geq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $v(x)=\sqrt{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = \frac{1}{2\sqrt{x}}$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels positifs ou nuls, noté $[0;+\infty[$. La fonction $f(x)=x\sqrt{x}$ est définie pour $x \geq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $f(x)=x\sqrt{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x)v(x) + u(x)v'(x) = \sqrt{x} + \frac{x}{2\sqrt{x}} = \frac{3\sqrt{x}}{2}$.</p></li>
+            <li><p>$f(x) = x\times \dfrac{1}{x}$ avec $u(x)=x$ et $v(x)=\dfrac{1}{x}$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $v(x)=\dfrac{1}{x}$ est définie pour tout $x \neq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $v(x)=\dfrac{1}{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = -\dfrac{1}{x^2}$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $f(x)=x\times \dfrac{1}{x}$ est définie pour tout $x \neq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $f(x)=x\times \dfrac{1}{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x)v(x) + u(x)v'(x) = \dfrac{1}{x} - \dfrac{1}{x^2} = 0$.</p></li>
+            <li><p>$f(x) = x^2\times \sqrt{x}$ avec $u(x)=x^2$ et $v(x)=\sqrt{x}$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 2x$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels positifs ou nuls, noté $[0;+\infty[$. La fonction $v(x)=\sqrt{x}$ est définie pour $x \geq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $v(x)=\sqrt{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = \frac{1}{2\sqrt{x}}$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels positifs ou nuls, noté $[0;+\infty[$. La fonction $f(x)=x^2\times \sqrt{x}$ est définie pour $x \geq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $f(x)=x^2\times \sqrt{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x)v(x) + u(x)v'(x) = 2x\sqrt{x} + x^2 \times \frac{1}{2\sqrt{x}} = \frac{5x\sqrt{x}}{2}$.</p></li>
+            <li><p>$f(x) = x^3\times \dfrac{1}{x}$ avec $u(x)=x^3$ et $v(x)=\dfrac{1}{x}$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^3$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^3$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 3x^2$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $v(x)=\dfrac{1}{x}$ est définie pour tout $x \neq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $v(x)=\dfrac{1}{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = -\dfrac{1}{x^2}$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $f(x)=x^3\times \dfrac{1}{x}$ est définie pour tout $x \neq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $f(x)=x^3\times \dfrac{1}{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x)v(x) + u(x)v'(x) = 3x^2 \times \dfrac{1}{x} + x^3 \times -\dfrac{1}{x^2} = 2x$.</p></li>
+            <li><p>$f(x) = \sqrt{x}\times \dfrac{1}{x}$ avec $u(x)=\sqrt{x}$ et $v(x)=\dfrac{1}{x}$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels positifs ou nuls, noté $[0;+\infty[$. La fonction $u(x)=\sqrt{x}$ est définie pour $x \geq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $u(x)=\sqrt{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = \frac{1}{2\sqrt{x}}$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $v(x)=\dfrac{1}{x}$ est définie pour tout $x \neq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $v(x)=\dfrac{1}{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = -\dfrac{1}{x^2}$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $f(x)=\sqrt{x}\times \dfrac{1}{x}$ est définie pour $x > 0$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $f(x)=\sqrt{x}\times \dfrac{1}{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = u'(x)v(x) + u(x)v'(x) = \frac{1}{2\sqrt{x}} \times \dfrac{1}{x} + \sqrt{x} \times -\dfrac{1}{x^2} = -\frac{1}{2x\sqrt{x}}$.</p></li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Les fonctions suivantes sont sous la forme $f=u^2$ où $u$ est une fonction. Donnez le domaine de définition de la fonction $u$, son domaine de dérivabilité et sa dérivée. Enfin, donnez le domaine de définition de la fonction $f$, son domaine de dérivabilité et sa dérivée.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$f(x) = (x+1)^2$</li>
+            <li>$f(x) = (x-1)^2$</li>
+            <li>$f(x) = (1-x)^2$</li>
+            <li>$f(x) = (x^2+1)^2$</li>
+            <li>$f(x) = (x^3+1)^2$</li>
+            <li>$f(x) = (\sqrt{x}-1)^2$</li>
+            <li>$f(x) = \left(\dfrac{1}{x}+1\right)^2$</li>
+            <li>$f(x) = (x^2-1)^2$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$f(x) = (x+1)^2$ avec $u(x)=x+1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x+1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x+1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=(x+1)^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=(x+1)^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = 2u(x)u'(x) = 2(x+1) \times 1 = 2x+2$.</p></li>
+            <li><p>$f(x) = (x-1)^2$ avec $u(x)=x-1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x-1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x-1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=(x-1)^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=(x-1)^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = 2u(x)u'(x) = 2(x-1) \times 1 = 2x-2$.</p></li>
+            <li><p>$f(x) = (1-x)^2$ avec $u(x)=1-x$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=1-x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=1-x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = -1$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=(1-x)^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=(1-x)^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = 2u(x)u'(x) = 2(1-x) \times (-1) = -2 + 2x$.</p></li>
+            <li><p>$f(x) = (x^2+1)^2$ avec $u(x)=x^2+1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2+1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2+1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 2x$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=(x^2+1)^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=(x^2+1)^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = 2u(x)u'(x) = 2(x^2+1) \times 2x = 4x^3 + 4x$.</p></li>
+            <li><p>$f(x) = (x^3+1)^2$ avec $u(x)=x^3+1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^3+1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^3+1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 3x^2$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=(x^3+1)^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=(x^3+1)^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = 2u(x)u'(x) = 2(x^3+1) \times 3x^2 = 6x^5 + 6x^2$.</p></li>
+            <li><p>$f(x) = (\sqrt{x}-1)^2$ avec $u(x)=\sqrt{x}-1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels positifs ou nuls, noté $[0;+\infty[$. La fonction $u(x)=\sqrt{x}-1$ est définie pour $x \geq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $u(x)=\sqrt{x}-1$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = \frac{1}{2\sqrt{x}}$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels positifs ou nuls, noté $[0;+\infty[$. La fonction $f(x)=(\sqrt{x}-1)^2$ est définie pour $x \geq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $f(x)=(\sqrt{x}-1)^2$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = 2u(x)u'(x) = 2(\sqrt{x}-1) \times \frac{1}{2\sqrt{x}} = 1 - \frac{1}{\sqrt{x}}$.</p></li>
+            <li><p>$f(x) = \left(\dfrac{1}{x}+1\right)^2$ avec $u(x)=\dfrac{1}{x}+1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $u(x)=\dfrac{1}{x}+1$ est définie pour tout $x \neq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $u(x)=\dfrac{1}{x}+1$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = -\dfrac{1}{x^2}$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $f(x)=\left(\dfrac{1}{x}+1\right)^2$ est définie pour tout $x \neq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf zéro, noté $\mathbb{R}\setminus\{0\}$. La fonction $f(x)=\left(\dfrac{1}{x}+1\right)^2$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = 2u(x)u'(x) = 2\left(\dfrac{1}{x}+1\right) \times -\dfrac{1}{x^2} = -\dfrac{2}{x^2}\left(\dfrac{1}{x}+1\right)$.</p></li>
+            <li><p>$f(x) = (x^2-1)^2$ avec $u(x)=x^2-1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2-1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2-1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 2x$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=(x^2-1)^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=(x^2-1)^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = 2u(x)u'(x) = 2(x^2-1) \times 2x = 4x^3 - 4x$.</p></li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Les fonctions suivantes sont sous la forme $f=\dfrac{1}{u}$ où $u$ est une fonction dérivable. Donnez le domaine de définition de la fonction $u$, son domaine de dérivabilité et sa dérivée. Enfin, donnez le domaine de définition de la fonction $f$, son domaine de dérivabilité et sa dérivée.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$f(x) = \dfrac{1}{x+1}$</li>
+            <li>$f(x) = \dfrac{1}{1-x}$</li>
+            <li>$f(x) = \dfrac{1}{x^2+1}$</li>
+            <li>$f(x) = \dfrac{1}{x^3+1}$</li>
+            <li>$f(x) = \dfrac{1}{(x-1)(x+2)}$</li>
+            <li>$f(x) = \dfrac{1}{1-x^3}$</li>
+            <li>$f(x) = \dfrac{1}{x^2-1}$</li>
+            <li>$f(x) = \dfrac{1}{x^2-3x+2}$</li>
+            <li>$f(x) = \dfrac{1}{\sqrt{x}}$</li>
+            <li>$f(x) = \dfrac{1}{1+\sqrt{x}}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$f(x) = \dfrac{1}{x+1}$ avec $u(x)=x+1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x+1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x+1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf $-1$, noté $\mathbb{R}\setminus\{-1\}$. La fonction $f(x)=\dfrac{1}{x+1}$ est définie pour tout $x \neq -1$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf $-1$, noté $\mathbb{R}\setminus\{-1\}$. La fonction $f(x)=\dfrac{1}{x+1}$ est dérivable partout sauf en $x = -1$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = -\dfrac{u'(x)}{u(x)^2} = -\dfrac{1}{(x+1)^2}$.</p></li>
+            <li><p>$f(x) = \dfrac{1}{1-x}$ avec $u(x)=1-x$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=1-x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=1-x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = -1$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf $1$, noté $\mathbb{R}\setminus\{1\}$. La fonction $f(x)=\dfrac{1}{1-x}$ est définie pour tout $x \neq 1$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf $1$, noté $\mathbb{R}\setminus\{1\}$. La fonction $f(x)=\dfrac{1}{1-x}$ est dérivable partout sauf en $x = 1$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = -\dfrac{u'(x)}{u(x)^2} = -\dfrac{-1}{(1-x)^2} = \dfrac{1}{(1-x)^2}$.</p></li>
+            <li><p>$f(x) = \dfrac{1}{x^2+1}$ avec $u(x)=x^2+1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2+1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2+1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 2x$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=\dfrac{1}{x^2+1}$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=\dfrac{1}{x^2+1}$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = -\dfrac{u'(x)}{u(x)^2} = -\dfrac{2x}{(x^2+1)^2}$.</p></li>
+            <li><p>$f(x) = \dfrac{1}{x^3+1}$ avec $u(x)=x^3+1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^3+1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^3+1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 3x^2$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf $-1$, noté $\mathbb{R}\setminus\{-1\}$. La fonction $f(x)=\dfrac{1}{x^3+1}$ est définie pour tout $x \neq -1$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf $-1$, noté $\mathbb{R}\setminus\{-1\}$. La fonction $f(x)=\dfrac{1}{x^3+1}$ est dérivable partout sauf en $x = -1$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = -\dfrac{u'(x)}{u(x)^2} = -\dfrac{3x^2}{(x^3+1)^2}$.</p></li>
+            <li><p>$f(x) = \dfrac{1}{(x-1)(x+2)}$ avec $u(x)=(x-1)(x+2)$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=(x-1)(x+2)$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=(x-1)(x+2)$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = (x+2) + (x-1) = 2x+1$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf $1$ et $-2$, noté $\mathbb{R}\setminus\{-2;1\}$. La fonction $f(x)=\dfrac{1}{(x-1)(x+2)}$ est définie pour tout $x \neq 1$ et $x \neq -2$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf $1$ et $-2$, noté $\mathbb{R}\setminus\{-2;1\}$. La fonction $f(x)=\dfrac{1}{(x-1)(x+2)}$ est dérivable partout sauf en $x = 1$ et $x = -2$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = -\dfrac{u'(x)}{u(x)^2} = -\dfrac{2x+1}{((x-1)(x+2))^2}$.</p></li>
+            <li><p>$f(x) = \dfrac{1}{1-x^3}$ avec $u(x)=1-x^3$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=1-x^3$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=1-x^3$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = -3x^2$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf $1$, noté $\mathbb{R}\setminus\{1\}$. La fonction $f(x)=\dfrac{1}{1-x^3}$ est définie pour tout $x \neq 1$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf $1$, noté $\mathbb{R}\setminus\{1\}$. La fonction $f(x)=\dfrac{1}{1-x^3}$ est dérivable partout sauf en $x = 1$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = -\dfrac{u'(x)}{u(x)^2} = -\dfrac{-3x^2}{(1-x^3)^2} = \dfrac{3x^2}{(1-x^3)^2}$.</p></li>
+            <li><p>$f(x) = \dfrac{1}{x^2-1}$ avec $u(x)=x^2-1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2-1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2-1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 2x$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf $1$ et $-1$, noté $\mathbb{R}\setminus\{-1;1\}$. La fonction $f(x)=\dfrac{1}{x^2-1}$ est définie pour tout $x \neq 1$ et $x \neq -1$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf $1$ et $-1$, noté $\mathbb{R}\setminus\{-1;1\}$. La fonction $f(x)=\dfrac{1}{x^2-1}$ est dérivable partout sauf en $x = 1$ et $x = -1$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = -\dfrac{u'(x)}{u(x)^2} = -\dfrac{2x}{(x^2-1)^2}$.</p></li>
+            <li><p>$f(x) = \dfrac{1}{x^2-3x+2}$ avec $u(x)=x^2-3x+2$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2-3x+2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2-3x+2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 2x-3$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf $1$ et $2$, noté $\mathbb{R}\setminus\{1;2\}$. La fonction $f(x)=\dfrac{1}{x^2-3x+2}$ est définie pour tout $x \neq 1$ et $x \neq 2$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf $1$ et $2$, noté $\mathbb{R}\setminus\{1;2\}$. La fonction $f(x)=\dfrac{1}{x^2-3x+2}$ est dérivable partout sauf en $x = 1$ et $x = 2$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = -\dfrac{u'(x)}{u(x)^2} = -\dfrac{2x-3}{(x^2-3x+2)^2}$.</p></li>
+            <li><p>$f(x) = \dfrac{1}{\sqrt{x}}$ avec $u(x)=\sqrt{x}$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels positifs ou nuls, noté $[0;+\infty[$. La fonction $u(x)=\sqrt{x}$ est définie pour $x \geq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $u(x)=\sqrt{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = \frac{1}{2\sqrt{x}}$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $f(x)=\dfrac{1}{\sqrt{x}}$ est définie pour $x > 0$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $f(x)=\dfrac{1}{\sqrt{x}}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = -\dfrac{u'(x)}{u(x)^2} = -\dfrac{\frac{1}{2\sqrt{x}}}{(\sqrt{x})^2} = -\dfrac{1}{2x\sqrt{x}}$.</p></li>
+            <li><p>$f(x) = \dfrac{1}{1+\sqrt{x}}$ avec $u(x)=1+\sqrt{x}$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels positifs ou nuls, noté $[0;+\infty[$. La fonction $u(x)=1+\sqrt{x}$ est définie pour $x \geq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $u(x)=1+\sqrt{x}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = \frac{1}{2\sqrt{x}}$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels positifs ou nuls, noté $[0;+\infty[$. La fonction $f(x)=\dfrac{1}{1+\sqrt{x}}$ est définie pour $x \geq 0$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels strictement positifs, noté $]0;+\infty[$. La fonction $f(x)=\dfrac{1}{1+\sqrt{x}}$ est dérivable partout sauf en $x = 0$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = -\dfrac{u'(x)}{u(x)^2} = -\dfrac{\frac{1}{2\sqrt{x}}}{(1+\sqrt{x})^2}$.</p></li>
+        </ol>
+    </div>
+</div>
+
+<div class="exercice">
+    <div class="enonce">
+        Les fonctions suivantes sont sous la forme $f=\dfrac{u}{v}$ où $u$ et $v$ sont des fonctions dérivables. Donnez les domaines de définition des fonctions $u$ et $v$, les domaines de dérivabilité des fonctions $u$ et $v$, les dérivées des fonctions $u$ et $v$, le domaine de définition de la fonction $f$, son domaine de dérivabilité et sa dérivée.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$f(x) = \dfrac{x}{x+1}$</li>
+            <li>$f(x) = \dfrac{x^2}{x-1}$</li>
+            <li>$f(x) = \dfrac{x}{x^2+1}$</li>
+            <li>$f(x) = \dfrac{x^3}{x+2}$</li>
+            <li>$f(x) = \dfrac{x^2}{x^3-1}$</li>
+            <li>$f(x) = \dfrac{x}{x^2-2x-3}$</li>
+        </ol>
+    </div>
+    <div class="solution">
+        <ol class="alphabetical-list">
+            <li><p>$f(x) = \dfrac{x}{x+1}$ avec $u(x)=x$ et $v(x)=x+1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x+1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x+1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf $-1$, noté $\mathbb{R}\setminus\{-1\}$. La fonction $f(x)=\dfrac{x}{x+1}$ est définie pour tout $x \neq -1$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf $-1$, noté $\mathbb{R}\setminus\{-1\}$. La fonction $f(x)=\dfrac{x}{x+1}$ est dérivable partout sauf en $x = -1$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = \dfrac{u'(x)v(x) - u(x)v'(x)}{v(x)^2} = \dfrac{1 \times (x+1) - x \times 1}{(x+1)^2} = \dfrac{1}{(x+1)^2}$.</p></li>
+            <li><p>$f(x) = \dfrac{x^2}{x-1}$ avec $u(x)=x^2$ et $v(x)=x-1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 2x$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x-1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x-1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf $1$, noté $\mathbb{R}\setminus\{1\}$. La fonction $f(x)=\dfrac{x^2}{x-1}$ est définie pour tout $x \neq 1$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf $1$, noté $\mathbb{R}\setminus\{1\}$. La fonction $f(x)=\dfrac{x^2}{x-1}$ est dérivable partout sauf en $x = 1$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = \dfrac{u'(x)v(x) - u(x)v'(x)}{v(x)^2} = \dfrac{2x \times (x-1) - x^2 \times 1}{(x-1)^2} = \dfrac{x^2 - 2x}{(x-1)^2}$.</p></li>
+            <li><p>$f(x) = \dfrac{x}{x^2+1}$ avec $u(x)=x$ et $v(x)=x^2+1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x^2+1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x^2+1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = 2x$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=\dfrac{x}{x^2+1}$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $f(x)=\dfrac{x}{x^2+1}$ est dérivable partout.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = \dfrac{u'(x)v(x) - u(x)v'(x)}{v(x)^2} = \dfrac{1 \times (x^2+1) - x \times 2x}{(x^2+1)^2} = \dfrac{1-x^2}{(x^2+1)^2}$.</p></li>
+            <li><p>$f(x) = \dfrac{x^3}{x+2}$ avec $u(x)=x^3$ et $v(x)=x+2$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^3$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^3$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 3x^2$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x+2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x+2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf $-2$, noté $\mathbb{R}\setminus\{-2\}$. La fonction $f(x)=\dfrac{x^3}{x+2}$ est définie pour tout $x \neq -2$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf $-2$, noté $\mathbb{R}\setminus\{-2\}$. La fonction $f(x)=\dfrac{x^3}{x+2}$ est dérivable partout sauf en $x = -2$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = \dfrac{u'(x)v(x) - u(x)v'(x)}{v(x)^2} = \dfrac{3x^2 \times (x+2) - x^3 \times 1}{(x+2)^2} = \dfrac{2x^3 + 6x^2}{(x+2)^2}$.</p></li>
+            <li><p>$f(x) = \dfrac{x^2}{x^3-1}$ avec $u(x)=x^2$ et $v(x)=x^3-1$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x^2$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 2x$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x^3-1$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x^3-1$ est dérivable partout.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = 3x^2$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf $1$, noté $\mathbb{R}\setminus\{1\}$. La fonction $f(x)=\dfrac{x^2}{x^3-1}$ est définie pour tout $x \neq 1$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf $1$, noté $\mathbb{R}\setminus\{1\}$. La fonction $f(x)=\dfrac{x^2}{x^3-1}$ est dérivable partout sauf en $x = 1$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = \dfrac{u'(x)v(x) - u(x)v'(x)}{v(x)^2} = \dfrac{2x \times (x^3-1) - x^2 \times 3x^2}{(x^3-1)^2} = \dfrac{-x^4 - 2x}{(x^3-1)^2}$.</p></li>
+            <li><p>$f(x) = \dfrac{x}{x^2-2x-3}$ avec $u(x)=x$ et $v(x)=x^2-2x-3$.</p>
+                <p><strong>Domaine de définition de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $u$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $u(x)=x$ est dérivable partout.</p>
+                <p><strong>Dérivée de $u$ :</strong> $u'(x) = 1$.</p>
+                <p><strong>Domaine de définition de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x^2-2x-3$ est définie pour tout $x$ réel.</p>
+                <p><strong>Domaine de dérivabilité de $v$ :</strong> Tous les nombres réels, noté $\mathbb{R}$. La fonction $v(x)=x^2-2x-3$ est dérivable partout.</p>
+                <p><strong>Dérivée de $v$ :</strong> $v'(x) = 2x-2$.</p>
+                <p><strong>Domaine de définition de $f$ :</strong> Tous les nombres réels sauf $-1$ et $3$, noté $\mathbb{R}\setminus\{-1;3\}$. La fonction $f(x)=\dfrac{x}{x^2-2x-3}$ est définie pour tout $x \neq -1$ et $x \neq 3$.</p>
+                <p><strong>Domaine de dérivabilité de $f$ :</strong> Tous les nombres réels sauf $-1$ et $3$, noté $\mathbb{R}\setminus\{-1;3\}$. La fonction $f(x)=\dfrac{x}{x^2-2x-3}$ est dérivable partout sauf en $x = -1$ et $x = 3$.</p>
+                <p><strong>Dérivée de $f$ :</strong> $f'(x) = \dfrac{u'(x)v(x) - u(x)v'(x)}{v(x)^2} = \dfrac{1 \times (x^2-2x-3) - x \times (2x-2)}{(x^2-2x-3)^2} = \dfrac{-x^2 - 2x + 2}{(x^2-2x-3)^2}$.</p></li>
+        </ol>
+    </div>
+</div>
+</main>
+  </body>
+</html>

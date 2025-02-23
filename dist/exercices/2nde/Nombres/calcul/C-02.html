@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>C-02.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header><div>Calcul littéral</div><div class="header-niveau">Seconde Générale et Technologique</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>C-02<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<h2>Équation produit-nul</h2>
+<div class="question">
+    <div class="enonce">
+        Complète.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$2\times \ldots=0$</li>
+            <li>$\ldots\times 3=0$</li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        Parmi les expressions numériques suivantes, lesquelles sont des expressions nulles&nbsp;?
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$(2-2)\times (3-3)$</li>
+            <li>$(2-\num{2.3})\times (7-7)$</li>
+            <li>$(12-2\times 6)(8-9)$</li>
+            <li>$(2\times 7-14)+(4-3)^2$</li>
+            <li>$\left(\dfrac{5}{10}-\dfrac{1}{2}\right)\times \left(\dfrac{2}{6}-\dfrac{3}{9}\right)$</li>
+            <li>$2^{10-5\times 2}\times \sqrt{9-2^3}$</li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        Soient $a$ et $b$ deux nombres réels tel que $$a + b=0$$
+        <ol class="alphabetical-list">
+            <li>Si $a\neq 0$, est-ce que $b=0$&nbsp;?</li>
+            <li>Si $a=0$, quelles sont les valeurs possibles de $b$&nbsp;?</li>
+            <li>Est-ce que $a$ et $b$ peuvent être tous les deux nuls&nbsp;?</li>
+            <li>Est-ce que $a$ et $b$ peuvent être tous les deux non nuls&nbsp;?</li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Comment peut-on terminer la proposition suivante&nbsp;: "Si une somme de deux termes est nulle, alors ...".</li>
+            <li>Quelle est sa réciproque&nbsp;?</li>
+            <li>La réciproque est-elle vraie&nbsp;?</li>
+            <li>Comment peut-on terminer la proposition suivante&nbsp;: "Une somme de deux termes est nulles si et seulement si ...".</li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        Soient $a$ et $b$ deux nombres réels tel que $$a\times b=0$$
+        <ol class="alphabetical-list">
+            <li>Si $a\neq 0$, est-ce que $b=0$&nbsp;?</li>
+            <li>Si $a=0$, quelles sont les valeurs possibles de $b$&nbsp;?</li>
+            <li>Est-ce que $a$ et $b$ peuvent être tous les deux nuls&nbsp;?</li>
+            <li>Est-ce que $a$ et $b$ peuvent être tous les deux non nuls&nbsp;?</li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        <ol class="alphabetical-list">
+            <li>Comment peut-on terminer la proposition suivante&nbsp;: "Si un produit de facteurs est nul, alors ...".</li>
+            <li>Quelle est sa réciproque&nbsp;?</li>
+            <li>La réciproque est-elle vraie&nbsp;?</li>
+            <li>Comment peut-on terminer la proposition suivante&nbsp;: "Un produit de facteurs est nul si et seulement si ...".</li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        Parmi les équations suivantes, lesquelles sont des équations produit-nul&nbsp;?
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$(x-2)\times (x-3)=0$</li>
+            <li>$(x-5)+(x+4)=0$</li>
+            <li>$x\times (x-8)=0$</li>
+            <li>$(x+3)\times (x-7)+0$</li>
+        </ol>
+        <ol class="alphabetical-list horizontal-list" start="5">
+            <li>$(x-10)(x+\num{5.2})(x-\frac{1}{3})=0$</li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        Déterminez les solutions des équations suivantes&nbsp;:
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$(x-2)(x-3)=0$</li>
+            <li>$(x-5)(x+4)=0$</li>
+            <li>$x(x-8)=0$</li>
+            <li>$(x+3)(x+3)=0$</li>
+            <li>$(x-7)(x+7)=0$</li>
+            <li>$\small (x-1)(x+6)(x+8)=0$</li>
+        </ol>
+    </div>
+</div>
+<h2>Développer, factoriser, réduire</h2>
+<div class="question">
+    <div class="enonce">
+        Réduire le plus possible chacune des expressions suivantes.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$x\times x\times 2$</li>
+            <li>$3x\times 4x$</li>
+            <li>$x\times 2x+ 5x\times 2$</li>
+            <li>$3x^2\times 2+ 2x\times x$</li>
+            <li>$1\times x-x\times x$</li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        Pour chacune des expressions littérales suivantes, déterminez un ou plusieurs facteurs communs différents de $1$ entre tous les termes, si possible.
+        <ol class="alphabetical-list horizontal-list col-2c">
+            <li>$x^2-2x$</li>
+            <li>$3x^2-6x$</li>
+            <li>$12x^2-18x$</li>
+            <li>$x^2-3x+2$</li>
+            <li>$2x^2-6x+4$</li>
+            <li>$12x^3-9x^2+6x$</li>
+        </ol>
+        <ol class="alphabetical-list" start="7">
+            <li>$(x+1)(x-1)-2(x+1)$</li>
+            <li>$(x-3)(x+4)-(x+3)(4+x)$</li>
+            <li>$(x+2)(x-3)-2(x+2)(x-3)$</li>
+            <li>$6(x+1)(2-x)+3(x+1)(x-2)$</li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        Quelles différences y a-t-il entre ces trois égalités&nbsp;?
+        <ol class="alphabetical-list">
+            <li>$2(x+4)=2x+8$</li>
+            <li>$2(x+4)=x+6$</li>
+            <li>$2(x+4)=2x+6$</li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        Complétez chacune des identités suivantes en développant.
+        <ol class="alphabetical-list" style="font-size: 1.2em;">
+            <li>$x(x+3)=\ldots$</li>
+            <li>$5x(x-2)=\ldots$</li>
+            <li>$x(2x+4)=\ldots$</li>
+            <li>$2x(8x-3)=\ldots$</li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        Complétez chacune des identités suivantes.
+        <ol class="alphabetical-list" style="font-size: 1.2em;">
+            <li>$x^2+4x=\ldots(x+4)$</li>
+            <li>$x^2-x=\ldots(x-\ldots)$</li>
+            <li>$2x^2-3x=\ldots(\ldots-\ldots)$</li>
+            <li>$3x^2-6x=\ldots(\ldots-\ldots)$</li>
+            <li>$4x^2-4x=\ldots(\ldots-\ldots)$</li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        Complétez chacune des identités suivantes en utilisant la simple distributivité.
+        <ol class="alphabetical-list">
+            <li>$(x+2)(x+3)=\ldots(x+3) \ldots(x+3)$</li>
+            <li>$(x+2)(x+3)=\ldots(x+2) \ldots(x+2)$</li>
+            <li>$(x-2)(2x+5)=\ldots(2x+5) \ldots(2x+5)$</li>
+            <li>$(x-2)(2x+5)=\ldots(x-2) \ldots(x-2)$</li>
+            <li>$(3x+4)(x-1)=\ldots(x-1) \ldots(x-1)$</li>
+            <li>$(3x+4)(x-1)=\ldots(3x+4) \ldots(3x+4)$</li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        Complétez chacune des identités suivantes en factorisant.
+        <ol class="alphabetical-list">
+            <li>$x(x-5)+3(x-5)=(\ldots \phantom{.} \ldots)\times (\ldots \phantom{.}\ldots)$</li>
+            <li>$2x(x+2)-6(x+2)=(\ldots \phantom{.}\ldots)\times (\ldots \phantom{.}\ldots)$</li>
+            <li>$3(x-4)-2x(x-4)=(\ldots \phantom{.}\ldots)\times (\ldots \phantom{.}\ldots)$</li>
+            <li>$-(x+3)+5x(x+3)=(\ldots \phantom{.}\ldots)\times (\ldots \phantom{.}\ldots)$</li>
+        </ol>
+    </div>
+</div>
+<div class="question">
+    <div class="enonce">
+        Factorisez chacune des expressions suivantes.
+        <ol class="alphabetical-list">
+            <li>$x(x+6)+(x-5)(x+6)$</li>
+            <li>$(x+3)(x+4)+(x+1)(x+4)$</li>
+            <li>$(x-2)(x+5)+(x-2)(x-1)$</li>
+            <li>$(x+3)(x+8)+(x-3)(x+3)$</li>
+        </ol>
+    </div>
+</div>
+</main>
+  </body>
+</html>

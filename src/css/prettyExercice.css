@@ -26,7 +26,7 @@ details.indice {
   margin: 0.5em 0em 1em 0em;
 }
 
-.exercice {
+.exercice,.question {
   break-inside:avoid;
 }
 

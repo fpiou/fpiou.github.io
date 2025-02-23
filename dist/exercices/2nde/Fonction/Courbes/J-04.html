@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>J-04.xml</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
+
+    <link rel="stylesheet" href="/dist/prism.css" />
+    <script defer src="/dist/prism.js"></script>
+    
+    <!--Styles personnalisés-->
+    
+    <link rel="stylesheet" href="/src/css/main.css" />
+    
+    <link rel="stylesheet" href="/src/css/prettyExercice.css" />
+    
+    <link rel="stylesheet" href="/src/css/figures.css" />
+    
+    <link rel="stylesheet" href="/src/css/print.css" />
+    
+
+    <!--Scripts personnalisés-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Biliothèque pour manipuler le svg -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Marqueurs pour les figures en SVG-->
+    <div id="interactivite"></div>
+  <script defer src="../../../../main.bundle.js"></script><script defer src="../../../../trinomes.bundle.js"></script><script defer src="../../../../geometrie.bundle.js"></script></head>
+
+  <body class="deuxcolonnes">
+    <div class="sidebar" id="sidebar">
+    <button class="closebtn" onclick="toggleSidebar()">×</button>
+    <nav class="navbar">
+        <ul>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/lessons_2nde.html">Seconde</a>
+                    <a href="/lessons_1ereGenerale.html">Première</a>
+                    <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+            <li>
+                <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
+                <div class="dropdown-content">
+                    <a href="/exercices_2nde.html">Seconde</a>
+                    <a href="/exercices_1ereGenerale.html">Première spécifique</a>
+                    <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li>
+            <!-- <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
+                <div class="dropdown-content">
+                    <a href="/quizs_2nde.html">Seconde</a>
+                    <a href="/quizs_1reGenerale.html">Première</a>
+                    <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+<button id="openbtn" onclick="toggleSidebar()">☰</button>
+
+    <button class="boutonsBandeau"  id="boutonDiminuerTaille" onclick="diminuerTaille()">Taille -1</button>
+    <button class="boutonsBandeau" id="boutonAugmenterTaille" onclick="augmenterTaille()">Taille +1</button>
+    <button class="boutonsBandeau boutonActive" id="boutonColonnes" onclick="colonne()">Colonnes</button>
+    <button class="boutonsBandeau" id="boutonImprimer" onclick="window.print()">Imprimer</button>
+    <button class="boutonsBandeau" id="boutonPDF" onclick="window.pdf()">PDF</button>
+
+    <main><header class="brouillon"><div>Fonctions</div><div class="header-niveau">Seconde Générale et Technologique</div><div><button class="precedent noprint" onclick="precedent()">&lt;</button>J-04<button class="suivant noprint" onclick="suivant()">&gt;</button></div></header>
+
+<div class="figure">
+    <svg viewBox="0 0 200 200" style="width: 100%;">
+        <g name="repere1" class="repere" xmin="-5" ymin="-5" xmax="5" ymax="5" xorigine="0" yorigine="0"></g>
+        <g name="q1" class="quadrillageRepere" linkto="repere1" xpas="0.5" ypas="0.5" stroke="gray" stroke-width="0.2"></g>
+        <g name="AxeX" class="axe abscisses" linkto="repere1" stroke="black" stroke-width="1"></g>
+        <g name="GraduationsX" class="graduationsAxe" linkto="AxeX" pas="1" stroke="black" stroke-width="1" size="5" origine></g>
+        <g name="AxeY" class="axe ordonnees" linkto="repere1" stroke="black" stroke-width="1"></g>
+        <g name="GraduationsY" class="graduationsAxe" linkto="AxeY" pas="1" stroke="black" stroke-width="1" size="5" origine></g>
+        <g name="O" class="point" repere="repere1" x="0" y="0" stroke="none" font-size="7pt"></g>
+        
+        <g name="I-4" class="point labeled" repere="repere1" x="-4" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I-4" x="-5" y="0">-4</g>
+        <g name="I-3" class="point labeled" repere="repere1" x="-3" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I-3" x="-5" y="0">-3</g>
+        <g name="I-2" class="point labeled" repere="repere1" x="-2" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I-2" x="-5" y="0">-2</g>
+        <g name="I-1" class="point labeled" repere="repere1" x="-1" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I-1" x="-5" y="0">-1</g>
+        <g name="I1" class="point labeled" repere="repere1" x="1" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I1" x="-3" y="0">1</g>
+        <g name="I2" class="point labeled" repere="repere1" x="2" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I2" x="-3" y="0">2</g>
+        <g name="I3" class="point labeled" repere="repere1" x="3" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I3" x="-3" y="0">3</g>
+        <g name="I4" class="point labeled" repere="repere1" x="4" y="0" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="I4" x="-3" y="0">4</g>
+        
+
+        <g name="J-4" class="point labeled" repere="repere1" x="0" y="-4" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J-4" x="-15" y="-6">-4</g>
+        <g name="J-3" class="point labeled" repere="repere1" x="0" y="-3" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J-3" x="-15" y="-6">-3</g>
+        <g name="J-2" class="point labeled" repere="repere1" x="0" y="-2" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J-2" x="-15" y="-6">-2</g>
+        <g name="J-1" class="point labeled" repere="repere1" x="0" y="-1" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J-1" x="-15" y="-6">-1</g>
+        <g name="J1" class="point labeled" repere="repere1" x="0" y="1" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J1" x="-12" y="-6">1</g>
+        <g name="J2" class="point labeled" repere="repere1" x="0" y="2" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J2" x="-12" y="-6">2</g>
+        <g name="J3" class="point labeled" repere="repere1" x="0" y="3" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J3" x="-12" y="-6">3</g>
+        <g name="J4" class="point labeled" repere="repere1" x="0" y="4" stroke="none" font-size="7pt"></g>
+        <g class="label" linkto="J4" x="-12" y="-6">4</g>
+
+        <g name="A" class="point labeled draggable" repere="repere1" x="-3.5" y="3" stroke="black" font-size="7pt"></g>
+        <g name="B" class="point labeled draggable" repere="repere1" x="-2.5" y="3" stroke="black" font-size="7pt"></g>
+        <g name="C" class="point labeled draggable" repere="repere1" x="-1.5" y="2" stroke="black" font-size="7pt"></g>
+        <g name="D" class="point labeled draggable" repere="repere1" x="1" y="0.5" stroke="black" font-size="7pt"></g>
+        <g name="E" class="point labeled draggable" repere="repere1" x="3" y="1" stroke="black" font-size="7pt"></g>
+        <g name="F" class="point labeled draggable" repere="repere1" x="1" y="3.5" stroke="black" font-size="7pt"></g>
+        <g name="C_f" class="courbeRepresentative labeled" points="A B C D E" linkto="repere1" xmin="-4" xmax="4" pas="0.1" stroke="red" stroke-width="0.5" fill="transparent" pos_label="0.9" style="font-size: 7pt;"></g>
+        <g name="C_g" class="courbeRepresentative labeled" points="C F E" linkto="repere1" xmin="-4" xmax="4" pas="0.1" stroke="blue" stroke-width="0.5" fill="transparent" pos_label="0.9" style="font-size: 7pt;"></g>
+    </svg>
+</div>
+</main>
+  </body>
+</html>
