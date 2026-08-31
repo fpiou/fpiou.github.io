@@ -482,6 +482,160 @@
     grid-column:1 / -1;
   }
 
+
+
+
+
+  .tour-cursor{
+    position:fixed;
+    left:calc(100vw - 70px);
+    top:calc(100vh - 70px);
+    z-index:15004;
+    width:34px;
+    height:34px;
+    pointer-events:none;
+    opacity:0;
+    transform:translate(-5px,-5px);
+    transition:
+      left .58s cubic-bezier(.2,.75,.2,1),
+      top .58s cubic-bezier(.2,.75,.2,1),
+      opacity .18s ease;
+  }
+  .tour-overlay.show .tour-cursor{
+    opacity:1;
+  }
+  .tour-cursor::before{
+    content:"";
+    position:absolute;
+    left:3px;
+    top:2px;
+    width:0;
+    height:0;
+    border-top:22px solid #111827;
+    border-right:13px solid transparent;
+    filter:drop-shadow(0 2px 2px rgba(255,255,255,.9));
+    transform:rotate(-18deg);
+    transform-origin:5px 5px;
+  }
+  .tour-cursor::after{
+    content:"";
+    position:absolute;
+    left:4px;
+    top:4px;
+    width:24px;
+    height:24px;
+    border:3px solid #f59e0b;
+    border-radius:50%;
+    opacity:0;
+    transform:scale(.2);
+  }
+  .tour-cursor.clicking::after{
+    animation:tourClick .5s ease-out;
+  }
+  @keyframes tourClick{
+    0%{opacity:1;transform:scale(.15)}
+    70%{opacity:.75;transform:scale(1.5)}
+    100%{opacity:0;transform:scale(2)}
+  }
+  .tour-demo-path{
+    position:fixed;
+    z-index:15001;
+    height:0;
+    border-top:3px dashed rgba(245,158,11,.95);
+    transform-origin:0 50%;
+    pointer-events:none;
+    opacity:0;
+    transition:opacity .2s ease;
+  }
+  .tour-demo-path.show{
+    opacity:1;
+  }
+
+  .tour-overlay{
+    position:fixed;
+    inset:0;
+    z-index:15000;
+    display:none;
+    pointer-events:none;
+  }
+  .tour-overlay.show{
+    display:block;
+  }
+  .tour-spotlight{
+    position:fixed;
+    z-index:15000;
+    pointer-events:none;
+    border:4px solid #f59e0b;
+    border-radius:12px;
+    background:transparent;
+    box-shadow:
+      0 0 0 9999px rgba(17,24,39,.68),
+      0 0 0 3px rgba(255,255,255,.8),
+      0 0 28px rgba(245,158,11,.95);
+    transition:
+      left .28s ease,
+      top .28s ease,
+      width .28s ease,
+      height .28s ease;
+  }
+  .tour-tooltip{
+    position:fixed;
+    z-index:15002;
+    width:min(400px,calc(100vw - 24px));
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+    box-shadow:0 18px 60px rgba(0,0,0,.38);
+    padding:16px;
+    pointer-events:auto;
+  }
+  .tour-tooltip h3{
+    margin:0 0 7px;
+    font-size:18px;
+  }
+  .tour-tooltip p{
+    margin:0;
+    color:#4b5563;
+    line-height:1.45;
+    font-size:14px;
+  }
+  .tour-progress{
+    margin-top:11px;
+    font-size:12px;
+    color:#6b7280;
+  }
+  .tour-progress-bar{
+    height:5px;
+    margin-top:6px;
+    overflow:hidden;
+    border-radius:999px;
+    background:#e5e7eb;
+  }
+  .tour-progress-bar > span{
+    display:block;
+    height:100%;
+    width:0;
+    background:#2563eb;
+    transition:width .2s ease;
+  }
+  .tour-actions{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+    margin-top:14px;
+  }
+  .tour-actions .right{
+    display:flex;
+    gap:8px;
+  }
+  .tour-hint{
+    margin-top:8px;
+    font-size:12px;
+    color:#92400e;
+    font-weight:600;
+  }
+
   @media (max-width:900px){
     .app{grid-template-columns:1fr}
   }
@@ -497,7 +651,7 @@
       -webkit-print-color-adjust:exact;
       print-color-adjust:exact;
     }
-    header,.sidebar,.toolbar,.status,.screen-only,#fireworksCanvas,#winnerOverlay,.classroom-actions,.projection-exit{display:none !important}
+    header,.sidebar,.toolbar,.status,.screen-only,#fireworksCanvas,#winnerOverlay,.classroom-actions,.projection-exit,#tourOverlay{display:none !important}
     .app{display:block;padding:0;min-height:0}
     .main,.panel{
       border:0 !important;
@@ -550,6 +704,28 @@
 </head>
 <body>
 <canvas id="fireworksCanvas"></canvas>
+
+<div id="tourOverlay" class="tour-overlay" aria-hidden="true">
+  <div id="tourSpotlight" class="tour-spotlight"></div>
+  <div id="tourDemoPath" class="tour-demo-path"></div>
+  <div id="tourCursor" class="tour-cursor"></div>
+  <div id="tourTooltip" class="tour-tooltip">
+    <h3 id="tourTitle"></h3>
+    <p id="tourText"></p>
+    <div id="tourProgress" class="tour-progress"></div>
+    <div class="tour-progress-bar"><span id="tourProgressBar"></span></div>
+    <div id="tourHint" class="tour-hint">Avancez à votre rythme avec Suivant et Précédent.</div>
+    <div class="tour-actions">
+      <button id="tourCloseBtn">Quitter</button>
+      <div class="right">
+        <button id="tourPrevBtn">Précédent</button>
+        <button id="tourNextBtn" class="primary">Suivant</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div id="winnerOverlay"><div id="winnerName"></div></div>
 <button id="projectionExitBtn" class="projection-exit">Quitter le mode vidéoprojecteur</button>
 <header>
@@ -557,7 +733,8 @@
     <h1>Plan de classe aléatoire</h1>
     <div class="subtitle">Application locale — aucune donnée n'est envoyée sur Internet</div>
   </div>
-  <div>
+  <div class="buttons" style="margin:0">
+    <button id="tutorialBtn">Tutoriel</button>
     <button id="toggleSidebarBtn">Masquer le panneau</button>
   </div>
 </header>
@@ -1925,6 +2102,309 @@
     setStatus("Nouveau plan.");
   }
 
+  let tourIndex=0;
+  let tourTarget=null;
+  let tourAnimationToken=0;
+
+  const tourSteps=[
+    {
+      target:"#classSelect",
+      title:"Choisissez une classe",
+      text:"Le plan sauvegardé de cette classe réapparaît automatiquement."
+    },
+    {
+      target:"#newClassName",
+      title:"Créer une classe",
+      text:"Saisissez ici le nom d'une nouvelle classe."
+    },
+    {
+      target:"#addClassBtn",
+      title:"Puis ajoutez-la",
+      text:"Ce bouton crée la classe et la sélectionne."
+    },
+    {
+      target:"#studentText",
+      title:"Ajoutez les élèves",
+      text:"Collez les noms ici, un élève par ligne."
+    },
+    {
+      target:"#studentFile",
+      title:"Ou importez une liste",
+      text:"CSV ou TXT : la liste est chargée et placée aléatoirement immédiatement."
+    },
+    {
+      target:"#shuffleBtn",
+      title:"Mélangez de nouveau",
+      text:"Ce bouton relance le placement aléatoire."
+    },
+    {
+      target:"#roomSelect",
+      title:"Choisissez la salle",
+      text:"Chaque salle conserve sa propre disposition."
+    },
+    {
+      target:"#cols",
+      title:"Réglez les colonnes",
+      text:"Ici : nombre de tables par rangée."
+    },
+    {
+      target:"#rows",
+      title:"Réglez les rangées",
+      text:"Ici : nombre de rangées."
+    },
+    {
+      target:"#resizeBtn",
+      title:"Appliquez la grille",
+      text:"La nouvelle disposition de salle est enregistrée automatiquement."
+    },
+    {
+      target:"#classroom",
+      title:"Réorganisez à la souris",
+      text:"Les tables, rangées et colonnes se déplacent directement par glisser-déposer.",
+      demo:"drag"
+    },
+    {
+      target:"#projectionBtn",
+      title:"Passez au vidéoprojecteur",
+      text:"Au clic sur Suivant, le tutoriel ouvre réellement la vue de projection.",
+      enterProjectionAfter:true
+    },
+    {
+      target:"#pickBtn",
+      title:"Tirez un élève au hasard",
+      text:"Voici le bouton à utiliser pendant la projection.",
+      final:true
+    }
+  ];
+
+  function openTutorial(){
+    tourIndex=0;
+    tourAnimationToken++;
+    setSidebarHidden(false);
+    $("tourOverlay").classList.add("show");
+    $("tourOverlay").setAttribute("aria-hidden","false");
+
+    const cursor=$("tourCursor");
+    cursor.style.left=(window.innerWidth-60)+"px";
+    cursor.style.top=(window.innerHeight-60)+"px";
+
+    setTimeout(showTourStep,80);
+  }
+
+  async function closeTutorial(){
+    tourAnimationToken++;
+    $("tourDemoPath").classList.remove("show");
+    $("tourCursor").classList.remove("clicking");
+    clearTourTarget();
+    $("tourOverlay").classList.remove("show");
+    $("tourOverlay").setAttribute("aria-hidden","true");
+  }
+
+  function clearTourTarget(){
+    tourTarget=null;
+  }
+
+  function resolveTourTarget(step){
+    let el=document.querySelector(step.target);
+
+    // Les input[type=file] sont transparents : on montre leur bouton visible.
+    if(el && el.type==="file" && el.closest(".file-btn")){
+      el=el.closest(".file-btn");
+    }
+
+    if((!el || el.offsetParent===null) && step.fallback){
+      el=document.querySelector(step.fallback);
+    }
+    return el;
+  }
+
+  function placeTourTooltip(rect){
+    const tooltip=$("tourTooltip");
+    const margin=12;
+    const width=Math.min(390,window.innerWidth-24);
+    tooltip.style.width=width+"px";
+
+    let left=rect.left+rect.width/2-width/2;
+    left=Math.min(Math.max(margin,left),window.innerWidth-width-margin);
+
+    let top=rect.bottom+18;
+    tooltip.style.left=left+"px";
+    tooltip.style.top=top+"px";
+
+    let tip=tooltip.getBoundingClientRect();
+
+    if(tip.bottom>window.innerHeight-margin){
+      top=rect.top-tip.height-18;
+    }
+
+    if(top<margin){
+      const roomRight=window.innerWidth-rect.right;
+      const roomLeft=rect.left;
+
+      if(roomRight>=width+24){
+        left=rect.right+18;
+        top=Math.max(margin,Math.min(rect.top,window.innerHeight-tip.height-margin));
+      }else if(roomLeft>=width+24){
+        left=rect.left-width-18;
+        top=Math.max(margin,Math.min(rect.top,window.innerHeight-tip.height-margin));
+      }else{
+        left=Math.max(margin,(window.innerWidth-width)/2);
+        top=Math.max(margin,window.innerHeight-tip.height-margin);
+      }
+    }
+
+    tooltip.style.left=left+"px";
+    tooltip.style.top=top+"px";
+  }
+
+  function animateVirtualCursorTo(rect,click=true){
+    const cursor=$("tourCursor");
+    const x=Math.min(window.innerWidth-28,Math.max(8,rect.left+rect.width*.55));
+    const y=Math.min(window.innerHeight-28,Math.max(8,rect.top+rect.height*.55));
+
+    cursor.classList.remove("clicking");
+    cursor.style.left=x+"px";
+    cursor.style.top=y+"px";
+
+    if(click){
+      setTimeout(()=>{
+        if(!$("tourOverlay").classList.contains("show")) return;
+        cursor.classList.remove("clicking");
+        void cursor.offsetWidth;
+        cursor.classList.add("clicking");
+      },620);
+    }
+  }
+
+  function positionTour(){
+    const step=tourSteps[tourIndex];
+    const target=resolveTourTarget(step);
+    if(!target) return;
+
+    tourTarget=target;
+    const rect=target.getBoundingClientRect();
+    const pad=8;
+    const spot=$("tourSpotlight");
+
+    spot.style.left=Math.max(4,rect.left-pad)+"px";
+    spot.style.top=Math.max(4,rect.top-pad)+"px";
+    spot.style.width=Math.max(20,rect.width+2*pad)+"px";
+    spot.style.height=Math.max(20,rect.height+2*pad)+"px";
+
+    placeTourTooltip(rect);
+    animateVirtualCursorTo(rect,true);
+
+    if(step.demo==="drag"){
+      setTimeout(()=>runDragDemo(),780);
+    }else{
+      $("tourDemoPath").classList.remove("show");
+    }
+  }
+
+  function runDragDemo(){
+    if(!$("tourOverlay").classList.contains("show")) return;
+    const seats=[...document.querySelectorAll("#classroom .seat")]
+      .filter(el=>el.offsetParent!==null);
+
+    if(seats.length<2) return;
+
+    const a=seats[Math.min(1,seats.length-1)].getBoundingClientRect();
+    const b=seats[Math.min(3,seats.length-1)].getBoundingClientRect();
+
+    const x1=a.left+a.width/2;
+    const y1=a.top+a.height/2;
+    const x2=b.left+b.width/2;
+    const y2=b.top+b.height/2;
+
+    const dx=x2-x1;
+    const dy=y2-y1;
+    const length=Math.hypot(dx,dy);
+    const angle=Math.atan2(dy,dx)*180/Math.PI;
+
+    const path=$("tourDemoPath");
+    path.style.left=x1+"px";
+    path.style.top=y1+"px";
+    path.style.width=length+"px";
+    path.style.transform=`rotate(${angle}deg)`;
+    path.classList.add("show");
+
+    const cursor=$("tourCursor");
+    cursor.style.left=x1+"px";
+    cursor.style.top=y1+"px";
+
+    setTimeout(()=>{
+      if(tourSteps[tourIndex]?.demo!=="drag") return;
+      cursor.style.left=x2+"px";
+      cursor.style.top=y2+"px";
+    },350);
+
+    setTimeout(()=>path.classList.remove("show"),1150);
+  }
+
+  function showTourStep(){
+    const step=tourSteps[tourIndex];
+    const target=resolveTourTarget(step);
+
+    if(!target){
+      if(tourIndex<tourSteps.length-1){
+        tourIndex++;
+        showTourStep();
+      }
+      return;
+    }
+
+    target.scrollIntoView({
+      behavior:"smooth",
+      block:"center",
+      inline:"center"
+    });
+
+    $("tourTitle").textContent=step.title;
+    $("tourText").textContent=step.text;
+    $("tourProgress").textContent=`${tourIndex+1} / ${tourSteps.length}`;
+    $("tourProgressBar").style.width=`${((tourIndex+1)/tourSteps.length)*100}%`;
+    $("tourPrevBtn").disabled=tourIndex===0;
+    $("tourNextBtn").textContent=step.final ? "Lancer le tirage" : "Suivant";
+    $("tourHint").textContent="Vous contrôlez le rythme : rien n'avance sans votre clic.";
+
+    setTimeout(positionTour,260);
+  }
+
+  async function nextTourStep(){
+    const step=tourSteps[tourIndex];
+
+    if(step.final){
+      await closeTutorial();
+      setTimeout(()=>chooseRandomStudent(),100);
+      return;
+    }
+
+    if(step.enterProjectionAfter){
+      await enterProjectionMode();
+    }
+
+    tourIndex=Math.min(tourSteps.length-1,tourIndex+1);
+    setTimeout(showTourStep,220);
+  }
+
+  async function prevTourStep(){
+    if(tourIndex<=0) return;
+
+    if(tourIndex===tourSteps.length-1 && document.body.classList.contains("projection-mode")){
+      await exitProjectionMode();
+    }
+
+    tourIndex--;
+    setTimeout(showTourStep,180);
+  }
+
+  function refreshTourPosition(){
+    if($("tourOverlay").classList.contains("show")){
+      positionTour();
+    }
+  }
+
+
   function setSidebarHidden(hidden){
     $("app").classList.toggle("sidebar-hidden",hidden);
     $("toggleSidebarBtn").textContent=hidden ? "Afficher le panneau" : "Masquer le panneau";
@@ -1958,6 +2438,19 @@
   }
 
 
+  $("tutorialBtn").onclick=openTutorial;
+  $("tourCloseBtn").onclick=closeTutorial;
+  $("tourNextBtn").onclick=nextTourStep;
+  $("tourPrevBtn").onclick=prevTourStep;
+
+  window.addEventListener("resize",refreshTourPosition);
+
+  document.addEventListener("keydown",e=>{
+    if(e.key==="Escape" && $("tourOverlay").classList.contains("show")){
+      closeTutorial();
+    }
+  });
+
   $("classSelect").addEventListener("change",e=>selectClassById(e.target.value));
   $("planClassSelect").addEventListener("change",e=>selectClassById(e.target.value));
   $("roomSelect").addEventListener("change",e=>selectRoomById(e.target.value));
@@ -1979,6 +2472,9 @@
     if(!document.fullscreenElement && document.body.classList.contains("projection-mode")){
       document.body.classList.remove("projection-mode");
       render();
+    }
+    if($("tourOverlay").classList.contains("show")){
+      setTimeout(refreshTourPosition,180);
     }
   });
 
