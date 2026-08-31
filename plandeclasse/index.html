@@ -1,45 +1,2071 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan de Classe</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan de classe aléatoire</title>
+<style>
+  :root{
+    --bg:#f3f4f6;
+    --panel:#ffffff;
+    --border:#cfd4dc;
+    --text:#1f2937;
+    --muted:#6b7280;
+    --accent:#2563eb;
+    --danger:#b91c1c;
+    --forbidden:#374151;
+    --selected:#f59e0b;
+    --random:#16a34a;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    color:var(--text);
+    background:var(--bg);
+  }
+  header{
+    padding:14px 18px;
+    background:#111827;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  header h1{font-size:20px;margin:0}
+  header .subtitle{font-size:13px;color:#d1d5db}
+  .app{
+    display:grid;
+    grid-template-columns:330px minmax(0,1fr);
+    gap:14px;
+    padding:14px;
+    min-height:calc(100vh - 64px);
+    transition:grid-template-columns .2s ease;
+  }
+  .app.sidebar-hidden{
+    grid-template-columns:0 minmax(0,1fr);
+  }
+  .app.sidebar-hidden .sidebar{
+    overflow:hidden;
+    opacity:0;
+    pointer-events:none;
+    padding:0;
+    border:0;
+  }
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.04);
+  }
+  .sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    transition:opacity .18s ease;
+    min-width:0;
+  }
+  .section h2{
+    font-size:14px;
+    margin:0 0 8px;
+  }
+  .section{
+    border-bottom:1px solid #e5e7eb;
+    padding-bottom:12px;
+  }
+  .section:last-child{border-bottom:0;padding-bottom:0}
+  label{
+    display:block;
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:4px;
+  }
+  input, select, textarea, button{
+    font:inherit;
+  }
+  input[type=text], input[type=date], input[type=number], select, textarea{
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:7px;
+    padding:7px 8px;
+    background:white;
+  }
+  textarea{
+    min-height:105px;
+    resize:vertical;
+  }
+  .row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+  .row3{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:8px;
+  }
+  .buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:8px;
+  }
+  button{
+    border:1px solid var(--border);
+    background:white;
+    border-radius:7px;
+    padding:7px 10px;
+    cursor:pointer;
+  }
+  button:hover{background:#f9fafb}
+  button.primary{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:white;
+  }
+  button.danger{
+    color:var(--danger);
+    border-color:#fecaca;
+  }
+  button.small{
+    padding:4px 7px;
+    font-size:12px;
+  }
+  .main{
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .toolbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .plan-title{
+    text-align:center;
+    padding:2px 0 8px;
+  }
+  .plan-title h2{margin:0;font-size:22px}
+  .plan-title div{color:var(--muted);font-size:14px;margin-top:3px}
+  .classroom-wrap{
+    overflow:auto;
+    padding:4px;
+  }
+  .classroom{
+    display:grid;
+    gap:8px;
+    align-items:stretch;
+    min-width:620px;
+  }
+  .corner{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--muted);
+    font-size:12px;
+  }
+  .col-head, .row-head{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:3px;
+    color:var(--muted);
+    font-size:12px;
+    cursor:grab;
+    user-select:none;
+    border-radius:6px;
+  }
+  .col-head:active, .row-head:active{cursor:grabbing}
+  .col-head.drag-over, .row-head.drag-over{
+    background:#dbeafe;
+    color:#1d4ed8;
+    outline:2px solid #60a5fa;
+  }
+  .seat{
+    min-height:74px;
+    border:2px solid #94a3b8;
+    border-radius:8px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:6px;
+    font-weight:600;
+    user-select:none;
+    cursor:grab;
+    position:relative;
+  }
+  .seat:active{cursor:grabbing}
+  .seat.empty{
+    font-weight:400;
+    color:#9ca3af;
+    border-style:dashed;
+  }
+  .seat.forbidden{
+    background:var(--forbidden);
+    color:white;
+    border-color:var(--forbidden);
+    cursor:not-allowed;
+    font-weight:700;
+  }
+  .seat.selected{
+    outline:4px solid color-mix(in srgb, var(--selected) 55%, transparent);
+  }
+  .seat.random-picked{
+    outline:6px solid #16a34a;
+    background:#dcfce7;
+    box-shadow:0 0 24px rgba(22,163,74,.55);
+  }
+  .seat.roulette-active{
+    outline:6px solid #f59e0b;
+    background:#fef3c7;
+    transform:scale(1.08);
+    z-index:2;
+    box-shadow:0 0 28px rgba(245,158,11,.9);
+  }
+  .seat.drag-over{
+    box-shadow:inset 0 0 0 4px #60a5fa;
+  }
+  .seat .idx{
+    position:absolute;
+    right:5px;
+    bottom:2px;
+    font-size:10px;
+    color:#c0c4ca;
+    font-weight:400;
+  }
+  .front{
+    margin:14px auto 2px;
+    width:min(78%,800px);
+    border:2px solid #111827;
+    border-radius:6px;
+    text-align:center;
+    padding:8px;
+    font-weight:700;
+    background:#f9fafb;
+  }
+  .status{
+    min-height:22px;
+    font-size:13px;
+    color:var(--muted);
+  }
+  .picked{
+    min-height:28px;
+    font-size:18px;
+    font-weight:700;
+    color:var(--random);
+  }
+  #winnerOverlay{
+    position:fixed;
+    inset:0;
+    z-index:10000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    pointer-events:none;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(1.5px);
+  }
+  #winnerOverlay.show{display:flex}
+  #winnerName{
+    max-width:88vw;
+    padding:22px 36px;
+    border-radius:22px;
+    background:rgba(255,255,255,.96);
+    border:5px solid #16a34a;
+    box-shadow:0 22px 80px rgba(0,0,0,.32);
+    color:#166534;
+    font-weight:900;
+    text-align:center;
+    line-height:1.05;
+    font-size:clamp(38px,7vw,96px);
+    opacity:0;
+    transform:scale(.18);
+  }
+  #winnerOverlay.show #winnerName{
+    animation:winnerPop 1s cubic-bezier(.18,.89,.32,1.28) forwards;
+  }
+  @keyframes winnerPop{
+    0%{opacity:0;transform:scale(.18)}
+    58%{opacity:1;transform:scale(1.18)}
+    80%{opacity:1;transform:scale(.96)}
+    100%{opacity:1;transform:scale(1)}
+  }
+
+  #fireworksCanvas{
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100vh;
+    pointer-events:none;
+    z-index:9999;
+    display:none;
+  }
+  .saved-list{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    max-height:150px;
+    overflow:auto;
+    margin-top:8px;
+  }
+  .saved-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:6px;
+    border:1px solid #e5e7eb;
+    border-radius:6px;
+    padding:6px;
+    font-size:12px;
+  }
+  .saved-item .meta{min-width:0}
+  .saved-item .meta strong,.saved-item .meta span{
+    display:block;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .saved-item .meta span{color:var(--muted)}
+  .saved-item .actions{display:flex;gap:4px}
+  .help{
+    font-size:11px;
+    line-height:1.4;
+    color:var(--muted);
+    margin-top:5px;
+  }
+  .file-btn{
+    position:relative;
+    overflow:hidden;
+  }
+  .file-btn input{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    cursor:pointer;
+  }
+
+  .classroom-actions{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin:4px 0 10px;
+  }
+  .classroom-actions button{
+    font-size:15px;
+    padding:9px 14px;
+  }
+  .projection-mode{
+    background:#111827 !important;
+    color:white;
+  }
+  .projection-mode header,
+  .projection-mode .sidebar,
+  .projection-mode .toolbar{
+    display:none !important;
+  }
+  .projection-mode .app{
+    display:block;
+    padding:0;
+    min-height:100vh;
+  }
+  .projection-mode .main{
+    min-height:100vh;
+    gap:0;
+  }
+  .projection-mode #printArea{
+    border:0;
+    border-radius:0;
+    min-height:100vh;
+    padding:18px 22px !important;
+    background:#f8fafc;
+    display:flex;
+    flex-direction:column;
+  }
+  .projection-mode .plan-title h2{
+    font-size:clamp(30px,4vw,54px);
+  }
+  .projection-mode .plan-title div{
+    font-size:clamp(18px,2vw,28px);
+  }
+  .projection-mode .classroom-wrap{
+    flex:1 1 auto;
+    display:flex;
+    align-items:stretch;
+    min-height:0;
+    overflow:visible;
+  }
+  .projection-mode .classroom{
+    width:100%;
+    min-width:0 !important;
+    gap:clamp(6px,.8vw,14px);
+    align-content:stretch;
+  }
+  .projection-mode .seat{
+    min-height:clamp(72px,10vh,130px);
+    font-size:clamp(18px,2vw,32px);
+    border-width:3px;
+    color:#111827 !important;
+    background:#ffffff !important;
+    overflow:visible;
+    white-space:normal;
+    word-break:break-word;
+    line-height:1.1;
+    font-weight:800;
+  }
+  .projection-mode .seat.empty{
+    color:#9ca3af !important;
+    font-weight:500;
+    background:#ffffff !important;
+  }
+  .projection-mode .seat.forbidden{
+    color:#ffffff !important;
+    background:#374151 !important;
+  }
+  .projection-mode .seat.random-picked{
+    color:#14532d !important;
+    background:#dcfce7 !important;
+  }
+  .projection-mode .seat.roulette-active{
+    color:#78350f !important;
+    background:#fef3c7 !important;
+  }
+  .projection-mode .col-head,
+  .projection-mode .row-head{
+    font-size:clamp(14px,1.3vw,22px);
+  }
+  .projection-mode .seat .idx{
+    display:none;
+  }
+  .projection-mode .front{
+    font-size:clamp(17px,1.6vw,26px);
+    padding:10px;
+  }
+  .projection-mode .classroom-actions{
+    margin:8px 0 12px;
+  }
+  .projection-mode .classroom-actions button,
+  .projection-mode .classroom-actions select{
+    font-size:clamp(16px,1.5vw,24px);
+    padding:10px 18px;
+  }
+  .projection-mode .classroom-actions label{
+    font-size:clamp(16px,1.5vw,24px);
+    color:#111827 !important;
+  }
+  .projection-exit{
+    display:none;
+    position:fixed;
+    top:10px;
+    right:10px;
+    z-index:10001;
+  }
+  .projection-mode .projection-exit{
+    display:block;
+  }
+  .class-manager{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:7px;
+    align-items:end;
+  }
+  .class-manager .full{
+    grid-column:1 / -1;
+  }
+
+  @media (max-width:900px){
+    .app{grid-template-columns:1fr}
+  }
+
+  /* Impression : une page A4 paysage */
+  @page{
+    size:A4 landscape;
+    margin:8mm;
+  }
+  @media print{
+    body{
+      background:white !important;
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+    header,.sidebar,.toolbar,.status,.screen-only,#fireworksCanvas,#winnerOverlay,.classroom-actions,.projection-exit{display:none !important}
+    .app{display:block;padding:0;min-height:0}
+    .main,.panel{
+      border:0 !important;
+      box-shadow:none !important;
+      padding:0 !important;
+      margin:0 !important;
+    }
+    #printArea{
+      width:100%;
+      height:190mm;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+    }
+    .plan-title{padding:0 0 3mm}
+    .plan-title h2{font-size:16pt}
+    .plan-title div{font-size:10pt}
+    .classroom-wrap{
+      overflow:visible;
+      padding:0;
+      flex:1 1 auto;
+    }
+    .classroom{
+      min-width:0 !important;
+      gap:2.2mm !important;
+      height:100%;
+    }
+    .seat{
+      min-height:0 !important;
+      height:auto;
+      border-width:1.2pt;
+      border-radius:4px;
+      padding:2mm;
+      font-size:var(--print-font,10pt);
+      line-height:1.05;
+      page-break-inside:avoid;
+    }
+    .seat .idx{display:none}
+    .col-head,.row-head,.corner{font-size:8pt}
+    .col-head button,.row-head button{display:none}
+    .front{
+      margin:3mm auto 0;
+      padding:2mm;
+      font-size:10pt;
+      width:70%;
+    }
+  }
+</style>
 </head>
 <body>
-    <h1 class="noprint">Générateur de Plan de Classe</h1>
-    <div style="display:flex;justify-content:center;text-align:center;" class="noprint">
-        <input type="text" id="titleInput" placeholder="Titre" value="Nom de la classe"/>
-    </div>
-    <label class="noprint" for="columnsInput">Nombre de tables par ligne :</label>
-    <input type="number" id="columnsInput" value="8" min="1" />
-    <br><br>
+<canvas id="fireworksCanvas"></canvas>
+<div id="winnerOverlay"><div id="winnerName"></div></div>
+<button id="projectionExitBtn" class="projection-exit">Quitter le mode vidéoprojecteur</button>
+<header>
+  <div>
+    <h1>Plan de classe aléatoire</h1>
+    <div class="subtitle">Application locale — aucune donnée n'est envoyée sur Internet</div>
+  </div>
+  <div>
+    <button id="toggleSidebarBtn">Masquer le panneau</button>
+  </div>
+</header>
 
-    <input type="file" id="csvFileInput" accept=".csv" />
-    <button id="randomizeButton">Répartir au hasard</button>
-    <button id="addDeskButton">Ajouter un bureau vide</button>
-    <button id="savePlanButton">Sauvegarder le plan de classe</button>
-
-    <h2 class="noprint">Gestion des plans de classe</h2>
-    <select id="savedPlansSelect" class="noprint"></select>
-    <button id="renamePlanButton" class="noprint">Renommer</button>
-    <button id="deletePlanButton" class="noprint">Supprimer</button>
-    <br><br>
-    <button id="exportPlansButton" class="noprint">Exporter les plans de classe</button>
-    <input type="file" id="importPlansFileInput" class="noprint" accept=".json" />
-    <button id="importPlansButton" class="noprint">Importer des plans de classe</button>
-    
-    <h2 id="classroomTitle"></h2>
-    <div id="classroom"></div>
-
-    <!-- Modal for displaying the table in larger view -->
-    <div id="tableModal" class="modal">
-        <div class="modal-content">
-            <span id="closeModal" class="close">&times;</span>
-            <p id="modalText"></p>
+<div class="app" id="app">
+  <aside class="sidebar">
+    <div class="panel section">
+      <h2>Classes</h2>
+      <div class="class-manager">
+        <div>
+          <label for="classSelect">Classe active</label>
+          <select id="classSelect"></select>
         </div>
+        <button id="deleteClassBtn" class="danger">Supprimer</button>
+
+        <div class="full">
+          <label for="newClassName">Nouvelle classe</label>
+          <input id="newClassName" type="text" placeholder="2de 3">
+        </div>
+        <button id="addClassBtn" class="primary full">Ajouter la classe</button>
+      </div>
+
+      <div style="margin-top:10px">
+        <label for="planDate">Date du plan</label>
+        <input id="planDate" type="date">
+      </div>
+
+      <div style="margin-top:12px;padding-top:10px;border-top:1px solid #e5e7eb">
+        <h2 style="margin-bottom:8px">Salle</h2>
+        <div class="class-manager">
+          <div>
+            <label for="roomSelect">Salle active</label>
+            <select id="roomSelect"></select>
+          </div>
+          <button id="deleteRoomBtn" class="danger">Supprimer</button>
+
+          <div class="full">
+            <label for="newRoomName">Nouvelle salle</label>
+            <input id="newRoomName" type="text" placeholder="Salle 204">
+          </div>
+          <button id="addRoomBtn" class="primary full">Ajouter la salle</button>
+        </div>
+        <div class="help">Chaque salle conserve automatiquement sa propre disposition.</div>
+      </div>
+
+      <div class="row" style="margin-top:8px">
+        <div>
+          <label for="cols">Tables par rangée</label>
+          <input id="cols" type="number" min="1" max="20" value="8">
+        </div>
+        <div>
+          <label for="rows">Nombre de rangées</label>
+          <input id="rows" type="number" min="1" max="20" value="5">
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button id="resizeBtn">Appliquer la grille</button>
+        <button id="autoRowsBtn">Rangées auto</button>
+      </div>
     </div>
 
-    <script src="scripts.js"></script>
+    <div class="panel section">
+      <h2>Élèves</h2>
+      <label for="studentText">Un élève par ligne, ou données CSV copiées</label>
+      <textarea id="studentText" placeholder="Alice Martin&#10;Benoît Dupont&#10;Chloé Bernard"></textarea>
+
+      <div class="buttons">
+        <button id="loadTextBtn">Charger la liste</button>
+        <label class="file-btn">
+          <button type="button">Importer la liste</button>
+          <input id="studentFile" type="file" accept=".csv,.txt,text/csv,text/plain">
+        </label>
+      </div>
+
+      <div class="help">
+        CSV/TXT : la première colonne est utilisée. Si la première ligne est « Élèves »,
+        elle est ignorée. La liste est immédiatement placée aléatoirement.
+      </div>
+    </div>
+
+    <div class="panel section">
+      <h2>Placement</h2>
+      <div class="buttons">
+        <button class="primary" id="shuffleBtn">Relancer le placement aléatoire</button>
+      </div>
+      <div class="help">Le tirage d'un élève se fait directement dans la salle de classe.</div>
+    </div>
+
+    <div class="panel section">
+      <h2>Table sélectionnée</h2>
+      <div class="buttons">
+        <button id="emptySeatBtn">Table vide</button>
+        <button id="forbidSeatBtn">Table interdite</button>
+        <button id="enableSeatBtn">Réactiver</button>
+      </div>
+      <div class="help">
+        Cliquez sur une table puis choisissez son état.
+        Le glisser-déposer échange toute la table, élève compris.
+      </div>
+    </div>
+
+    <div class="panel section">
+      <h2>Import / export</h2>
+      <div class="buttons">
+        <button id="backupAllBtn">Exporter tous les plans</button>
+        <label class="file-btn">
+          <button type="button">Importer tous les plans</button>
+          <input id="restoreAllFile" type="file" accept=".json,application/json">
+        </label>
+      </div>
+      <div class="help">
+        Toutes les modifications sont sauvegardées automatiquement dans ce navigateur.
+        L’export permet de transférer toutes les classes, salles et plans sur un autre poste.
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="panel toolbar">
+      <div>
+        <button class="primary" id="printBtn">Exporter en PDF / Imprimer</button>
+        <button id="projectionBtn">Mode vidéoprojecteur</button>
+        <button id="showSidebarBtn" style="display:none">Afficher le panneau</button>
+        <button id="newBtn">Nouveau plan</button>
+      </div>
+      <div><span style="font-size:12px;color:#166534;font-weight:700">● Sauvegarde automatique active</span><div id="status" class="status"></div></div>
+    </div>
+
+    <div class="panel" id="printArea">
+      <div class="plan-title">
+        <h2 id="displayClass">Plan de classe</h2>
+        <div id="displayDate"></div>
+      </div>
+      <div class="classroom-actions">
+        <label for="planClassSelect" style="margin:0;color:inherit;font-weight:700">Classe</label>
+        <select id="planClassSelect" style="width:auto;min-width:140px"></select>
+        <label for="planRoomSelect" style="margin:0;color:inherit;font-weight:700">Salle</label>
+        <select id="planRoomSelect" style="width:auto;min-width:140px"></select>
+        <button class="primary" id="pickBtn">🎲 Choisir un élève</button>
+        <button id="clearPickBtn">Effacer la sélection</button>
+        <div id="pickedStudent" class="picked"></div>
+      </div>
+      <div class="classroom-wrap">
+        <div id="classroom" class="classroom"></div>
+      </div>
+      <div class="front">TABLEAU / AVANT DE LA SALLE</div>
+    </div>
+  </main>
+</div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const STORAGE_KEY = "plansClasse.v1";
+  const CLASSES_KEY = "classesClasse.v1";
+  const ROOMS_KEY = "sallesClasse.v1";
+  const ACTIVE_KEY = "planClasseActif.v1";
+
+  const state = {
+    className: "",
+    roomId: "",
+    date: new Date().toISOString().slice(0,10),
+    rows: 5,
+    cols: 8,
+    seats: [],
+    students: [],
+    selectedSeat: null,
+    pickedStudent: null,
+    rouletteActiveSeat: null,
+    rouletteRunning: false
+  };
+
+  function newSeat(){
+    return { type:"normal", student:null };
+  }
+
+  function clone(obj){
+    return JSON.parse(JSON.stringify(obj));
+  }
+
+  function ensureGrid(rows=state.rows, cols=state.cols){
+    rows = Math.max(1, Math.min(20, Number(rows)||1));
+    cols = Math.max(1, Math.min(20, Number(cols)||1));
+    const old = state.seats;
+    const oldRows = state.rows;
+    const oldCols = state.cols;
+    const next = Array.from({length:rows*cols}, () => newSeat());
+
+    for(let r=0;r<Math.min(rows,oldRows);r++){
+      for(let c=0;c<Math.min(cols,oldCols);c++){
+        const oldIdx=r*oldCols+c;
+        const newIdx=r*cols+c;
+        if(old[oldIdx]) next[newIdx]=clone(old[oldIdx]);
+      }
+    }
+    state.rows=rows;
+    state.cols=cols;
+    state.seats=next;
+    if(state.selectedSeat !== null && state.selectedSeat >= next.length) state.selectedSeat=null;
+    syncInputs();
+    render();
+    if(state.roomId){
+      saveCurrentRoomLayout();
+      autoSave();
+    }
+  }
+
+  function syncInputs(){
+    $("planDate").value=state.date;
+    $("rows").value=state.rows;
+    $("cols").value=state.cols;
+  }
+
+  function getRooms(){
+    try{
+      const data=JSON.parse(localStorage.getItem(ROOMS_KEY)||"[]");
+      return Array.isArray(data)?data:[];
+    }catch{
+      return [];
+    }
+  }
+
+  function saveRooms(rooms){
+    localStorage.setItem(ROOMS_KEY,JSON.stringify(rooms));
+  }
+
+  function ensureDefaultRoom(){
+    let rooms=getRooms();
+    if(!rooms.length){
+      rooms=[{
+        id:"room-"+Date.now().toString(36),
+        name:"Salle 1",
+        rows:state.rows,
+        cols:state.cols,
+        seatTypes:Array.from({length:state.rows*state.cols},()=> "normal")
+      }];
+      saveRooms(rooms);
+    }
+    if(!state.roomId) state.roomId=rooms[0].id;
+  }
+
+  function activeRoom(){
+    return getRooms().find(r=>r.id===state.roomId) || null;
+  }
+
+  function renderRoomSelect(){
+    const rooms=getRooms();
+    const selects=[$("roomSelect"),$("planRoomSelect")].filter(Boolean);
+    for(const select of selects){
+      select.innerHTML="";
+      rooms.forEach(room=>{
+        const opt=document.createElement("option");
+        opt.value=room.id;
+        opt.textContent=room.name;
+        select.appendChild(opt);
+      });
+      if(state.roomId) select.value=state.roomId;
+    }
+  }
+
+  function buildSeatsFromRoom(room){
+    const rows=Math.max(1,Number(room?.rows)||5);
+    const cols=Math.max(1,Number(room?.cols)||8);
+    const types=Array.isArray(room?.seatTypes)?room.seatTypes:[];
+    state.rows=rows;
+    state.cols=cols;
+    state.seats=Array.from({length:rows*cols},(_,i)=>({
+      type:types[i]==="forbidden" ? "forbidden" : "normal",
+      student:null
+    }));
+  }
+
+  function saveCurrentRoomLayout(){
+    const rooms=getRooms();
+    const room=rooms.find(r=>r.id===state.roomId);
+    if(!room) return;
+    room.rows=state.rows;
+    room.cols=state.cols;
+    room.seatTypes=state.seats.map(s=>s.type==="forbidden" ? "forbidden" : "normal");
+    saveRooms(rooms);
+    renderRoomSelect();
+  }
+
+  function addRoom(){
+    const name=$("newRoomName").value.trim();
+    if(!name){
+      setStatus("Indiquez un nom de salle.");
+      return;
+    }
+    const rooms=getRooms();
+    if(rooms.some(r=>r.name.toLowerCase()===name.toLowerCase())){
+      setStatus("Cette salle existe déjà.");
+      return;
+    }
+    const room={
+      id:"room-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,6),
+      name,
+      rows:state.rows,
+      cols:state.cols,
+      seatTypes:state.seats.map(s=>s.type==="forbidden" ? "forbidden" : "normal")
+    };
+    rooms.push(room);
+    saveRooms(rooms);
+    $("newRoomName").value="";
+    autoSave(true);
+    state.roomId=room.id;
+    currentId=cryptoRandomId();
+    buildSeatsFromRoom(room);
+    syncInputs();
+    renderRoomSelect();
+    render();
+    autoSave(true);
+    setStatus(`Salle « ${name} » créée.`);
+  }
+
+  function deleteActiveRoom(){
+    let rooms=getRooms();
+    const room=rooms.find(r=>r.id===state.roomId);
+    if(!room) return;
+    if(rooms.length===1){
+      setStatus("Il faut conserver au moins une salle.");
+      return;
+    }
+    if(!confirm(`Supprimer la salle « ${room.name} » ?`)) return;
+    rooms=rooms.filter(r=>r.id!==room.id);
+    saveRooms(rooms);
+    state.roomId=rooms[0].id;
+    loadLatestPlanForClass(state.className,state.roomId,true);
+    renderRoomSelect();
+    setStatus("Salle supprimée.");
+  }
+
+  function planTimestamp(p){
+    return p.savedAt || (p.date ? p.date+"T00:00:00" : "");
+  }
+
+  function findLatestPlan(className,roomId=null){
+    const plans=getSavedPlans()
+      .filter(p=>p.className===className && (!roomId || p.roomId===roomId))
+      .sort((a,b)=>planTimestamp(b).localeCompare(planTimestamp(a)));
+    return plans[0] || null;
+  }
+
+  function loadLatestPlanForClass(className,preferredRoomId=null,createIfMissing=true){
+    let plan=null;
+    if(preferredRoomId) plan=findLatestPlan(className,preferredRoomId);
+    if(!plan) plan=findLatestPlan(className);
+
+    if(plan){
+      loadPlan(plan,{silent:true});
+      return;
+    }
+
+    const classes=getClasses();
+    const c=classes.find(x=>x.name===className);
+    state.className=className;
+    state.students=c && Array.isArray(c.students) ? c.students.slice() : [];
+
+    const rooms=getRooms();
+    const room=rooms.find(r=>r.id===preferredRoomId) || rooms[0];
+    state.roomId=room.id;
+    buildSeatsFromRoom(room);
+
+    state.date=new Date().toISOString().slice(0,10);
+    currentId=cryptoRandomId();
+    state.selectedSeat=null;
+    state.pickedStudent=null;
+    state.rouletteActiveSeat=null;
+    state.rouletteRunning=false;
+    syncInputs();
+    $("studentText").value=state.students.join("\n");
+    renderClassSelect();
+    renderRoomSelect();
+    render();
+    if(createIfMissing) autoSave(true);
+  }
+
+  function selectRoomById(id){
+    if(id===state.roomId) return;
+    autoSave(true);
+    state.roomId=id;
+    loadLatestPlanForClass(state.className,id,true);
+    renderRoomSelect();
+    setStatus(`Salle active : ${activeRoom()?.name || ""}.`);
+  }
+
+  let autoSaveTimer=null;
+  function autoSave(immediate=false){
+    clearTimeout(autoSaveTimer);
+    const doSave=()=>{
+      if(!state.className || !state.roomId) return;
+      const plan=serialize();
+      const plans=getSavedPlans();
+      const idx=plans.findIndex(p=>p.id===plan.id);
+      if(idx>=0) plans[idx]=plan;
+      else plans.unshift(plan);
+      localStorage.setItem(STORAGE_KEY,JSON.stringify(plans));
+      currentId=plan.id;
+      localStorage.setItem(ACTIVE_KEY,JSON.stringify({
+        className:state.className,
+        roomId:state.roomId,
+        planId:currentId
+      }));
+      renderSavedPlans();
+    };
+    if(immediate) doSave();
+    else autoSaveTimer=setTimeout(doSave,100);
+  }
+
+  function getClasses(){
+    try{
+      const data=JSON.parse(localStorage.getItem(CLASSES_KEY)||"[]");
+      return Array.isArray(data)?data:[];
+    }catch{
+      return [];
+    }
+  }
+
+  function saveClasses(classes){
+    localStorage.setItem(CLASSES_KEY,JSON.stringify(classes));
+  }
+
+  function ensureDefaultClass(){
+    let classes=getClasses();
+
+    // Migration douce : si l'ancien plan possède une classe/liste, on la récupère.
+    if(!classes.length){
+      const savedPlans=getSavedPlans();
+      const firstNamed=savedPlans.find(p=>p.className);
+      if(firstNamed){
+        classes.push({
+          id:"class-"+Date.now().toString(36),
+          name:firstNamed.className,
+          students:Array.isArray(firstNamed.students)?firstNamed.students:[]
+        });
+      }else{
+        classes.push({
+          id:"class-"+Date.now().toString(36),
+          name:"Classe 1",
+          students:[]
+        });
+      }
+      saveClasses(classes);
+    }
+
+    if(!state.className){
+      state.className=classes[0].name;
+      state.students=classes[0].students.slice();
+    }
+  }
+
+  function renderClassSelect(){
+    const classes=getClasses();
+    const selects=[$("classSelect"), $("planClassSelect")].filter(Boolean);
+
+    for(const select of selects){
+      select.innerHTML="";
+      classes.forEach(c=>{
+        const opt=document.createElement("option");
+        opt.value=c.id;
+        opt.textContent=c.name;
+        if(c.name===state.className) opt.selected=true;
+        select.appendChild(opt);
+      });
+    }
+
+    const current=classes.find(c=>c.name===state.className) || classes[0];
+    if(current){
+      for(const select of selects){
+        select.value=current.id;
+      }
+    }
+  }
+
+  function activeClassRecord(){
+    const classes=getClasses();
+    return classes.find(c=>c.name===state.className) || null;
+  }
+
+  function selectClassById(id){
+    const classes=getClasses();
+    const c=classes.find(x=>x.id===id);
+    if(!c) return;
+
+    autoSave(true);
+    state.className=c.name;
+    state.students=Array.isArray(c.students)?c.students.slice():[];
+    $("studentText").value=state.students.join("\n");
+    state.pickedStudent=null;
+    state.rouletteActiveSeat=null;
+
+    loadLatestPlanForClass(state.className,null,true);
+    renderClassSelect();
+    renderRoomSelect();
+    setStatus(`Classe active : ${state.className}.`);
+  }
+
+  function addClass(){
+    const name=$("newClassName").value.trim();
+    if(!name){
+      setStatus("Indiquez un nom de classe.");
+      return;
+    }
+
+    const classes=getClasses();
+    if(classes.some(c=>c.name.toLowerCase()===name.toLowerCase())){
+      setStatus("Cette classe existe déjà.");
+      return;
+    }
+
+    const c={
+      id:"class-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,6),
+      name,
+      students:[]
+    };
+
+    classes.push(c);
+    saveClasses(classes);
+    $("newClassName").value="";
+    renderClassSelect();
+    selectClassById(c.id);
+  }
+
+  function deleteActiveClass(){
+    let classes=getClasses();
+    const current=classes.find(c=>c.name===state.className);
+    if(!current) return;
+
+    if(classes.length===1){
+      setStatus("Il faut conserver au moins une classe.");
+      return;
+    }
+
+    if(!confirm(`Supprimer la classe « ${current.name} » et sa liste d'élèves ?`)) return;
+
+    classes=classes.filter(c=>c.id!==current.id);
+    saveClasses(classes);
+
+    const next=classes[0];
+    state.className=next.name;
+    state.students=next.students.slice();
+    $("studentText").value=state.students.join("\n");
+    for(const seat of state.seats){
+      if(seat.type==="normal") seat.student=null;
+    }
+    renderClassSelect();
+    render();
+    setStatus("Classe supprimée.");
+  }
+
+  function saveStudentsToActiveClass(){
+    const classes=getClasses();
+    const current=classes.find(c=>c.name===state.className);
+    if(!current) return;
+
+    current.students=state.students.slice();
+    saveClasses(classes);
+    renderClassSelect();
+  }
+
+  function getFreeSeatIndices(){
+    return state.seats
+      .map((s,i)=>({s,i}))
+      .filter(x=>x.s.type==="normal")
+      .map(x=>x.i);
+  }
+
+  function parseStudents(text){
+    const raw = text.replace(/\r/g,"").split("\n").map(s=>s.trim()).filter(Boolean);
+    const result=[];
+    for(const line of raw){
+      let first=line;
+      if(line.includes(";")) first=line.split(";")[0];
+      else if(line.includes("\t")) first=line.split("\t")[0];
+      else if(line.includes(",")) first=line.split(",")[0];
+      first=first.trim().replace(/^["']|["']$/g,"").trim();
+      if(first) result.push(first);
+    }
+    if(result.length && /^(nom|élève|élèves|eleve|eleves|name|student|students)$/i.test(result[0])) result.shift();
+    return [...new Set(result)];
+  }
+
+  function loadStudents(list){
+    state.students=list;
+    $("studentText").value=list.join("\n");
+    saveStudentsToActiveClass();
+
+    const needed=list.length;
+    const usable=getFreeSeatIndices().length;
+
+    if(usable < needed){
+      state.rows=Math.max(state.rows, Math.ceil(needed/state.cols));
+      ensureGrid(state.rows,state.cols);
+    }
+
+    shuffleStudents();
+    autoSave(true);
+    setStatus(`${list.length} élève(s) chargé(s) et placé(s) aléatoirement.`);
+  }
+
+  function fisherYates(arr){
+    const a=arr.slice();
+    for(let i=a.length-1;i>0;i--){
+      const j=Math.floor(Math.random()*(i+1));
+      [a[i],a[j]]=[a[j],a[i]];
+    }
+    return a;
+  }
+
+  function shuffleStudents(){
+    const usable=getFreeSeatIndices();
+    if(!state.students.length){
+      setStatus("Chargez d'abord une liste d'élèves.");
+      return;
+    }
+    if(usable.length < state.students.length){
+      setStatus(`Pas assez de tables utilisables : ${usable.length} pour ${state.students.length} élèves.`);
+      return;
+    }
+    for(const seat of state.seats){
+      if(seat.type==="normal") seat.student=null;
+    }
+    const shuffled=fisherYates(state.students);
+    const seatOrder=fisherYates(usable);
+    shuffled.forEach((student,k)=>{
+      state.seats[seatOrder[k]].student=student;
+    });
+    state.pickedStudent=null;
+    render();
+    autoSave();
+    setStatus("Nouveau placement aléatoire généré.");
+  }
+
+  function sleep(ms){
+    return new Promise(resolve=>setTimeout(resolve,ms));
+  }
+
+  function nextFrame(){
+    return new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+  }
+
+  async function chooseRandomStudent(){
+    if(state.rouletteRunning) return;
+
+    const candidates=state.seats
+      .map((seat,index)=>({seat,index}))
+      .filter(x=>x.seat.type==="normal" && x.seat.student);
+
+    if(!candidates.length){
+      setStatus("Aucun élève placé sur le plan.");
+      return;
+    }
+
+    state.rouletteRunning=true;
+    state.pickedStudent=null;
+    state.rouletteActiveSeat=null;
+    render();
+    $("pickedStudent").textContent="Tirage en cours…";
+
+    const winnerPos=Math.floor(Math.random()*candidates.length);
+    const winner=candidates[winnerPos];
+
+    // Le défilement commence lui aussi sur une table choisie au hasard.
+    const startPos=Math.floor(Math.random()*candidates.length);
+
+    // Un tour complet minimum, puis arrêt exactement sur le gagnant.
+    const turns=1;
+    const offsetToWinner=(winnerPos-startPos+candidates.length)%candidates.length;
+    const totalSteps=turns*candidates.length + offsetToWinner + 1;
+
+    await nextFrame();
+    await sleep(40);
+
+    for(let step=0; step<totalSteps; step++){
+      const current=candidates[(startPos + step) % candidates.length];
+      state.rouletteActiveSeat=current.index;
+      render();
+      $("pickedStudent").textContent="Tirage en cours…";
+      await nextFrame();
+
+      const p=step/Math.max(1,totalSteps-1);
+
+      // Rapide pendant l'essentiel du tirage, puis décélération
+      // forte au début et plus douce sur les toutes dernières cases.
+      let delay;
+      if(p < 0.72){
+        delay=22;
+      }else if(p < 0.88){
+        const q=(p-0.72)/0.16;
+        delay=Math.round(28 + 72*q);
+      }else{
+        const q=(p-0.88)/0.12;
+        delay=Math.round(115 + 155*Math.sqrt(q));
+      }
+
+      await sleep(delay);
+    }
+
+    state.rouletteActiveSeat=winner.index;
+    render();
+    await nextFrame();
+    await sleep(140);
+
+    state.rouletteActiveSeat=null;
+    state.pickedStudent=winner.seat.student;
+    state.rouletteRunning=false;
+    render();
+
+    showWinner(state.pickedStudent);
+    launchFireworks();
+    setStatus(`Élève choisi : ${state.pickedStudent}`);
+  }
+
+  function showWinner(name){
+    const overlay=$("winnerOverlay");
+    const nameBox=$("winnerName");
+
+    nameBox.textContent=name;
+    overlay.classList.remove("show");
+
+    // Relance proprement l'animation même lors de deux tirages successifs.
+    void overlay.offsetWidth;
+    overlay.classList.add("show");
+
+    setTimeout(()=>{
+      overlay.classList.remove("show");
+    },2600);
+  }
+
+  function launchFireworks(){
+    const canvas=$("fireworksCanvas");
+    const ctx=canvas.getContext("2d");
+    canvas.style.display="block";
+
+    const dpr=Math.max(1,window.devicePixelRatio||1);
+
+    function resize(){
+      canvas.width=Math.floor(window.innerWidth*dpr);
+      canvas.height=Math.floor(window.innerHeight*dpr);
+      canvas.style.width=window.innerWidth+"px";
+      canvas.style.height=window.innerHeight+"px";
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+
+    resize();
+
+    const colors=[
+      "#ff3b30","#ffcc00","#34c759",
+      "#007aff","#af52de","#ff9500","#ffffff"
+    ];
+    const particles=[];
+
+    function burst(x,y,count=85){
+      for(let i=0;i<count;i++){
+        const angle=Math.random()*Math.PI*2;
+        const speed=2.5+Math.random()*6.5;
+        particles.push({
+          x,y,
+          vx:Math.cos(angle)*speed,
+          vy:Math.sin(angle)*speed,
+          life:1,
+          decay:0.010+Math.random()*0.013,
+          size:1.5+Math.random()*3,
+          color:colors[Math.floor(Math.random()*colors.length)]
+        });
+      }
+    }
+
+    const planned=[
+      [0.18,0.30,0],
+      [0.50,0.20,180],
+      [0.80,0.32,360],
+      [0.32,0.48,600],
+      [0.68,0.46,780],
+      [0.50,0.32,1050]
+    ];
+
+    const fired=new Set();
+    const start=performance.now();
+
+    function animate(now){
+      const elapsed=now-start;
+
+      planned.forEach((b,i)=>{
+        if(elapsed>=b[2] && !fired.has(i)){
+          fired.add(i);
+          burst(window.innerWidth*b[0],window.innerHeight*b[1]);
+        }
+      });
+
+      ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+      ctx.globalCompositeOperation="lighter";
+
+      for(let i=particles.length-1;i>=0;i--){
+        const p=particles[i];
+
+        p.x+=p.vx;
+        p.y+=p.vy;
+        p.vy+=0.045;
+        p.vx*=0.992;
+        p.vy*=0.992;
+        p.life-=p.decay;
+
+        if(p.life<=0){
+          particles.splice(i,1);
+          continue;
+        }
+
+        ctx.globalAlpha=Math.max(0,p.life);
+        ctx.fillStyle=p.color;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+        ctx.fill();
+
+        ctx.globalAlpha=Math.max(0,p.life*.35);
+        ctx.strokeStyle=p.color;
+        ctx.lineWidth=1;
+        ctx.beginPath();
+        ctx.moveTo(p.x,p.y);
+        ctx.lineTo(p.x-p.vx*3,p.y-p.vy*3);
+        ctx.stroke();
+      }
+
+      ctx.globalAlpha=1;
+
+      if(elapsed<2800 || particles.length){
+        requestAnimationFrame(animate);
+      }else{
+        canvas.style.display="none";
+        ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  function setSeatState(type){
+    if(state.selectedSeat===null){
+      setStatus("Sélectionnez d'abord une table.");
+      return;
+    }
+    const seat=state.seats[state.selectedSeat];
+    if(!seat) return;
+
+    if(type==="forbidden"){
+      seat.type="forbidden";
+      seat.student=null;
+    } else if(type==="empty"){
+      seat.type="normal";
+      seat.student=null;
+    } else {
+      seat.type="normal";
+    }
+    render();
+    saveCurrentRoomLayout();
+    autoSave();
+  }
+
+  function swapSeats(a,b){
+    if(a===b || a<0 || b<0) return;
+    [state.seats[a],state.seats[b]]=[state.seats[b],state.seats[a]];
+    if(state.selectedSeat===a) state.selectedSeat=b;
+    else if(state.selectedSeat===b) state.selectedSeat=a;
+    render();
+    autoSave();
+  }
+
+  function swapRows(a,b){
+    a=Number(a); b=Number(b);
+    if(a===b) return;
+    for(let c=0;c<state.cols;c++){
+      const ia=a*state.cols+c;
+      const ib=b*state.cols+c;
+      [state.seats[ia],state.seats[ib]]=[state.seats[ib],state.seats[ia]];
+    }
+    render();
+    saveCurrentRoomLayout();
+    autoSave();
+  }
+
+  function swapCols(a,b){
+    a=Number(a); b=Number(b);
+    if(a===b) return;
+    for(let r=0;r<state.rows;r++){
+      const ia=r*state.cols+a;
+      const ib=r*state.cols+b;
+      [state.seats[ia],state.seats[ib]]=[state.seats[ib],state.seats[ia]];
+    }
+    render();
+    saveCurrentRoomLayout();
+    autoSave();
+  }
+
+  function moveRow(from,to){
+    from=Number(from);
+    to=Number(to);
+    if(from===to || from<0 || to<0 || from>=state.rows || to>=state.rows) return;
+
+    const allRows=[];
+    for(let r=0;r<state.rows;r++){
+      allRows.push(state.seats.slice(r*state.cols,(r+1)*state.cols));
+    }
+
+    const [moved]=allRows.splice(from,1);
+    allRows.splice(to,0,moved);
+    state.seats=allRows.flat();
+    state.selectedSeat=null;
+    render();
+    saveCurrentRoomLayout();
+    autoSave();
+    setStatus(`Rangée ${from+1} déplacée vers la position ${to+1}.`);
+  }
+
+  function moveCol(from,to){
+    from=Number(from);
+    to=Number(to);
+    if(from===to || from<0 || to<0 || from>=state.cols || to>=state.cols) return;
+
+    const allRows=[];
+    for(let r=0;r<state.rows;r++){
+      const row=state.seats.slice(r*state.cols,(r+1)*state.cols);
+      const [moved]=row.splice(from,1);
+      row.splice(to,0,moved);
+      allRows.push(row);
+    }
+
+    state.seats=allRows.flat();
+    state.selectedSeat=null;
+    render();
+    saveCurrentRoomLayout();
+    autoSave();
+    setStatus(`Colonne ${from+1} déplacée vers la position ${to+1}.`);
+  }
+
+  function renderSelectors(){
+    // Les rangées et colonnes se manipulent directement à la souris.
+  }
+
+  function render(){
+    $("displayClass").textContent=state.className ? `Classe ${state.className}` : "Plan de classe";
+    const room=activeRoom();
+    $("displayDate").textContent=[
+      state.date ? `Date : ${formatDate(state.date)}` : "",
+      room ? `Salle : ${room.name}` : ""
+    ].filter(Boolean).join(" — ");
+    $("pickedStudent").textContent=state.pickedStudent ? `Élève choisi : ${state.pickedStudent}` : "";
+
+    const grid=$("classroom");
+    grid.innerHTML="";
+    grid.style.gridTemplateColumns=`42px repeat(${state.cols}, minmax(90px,1fr))`;
+    grid.style.gridTemplateRows=`26px repeat(${state.rows}, minmax(64px,1fr))`;
+
+    const corner=document.createElement("div");
+    corner.className="corner";
+    grid.appendChild(corner);
+
+    for(let c=0;c<state.cols;c++){
+      const h=document.createElement("div");
+      h.className="col-head";
+      h.innerHTML=`<span>C${c+1}</span>`;
+      h.draggable=true;
+      h.title="Glisser pour déplacer cette colonne";
+
+      h.addEventListener("dragstart",e=>{
+        e.dataTransfer.setData("application/x-classroom-col",String(c));
+        e.dataTransfer.effectAllowed="move";
+      });
+
+      h.addEventListener("dragover",e=>{
+        if(Array.from(e.dataTransfer.types).includes("application/x-classroom-col")){
+          e.preventDefault();
+          h.classList.add("drag-over");
+        }
+      });
+
+      h.addEventListener("dragleave",()=>h.classList.remove("drag-over"));
+
+      h.addEventListener("drop",e=>{
+        const raw=e.dataTransfer.getData("application/x-classroom-col");
+        if(raw!==""){
+          e.preventDefault();
+          h.classList.remove("drag-over");
+          moveCol(Number(raw),c);
+        }
+      });
+
+      grid.appendChild(h);
+    }
+
+    for(let r=0;r<state.rows;r++){
+      const rh=document.createElement("div");
+      rh.className="row-head";
+      rh.textContent=`R${r+1}`;
+      rh.draggable=true;
+      rh.title="Glisser pour déplacer cette rangée";
+
+      rh.addEventListener("dragstart",e=>{
+        e.dataTransfer.setData("application/x-classroom-row",String(r));
+        e.dataTransfer.effectAllowed="move";
+      });
+
+      rh.addEventListener("dragover",e=>{
+        if(Array.from(e.dataTransfer.types).includes("application/x-classroom-row")){
+          e.preventDefault();
+          rh.classList.add("drag-over");
+        }
+      });
+
+      rh.addEventListener("dragleave",()=>rh.classList.remove("drag-over"));
+
+      rh.addEventListener("drop",e=>{
+        const raw=e.dataTransfer.getData("application/x-classroom-row");
+        if(raw!==""){
+          e.preventDefault();
+          rh.classList.remove("drag-over");
+          moveRow(Number(raw),r);
+        }
+      });
+
+      grid.appendChild(rh);
+
+      for(let c=0;c<state.cols;c++){
+        const idx=r*state.cols+c;
+        const seat=state.seats[idx] || newSeat();
+        const el=document.createElement("div");
+        el.className="seat";
+        el.draggable=seat.type!=="forbidden";
+        el.dataset.index=idx;
+
+        if(seat.type==="forbidden"){
+          el.classList.add("forbidden");
+          el.textContent="INTERDITE";
+        } else if(!seat.student){
+          el.classList.add("empty");
+          el.textContent="Table vide";
+        } else {
+          el.textContent=seat.student;
+        }
+
+        if(state.selectedSeat===idx) el.classList.add("selected");
+        if(state.pickedStudent && seat.student===state.pickedStudent) el.classList.add("random-picked");
+        if(state.rouletteActiveSeat===idx) el.classList.add("roulette-active");
+
+        const idxSpan=document.createElement("span");
+        idxSpan.className="idx";
+        idxSpan.textContent=`${r+1}.${c+1}`;
+        el.appendChild(idxSpan);
+
+        el.addEventListener("click",()=>{
+          state.selectedSeat=idx;
+          render();
+        });
+
+        el.addEventListener("dragstart",e=>{
+          if(seat.type==="forbidden"){
+            e.preventDefault();
+            return;
+          }
+          e.dataTransfer.setData("text/plain",String(idx));
+          e.dataTransfer.effectAllowed="move";
+        });
+
+        el.addEventListener("dragover",e=>{
+          if(Array.from(e.dataTransfer.types).includes("text/plain")){
+            e.preventDefault();
+            el.classList.add("drag-over");
+          }
+        });
+
+        el.addEventListener("dragleave",()=>el.classList.remove("drag-over"));
+
+        el.addEventListener("drop",e=>{
+          const raw=e.dataTransfer.getData("text/plain");
+          if(raw!==""){
+            e.preventDefault();
+            el.classList.remove("drag-over");
+            const from=Number(raw);
+            swapSeats(from,idx);
+          }
+        });
+
+        grid.appendChild(el);
+      }
+    }
+    renderSelectors();
+  }
+
+  function formatDate(iso){
+    if(!iso) return "";
+    const [y,m,d]=iso.split("-");
+    return `${d}/${m}/${y}`;
+  }
+
+  function setStatus(msg){
+    $("status").textContent=msg;
+    clearTimeout(setStatus._t);
+    setStatus._t=setTimeout(()=>$("status").textContent="",4500);
+  }
+
+  function serialize(){
+    return {
+      format:"plan-de-classe-v1",
+      id: currentId || cryptoRandomId(),
+      className:state.className,
+      roomId:state.roomId,
+      date:state.date,
+      rows:state.rows,
+      cols:state.cols,
+      seats:clone(state.seats),
+      students:state.students.slice(),
+      savedAt:new Date().toISOString()
+    };
+  }
+
+  function loadPlan(plan,options={}){
+    if(!plan || !Array.isArray(plan.seats)) throw new Error("Plan invalide");
+    currentId=plan.id || cryptoRandomId();
+    state.className=plan.className || "";
+    state.roomId=plan.roomId || state.roomId || getRooms()[0]?.id || "";
+    state.date=plan.date || new Date().toISOString().slice(0,10);
+    state.rows=Math.max(1,Number(plan.rows)||1);
+    state.cols=Math.max(1,Number(plan.cols)||1);
+    state.students=Array.isArray(plan.students) ? plan.students.slice() : [];
+
+    // Si le plan importé concerne une nouvelle classe, on la crée automatiquement.
+    let classes=getClasses();
+    let classRecord=classes.find(c=>c.name===state.className);
+    if(!classRecord){
+      classRecord={
+        id:"class-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,6),
+        name:state.className || "Classe importée",
+        students:state.students.slice()
+      };
+      classes.push(classRecord);
+      saveClasses(classes);
+    }else if(!classRecord.students.length && state.students.length){
+      classRecord.students=state.students.slice();
+      saveClasses(classes);
+    }
+    renderClassSelect();
+    state.seats=plan.seats.map(s=>({
+      type:s.type==="forbidden" ? "forbidden" : "normal",
+      student:s.student || null
+    }));
+    while(state.seats.length<state.rows*state.cols) state.seats.push(newSeat());
+    state.seats=state.seats.slice(0,state.rows*state.cols);
+    state.selectedSeat=null;
+    state.pickedStudent=null;
+    state.rouletteActiveSeat=null;
+    state.rouletteRunning=false;
+    syncInputs();
+    $("studentText").value=state.students.join("\n");
+    render();
+    setStatus("Plan chargé.");
+  }
+
+  function cryptoRandomId(){
+    return "p-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,8);
+  }
+
+  let currentId=cryptoRandomId();
+
+  function getSavedPlans(){
+    try{
+      const v=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");
+      return Array.isArray(v)?v:[];
+    }catch{
+      return [];
+    }
+  }
+
+  function saveLocal(){
+    state.date=$("planDate").value;
+    autoSave(true);
+    setStatus("Toutes les modifications sont sauvegardées dans ce navigateur.");
+  }
+
+  function deleteLocal(id){
+    const plans=getSavedPlans().filter(p=>p.id!==id);
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(plans));
+    renderSavedPlans();
+  }
+
+  function renderSavedPlans(){
+    const cls=$("filterClass") ? $("filterClass").value.trim().toLowerCase() : "";
+    const dt=$("filterDate") ? $("filterDate").value : "";
+    const list=getSavedPlans()
+      .filter(p=>(!cls || (p.className||"").toLowerCase().includes(cls)) && (!dt || p.date===dt))
+      .sort((a,b)=>(b.date||"").localeCompare(a.date||""));
+
+    const root=$("savedPlans");
+    if(!root) return;
+    root.innerHTML="";
+    if(!list.length){
+      root.innerHTML='<div class="help">Aucun plan enregistré pour ce filtre.</div>';
+      return;
+    }
+
+    list.forEach(p=>{
+      const item=document.createElement("div");
+      item.className="saved-item";
+
+      const meta=document.createElement("div");
+      meta.className="meta";
+      const strong=document.createElement("strong");
+      strong.textContent=p.className || "Classe sans nom";
+      const span=document.createElement("span");
+      span.textContent=p.date ? formatDate(p.date) : "Sans date";
+      meta.append(strong,span);
+
+      const actions=document.createElement("div");
+      actions.className="actions";
+      const open=document.createElement("button");
+      open.className="small";
+      open.textContent="Ouvrir";
+      open.onclick=()=>loadPlan(p);
+      const del=document.createElement("button");
+      del.className="small danger";
+      del.textContent="×";
+      del.title="Supprimer";
+      del.onclick=()=>{ if(confirm("Supprimer ce plan enregistré ?")) deleteLocal(p.id); };
+      actions.append(open,del);
+
+      item.append(meta,actions);
+      root.appendChild(item);
+    });
+  }
+
+  function download(filename,content,type){
+    const blob=new Blob([content],{type});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");
+    a.href=url;
+    a.download=filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
+
+  function exportJson(){
+    state.date=$("planDate").value;
+    const plan=serialize();
+    const safe=(state.className||"classe").replace(/[^\p{L}\p{N}_-]+/gu,"_");
+    const room=activeRoom();
+    const safeRoom=(room?.name||"salle").replace(/[^\p{L}\p{N}_-]+/gu,"_");
+    download(`plan_${safe}_${safeRoom}_${state.date||"sans_date"}.json`,JSON.stringify(plan,null,2),"application/json");
+  }
+
+  function exportAllData(){
+    const backup={
+      format:"plan-de-classe-backup-v1",
+      exportedAt:new Date().toISOString(),
+      classes:getClasses(),
+      rooms:getRooms(),
+      plans:getSavedPlans(),
+      active:(()=>{try{return JSON.parse(localStorage.getItem(ACTIVE_KEY)||"null")}catch{return null}})()
+    };
+
+    const date=new Date().toISOString().slice(0,10);
+    download(
+      `tous_les_plans_de_classe_${date}.json`,
+      JSON.stringify(backup,null,2),
+      "application/json"
+    );
+    setStatus("Sauvegarde complète exportée.");
+  }
+
+  function validateBackup(data){
+    return data
+      && data.format==="plan-de-classe-backup-v1"
+      && Array.isArray(data.classes)
+      && Array.isArray(data.rooms)
+      && Array.isArray(data.plans);
+  }
+
+  async function restoreAllData(file){
+    try{
+      const data=JSON.parse(await file.text());
+
+      if(!validateBackup(data)){
+        throw new Error("Ce fichier n'est pas une sauvegarde complète valide.");
+      }
+
+      const ok=confirm(
+        "Restaurer cette sauvegarde ?\n\n" +
+        "Toutes les classes, salles et plans actuellement enregistrés dans ce navigateur seront remplacés."
+      );
+      if(!ok) return;
+
+      localStorage.setItem(CLASSES_KEY,JSON.stringify(data.classes));
+      localStorage.setItem(ROOMS_KEY,JSON.stringify(data.rooms));
+      localStorage.setItem(STORAGE_KEY,JSON.stringify(data.plans));
+      if(data.active) localStorage.setItem(ACTIVE_KEY,JSON.stringify(data.active));
+      else localStorage.removeItem(ACTIVE_KEY);
+
+      ensureDefaultClass();
+      ensureDefaultRoom();
+
+      const classes=getClasses();
+      const rooms=getRooms();
+      const active=data.active || {};
+      const activeClass=classes.find(c=>c.name===active.className) || classes[0];
+
+      state.className=activeClass.name;
+      state.students=Array.isArray(activeClass.students)?activeClass.students.slice():[];
+      state.roomId=rooms.some(r=>r.id===active.roomId) ? active.roomId : rooms[0].id;
+
+      const plans=getSavedPlans();
+      const chosen=plans.find(p=>p.id===active.planId)
+        || findLatestPlan(state.className,state.roomId)
+        || findLatestPlan(state.className);
+
+      if(chosen){
+        loadPlan(chosen,{silent:true});
+      }else{
+        buildSeatsFromRoom(activeRoom());
+        state.date=new Date().toISOString().slice(0,10);
+        currentId=cryptoRandomId();
+        syncInputs();
+        $("studentText").value=state.students.join("\n");
+        renderClassSelect();
+        renderRoomSelect();
+        render();
+        autoSave(true);
+      }
+
+      renderSavedPlans();
+      setStatus("Sauvegarde complète restaurée.");
+    }catch(err){
+      alert("Impossible de restaurer cette sauvegarde : "+err.message);
+    }
+  }
+
+  function preparePrint(){
+    state.date=$("planDate").value;
+    render();
+
+    const maxName=Math.max(0,...state.seats.map(s=>(s.student||"").length));
+    let font=10;
+    if(state.rows>=7 || state.cols>=8) font=9;
+    if(state.rows>=9 || state.cols>=10 || maxName>22) font=8;
+    if(state.rows>=12 || state.cols>=12) font=7;
+    document.documentElement.style.setProperty("--print-font",font+"pt");
+    window.print();
+  }
+
+  function resetPlan(){
+    autoSave(true);
+    currentId=cryptoRandomId();
+    const currentClass=activeClassRecord();
+    state.className=currentClass ? currentClass.name : state.className;
+    state.students=currentClass ? currentClass.students.slice() : [];
+    state.date=new Date().toISOString().slice(0,10);
+    buildSeatsFromRoom(activeRoom());
+    state.selectedSeat=null;
+    state.pickedStudent=null;
+    state.rouletteActiveSeat=null;
+    state.rouletteRunning=false;
+    $("studentText").value=state.students.join("\n");
+    syncInputs();
+    render();
+    autoSave(true);
+    setStatus("Nouveau plan.");
+  }
+
+  function setSidebarHidden(hidden){
+    $("app").classList.toggle("sidebar-hidden",hidden);
+    $("toggleSidebarBtn").textContent=hidden ? "Afficher le panneau" : "Masquer le panneau";
+    $("showSidebarBtn").style.display=hidden ? "" : "none";
+  }
+
+  async function enterProjectionMode(){
+    document.body.classList.add("projection-mode");
+
+    try{
+      if(!document.fullscreenElement && document.documentElement.requestFullscreen){
+        await document.documentElement.requestFullscreen();
+      }
+    }catch{
+      // Le mode projection reste actif même si le navigateur refuse le plein écran.
+    }
+
+    render();
+  }
+
+  async function exitProjectionMode(){
+    document.body.classList.remove("projection-mode");
+
+    try{
+      if(document.fullscreenElement && document.exitFullscreen){
+        await document.exitFullscreen();
+      }
+    }catch{}
+
+    render();
+  }
+
+
+  $("classSelect").addEventListener("change",e=>selectClassById(e.target.value));
+  $("planClassSelect").addEventListener("change",e=>selectClassById(e.target.value));
+  $("roomSelect").addEventListener("change",e=>selectRoomById(e.target.value));
+  $("planRoomSelect").addEventListener("change",e=>selectRoomById(e.target.value));
+  $("addRoomBtn").onclick=addRoom;
+  $("deleteRoomBtn").onclick=deleteActiveRoom;
+  $("addClassBtn").onclick=addClass;
+  $("deleteClassBtn").onclick=deleteActiveClass;
+
+  $("toggleSidebarBtn").onclick=()=>{
+    setSidebarHidden(!$("app").classList.contains("sidebar-hidden"));
+  };
+  $("showSidebarBtn").onclick=()=>setSidebarHidden(false);
+
+  $("projectionBtn").onclick=enterProjectionMode;
+  $("projectionExitBtn").onclick=exitProjectionMode;
+
+  document.addEventListener("fullscreenchange",()=>{
+    if(!document.fullscreenElement && document.body.classList.contains("projection-mode")){
+      document.body.classList.remove("projection-mode");
+      render();
+    }
+  });
+
+  $("planDate").addEventListener("input",e=>{
+    state.date=e.target.value;
+    render();
+    autoSave();
+  });
+
+  $("resizeBtn").onclick=()=>ensureGrid($("rows").value,$("cols").value);
+
+  $("autoRowsBtn").onclick=()=>{
+    const n=Math.max(state.students.length,1);
+    const cols=Math.max(1,Number($("cols").value)||1);
+    const forbidden=state.seats.filter(s=>s.type==="forbidden").length;
+    const rows=Math.ceil((n+forbidden)/cols);
+    ensureGrid(rows,cols);
+  };
+
+  $("loadTextBtn").onclick=()=>loadStudents(parseStudents($("studentText").value));
+
+  $("studentFile").addEventListener("change",async e=>{
+    const file=e.target.files[0];
+    if(!file) return;
+    const text=await file.text();
+    loadStudents(parseStudents(text));
+    e.target.value="";
+  });
+
+  $("shuffleBtn").onclick=shuffleStudents;
+  $("pickBtn").onclick=chooseRandomStudent;
+  $("clearPickBtn").onclick=()=>{
+    state.pickedStudent=null;
+    render();
+  };
+
+  $("emptySeatBtn").onclick=()=>setSeatState("empty");
+  $("forbidSeatBtn").onclick=()=>setSeatState("forbidden");
+  $("enableSeatBtn").onclick=()=>setSeatState("normal");
+
+
+  $("printBtn").onclick=preparePrint;
+  $("newBtn").onclick=()=>{ if(confirm("Créer un nouveau plan ? Les modifications non enregistrées seront perdues.")) resetPlan(); };
+
+  $("backupAllBtn").onclick=exportAllData;
+
+  $("restoreAllFile").addEventListener("change",async e=>{
+    const file=e.target.files[0];
+    if(!file) return;
+    await restoreAllData(file);
+    e.target.value="";
+  });
+
+
+
+  state.seats=Array.from({length:state.rows*state.cols},()=>newSeat());
+  ensureDefaultClass();
+  ensureDefaultRoom();
+
+  let active=null;
+  try{ active=JSON.parse(localStorage.getItem(ACTIVE_KEY)||"null"); }catch{}
+
+  const classes=getClasses();
+  const rooms=getRooms();
+  const activeClass=classes.find(c=>c.name===active?.className) || classes[0];
+  state.className=activeClass.name;
+  state.students=Array.isArray(activeClass.students)?activeClass.students.slice():[];
+  state.roomId=rooms.some(r=>r.id===active?.roomId) ? active.roomId : rooms[0].id;
+
+  const plans=getSavedPlans();
+  const lastPlan=plans.find(p=>p.id===active?.planId)
+    || findLatestPlan(state.className,state.roomId)
+    || findLatestPlan(state.className);
+
+  if(lastPlan){
+    loadPlan(lastPlan,{silent:true});
+  }else{
+    buildSeatsFromRoom(activeRoom());
+    syncInputs();
+    $("studentText").value=state.students.join("\n");
+    renderClassSelect();
+    renderRoomSelect();
+    render();
+    autoSave(true);
+  }
+  renderSavedPlans();
+})();
+</script>
 </body>
 </html>
