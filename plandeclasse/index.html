@@ -3,722 +3,159 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Plan de classe aléatoire</title>
+<title>Plans de classe</title>
 <style>
-  :root{
-    --bg:#f3f4f6;
-    --panel:#ffffff;
-    --border:#cfd4dc;
-    --text:#1f2937;
-    --muted:#6b7280;
-    --accent:#2563eb;
-    --danger:#b91c1c;
-    --forbidden:#374151;
-    --selected:#f59e0b;
-    --random:#16a34a;
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;
-    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-    color:var(--text);
-    background:var(--bg);
-  }
-  header{
-    padding:14px 18px;
-    background:#111827;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-    flex-wrap:wrap;
-  }
-  header h1{font-size:20px;margin:0}
-  header .subtitle{font-size:13px;color:#d1d5db}
-  .app{
-    display:grid;
-    grid-template-columns:330px minmax(0,1fr);
-    gap:14px;
-    padding:14px;
-    min-height:calc(100vh - 64px);
-    transition:grid-template-columns .2s ease;
-  }
-  .app.sidebar-hidden{
-    grid-template-columns:0 minmax(0,1fr);
-  }
-  .app.sidebar-hidden .sidebar{
-    overflow:hidden;
-    opacity:0;
-    pointer-events:none;
-    padding:0;
-    border:0;
-  }
-  .panel{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:10px;
-    padding:12px;
-    box-shadow:0 1px 2px rgba(0,0,0,.04);
-  }
-  .sidebar{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    transition:opacity .18s ease;
-    min-width:0;
-  }
-  .section h2{
-    font-size:14px;
-    margin:0 0 8px;
-  }
-  .section{
-    border-bottom:1px solid #e5e7eb;
-    padding-bottom:12px;
-  }
-  .section:last-child{border-bottom:0;padding-bottom:0}
-  label{
-    display:block;
-    font-size:12px;
-    color:var(--muted);
-    margin-bottom:4px;
-  }
-  input, select, textarea, button{
-    font:inherit;
-  }
-  input[type=text], input[type=date], input[type=number], select, textarea{
-    width:100%;
-    border:1px solid var(--border);
-    border-radius:7px;
-    padding:7px 8px;
-    background:white;
-  }
-  textarea{
-    min-height:105px;
-    resize:vertical;
-  }
-  .row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-  }
-  .row3{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:8px;
-  }
-  .buttons{
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-    margin-top:8px;
-  }
-  button{
-    border:1px solid var(--border);
-    background:white;
-    border-radius:7px;
-    padding:7px 10px;
-    cursor:pointer;
-  }
-  button:hover{background:#f9fafb}
-  button.primary{
-    background:var(--accent);
-    border-color:var(--accent);
-    color:white;
-  }
-  button.danger{
-    color:var(--danger);
-    border-color:#fecaca;
-  }
-  button.small{
-    padding:4px 7px;
-    font-size:12px;
-  }
-  .main{
-    min-width:0;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-  }
-  .toolbar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:8px;
-    flex-wrap:wrap;
-  }
-  .plan-title{
-    text-align:center;
-    padding:2px 0 8px;
-  }
-  .plan-title h2{margin:0;font-size:22px}
-  .plan-title div{color:var(--muted);font-size:14px;margin-top:3px}
-  .classroom-wrap{
-    overflow:auto;
-    padding:4px;
-  }
-  .classroom{
-    display:grid;
-    gap:8px;
-    align-items:stretch;
-    min-width:620px;
-  }
-  .corner{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--muted);
-    font-size:12px;
-  }
-  .col-head, .row-head{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:3px;
-    color:var(--muted);
-    font-size:12px;
-    cursor:grab;
-    user-select:none;
-    border-radius:6px;
-  }
-  .col-head:active, .row-head:active{cursor:grabbing}
-  .col-head.drag-over, .row-head.drag-over{
-    background:#dbeafe;
-    color:#1d4ed8;
-    outline:2px solid #60a5fa;
-  }
-  .seat{
-    min-height:74px;
-    border:2px solid #94a3b8;
-    border-radius:8px;
-    background:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:6px;
-    font-weight:600;
-    user-select:none;
-    cursor:grab;
-    position:relative;
-  }
-  .seat:active{cursor:grabbing}
-  .seat.empty{
-    font-weight:400;
-    color:#9ca3af;
-    border-style:dashed;
-  }
-  .seat.forbidden{
-    background:var(--forbidden);
-    color:white;
-    border-color:var(--forbidden);
-    cursor:not-allowed;
-    font-weight:700;
-  }
-  .seat.selected{
-    outline:4px solid color-mix(in srgb, var(--selected) 55%, transparent);
-  }
-  .seat.random-picked{
-    outline:6px solid #16a34a;
-    background:#dcfce7;
-    box-shadow:0 0 24px rgba(22,163,74,.55);
-  }
-  .seat.roulette-active{
-    outline:6px solid #f59e0b;
-    background:#fef3c7;
-    transform:scale(1.08);
-    z-index:2;
-    box-shadow:0 0 28px rgba(245,158,11,.9);
-  }
-  .seat.drag-over{
-    box-shadow:inset 0 0 0 4px #60a5fa;
-  }
-  .seat .idx{
-    position:absolute;
-    right:5px;
-    bottom:2px;
-    font-size:10px;
-    color:#c0c4ca;
-    font-weight:400;
-  }
-  .front{
-    margin:14px auto 2px;
-    width:min(78%,800px);
-    border:2px solid #111827;
-    border-radius:6px;
-    text-align:center;
-    padding:8px;
-    font-weight:700;
-    background:#f9fafb;
-  }
-  .status{
-    min-height:22px;
-    font-size:13px;
-    color:var(--muted);
-  }
-  .picked{
-    min-height:28px;
-    font-size:18px;
-    font-weight:700;
-    color:var(--random);
-  }
-  #winnerOverlay{
-    position:fixed;
-    inset:0;
-    z-index:10000;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    pointer-events:none;
-    background:rgba(255,255,255,.12);
-    backdrop-filter:blur(1.5px);
-  }
-  #winnerOverlay.show{display:flex}
-  #winnerName{
-    max-width:88vw;
-    padding:22px 36px;
-    border-radius:22px;
-    background:rgba(255,255,255,.96);
-    border:5px solid #16a34a;
-    box-shadow:0 22px 80px rgba(0,0,0,.32);
-    color:#166534;
-    font-weight:900;
-    text-align:center;
-    line-height:1.05;
-    font-size:clamp(38px,7vw,96px);
-    opacity:0;
-    transform:scale(.18);
-  }
-  #winnerOverlay.show #winnerName{
-    animation:winnerPop 1s cubic-bezier(.18,.89,.32,1.28) forwards;
-  }
-  @keyframes winnerPop{
-    0%{opacity:0;transform:scale(.18)}
-    58%{opacity:1;transform:scale(1.18)}
-    80%{opacity:1;transform:scale(.96)}
-    100%{opacity:1;transform:scale(1)}
-  }
+:root{
+  --bg:#f3f4f6; --panel:#fff; --border:#d1d5db; --text:#1f2937; --muted:#6b7280;
+  --accent:#2563eb; --danger:#b91c1c; --green:#16a34a; --amber:#f59e0b;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text);background:var(--bg)}
+header{background:#111827;color:#fff;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+header h1{font-size:20px;margin:0}
+header .sub{font-size:12px;color:#d1d5db;margin-top:2px}
+button,input,select,textarea{font:inherit}
+button{border:1px solid var(--border);background:#fff;border-radius:7px;padding:7px 10px;cursor:pointer}
+button:hover{background:#f9fafb}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+button.danger{color:var(--danger);border-color:#fecaca}
+button:disabled{opacity:.45;cursor:not-allowed}
+input[type=text],input[type=date],input[type=number],select,textarea{
+  width:100%;border:1px solid var(--border);border-radius:7px;padding:7px 8px;background:#fff
+}
+textarea{min-height:110px;resize:vertical}
+label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
+.buttons{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.help{font-size:11px;line-height:1.45;color:var(--muted);margin-top:6px}
+.app{display:grid;grid-template-columns:340px minmax(0,1fr);gap:14px;padding:14px;min-height:calc(100vh - 62px);transition:grid-template-columns .2s ease}
+.app.sidebar-hidden{grid-template-columns:0 minmax(0,1fr)}
+.sidebar{display:flex;flex-direction:column;gap:12px;min-width:0;transition:opacity .18s ease}
+.app.sidebar-hidden .sidebar{overflow:hidden;opacity:0;pointer-events:none}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.section h2{font-size:14px;margin:0 0 8px}
+.main{min-width:0;display:flex;flex-direction:column;gap:12px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.status{font-size:12px;color:var(--muted);min-height:18px}
+.autosave{font-size:12px;color:#166534;font-weight:700}
+.file-btn{position:relative;overflow:hidden;display:inline-block}
+.file-btn input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.sep{margin:11px 0;border:0;border-top:1px solid #e5e7eb}
+.plan-title{text-align:center;padding:2px 0 8px}
+.plan-title h2{margin:0;font-size:22px}
+.plan-title .meta{font-size:14px;color:var(--muted);margin-top:3px}
+.classroom-actions{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap;margin:4px 0 10px}
+.classroom-actions select{width:auto;min-width:220px}
+.classroom-wrap{overflow:auto;padding:4px}
+.classroom{display:grid;gap:8px;align-items:stretch;min-width:720px}
+.corner{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px}
+.col-head,.row-head{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;cursor:grab;user-select:none;border-radius:6px}
+.col-head.drag-over,.row-head.drag-over{background:#dbeafe;color:#1d4ed8;outline:2px solid #60a5fa}
+.seat,.slot-empty{
+  min-height:72px;border:2px solid #94a3b8;border-radius:8px;background:#fff;display:flex;align-items:center;
+  justify-content:center;text-align:center;padding:6px;position:relative;user-select:none
+}
+.seat{font-weight:700;cursor:grab}
+.seat:active{cursor:grabbing}
+.seat.unoccupied{font-weight:400;color:#9ca3af}
+.seat.selected,.slot-empty.selected{outline:5px solid rgba(245,158,11,.62)}
+.seat.drag-over,.slot-empty.drag-over{box-shadow:inset 0 0 0 4px #60a5fa}
+.slot-empty{border-style:dashed;border-color:#d1d5db;color:#9ca3af;font-size:12px;cursor:pointer;background:#f9fafb}
+.slot-empty::before{content:"Emplacement sans table"}
+.seat .idx,.slot-empty .idx{position:absolute;right:5px;bottom:2px;font-size:9px;color:#c0c4ca;font-weight:400}
+.seat.roulette-active{outline:6px solid var(--amber);background:#fef3c7;transform:scale(1.06);z-index:2;box-shadow:0 0 24px rgba(245,158,11,.8)}
+.seat.random-picked{outline:6px solid var(--green);background:#dcfce7;box-shadow:0 0 24px rgba(22,163,74,.5)}
+.front{margin:14px auto 2px;width:min(78%,800px);border:2px solid #111827;border-radius:6px;text-align:center;padding:8px;font-weight:700;background:#f9fafb}
+.keyboard-help{text-align:center;font-size:12px;color:var(--muted);margin-top:8px}
+.picked{font-size:17px;font-weight:800;color:var(--green);min-height:25px}
 
-  #fireworksCanvas{
-    position:fixed;
-    inset:0;
-    width:100vw;
-    height:100vh;
-    pointer-events:none;
-    z-index:9999;
-    display:none;
-  }
-  .saved-list{
-    display:flex;
-    flex-direction:column;
-    gap:5px;
-    max-height:150px;
-    overflow:auto;
-    margin-top:8px;
-  }
-  .saved-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:6px;
-    border:1px solid #e5e7eb;
-    border-radius:6px;
-    padding:6px;
-    font-size:12px;
-  }
-  .saved-item .meta{min-width:0}
-  .saved-item .meta strong,.saved-item .meta span{
-    display:block;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-  }
-  .saved-item .meta span{color:var(--muted)}
-  .saved-item .actions{display:flex;gap:4px}
-  .help{
-    font-size:11px;
-    line-height:1.4;
-    color:var(--muted);
-    margin-top:5px;
-  }
-  .file-btn{
-    position:relative;
-    overflow:hidden;
-  }
-  .file-btn input{
-    position:absolute;
-    inset:0;
-    opacity:0;
-    cursor:pointer;
-  }
+/* Gagnant + feu d'artifice */
+#winnerOverlay{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;pointer-events:none;background:rgba(255,255,255,.12);backdrop-filter:blur(1.5px)}
+#winnerOverlay.show{display:flex}
+#winnerName{max-width:88vw;padding:22px 36px;border-radius:22px;background:rgba(255,255,255,.97);border:5px solid var(--green);box-shadow:0 22px 80px rgba(0,0,0,.32);color:#166534;font-weight:900;text-align:center;line-height:1.05;font-size:clamp(38px,7vw,96px);opacity:0;transform:scale(.18)}
+#winnerOverlay.show #winnerName{animation:winnerPop 1s cubic-bezier(.18,.89,.32,1.28) forwards}
+@keyframes winnerPop{0%{opacity:0;transform:scale(.18)}58%{opacity:1;transform:scale(1.18)}80%{opacity:1;transform:scale(.96)}100%{opacity:1;transform:scale(1)}}
+#fireworksCanvas{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;display:none}
 
-  .classroom-actions{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    flex-wrap:wrap;
-    margin:4px 0 10px;
-  }
-  .classroom-actions button{
-    font-size:15px;
-    padding:9px 14px;
-  }
-  .projection-mode{
-    background:#111827 !important;
-    color:white;
-  }
-  .projection-mode header,
-  .projection-mode .sidebar,
-  .projection-mode .toolbar{
-    display:none !important;
-  }
-  .projection-mode .app{
-    display:block;
-    padding:0;
-    min-height:100vh;
-  }
-  .projection-mode .main{
-    min-height:100vh;
-    gap:0;
-  }
-  .projection-mode #printArea{
-    border:0;
-    border-radius:0;
-    min-height:100vh;
-    padding:18px 22px !important;
-    background:#f8fafc;
-    display:flex;
-    flex-direction:column;
-  }
-  .projection-mode .plan-title h2{
-    font-size:clamp(30px,4vw,54px);
-  }
-  .projection-mode .plan-title div{
-    font-size:clamp(18px,2vw,28px);
-  }
-  .projection-mode .classroom-wrap{
-    flex:1 1 auto;
-    display:flex;
-    align-items:stretch;
-    min-height:0;
-    overflow:visible;
-  }
-  .projection-mode .classroom{
-    width:100%;
-    min-width:0 !important;
-    gap:clamp(6px,.8vw,14px);
-    align-content:stretch;
-  }
-  .projection-mode .seat{
-    min-height:clamp(72px,10vh,130px);
-    font-size:clamp(18px,2vw,32px);
-    border-width:3px;
-    color:#111827 !important;
-    background:#ffffff !important;
-    overflow:visible;
-    white-space:normal;
-    word-break:break-word;
-    line-height:1.1;
-    font-weight:800;
-  }
-  .projection-mode .seat.empty{
-    color:#9ca3af !important;
-    font-weight:500;
-    background:#ffffff !important;
-  }
-  .projection-mode .seat.forbidden{
-    color:#ffffff !important;
-    background:#374151 !important;
-  }
-  .projection-mode .seat.random-picked{
-    color:#14532d !important;
-    background:#dcfce7 !important;
-  }
-  .projection-mode .seat.roulette-active{
-    color:#78350f !important;
-    background:#fef3c7 !important;
-  }
-  .projection-mode .col-head,
-  .projection-mode .row-head{
-    font-size:clamp(14px,1.3vw,22px);
-  }
-  .projection-mode .seat .idx{
-    display:none;
-  }
-  .projection-mode .front{
-    font-size:clamp(17px,1.6vw,26px);
-    padding:10px;
-  }
-  .projection-mode .classroom-actions{
-    margin:8px 0 12px;
-  }
-  .projection-mode .classroom-actions button,
-  .projection-mode .classroom-actions select{
-    font-size:clamp(16px,1.5vw,24px);
-    padding:10px 18px;
-  }
-  .projection-mode .classroom-actions label{
-    font-size:clamp(16px,1.5vw,24px);
-    color:#111827 !important;
-  }
-  .projection-exit{
-    display:none;
-    position:fixed;
-    top:10px;
-    right:10px;
-    z-index:10001;
-  }
-  .projection-mode .projection-exit{
-    display:block;
-  }
-  .class-manager{
-    display:grid;
-    grid-template-columns:1fr auto;
-    gap:7px;
-    align-items:end;
-  }
-  .class-manager .full{
-    grid-column:1 / -1;
-  }
+/* Projection */
+.projection-mode{background:#111827!important}
+.projection-mode header,.projection-mode .sidebar,.projection-mode .toolbar{display:none!important}
+.projection-mode .app{display:block;padding:0;min-height:100vh}
+.projection-mode .main{min-height:100vh;gap:0}
+.projection-mode #printArea{border:0;border-radius:0;min-height:100vh;padding:16px 22px!important;background:#f8fafc;display:flex;flex-direction:column}
+.projection-mode .plan-title h2{font-size:clamp(30px,4vw,52px)}
+.projection-mode .plan-title .meta{font-size:clamp(17px,1.8vw,26px)}
+.projection-mode .classroom-actions{margin:6px 0 10px}
+.projection-mode .classroom-actions select{font-size:clamp(16px,1.4vw,22px);padding:9px 14px}
+.projection-mode .classroom-actions button{font-size:clamp(16px,1.5vw,24px);padding:10px 18px}
+.projection-mode .classroom-wrap{flex:1 1 auto;display:flex;align-items:stretch;min-height:0;overflow:visible}
+.projection-mode .classroom{width:100%;min-width:0!important;gap:clamp(5px,.7vw,12px);align-content:stretch}
+.projection-mode .seat,.projection-mode .slot-empty{min-height:clamp(66px,9vh,120px);font-size:clamp(17px,1.9vw,30px);border-width:3px;line-height:1.08}
+.projection-mode .slot-empty{font-size:clamp(11px,1vw,17px)}
+.projection-mode .seat .idx,.projection-mode .slot-empty .idx{display:none}
+.projection-mode .front{font-size:clamp(16px,1.5vw,24px);padding:8px}
+.projection-mode .keyboard-help{display:none}
+.projection-exit{display:none;position:fixed;top:9px;right:9px;z-index:10001}
+.projection-mode .projection-exit{display:block}
 
+/* Tutoriel animé */
+.tour-overlay{position:fixed;inset:0;z-index:15000;display:none;pointer-events:none}
+.tour-overlay.show{display:block}
+.tour-spotlight{position:fixed;z-index:15000;pointer-events:none;border:4px solid var(--amber);border-radius:12px;background:transparent;box-shadow:0 0 0 9999px rgba(17,24,39,.68),0 0 0 3px rgba(255,255,255,.8),0 0 28px rgba(245,158,11,.95);transition:left .28s ease,top .28s ease,width .28s ease,height .28s ease}
+.tour-tooltip{position:fixed;z-index:15002;width:min(390px,calc(100vw - 24px));background:#fff;border-radius:14px;box-shadow:0 18px 60px rgba(0,0,0,.4);padding:15px;pointer-events:auto}
+.tour-tooltip h3{margin:0 0 6px;font-size:18px}
+.tour-tooltip p{margin:0;color:#4b5563;line-height:1.4;font-size:14px}
+.tour-progress{margin-top:10px;font-size:12px;color:#6b7280}
+.tour-bar{height:5px;margin-top:5px;border-radius:99px;overflow:hidden;background:#e5e7eb}
+.tour-bar span{display:block;height:100%;background:var(--accent);width:0;transition:width .2s}
+.tour-actions{display:flex;justify-content:space-between;gap:8px;margin-top:13px}
+.tour-actions .right{display:flex;gap:7px}
+.tour-cursor{position:fixed;z-index:15004;width:34px;height:34px;pointer-events:none;opacity:0;transition:left .55s cubic-bezier(.2,.75,.2,1),top .55s cubic-bezier(.2,.75,.2,1),opacity .18s}
+.tour-overlay.show .tour-cursor{opacity:1}
+.tour-cursor::before{content:"";position:absolute;left:3px;top:2px;width:0;height:0;border-top:22px solid #111827;border-right:13px solid transparent;filter:drop-shadow(0 2px 2px #fff);transform:rotate(-18deg);transform-origin:5px 5px}
+.tour-cursor::after{content:"";position:absolute;left:4px;top:4px;width:24px;height:24px;border:3px solid var(--amber);border-radius:50%;opacity:0;transform:scale(.2)}
+.tour-cursor.clicking::after{animation:tourClick .5s ease-out}
+@keyframes tourClick{0%{opacity:1;transform:scale(.15)}70%{opacity:.75;transform:scale(1.5)}100%{opacity:0;transform:scale(2)}}
+.tour-path{position:fixed;z-index:15001;height:0;border-top:3px dashed rgba(245,158,11,.95);transform-origin:0 50%;pointer-events:none;opacity:0}
+.tour-path.show{opacity:1}
 
-
-
-
-  .tour-cursor{
-    position:fixed;
-    left:calc(100vw - 70px);
-    top:calc(100vh - 70px);
-    z-index:15004;
-    width:34px;
-    height:34px;
-    pointer-events:none;
-    opacity:0;
-    transform:translate(-5px,-5px);
-    transition:
-      left .58s cubic-bezier(.2,.75,.2,1),
-      top .58s cubic-bezier(.2,.75,.2,1),
-      opacity .18s ease;
-  }
-  .tour-overlay.show .tour-cursor{
-    opacity:1;
-  }
-  .tour-cursor::before{
-    content:"";
-    position:absolute;
-    left:3px;
-    top:2px;
-    width:0;
-    height:0;
-    border-top:22px solid #111827;
-    border-right:13px solid transparent;
-    filter:drop-shadow(0 2px 2px rgba(255,255,255,.9));
-    transform:rotate(-18deg);
-    transform-origin:5px 5px;
-  }
-  .tour-cursor::after{
-    content:"";
-    position:absolute;
-    left:4px;
-    top:4px;
-    width:24px;
-    height:24px;
-    border:3px solid #f59e0b;
-    border-radius:50%;
-    opacity:0;
-    transform:scale(.2);
-  }
-  .tour-cursor.clicking::after{
-    animation:tourClick .5s ease-out;
-  }
-  @keyframes tourClick{
-    0%{opacity:1;transform:scale(.15)}
-    70%{opacity:.75;transform:scale(1.5)}
-    100%{opacity:0;transform:scale(2)}
-  }
-  .tour-demo-path{
-    position:fixed;
-    z-index:15001;
-    height:0;
-    border-top:3px dashed rgba(245,158,11,.95);
-    transform-origin:0 50%;
-    pointer-events:none;
-    opacity:0;
-    transition:opacity .2s ease;
-  }
-  .tour-demo-path.show{
-    opacity:1;
-  }
-
-  .tour-overlay{
-    position:fixed;
-    inset:0;
-    z-index:15000;
-    display:none;
-    pointer-events:none;
-  }
-  .tour-overlay.show{
-    display:block;
-  }
-  .tour-spotlight{
-    position:fixed;
-    z-index:15000;
-    pointer-events:none;
-    border:4px solid #f59e0b;
-    border-radius:12px;
-    background:transparent;
-    box-shadow:
-      0 0 0 9999px rgba(17,24,39,.68),
-      0 0 0 3px rgba(255,255,255,.8),
-      0 0 28px rgba(245,158,11,.95);
-    transition:
-      left .28s ease,
-      top .28s ease,
-      width .28s ease,
-      height .28s ease;
-  }
-  .tour-tooltip{
-    position:fixed;
-    z-index:15002;
-    width:min(400px,calc(100vw - 24px));
-    background:#fff;
-    border:1px solid #e5e7eb;
-    border-radius:14px;
-    box-shadow:0 18px 60px rgba(0,0,0,.38);
-    padding:16px;
-    pointer-events:auto;
-  }
-  .tour-tooltip h3{
-    margin:0 0 7px;
-    font-size:18px;
-  }
-  .tour-tooltip p{
-    margin:0;
-    color:#4b5563;
-    line-height:1.45;
-    font-size:14px;
-  }
-  .tour-progress{
-    margin-top:11px;
-    font-size:12px;
-    color:#6b7280;
-  }
-  .tour-progress-bar{
-    height:5px;
-    margin-top:6px;
-    overflow:hidden;
-    border-radius:999px;
-    background:#e5e7eb;
-  }
-  .tour-progress-bar > span{
-    display:block;
-    height:100%;
-    width:0;
-    background:#2563eb;
-    transition:width .2s ease;
-  }
-  .tour-actions{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:8px;
-    margin-top:14px;
-  }
-  .tour-actions .right{
-    display:flex;
-    gap:8px;
-  }
-  .tour-demo-badge{display:inline-block;margin-bottom:8px;padding:4px 8px;border-radius:999px;background:#fef3c7;color:#92400e;font-size:12px;font-weight:800;}
-  .tour-hint{
-    margin-top:8px;
-    font-size:12px;
-    color:#92400e;
-    font-weight:600;
-  }
-
-  @media (max-width:900px){
-    .app{grid-template-columns:1fr}
-  }
-
-  /* Impression : une page A4 paysage */
-  @page{
-    size:A4 landscape;
-    margin:8mm;
-  }
-  @media print{
-    body{
-      background:white !important;
-      -webkit-print-color-adjust:exact;
-      print-color-adjust:exact;
-    }
-    header,.sidebar,.toolbar,.status,.screen-only,#fireworksCanvas,#winnerOverlay,.classroom-actions,.projection-exit,#tourOverlay{display:none !important}
-    .app{display:block;padding:0;min-height:0}
-    .main,.panel{
-      border:0 !important;
-      box-shadow:none !important;
-      padding:0 !important;
-      margin:0 !important;
-    }
-    #printArea{
-      width:100%;
-      height:190mm;
-      overflow:hidden;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-start;
-    }
-    .plan-title{padding:0 0 3mm}
-    .plan-title h2{font-size:16pt}
-    .plan-title div{font-size:10pt}
-    .classroom-wrap{
-      overflow:visible;
-      padding:0;
-      flex:1 1 auto;
-    }
-    .classroom{
-      min-width:0 !important;
-      gap:2.2mm !important;
-      height:100%;
-    }
-    .seat{
-      min-height:0 !important;
-      height:auto;
-      border-width:1.2pt;
-      border-radius:4px;
-      padding:2mm;
-      font-size:var(--print-font,10pt);
-      line-height:1.05;
-      page-break-inside:avoid;
-    }
-    .seat .idx{display:none}
-    .col-head,.row-head,.corner{font-size:8pt}
-    .col-head button,.row-head button{display:none}
-    .front{
-      margin:3mm auto 0;
-      padding:2mm;
-      font-size:10pt;
-      width:70%;
-    }
-  }
+/* Impression */
+@page{size:A4 landscape;margin:8mm}
+@media print{
+  body{background:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  header,.sidebar,.toolbar,.status,.keyboard-help,.classroom-actions,.projection-exit,#fireworksCanvas,#winnerOverlay,#tourOverlay{display:none!important}
+  .app{display:block;padding:0;min-height:0}
+  .main,.panel{border:0!important;box-shadow:none!important;padding:0!important;margin:0!important}
+  #printArea{width:100%;height:190mm;overflow:hidden;display:flex;flex-direction:column}
+  .plan-title{padding:0 0 3mm}
+  .plan-title h2{font-size:16pt}
+  .plan-title .meta{font-size:10pt}
+  .classroom-wrap{overflow:visible;padding:0;flex:1}
+  .classroom{min-width:0!important;gap:2mm!important;height:100%}
+  .seat,.slot-empty{min-height:0!important;font-size:var(--print-font,9pt);line-height:1.05;border-width:1.2pt;padding:2mm}
+  .seat .idx,.slot-empty .idx{display:none}
+  .col-head,.row-head,.corner{font-size:8pt}
+  .front{margin:3mm auto 0;padding:2mm;font-size:10pt;width:70%}
+}
+@media(max-width:900px){.app{grid-template-columns:1fr}.app.sidebar-hidden{grid-template-columns:1fr}.app.sidebar-hidden .sidebar{display:none}}
 </style>
 </head>
 <body>
 <canvas id="fireworksCanvas"></canvas>
+<div id="winnerOverlay"><div id="winnerName"></div></div>
+<button id="projectionExitBtn" class="projection-exit">Quitter le mode vidéoprojecteur</button>
 
 <div id="tourOverlay" class="tour-overlay" aria-hidden="true">
   <div id="tourSpotlight" class="tour-spotlight"></div>
-  <div id="tourDemoPath" class="tour-demo-path"></div>
+  <div id="tourPath" class="tour-path"></div>
   <div id="tourCursor" class="tour-cursor"></div>
   <div id="tourTooltip" class="tour-tooltip">
-    <div id="tourDemoBadge" class="tour-demo-badge">Mode démonstration</div>
     <h3 id="tourTitle"></h3>
     <p id="tourText"></p>
     <div id="tourProgress" class="tour-progress"></div>
-    <div class="tour-progress-bar"><span id="tourProgressBar"></span></div>
-    <div id="tourHint" class="tour-hint">Avancez à votre rythme avec Suivant et Précédent.</div>
+    <div class="tour-bar"><span id="tourBar"></span></div>
     <div class="tour-actions">
-      <button id="tourCloseBtn">Quitter</button>
+      <button id="tourQuitBtn">Quitter</button>
       <div class="right">
         <button id="tourPrevBtn">Précédent</button>
         <button id="tourNextBtn" class="primary">Suivant</button>
@@ -727,13 +164,10 @@
   </div>
 </div>
 
-
-<div id="winnerOverlay"><div id="winnerName"></div></div>
-<button id="projectionExitBtn" class="projection-exit">Quitter le mode vidéoprojecteur</button>
 <header>
   <div>
-    <h1>Plan de classe aléatoire</h1>
-    <div class="subtitle">Application locale — aucune donnée n'est envoyée sur Internet</div>
+    <h1>Plans de classe</h1>
+    <div class="sub">Classes → salles → plans de classe • sauvegarde automatique locale</div>
   </div>
   <div class="buttons" style="margin:0">
     <button id="tutorialBtn">Tutoriel</button>
@@ -743,146 +177,138 @@
 
 <div class="app" id="app">
   <aside class="sidebar">
-    <div class="panel section">
-      <h2>Classes</h2>
-      <div class="class-manager">
-        <div>
-          <label for="classSelect">Classe active</label>
-          <select id="classSelect"></select>
-        </div>
-        <button id="deleteClassBtn" class="danger">Supprimer</button>
 
-        <div class="full">
-          <label for="newClassName">Nouvelle classe</label>
-          <input id="newClassName" type="text" placeholder="2de 3">
+    <section class="panel section" id="roomSection">
+      <h2>1. Salles</h2>
+      <label for="roomManageSelect">Salle à modifier</label>
+      <select id="roomManageSelect"></select>
+
+      <div class="row2" style="margin-top:8px">
+        <div>
+          <label for="roomCols">Tables par rangée</label>
+          <input id="roomCols" type="number" min="1" max="20" value="8">
         </div>
-        <button id="addClassBtn" class="primary full">Ajouter la classe</button>
+        <div>
+          <label for="roomRows">Rangées</label>
+          <input id="roomRows" type="number" min="1" max="20" value="5">
+        </div>
+      </div>
+      <div class="buttons">
+        <button id="saveRoomLayoutBtn">Enregistrer la salle</button>
+        <button id="deleteRoomBtn" class="danger">Supprimer</button>
       </div>
 
-      <div style="margin-top:10px">
+      <hr class="sep">
+      <label for="newRoomName">Nouvelle salle</label>
+      <input id="newRoomName" type="text" placeholder="Salle 204">
+      <button id="addRoomBtn" class="primary" style="width:100%;margin-top:7px">Créer la salle</button>
+      <div class="help">Une salle définit seulement une grille physique. Aucun élève n’est enregistré dans la salle.</div>
+    </section>
+
+    <section class="panel section" id="classSection">
+      <h2>2. Classes et élèves</h2>
+      <label for="classManageSelect">Classe à modifier</label>
+      <select id="classManageSelect"></select>
+      <div class="buttons">
+        <button id="deleteClassBtn" class="danger">Supprimer la classe</button>
+      </div>
+
+      <hr class="sep">
+      <label for="newClassName">Nouvelle classe</label>
+      <input id="newClassName" type="text" placeholder="2de 3">
+      <button id="addClassBtn" class="primary" style="width:100%;margin-top:7px">Créer la classe</button>
+
+      <hr class="sep">
+      <label for="studentText">Élèves de la classe sélectionnée</label>
+      <textarea id="studentText" placeholder="Élèves&#10;Alice Martin&#10;Benoît Dupont"></textarea>
+      <div class="buttons">
+        <button id="loadTextBtn">Charger cette liste</button>
+        <label class="file-btn">
+          <button type="button">Importer CSV/TXT</button>
+          <input id="studentFile" type="file" accept=".csv,.txt,text/csv,text/plain">
+        </label>
+      </div>
+      <div class="help">Si la première ligne est « Élèves », elle est retirée automatiquement.</div>
+    </section>
+
+    <section class="panel section" id="planSection">
+      <h2>3. Plans de classe</h2>
+      <label for="planSelect">Plan de classe à afficher</label>
+      <select id="planSelect"></select>
+
+      <div style="margin-top:8px">
         <label for="planDate">Date du plan</label>
         <input id="planDate" type="date">
       </div>
 
-      <div style="margin-top:12px;padding-top:10px;border-top:1px solid #e5e7eb">
-        <h2 style="margin-bottom:8px">Salle</h2>
-        <div class="class-manager">
-          <div>
-            <label for="roomSelect">Salle active</label>
-            <select id="roomSelect"></select>
-          </div>
-          <button id="deleteRoomBtn" class="danger">Supprimer</button>
-
-          <div class="full">
-            <label for="newRoomName">Nouvelle salle</label>
-            <input id="newRoomName" type="text" placeholder="Salle 204">
-          </div>
-          <button id="addRoomBtn" class="primary full">Ajouter la salle</button>
-        </div>
-        <div class="help">Chaque salle conserve automatiquement sa propre disposition.</div>
+      <div class="buttons">
+        <button id="deletePlanBtn" class="danger">Supprimer le plan</button>
       </div>
 
-      <div class="row" style="margin-top:8px">
+      <hr class="sep">
+      <strong style="font-size:12px">Créer un plan de classe</strong>
+      <div class="row2" style="margin-top:7px">
         <div>
-          <label for="cols">Tables par rangée</label>
-          <input id="cols" type="number" min="1" max="20" value="8">
+          <label for="planClassCreate">Classe</label>
+          <select id="planClassCreate"></select>
         </div>
         <div>
-          <label for="rows">Nombre de rangées</label>
-          <input id="rows" type="number" min="1" max="20" value="5">
+          <label for="planRoomCreate">Salle</label>
+          <select id="planRoomCreate"></select>
         </div>
       </div>
-
       <div class="buttons">
-        <button id="resizeBtn">Appliquer la grille</button>
-        <button id="autoRowsBtn">Rangées auto</button>
+        <button id="createPlanBtn">Créer / ouvrir</button>
+        <button id="shuffleBtn" class="primary">Placement aléatoire</button>
       </div>
-    </div>
+      <div class="help">Le plan copie la grille de la salle. Ensuite, les tables supprimées ou insérées appartiennent uniquement à ce plan.</div>
+    </section>
 
-    <div class="panel section">
-      <h2>Élèves</h2>
-      <label for="studentText">Un élève par ligne, ou données CSV copiées</label>
-      <textarea id="studentText" placeholder="Alice Martin&#10;Benoît Dupont&#10;Chloé Bernard"></textarea>
-
+    <section class="panel section" id="ioSection">
+      <h2>4. Import / export</h2>
       <div class="buttons">
-        <button id="loadTextBtn">Charger la liste</button>
+        <button id="exportAllBtn">Exporter tout</button>
         <label class="file-btn">
-          <button type="button">Importer la liste</button>
-          <input id="studentFile" type="file" accept=".csv,.txt,text/csv,text/plain">
+          <button type="button">Importer tout</button>
+          <input id="importAllFile" type="file" accept=".json,application/json">
         </label>
       </div>
+      <div class="help">Le fichier contient toutes les salles, classes et tous les plans. Utilisez-le pour passer sur un autre poste.</div>
+    </section>
 
-      <div class="help">
-        CSV/TXT : la première colonne est utilisée. Si la première ligne est « Élèves »,
-        elle est ignorée. La liste est immédiatement placée aléatoirement.
-      </div>
-    </div>
-
-    <div class="panel section">
-      <h2>Placement</h2>
-      <div class="buttons">
-        <button class="primary" id="shuffleBtn">Relancer le placement aléatoire</button>
-      </div>
-      <div class="help">Le tirage d'un élève se fait directement dans la salle de classe.</div>
-    </div>
-
-    <div class="panel section">
-      <h2>Table sélectionnée</h2>
-      <div class="buttons">
-        <button id="emptySeatBtn">Table vide</button>
-        <button id="forbidSeatBtn">Table interdite</button>
-        <button id="enableSeatBtn">Réactiver</button>
-      </div>
-      <div class="help">
-        Cliquez sur une table puis choisissez son état.
-        Le glisser-déposer échange toute la table, élève compris.
-      </div>
-    </div>
-
-    <div class="panel section">
-      <h2>Import / export</h2>
-      <div class="buttons">
-        <button id="backupAllBtn">Exporter tous les plans</button>
-        <label class="file-btn">
-          <button type="button">Importer tous les plans</button>
-          <input id="restoreAllFile" type="file" accept=".json,application/json">
-        </label>
-      </div>
-      <div class="help">
-        Toutes les modifications sont sauvegardées automatiquement dans ce navigateur.
-        L’export permet de transférer toutes les classes, salles et plans sur un autre poste.
-      </div>
-    </div>
   </aside>
 
   <main class="main">
     <div class="panel toolbar">
-      <div>
-        <button class="primary" id="printBtn">Exporter en PDF / Imprimer</button>
+      <div class="buttons" style="margin:0">
+        <button id="printBtn" class="primary">Exporter en PDF / Imprimer</button>
         <button id="projectionBtn">Mode vidéoprojecteur</button>
         <button id="showSidebarBtn" style="display:none">Afficher le panneau</button>
-        <button id="newBtn">Nouveau plan</button>
       </div>
-      <div><span style="font-size:12px;color:#166534;font-weight:700">● Sauvegarde automatique active</span><div id="status" class="status"></div></div>
+      <div>
+        <div class="autosave">● Sauvegarde automatique active</div>
+        <div id="status" class="status"></div>
+      </div>
     </div>
 
     <div class="panel" id="printArea">
       <div class="plan-title">
-        <h2 id="displayClass">Plan de classe</h2>
-        <div id="displayDate"></div>
+        <h2 id="displayTitle">Aucun plan de classe</h2>
+        <div id="displayMeta" class="meta"></div>
       </div>
+
       <div class="classroom-actions">
-        <label for="planClassSelect" style="margin:0;color:inherit;font-weight:700">Classe</label>
-        <select id="planClassSelect" style="width:auto;min-width:140px"></select>
-        <label for="planRoomSelect" style="margin:0;color:inherit;font-weight:700">Salle</label>
-        <select id="planRoomSelect" style="width:auto;min-width:140px"></select>
-        <button class="primary" id="pickBtn">🎲 Choisir un élève</button>
+        <label for="mainPlanSelect" style="margin:0;font-weight:700;color:inherit">Plan</label>
+        <select id="mainPlanSelect"></select>
+        <button id="pickBtn" class="primary">🎲 Choisir un élève</button>
         <button id="clearPickBtn">Effacer la sélection</button>
-        <div id="pickedStudent" class="picked"></div>
+        <span id="pickedStudent" class="picked"></span>
       </div>
+
       <div class="classroom-wrap">
         <div id="classroom" class="classroom"></div>
       </div>
+      <div class="keyboard-help">Cliquez sur une table ou un emplacement puis utilisez <strong>Suppr</strong> pour retirer la table et <strong>I</strong> pour l’insérer. Les tables, rangées et colonnes se déplacent à la souris.</div>
       <div class="front">TABLEAU / AVANT DE LA SALLE</div>
     </div>
   </main>
@@ -890,1438 +316,458 @@
 
 <script>
 (() => {
-  const $ = id => document.getElementById(id);
-  const STORAGE_KEY = "plansClasse.v1";
-  const CLASSES_KEY = "classesClasse.v1";
-  const ROOMS_KEY = "sallesClasse.v1";
-  const ACTIVE_KEY = "planClasseActif.v1";
+"use strict";
+const $=id=>document.getElementById(id);
+const STORE="plansClasse.v2";
 
-  const state = {
-    className: "",
-    roomId: "",
-    date: new Date().toISOString().slice(0,10),
-    rows: 5,
-    cols: 8,
-    seats: [],
-    students: [],
-    selectedSeat: null,
-    pickedStudent: null,
-    rouletteActiveSeat: null,
-    rouletteRunning: false
+function uid(prefix){return prefix+"-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,8)}
+function today(){return new Date().toISOString().slice(0,10)}
+function clone(x){return JSON.parse(JSON.stringify(x))}
+function fmtDate(iso){if(!iso)return"";const [y,m,d]=iso.split("-");return `${d}/${m}/${y}`}
+
+let data=loadData();
+let selectedRoomId=data.rooms[0]?.id||"";
+let selectedClassId=data.classes[0]?.id||"";
+let activePlanId=data.activePlanId||data.plans[0]?.id||"";
+let selectedSlot=null;
+let pickedStudent=null;
+let rouletteSlot=null;
+let rouletteRunning=false;
+let saveTimer=null;
+
+function emptyData(){
+  return {format:"plans-classe-v2",rooms:[],classes:[],plans:[],activePlanId:""};
+}
+function loadData(){
+  try{
+    const v=JSON.parse(localStorage.getItem(STORE)||"null");
+    if(v && v.format==="plans-classe-v2" && Array.isArray(v.rooms)&&Array.isArray(v.classes)&&Array.isArray(v.plans)) return v;
+  }catch{}
+  return emptyData();
+}
+function saveData(immediate=false){
+  clearTimeout(saveTimer);
+  const run=()=>{
+    data.activePlanId=activePlanId||"";
+    localStorage.setItem(STORE,JSON.stringify(data));
   };
-
-  function newSeat(){
-    return { type:"normal", student:null };
-  }
-
-  function clone(obj){
-    return JSON.parse(JSON.stringify(obj));
-  }
-
-  function ensureGrid(rows=state.rows, cols=state.cols){
-    rows = Math.max(1, Math.min(20, Number(rows)||1));
-    cols = Math.max(1, Math.min(20, Number(cols)||1));
-    const old = state.seats;
-    const oldRows = state.rows;
-    const oldCols = state.cols;
-    const next = Array.from({length:rows*cols}, () => newSeat());
-
-    for(let r=0;r<Math.min(rows,oldRows);r++){
-      for(let c=0;c<Math.min(cols,oldCols);c++){
-        const oldIdx=r*oldCols+c;
-        const newIdx=r*cols+c;
-        if(old[oldIdx]) next[newIdx]=clone(old[oldIdx]);
-      }
-    }
-    state.rows=rows;
-    state.cols=cols;
-    state.seats=next;
-    if(state.selectedSeat !== null && state.selectedSeat >= next.length) state.selectedSeat=null;
-    syncInputs();
-    render();
-    if(state.roomId){
-      saveCurrentRoomLayout();
-      autoSave();
-    }
-  }
-
-  function syncInputs(){
-    $("planDate").value=state.date;
-    $("rows").value=state.rows;
-    $("cols").value=state.cols;
-  }
-
-  function getRooms(){
-    try{
-      const data=JSON.parse(localStorage.getItem(ROOMS_KEY)||"[]");
-      return Array.isArray(data)?data:[];
-    }catch{
-      return [];
-    }
-  }
-
-  function saveRooms(rooms){
-    localStorage.setItem(ROOMS_KEY,JSON.stringify(rooms));
-  }
-
-  function ensureDefaultRoom(){
-    let rooms=getRooms();
-    if(!rooms.length){
-      rooms=[{
-        id:"room-"+Date.now().toString(36),
-        name:"Salle 1",
-        rows:state.rows,
-        cols:state.cols,
-        seatTypes:Array.from({length:state.rows*state.cols},()=> "normal")
-      }];
-      saveRooms(rooms);
-    }
-    if(!state.roomId) state.roomId=rooms[0].id;
-  }
-
-  function activeRoom(){
-    if(state.roomId==="__tour_demo_room__"){
-      return {id:"__tour_demo_room__",name:"Salle Démo",rows:state.rows,cols:state.cols};
-    }
-    return getRooms().find(r=>r.id===state.roomId) || null;
-  }
-
-  function renderRoomSelect(){
-    const rooms=getRooms();
-    const selects=[$("roomSelect"),$("planRoomSelect")].filter(Boolean);
-    for(const select of selects){
-      select.innerHTML="";
-      rooms.forEach(room=>{
-        const opt=document.createElement("option");
-        opt.value=room.id;
-        opt.textContent=room.name;
-        select.appendChild(opt);
-      });
-      if(state.roomId) select.value=state.roomId;
-    }
-  }
-
-  function buildSeatsFromRoom(room){
-    const rows=Math.max(1,Number(room?.rows)||5);
-    const cols=Math.max(1,Number(room?.cols)||8);
-    const types=Array.isArray(room?.seatTypes)?room.seatTypes:[];
-    state.rows=rows;
-    state.cols=cols;
-    state.seats=Array.from({length:rows*cols},(_,i)=>({
-      type:types[i]==="forbidden" ? "forbidden" : "normal",
-      student:null
-    }));
-  }
-
-  function saveCurrentRoomLayout(){
-    const rooms=getRooms();
-    const room=rooms.find(r=>r.id===state.roomId);
-    if(!room) return;
-    room.rows=state.rows;
-    room.cols=state.cols;
-    room.seatTypes=state.seats.map(s=>s.type==="forbidden" ? "forbidden" : "normal");
-    saveRooms(rooms);
-    renderRoomSelect();
-  }
-
-  function addRoom(){
-    const name=$("newRoomName").value.trim();
-    if(!name){
-      setStatus("Indiquez un nom de salle.");
-      return;
-    }
-    const rooms=getRooms();
-    if(rooms.some(r=>r.name.toLowerCase()===name.toLowerCase())){
-      setStatus("Cette salle existe déjà.");
-      return;
-    }
-    const room={
-      id:"room-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,6),
-      name,
-      rows:state.rows,
-      cols:state.cols,
-      seatTypes:state.seats.map(s=>s.type==="forbidden" ? "forbidden" : "normal")
-    };
-    rooms.push(room);
-    saveRooms(rooms);
-    $("newRoomName").value="";
-    autoSave(true);
-    state.roomId=room.id;
-    currentId=cryptoRandomId();
-    buildSeatsFromRoom(room);
-    syncInputs();
-    renderRoomSelect();
-    render();
-    autoSave(true);
-    setStatus(`Salle « ${name} » créée.`);
-  }
-
-  function deleteActiveRoom(){
-    let rooms=getRooms();
-    const room=rooms.find(r=>r.id===state.roomId);
-    if(!room) return;
-    if(rooms.length===1){
-      setStatus("Il faut conserver au moins une salle.");
-      return;
-    }
-    if(!confirm(`Supprimer la salle « ${room.name} » ?`)) return;
-    rooms=rooms.filter(r=>r.id!==room.id);
-    saveRooms(rooms);
-    state.roomId=rooms[0].id;
-    loadLatestPlanForClass(state.className,state.roomId,true);
-    renderRoomSelect();
-    setStatus("Salle supprimée.");
-  }
-
-  function planTimestamp(p){
-    return p.savedAt || (p.date ? p.date+"T00:00:00" : "");
-  }
-
-  function findLatestPlan(className,roomId=null){
-    const plans=getSavedPlans()
-      .filter(p=>p.className===className && (!roomId || p.roomId===roomId))
-      .sort((a,b)=>planTimestamp(b).localeCompare(planTimestamp(a)));
-    return plans[0] || null;
-  }
-
-  function loadLatestPlanForClass(className,preferredRoomId=null,createIfMissing=true){
-    let plan=null;
-    if(preferredRoomId) plan=findLatestPlan(className,preferredRoomId);
-    if(!plan) plan=findLatestPlan(className);
-
-    if(plan){
-      loadPlan(plan,{silent:true});
-      return;
-    }
-
-    const classes=getClasses();
-    const c=classes.find(x=>x.name===className);
-    state.className=className;
-    state.students=c && Array.isArray(c.students) ? c.students.slice() : [];
-
-    const rooms=getRooms();
-    const room=rooms.find(r=>r.id===preferredRoomId) || rooms[0];
-    state.roomId=room.id;
-    buildSeatsFromRoom(room);
-
-    state.date=new Date().toISOString().slice(0,10);
-    currentId=cryptoRandomId();
-    state.selectedSeat=null;
-    state.pickedStudent=null;
-    state.rouletteActiveSeat=null;
-    state.rouletteRunning=false;
-    syncInputs();
-    $("studentText").value=state.students.join("\n");
-    renderClassSelect();
-    renderRoomSelect();
-    render();
-    if(createIfMissing) autoSave(true);
-  }
-
-  function selectRoomById(id){
-    if(id===state.roomId) return;
-    autoSave(true);
-    state.roomId=id;
-    loadLatestPlanForClass(state.className,id,true);
-    renderRoomSelect();
-    setStatus(`Salle active : ${activeRoom()?.name || ""}.`);
-  }
-
-  let autoSaveTimer=null;
-  function autoSave(immediate=false){
-    clearTimeout(autoSaveTimer);
-    const doSave=()=>{
-      if(!state.className || !state.roomId) return;
-      if(state.className==="Classe Démo" || state.roomId==="__tour_demo_room__") return;
-      const plan=serialize();
-      const plans=getSavedPlans();
-      const idx=plans.findIndex(p=>p.id===plan.id);
-      if(idx>=0) plans[idx]=plan;
-      else plans.unshift(plan);
-      localStorage.setItem(STORAGE_KEY,JSON.stringify(plans));
-      currentId=plan.id;
-      localStorage.setItem(ACTIVE_KEY,JSON.stringify({
-        className:state.className,
-        roomId:state.roomId,
-        planId:currentId
-      }));
-      renderSavedPlans();
-    };
-    if(immediate) doSave();
-    else autoSaveTimer=setTimeout(doSave,100);
-  }
-
-  function getClasses(){
-    try{
-      const data=JSON.parse(localStorage.getItem(CLASSES_KEY)||"[]");
-      return Array.isArray(data)?data:[];
-    }catch{
-      return [];
-    }
-  }
-
-  function saveClasses(classes){
-    localStorage.setItem(CLASSES_KEY,JSON.stringify(classes));
-  }
-
-  function ensureDefaultClass(){
-    let classes=getClasses();
-
-    // Migration douce : si l'ancien plan possède une classe/liste, on la récupère.
-    if(!classes.length){
-      const savedPlans=getSavedPlans();
-      const firstNamed=savedPlans.find(p=>p.className);
-      if(firstNamed){
-        classes.push({
-          id:"class-"+Date.now().toString(36),
-          name:firstNamed.className,
-          students:Array.isArray(firstNamed.students)?firstNamed.students:[]
-        });
-      }else{
-        classes.push({
-          id:"class-"+Date.now().toString(36),
-          name:"Classe 1",
-          students:[]
-        });
-      }
-      saveClasses(classes);
-    }
-
-    if(!state.className){
-      state.className=classes[0].name;
-      state.students=classes[0].students.slice();
-    }
-  }
-
-  function renderClassSelect(){
-    const classes=getClasses();
-    const selects=[$("classSelect"), $("planClassSelect")].filter(Boolean);
-
-    for(const select of selects){
-      select.innerHTML="";
-      classes.forEach(c=>{
-        const opt=document.createElement("option");
-        opt.value=c.id;
-        opt.textContent=c.name;
-        if(c.name===state.className) opt.selected=true;
-        select.appendChild(opt);
-      });
-    }
-
-    const current=classes.find(c=>c.name===state.className) || classes[0];
-    if(current){
-      for(const select of selects){
-        select.value=current.id;
-      }
-    }
-  }
-
-  function activeClassRecord(){
-    const classes=getClasses();
-    return classes.find(c=>c.name===state.className) || null;
-  }
-
-  function selectClassById(id){
-    const classes=getClasses();
-    const c=classes.find(x=>x.id===id);
-    if(!c) return;
-
-    autoSave(true);
-    state.className=c.name;
-    state.students=Array.isArray(c.students)?c.students.slice():[];
-    $("studentText").value=state.students.join("\n");
-    state.pickedStudent=null;
-    state.rouletteActiveSeat=null;
-
-    loadLatestPlanForClass(state.className,null,true);
-    renderClassSelect();
-    renderRoomSelect();
-    setStatus(`Classe active : ${state.className}.`);
-  }
-
-  function addClass(){
-    const name=$("newClassName").value.trim();
-    if(!name){
-      setStatus("Indiquez un nom de classe.");
-      return;
-    }
-
-    const classes=getClasses();
-    if(classes.some(c=>c.name.toLowerCase()===name.toLowerCase())){
-      setStatus("Cette classe existe déjà.");
-      return;
-    }
-
-    const c={
-      id:"class-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,6),
-      name,
-      students:[]
-    };
-
-    classes.push(c);
-    saveClasses(classes);
-    $("newClassName").value="";
-    renderClassSelect();
-    selectClassById(c.id);
-  }
-
-  function deleteActiveClass(){
-    let classes=getClasses();
-    const current=classes.find(c=>c.name===state.className);
-    if(!current) return;
-
-    if(classes.length===1){
-      setStatus("Il faut conserver au moins une classe.");
-      return;
-    }
-
-    if(!confirm(`Supprimer la classe « ${current.name} » et sa liste d'élèves ?`)) return;
-
-    classes=classes.filter(c=>c.id!==current.id);
-    saveClasses(classes);
-
-    const next=classes[0];
-    state.className=next.name;
-    state.students=next.students.slice();
-    $("studentText").value=state.students.join("\n");
-    for(const seat of state.seats){
-      if(seat.type==="normal") seat.student=null;
-    }
-    renderClassSelect();
-    render();
-    setStatus("Classe supprimée.");
-  }
-
-  function saveStudentsToActiveClass(){
-    const classes=getClasses();
-    const current=classes.find(c=>c.name===state.className);
-    if(!current) return;
-
-    current.students=state.students.slice();
-    saveClasses(classes);
-    renderClassSelect();
-  }
-
-  function getFreeSeatIndices(){
-    return state.seats
-      .map((s,i)=>({s,i}))
-      .filter(x=>x.s.type==="normal")
-      .map(x=>x.i);
-  }
-
-  function parseStudents(text){
-    const raw = text.replace(/\r/g,"").split("\n").map(s=>s.trim()).filter(Boolean);
-    const result=[];
-    for(const line of raw){
-      let first=line;
-      if(line.includes(";")) first=line.split(";")[0];
-      else if(line.includes("\t")) first=line.split("\t")[0];
-      else if(line.includes(",")) first=line.split(",")[0];
-      first=first.trim().replace(/^["']|["']$/g,"").trim();
-      if(first) result.push(first);
-    }
-    if(result.length && /^(nom|élève|élèves|eleve|eleves|name|student|students)$/i.test(result[0])) result.shift();
-    return [...new Set(result)];
-  }
-
-  function loadStudents(list){
-    state.students=list;
-    $("studentText").value=list.join("\n");
-    saveStudentsToActiveClass();
-
-    const needed=list.length;
-    const usable=getFreeSeatIndices().length;
-
-    if(usable < needed){
-      state.rows=Math.max(state.rows, Math.ceil(needed/state.cols));
-      ensureGrid(state.rows,state.cols);
-    }
-
-    shuffleStudents();
-    autoSave(true);
-    setStatus(`${list.length} élève(s) chargé(s) et placé(s) aléatoirement.`);
-  }
-
-  function fisherYates(arr){
-    const a=arr.slice();
-    for(let i=a.length-1;i>0;i--){
-      const j=Math.floor(Math.random()*(i+1));
-      [a[i],a[j]]=[a[j],a[i]];
-    }
-    return a;
-  }
-
-  function shuffleStudents(){
-    const usable=getFreeSeatIndices();
-    if(!state.students.length){
-      setStatus("Chargez d'abord une liste d'élèves.");
-      return;
-    }
-    if(usable.length < state.students.length){
-      setStatus(`Pas assez de tables utilisables : ${usable.length} pour ${state.students.length} élèves.`);
-      return;
-    }
-    for(const seat of state.seats){
-      if(seat.type==="normal") seat.student=null;
-    }
-    const shuffled=fisherYates(state.students);
-    const seatOrder=fisherYates(usable);
-    shuffled.forEach((student,k)=>{
-      state.seats[seatOrder[k]].student=student;
-    });
-    state.pickedStudent=null;
-    render();
-    autoSave();
-    setStatus("Nouveau placement aléatoire généré.");
-  }
-
-  function sleep(ms){
-    return new Promise(resolve=>setTimeout(resolve,ms));
-  }
-
-  function nextFrame(){
-    return new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
-  }
-
-  async function chooseRandomStudent(){
-    if(state.rouletteRunning) return;
-
-    const candidates=state.seats
-      .map((seat,index)=>({seat,index}))
-      .filter(x=>x.seat.type==="normal" && x.seat.student);
-
-    if(!candidates.length){
-      setStatus("Aucun élève placé sur le plan.");
-      return;
-    }
-
-    state.rouletteRunning=true;
-    state.pickedStudent=null;
-    state.rouletteActiveSeat=null;
-    render();
-    $("pickedStudent").textContent="Tirage en cours…";
-
-    const winnerPos=Math.floor(Math.random()*candidates.length);
-    const winner=candidates[winnerPos];
-
-    // Le défilement commence lui aussi sur une table choisie au hasard.
-    const startPos=Math.floor(Math.random()*candidates.length);
-
-    // Un tour complet minimum, puis arrêt exactement sur le gagnant.
-    const turns=1;
-    const offsetToWinner=(winnerPos-startPos+candidates.length)%candidates.length;
-    const totalSteps=turns*candidates.length + offsetToWinner + 1;
-
-    await nextFrame();
-    await sleep(40);
-
-    for(let step=0; step<totalSteps; step++){
-      const current=candidates[(startPos + step) % candidates.length];
-      state.rouletteActiveSeat=current.index;
-      render();
-      $("pickedStudent").textContent="Tirage en cours…";
-      await nextFrame();
-
-      const p=step/Math.max(1,totalSteps-1);
-
-      // Rapide pendant l'essentiel du tirage, puis décélération
-      // forte au début et plus douce sur les toutes dernières cases.
-      let delay;
-      if(p < 0.72){
-        delay=22;
-      }else if(p < 0.88){
-        const q=(p-0.72)/0.16;
-        delay=Math.round(28 + 72*q);
-      }else{
-        const q=(p-0.88)/0.12;
-        delay=Math.round(115 + 155*Math.sqrt(q));
-      }
-
-      await sleep(delay);
-    }
-
-    state.rouletteActiveSeat=winner.index;
-    render();
-    await nextFrame();
-    await sleep(140);
-
-    state.rouletteActiveSeat=null;
-    state.pickedStudent=winner.seat.student;
-    state.rouletteRunning=false;
-    render();
-
-    showWinner(state.pickedStudent);
-    launchFireworks();
-    setStatus(`Élève choisi : ${state.pickedStudent}`);
-  }
-
-  function showWinner(name){
-    const overlay=$("winnerOverlay");
-    const nameBox=$("winnerName");
-
-    nameBox.textContent=name;
-    overlay.classList.remove("show");
-
-    // Relance proprement l'animation même lors de deux tirages successifs.
-    void overlay.offsetWidth;
-    overlay.classList.add("show");
-
-    setTimeout(()=>{
-      overlay.classList.remove("show");
-    },2600);
-  }
-
-  function launchFireworks(){
-    const canvas=$("fireworksCanvas");
-    const ctx=canvas.getContext("2d");
-    canvas.style.display="block";
-
-    const dpr=Math.max(1,window.devicePixelRatio||1);
-
-    function resize(){
-      canvas.width=Math.floor(window.innerWidth*dpr);
-      canvas.height=Math.floor(window.innerHeight*dpr);
-      canvas.style.width=window.innerWidth+"px";
-      canvas.style.height=window.innerHeight+"px";
-      ctx.setTransform(dpr,0,0,dpr,0,0);
-    }
-
-    resize();
-
-    const colors=[
-      "#ff3b30","#ffcc00","#34c759",
-      "#007aff","#af52de","#ff9500","#ffffff"
-    ];
-    const particles=[];
-
-    function burst(x,y,count=85){
-      for(let i=0;i<count;i++){
-        const angle=Math.random()*Math.PI*2;
-        const speed=2.5+Math.random()*6.5;
-        particles.push({
-          x,y,
-          vx:Math.cos(angle)*speed,
-          vy:Math.sin(angle)*speed,
-          life:1,
-          decay:0.010+Math.random()*0.013,
-          size:1.5+Math.random()*3,
-          color:colors[Math.floor(Math.random()*colors.length)]
-        });
-      }
-    }
-
-    const planned=[
-      [0.18,0.30,0],
-      [0.50,0.20,180],
-      [0.80,0.32,360],
-      [0.32,0.48,600],
-      [0.68,0.46,780],
-      [0.50,0.32,1050]
-    ];
-
-    const fired=new Set();
-    const start=performance.now();
-
-    function animate(now){
-      const elapsed=now-start;
-
-      planned.forEach((b,i)=>{
-        if(elapsed>=b[2] && !fired.has(i)){
-          fired.add(i);
-          burst(window.innerWidth*b[0],window.innerHeight*b[1]);
-        }
-      });
-
-      ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-      ctx.globalCompositeOperation="lighter";
-
-      for(let i=particles.length-1;i>=0;i--){
-        const p=particles[i];
-
-        p.x+=p.vx;
-        p.y+=p.vy;
-        p.vy+=0.045;
-        p.vx*=0.992;
-        p.vy*=0.992;
-        p.life-=p.decay;
-
-        if(p.life<=0){
-          particles.splice(i,1);
-          continue;
-        }
-
-        ctx.globalAlpha=Math.max(0,p.life);
-        ctx.fillStyle=p.color;
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-        ctx.fill();
-
-        ctx.globalAlpha=Math.max(0,p.life*.35);
-        ctx.strokeStyle=p.color;
-        ctx.lineWidth=1;
-        ctx.beginPath();
-        ctx.moveTo(p.x,p.y);
-        ctx.lineTo(p.x-p.vx*3,p.y-p.vy*3);
-        ctx.stroke();
-      }
-
-      ctx.globalAlpha=1;
-
-      if(elapsed<2800 || particles.length){
-        requestAnimationFrame(animate);
-      }else{
-        canvas.style.display="none";
-        ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-      }
-    }
-
-    requestAnimationFrame(animate);
-  }
-
-  function setSeatState(type){
-    if(state.selectedSeat===null){
-      setStatus("Sélectionnez d'abord une table.");
-      return;
-    }
-    const seat=state.seats[state.selectedSeat];
-    if(!seat) return;
-
-    if(type==="forbidden"){
-      seat.type="forbidden";
-      seat.student=null;
-    } else if(type==="empty"){
-      seat.type="normal";
-      seat.student=null;
-    } else {
-      seat.type="normal";
-    }
-    render();
-    saveCurrentRoomLayout();
-    autoSave();
-  }
-
-  function swapSeats(a,b){
-    if(a===b || a<0 || b<0) return;
-    [state.seats[a],state.seats[b]]=[state.seats[b],state.seats[a]];
-    if(state.selectedSeat===a) state.selectedSeat=b;
-    else if(state.selectedSeat===b) state.selectedSeat=a;
-    render();
-    autoSave();
-  }
-
-  function swapRows(a,b){
-    a=Number(a); b=Number(b);
-    if(a===b) return;
-    for(let c=0;c<state.cols;c++){
-      const ia=a*state.cols+c;
-      const ib=b*state.cols+c;
-      [state.seats[ia],state.seats[ib]]=[state.seats[ib],state.seats[ia]];
-    }
-    render();
-    saveCurrentRoomLayout();
-    autoSave();
-  }
-
-  function swapCols(a,b){
-    a=Number(a); b=Number(b);
-    if(a===b) return;
-    for(let r=0;r<state.rows;r++){
-      const ia=r*state.cols+a;
-      const ib=r*state.cols+b;
-      [state.seats[ia],state.seats[ib]]=[state.seats[ib],state.seats[ia]];
-    }
-    render();
-    saveCurrentRoomLayout();
-    autoSave();
-  }
-
-  function moveRow(from,to){
-    from=Number(from);
-    to=Number(to);
-    if(from===to || from<0 || to<0 || from>=state.rows || to>=state.rows) return;
-
-    const allRows=[];
-    for(let r=0;r<state.rows;r++){
-      allRows.push(state.seats.slice(r*state.cols,(r+1)*state.cols));
-    }
-
-    const [moved]=allRows.splice(from,1);
-    allRows.splice(to,0,moved);
-    state.seats=allRows.flat();
-    state.selectedSeat=null;
-    render();
-    saveCurrentRoomLayout();
-    autoSave();
-    setStatus(`Rangée ${from+1} déplacée vers la position ${to+1}.`);
-  }
-
-  function moveCol(from,to){
-    from=Number(from);
-    to=Number(to);
-    if(from===to || from<0 || to<0 || from>=state.cols || to>=state.cols) return;
-
-    const allRows=[];
-    for(let r=0;r<state.rows;r++){
-      const row=state.seats.slice(r*state.cols,(r+1)*state.cols);
-      const [moved]=row.splice(from,1);
-      row.splice(to,0,moved);
-      allRows.push(row);
-    }
-
-    state.seats=allRows.flat();
-    state.selectedSeat=null;
-    render();
-    saveCurrentRoomLayout();
-    autoSave();
-    setStatus(`Colonne ${from+1} déplacée vers la position ${to+1}.`);
-  }
-
-  function renderSelectors(){
-    // Les rangées et colonnes se manipulent directement à la souris.
-  }
-
-  function render(){
-    $("displayClass").textContent=state.className ? `Classe ${state.className}` : "Plan de classe";
-    const room=activeRoom();
-    $("displayDate").textContent=[
-      state.date ? `Date : ${formatDate(state.date)}` : "",
-      room ? `Salle : ${room.name}` : ""
-    ].filter(Boolean).join(" — ");
-    $("pickedStudent").textContent=state.pickedStudent ? `Élève choisi : ${state.pickedStudent}` : "";
-
-    const grid=$("classroom");
-    grid.innerHTML="";
-    grid.style.gridTemplateColumns=`42px repeat(${state.cols}, minmax(90px,1fr))`;
-    grid.style.gridTemplateRows=`26px repeat(${state.rows}, minmax(64px,1fr))`;
-
-    const corner=document.createElement("div");
-    corner.className="corner";
-    grid.appendChild(corner);
-
-    for(let c=0;c<state.cols;c++){
-      const h=document.createElement("div");
-      h.className="col-head";
-      h.innerHTML=`<span>C${c+1}</span>`;
-      h.draggable=true;
-      h.title="Glisser pour déplacer cette colonne";
-
-      h.addEventListener("dragstart",e=>{
-        e.dataTransfer.setData("application/x-classroom-col",String(c));
-        e.dataTransfer.effectAllowed="move";
-      });
-
-      h.addEventListener("dragover",e=>{
-        if(Array.from(e.dataTransfer.types).includes("application/x-classroom-col")){
-          e.preventDefault();
-          h.classList.add("drag-over");
-        }
-      });
-
-      h.addEventListener("dragleave",()=>h.classList.remove("drag-over"));
-
-      h.addEventListener("drop",e=>{
-        const raw=e.dataTransfer.getData("application/x-classroom-col");
-        if(raw!==""){
-          e.preventDefault();
-          h.classList.remove("drag-over");
-          moveCol(Number(raw),c);
-        }
-      });
-
-      grid.appendChild(h);
-    }
-
-    for(let r=0;r<state.rows;r++){
-      const rh=document.createElement("div");
-      rh.className="row-head";
-      rh.textContent=`R${r+1}`;
-      rh.draggable=true;
-      rh.title="Glisser pour déplacer cette rangée";
-
-      rh.addEventListener("dragstart",e=>{
-        e.dataTransfer.setData("application/x-classroom-row",String(r));
-        e.dataTransfer.effectAllowed="move";
-      });
-
-      rh.addEventListener("dragover",e=>{
-        if(Array.from(e.dataTransfer.types).includes("application/x-classroom-row")){
-          e.preventDefault();
-          rh.classList.add("drag-over");
-        }
-      });
-
-      rh.addEventListener("dragleave",()=>rh.classList.remove("drag-over"));
-
-      rh.addEventListener("drop",e=>{
-        const raw=e.dataTransfer.getData("application/x-classroom-row");
-        if(raw!==""){
-          e.preventDefault();
-          rh.classList.remove("drag-over");
-          moveRow(Number(raw),r);
-        }
-      });
-
-      grid.appendChild(rh);
-
-      for(let c=0;c<state.cols;c++){
-        const idx=r*state.cols+c;
-        const seat=state.seats[idx] || newSeat();
-        const el=document.createElement("div");
-        el.className="seat";
-        el.draggable=seat.type!=="forbidden";
-        el.dataset.index=idx;
-
-        if(seat.type==="forbidden"){
-          el.classList.add("forbidden");
-          el.textContent="INTERDITE";
-        } else if(!seat.student){
-          el.classList.add("empty");
-          el.textContent="Table vide";
-        } else {
-          el.textContent=seat.student;
-        }
-
-        if(state.selectedSeat===idx) el.classList.add("selected");
-        if(state.pickedStudent && seat.student===state.pickedStudent) el.classList.add("random-picked");
-        if(state.rouletteActiveSeat===idx) el.classList.add("roulette-active");
-
-        const idxSpan=document.createElement("span");
-        idxSpan.className="idx";
-        idxSpan.textContent=`${r+1}.${c+1}`;
-        el.appendChild(idxSpan);
-
-        el.addEventListener("click",()=>{
-          state.selectedSeat=idx;
-          render();
-        });
-
-        el.addEventListener("dragstart",e=>{
-          if(seat.type==="forbidden"){
-            e.preventDefault();
-            return;
-          }
-          e.dataTransfer.setData("text/plain",String(idx));
-          e.dataTransfer.effectAllowed="move";
-        });
-
-        el.addEventListener("dragover",e=>{
-          if(Array.from(e.dataTransfer.types).includes("text/plain")){
-            e.preventDefault();
-            el.classList.add("drag-over");
-          }
-        });
-
-        el.addEventListener("dragleave",()=>el.classList.remove("drag-over"));
-
-        el.addEventListener("drop",e=>{
-          const raw=e.dataTransfer.getData("text/plain");
-          if(raw!==""){
-            e.preventDefault();
-            el.classList.remove("drag-over");
-            const from=Number(raw);
-            swapSeats(from,idx);
-          }
-        });
-
-        grid.appendChild(el);
-      }
-    }
-    renderSelectors();
-  }
-
-  function formatDate(iso){
-    if(!iso) return "";
-    const [y,m,d]=iso.split("-");
-    return `${d}/${m}/${y}`;
-  }
-
-  function setStatus(msg){
-    $("status").textContent=msg;
-    clearTimeout(setStatus._t);
-    setStatus._t=setTimeout(()=>$("status").textContent="",4500);
-  }
-
-  function serialize(){
-    return {
-      format:"plan-de-classe-v1",
-      id: currentId || cryptoRandomId(),
-      className:state.className,
-      roomId:state.roomId,
-      date:state.date,
-      rows:state.rows,
-      cols:state.cols,
-      seats:clone(state.seats),
-      students:state.students.slice(),
-      savedAt:new Date().toISOString()
-    };
-  }
-
-  function loadPlan(plan,options={}){
-    if(!plan || !Array.isArray(plan.seats)) throw new Error("Plan invalide");
-    currentId=plan.id || cryptoRandomId();
-    state.className=plan.className || "";
-    state.roomId=plan.roomId || state.roomId || getRooms()[0]?.id || "";
-    state.date=plan.date || new Date().toISOString().slice(0,10);
-    state.rows=Math.max(1,Number(plan.rows)||1);
-    state.cols=Math.max(1,Number(plan.cols)||1);
-    state.students=Array.isArray(plan.students) ? plan.students.slice() : [];
-
-    // Si le plan importé concerne une nouvelle classe, on la crée automatiquement.
-    let classes=getClasses();
-    let classRecord=classes.find(c=>c.name===state.className);
-    if(!classRecord){
-      classRecord={
-        id:"class-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,6),
-        name:state.className || "Classe importée",
-        students:state.students.slice()
-      };
-      classes.push(classRecord);
-      saveClasses(classes);
-    }else if(!classRecord.students.length && state.students.length){
-      classRecord.students=state.students.slice();
-      saveClasses(classes);
-    }
-    renderClassSelect();
-    state.seats=plan.seats.map(s=>({
-      type:s.type==="forbidden" ? "forbidden" : "normal",
-      student:s.student || null
-    }));
-    while(state.seats.length<state.rows*state.cols) state.seats.push(newSeat());
-    state.seats=state.seats.slice(0,state.rows*state.cols);
-    state.selectedSeat=null;
-    state.pickedStudent=null;
-    state.rouletteActiveSeat=null;
-    state.rouletteRunning=false;
-    syncInputs();
-    $("studentText").value=state.students.join("\n");
-    render();
-    setStatus("Plan chargé.");
-  }
-
-  function cryptoRandomId(){
-    return "p-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,8);
-  }
-
-  let currentId=cryptoRandomId();
-
-  function getSavedPlans(){
-    try{
-      const v=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");
-      return Array.isArray(v)?v:[];
-    }catch{
-      return [];
-    }
-  }
-
-  function saveLocal(){
-    state.date=$("planDate").value;
-    autoSave(true);
-    setStatus("Toutes les modifications sont sauvegardées dans ce navigateur.");
-  }
-
-  function deleteLocal(id){
-    const plans=getSavedPlans().filter(p=>p.id!==id);
-    localStorage.setItem(STORAGE_KEY,JSON.stringify(plans));
-    renderSavedPlans();
-  }
-
-  function renderSavedPlans(){
-    const cls=$("filterClass") ? $("filterClass").value.trim().toLowerCase() : "";
-    const dt=$("filterDate") ? $("filterDate").value : "";
-    const list=getSavedPlans()
-      .filter(p=>(!cls || (p.className||"").toLowerCase().includes(cls)) && (!dt || p.date===dt))
-      .sort((a,b)=>(b.date||"").localeCompare(a.date||""));
-
-    const root=$("savedPlans");
-    if(!root) return;
-    root.innerHTML="";
-    if(!list.length){
-      root.innerHTML='<div class="help">Aucun plan enregistré pour ce filtre.</div>';
-      return;
-    }
-
-    list.forEach(p=>{
-      const item=document.createElement("div");
-      item.className="saved-item";
-
-      const meta=document.createElement("div");
-      meta.className="meta";
-      const strong=document.createElement("strong");
-      strong.textContent=p.className || "Classe sans nom";
-      const span=document.createElement("span");
-      span.textContent=p.date ? formatDate(p.date) : "Sans date";
-      meta.append(strong,span);
-
-      const actions=document.createElement("div");
-      actions.className="actions";
-      const open=document.createElement("button");
-      open.className="small";
-      open.textContent="Ouvrir";
-      open.onclick=()=>loadPlan(p);
-      const del=document.createElement("button");
-      del.className="small danger";
-      del.textContent="×";
-      del.title="Supprimer";
-      del.onclick=()=>{ if(confirm("Supprimer ce plan enregistré ?")) deleteLocal(p.id); };
-      actions.append(open,del);
-
-      item.append(meta,actions);
-      root.appendChild(item);
-    });
-  }
-
-  function download(filename,content,type){
-    const blob=new Blob([content],{type});
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement("a");
-    a.href=url;
-    a.download=filename;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(()=>URL.revokeObjectURL(url),1000);
-  }
-
-  function exportJson(){
-    state.date=$("planDate").value;
-    const plan=serialize();
-    const safe=(state.className||"classe").replace(/[^\p{L}\p{N}_-]+/gu,"_");
-    const room=activeRoom();
-    const safeRoom=(room?.name||"salle").replace(/[^\p{L}\p{N}_-]+/gu,"_");
-    download(`plan_${safe}_${safeRoom}_${state.date||"sans_date"}.json`,JSON.stringify(plan,null,2),"application/json");
-  }
-
-  function exportAllData(){
-    const backup={
-      format:"plan-de-classe-backup-v1",
-      exportedAt:new Date().toISOString(),
-      classes:getClasses(),
-      rooms:getRooms(),
-      plans:getSavedPlans(),
-      active:(()=>{try{return JSON.parse(localStorage.getItem(ACTIVE_KEY)||"null")}catch{return null}})()
-    };
-
-    const date=new Date().toISOString().slice(0,10);
-    download(
-      `tous_les_plans_de_classe_${date}.json`,
-      JSON.stringify(backup,null,2),
-      "application/json"
-    );
-    setStatus("Sauvegarde complète exportée.");
-  }
-
-  function validateBackup(data){
-    return data
-      && data.format==="plan-de-classe-backup-v1"
-      && Array.isArray(data.classes)
-      && Array.isArray(data.rooms)
-      && Array.isArray(data.plans);
-  }
-
-  async function restoreAllData(file){
-    try{
-      const data=JSON.parse(await file.text());
-
-      if(!validateBackup(data)){
-        throw new Error("Ce fichier n'est pas une sauvegarde complète valide.");
-      }
-
-      const ok=confirm(
-        "Restaurer cette sauvegarde ?\n\n" +
-        "Toutes les classes, salles et plans actuellement enregistrés dans ce navigateur seront remplacés."
-      );
-      if(!ok) return;
-
-      localStorage.setItem(CLASSES_KEY,JSON.stringify(data.classes));
-      localStorage.setItem(ROOMS_KEY,JSON.stringify(data.rooms));
-      localStorage.setItem(STORAGE_KEY,JSON.stringify(data.plans));
-      if(data.active) localStorage.setItem(ACTIVE_KEY,JSON.stringify(data.active));
-      else localStorage.removeItem(ACTIVE_KEY);
-
-      ensureDefaultClass();
-      ensureDefaultRoom();
-
-      const classes=getClasses();
-      const rooms=getRooms();
-      const active=data.active || {};
-      const activeClass=classes.find(c=>c.name===active.className) || classes[0];
-
-      state.className=activeClass.name;
-      state.students=Array.isArray(activeClass.students)?activeClass.students.slice():[];
-      state.roomId=rooms.some(r=>r.id===active.roomId) ? active.roomId : rooms[0].id;
-
-      const plans=getSavedPlans();
-      const chosen=plans.find(p=>p.id===active.planId)
-        || findLatestPlan(state.className,state.roomId)
-        || findLatestPlan(state.className);
-
-      if(chosen){
-        loadPlan(chosen,{silent:true});
-      }else{
-        buildSeatsFromRoom(activeRoom());
-        state.date=new Date().toISOString().slice(0,10);
-        currentId=cryptoRandomId();
-        syncInputs();
-        $("studentText").value=state.students.join("\n");
-        renderClassSelect();
-        renderRoomSelect();
-        render();
-        autoSave(true);
-      }
-
-      renderSavedPlans();
-      setStatus("Sauvegarde complète restaurée.");
-    }catch(err){
-      alert("Impossible de restaurer cette sauvegarde : "+err.message);
-    }
-  }
-
-  function preparePrint(){
-    state.date=$("planDate").value;
-    render();
-
-    const maxName=Math.max(0,...state.seats.map(s=>(s.student||"").length));
-    let font=10;
-    if(state.rows>=7 || state.cols>=8) font=9;
-    if(state.rows>=9 || state.cols>=10 || maxName>22) font=8;
-    if(state.rows>=12 || state.cols>=12) font=7;
-    document.documentElement.style.setProperty("--print-font",font+"pt");
-    window.print();
-  }
-
-  function resetPlan(){
-    autoSave(true);
-    currentId=cryptoRandomId();
-    const currentClass=activeClassRecord();
-    state.className=currentClass ? currentClass.name : state.className;
-    state.students=currentClass ? currentClass.students.slice() : [];
-    state.date=new Date().toISOString().slice(0,10);
-    buildSeatsFromRoom(activeRoom());
-    state.selectedSeat=null;
-    state.pickedStudent=null;
-    state.rouletteActiveSeat=null;
-    state.rouletteRunning=false;
-    $("studentText").value=state.students.join("\n");
-    syncInputs();
-    render();
-    autoSave(true);
-    setStatus("Nouveau plan.");
-  }
-
-  let tourIndex=0;
-  let tourTarget=null;
-  let tourSnapshot=null;
-
-  const tourSteps=[
-    {target:"#classSelect",title:"Classe fictive de démonstration",text:"Le tutoriel crée temporairement une classe fictive pour pouvoir fonctionner même si aucune classe réelle n'existe encore."},
-    {target:"#newClassName",title:"Créer une classe",text:"Dans l'utilisation normale, saisissez ici le nom de la classe."},
-    {target:"#addClassBtn",title:"Ajouter la classe",text:"Ce bouton crée la classe et la sélectionne."},
-    {target:"#studentText",title:"Ajouter les élèves",text:"Collez ici un élève par ligne. Le tutoriel a déjà chargé une liste fictive."},
-    {target:"#studentFile",title:"Ou importer une liste",text:"Un fichier CSV ou TXT peut être importé. Les élèves sont immédiatement placés aléatoirement."},
-    {target:"#shuffleBtn",title:"Relancer le placement",text:"Ce bouton mélange à nouveau les élèves."},
-    {target:"#roomSelect",title:"Choisir la salle",text:"Chaque salle possède sa propre disposition."},
-    {target:"#cols",title:"Tables par rangée",text:"Réglez ici le nombre de tables par rangée."},
-    {target:"#rows",title:"Nombre de rangées",text:"Réglez ici le nombre de rangées."},
-    {target:"#resizeBtn",title:"Appliquer la grille",text:"Appliquez la nouvelle disposition de la salle."},
-    {target:"#classroom",title:"Réorganiser à la souris",text:"Tables, rangées et colonnes se déplacent directement par glisser-déposer.",demo:"drag"},
-    {target:"#printBtn",title:"Exporter en PDF",text:"Ce bouton ouvre l'impression du navigateur avec une mise en page A4 paysage. Choisissez ensuite « Enregistrer au format PDF »."},
-    {target:"#projectionBtn",title:"Mode vidéoprojecteur",text:"Cliquez sur Suivant : le tutoriel va réellement passer en plein écran.",enterProjectionAfter:true},
-    {target:"#pickBtn",title:"Choisir un élève au hasard",text:"Voici le bouton à utiliser pendant la projection.",final:true}
-  ];
-
-  function createTourDemoState(){
-    tourSnapshot={className:state.className,roomId:state.roomId,date:state.date,rows:state.rows,cols:state.cols,seats:clone(state.seats),students:state.students.slice(),selectedSeat:state.selectedSeat,pickedStudent:state.pickedStudent,rouletteActiveSeat:state.rouletteActiveSeat,currentId};
-    state.className="Classe Démo";
-    state.roomId="__tour_demo_room__";
-    state.date=new Date().toISOString().slice(0,10);
-    state.rows=5; state.cols=8;
-    state.students=["Alice Martin","Benoît Dupont","Chloé Bernard","David Morel","Emma Laurent","Farid Benali","Gabriel Petit","Hana Robert","Inès Simon","Jules Michel","Lina Garcia","Mathis Roux","Nora Leroy","Oscar Fontaine","Pauline David","Quentin Thomas"];
-    state.seats=Array.from({length:state.rows*state.cols},()=>newSeat());
-    fisherYates(state.students).forEach((name,i)=>{if(state.seats[i]) state.seats[i].student=name;});
-    state.selectedSeat=null; state.pickedStudent=null; state.rouletteActiveSeat=null; state.rouletteRunning=false;
-    currentId="__tour_demo_plan__";
-    syncInputs();
-    $("studentText").value=state.students.join("\n");
-    for(const select of [$("classSelect"),$("planClassSelect")]){if(select){const o=document.createElement("option");o.value="__tour_demo_class__";o.textContent="Classe Démo";o.dataset.tourDemo="1";select.appendChild(o);select.value=o.value;}}
-    for(const select of [$("roomSelect"),$("planRoomSelect")]){if(select){const o=document.createElement("option");o.value="__tour_demo_room__";o.textContent="Salle Démo";o.dataset.tourDemo="1";select.appendChild(o);select.value=o.value;}}
-    render();
-  }
-
-  function restoreTourState(){
-    if(!tourSnapshot) return;
-    document.querySelectorAll('option[data-tour-demo="1"]').forEach(el=>el.remove());
-    state.className=tourSnapshot.className; state.roomId=tourSnapshot.roomId; state.date=tourSnapshot.date; state.rows=tourSnapshot.rows; state.cols=tourSnapshot.cols; state.seats=clone(tourSnapshot.seats); state.students=tourSnapshot.students.slice(); state.selectedSeat=tourSnapshot.selectedSeat; state.pickedStudent=tourSnapshot.pickedStudent; state.rouletteActiveSeat=tourSnapshot.rouletteActiveSeat; state.rouletteRunning=false; currentId=tourSnapshot.currentId;
-    syncInputs(); $("studentText").value=state.students.join("\n"); renderClassSelect(); renderRoomSelect(); render(); tourSnapshot=null;
-  }
-
-  function openTutorial(){tourIndex=0;setSidebarHidden(false);createTourDemoState();$("tourOverlay").classList.add("show");$("tourOverlay").setAttribute("aria-hidden","false");const c=$("tourCursor");c.style.left=(window.innerWidth-60)+"px";c.style.top=(window.innerHeight-60)+"px";setTimeout(showTourStep,120);}
-  async function closeTutorial(){$("tourDemoPath").classList.remove("show");$("tourCursor").classList.remove("clicking");$("tourOverlay").classList.remove("show");$("tourOverlay").setAttribute("aria-hidden","true");if(document.body.classList.contains("projection-mode")) await exitProjectionMode();restoreTourState();}
-  function resolveTourTarget(step){let el=document.querySelector(step.target);if(el&&el.type==="file"&&el.closest(".file-btn")) el=el.closest(".file-btn");return el;}
-  function placeTourTooltip(rect){const t=$("tourTooltip"),m=12,w=Math.min(390,window.innerWidth-24);t.style.width=w+"px";let l=Math.min(Math.max(m,rect.left+rect.width/2-w/2),window.innerWidth-w-m),top=rect.bottom+18;t.style.left=l+"px";t.style.top=top+"px";let tr=t.getBoundingClientRect();if(tr.bottom>window.innerHeight-m) top=rect.top-tr.height-18;if(top<m){l=Math.max(m,(window.innerWidth-w)/2);top=Math.max(m,window.innerHeight-tr.height-m);}t.style.left=l+"px";t.style.top=top+"px";}
-  function animateVirtualCursorTo(rect){const c=$("tourCursor");c.classList.remove("clicking");c.style.left=Math.min(window.innerWidth-28,Math.max(8,rect.left+rect.width*.55))+"px";c.style.top=Math.min(window.innerHeight-28,Math.max(8,rect.top+rect.height*.55))+"px";setTimeout(()=>{if(!$("tourOverlay").classList.contains("show")) return;c.classList.remove("clicking");void c.offsetWidth;c.classList.add("clicking");},620);}
-  function positionTour(){const step=tourSteps[tourIndex],target=resolveTourTarget(step);if(!target)return;const rect=target.getBoundingClientRect(),pad=8,spot=$("tourSpotlight");spot.style.left=Math.max(4,rect.left-pad)+"px";spot.style.top=Math.max(4,rect.top-pad)+"px";spot.style.width=Math.max(20,rect.width+2*pad)+"px";spot.style.height=Math.max(20,rect.height+2*pad)+"px";placeTourTooltip(rect);animateVirtualCursorTo(rect);if(step.demo==="drag")setTimeout(runDragDemo,780);else $("tourDemoPath").classList.remove("show");}
-  function runDragDemo(){const seats=[...document.querySelectorAll("#classroom .seat")].filter(el=>el.offsetParent!==null);if(seats.length<2)return;const a=seats[1].getBoundingClientRect(),b=seats[Math.min(3,seats.length-1)].getBoundingClientRect(),x1=a.left+a.width/2,y1=a.top+a.height/2,x2=b.left+b.width/2,y2=b.top+b.height/2,dx=x2-x1,dy=y2-y1,path=$("tourDemoPath");path.style.left=x1+"px";path.style.top=y1+"px";path.style.width=Math.hypot(dx,dy)+"px";path.style.transform=`rotate(${Math.atan2(dy,dx)*180/Math.PI}deg)`;path.classList.add("show");const c=$("tourCursor");c.style.left=x1+"px";c.style.top=y1+"px";setTimeout(()=>{c.style.left=x2+"px";c.style.top=y2+"px";},350);setTimeout(()=>path.classList.remove("show"),1150);}
-  function showTourStep(){const step=tourSteps[tourIndex],target=resolveTourTarget(step);if(!target){if(tourIndex<tourSteps.length-1){tourIndex++;showTourStep();}return;}target.scrollIntoView({behavior:"smooth",block:"center",inline:"center"});$("tourTitle").textContent=step.title;$("tourText").textContent=step.text;$("tourProgress").textContent=`${tourIndex+1} / ${tourSteps.length}`;$("tourProgressBar").style.width=`${((tourIndex+1)/tourSteps.length)*100}%`;$("tourPrevBtn").disabled=tourIndex===0;$("tourNextBtn").textContent=step.final?"Lancer le tirage":"Suivant";$("tourHint").textContent="Vous contrôlez le rythme : rien n'avance sans votre clic.";setTimeout(positionTour,260);}
-  async function nextTourStep(){const step=tourSteps[tourIndex];if(step.final){$("tourOverlay").classList.remove("show");$("tourOverlay").setAttribute("aria-hidden","true");await chooseRandomStudent();setTimeout(async()=>{if(document.body.classList.contains("projection-mode")) await exitProjectionMode();restoreTourState();},3200);return;}if(step.enterProjectionAfter) await enterProjectionMode();tourIndex=Math.min(tourSteps.length-1,tourIndex+1);setTimeout(showTourStep,220);}
-  async function prevTourStep(){if(tourIndex<=0)return;if(tourIndex===tourSteps.length-1&&document.body.classList.contains("projection-mode")) await exitProjectionMode();tourIndex--;setTimeout(showTourStep,180);}
-  function refreshTourPosition(){if($("tourOverlay").classList.contains("show")) positionTour();}
-
-  function setSidebarHidden(hidden){
-    $("app").classList.toggle("sidebar-hidden",hidden);
-    $("toggleSidebarBtn").textContent=hidden ? "Afficher le panneau" : "Masquer le panneau";
-    $("showSidebarBtn").style.display=hidden ? "" : "none";
-  }
-
-  async function enterProjectionMode(){
-    document.body.classList.add("projection-mode");
-
-    try{
-      if(!document.fullscreenElement && document.documentElement.requestFullscreen){
-        await document.documentElement.requestFullscreen();
-      }
-    }catch{
-      // Le mode projection reste actif même si le navigateur refuse le plein écran.
-    }
-
-    render();
-  }
-
-  async function exitProjectionMode(){
-    document.body.classList.remove("projection-mode");
-
-    try{
-      if(document.fullscreenElement && document.exitFullscreen){
-        await document.exitFullscreen();
-      }
-    }catch{}
-
-    render();
-  }
-
-
-  $("tutorialBtn").onclick=openTutorial;
-  $("tourCloseBtn").onclick=closeTutorial;
-  $("tourNextBtn").onclick=nextTourStep;
-  $("tourPrevBtn").onclick=prevTourStep;
-
-  window.addEventListener("resize",refreshTourPosition);
-
-  document.addEventListener("keydown",e=>{
-    if(e.key==="Escape" && $("tourOverlay").classList.contains("show")){
-      closeTutorial();
-    }
-  });
-
-  $("classSelect").addEventListener("change",e=>selectClassById(e.target.value));
-  $("planClassSelect").addEventListener("change",e=>selectClassById(e.target.value));
-  $("roomSelect").addEventListener("change",e=>selectRoomById(e.target.value));
-  $("planRoomSelect").addEventListener("change",e=>selectRoomById(e.target.value));
-  $("addRoomBtn").onclick=addRoom;
-  $("deleteRoomBtn").onclick=deleteActiveRoom;
-  $("addClassBtn").onclick=addClass;
-  $("deleteClassBtn").onclick=deleteActiveClass;
-
-  $("toggleSidebarBtn").onclick=()=>{
-    setSidebarHidden(!$("app").classList.contains("sidebar-hidden"));
-  };
-  $("showSidebarBtn").onclick=()=>setSidebarHidden(false);
-
-  $("projectionBtn").onclick=enterProjectionMode;
-  $("projectionExitBtn").onclick=exitProjectionMode;
-
-  document.addEventListener("fullscreenchange",()=>{
-    if(!document.fullscreenElement && document.body.classList.contains("projection-mode")){
-      document.body.classList.remove("projection-mode");
-      render();
-    }
-    if($("tourOverlay").classList.contains("show")){
-      setTimeout(refreshTourPosition,180);
-    }
-  });
-
-  $("planDate").addEventListener("input",e=>{
-    state.date=e.target.value;
-    render();
-    autoSave();
-  });
-
-  $("resizeBtn").onclick=()=>ensureGrid($("rows").value,$("cols").value);
-
-  $("autoRowsBtn").onclick=()=>{
-    const n=Math.max(state.students.length,1);
-    const cols=Math.max(1,Number($("cols").value)||1);
-    const forbidden=state.seats.filter(s=>s.type==="forbidden").length;
-    const rows=Math.ceil((n+forbidden)/cols);
-    ensureGrid(rows,cols);
-  };
-
-  $("loadTextBtn").onclick=()=>loadStudents(parseStudents($("studentText").value));
-
-  $("studentFile").addEventListener("change",async e=>{
-    const file=e.target.files[0];
-    if(!file) return;
-    const text=await file.text();
-    loadStudents(parseStudents(text));
-    e.target.value="";
-  });
-
-  $("shuffleBtn").onclick=shuffleStudents;
-  $("pickBtn").onclick=chooseRandomStudent;
-  $("clearPickBtn").onclick=()=>{
-    state.pickedStudent=null;
-    render();
-  };
-
-  $("emptySeatBtn").onclick=()=>setSeatState("empty");
-  $("forbidSeatBtn").onclick=()=>setSeatState("forbidden");
-  $("enableSeatBtn").onclick=()=>setSeatState("normal");
-
-
-  $("printBtn").onclick=preparePrint;
-  $("newBtn").onclick=()=>{ if(confirm("Créer un nouveau plan ? Les modifications non enregistrées seront perdues.")) resetPlan(); };
-
-  $("backupAllBtn").onclick=exportAllData;
-
-  $("restoreAllFile").addEventListener("change",async e=>{
-    const file=e.target.files[0];
-    if(!file) return;
-    await restoreAllData(file);
-    e.target.value="";
-  });
-
-
-
-  state.seats=Array.from({length:state.rows*state.cols},()=>newSeat());
-  ensureDefaultClass();
-  ensureDefaultRoom();
-
-  let active=null;
-  try{ active=JSON.parse(localStorage.getItem(ACTIVE_KEY)||"null"); }catch{}
-
-  const classes=getClasses();
-  const rooms=getRooms();
-  const activeClass=classes.find(c=>c.name===active?.className) || classes[0];
-  state.className=activeClass.name;
-  state.students=Array.isArray(activeClass.students)?activeClass.students.slice():[];
-  state.roomId=rooms.some(r=>r.id===active?.roomId) ? active.roomId : rooms[0].id;
-
-  const plans=getSavedPlans();
-  const lastPlan=plans.find(p=>p.id===active?.planId)
-    || findLatestPlan(state.className,state.roomId)
-    || findLatestPlan(state.className);
-
-  if(lastPlan){
-    loadPlan(lastPlan,{silent:true});
+  if(immediate)run();else saveTimer=setTimeout(run,80);
+}
+function status(msg){
+  $("status").textContent=msg;
+  clearTimeout(status.t);
+  status.t=setTimeout(()=>$("status").textContent="",3500);
+}
+function roomById(id){return data.rooms.find(x=>x.id===id)||null}
+function classById(id){return data.classes.find(x=>x.id===id)||null}
+function planById(id){return data.plans.find(x=>x.id===id)||null}
+function activePlan(){return planById(activePlanId)}
+
+function seat(){return {present:true,student:null}}
+function buildSlots(rows,cols){return Array.from({length:rows*cols},()=>seat())}
+function normalizePlan(p){
+  p.rows=Math.max(1,Number(p.rows)||5);
+  p.cols=Math.max(1,Number(p.cols)||8);
+  if(!Array.isArray(p.slots))p.slots=buildSlots(p.rows,p.cols);
+  const n=p.rows*p.cols;
+  p.slots=p.slots.slice(0,n).map(s=>({present:s?.present!==false,student:s?.student||null}));
+  while(p.slots.length<n)p.slots.push(seat());
+}
+
+function parseStudents(text){
+  const lines=text.replace(/\r/g,"").split("\n").map(x=>x.trim()).filter(Boolean);
+  const result=[];
+  for(let line of lines){
+    if(line.includes(";"))line=line.split(";")[0];
+    else if(line.includes("\t"))line=line.split("\t")[0];
+    else if(line.includes(","))line=line.split(",")[0];
+    line=line.trim().replace(/^["']|["']$/g,"").trim();
+    if(line)result.push(line);
+  }
+  if(result.length && /^(élève|élèves|eleve|eleves|nom|name|student|students)$/i.test(result[0]))result.shift();
+  return [...new Set(result)];
+}
+function shuffle(a){
+  a=a.slice();
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}
+  return a;
+}
+
+function fillSelect(select,items,value,labelFn,emptyLabel="Aucun"){
+  select.innerHTML="";
+  if(!items.length){
+    const o=document.createElement("option");o.value="";o.textContent=emptyLabel;select.appendChild(o);return;
+  }
+  for(const item of items){
+    const o=document.createElement("option");o.value=item.id;o.textContent=labelFn(item);select.appendChild(o);
+  }
+  select.value=items.some(x=>x.id===value)?value:items[0].id;
+}
+function planLabel(p){
+  const c=classById(p.classId),r=roomById(p.roomId);
+  return `${c?.name||"Classe ?"} — ${r?.name||"Salle ?"}`;
+}
+
+function renderAll(){
+  if(selectedRoomId && !roomById(selectedRoomId))selectedRoomId=data.rooms[0]?.id||"";
+  if(selectedClassId && !classById(selectedClassId))selectedClassId=data.classes[0]?.id||"";
+  if(activePlanId && !planById(activePlanId))activePlanId=data.plans[0]?.id||"";
+
+  fillSelect($("roomManageSelect"),data.rooms,selectedRoomId,x=>x.name,"Aucune salle");
+  fillSelect($("classManageSelect"),data.classes,selectedClassId,x=>x.name,"Aucune classe");
+  fillSelect($("planClassCreate"),data.classes,data.classes[0]?.id||"",x=>x.name,"Aucune classe");
+  fillSelect($("planRoomCreate"),data.rooms,data.rooms[0]?.id||"",x=>x.name,"Aucune salle");
+  fillSelect($("planSelect"),data.plans,activePlanId,planLabel,"Aucun plan");
+  fillSelect($("mainPlanSelect"),data.plans,activePlanId,planLabel,"Aucun plan");
+
+  const room=roomById(selectedRoomId);
+  $("roomCols").value=room?.cols??8;
+  $("roomRows").value=room?.rows??5;
+
+  const cl=classById(selectedClassId);
+  $("studentText").value=cl?cl.students.join("\n"):"";
+
+  const p=activePlan();
+  $("planDate").value=p?.date||today();
+  $("deletePlanBtn").disabled=!p;
+  $("shuffleBtn").disabled=!p;
+  $("pickBtn").disabled=!p;
+
+  if(p){
+    normalizePlan(p);
+    $("displayTitle").textContent=planLabel(p);
+    $("displayMeta").textContent=`Date : ${fmtDate(p.date)} • ${p.slots.filter(s=>s.present).length} table(s)`;
   }else{
-    buildSeatsFromRoom(activeRoom());
-    syncInputs();
-    $("studentText").value=state.students.join("\n");
-    renderClassSelect();
-    renderRoomSelect();
-    render();
-    autoSave(true);
+    $("displayTitle").textContent="Aucun plan de classe";
+    $("displayMeta").textContent="Créez d’abord une salle et une classe, puis associez-les dans un plan.";
   }
-  renderSavedPlans();
+  renderClassroom();
+}
+
+function renderClassroom(){
+  const grid=$("classroom");
+  grid.innerHTML="";
+  const p=activePlan();
+  if(!p){
+    grid.style.gridTemplateColumns="1fr";
+    const msg=document.createElement("div");
+    msg.className="panel";
+    msg.style.textAlign="center";
+    msg.style.color="var(--muted)";
+    msg.textContent="Aucun plan sélectionné.";
+    grid.appendChild(msg);
+    return;
+  }
+  normalizePlan(p);
+  grid.style.gridTemplateColumns=`42px repeat(${p.cols},minmax(90px,1fr))`;
+  grid.style.gridTemplateRows=`26px repeat(${p.rows},minmax(62px,1fr))`;
+
+  const corner=document.createElement("div");corner.className="corner";grid.appendChild(corner);
+
+  for(let c=0;c<p.cols;c++){
+    const h=document.createElement("div");
+    h.className="col-head";h.textContent=`C${c+1}`;h.draggable=true;h.title="Glisser pour déplacer cette colonne";
+    h.addEventListener("dragstart",e=>{e.dataTransfer.setData("application/x-col",String(c));e.dataTransfer.effectAllowed="move"});
+    h.addEventListener("dragover",e=>{if([...e.dataTransfer.types].includes("application/x-col")){e.preventDefault();h.classList.add("drag-over")}});
+    h.addEventListener("dragleave",()=>h.classList.remove("drag-over"));
+    h.addEventListener("drop",e=>{const raw=e.dataTransfer.getData("application/x-col");if(raw!==""){e.preventDefault();moveCol(Number(raw),c)}});
+    grid.appendChild(h);
+  }
+
+  for(let r=0;r<p.rows;r++){
+    const rh=document.createElement("div");
+    rh.className="row-head";rh.textContent=`R${r+1}`;rh.draggable=true;rh.title="Glisser pour déplacer cette rangée";
+    rh.addEventListener("dragstart",e=>{e.dataTransfer.setData("application/x-row",String(r));e.dataTransfer.effectAllowed="move"});
+    rh.addEventListener("dragover",e=>{if([...e.dataTransfer.types].includes("application/x-row")){e.preventDefault();rh.classList.add("drag-over")}});
+    rh.addEventListener("dragleave",()=>rh.classList.remove("drag-over"));
+    rh.addEventListener("drop",e=>{const raw=e.dataTransfer.getData("application/x-row");if(raw!==""){e.preventDefault();moveRow(Number(raw),r)}});
+    grid.appendChild(rh);
+
+    for(let c=0;c<p.cols;c++){
+      const idx=r*p.cols+c,s=p.slots[idx];
+      const el=document.createElement("div");
+      el.dataset.index=idx;
+      el.className=s.present?"seat":"slot-empty";
+      if(s.present){
+        el.draggable=true;
+        if(s.student)el.textContent=s.student;else{el.textContent="Table libre";el.classList.add("unoccupied")}
+        el.addEventListener("dragstart",e=>{e.dataTransfer.setData("text/plain",String(idx));e.dataTransfer.effectAllowed="move"});
+        el.addEventListener("dragover",e=>{if([...e.dataTransfer.types].includes("text/plain")){e.preventDefault();el.classList.add("drag-over")}});
+        el.addEventListener("dragleave",()=>el.classList.remove("drag-over"));
+        el.addEventListener("drop",e=>{const raw=e.dataTransfer.getData("text/plain");if(raw!==""){e.preventDefault();swapSlots(Number(raw),idx)}});
+      }else{
+        el.addEventListener("dragover",e=>{if([...e.dataTransfer.types].includes("text/plain")){e.preventDefault();el.classList.add("drag-over")}});
+        el.addEventListener("dragleave",()=>el.classList.remove("drag-over"));
+        el.addEventListener("drop",e=>{const raw=e.dataTransfer.getData("text/plain");if(raw!==""){e.preventDefault();swapSlots(Number(raw),idx)}});
+      }
+      el.addEventListener("click",()=>{selectedSlot=idx;renderClassroom()});
+      if(selectedSlot===idx)el.classList.add("selected");
+      if(rouletteSlot===idx)el.classList.add("roulette-active");
+      if(pickedStudent && s.student===pickedStudent)el.classList.add("random-picked");
+      const n=document.createElement("span");n.className="idx";n.textContent=`${r+1}.${c+1}`;el.appendChild(n);
+      grid.appendChild(el);
+    }
+  }
+}
+
+function createRoom(){
+  const name=$("newRoomName").value.trim();
+  if(!name)return status("Indiquez un nom de salle.");
+  if(data.rooms.some(x=>x.name.toLowerCase()===name.toLowerCase()))return status("Cette salle existe déjà.");
+  const room={id:uid("room"),name,rows:5,cols:8};
+  data.rooms.push(room);selectedRoomId=room.id;$("newRoomName").value="";saveData(true);renderAll();status("Salle créée.");
+}
+function saveRoom(){
+  const room=roomById(selectedRoomId);if(!room)return status("Aucune salle sélectionnée.");
+  room.cols=Math.max(1,Math.min(20,Number($("roomCols").value)||8));
+  room.rows=Math.max(1,Math.min(20,Number($("roomRows").value)||5));
+  saveData(true);renderAll();status("Salle enregistrée. Les plans existants ne sont pas modifiés.");
+}
+function deleteRoom(){
+  const room=roomById(selectedRoomId);if(!room)return;
+  if(data.plans.some(p=>p.roomId===room.id))return status("Impossible : cette salle est utilisée par un plan de classe.");
+  if(!confirm(`Supprimer la salle « ${room.name} » ?`))return;
+  data.rooms=data.rooms.filter(x=>x.id!==room.id);selectedRoomId=data.rooms[0]?.id||"";saveData(true);renderAll();
+}
+
+function createClass(){
+  const name=$("newClassName").value.trim();
+  if(!name)return status("Indiquez un nom de classe.");
+  if(data.classes.some(x=>x.name.toLowerCase()===name.toLowerCase()))return status("Cette classe existe déjà.");
+  const cl={id:uid("class"),name,students:[]};
+  data.classes.push(cl);selectedClassId=cl.id;$("newClassName").value="";saveData(true);renderAll();status("Classe créée. Ajoutez maintenant ses élèves.");
+}
+function deleteClass(){
+  const cl=classById(selectedClassId);if(!cl)return;
+  if(data.plans.some(p=>p.classId===cl.id))return status("Impossible : cette classe est utilisée par un plan de classe.");
+  if(!confirm(`Supprimer la classe « ${cl.name} » ?`))return;
+  data.classes=data.classes.filter(x=>x.id!==cl.id);selectedClassId=data.classes[0]?.id||"";saveData(true);renderAll();
+}
+function loadStudents(list){
+  const cl=classById(selectedClassId);if(!cl)return status("Créez d’abord une classe.");
+  cl.students=list;saveData(true);renderAll();status(`${list.length} élève(s) enregistré(s) dans ${cl.name}.`);
+}
+
+function createOrOpenPlan(){
+  const classId=$("planClassCreate").value,roomId=$("planRoomCreate").value;
+  const cl=classById(classId),room=roomById(roomId);
+  if(!cl || !room)return status("Il faut d’abord créer une classe et une salle.");
+  let p=data.plans.find(x=>x.classId===classId && x.roomId===roomId);
+  if(!p){
+    p={id:uid("plan"),classId,roomId,date:today(),rows:room.rows,cols:room.cols,slots:buildSlots(room.rows,room.cols)};
+    data.plans.push(p);
+  }
+  activePlanId=p.id;selectedSlot=null;pickedStudent=null;saveData(true);renderAll();status(`Plan « ${planLabel(p)} » sélectionné.`);
+}
+function deletePlan(){
+  const p=activePlan();if(!p)return;
+  if(!confirm(`Supprimer le plan « ${planLabel(p)} » ?`))return;
+  data.plans=data.plans.filter(x=>x.id!==p.id);activePlanId=data.plans[0]?.id||"";selectedSlot=null;saveData(true);renderAll();
+}
+function randomPlacement(){
+  const p=activePlan();if(!p)return status("Sélectionnez un plan de classe.");
+  const cl=classById(p.classId);if(!cl)return;
+  const seats=p.slots.map((s,i)=>({s,i})).filter(x=>x.s.present).map(x=>x.i);
+  if(seats.length<cl.students.length){
+    return status(`Placement impossible : ${cl.students.length} élèves pour seulement ${seats.length} tables.`);
+  }
+  p.slots.forEach(s=>s.student=null);
+  const students=shuffle(cl.students),places=shuffle(seats);
+  students.forEach((name,k)=>p.slots[places[k]].student=name);
+  pickedStudent=null;selectedSlot=null;saveData(true);renderAll();status("Placement aléatoire effectué.");
+}
+function swapSlots(a,b){
+  const p=activePlan();if(!p||a===b)return;
+  [p.slots[a],p.slots[b]]=[p.slots[b],p.slots[a]];
+  selectedSlot=b;saveData();renderClassroom();
+}
+function moveRow(from,to){
+  const p=activePlan();if(!p||from===to)return;
+  const rows=[];for(let r=0;r<p.rows;r++)rows.push(p.slots.slice(r*p.cols,(r+1)*p.cols));
+  const [m]=rows.splice(from,1);rows.splice(to,0,m);p.slots=rows.flat();selectedSlot=null;saveData();renderClassroom();
+}
+function moveCol(from,to){
+  const p=activePlan();if(!p||from===to)return;
+  const rows=[];
+  for(let r=0;r<p.rows;r++){const row=p.slots.slice(r*p.cols,(r+1)*p.cols);const [m]=row.splice(from,1);row.splice(to,0,m);rows.push(row)}
+  p.slots=rows.flat();selectedSlot=null;saveData();renderClassroom();
+}
+function deleteSelectedTable(){
+  const p=activePlan();if(!p||selectedSlot===null)return;
+  const s=p.slots[selectedSlot];if(!s.present)return;
+  if(s.student)return status("Cette table contient un élève. Relancez le placement ou déplacez l’élève avant de supprimer la table.");
+  s.present=false;s.student=null;saveData(true);renderAll();status("Table supprimée de ce plan uniquement.");
+}
+function insertSelectedTable(){
+  const p=activePlan();if(!p||selectedSlot===null)return status("Sélectionnez d’abord un emplacement.");
+  const s=p.slots[selectedSlot];
+  if(s.present)return status("Une table existe déjà à cet emplacement.");
+  s.present=true;s.student=null;saveData(true);renderAll();status("Table insérée dans ce plan uniquement.");
+}
+
+function exportAll(){
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob),a=document.createElement("a");
+  a.href=url;a.download=`plans_de_classe_${today()}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),800);
+}
+async function importAll(file){
+  try{
+    const v=JSON.parse(await file.text());
+    if(!v||v.format!=="plans-classe-v2"||!Array.isArray(v.rooms)||!Array.isArray(v.classes)||!Array.isArray(v.plans))throw new Error("format non reconnu");
+    if(!confirm("Remplacer toutes les données locales par cette sauvegarde ?"))return;
+    data=v;activePlanId=data.activePlanId||data.plans[0]?.id||"";selectedRoomId=data.rooms[0]?.id||"";selectedClassId=data.classes[0]?.id||"";selectedSlot=null;saveData(true);renderAll();status("Toutes les données ont été importées.");
+  }catch(e){alert("Import impossible : "+e.message)}
+}
+
+/* PDF / projection */
+function preparePrint(){
+  const p=activePlan();if(!p)return status("Aucun plan à imprimer.");
+  const maxName=Math.max(0,...p.slots.map(s=>(s.student||"").length));
+  let f=9;if(p.rows>=7||p.cols>=9)f=8;if(p.rows>=10||p.cols>=12||maxName>24)f=7;
+  document.documentElement.style.setProperty("--print-font",f+"pt");window.print();
+}
+async function enterProjection(){
+  if(!activePlan())return status("Sélectionnez un plan.");
+  document.body.classList.add("projection-mode");
+  try{if(!document.fullscreenElement&&document.documentElement.requestFullscreen)await document.documentElement.requestFullscreen()}catch{}
+  renderAll();
+}
+async function exitProjection(){
+  document.body.classList.remove("projection-mode");
+  try{if(document.fullscreenElement&&document.exitFullscreen)await document.exitFullscreen()}catch{}
+  renderAll();
+}
+
+/* Tirage */
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const nextFrame=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+async function chooseRandomStudent(){
+  if(rouletteRunning)return;
+  const p=activePlan();if(!p)return;
+  const candidates=p.slots.map((s,i)=>({s,i})).filter(x=>x.s.present&&x.s.student);
+  if(!candidates.length)return status("Aucun élève placé.");
+  rouletteRunning=true;pickedStudent=null;
+  const winnerPos=Math.floor(Math.random()*candidates.length),winner=candidates[winnerPos],startPos=Math.floor(Math.random()*candidates.length);
+  const total=candidates.length+((winnerPos-startPos+candidates.length)%candidates.length)+1;
+  await sleep(40);
+  for(let step=0;step<total;step++){
+    rouletteSlot=candidates[(startPos+step)%candidates.length].i;renderClassroom();await nextFrame();
+    const q=step/Math.max(1,total-1);
+    const delay=q<.72?22:q<.88?Math.round(28+72*((q-.72)/.16)):Math.round(115+155*Math.sqrt((q-.88)/.12));
+    await sleep(delay);
+  }
+  rouletteSlot=winner.i;renderClassroom();await sleep(140);
+  rouletteSlot=null;pickedStudent=winner.s.student;rouletteRunning=false;renderAll();showWinner(pickedStudent);launchFireworks();
+}
+function showWinner(name){
+  $("winnerName").textContent=name;$("winnerOverlay").classList.remove("show");void $("winnerOverlay").offsetWidth;$("winnerOverlay").classList.add("show");
+  setTimeout(()=>$("winnerOverlay").classList.remove("show"),2600);
+}
+function launchFireworks(){
+  const c=$("fireworksCanvas"),ctx=c.getContext("2d");c.style.display="block";
+  const dpr=Math.max(1,devicePixelRatio||1);c.width=innerWidth*dpr;c.height=innerHeight*dpr;c.style.width=innerWidth+"px";c.style.height=innerHeight+"px";ctx.setTransform(dpr,0,0,dpr,0,0);
+  const colors=["#ff3b30","#ffcc00","#34c759","#007aff","#af52de","#ff9500","#fff"],parts=[];
+  const burst=(x,y)=>{for(let i=0;i<80;i++){const a=Math.random()*Math.PI*2,s=2.5+Math.random()*6;parts.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:1,d:.01+Math.random()*.013,z:1.5+Math.random()*3,col:colors[Math.floor(Math.random()*colors.length)]})}};
+  const starts=[[.18,.3,0],[.5,.2,180],[.8,.32,360],[.32,.48,600],[.68,.46,780],[.5,.32,1050]],fired=new Set(),t0=performance.now();
+  function frame(t){
+    const e=t-t0;starts.forEach((b,i)=>{if(e>=b[2]&&!fired.has(i)){fired.add(i);burst(innerWidth*b[0],innerHeight*b[1])}});
+    ctx.clearRect(0,0,innerWidth,innerHeight);ctx.globalCompositeOperation="lighter";
+    for(let i=parts.length-1;i>=0;i--){const p=parts[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.045;p.vx*=.992;p.vy*=.992;p.life-=p.d;if(p.life<=0){parts.splice(i,1);continue}ctx.globalAlpha=p.life;ctx.fillStyle=p.col;ctx.beginPath();ctx.arc(p.x,p.y,p.z,0,Math.PI*2);ctx.fill()}
+    ctx.globalAlpha=1;if(e<2700||parts.length)requestAnimationFrame(frame);else{c.style.display="none";ctx.clearRect(0,0,innerWidth,innerHeight)}
+  }requestAnimationFrame(frame);
+}
+
+/* Tutoriel animé, données fictives non sauvegardées */
+let tourStep=0,tourSnapshot=null;
+const tourSteps=[
+  ["#roomSection","1. Créer une salle","On commence par créer la salle et définir sa grille de tables."],
+  ["#classSection","2. Créer une classe","Ensuite on crée la classe, puis on charge sa liste d'élèves."],
+  ["#studentText","3. Peupler la classe","Collez les élèves ici ou importez un fichier CSV/TXT."],
+  ["#planSection","4. Créer le plan","Choisissez une classe et une salle : leur association devient un plan de classe."],
+  ["#shuffleBtn","5. Placer les élèves","Le placement aléatoire n'est possible que s'il y a assez de tables."],
+  ["#classroom","6. Modifier le plan","Les tables, rangées et colonnes se déplacent à la souris. Suppr retire une table ; I la réinsère.", "drag"],
+  ["#printBtn","7. Exporter en PDF","Ce bouton prépare une page A4 paysage à enregistrer en PDF."],
+  ["#projectionBtn","8. Vidéoprojecteur","L'étape suivante ouvre réellement le mode vidéoprojecteur.", "projection"],
+  ["#pickBtn","9. Tirer un élève","En projection, utilisez ce bouton pour le tirage animé.", "final"]
+];
+function demoSetup(){
+  tourSnapshot={data:clone(data),selectedRoomId,selectedClassId,activePlanId,selectedSlot,pickedStudent};
+  const r={id:"demo-r",name:"Salle Démo",rows:5,cols:8},c={id:"demo-c",name:"Classe Démo",students:["Alice Martin","Benoît Dupont","Chloé Bernard","David Morel","Emma Laurent","Farid Benali","Gabriel Petit","Hana Robert","Inès Simon","Jules Michel","Lina Garcia","Mathis Roux"]};
+  const p={id:"demo-p",classId:c.id,roomId:r.id,date:today(),rows:5,cols:8,slots:buildSlots(5,8)};
+  shuffle(c.students).forEach((n,i)=>p.slots[i].student=n);
+  data={format:"plans-classe-v2",rooms:[r],classes:[c],plans:[p],activePlanId:p.id};
+  selectedRoomId=r.id;selectedClassId=c.id;activePlanId=p.id;selectedSlot=null;pickedStudent=null;renderAll();
+}
+function demoRestore(){
+  if(!tourSnapshot)return;
+  data=tourSnapshot.data;selectedRoomId=tourSnapshot.selectedRoomId;selectedClassId=tourSnapshot.selectedClassId;activePlanId=tourSnapshot.activePlanId;selectedSlot=tourSnapshot.selectedSlot;pickedStudent=tourSnapshot.pickedStudent;tourSnapshot=null;renderAll();
+}
+function tourOpen(){tourStep=0;document.body.classList.remove("projection-mode");setSidebarHidden(false);demoSetup();$("tourOverlay").classList.add("show");tourShow()}
+async function tourClose(){if(document.body.classList.contains("projection-mode"))await exitProjection();$("tourOverlay").classList.remove("show");demoRestore()}
+function tourTarget(){return document.querySelector(tourSteps[tourStep][0])}
+function tourShow(){
+  const step=tourSteps[tourStep],el=tourTarget();if(!el)return;
+  el.scrollIntoView({behavior:"smooth",block:"center",inline:"center"});
+  $("tourTitle").textContent=step[1];$("tourText").textContent=step[2];$("tourProgress").textContent=`${tourStep+1} / ${tourSteps.length}`;$("tourBar").style.width=`${(tourStep+1)/tourSteps.length*100}%`;
+  $("tourPrevBtn").disabled=tourStep===0;$("tourNextBtn").textContent=step[3]==="final"?"Lancer le tirage":"Suivant";
+  setTimeout(()=>tourPosition(el,step[3]),220);
+}
+function tourPosition(el,demo){
+  const r=el.getBoundingClientRect(),pad=8,s=$("tourSpotlight");
+  s.style.left=Math.max(4,r.left-pad)+"px";s.style.top=Math.max(4,r.top-pad)+"px";s.style.width=(r.width+pad*2)+"px";s.style.height=(r.height+pad*2)+"px";
+  const tip=$("tourTooltip"),w=Math.min(390,innerWidth-24);tip.style.width=w+"px";
+  let left=Math.max(12,Math.min(innerWidth-w-12,r.left+r.width/2-w/2)),top=r.bottom+16;tip.style.left=left+"px";tip.style.top=top+"px";
+  let tr=tip.getBoundingClientRect();if(tr.bottom>innerHeight-12)top=Math.max(12,r.top-tr.height-16);tip.style.top=top+"px";
+  const cur=$("tourCursor");cur.classList.remove("clicking");cur.style.left=(r.left+r.width*.55)+"px";cur.style.top=(r.top+r.height*.55)+"px";
+  setTimeout(()=>{cur.classList.remove("clicking");void cur.offsetWidth;cur.classList.add("clicking")},580);
+  if(demo==="drag")setTimeout(tourDrag,760);else $("tourPath").classList.remove("show");
+}
+function tourDrag(){
+  const seats=[...document.querySelectorAll("#classroom .seat")];if(seats.length<4)return;
+  const a=seats[1].getBoundingClientRect(),b=seats[3].getBoundingClientRect(),x1=a.left+a.width/2,y1=a.top+a.height/2,x2=b.left+b.width/2,y2=b.top+b.height/2,dx=x2-x1,dy=y2-y1;
+  const path=$("tourPath");path.style.left=x1+"px";path.style.top=y1+"px";path.style.width=Math.hypot(dx,dy)+"px";path.style.transform=`rotate(${Math.atan2(dy,dx)*180/Math.PI}deg)`;path.classList.add("show");
+  const cur=$("tourCursor");cur.style.left=x1+"px";cur.style.top=y1+"px";setTimeout(()=>{cur.style.left=x2+"px";cur.style.top=y2+"px"},350);setTimeout(()=>path.classList.remove("show"),1150);
+}
+async function tourNext(){
+  const mode=tourSteps[tourStep][3];
+  if(mode==="final"){$("tourOverlay").classList.remove("show");await chooseRandomStudent();setTimeout(async()=>{if(document.body.classList.contains("projection-mode"))await exitProjection();demoRestore()},3200);return}
+  if(mode==="projection")await enterProjection();
+  tourStep=Math.min(tourSteps.length-1,tourStep+1);setTimeout(tourShow,200);
+}
+async function tourPrev(){
+  if(tourStep===0)return;
+  if(tourStep===tourSteps.length-1&&document.body.classList.contains("projection-mode"))await exitProjection();
+  tourStep--;setTimeout(tourShow,180);
+}
+
+/* UI */
+function setSidebarHidden(hidden){$("app").classList.toggle("sidebar-hidden",hidden);$("toggleSidebarBtn").textContent=hidden?"Afficher le panneau":"Masquer le panneau";$("showSidebarBtn").style.display=hidden?"":"none"}
+
+$("addRoomBtn").onclick=createRoom;$("saveRoomLayoutBtn").onclick=saveRoom;$("deleteRoomBtn").onclick=deleteRoom;
+$("roomManageSelect").onchange=e=>{selectedRoomId=e.target.value;renderAll()};
+$("addClassBtn").onclick=createClass;$("deleteClassBtn").onclick=deleteClass;
+$("classManageSelect").onchange=e=>{selectedClassId=e.target.value;renderAll()};
+$("loadTextBtn").onclick=()=>loadStudents(parseStudents($("studentText").value));
+$("studentFile").onchange=async e=>{const f=e.target.files[0];if(f)loadStudents(parseStudents(await f.text()));e.target.value=""};
+$("createPlanBtn").onclick=createOrOpenPlan;$("deletePlanBtn").onclick=deletePlan;$("shuffleBtn").onclick=randomPlacement;
+$("planSelect").onchange=e=>{activePlanId=e.target.value;selectedSlot=null;pickedStudent=null;saveData(true);renderAll()};
+$("mainPlanSelect").onchange=e=>{activePlanId=e.target.value;selectedSlot=null;pickedStudent=null;saveData(true);renderAll()};
+$("planDate").onchange=e=>{const p=activePlan();if(p){p.date=e.target.value;saveData(true);renderAll()}};
+$("exportAllBtn").onclick=exportAll;$("importAllFile").onchange=async e=>{const f=e.target.files[0];if(f)await importAll(f);e.target.value=""};
+$("printBtn").onclick=preparePrint;$("projectionBtn").onclick=enterProjection;$("projectionExitBtn").onclick=exitProjection;
+$("pickBtn").onclick=chooseRandomStudent;$("clearPickBtn").onclick=()=>{pickedStudent=null;renderAll()};
+$("toggleSidebarBtn").onclick=()=>setSidebarHidden(!$("app").classList.contains("sidebar-hidden"));$("showSidebarBtn").onclick=()=>setSidebarHidden(false);
+$("tutorialBtn").onclick=tourOpen;$("tourQuitBtn").onclick=tourClose;$("tourNextBtn").onclick=tourNext;$("tourPrevBtn").onclick=tourPrev;
+
+document.addEventListener("keydown",e=>{
+  if($("tourOverlay").classList.contains("show") && e.key==="Escape"){tourClose();return}
+  if(e.key==="Delete"){e.preventDefault();deleteSelectedTable()}
+  else if(e.key.toLowerCase()==="i" && !["INPUT","TEXTAREA","SELECT"].includes(document.activeElement?.tagName)){e.preventDefault();insertSelectedTable()}
+});
+document.addEventListener("fullscreenchange",()=>{if(!document.fullscreenElement&&document.body.classList.contains("projection-mode")){document.body.classList.remove("projection-mode");renderAll()}});
+window.addEventListener("resize",()=>{if($("tourOverlay").classList.contains("show")){const el=tourTarget();if(el)tourPosition(el,tourSteps[tourStep][3])}});
+
+renderAll();
 })();
 </script>
 </body>
