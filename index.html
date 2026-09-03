@@ -5,391 +5,118 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Documents</title>
   <style>
-    :root {
-      color-scheme: light dark;
-      --bg: #ffffff;
-      --fg: #2f343b;
-      --muted: #6b7280;
-      --hover: #f1f3f5;
-      --folder: #3da5f4;
-      --file: #66727f;
-      --border: #d9dee3;
-      --panel: #f6f8fa;
-      --danger: #b42318;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #17191c;
-        --fg: #e8eaed;
-        --muted: #aeb5bd;
-        --hover: #25292e;
-        --folder: #5db6f6;
-        --file: #aab4bf;
-        --border: #343a40;
-        --panel: #20242a;
-        --danger: #ff8a80;
-      }
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      font-size: 18px;
-      line-height: 1.45;
-    }
-    main {
-      max-width: 1500px;
-      margin: 0 auto;
-      padding: 18px 22px 50px;
-    }
-    .toolbar {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-    h1 {
-      margin: 0 auto 0 0;
-      font-size: 1.35rem;
-      font-weight: 650;
-    }
-    button, input { font: inherit; }
-    button {
-      border: 1px solid var(--border);
-      background: var(--panel);
-      color: var(--fg);
-      border-radius: 7px;
-      padding: 7px 11px;
-      cursor: pointer;
-    }
-    button:hover { background: var(--hover); }
-    #search {
-      width: min(360px, 100%);
-      border: 1px solid var(--border);
-      background: var(--bg);
-      color: var(--fg);
-      border-radius: 7px;
-      padding: 7px 10px;
-    }
-    #status {
-      min-height: 1.4em;
-      margin: 0 0 8px;
-      color: var(--muted);
-      font-size: .9rem;
-    }
-    #status.error { color: var(--danger); }
-    .tree, .tree ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .tree ul { margin-left: 28px; }
-    details { margin: 2px 0; }
-    summary {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-height: 42px;
-      padding: 5px 8px;
-      border-radius: 7px;
-      cursor: pointer;
-      user-select: none;
-      list-style: none;
-    }
-    summary::-webkit-details-marker { display: none; }
-    summary:hover, .file:hover { background: var(--hover); }
-    .chevron {
-      width: 10px;
-      height: 10px;
-      flex: 0 0 auto;
-      border-right: 2px solid var(--muted);
-      border-bottom: 2px solid var(--muted);
-      transform: rotate(-45deg);
-      transition: transform .14s ease;
-      margin-right: 2px;
-    }
-    details[open] > summary > .chevron { transform: rotate(45deg); }
-    .folder-icon {
-      width: 23px;
-      height: 16px;
-      flex: 0 0 auto;
-      background: var(--folder);
-      border-radius: 3px;
-      position: relative;
-    }
-    .folder-icon::before {
-      content: "";
-      position: absolute;
-      left: 2px;
-      top: -5px;
-      width: 10px;
-      height: 6px;
-      border-radius: 3px 3px 0 0;
-      background: var(--folder);
-    }
-    .file {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-height: 42px;
-      margin: 2px 0;
-      padding: 5px 8px 5px 31px;
-      border-radius: 7px;
-      color: inherit;
-      text-decoration: none;
-    }
-    .file-icon {
-      width: 18px;
-      height: 23px;
-      flex: 0 0 auto;
-      border: 2px solid var(--file);
-      border-radius: 2px;
-      position: relative;
-    }
-    .file-icon::before {
-      content: "";
-      position: absolute;
-      right: -2px;
-      top: -2px;
-      width: 7px;
-      height: 7px;
-      background: var(--bg);
-      border-left: 2px solid var(--file);
-      border-bottom: 2px solid var(--file);
-    }
-    .name { overflow-wrap: anywhere; }
-    .loading {
-      margin: 5px 0 5px 31px;
-      color: var(--muted);
-      font-size: .9rem;
-    }
-    .hidden-by-search { display: none !important; }
-    @media (max-width: 700px) {
-      main { padding: 10px; }
-      body { font-size: 16px; }
-      .tree ul { margin-left: 15px; }
-      .toolbar { align-items: stretch; }
-      h1 { width: 100%; }
-      #search { width: 100%; }
-    }
+    :root { color-scheme:light dark; --bg:#f4f7fb; --surface:#fff; --fg:#172033; --muted:#687386;
+      --hover:#f0f5ff; --accent:#2563eb; --accent-soft:#dbeafe; --folder:#f5b82e; --folder-dark:#d89400;
+      --file:#7c8ba1; --border:#e3e9f2; --line:#d7dfeb; --shadow:0 18px 45px rgba(31,45,74,.10); }
+    @media (prefers-color-scheme:dark) { :root { --bg:#10141d; --surface:#181e29; --fg:#edf2fa; --muted:#9ca8ba;
+      --hover:#202a3a; --accent:#70a5ff; --accent-soft:#1d3966; --folder:#f2bd43; --folder-dark:#d99b16;
+      --file:#9aa8bb; --border:#293344; --line:#344054; --shadow:0 18px 45px rgba(0,0,0,.28); } }
+    * { box-sizing:border-box }
+    body { margin:0; min-height:100vh; background:radial-gradient(circle at 15% 0,rgba(37,99,235,.10),transparent 28rem),var(--bg);
+      color:var(--fg); font:17px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif }
+    main { max-width:1180px; margin:auto; padding:48px 24px 70px }
+    .hero { margin-bottom:28px }
+    .eyebrow { margin:0 0 8px; color:var(--accent); font-size:.78rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase }
+    h1 { margin:0; font-size:clamp(2rem,5vw,3.35rem); line-height:1.08; letter-spacing:-.045em }
+    .subtitle { max-width:650px; margin:12px 0 0; color:var(--muted) }
+    .explorer { overflow:hidden; border:1px solid var(--border); border-radius:18px; background:var(--surface); box-shadow:var(--shadow) }
+    .toolbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:16px; border-bottom:1px solid var(--border) }
+    button,input { font:inherit }
+    button,#search { border:1px solid var(--border); background:var(--surface); color:var(--fg); border-radius:10px; padding:9px 13px }
+    button { cursor:pointer; font-weight:650; transition:.15s ease } button:hover { color:var(--accent); border-color:var(--accent); background:var(--hover) }
+    .search-wrap { position:relative; flex:1; min-width:220px }
+    .search-wrap::before { content:"⌕"; position:absolute; left:13px; top:50%; color:var(--muted); font-size:1.35rem; transform:translateY(-55%) }
+    #search { width:100%; padding-left:39px; background:var(--bg); outline:none } #search:focus { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft) }
+    #count { flex:none; margin:0; padding:5px 10px; border-radius:999px; color:var(--accent); background:var(--accent-soft); font-size:.82rem; font-weight:750 }
+    .tree-wrap { padding:14px 18px 22px }
+    .tree,.tree ul { list-style:none; padding:0; margin:0 }
+    .tree ul { position:relative; margin-left:25px; padding-left:20px; border-left:1px solid var(--line) }
+    details { margin:3px 0 }
+    summary,.file { display:flex; align-items:center; gap:11px; min-height:45px; padding:6px 10px; border-radius:10px }
+    summary { cursor:pointer; user-select:none; list-style:none } summary::-webkit-details-marker { display:none }
+    summary:hover,.file:hover { background:var(--hover) }
+    .chevron { width:10px; height:10px; flex:none; border-right:2px solid var(--muted);
+      border-bottom:2px solid var(--muted); transform:rotate(-45deg); transition:transform .14s; margin-right:2px }
+    details[open]>summary>.chevron { transform:rotate(45deg) }
+    .folder-icon { width:24px; height:17px; flex:none; background:linear-gradient(135deg,var(--folder),var(--folder-dark)); border-radius:4px; position:relative; box-shadow:inset 0 1px rgba(255,255,255,.35) }
+    .folder-icon::before { content:""; position:absolute; left:2px; top:-5px; width:10px; height:6px;
+      border-radius:3px 3px 0 0; background:var(--folder) }
+    .file { padding-left:33px; color:inherit; text-decoration:none }
+    .file-icon { width:18px; height:23px; flex:none; border:2px solid var(--file); border-radius:2px; position:relative }
+    .file-icon::before { content:""; position:absolute; right:-2px; top:-2px; width:7px; height:7px;
+      background:var(--bg); border-left:2px solid var(--file); border-bottom:2px solid var(--file) }
+    .name { overflow-wrap:anywhere } summary .name { font-weight:680 }
+    .folder-count { margin-left:auto; min-width:25px; padding:2px 7px; border-radius:999px; color:var(--muted); background:var(--bg); font-size:.74rem; text-align:center }
+    .open-icon { margin-left:auto; color:var(--muted); opacity:0; transition:.15s } .file:hover .open-icon { opacity:1; transform:translate(2px,-2px) }
+    .hidden-by-search { display:none!important }
+    @media (max-width:700px) { main { padding:28px 10px 40px } body { font-size:16px } .tree-wrap { padding:10px 7px 18px }
+      .tree ul { margin-left:10px; padding-left:9px } .toolbar { align-items:stretch } .search-wrap { flex-basis:100% }
+      button { flex:1 } .file { padding-left:26px } }
   </style>
 </head>
 <body>
 <main>
-  <div class="toolbar">
-    <h1 id="title">Documents</h1>
-    <input id="search" type="search" placeholder="Rechercher…" aria-label="Rechercher">
-    <button id="expandAll" type="button">Tout déplier</button>
-    <button id="collapseAll" type="button">Tout replier</button>
-  </div>
-  <p id="status">Chargement…</p>
-  <ul id="tree" class="tree"></ul>
+  <header class="hero">
+    <p class="eyebrow">Espace documentaire</p>
+    <h1>Mes documents</h1>
+    <p class="subtitle">Parcourez les dossiers ou recherchez directement un cours, une fiche ou un exercice.</p>
+  </header>
+  <section class="explorer" aria-label="Explorateur de documents">
+    <div class="toolbar">
+      <div class="search-wrap">
+        <input id="search" type="search" placeholder="Rechercher un document…" aria-label="Rechercher">
+      </div>
+      <p id="count"></p>
+      <button id="expandAll" type="button">Tout déplier</button>
+      <button id="collapseAll" type="button">Tout replier</button>
+    </div>
+    <div class="tree-wrap">
+      <ul id="tree" class="tree">
+<li data-name="2nde 6" data-kind="folder"><details><summary><span class="chevron"></span><span class="folder-icon"></span><span class="name">2NDE 6</span><span class="folder-count">1</span></summary><ul><li data-name="2026-s36" data-kind="folder"><details><summary><span class="chevron"></span><span class="folder-icon"></span><span class="name">2026-S36</span><span class="folder-count">2</span></summary><ul><li data-name="2026-09-02 08 30-09 25 mathematiques - 2nde 6" data-kind="folder"><details><summary><span class="chevron"></span><span class="folder-icon"></span><span class="name">2026-09-02 08 30-09 25 MATHEMATIQUES - 2NDE 6</span><span class="folder-count">3</span></summary><ul><li data-name="cours n°1 nombres réels et intervalles - leçon.pdf" data-kind="file"><a class="file" href="documents/2NDE%206/2026-S36/2026-09-02%2008%2030-09%2025%20MATHEMATIQUES%20-%202NDE%206/Cours%20N%C2%B01%20Nombres%20r%C3%A9els%20et%20intervalles%20-%20Le%C3%A7on.pdf" target="_blank" rel="noopener"><span class="file-icon"></span><span class="name">Cours N°1 Nombres réels et intervalles - Leçon.pdf</span><span class="open-icon" aria-hidden="true">↗</span></a></li>
+<li data-name="fiche n°1 révisions collège - exercices et réponses mélangées.pdf" data-kind="file"><a class="file" href="documents/2NDE%206/2026-S36/2026-09-02%2008%2030-09%2025%20MATHEMATIQUES%20-%202NDE%206/Fiche%20N%C2%B01%20R%C3%A9visions%20coll%C3%A8ge%20-%20Exercices%20et%20r%C3%A9ponses%20m%C3%A9lang%C3%A9es.pdf" target="_blank" rel="noopener"><span class="file-icon"></span><span class="name">Fiche N°1 Révisions collège - Exercices et réponses mélangées.pdf</span><span class="open-icon" aria-hidden="true">↗</span></a></li>
+<li data-name="fiche n°1 révisions collège - exercices et solutions.pdf" data-kind="file"><a class="file" href="documents/2NDE%206/2026-S36/2026-09-02%2008%2030-09%2025%20MATHEMATIQUES%20-%202NDE%206/Fiche%20N%C2%B01%20R%C3%A9visions%20coll%C3%A8ge%20-%20Exercices%20et%20solutions.pdf" target="_blank" rel="noopener"><span class="file-icon"></span><span class="name">Fiche N°1 Révisions collège - Exercices et solutions.pdf</span><span class="open-icon" aria-hidden="true">↗</span></a></li></ul></details></li>
+<li data-name="2026-09-04 16 05-16 55 mathematiques - 2nde 6" data-kind="folder"><details><summary><span class="chevron"></span><span class="folder-icon"></span><span class="name">2026-09-04 16 05-16 55 MATHEMATIQUES - 2NDE 6</span><span class="folder-count">2</span></summary><ul><li data-name="fiche n°2 intervalles - exercices et réponses mélangées.pdf" data-kind="file"><a class="file" href="documents/2NDE%206/2026-S36/2026-09-04%2016%2005-16%2055%20MATHEMATIQUES%20-%202NDE%206/Fiche%20N%C2%B02%20Intervalles%20-%20Exercices%20et%20r%C3%A9ponses%20m%C3%A9lang%C3%A9es.pdf" target="_blank" rel="noopener"><span class="file-icon"></span><span class="name">Fiche N°2 Intervalles - Exercices et réponses mélangées.pdf</span><span class="open-icon" aria-hidden="true">↗</span></a></li>
+<li data-name="fiche n°2 intervalles - exercices et solutions.pdf" data-kind="file"><a class="file" href="documents/2NDE%206/2026-S36/2026-09-04%2016%2005-16%2055%20MATHEMATIQUES%20-%202NDE%206/Fiche%20N%C2%B02%20Intervalles%20-%20Exercices%20et%20solutions.pdf" target="_blank" rel="noopener"><span class="file-icon"></span><span class="name">Fiche N°2 Intervalles - Exercices et solutions.pdf</span><span class="open-icon" aria-hidden="true">↗</span></a></li></ul></details></li></ul></details></li></ul></details></li>
+<li data-name="2nde 8" data-kind="folder"><details><summary><span class="chevron"></span><span class="folder-icon"></span><span class="name">2NDE 8</span><span class="folder-count">1</span></summary><ul><li data-name="2026-s36" data-kind="folder"><details><summary><span class="chevron"></span><span class="folder-icon"></span><span class="name">2026-S36</span><span class="folder-count">2</span></summary><ul><li data-name="2026-09-02 10 35-11 30 mathematiques - 2nde 8" data-kind="folder"><details><summary><span class="chevron"></span><span class="folder-icon"></span><span class="name">2026-09-02 10 35-11 30 MATHEMATIQUES - 2NDE 8</span><span class="folder-count">3</span></summary><ul><li data-name="cours n°1 nombres réels et intervalles - leçon.pdf" data-kind="file"><a class="file" href="documents/2NDE%208/2026-S36/2026-09-02%2010%2035-11%2030%20MATHEMATIQUES%20-%202NDE%208/Cours%20N%C2%B01%20Nombres%20r%C3%A9els%20et%20intervalles%20-%20Le%C3%A7on.pdf" target="_blank" rel="noopener"><span class="file-icon"></span><span class="name">Cours N°1 Nombres réels et intervalles - Leçon.pdf</span><span class="open-icon" aria-hidden="true">↗</span></a></li>
+<li data-name="fiche n°1 révisions collège - exercices et réponses mélangées.pdf" data-kind="file"><a class="file" href="documents/2NDE%208/2026-S36/2026-09-02%2010%2035-11%2030%20MATHEMATIQUES%20-%202NDE%208/Fiche%20N%C2%B01%20R%C3%A9visions%20coll%C3%A8ge%20-%20Exercices%20et%20r%C3%A9ponses%20m%C3%A9lang%C3%A9es.pdf" target="_blank" rel="noopener"><span class="file-icon"></span><span class="name">Fiche N°1 Révisions collège - Exercices et réponses mélangées.pdf</span><span class="open-icon" aria-hidden="true">↗</span></a></li>
+<li data-name="fiche n°1 révisions collège - exercices et solutions.pdf" data-kind="file"><a class="file" href="documents/2NDE%208/2026-S36/2026-09-02%2010%2035-11%2030%20MATHEMATIQUES%20-%202NDE%208/Fiche%20N%C2%B01%20R%C3%A9visions%20coll%C3%A8ge%20-%20Exercices%20et%20solutions.pdf" target="_blank" rel="noopener"><span class="file-icon"></span><span class="name">Fiche N°1 Révisions collège - Exercices et solutions.pdf</span><span class="open-icon" aria-hidden="true">↗</span></a></li></ul></details></li>
+<li data-name="2026-09-04 15 00-15 55 mathematiques - 2nde 8" data-kind="folder"><details><summary><span class="chevron"></span><span class="folder-icon"></span><span class="name">2026-09-04 15 00-15 55 MATHEMATIQUES - 2NDE 8</span><span class="folder-count">2</span></summary><ul><li data-name="fiche n°2 intervalles - exercices et réponses mélangées.pdf" data-kind="file"><a class="file" href="documents/2NDE%208/2026-S36/2026-09-04%2015%2000-15%2055%20MATHEMATIQUES%20-%202NDE%208/Fiche%20N%C2%B02%20Intervalles%20-%20Exercices%20et%20r%C3%A9ponses%20m%C3%A9lang%C3%A9es.pdf" target="_blank" rel="noopener"><span class="file-icon"></span><span class="name">Fiche N°2 Intervalles - Exercices et réponses mélangées.pdf</span><span class="open-icon" aria-hidden="true">↗</span></a></li>
+<li data-name="fiche n°2 intervalles - exercices et solutions.pdf" data-kind="file"><a class="file" href="documents/2NDE%208/2026-S36/2026-09-04%2015%2000-15%2055%20MATHEMATIQUES%20-%202NDE%208/Fiche%20N%C2%B02%20Intervalles%20-%20Exercices%20et%20solutions.pdf" target="_blank" rel="noopener"><span class="file-icon"></span><span class="name">Fiche N°2 Intervalles - Exercices et solutions.pdf</span><span class="open-icon" aria-hidden="true">↗</span></a></li></ul></details></li></ul></details></li></ul></details></li>
+<li data-name="tmathsg3" data-kind="folder"><details><summary><span class="chevron"></span><span class="folder-icon"></span><span class="name">TMATHSG3</span><span class="folder-count">1</span></summary><ul><li data-name="2026-s36" data-kind="folder"><details><summary><span class="chevron"></span><span class="folder-icon"></span><span class="name">2026-S36</span><span class="folder-count">1</span></summary><ul><li data-name="2026-09-03 08 30-10 25 mathematiques - [tmathsg3] - tb tmathsg3, tc tmathsg3, tf tmathsg3" data-kind="folder"><details><summary><span class="chevron"></span><span class="folder-icon"></span><span class="name">2026-09-03 08 30-10 25 MATHEMATIQUES - [TMATHSG3] - TB TMATHSG3, TC TMATHSG3, TF TMATHSG3</span><span class="folder-count">3</span></summary><ul><li data-name="cours n°1 le raisonnement par récurrence - leçon.pdf" data-kind="file"><a class="file" href="documents/TMATHSG3/2026-S36/2026-09-03%2008%2030-10%2025%20MATHEMATIQUES%20-%20%5BTMATHSG3%5D%20-%20TB%20TMATHSG3%2C%20TC%20TMATHSG3%2C%20TF%20TMATHSG3/Cours%20N%C2%B01%20Le%20raisonnement%20par%20r%C3%A9currence%20-%20Le%C3%A7on.pdf" target="_blank" rel="noopener"><span class="file-icon"></span><span class="name">Cours N°1 Le raisonnement par récurrence - Leçon.pdf</span><span class="open-icon" aria-hidden="true">↗</span></a></li>
+<li data-name="fiche n°1 révisions de première - exercices et solutions.pdf" data-kind="file"><a class="file" href="documents/TMATHSG3/2026-S36/2026-09-03%2008%2030-10%2025%20MATHEMATIQUES%20-%20%5BTMATHSG3%5D%20-%20TB%20TMATHSG3%2C%20TC%20TMATHSG3%2C%20TF%20TMATHSG3/Fiche%20N%C2%B01%20R%C3%A9visions%20de%20premi%C3%A8re%20-%20Exercices%20et%20solutions.pdf" target="_blank" rel="noopener"><span class="file-icon"></span><span class="name">Fiche N°1 Révisions de première - Exercices et solutions.pdf</span><span class="open-icon" aria-hidden="true">↗</span></a></li>
+<li data-name="fiche n°2 raisonnement par récurrence - exercices seuls.pdf" data-kind="file"><a class="file" href="documents/TMATHSG3/2026-S36/2026-09-03%2008%2030-10%2025%20MATHEMATIQUES%20-%20%5BTMATHSG3%5D%20-%20TB%20TMATHSG3%2C%20TC%20TMATHSG3%2C%20TF%20TMATHSG3/Fiche%20N%C2%B02%20Raisonnement%20par%20r%C3%A9currence%20-%20Exercices%20seuls.pdf" target="_blank" rel="noopener"><span class="file-icon"></span><span class="name">Fiche N°2 Raisonnement par récurrence - Exercices seuls.pdf</span><span class="open-icon" aria-hidden="true">↗</span></a></li></ul></details></li></ul></details></li></ul></details></li>
+      </ul>
+    </div>
+  </section>
 </main>
-
 <script>
-/* ============================================================
-   CONFIGURATION — À MODIFIER
-   ============================================================ */
-const GITHUB_USER = "";
-const GITHUB_REPO = "";
-const BRANCH = "main";
-const ROOT_FOLDER = "documents";
-/* ============================================================ */
+  const tree = document.getElementById("tree");
+  const search = document.getElementById("search");
+  const count = document.getElementById("count");
+  const files = tree.querySelectorAll("a.file");
+  count.textContent = `${files.length} document${files.length > 1 ? "s" : ""}`;
 
-const API_BASE =
-  `https://api.github.com/repos/${encodeURIComponent(GITHUB_USER)}/${encodeURIComponent(GITHUB_REPO)}/contents`;
+  document.getElementById("expandAll").addEventListener("click", () =>
+    tree.querySelectorAll("details").forEach(details => details.open = true));
+  document.getElementById("collapseAll").addEventListener("click", () =>
+    tree.querySelectorAll("details").forEach(details => details.open = false));
 
-const tree = document.getElementById("tree");
-const status = document.getElementById("status");
-const title = document.getElementById("title");
-const search = document.getElementById("search");
-
-title.textContent = ROOT_FOLDER || GITHUB_REPO;
-
-function apiPath(path) {
-  if (!path) return API_BASE;
-  return API_BASE + "/" + path.split("/").map(encodeURIComponent).join("/");
-}
-
-function siteHref(path) {
-  const base = new URL("./", window.location.href);
-  const encoded = path.split("/").map(encodeURIComponent).join("/");
-  return new URL(encoded, base).href;
-}
-
-async function getContents(path) {
-  const url = new URL(apiPath(path));
-
-  const response = await fetch(url, {
-    headers: { "Accept": "application/vnd.github+json" }
-  });
-
-  if (!response.ok) {
-    let detail = "";
-    try {
-      const data = await response.json();
-      detail = data.message ? ` — ${data.message}` : "";
-    } catch (_) {}
-
-    if (response.status === 403) {
-      throw new Error(
-        "Accès refusé ou limite de l’API GitHub atteinte. " +
-        "L’API publique non authentifiée est limitée en nombre de requêtes." + detail
-      );
+  search.addEventListener("input", () => {
+    const query = search.value.trim().toLocaleLowerCase("fr");
+    const rows = [...tree.querySelectorAll("li")];
+    if (!query) {
+      rows.forEach(row => row.classList.remove("hidden-by-search"));
+      return;
     }
-    if (response.status === 404) {
-      throw new Error(
-        `Dossier introuvable : "${path || "/"}". Vérifiez GITHUB_USER, GITHUB_REPO, BRANCH et ROOT_FOLDER.` + detail
-      );
-    }
-    throw new Error(`Erreur GitHub ${response.status}${detail}`);
-  }
-
-  const data = await response.json();
-  if (!Array.isArray(data)) {
-    throw new Error(`"${path}" n’est pas un dossier.`);
-  }
-
-  return data.sort((a, b) => {
-    if (a.type !== b.type) return a.type === "dir" ? -1 : 1;
-    return a.name.localeCompare(b.name, "fr", { numeric: true, sensitivity: "base" });
-  });
-}
-
-function folderRow(item) {
-  const li = document.createElement("li");
-  li.dataset.name = item.name.toLocaleLowerCase("fr");
-
-  const details = document.createElement("details");
-  details.dataset.loaded = "false";
-  details.dataset.path = item.path;
-
-  const summary = document.createElement("summary");
-  summary.innerHTML =
-    `<span class="chevron"></span>` +
-    `<span class="folder-icon"></span>` +
-    `<span class="name"></span>`;
-  summary.querySelector(".name").textContent = item.name;
-
-  const children = document.createElement("ul");
-  children.innerHTML = `<li class="loading">Chargement…</li>`;
-
-  details.append(summary, children);
-  li.append(details);
-
-  details.addEventListener("toggle", async () => {
-    if (!details.open || details.dataset.loaded === "true" || details.dataset.loaded === "loading") return;
-
-    details.dataset.loaded = "loading";
-    try {
-      const items = await getContents(item.path);
-      children.replaceChildren(...items.map(makeRow));
-      details.dataset.loaded = "true";
-      applySearch();
-    } catch (e) {
-      children.innerHTML = "";
-      const err = document.createElement("li");
-      err.className = "loading";
-      err.textContent = e.message;
-      children.append(err);
-      details.dataset.loaded = "false";
+    for (const row of rows.reverse()) {
+      const ownMatch = (row.dataset.name || "").includes(query);
+      const children = [...row.querySelectorAll(":scope > details > ul > li")];
+      const childMatch = children.some(child => !child.classList.contains("hidden-by-search"));
+      row.classList.toggle("hidden-by-search", !ownMatch && !childMatch);
+      const details = row.querySelector(":scope > details");
+      if (details && childMatch) details.open = true;
     }
   });
-
-  return li;
-}
-
-function fileRow(item) {
-  const li = document.createElement("li");
-  li.dataset.name = item.name.toLocaleLowerCase("fr");
-
-  const a = document.createElement("a");
-  a.className = "file";
-  a.href = siteHref(item.path);
-  a.target = "_blank";
-  a.rel = "noopener";
-  a.innerHTML = `<span class="file-icon"></span><span class="name"></span>`;
-  a.querySelector(".name").textContent = item.name;
-
-  li.append(a);
-  return li;
-}
-
-function makeRow(item) {
-  return item.type === "dir" ? folderRow(item) : fileRow(item);
-}
-
-async function loadRoot() {
-  status.className = "";
-  status.textContent = "Chargement…";
-
-  try {
-    const items = await getContents(ROOT_FOLDER);
-    tree.replaceChildren(...items.map(makeRow));
-    status.textContent = "";
-  } catch (e) {
-    tree.replaceChildren();
-    status.className = "error";
-    status.textContent = e.message;
-  }
-}
-
-async function expandRecursively(details) {
-  if (!details.open) details.open = true;
-
-  while (details.dataset.loaded === "loading") {
-    await new Promise(r => setTimeout(r, 50));
-  }
-
-  if (details.dataset.loaded !== "true") return;
-
-  const nested = [...details.querySelectorAll(":scope > ul > li > details")];
-  for (const child of nested) {
-    await expandRecursively(child);
-  }
-}
-
-document.getElementById("expandAll").addEventListener("click", async () => {
-  status.className = "";
-  status.textContent = "Déploiement de l’arborescence…";
-  const roots = [...tree.querySelectorAll(":scope > li > details")];
-  for (const d of roots) await expandRecursively(d);
-  status.textContent = "";
-});
-
-document.getElementById("collapseAll").addEventListener("click", () => {
-  [...tree.querySelectorAll("details")].forEach(d => d.open = false);
-});
-
-function applySearch() {
-  const q = search.value.trim().toLocaleLowerCase("fr");
-
-  if (!q) {
-    [...tree.querySelectorAll("li")].forEach(li => li.classList.remove("hidden-by-search"));
-    return;
-  }
-
-  const all = [...tree.querySelectorAll("li")];
-  for (const li of all.reverse()) {
-    const ownName = li.dataset.name || "";
-    const ownMatch = ownName.includes(q);
-    const children = [...li.querySelectorAll(":scope > details > ul > li")];
-    const childMatch = children.some(child => !child.classList.contains("hidden-by-search"));
-
-    const keep = ownMatch || childMatch;
-    li.classList.toggle("hidden-by-search", !keep);
-
-    const d = li.querySelector(":scope > details");
-    if (keep && d && childMatch) d.open = true;
-  }
-}
-
-search.addEventListener("input", applySearch);
-
-loadRoot();
 </script>
 </body>
 </html>
