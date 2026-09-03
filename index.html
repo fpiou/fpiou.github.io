@@ -222,7 +222,6 @@ function siteHref(path) {
 
 async function getContents(path) {
   const url = new URL(apiPath(path));
-  url.searchParams.set("ref", BRANCH);
 
   const response = await fetch(url, {
     headers: { "Accept": "application/vnd.github+json" }
