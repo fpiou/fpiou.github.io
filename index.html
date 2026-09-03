@@ -1,123 +1,497 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fr">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="mobile-web-app-capable" content="yes">
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
-    <link rel="manifest" href="/favicon_io/site.webmanifest" />
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
-        integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
-
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
-        integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
-        crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
-        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-        crossorigin="anonymous"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.min.js"></script>
-
-    <!--Styles personnalisés-->
-    <link rel="stylesheet" href="/src/css/main.css">
-
-
-    <!--Scripts personnalisés-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <script defer src="/dist/main.bundle.js"></script>
-    <style>
-        /* Vous pouvez ajouter des styles ici pour personnaliser l'apparence */
-        .welcome-container {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            border: 1px solid #e0e0e0;
-            margin: 20px;
-            border-radius: 10px;
-            background-color: #f9f9f9;
-        }
-        .welcome-container h1 {
-            color: #333;
-        }
-        .welcome-container p {
-            color: #555;
-            line-height: 1.5;
-        }
-    </style>
-
-    <title>Accueil</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explorateur de fichiers</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f5f7fb;
+    --panel: #ffffff;
+    --text: #172033;
+    --muted: #667085;
+    --line: #e4e7ec;
+    --accent: #2563eb;
+    --hover: #eef4ff;
+    --folder: #d68a00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111827;
+      --panel: #18212f;
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      --line: #334155;
+      --accent: #60a5fa;
+      --hover: #243247;
+      --folder: #f5b942;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--panel);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 18px;
+  }
+  .topbar {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  h1 {
+    font-size: 18px;
+    margin: 0;
+    white-space: nowrap;
+  }
+  .breadcrumbs {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: thin;
+  }
+  .breadcrumbs button {
+    border: 0;
+    background: transparent;
+    color: var(--accent);
+    cursor: pointer;
+    font: inherit;
+    padding: 5px 6px;
+    border-radius: 6px;
+  }
+  .breadcrumbs button:hover { background: var(--hover); }
+  .sep { color: var(--muted); }
+  main {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 0 16px 40px;
+  }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,.04);
+  }
+  .toolbar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .toolbar button, .toolbar input {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    color: var(--text);
+    border-radius: 8px;
+    min-height: 38px;
+    font: inherit;
+  }
+  .toolbar button {
+    padding: 0 12px;
+    cursor: pointer;
+  }
+  .toolbar button:hover { background: var(--hover); }
+  .toolbar input {
+    flex: 1;
+    padding: 0 11px;
+  }
+  .status {
+    padding: 10px 14px;
+    color: var(--muted);
+    font-size: 13px;
+    border-bottom: 1px solid var(--line);
+  }
+  .list { width: 100%; border-collapse: collapse; }
+  .list th, .list td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    vertical-align: middle;
+  }
+  .list th {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .list tr:last-child td { border-bottom: 0; }
+  .list tbody tr:hover { background: var(--hover); }
+  .name {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+  }
+  .name a, .name button {
+    color: var(--text);
+    text-decoration: none;
+    font: inherit;
+    font-weight: 550;
+    overflow-wrap: anywhere;
+  }
+  .name button {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+  }
+  .name a:hover, .name button:hover { color: var(--accent); text-decoration: underline; }
+  .icon { width: 22px; text-align: center; font-size: 18px; flex: 0 0 22px; }
+  .folder .icon { color: var(--folder); }
+  .muted { color: var(--muted); font-size: 13px; }
+  .empty, .error {
+    padding: 28px 16px;
+    text-align: center;
+    color: var(--muted);
+  }
+  .error { color: #b42318; }
+  @media (max-width: 680px) {
+    .topbar { align-items: flex-start; flex-direction: column; }
+    .breadcrumbs { width: 100%; }
+    .hide-mobile { display: none; }
+    .toolbar { flex-wrap: wrap; }
+    .toolbar input { flex-basis: 100%; order: 2; }
+  }
+</style>
 </head>
 <body>
-    <div class="sidebar" id="sidebar">
-        <button class="closebtn" onclick="toggleSidebar()">×</button>
-        <nav class="navbar">
-            <ul>
-                <!-- <li class="dropdown">
-                    <a href="#" class="dropbtn"><i class="fas fa-book"></i> Cours</a>
-                    <div class="dropdown-content">
-                        <a href="/lessons_2nde.html">Seconde</a>
-                        <a href="/lessons_1ereGenerale.html">Première</a>
-                        <a href="/lessons_1ereSpecialite.html">Première spécialité</a>
-                    </div>
-                </li> -->
-                <li>
-                    <a href="/index.html"><i class="fas fa-home"></i> Accueil</a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropbtn"><i class="fas fa-pencil-alt"></i> Cours</a>
-                    <div class="dropdown-content">
-                        <a href="/exercices_2nde.html">Seconde</a>
-                        <a href="/exercices_1ereGenerale.html">Première spécifique</a>
-                        <a href="/exercices_1ereSpecialite.html">Première spécialité</a>
-                    </div>
-                </li>
-                <!-- <li class="dropdown">
-                    <a href="#" class="dropbtn"><i class="fas fa-question-circle"></i> Quizs</a>
-                    <div class="dropdown-content">
-                        <a href="/quizs_2nde.html">Seconde</a>
-                        <a href="/quizs_1reGenerale.html">Première</a>
-                        <a href="/quizs_1ereSpecialite.html">Première spécialité</a>
-                    </div>
-                </li> -->
-            </ul>
-        </nav>
+<header>
+  <div class="topbar">
+    <h1>📁 Explorateur</h1>
+    <nav id="breadcrumbs" class="breadcrumbs" aria-label="Fil d’Ariane"></nav>
+  </div>
+</header>
+
+<main>
+  <section class="card">
+    <div class="toolbar">
+      <button id="upBtn" type="button" title="Dossier parent">⬆ Parent</button>
+      <button id="refreshBtn" type="button" title="Actualiser">↻ Actualiser</button>
+      <input id="search" type="search" placeholder="Filtrer les fichiers et dossiers…" autocomplete="off">
     </div>
-    <button id="openbtn" onclick="toggleSidebar()">☰</button>
-    
-<div class="welcome-container">
-    <h1>📚 Bienvenue sur L'axiome du choix ! 📚</h1>
-    <p>Vous êtes au bon endroit pour vos cours de mathématiques du lycée Bergson !</p>
-    <p>🔍 <strong>Retrouvez les fiches de cours</strong>.</p>
-    <ul style="text-align:left">
-        <li><a href="/exercices_2nde.html">Classe de Seconde</a></li>
-        <li><a href="/exercices_1ereGenerale.html">Classe de Première Mathématiques spécifiques</a></li>
-        <li><a href="/exercices_1ereSpecialite.html">Classe de Première Spécialité mathématiques</a></li>
-    </ul>
-    
-    <p>Des ressources complémentaires</p>
-    <ul style="text-align:left">
-        <li><a href="https://manuel.sesamath.net/">Manuels Sesamath</a></li>
-        <li><a href="https://www.maths-et-tiques.fr/">Maths et tiques</a></li>
-        <li><a href="https://www.maths-cours.fr/">Maths cours</a></li>
-        <li><a href="https://www.mathoutils.fr/">Math outils</a></li>
-        <li><a href="http://www.jaicompris.com/">J'ai compris</a></li>
-        <li><a href="https://www.maths91.fr/web/">Maths 91</a></li>
-        <li><a href="https://ababsurdo.fr/blog/">Ababsurdo</a></li>
-        <li><a href="https://colasbd.github.io/cdc-lycee/">Cahiers de calcul (Première, Terminale et Mathématiques expertes)</a></li>
-        <li><a href="https://ankiweb.net/shared/info/940066280">Fiches Anki pour la 1re spécialité mathématiques</a></li>
-    </ul>
-    <p>Bon apprentissage à tous !</p>
-</div>
-    </body>
+    <div id="status" class="status">Chargement…</div>
+    <div id="content"></div>
+  </section>
+</main>
+
+<script>
+(() => {
+  /*
+   * Dossier racine à explorer, RELATIF à ce fichier index.html.
+   * Exemple conseillé : index.html à la racine du site et dossier ./fichiers/
+   * Le serveur doit fournir une liste HTML des fichiers pour ce dossier
+   * (Apache Options +Indexes, Nginx autoindex on, etc.).
+   */
+  const ROOT = './fichiers/';
+
+  const state = {
+    path: '',
+    entries: [],
+  };
+
+  const content = document.getElementById('content');
+  const status = document.getElementById('status');
+  const breadcrumbs = document.getElementById('breadcrumbs');
+  const search = document.getElementById('search');
+  const upBtn = document.getElementById('upBtn');
+  const refreshBtn = document.getElementById('refreshBtn');
+
+  function normalizePath(path) {
+    const parts = path.split('/').filter(Boolean);
+    const safe = [];
+    for (const p of parts) {
+      if (p === '.') continue;
+      if (p === '..') safe.pop();
+      else safe.push(p);
+    }
+    return safe.length ? safe.join('/') + '/' : '';
+  }
+
+  function encodePath(path) {
+    return path
+      .split('/')
+      .filter(Boolean)
+      .map(encodeURIComponent)
+      .join('/') + (path ? '/' : '');
+  }
+
+  function currentUrl() {
+    return new URL(ROOT + encodePath(state.path), window.location.href).href;
+  }
+
+  function setHash(path) {
+    const normalized = normalizePath(path);
+    const value = normalized ? '#/' + normalized : '#/';
+    if (location.hash !== value) history.pushState(null, '', value);
+  }
+
+  function hashToPath() {
+    const raw = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
+    return normalizePath(raw);
+  }
+
+  function renderBreadcrumbs() {
+    breadcrumbs.innerHTML = '';
+
+    const rootBtn = document.createElement('button');
+    rootBtn.type = 'button';
+    rootBtn.textContent = 'fichiers';
+    rootBtn.onclick = () => navigate('');
+    breadcrumbs.append(rootBtn);
+
+    let acc = '';
+    for (const part of state.path.split('/').filter(Boolean)) {
+      const sep = document.createElement('span');
+      sep.className = 'sep';
+      sep.textContent = '/';
+      breadcrumbs.append(sep);
+
+      acc += part + '/';
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = part;
+      const destination = acc;
+      btn.onclick = () => navigate(destination);
+      breadcrumbs.append(btn);
+    }
+  }
+
+  function iconFor(name, isDir) {
+    if (isDir) return '📁';
+    const ext = name.split('.').pop()?.toLowerCase();
+    const map = {
+      pdf: '📕', txt: '📄', md: '📝', tex: '📝', csv: '📊',
+      xls: '📊', xlsx: '📊', ods: '📊', doc: '📘', docx: '📘',
+      ppt: '📙', pptx: '📙', odt: '📘', zip: '🗜️', '7z': '🗜️', rar: '🗜️',
+      jpg: '🖼️', jpeg: '🖼️', png: '🖼️', gif: '🖼️', webp: '🖼️', svg: '🖼️',
+      mp3: '🎵', wav: '🎵', ogg: '🎵', mp4: '🎬', webm: '🎬', mov: '🎬',
+      html: '🌐', htm: '🌐', css: '🎨', js: '📜', json: '🧩', py: '🐍'
+    };
+    return map[ext] || '📄';
+  }
+
+  function parseDirectoryListing(html, baseUrl) {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const base = new URL(baseUrl);
+    const result = [];
+    const seen = new Set();
+
+    for (const a of doc.querySelectorAll('a[href]')) {
+      const raw = a.getAttribute('href');
+      if (!raw || raw.startsWith('#') || raw.startsWith('?')) continue;
+      if (raw === '../' || raw === '..') continue;
+
+      let url;
+      try { url = new URL(raw, base); }
+      catch { continue; }
+
+      // Ne jamais sortir du dossier actuellement listé.
+      if (url.origin !== base.origin) continue;
+      if (!url.pathname.startsWith(base.pathname)) continue;
+
+      let rel = decodeURIComponent(url.pathname.slice(base.pathname.length));
+      if (!rel || rel.includes('/../')) continue;
+
+      // On n'affiche que les enfants directs du dossier courant.
+      rel = rel.replace(/^\/+/, '');
+      if (!rel) continue;
+      const trimmed = rel.replace(/\/$/, '');
+      if (!trimmed || trimmed.includes('/')) continue;
+
+      const isDir = url.pathname.endsWith('/');
+      const name = trimmed;
+      const key = (isDir ? 'D:' : 'F:') + name;
+      if (seen.has(key)) continue;
+      seen.add(key);
+
+      result.push({ name, isDir, url: url.href });
+    }
+
+    return result.sort((a, b) => {
+      if (a.isDir !== b.isDir) return a.isDir ? -1 : 1;
+      return a.name.localeCompare(b.name, 'fr', { numeric: true, sensitivity: 'base' });
+    });
+  }
+
+  async function load(path = state.path, { updateHash = true } = {}) {
+    state.path = normalizePath(path);
+    if (updateHash) setHash(state.path);
+    search.value = '';
+    renderBreadcrumbs();
+
+    content.innerHTML = '<div class="empty">Chargement…</div>';
+    status.textContent = 'Chargement du dossier…';
+    upBtn.disabled = !state.path;
+
+    const url = currentUrl();
+
+    try {
+      const response = await fetch(url, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+
+      const type = response.headers.get('content-type') || '';
+      if (!type.includes('text/html')) {
+        throw new Error('Le serveur ne renvoie pas une liste HTML du dossier.');
+      }
+
+      const html = await response.text();
+      state.entries = parseDirectoryListing(html, url);
+
+      if (!state.entries.length) {
+        // Cas fréquent : le serveur a renvoyé index.html au lieu de l'index du dossier.
+        const title = new DOMParser().parseFromString(html, 'text/html').title;
+        const hint = title === document.title
+          ? ' Le serveur semble renvoyer une page d’index plutôt qu’une liste de fichiers.'
+          : '';
+        status.textContent = '0 élément';
+        content.innerHTML = `<div class="empty">Dossier vide ou indexation du serveur désactivée.${hint}</div>`;
+        return;
+      }
+
+      renderList(state.entries);
+    } catch (err) {
+      state.entries = [];
+      status.textContent = 'Impossible de lire ce dossier';
+      content.innerHTML = `<div class="error"><strong>Erreur :</strong> ${escapeHtml(err.message)}<br><br>
+        Vérifiez que le dossier <code>${escapeHtml(ROOT)}</code> existe et que l’indexation des répertoires est activée sur le serveur.</div>`;
+    }
+  }
+
+  function renderList(entries) {
+    const filter = search.value.trim().toLocaleLowerCase('fr');
+    const filtered = filter
+      ? entries.filter(e => e.name.toLocaleLowerCase('fr').includes(filter))
+      : entries;
+
+    status.textContent = `${filtered.length} élément${filtered.length > 1 ? 's' : ''}` +
+      (filter ? ` sur ${entries.length}` : '');
+
+    if (!filtered.length) {
+      content.innerHTML = '<div class="empty">Aucun élément correspondant.</div>';
+      return;
+    }
+
+    const table = document.createElement('table');
+    table.className = 'list';
+    table.innerHTML = `
+      <thead><tr>
+        <th>Nom</th>
+        <th class="hide-mobile">Type</th>
+        <th class="hide-mobile">Action</th>
+      </tr></thead>
+      <tbody></tbody>`;
+
+    const tbody = table.querySelector('tbody');
+
+    for (const entry of filtered) {
+      const tr = document.createElement('tr');
+      if (entry.isDir) tr.classList.add('folder');
+
+      const tdName = document.createElement('td');
+      const wrap = document.createElement('div');
+      wrap.className = 'name';
+
+      const icon = document.createElement('span');
+      icon.className = 'icon';
+      icon.textContent = iconFor(entry.name, entry.isDir);
+      wrap.append(icon);
+
+      if (entry.isDir) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = entry.name;
+        btn.onclick = () => navigate(state.path + entry.name + '/');
+        wrap.append(btn);
+      } else {
+        const a = document.createElement('a');
+        a.href = entry.url;
+        a.textContent = entry.name;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        wrap.append(a);
+      }
+      tdName.append(wrap);
+
+      const tdType = document.createElement('td');
+      tdType.className = 'muted hide-mobile';
+      tdType.textContent = entry.isDir ? 'Dossier' : fileType(entry.name);
+
+      const tdAction = document.createElement('td');
+      tdAction.className = 'hide-mobile';
+      if (entry.isDir) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = 'Ouvrir';
+        btn.onclick = () => navigate(state.path + entry.name + '/');
+        tdAction.append(btn);
+      } else {
+        const a = document.createElement('a');
+        a.href = entry.url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = 'Ouvrir';
+        a.style.color = 'var(--accent)';
+        tdAction.append(a);
+      }
+
+      tr.append(tdName, tdType, tdAction);
+      tbody.append(tr);
+    }
+
+    content.replaceChildren(table);
+  }
+
+  function fileType(name) {
+    const p = name.lastIndexOf('.');
+    if (p <= 0 || p === name.length - 1) return 'Fichier';
+    return name.slice(p + 1).toUpperCase();
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>'"]/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+    }[c]));
+  }
+
+  function navigate(path) {
+    load(path);
+  }
+
+  upBtn.addEventListener('click', () => {
+    const parts = state.path.split('/').filter(Boolean);
+    parts.pop();
+    navigate(parts.length ? parts.join('/') + '/' : '');
+  });
+
+  refreshBtn.addEventListener('click', () => load(state.path, { updateHash: false }));
+  search.addEventListener('input', () => renderList(state.entries));
+  window.addEventListener('popstate', () => load(hashToPath(), { updateHash: false }));
+  window.addEventListener('hashchange', () => {
+    const p = hashToPath();
+    if (p !== state.path) load(p, { updateHash: false });
+  });
+
+  load(hashToPath(), { updateHash: false });
+})();
+</script>
+</body>
 </html>
