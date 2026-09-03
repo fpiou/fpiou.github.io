@@ -1,497 +1,396 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Explorateur de fichiers</title>
-<style>
-  :root {
-    color-scheme: light dark;
-    --bg: #f5f7fb;
-    --panel: #ffffff;
-    --text: #172033;
-    --muted: #667085;
-    --line: #e4e7ec;
-    --accent: #2563eb;
-    --hover: #eef4ff;
-    --folder: #d68a00;
-  }
-  @media (prefers-color-scheme: dark) {
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documents</title>
+  <style>
     :root {
-      --bg: #111827;
-      --panel: #18212f;
-      --text: #f3f4f6;
-      --muted: #9ca3af;
-      --line: #334155;
-      --accent: #60a5fa;
-      --hover: #243247;
-      --folder: #f5b942;
+      color-scheme: light dark;
+      --bg: #ffffff;
+      --fg: #2f343b;
+      --muted: #6b7280;
+      --hover: #f1f3f5;
+      --folder: #3da5f4;
+      --file: #66727f;
+      --border: #d9dee3;
+      --panel: #f6f8fa;
+      --danger: #b42318;
     }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-  }
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: var(--panel);
-    border-bottom: 1px solid var(--line);
-    padding: 14px 18px;
-  }
-  .topbar {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-  }
-  h1 {
-    font-size: 18px;
-    margin: 0;
-    white-space: nowrap;
-  }
-  .breadcrumbs {
-    min-width: 0;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    overflow-x: auto;
-    white-space: nowrap;
-    scrollbar-width: thin;
-  }
-  .breadcrumbs button {
-    border: 0;
-    background: transparent;
-    color: var(--accent);
-    cursor: pointer;
-    font: inherit;
-    padding: 5px 6px;
-    border-radius: 6px;
-  }
-  .breadcrumbs button:hover { background: var(--hover); }
-  .sep { color: var(--muted); }
-  main {
-    max-width: 1100px;
-    margin: 20px auto;
-    padding: 0 16px 40px;
-  }
-  .card {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0,0,0,.04);
-  }
-  .toolbar {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    padding: 12px;
-    border-bottom: 1px solid var(--line);
-  }
-  .toolbar button, .toolbar input {
-    border: 1px solid var(--line);
-    background: var(--panel);
-    color: var(--text);
-    border-radius: 8px;
-    min-height: 38px;
-    font: inherit;
-  }
-  .toolbar button {
-    padding: 0 12px;
-    cursor: pointer;
-  }
-  .toolbar button:hover { background: var(--hover); }
-  .toolbar input {
-    flex: 1;
-    padding: 0 11px;
-  }
-  .status {
-    padding: 10px 14px;
-    color: var(--muted);
-    font-size: 13px;
-    border-bottom: 1px solid var(--line);
-  }
-  .list { width: 100%; border-collapse: collapse; }
-  .list th, .list td {
-    padding: 11px 14px;
-    border-bottom: 1px solid var(--line);
-    text-align: left;
-    vertical-align: middle;
-  }
-  .list th {
-    font-size: 12px;
-    color: var(--muted);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: .04em;
-  }
-  .list tr:last-child td { border-bottom: 0; }
-  .list tbody tr:hover { background: var(--hover); }
-  .name {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    min-width: 0;
-  }
-  .name a, .name button {
-    color: var(--text);
-    text-decoration: none;
-    font: inherit;
-    font-weight: 550;
-    overflow-wrap: anywhere;
-  }
-  .name button {
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-    padding: 0;
-    text-align: left;
-  }
-  .name a:hover, .name button:hover { color: var(--accent); text-decoration: underline; }
-  .icon { width: 22px; text-align: center; font-size: 18px; flex: 0 0 22px; }
-  .folder .icon { color: var(--folder); }
-  .muted { color: var(--muted); font-size: 13px; }
-  .empty, .error {
-    padding: 28px 16px;
-    text-align: center;
-    color: var(--muted);
-  }
-  .error { color: #b42318; }
-  @media (max-width: 680px) {
-    .topbar { align-items: flex-start; flex-direction: column; }
-    .breadcrumbs { width: 100%; }
-    .hide-mobile { display: none; }
-    .toolbar { flex-wrap: wrap; }
-    .toolbar input { flex-basis: 100%; order: 2; }
-  }
-</style>
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #17191c;
+        --fg: #e8eaed;
+        --muted: #aeb5bd;
+        --hover: #25292e;
+        --folder: #5db6f6;
+        --file: #aab4bf;
+        --border: #343a40;
+        --panel: #20242a;
+        --danger: #ff8a80;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.45;
+    }
+    main {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 18px 22px 50px;
+    }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    h1 {
+      margin: 0 auto 0 0;
+      font-size: 1.35rem;
+      font-weight: 650;
+    }
+    button, input { font: inherit; }
+    button {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--fg);
+      border-radius: 7px;
+      padding: 7px 11px;
+      cursor: pointer;
+    }
+    button:hover { background: var(--hover); }
+    #search {
+      width: min(360px, 100%);
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--fg);
+      border-radius: 7px;
+      padding: 7px 10px;
+    }
+    #status {
+      min-height: 1.4em;
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    #status.error { color: var(--danger); }
+    .tree, .tree ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .tree ul { margin-left: 28px; }
+    details { margin: 2px 0; }
+    summary {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 42px;
+      padding: 5px 8px;
+      border-radius: 7px;
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary:hover, .file:hover { background: var(--hover); }
+    .chevron {
+      width: 10px;
+      height: 10px;
+      flex: 0 0 auto;
+      border-right: 2px solid var(--muted);
+      border-bottom: 2px solid var(--muted);
+      transform: rotate(-45deg);
+      transition: transform .14s ease;
+      margin-right: 2px;
+    }
+    details[open] > summary > .chevron { transform: rotate(45deg); }
+    .folder-icon {
+      width: 23px;
+      height: 16px;
+      flex: 0 0 auto;
+      background: var(--folder);
+      border-radius: 3px;
+      position: relative;
+    }
+    .folder-icon::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: -5px;
+      width: 10px;
+      height: 6px;
+      border-radius: 3px 3px 0 0;
+      background: var(--folder);
+    }
+    .file {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 42px;
+      margin: 2px 0;
+      padding: 5px 8px 5px 31px;
+      border-radius: 7px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .file-icon {
+      width: 18px;
+      height: 23px;
+      flex: 0 0 auto;
+      border: 2px solid var(--file);
+      border-radius: 2px;
+      position: relative;
+    }
+    .file-icon::before {
+      content: "";
+      position: absolute;
+      right: -2px;
+      top: -2px;
+      width: 7px;
+      height: 7px;
+      background: var(--bg);
+      border-left: 2px solid var(--file);
+      border-bottom: 2px solid var(--file);
+    }
+    .name { overflow-wrap: anywhere; }
+    .loading {
+      margin: 5px 0 5px 31px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .hidden-by-search { display: none !important; }
+    @media (max-width: 700px) {
+      main { padding: 10px; }
+      body { font-size: 16px; }
+      .tree ul { margin-left: 15px; }
+      .toolbar { align-items: stretch; }
+      h1 { width: 100%; }
+      #search { width: 100%; }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <div class="topbar">
-    <h1>📁 Explorateur</h1>
-    <nav id="breadcrumbs" class="breadcrumbs" aria-label="Fil d’Ariane"></nav>
-  </div>
-</header>
-
 <main>
-  <section class="card">
-    <div class="toolbar">
-      <button id="upBtn" type="button" title="Dossier parent">⬆ Parent</button>
-      <button id="refreshBtn" type="button" title="Actualiser">↻ Actualiser</button>
-      <input id="search" type="search" placeholder="Filtrer les fichiers et dossiers…" autocomplete="off">
-    </div>
-    <div id="status" class="status">Chargement…</div>
-    <div id="content"></div>
-  </section>
+  <div class="toolbar">
+    <h1 id="title">Documents</h1>
+    <input id="search" type="search" placeholder="Rechercher…" aria-label="Rechercher">
+    <button id="expandAll" type="button">Tout déplier</button>
+    <button id="collapseAll" type="button">Tout replier</button>
+  </div>
+  <p id="status">Chargement…</p>
+  <ul id="tree" class="tree"></ul>
 </main>
 
 <script>
-(() => {
-  /*
-   * Dossier racine à explorer, RELATIF à ce fichier index.html.
-   * Exemple conseillé : index.html à la racine du site et dossier ./fichiers/
-   * Le serveur doit fournir une liste HTML des fichiers pour ce dossier
-   * (Apache Options +Indexes, Nginx autoindex on, etc.).
-   */
-  const ROOT = './documents/';
+/* ============================================================
+   CONFIGURATION — À MODIFIER
+   ============================================================ */
+const GITHUB_USER = "VOTRE_COMPTE";
+const GITHUB_REPO = "VOTRE_DEPOT";
+const BRANCH = "main";
+const ROOT_FOLDER = "documents";
+/* ============================================================ */
 
-  const state = {
-    path: '',
-    entries: [],
-  };
+const API_BASE =
+  `https://api.github.com/repos/${encodeURIComponent(GITHUB_USER)}/${encodeURIComponent(GITHUB_REPO)}/contents`;
 
-  const content = document.getElementById('content');
-  const status = document.getElementById('status');
-  const breadcrumbs = document.getElementById('breadcrumbs');
-  const search = document.getElementById('search');
-  const upBtn = document.getElementById('upBtn');
-  const refreshBtn = document.getElementById('refreshBtn');
+const tree = document.getElementById("tree");
+const status = document.getElementById("status");
+const title = document.getElementById("title");
+const search = document.getElementById("search");
 
-  function normalizePath(path) {
-    const parts = path.split('/').filter(Boolean);
-    const safe = [];
-    for (const p of parts) {
-      if (p === '.') continue;
-      if (p === '..') safe.pop();
-      else safe.push(p);
-    }
-    return safe.length ? safe.join('/') + '/' : '';
-  }
+title.textContent = ROOT_FOLDER || GITHUB_REPO;
 
-  function encodePath(path) {
-    return path
-      .split('/')
-      .filter(Boolean)
-      .map(encodeURIComponent)
-      .join('/') + (path ? '/' : '');
-  }
+function apiPath(path) {
+  if (!path) return API_BASE;
+  return API_BASE + "/" + path.split("/").map(encodeURIComponent).join("/");
+}
 
-  function currentUrl() {
-    return new URL(ROOT + encodePath(state.path), window.location.href).href;
-  }
+function siteHref(path) {
+  const base = new URL("./", window.location.href);
+  const encoded = path.split("/").map(encodeURIComponent).join("/");
+  return new URL(encoded, base).href;
+}
 
-  function setHash(path) {
-    const normalized = normalizePath(path);
-    const value = normalized ? '#/' + normalized : '#/';
-    if (location.hash !== value) history.pushState(null, '', value);
-  }
+async function getContents(path) {
+  const url = new URL(apiPath(path));
+  url.searchParams.set("ref", BRANCH);
 
-  function hashToPath() {
-    const raw = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
-    return normalizePath(raw);
-  }
+  const response = await fetch(url, {
+    headers: { "Accept": "application/vnd.github+json" }
+  });
 
-  function renderBreadcrumbs() {
-    breadcrumbs.innerHTML = '';
-
-    const rootBtn = document.createElement('button');
-    rootBtn.type = 'button';
-    rootBtn.textContent = 'fichiers';
-    rootBtn.onclick = () => navigate('');
-    breadcrumbs.append(rootBtn);
-
-    let acc = '';
-    for (const part of state.path.split('/').filter(Boolean)) {
-      const sep = document.createElement('span');
-      sep.className = 'sep';
-      sep.textContent = '/';
-      breadcrumbs.append(sep);
-
-      acc += part + '/';
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.textContent = part;
-      const destination = acc;
-      btn.onclick = () => navigate(destination);
-      breadcrumbs.append(btn);
-    }
-  }
-
-  function iconFor(name, isDir) {
-    if (isDir) return '📁';
-    const ext = name.split('.').pop()?.toLowerCase();
-    const map = {
-      pdf: '📕', txt: '📄', md: '📝', tex: '📝', csv: '📊',
-      xls: '📊', xlsx: '📊', ods: '📊', doc: '📘', docx: '📘',
-      ppt: '📙', pptx: '📙', odt: '📘', zip: '🗜️', '7z': '🗜️', rar: '🗜️',
-      jpg: '🖼️', jpeg: '🖼️', png: '🖼️', gif: '🖼️', webp: '🖼️', svg: '🖼️',
-      mp3: '🎵', wav: '🎵', ogg: '🎵', mp4: '🎬', webm: '🎬', mov: '🎬',
-      html: '🌐', htm: '🌐', css: '🎨', js: '📜', json: '🧩', py: '🐍'
-    };
-    return map[ext] || '📄';
-  }
-
-  function parseDirectoryListing(html, baseUrl) {
-    const doc = new DOMParser().parseFromString(html, 'text/html');
-    const base = new URL(baseUrl);
-    const result = [];
-    const seen = new Set();
-
-    for (const a of doc.querySelectorAll('a[href]')) {
-      const raw = a.getAttribute('href');
-      if (!raw || raw.startsWith('#') || raw.startsWith('?')) continue;
-      if (raw === '../' || raw === '..') continue;
-
-      let url;
-      try { url = new URL(raw, base); }
-      catch { continue; }
-
-      // Ne jamais sortir du dossier actuellement listé.
-      if (url.origin !== base.origin) continue;
-      if (!url.pathname.startsWith(base.pathname)) continue;
-
-      let rel = decodeURIComponent(url.pathname.slice(base.pathname.length));
-      if (!rel || rel.includes('/../')) continue;
-
-      // On n'affiche que les enfants directs du dossier courant.
-      rel = rel.replace(/^\/+/, '');
-      if (!rel) continue;
-      const trimmed = rel.replace(/\/$/, '');
-      if (!trimmed || trimmed.includes('/')) continue;
-
-      const isDir = url.pathname.endsWith('/');
-      const name = trimmed;
-      const key = (isDir ? 'D:' : 'F:') + name;
-      if (seen.has(key)) continue;
-      seen.add(key);
-
-      result.push({ name, isDir, url: url.href });
-    }
-
-    return result.sort((a, b) => {
-      if (a.isDir !== b.isDir) return a.isDir ? -1 : 1;
-      return a.name.localeCompare(b.name, 'fr', { numeric: true, sensitivity: 'base' });
-    });
-  }
-
-  async function load(path = state.path, { updateHash = true } = {}) {
-    state.path = normalizePath(path);
-    if (updateHash) setHash(state.path);
-    search.value = '';
-    renderBreadcrumbs();
-
-    content.innerHTML = '<div class="empty">Chargement…</div>';
-    status.textContent = 'Chargement du dossier…';
-    upBtn.disabled = !state.path;
-
-    const url = currentUrl();
-
+  if (!response.ok) {
+    let detail = "";
     try {
-      const response = await fetch(url, { cache: 'no-store' });
-      if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+      const data = await response.json();
+      detail = data.message ? ` — ${data.message}` : "";
+    } catch (_) {}
 
-      const type = response.headers.get('content-type') || '';
-      if (!type.includes('text/html')) {
-        throw new Error('Le serveur ne renvoie pas une liste HTML du dossier.');
-      }
-
-      const html = await response.text();
-      state.entries = parseDirectoryListing(html, url);
-
-      if (!state.entries.length) {
-        // Cas fréquent : le serveur a renvoyé index.html au lieu de l'index du dossier.
-        const title = new DOMParser().parseFromString(html, 'text/html').title;
-        const hint = title === document.title
-          ? ' Le serveur semble renvoyer une page d’index plutôt qu’une liste de fichiers.'
-          : '';
-        status.textContent = '0 élément';
-        content.innerHTML = `<div class="empty">Dossier vide ou indexation du serveur désactivée.${hint}</div>`;
-        return;
-      }
-
-      renderList(state.entries);
-    } catch (err) {
-      state.entries = [];
-      status.textContent = 'Impossible de lire ce dossier';
-      content.innerHTML = `<div class="error"><strong>Erreur :</strong> ${escapeHtml(err.message)}<br><br>
-        Vérifiez que le dossier <code>${escapeHtml(ROOT)}</code> existe et que l’indexation des répertoires est activée sur le serveur.</div>`;
+    if (response.status === 403) {
+      throw new Error(
+        "Accès refusé ou limite de l’API GitHub atteinte. " +
+        "L’API publique non authentifiée est limitée en nombre de requêtes." + detail
+      );
     }
-  }
-
-  function renderList(entries) {
-    const filter = search.value.trim().toLocaleLowerCase('fr');
-    const filtered = filter
-      ? entries.filter(e => e.name.toLocaleLowerCase('fr').includes(filter))
-      : entries;
-
-    status.textContent = `${filtered.length} élément${filtered.length > 1 ? 's' : ''}` +
-      (filter ? ` sur ${entries.length}` : '');
-
-    if (!filtered.length) {
-      content.innerHTML = '<div class="empty">Aucun élément correspondant.</div>';
-      return;
+    if (response.status === 404) {
+      throw new Error(
+        `Dossier introuvable : "${path || "/"}". Vérifiez GITHUB_USER, GITHUB_REPO, BRANCH et ROOT_FOLDER.` + detail
+      );
     }
+    throw new Error(`Erreur GitHub ${response.status}${detail}`);
+  }
 
-    const table = document.createElement('table');
-    table.className = 'list';
-    table.innerHTML = `
-      <thead><tr>
-        <th>Nom</th>
-        <th class="hide-mobile">Type</th>
-        <th class="hide-mobile">Action</th>
-      </tr></thead>
-      <tbody></tbody>`;
+  const data = await response.json();
+  if (!Array.isArray(data)) {
+    throw new Error(`"${path}" n’est pas un dossier.`);
+  }
 
-    const tbody = table.querySelector('tbody');
+  return data.sort((a, b) => {
+    if (a.type !== b.type) return a.type === "dir" ? -1 : 1;
+    return a.name.localeCompare(b.name, "fr", { numeric: true, sensitivity: "base" });
+  });
+}
 
-    for (const entry of filtered) {
-      const tr = document.createElement('tr');
-      if (entry.isDir) tr.classList.add('folder');
+function folderRow(item) {
+  const li = document.createElement("li");
+  li.dataset.name = item.name.toLocaleLowerCase("fr");
 
-      const tdName = document.createElement('td');
-      const wrap = document.createElement('div');
-      wrap.className = 'name';
+  const details = document.createElement("details");
+  details.dataset.loaded = "false";
+  details.dataset.path = item.path;
 
-      const icon = document.createElement('span');
-      icon.className = 'icon';
-      icon.textContent = iconFor(entry.name, entry.isDir);
-      wrap.append(icon);
+  const summary = document.createElement("summary");
+  summary.innerHTML =
+    `<span class="chevron"></span>` +
+    `<span class="folder-icon"></span>` +
+    `<span class="name"></span>`;
+  summary.querySelector(".name").textContent = item.name;
 
-      if (entry.isDir) {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.textContent = entry.name;
-        btn.onclick = () => navigate(state.path + entry.name + '/');
-        wrap.append(btn);
-      } else {
-        const a = document.createElement('a');
-        a.href = entry.url;
-        a.textContent = entry.name;
-        a.target = '_blank';
-        a.rel = 'noopener';
-        wrap.append(a);
-      }
-      tdName.append(wrap);
+  const children = document.createElement("ul");
+  children.innerHTML = `<li class="loading">Chargement…</li>`;
 
-      const tdType = document.createElement('td');
-      tdType.className = 'muted hide-mobile';
-      tdType.textContent = entry.isDir ? 'Dossier' : fileType(entry.name);
+  details.append(summary, children);
+  li.append(details);
 
-      const tdAction = document.createElement('td');
-      tdAction.className = 'hide-mobile';
-      if (entry.isDir) {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.textContent = 'Ouvrir';
-        btn.onclick = () => navigate(state.path + entry.name + '/');
-        tdAction.append(btn);
-      } else {
-        const a = document.createElement('a');
-        a.href = entry.url;
-        a.target = '_blank';
-        a.rel = 'noopener';
-        a.textContent = 'Ouvrir';
-        a.style.color = 'var(--accent)';
-        tdAction.append(a);
-      }
+  details.addEventListener("toggle", async () => {
+    if (!details.open || details.dataset.loaded === "true" || details.dataset.loaded === "loading") return;
 
-      tr.append(tdName, tdType, tdAction);
-      tbody.append(tr);
+    details.dataset.loaded = "loading";
+    try {
+      const items = await getContents(item.path);
+      children.replaceChildren(...items.map(makeRow));
+      details.dataset.loaded = "true";
+      applySearch();
+    } catch (e) {
+      children.innerHTML = "";
+      const err = document.createElement("li");
+      err.className = "loading";
+      err.textContent = e.message;
+      children.append(err);
+      details.dataset.loaded = "false";
     }
-
-    content.replaceChildren(table);
-  }
-
-  function fileType(name) {
-    const p = name.lastIndexOf('.');
-    if (p <= 0 || p === name.length - 1) return 'Fichier';
-    return name.slice(p + 1).toUpperCase();
-  }
-
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>'"]/g, c => ({
-      '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
-    }[c]));
-  }
-
-  function navigate(path) {
-    load(path);
-  }
-
-  upBtn.addEventListener('click', () => {
-    const parts = state.path.split('/').filter(Boolean);
-    parts.pop();
-    navigate(parts.length ? parts.join('/') + '/' : '');
   });
 
-  refreshBtn.addEventListener('click', () => load(state.path, { updateHash: false }));
-  search.addEventListener('input', () => renderList(state.entries));
-  window.addEventListener('popstate', () => load(hashToPath(), { updateHash: false }));
-  window.addEventListener('hashchange', () => {
-    const p = hashToPath();
-    if (p !== state.path) load(p, { updateHash: false });
-  });
+  return li;
+}
 
-  load(hashToPath(), { updateHash: false });
-})();
+function fileRow(item) {
+  const li = document.createElement("li");
+  li.dataset.name = item.name.toLocaleLowerCase("fr");
+
+  const a = document.createElement("a");
+  a.className = "file";
+  a.href = siteHref(item.path);
+  a.target = "_blank";
+  a.rel = "noopener";
+  a.innerHTML = `<span class="file-icon"></span><span class="name"></span>`;
+  a.querySelector(".name").textContent = item.name;
+
+  li.append(a);
+  return li;
+}
+
+function makeRow(item) {
+  return item.type === "dir" ? folderRow(item) : fileRow(item);
+}
+
+async function loadRoot() {
+  status.className = "";
+  status.textContent = "Chargement…";
+
+  try {
+    const items = await getContents(ROOT_FOLDER);
+    tree.replaceChildren(...items.map(makeRow));
+    status.textContent = "";
+  } catch (e) {
+    tree.replaceChildren();
+    status.className = "error";
+    status.textContent = e.message;
+  }
+}
+
+async function expandRecursively(details) {
+  if (!details.open) details.open = true;
+
+  while (details.dataset.loaded === "loading") {
+    await new Promise(r => setTimeout(r, 50));
+  }
+
+  if (details.dataset.loaded !== "true") return;
+
+  const nested = [...details.querySelectorAll(":scope > ul > li > details")];
+  for (const child of nested) {
+    await expandRecursively(child);
+  }
+}
+
+document.getElementById("expandAll").addEventListener("click", async () => {
+  status.className = "";
+  status.textContent = "Déploiement de l’arborescence…";
+  const roots = [...tree.querySelectorAll(":scope > li > details")];
+  for (const d of roots) await expandRecursively(d);
+  status.textContent = "";
+});
+
+document.getElementById("collapseAll").addEventListener("click", () => {
+  [...tree.querySelectorAll("details")].forEach(d => d.open = false);
+});
+
+function applySearch() {
+  const q = search.value.trim().toLocaleLowerCase("fr");
+
+  if (!q) {
+    [...tree.querySelectorAll("li")].forEach(li => li.classList.remove("hidden-by-search"));
+    return;
+  }
+
+  const all = [...tree.querySelectorAll("li")];
+  for (const li of all.reverse()) {
+    const ownName = li.dataset.name || "";
+    const ownMatch = ownName.includes(q);
+    const children = [...li.querySelectorAll(":scope > details > ul > li")];
+    const childMatch = children.some(child => !child.classList.contains("hidden-by-search"));
+
+    const keep = ownMatch || childMatch;
+    li.classList.toggle("hidden-by-search", !keep);
+
+    const d = li.querySelector(":scope > details");
+    if (keep && d && childMatch) d.open = true;
+  }
+}
+
+search.addEventListener("input", applySearch);
+
+loadRoot();
 </script>
 </body>
 </html>
