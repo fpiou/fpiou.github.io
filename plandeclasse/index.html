@@ -65,6 +65,27 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
 .seat .idx,.slot-empty .idx{position:absolute;right:5px;bottom:2px;font-size:9px;color:#c0c4ca;font-weight:400}
 .seat.roulette-active{outline:6px solid var(--amber);background:#fef3c7;transform:scale(1.06);z-index:2;box-shadow:0 0 24px rgba(245,158,11,.8)}
 .seat.random-picked{outline:6px solid var(--green);background:#dcfce7;box-shadow:0 0 24px rgba(22,163,74,.5)}
+.seat.absent{
+  background:#f8fafc;
+  color:#64748b;
+  border-color:#cbd5e1;
+  font-weight:600;
+}
+.seat.absent::after{
+  content:"Absent";
+  position:absolute;
+  left:6px;
+  top:4px;
+  padding:2px 5px;
+  border-radius:999px;
+  background:#e5e7eb;
+  color:#6b7280;
+  font-size:9px;
+  font-weight:700;
+}
+.mirror-mode .classroom{direction:rtl}
+.mirror-mode .classroom > *{direction:ltr}
+.mirror-mode .front::after{content:" — POINT DE VUE ÉLÈVE";font-weight:700}
 .front{margin:14px auto 2px;width:min(78%,800px);border:2px solid #111827;border-radius:6px;text-align:center;padding:8px;font-weight:700;background:#f9fafb}
 .keyboard-help{text-align:center;font-size:12px;color:var(--muted);margin-top:8px}
 .picked{font-size:17px;font-weight:800;color:var(--green);min-height:25px}
@@ -92,6 +113,22 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
 .projection-mode .classroom{width:100%;min-width:0!important;gap:clamp(5px,.7vw,12px);align-content:stretch}
 .projection-mode .seat,.projection-mode .slot-empty{min-height:clamp(66px,9vh,120px);font-size:clamp(17px,1.9vw,30px);border-width:3px;line-height:1.08}
 .projection-mode .slot-empty{font-size:clamp(11px,1vw,17px)}
+.projection-mode .seat.absent{
+  color:transparent!important;
+  text-shadow:none!important;
+  background:#ffffff!important;
+  border-color:#cbd5e1!important;
+}
+.projection-mode .seat.absent::after{
+  content:"";
+  display:none;
+}
+.projection-mode .seat.unoccupied{
+  visibility:hidden;
+}
+.projection-mode .slot-empty{
+  visibility:hidden;
+}
 .projection-mode .seat .idx,.projection-mode .slot-empty .idx{display:none}
 .projection-mode .front{font-size:clamp(16px,1.5vw,24px);padding:8px}
 .projection-mode .keyboard-help{display:none}
@@ -282,6 +319,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
     <div class="panel toolbar">
       <div class="buttons" style="margin:0">
         <button id="printBtn" class="primary">Exporter en PDF / Imprimer</button>
+        <button id="mirrorBtn">↔ Point de vue élève</button>
         <button id="projectionBtn">Mode vidéoprojecteur</button>
         <button id="showSidebarBtn" style="display:none">Afficher le panneau</button>
       </div>
@@ -308,7 +346,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
       <div class="classroom-wrap">
         <div id="classroom" class="classroom"></div>
       </div>
-      <div class="keyboard-help">Cliquez sur une table ou un emplacement puis utilisez <strong>Suppr</strong> pour retirer la table et <strong>I</strong> pour l’insérer. Les tables, rangées et colonnes se déplacent à la souris.</div>
+      <div class="keyboard-help">Cliquez sur une table ou un emplacement puis utilisez <strong>A</strong> pour marquer l’élève absent, <strong>Suppr</strong> pour retirer la table et <strong>I</strong> pour l’insérer. Les tables, rangées et colonnes se déplacent à la souris.</div>
       <div class="front">TABLEAU / AVANT DE LA SALLE</div>
     </div>
   </main>
@@ -334,6 +372,8 @@ let pickedStudent=null;
 let rouletteSlot=null;
 let rouletteRunning=false;
 let saveTimer=null;
+let absentStudents=new Set();
+let mirrorMode=false;
 
 function emptyData(){
   return {format:"plans-classe-v2",rooms:[],classes:[],plans:[],activePlanId:""};
@@ -504,6 +544,7 @@ function renderClassroom(){
       if(selectedSlot===idx)el.classList.add("selected");
       if(rouletteSlot===idx)el.classList.add("roulette-active");
       if(pickedStudent && s.student===pickedStudent)el.classList.add("random-picked");
+      if(s.student && absentStudents.has(s.student))el.classList.add("absent");
       const n=document.createElement("span");n.className="idx";n.textContent=`${r+1}.${c+1}`;el.appendChild(n);
       grid.appendChild(el);
     }
@@ -548,6 +589,34 @@ function loadStudents(list){
   cl.students=list;saveData(true);renderAll();status(`${list.length} élève(s) enregistré(s) dans ${cl.name}.`);
 }
 
+function resetSessionAbsences(){
+  absentStudents.clear();
+  pickedStudent=null;
+}
+
+function toggleAbsentSelected(){
+  const p=activePlan();
+  if(!p || selectedSlot===null)return;
+  const s=p.slots[selectedSlot];
+  if(!s || !s.present || !s.student)return status("Sélectionnez la table d’un élève.");
+
+  if(absentStudents.has(s.student)){
+    absentStudents.delete(s.student);
+    status(`${s.student} est de nouveau présent.`);
+  }else{
+    absentStudents.add(s.student);
+    status(`${s.student} est marqué absent pour cette session.`);
+  }
+  if(pickedStudent===s.student)pickedStudent=null;
+  renderAll();
+}
+
+function setMirrorMode(on){
+  mirrorMode=!!on;
+  document.body.classList.toggle("mirror-mode",mirrorMode);
+  $("mirrorBtn").textContent=mirrorMode ? "↔ Vue professeur" : "↔ Point de vue élève";
+}
+
 function createOrOpenPlan(){
   const classId=$("planClassCreate").value,roomId=$("planRoomCreate").value;
   const cl=classById(classId),room=roomById(roomId);
@@ -557,12 +626,12 @@ function createOrOpenPlan(){
     p={id:uid("plan"),classId,roomId,date:today(),rows:room.rows,cols:room.cols,slots:buildSlots(room.rows,room.cols)};
     data.plans.push(p);
   }
-  activePlanId=p.id;selectedSlot=null;pickedStudent=null;saveData(true);renderAll();status(`Plan « ${planLabel(p)} » sélectionné.`);
+  activePlanId=p.id;selectedSlot=null;resetSessionAbsences();saveData(true);renderAll();status(`Plan « ${planLabel(p)} » sélectionné.`);
 }
 function deletePlan(){
   const p=activePlan();if(!p)return;
   if(!confirm(`Supprimer le plan « ${planLabel(p)} » ?`))return;
-  data.plans=data.plans.filter(x=>x.id!==p.id);activePlanId=data.plans[0]?.id||"";selectedSlot=null;saveData(true);renderAll();
+  data.plans=data.plans.filter(x=>x.id!==p.id);activePlanId=data.plans[0]?.id||"";selectedSlot=null;resetSessionAbsences();saveData(true);renderAll();
 }
 function randomPlacement(){
   const p=activePlan();if(!p)return status("Sélectionnez un plan de classe.");
@@ -615,7 +684,7 @@ async function importAll(file){
     const v=JSON.parse(await file.text());
     if(!v||v.format!=="plans-classe-v2"||!Array.isArray(v.rooms)||!Array.isArray(v.classes)||!Array.isArray(v.plans))throw new Error("format non reconnu");
     if(!confirm("Remplacer toutes les données locales par cette sauvegarde ?"))return;
-    data=v;activePlanId=data.activePlanId||data.plans[0]?.id||"";selectedRoomId=data.rooms[0]?.id||"";selectedClassId=data.classes[0]?.id||"";selectedSlot=null;saveData(true);renderAll();status("Toutes les données ont été importées.");
+    data=v;activePlanId=data.activePlanId||data.plans[0]?.id||"";selectedRoomId=data.rooms[0]?.id||"";selectedClassId=data.classes[0]?.id||"";selectedSlot=null;resetSessionAbsences();saveData(true);renderAll();status("Toutes les données ont été importées.");
   }catch(e){alert("Import impossible : "+e.message)}
 }
 
@@ -644,8 +713,8 @@ const nextFrame=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFra
 async function chooseRandomStudent(){
   if(rouletteRunning)return;
   const p=activePlan();if(!p)return;
-  const candidates=p.slots.map((s,i)=>({s,i})).filter(x=>x.s.present&&x.s.student);
-  if(!candidates.length)return status("Aucun élève placé.");
+  const candidates=p.slots.map((s,i)=>({s,i})).filter(x=>x.s.present&&x.s.student&&!absentStudents.has(x.s.student));
+  if(!candidates.length)return status("Aucun élève présent disponible pour le tirage.");
   rouletteRunning=true;pickedStudent=null;
   const winnerPos=Math.floor(Math.random()*candidates.length),winner=candidates[winnerPos],startPos=Math.floor(Math.random()*candidates.length);
   const total=candidates.length+((winnerPos-startPos+candidates.length)%candidates.length)+1;
@@ -686,21 +755,23 @@ const tourSteps=[
   ["#planSection","4. Créer le plan","Choisissez une classe et une salle : leur association devient un plan de classe."],
   ["#shuffleBtn","5. Placer les élèves","Le placement aléatoire n'est possible que s'il y a assez de tables."],
   ["#classroom","6. Modifier le plan","Les tables, rangées et colonnes se déplacent à la souris. Suppr retire une table ; I la réinsère.", "drag"],
-  ["#printBtn","7. Exporter en PDF","Ce bouton prépare une page A4 paysage à enregistrer en PDF."],
-  ["#projectionBtn","8. Vidéoprojecteur","L'étape suivante ouvre réellement le mode vidéoprojecteur.", "projection"],
-  ["#pickBtn","9. Tirer un élève","En projection, utilisez ce bouton pour le tirage animé.", "final"]
-];
+  ["#classroom","7. Marquer un absent","Sélectionnez la table d’un élève puis appuyez sur A. L’absence est temporaire, affichée discrètement et l’élève est exclu du tirage.", "absent"],
+  ["#printBtn","8. Exporter en PDF","Ce bouton prépare une page A4 paysage à enregistrer en PDF."],
+  ["#mirrorBtn","9. Point de vue élève","Ce bouton inverse gauche et droite sans inverser les noms.", "mirror"],
+  ["#projectionBtn","10. Vidéoprojecteur","L'étape suivante ouvre réellement le mode vidéoprojecteur.", "projection"],
+  ["#pickBtn","11. Tirer un élève","En projection, utilisez ce bouton pour le tirage animé. Les absents ne sont pas choisis et les places inutiles restent visuellement masquées.", "final"]
+]
 function demoSetup(){
-  tourSnapshot={data:clone(data),selectedRoomId,selectedClassId,activePlanId,selectedSlot,pickedStudent};
+  tourSnapshot={data:clone(data),selectedRoomId,selectedClassId,activePlanId,selectedSlot,pickedStudent,absentStudents:[...absentStudents],mirrorMode};
   const r={id:"demo-r",name:"Salle Démo",rows:5,cols:8},c={id:"demo-c",name:"Classe Démo",students:["Alice Martin","Benoît Dupont","Chloé Bernard","David Morel","Emma Laurent","Farid Benali","Gabriel Petit","Hana Robert","Inès Simon","Jules Michel","Lina Garcia","Mathis Roux"]};
   const p={id:"demo-p",classId:c.id,roomId:r.id,date:today(),rows:5,cols:8,slots:buildSlots(5,8)};
   shuffle(c.students).forEach((n,i)=>p.slots[i].student=n);
   data={format:"plans-classe-v2",rooms:[r],classes:[c],plans:[p],activePlanId:p.id};
-  selectedRoomId=r.id;selectedClassId=c.id;activePlanId=p.id;selectedSlot=null;pickedStudent=null;renderAll();
+  selectedRoomId=r.id;selectedClassId=c.id;activePlanId=p.id;selectedSlot=null;pickedStudent=null;absentStudents.clear();setMirrorMode(false);renderAll();
 }
 function demoRestore(){
   if(!tourSnapshot)return;
-  data=tourSnapshot.data;selectedRoomId=tourSnapshot.selectedRoomId;selectedClassId=tourSnapshot.selectedClassId;activePlanId=tourSnapshot.activePlanId;selectedSlot=tourSnapshot.selectedSlot;pickedStudent=tourSnapshot.pickedStudent;tourSnapshot=null;renderAll();
+  data=tourSnapshot.data;selectedRoomId=tourSnapshot.selectedRoomId;selectedClassId=tourSnapshot.selectedClassId;activePlanId=tourSnapshot.activePlanId;selectedSlot=tourSnapshot.selectedSlot;pickedStudent=tourSnapshot.pickedStudent;absentStudents=new Set(tourSnapshot.absentStudents||[]);setMirrorMode(!!tourSnapshot.mirrorMode);tourSnapshot=null;renderAll();
 }
 function tourOpen(){tourStep=0;document.body.classList.remove("projection-mode");setSidebarHidden(false);demoSetup();$("tourOverlay").classList.add("show");tourShow()}
 async function tourClose(){if(document.body.classList.contains("projection-mode"))await exitProjection();$("tourOverlay").classList.remove("show");demoRestore()}
@@ -720,7 +791,13 @@ function tourPosition(el,demo){
   let tr=tip.getBoundingClientRect();if(tr.bottom>innerHeight-12)top=Math.max(12,r.top-tr.height-16);tip.style.top=top+"px";
   const cur=$("tourCursor");cur.classList.remove("clicking");cur.style.left=(r.left+r.width*.55)+"px";cur.style.top=(r.top+r.height*.55)+"px";
   setTimeout(()=>{cur.classList.remove("clicking");void cur.offsetWidth;cur.classList.add("clicking")},580);
-  if(demo==="drag")setTimeout(tourDrag,760);else $("tourPath").classList.remove("show");
+  if(demo==="drag"){
+    setTimeout(tourDrag,760);
+  }else{
+    $("tourPath").classList.remove("show");
+    if(demo==="absent")setTimeout(tourDemoAbsent,700);
+    if(demo==="mirror")setTimeout(()=>setMirrorMode(!mirrorMode),700);
+  }
 }
 function tourDrag(){
   const seats=[...document.querySelectorAll("#classroom .seat")];if(seats.length<4)return;
@@ -728,6 +805,16 @@ function tourDrag(){
   const path=$("tourPath");path.style.left=x1+"px";path.style.top=y1+"px";path.style.width=Math.hypot(dx,dy)+"px";path.style.transform=`rotate(${Math.atan2(dy,dx)*180/Math.PI}deg)`;path.classList.add("show");
   const cur=$("tourCursor");cur.style.left=x1+"px";cur.style.top=y1+"px";setTimeout(()=>{cur.style.left=x2+"px";cur.style.top=y2+"px"},350);setTimeout(()=>path.classList.remove("show"),1150);
 }
+function tourDemoAbsent(){
+  const p=activePlan();
+  if(!p)return;
+  const idx=p.slots.findIndex(s=>s.present&&s.student);
+  if(idx<0)return;
+  selectedSlot=idx;
+  absentStudents.add(p.slots[idx].student);
+  renderAll();
+}
+
 async function tourNext(){
   const mode=tourSteps[tourStep][3];
   if(mode==="final"){$("tourOverlay").classList.remove("show");await chooseRandomStudent();setTimeout(async()=>{if(document.body.classList.contains("projection-mode"))await exitProjection();demoRestore()},3200);return}
@@ -737,6 +824,7 @@ async function tourNext(){
 async function tourPrev(){
   if(tourStep===0)return;
   if(tourStep===tourSteps.length-1&&document.body.classList.contains("projection-mode"))await exitProjection();
+  if(tourSteps[tourStep][3]==="mirror" && mirrorMode)setMirrorMode(false);
   tourStep--;setTimeout(tourShow,180);
 }
 
@@ -750,11 +838,11 @@ $("classManageSelect").onchange=e=>{selectedClassId=e.target.value;renderAll()};
 $("loadTextBtn").onclick=()=>loadStudents(parseStudents($("studentText").value));
 $("studentFile").onchange=async e=>{const f=e.target.files[0];if(f)loadStudents(parseStudents(await f.text()));e.target.value=""};
 $("createPlanBtn").onclick=createOrOpenPlan;$("deletePlanBtn").onclick=deletePlan;$("shuffleBtn").onclick=randomPlacement;
-$("planSelect").onchange=e=>{activePlanId=e.target.value;selectedSlot=null;pickedStudent=null;saveData(true);renderAll()};
-$("mainPlanSelect").onchange=e=>{activePlanId=e.target.value;selectedSlot=null;pickedStudent=null;saveData(true);renderAll()};
+$("planSelect").onchange=e=>{activePlanId=e.target.value;selectedSlot=null;resetSessionAbsences();saveData(true);renderAll()};
+$("mainPlanSelect").onchange=e=>{activePlanId=e.target.value;selectedSlot=null;resetSessionAbsences();saveData(true);renderAll()};
 $("planDate").onchange=e=>{const p=activePlan();if(p){p.date=e.target.value;saveData(true);renderAll()}};
 $("exportAllBtn").onclick=exportAll;$("importAllFile").onchange=async e=>{const f=e.target.files[0];if(f)await importAll(f);e.target.value=""};
-$("printBtn").onclick=preparePrint;$("projectionBtn").onclick=enterProjection;$("projectionExitBtn").onclick=exitProjection;
+$("printBtn").onclick=preparePrint;$("mirrorBtn").onclick=()=>setMirrorMode(!mirrorMode);$("projectionBtn").onclick=enterProjection;$("projectionExitBtn").onclick=exitProjection;
 $("pickBtn").onclick=chooseRandomStudent;$("clearPickBtn").onclick=()=>{pickedStudent=null;renderAll()};
 $("toggleSidebarBtn").onclick=()=>setSidebarHidden(!$("app").classList.contains("sidebar-hidden"));$("showSidebarBtn").onclick=()=>setSidebarHidden(false);
 $("tutorialBtn").onclick=tourOpen;$("tourQuitBtn").onclick=tourClose;$("tourNextBtn").onclick=tourNext;$("tourPrevBtn").onclick=tourPrev;
@@ -762,6 +850,7 @@ $("tutorialBtn").onclick=tourOpen;$("tourQuitBtn").onclick=tourClose;$("tourNext
 document.addEventListener("keydown",e=>{
   if($("tourOverlay").classList.contains("show") && e.key==="Escape"){tourClose();return}
   if(e.key==="Delete"){e.preventDefault();deleteSelectedTable()}
+  else if(e.key.toLowerCase()==="a" && !["INPUT","TEXTAREA","SELECT"].includes(document.activeElement?.tagName)){e.preventDefault();toggleAbsentSelected()}
   else if(e.key.toLowerCase()==="i" && !["INPUT","TEXTAREA","SELECT"].includes(document.activeElement?.tagName)){e.preventDefault();insertSelectedTable()}
 });
 document.addEventListener("fullscreenchange",()=>{if(!document.fullscreenElement&&document.body.classList.contains("projection-mode")){document.body.classList.remove("projection-mode");renderAll()}});
