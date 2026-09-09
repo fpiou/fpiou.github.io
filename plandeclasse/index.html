@@ -374,6 +374,7 @@ let rouletteRunning=false;
 let saveTimer=null;
 let absentStudents=new Set();
 let mirrorMode=false;
+let recentDraws=[];
 
 function emptyData(){
   return {format:"plans-classe-v2",rooms:[],classes:[],plans:[],activePlanId:""};
@@ -591,6 +592,7 @@ function loadStudents(list){
 
 function resetSessionAbsences(){
   absentStudents.clear();
+  recentDraws=[];
   pickedStudent=null;
 }
 
@@ -707,6 +709,47 @@ async function exitProjection(){
   renderAll();
 }
 
+/* Tirage pondéré avec mémoire courte */
+function drawWeightFor(student){
+  const lastIndex=recentDraws.lastIndexOf(student);
+  if(lastIndex<0)return 1;
+
+  const drawsAgo=recentDraws.length-1-lastIndex;
+  if(drawsAgo===0)return 0.20;
+  if(drawsAgo===1)return 0.45;
+  if(drawsAgo===2)return 0.70;
+  if(drawsAgo===3)return 0.90;
+  return 1;
+}
+
+function chooseWeightedCandidate(candidates){
+  if(candidates.length===1)return candidates[0];
+
+  const last=recentDraws.at(-1);
+  const beforeLast=recentDraws.at(-2);
+  const forbidTriple=(last && beforeLast && last===beforeLast) ? last : null;
+
+  const weighted=candidates.map(candidate=>{
+    let weight=drawWeightFor(candidate.s.student);
+    if(forbidTriple && candidate.s.student===forbidTriple){
+      weight=0;
+    }
+    return {candidate,weight};
+  });
+
+  let total=weighted.reduce((sum,x)=>sum+x.weight,0);
+  if(total<=0){
+    return candidates[Math.floor(Math.random()*candidates.length)];
+  }
+
+  let r=Math.random()*total;
+  for(const item of weighted){
+    r-=item.weight;
+    if(r<0)return item.candidate;
+  }
+  return weighted[weighted.length-1].candidate;
+}
+
 /* Tirage */
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const nextFrame=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
@@ -716,7 +759,9 @@ async function chooseRandomStudent(){
   const candidates=p.slots.map((s,i)=>({s,i})).filter(x=>x.s.present&&x.s.student&&!absentStudents.has(x.s.student));
   if(!candidates.length)return status("Aucun élève présent disponible pour le tirage.");
   rouletteRunning=true;pickedStudent=null;
-  const winnerPos=Math.floor(Math.random()*candidates.length),winner=candidates[winnerPos],startPos=Math.floor(Math.random()*candidates.length);
+  const winner=chooseWeightedCandidate(candidates);
+  const winnerPos=candidates.indexOf(winner);
+  const startPos=Math.floor(Math.random()*candidates.length);
   const total=candidates.length+((winnerPos-startPos+candidates.length)%candidates.length)+1;
   await sleep(40);
   for(let step=0;step<total;step++){
@@ -726,7 +771,14 @@ async function chooseRandomStudent(){
     await sleep(delay);
   }
   rouletteSlot=winner.i;renderClassroom();await sleep(140);
-  rouletteSlot=null;pickedStudent=winner.s.student;rouletteRunning=false;renderAll();showWinner(pickedStudent);launchFireworks();
+  rouletteSlot=null;
+  pickedStudent=winner.s.student;
+  recentDraws.push(pickedStudent);
+  if(recentDraws.length>8)recentDraws=recentDraws.slice(-8);
+  rouletteRunning=false;
+  renderAll();
+  showWinner(pickedStudent);
+  launchFireworks();
 }
 function showWinner(name){
   $("winnerName").textContent=name;$("winnerOverlay").classList.remove("show");void $("winnerOverlay").offsetWidth;$("winnerOverlay").classList.add("show");
@@ -762,16 +814,16 @@ const tourSteps=[
   ["#pickBtn","11. Tirer un élève","En projection, utilisez ce bouton pour le tirage animé. Les absents ne sont pas choisis et les places inutiles restent visuellement masquées.", "final"]
 ]
 function demoSetup(){
-  tourSnapshot={data:clone(data),selectedRoomId,selectedClassId,activePlanId,selectedSlot,pickedStudent,absentStudents:[...absentStudents],mirrorMode};
+  tourSnapshot={data:clone(data),selectedRoomId,selectedClassId,activePlanId,selectedSlot,pickedStudent,absentStudents:[...absentStudents],mirrorMode,recentDraws:[...recentDraws]};
   const r={id:"demo-r",name:"Salle Démo",rows:5,cols:8},c={id:"demo-c",name:"Classe Démo",students:["Alice Martin","Benoît Dupont","Chloé Bernard","David Morel","Emma Laurent","Farid Benali","Gabriel Petit","Hana Robert","Inès Simon","Jules Michel","Lina Garcia","Mathis Roux"]};
   const p={id:"demo-p",classId:c.id,roomId:r.id,date:today(),rows:5,cols:8,slots:buildSlots(5,8)};
   shuffle(c.students).forEach((n,i)=>p.slots[i].student=n);
   data={format:"plans-classe-v2",rooms:[r],classes:[c],plans:[p],activePlanId:p.id};
-  selectedRoomId=r.id;selectedClassId=c.id;activePlanId=p.id;selectedSlot=null;pickedStudent=null;absentStudents.clear();setMirrorMode(false);renderAll();
+  selectedRoomId=r.id;selectedClassId=c.id;activePlanId=p.id;selectedSlot=null;pickedStudent=null;absentStudents.clear();recentDraws=[];setMirrorMode(false);renderAll();
 }
 function demoRestore(){
   if(!tourSnapshot)return;
-  data=tourSnapshot.data;selectedRoomId=tourSnapshot.selectedRoomId;selectedClassId=tourSnapshot.selectedClassId;activePlanId=tourSnapshot.activePlanId;selectedSlot=tourSnapshot.selectedSlot;pickedStudent=tourSnapshot.pickedStudent;absentStudents=new Set(tourSnapshot.absentStudents||[]);setMirrorMode(!!tourSnapshot.mirrorMode);tourSnapshot=null;renderAll();
+  data=tourSnapshot.data;selectedRoomId=tourSnapshot.selectedRoomId;selectedClassId=tourSnapshot.selectedClassId;activePlanId=tourSnapshot.activePlanId;selectedSlot=tourSnapshot.selectedSlot;pickedStudent=tourSnapshot.pickedStudent;absentStudents=new Set(tourSnapshot.absentStudents||[]);recentDraws=[...(tourSnapshot.recentDraws||[])];setMirrorMode(!!tourSnapshot.mirrorMode);tourSnapshot=null;renderAll();
 }
 function tourOpen(){tourStep=0;document.body.classList.remove("projection-mode");setSidebarHidden(false);demoSetup();$("tourOverlay").classList.add("show");tourShow()}
 async function tourClose(){if(document.body.classList.contains("projection-mode"))await exitProjection();$("tourOverlay").classList.remove("show");demoRestore()}
